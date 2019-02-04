@@ -4,7 +4,7 @@ ENV STATIC_INDEX 1
 
 COPY ./app /app
 
-RUN pip3 install --upgrade pip
-RUN pip3 install beautifulsoup4
-RUN pip3 install requests
-RUN pip3 install lxml
+#RUN pip3 install --upgrade pip
+#RUN pip3 install beautifulsoup4
+#RUN pip3 install requests
+#RUN pip3 install lxml
