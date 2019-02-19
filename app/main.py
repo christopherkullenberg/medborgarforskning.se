@@ -1,16 +1,42 @@
 from flask import Flask, flash, redirect, render_template, request, session, abort
-#from bs4 import BeautifulSoup
-#import requests
-#import lxml
 app = Flask(__name__)
+
+
+
+
+temp = '''         <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+            <div class="card-body">
+              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                </div>
+                <small class="text-muted">9 mins</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        '''
+
+
+
+
+
 
 @app.route("/")
 def root():
-    return render_template("index.html", query="root")
+    result = {'Projekt 1':"Naturvetenskap",
+              'Projekt 2':"humaniora",
+              'Projekt 3':"skola"}
+    return render_template("index.html", result = result)
 
 @app.route("/<string:query>/")
 def query(query):
-    return render_template('index.html', query=query)
+    result = {'Projektnamn': query}
+    return render_template('index.html', result = result)
 
 @app.route("/hello")
 def hello():
@@ -27,18 +53,7 @@ def getGender(name):
 
 
 
-#@app.route("/")
-#def main():
-#    return render_template('index.html', query="index")
-    #index_path = os.path.join(app.static_folder, 'index.html')
-    #return send_file(index_path)
 
-#@app.route("/flashbackscraper")
-#def fbscraper():
-#    r = requests.get("https://telecomix.org/")
-#    html = r.content
-    #soup = BeautifulSoup(html, "lxml")
-#    return html
 
 
 
