@@ -1,0 +1,55 @@
+from flask import Flask, flash, redirect, render_template, request, session, abort
+
+app = Flask(__name__)
+
+
+
+@app.route("/")
+def root():
+    result = {'typeofproject': 'all forskning'}
+    return render_template("index.html", 
+                           result = result, 
+                           selection = result['typeofproject'])
+
+@app.route("/<string:query>/") # use this for search function
+def query(query):
+    result = {'Projektnamn': query}
+    return render_template('index.html', result = result)
+
+
+@app.route('/result',methods = ['POST', 'GET'])
+def result():
+   if request.method == 'POST':
+      result = request.form
+      print(result)
+      print(result["typeofproject"])
+      return render_template("index.html", 
+                             result = result, 
+                             selection = result['typeofproject']
+                             )
+
+
+
+@app.route("/hello")
+def hello():
+    return "Hello World from Flaskan. Testar att starta om"
+
+
+@app.route("/gendercounter/<string:name>/")
+def getGender(name):
+    import gendercounter
+    namnet = gendercounter.from_string(name)
+    return str(namnet.genderfrequency())
+
+
+
+
+
+
+
+
+
+
+if __name__ == "__main__":
+    # Only for debugging while developing
+    app.run(host='0.0.0.0', debug=True, port=80)

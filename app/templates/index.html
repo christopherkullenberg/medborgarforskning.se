@@ -46,24 +46,33 @@
           
 		<h2 class="mb-5">
 		
-			<form>
-  				<div class="row">
-	  				Visa 
+			<form action = "http://localhost/result" method = "POST" id="myform">
+  				
+				
+				<div class="row">
+	  	
+					Visa 
 
     				<div class="col-auto">
-      					<select class="form-control" id="research_area" placeholder="alla forskningsprojekt">
-						<option>all forskning</option>
-						<option>skolprojekt</option>
-						<option>biologi</option>
-						<option>astronomi</option>
-						<option>samhällsvetenskap</option>
-						<option>geografi</option>
-						<option>fysik/kemi</option>
-						<option>historia</option>
+      					<select class="form-control" id="research_area" name="typeofproject" onchange="this.form.submit();">
+						<option value="{{selection}}" selected="selected">{{selection}}</option>
+						
+						<option value="all forskning">all forskning</option>
+						<option value="skolprojekt">skolprojekt</option>
+						<option value="biologi">biologi</option>
+						<option value="astronomi">astronomi</option>
+						<option value="samhällsvetenskap">samhällsvetenskap</option>
+						<option value="geografi">geografi</option>
+						<option value="fysik">fysik</option>
+						<option value="historia">historia</option>
 
 					</select>
     				</div>
 
+				</form>
+
+				<!--
+		
     					projekt i 
     
    				 <div class="col-auto">
@@ -94,10 +103,9 @@
 
 					</select>
 				
-				</div>
-  
+				</div> -->
+
   				</div>
-			</form>
 		</h2>
 
 
