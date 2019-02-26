@@ -19,7 +19,7 @@
   <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 
   <!-- Custom styles for this template -->
-  <link href="http://localhost/static/css/landing-page.min.css" rel="stylesheet">
+  <link href="http://localhost/static/css/landing-page.css" rel="stylesheet">
 
 </head>
 
@@ -55,7 +55,8 @@
 
     				<div class="col-auto">
       					<select class="form-control" id="research_area" name="typeofproject" onchange="this.form.submit();">
-						<option value="{{selection}}" selected="selected">{{selection}}</option>
+					
+                                        	<option value="{{selection}}" selected="selected">{{selection}}</option>
 						
 						<option value="all forskning">all forskning</option>
 						<option value="skolprojekt">skolprojekt</option>
@@ -68,15 +69,10 @@
 
 					</select>
     				</div>
-
-				</form>
-
-				<!--
-		
-    					projekt i 
+					projekt i 
     
    				 <div class="col-auto">
-      					<select class="form-control" id="location_area" placeholder="hela Sverige">
+      					<select class="form-control" id="location_area" name="locationofproject">
 						<option>hela Sverige</option>
 						<option>inomhus</option>
 						<option>utomhus</option>
@@ -92,6 +88,12 @@
 
 					</select>
     				</div>
+    
+
+				</form>
+
+				<!--
+		
     
     				sorterat efter
     
@@ -294,24 +296,45 @@
   <footer class="footer bg-light">
     <div class="container">
       <div class="row">
-        <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
+        <div class="col-lg-8 h-100 text-center text-lg-left my-auto">
           <ul class="list-inline mb-2">
             <li class="list-inline-item">
-              <a href="#">About</a>
+		    <b><a href="#">Om portalen</a></b><br>
+		    <a href="#">Bakgrund</a><br>
+		    <a href="#">Kontakt</a><br>
+		    <a href="#">Press</a><br>
+		    <a href="#">&zwnj;</a><br>
+		    <a href="#">&zwnj;</a>
             </li>
-            <li class="list-inline-item">&sdot;</li>
             <li class="list-inline-item">
-              <a href="#">Contact</a>
+		    <b><a href="#">Vetenskaplig litteratur</a></b><br>
+		    <a href="#">Om medborgarforskning</a><br>
+		    <a href="#">Om datakvalitet</a><br>
+		    <a href="#">Om teknikimplementering</a><br>
+		    <a href="#">Om etik</a><br>
+		    <a href="#">Om kommunikation</a>
             </li>
-            <li class="list-inline-item">&sdot;</li>
             <li class="list-inline-item">
-              <a href="#">Terms of Use</a>
+		    <b><a href="#">För forskare</a></b><br>
+	      <a href="#">Standardisering och datakvalitet</a><br>
+	      <a href="#">Teknikimplementering</a><br>
+	      <a href="#">Etik</a><br>
+	      <a href="#">Kommunikation</a></br>
+	      <a href="#">&zwnj;</a>
+
             </li>
-            <li class="list-inline-item">&sdot;</li>
-            <li class="list-inline-item">
-              <a href="#">Privacy Policy</a>
+      <!--
+	    <li class="list-inline-item">
+		    <b><a href="#">Användarvillkor</a></b><br>
+		    <a href="#">Datapolicy</a><br>
+		    <a href="#">Cookies</a><br>
+		    <a href="#">Licenser</a><br>
+		    <a href="#">.</a><br>
+		    <a href="#">.</a>
+
             </li>
-          </ul>
+      -->
+	    </ul>
           <p class="text-muted small mb-4 mb-lg-0">&copy; Your Website 2019. All Rights Reserved.</p>
         </div>
         <div class="col-lg-6 h-100 text-center text-lg-right my-auto">

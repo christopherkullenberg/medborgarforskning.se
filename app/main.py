@@ -5,9 +5,6 @@ import sqlite3
 
 app = Flask(__name__)
 
-db = sqlite3.connect('testdb.sqlite3')
-cursor = db.cursor()
-dbquery = cursor.execute('SELECT * FROM projects;') 
 
 @app.route("/")
 def root():
@@ -35,10 +32,12 @@ def result():
             selectionresults[d[1]] = d[4]
         
         print(selected['typeofproject'])
+        print(selectionresults)
         return render_template("index.html", 
                                result = selectionresults, 
                                selection = selected['typeofproject']
                                )
+        db.close()
     
 
 
