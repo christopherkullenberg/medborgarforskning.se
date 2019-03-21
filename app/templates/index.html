@@ -33,7 +33,11 @@
       <a class="navbar-brand" href="#">Vad är medborgarforskning?</a>
       <!-- Ändra width för att ändra loggans storlek -->
                  <img class="img-fluid" width="200" src="http://localhost/static/img/logga.png" alt="">
-                <input type="text" class="form-control form-control-lg" placeholder="Sök efter projekt...">
+                
+		 
+		 <form action = "http://localhost/search" method = "POST" id="searchform">
+		 <input type="text" class="form-control form-control-lg" placeholder="Sök efter projekt..." name="searchstring">
+		 </form>
     </div>
   </nav>
 

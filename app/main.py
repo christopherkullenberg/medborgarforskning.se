@@ -8,10 +8,18 @@ app = Flask(__name__)
 
 @app.route("/")
 def root():
-    selected = {'typeofproject': 'all forskning'}
+    db = sqlite3.connect('testdb.sqlite3')
+    cursor = db.cursor()
+    dbquery = cursor.execute('SELECT * FROM projects ORDER BY datecreated LIMIT 20;')
+    selectionresults = {}
+    for d in dbquery:
+        selectionresults[d[1]] = d[4]
     return render_template("index.html", 
-                           result = selected, 
-                           selection = selected['typeofproject'])
+                           result = selectionresults, 
+                           selection = "all forskning"
+                           )
+    db.close()
+    
 
 @app.route("/<string:query>/") # use this for search function
 def query(query):
@@ -30,15 +38,29 @@ def result():
         selectionresults = {}
         for d in dbquery:
             selectionresults[d[1]] = d[4]
-        
-        print(selected['typeofproject'])
-        print(selectionresults)
         return render_template("index.html", 
                                result = selectionresults, 
                                selection = selected['typeofproject']
                                )
         db.close()
     
+@app.route('/search', methods = ['POST', 'GET'])
+def searchprojects():
+    if request.method == 'POST':
+        searchstring = request.form
+        print("Search query is " + str(searchstring['searchstring']))
+        db = sqlite3.connect('testdb.sqlite3')
+        cursor = db.cursor()
+        dbquery = cursor.execute('SELECT * FROM projects WHERE (name LIKE "%' + searchstring['searchstring'] + '%" OR keywords LIKE "%' + searchstring['searchstring'] + '%");')
+        selectionresults = {}
+        for d in dbquery:
+            selectionresults[d[1]] = d[4]
+            print(d)
+        return render_template("index.html",
+                               result = selectionresults,
+                               selection = "baserat på sökord"
+                               )
+        db.close()
 
 
 
