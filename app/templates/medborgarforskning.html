@@ -49,192 +49,21 @@
         <div class="col-xl-9 mx-auto">
           
 		<h2 class="mb-5">
-		
-			<form action = "http://localhost/result" method = "POST" id="myform">
-  				
-				
-				<div class="row">
-	  	
-					Visa 
-
-    				<div class="col-auto">
-      					<select class="form-control" id="research_area" name="typeofproject" onchange="this.form.submit();">
-					        
-						<!-- gets the default value from Flask -->
-                                        	<option value="{{selection}}" selected="selected">{{selection}}</option>
-						
-						<option value="alla medborgarforsknings">alla medborgarforsknings</option>
-						<option value="skol">skol</option>
-						<option value="biologi">biologi</option>
-						<option value="astronomi">astronomi</option>
-						<option value="samhällsvetenskap">samhällsvetenskap</option>
-						<option value="geografi">geografi</option>
-						<option value="fysik">fysik</option>
-						<option value="historia">historia</option>
-
-					</select>
-    				</div>
-					projekt i 
-    
-   				 <div class="col-auto">
-      					<select class="form-control" id="location_area" name="locationofproject" onchange="this.form.submit();">
-                                                
-						<!-- gets the default value from Flask -->
-						<option value="{{selectionloc}}" selected="selected">{{selectionloc}}</option>
-
-						<option>hela Sverige</option>
-						<option>inomhus</option>
-						<option>utomhus</option>
-						<option>skolprojekt</option>
-						<option>södra Sverige</option>
-						<option>norra Sverige</option>
-						<option>östra Sverige</option>
-						<option>västra Sverige</option>
-						<option>digitalt</option>
-						<option>analogt</option>
-						<option>vid vatten</option>
-				
-
-					</select>
-    				</div>
-   				!	
-				<!--
-				sorterat efter  
-
-                                 <div class="col-auto">
-                                        <select class="form-control" id="location_area" name="order">
-                                                <option>antal deltagare</option>
-                                                <option>nyast startat</option>
-                                
-
-                                        </select>
-                                </div>
-				-->	
-
-
-
-				</form>
-
-				<!--
-		
-    
-    				sorterat efter
-    
-    				<div class="col-auto">
-      					<select class="form-control" placeholder="Popularitet">
-    						<option>popularitet</option>
-						<option>antal deltagare</option>
-						<option>nyligen tillagda</option>
-
-					</select>
-				
-				</div> -->
-
-  				</div>
+	Vad är medborgarforskning?	
 		</h2>
 
-
-
-
-
-
-        </div>
-        <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-          <form>
-            <div class="form-row">
-              <div class="col-12 col-md-9 mb-2 mb-md-0">
-             
-		      <!-- <p>Jag vill...</p>-->
-	      
-	      </div>
-              <div class="col-12 col-md-3">
-              </div>
-            </div>
-          </form>
-        </div>
+	</div>
       </div>
+    </div>
     </div>
   </header>
 
 
-  <!-- result grid -->
-
-  <div class="album py-5 bg-light">
-    <div class="container">
-      <div class="row">
-
-
-	      {% for key, value in result.items() %}
-
-
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-
-		<img src="static/img/{{value[1]}}" class="img-fluid" alt="Responsive image">
-
-            <!--svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title></title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Bild</text></svg-->
-            <div class="card-body">
-		    <p class="card-text">{{key}}</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </div>
-		<small class="text-muted">{{value[0]}}</small>
-              </div>
-            </div>
-          </div>
-        </div>
-
-            {% endfor %}
-
-
-         </div>
-     </div>
-  </div> 
-  <!-- /result grid -->
 
 
 
 
 
-
-
-
-  <!-- Icons Grid -->
-  <section class="features-icons bg-light text-center">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-4">
-          <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-            <div class="features-icons-icon d-flex">
-              <i class="icon-screen-desktop m-auto text-primary"></i>
-            </div>
-            <h3>Fully Responsive</h3>
-            <p class="lead mb-0">This theme will look great on any device, no matter the size!</p>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
-            <div class="features-icons-icon d-flex">
-              <i class="icon-layers m-auto text-primary"></i>
-            </div>
-            <h3>Bootstrap 4 Ready</h3>
-            <p class="lead mb-0">Featuring the latest build of the new Bootstrap 4 framework!</p>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="features-icons-item mx-auto mb-0 mb-lg-3">
-            <div class="features-icons-icon d-flex">
-              <i class="icon-check m-auto text-primary"></i>
-            </div>
-            <h3>Easy to Use</h3>
-            <p class="lead mb-0">Ready to use with your own content, or customize the source files!</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- Image Showcases -->
   <section class="showcase">
@@ -243,22 +72,22 @@
 
         <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('http://localhost/static/img/bg-showcase-1.jpg');"></div>
         <div class="col-lg-6 order-lg-1 my-auto showcase-text">
-          <h2>Fully Responsive Design</h2>
-          <p class="lead mb-0">When you use a theme created by Start Bootstrap, you know that the theme will look great on any device, whether it's a phone, tablet, or desktop the page will behave responsively!</p>
+          <h2>En forskningsmetod!</h2>
+          <p class="lead mb-0">Medborgarforskning är en viktig metod för att forskare ska kunna samla in och klassificera... lorem ipsum...läs mer...</p>
         </div>
       </div>
       <div class="row no-gutters">
         <div class="col-lg-6 text-white showcase-img" style="background-image: url('http://localhost/static/img/bg-showcase-2.jpg');"></div>
         <div class="col-lg-6 my-auto showcase-text">
-          <h2>Updated For Bootstrap 4</h2>
-          <p class="lead mb-0">Newly improved, and full of great utility classes, Bootstrap 4 is leading the way in mobile responsive web development! All of the themes on Start Bootstrap are now using Bootstrap 4!</p>
+          <h2>Påverkar och gör skillnad!</h2>
+          <p class="lead mb-0">Hur är luftkvaliteten där du bor? Hur står det till med skogsmiljön? Medborgarforskning kan göra skillnad... läs mer...!</p>
         </div>
       </div>
       <div class="row no-gutters">
         <div class="col-lg-6 order-lg-2 text-white showcase-img" style="background-image: url('http://localhost/static/img/bg-showcase-3.jpg');"></div>
         <div class="col-lg-6 order-lg-1 my-auto showcase-text">
-          <h2>Easy to Use &amp; Customize</h2>
-          <p class="lead mb-0">Landing Page is just HTML and CSS with a splash of SCSS for users who demand some deeper customization options. Out of the box, just add your content and images, and your new landing page will be ready to go!</p>
+          <h2>Kan vara ett intressant skolprojekt!</h2>
+          <p class="lead mb-0">Runt om i landet bedriver hundratals skolor och tusentals elever medborgarforskning... läs mer...</p>
         </div>
       </div>
     </div>
@@ -267,27 +96,27 @@
   <!-- Testimonials -->
   <section class="testimonials text-center bg-light">
     <div class="container">
-      <h2 class="mb-5">What people are saying...</h2>
+      <h2 class="mb-5">Vad är medborgarforskning för dig?</h2>
       <div class="row">
         <div class="col-lg-4">
           <div class="testimonial-item mx-auto mb-5 mb-lg-0">
             <img class="img-fluid rounded-circle mb-3" src="http://localhost/static/img/testimonials-1.jpg" alt="">
-            <h5>Margaret E.</h5>
-            <p class="font-weight-light mb-0">"This is fantastic! Thanks so much guys!"</p>
+            <h5>Lisa Svensson</h5>
+            <p class="font-weight-light mb-0">"Jag är biolog. Medborgare har hjälpt mig samla in massor av fågelobservationer"</p>
           </div>
         </div>
         <div class="col-lg-4">
           <div class="testimonial-item mx-auto mb-5 mb-lg-0">
             <img class="img-fluid rounded-circle mb-3" src="http://localhost/static/img/testimonials-2.jpg" alt="">
-            <h5>Fred S.</h5>
-            <p class="font-weight-light mb-0">"Bootstrap is amazing. I've been using it to create lots of super nice landing pages."</p>
+            <h5>Olle Svensson</h5>
+            <p class="font-weight-light mb-0">"Jag började mäta luften i mitt kvarter. Jag är medborgarforskare."</p>
           </div>
         </div>
         <div class="col-lg-4">
           <div class="testimonial-item mx-auto mb-5 mb-lg-0">
             <img class="img-fluid rounded-circle mb-3" src="http://localhost/static/img/testimonials-3.jpg" alt="">
-            <h5>Sarah W.</h5>
-            <p class="font-weight-light mb-0">"Thanks so much for making these free resources available to us!"</p>
+            <h5>Stina Svensson</h5>
+            <p class="font-weight-light mb-0">"Jag är lärare i årskurs 5. Vi gjorde medborgarforskning som skolprojekt."</p>
           </div>
         </div>
       </div>

@@ -9,6 +9,9 @@ import sqlite3
 app = Flask(__name__)
 
 def renderresults(dbquery, selection, selectionloc):
+    '''This function renders the results of CS projects based on 
+    the index.html /template. It is used by root(), result() and 
+    searchprojects(), which share a common data structure.'''
     selectionresults = {}
     for d in dbquery:
         selectionresults[d[1]] = [d[4], d[6]]
@@ -18,7 +21,6 @@ def renderresults(dbquery, selection, selectionloc):
                            selection = selection,
                            selectionloc = selectionloc
                            )
-
 
 @app.route("/")
 def root():
@@ -32,14 +34,16 @@ def root():
     selection = "alla medborgarforsknings"
     selectionloc = "hela Sverige"
     return(renderresults(dbquery, selection, selectionloc))
-
     
+@app.route('/medborgarforskning')
+def rendermedborgarforskning():
+    return render_template('medborgarforskning.html')
+
 
 @app.route("/<string:query>/") # use this for building APO web function
 def query(query):
     result = {'Projektnamn': query}
     return render_template('index.html', result = result)
-
 
 @app.route('/result',methods = ['POST', 'GET'])
 def result():
