@@ -28,7 +28,7 @@
   <!-- Navigation -->
   <nav class="navbar navbar-light bg-light http://localhost/static-top">
     <div class="container">
-      <a class="navbar-brand" href="#">Utforska!</a>
+      <a class="navbar-brand" href="/">Utforska!</a>
       <a class="navbar-brand" href="#">Starta projekt!</a>
       <a class="navbar-brand" href="#">Vad är medborgarforskning?</a>
       <!-- Ändra width för att ändra loggans storlek -->
@@ -59,11 +59,12 @@
 
     				<div class="col-auto">
       					<select class="form-control" id="research_area" name="typeofproject" onchange="this.form.submit();">
-					
+					        
+						<!-- gets the default value from Flask -->
                                         	<option value="{{selection}}" selected="selected">{{selection}}</option>
 						
-						<option value="all forskning">all forskning</option>
-						<option value="skolprojekt">skolprojekt</option>
+						<option value="alla medborgarforsknings">alla medborgarforsknings</option>
+						<option value="skol">skol</option>
 						<option value="biologi">biologi</option>
 						<option value="astronomi">astronomi</option>
 						<option value="samhällsvetenskap">samhällsvetenskap</option>
@@ -76,7 +77,11 @@
 					projekt i 
     
    				 <div class="col-auto">
-      					<select class="form-control" id="location_area" name="locationofproject">
+      					<select class="form-control" id="location_area" name="locationofproject" onchange="this.form.submit();">
+                                                
+						<!-- gets the default value from Flask -->
+						<option value="{{selectionloc}}" selected="selected">{{selectionloc}}</option>
+
 						<option>hela Sverige</option>
 						<option>inomhus</option>
 						<option>utomhus</option>
@@ -92,7 +97,21 @@
 
 					</select>
     				</div>
-    
+   				!	
+				<!--
+				sorterat efter  
+
+                                 <div class="col-auto">
+                                        <select class="form-control" id="location_area" name="order">
+                                                <option>antal deltagare</option>
+                                                <option>nyast startat</option>
+                                
+
+                                        </select>
+                                </div>
+				-->	
+
+
 
 				</form>
 

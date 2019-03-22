@@ -22,7 +22,8 @@ def root():
         selectionresults[d[1]] = d[4]
     return render_template("index.html", 
                            result = selectionresults, 
-                           selection = "all forskning"
+                           selection = "alla medborgarforsknings",
+                           selectionloc = "hela Sverige"
                            )
     db.close()
     
@@ -36,19 +37,28 @@ def query(query):
 @app.route('/result',methods = ['POST', 'GET'])
 def result():
     '''This selects projects from the main select dropdowns and dynamically
-    updates the landing page with the results'''
+    updates the landing page with the results. It uses greedy LIKE searches
+    to encompass multiple keywords and locations in the DB columns.'''
     if request.method == 'POST':
         selected = request.form
         db = sqlite3.connect('testdb.sqlite3')
         cursor = db.cursor()
-        dbquery = cursor.execute('SELECT * FROM projects WHERE keywords == "' +
-                                 selected["typeofproject"] + '";') 
+        querystring = (selected["typeofproject"], selected["locationofproject"])
+        print(querystring) # check the query in debug mode
+        if querystring[0] == "alla medborgarforsknings":
+            dbquery = cursor.execute('SELECT * FROM projects WHERE location\
+                                     LIKE "%' + querystring[1] + '%";')
+        else:
+            dbquery = cursor.execute('SELECT * FROM projects WHERE keywords\
+                                     LIKE "%' + querystring[0] + '%" AND \
+                                     location LIKE "%' + querystring[1] + '%";') 
         selectionresults = {}
         for d in dbquery:
             selectionresults[d[1]] = d[4]
         return render_template("index.html", 
                                result = selectionresults, 
-                               selection = selected['typeofproject']
+                               selection = selected['typeofproject'],
+                               selectionloc = selected['locationofproject']
                                )
         db.close()
     
