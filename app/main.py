@@ -8,6 +8,17 @@ import sqlite3
 
 app = Flask(__name__)
 
+def renderresults(dbquery, selection, selectionloc):
+    selectionresults = {}
+    for d in dbquery:
+        selectionresults[d[1]] = [d[4], d[6]]
+    print(selectionresults)
+    return render_template("index.html",
+                           result = selectionresults,
+                           selection = selection,
+                           selectionloc = selectionloc
+                           )
+
 
 @app.route("/")
 def root():
@@ -18,14 +29,10 @@ def root():
     dbquery = cursor.execute('SELECT * FROM projects ORDER BY \
                               datecreated LIMIT 20;')
     selectionresults = {}
-    for d in dbquery:
-        selectionresults[d[1]] = d[4]
-    return render_template("index.html", 
-                           result = selectionresults, 
-                           selection = "alla medborgarforsknings",
-                           selectionloc = "hela Sverige"
-                           )
-    db.close()
+    selection = "alla medborgarforsknings"
+    selectionloc = "hela Sverige"
+    return(renderresults(dbquery, selection, selectionloc))
+
     
 
 @app.route("/<string:query>/") # use this for building APO web function
@@ -52,15 +59,9 @@ def result():
             dbquery = cursor.execute('SELECT * FROM projects WHERE keywords\
                                      LIKE "%' + querystring[0] + '%" AND \
                                      location LIKE "%' + querystring[1] + '%";') 
-        selectionresults = {}
-        for d in dbquery:
-            selectionresults[d[1]] = d[4]
-        return render_template("index.html", 
-                               result = selectionresults, 
-                               selection = selected['typeofproject'],
-                               selectionloc = selected['locationofproject']
-                               )
-        db.close()
+        selection = selected['typeofproject'],
+        selectionloc = selected['locationofproject']
+        return(renderresults(dbquery, selection[0], selectionloc))
     
 @app.route('/search', methods = ['POST', 'GET'])
 def searchprojects():
@@ -75,15 +76,9 @@ def searchprojects():
                                  + searchstring['searchstring'] + 
                                  '%" OR keywords LIKE "%' + 
                                  searchstring['searchstring'] + '%");')
-        selectionresults = {}
-        for d in dbquery:
-            selectionresults[d[1]] = d[4]
-            print(d)
-        return render_template("index.html",
-                               result = selectionresults,
-                               selection = "baserat på sökord"
-                               )
-        db.close()
+        selection = "baserat på sökord"
+        selectionloc = "baserat på sökord"
+        return(renderresults(dbquery, selection, selectionloc))
 
 
 # Just and example function
