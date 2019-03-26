@@ -14,7 +14,8 @@ def renderresults(dbquery, selection, selectionloc):
     searchprojects(), which share a common data structure.'''
     selectionresults = {}
     for d in dbquery:
-        selectionresults[d[1]] = [d[4], d[6]]
+        # add to value list whatever you need on the frontend from the db.
+        selectionresults[d[1]] = [d[4], d[6], d[7]]
     print(selectionresults)
     return render_template("index.html",
                            result = selectionresults,
