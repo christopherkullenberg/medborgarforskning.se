@@ -33,12 +33,15 @@ def root():
     selectionresults = {}
     selection = "alla medborgarforsknings"
     selectionloc = "hela Sverige"
-    return(renderresults(dbquery, selection, selectionloc))
+    return renderresults(dbquery, selection, selectionloc)
     
 @app.route('/medborgarforskning')
 def rendermedborgarforskning():
     return render_template('medborgarforskning.html')
 
+@app.route('/startaprojekt')
+def renderstartaprojekt():
+    return render_template('startaprojekt.html')
 
 @app.route("/<string:query>/") # use this for building APO web function
 def query(query):
