@@ -15,8 +15,8 @@ def renderresults(dbquery, selection, selectionloc):
     selectionresults = {}
     for d in dbquery:
         # add to value list whatever you need on the frontend from the db.
-        selectionresults[d[1]] = [d[4], d[6], d[7]]
-    print(selectionresults)
+        selectionresults[d[1]] = [d[4], d[6], d[7], d[8], d[5]]
+    print(selectionresults) # for debugging to see what is in dict.
     return render_template("index.html",
                            result = selectionresults,
                            selection = selection,

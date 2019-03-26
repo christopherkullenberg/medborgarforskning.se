@@ -28,11 +28,11 @@
   <!-- Navigation -->
   <nav class="navbar navbar-light bg-light /static-top">
     <div class="container">
-      <a class="navbar-brand" href="/">Utforska!</a>
-      <a class="navbar-brand" href="/startaprojekt">Starta projekt!</a>
+      
+      <a href="/"><img class="img-fluid" width="200" src="/static/img/logga.png" alt=""></a>
+      <a class="navbar-brand" href="/">Utforska</a>
+      <a class="navbar-brand" href="/startaprojekt">Starta projekt</a>
       <a class="navbar-brand" href="/medborgarforskning">Vad är medborgarforskning?</a>
-      <!-- Ändra width för att ändra loggans storlek -->
-                 <img class="img-fluid" width="200" src="/static/img/logga.png" alt="">
                 
 		 
 		 <form action = "/search" method = "POST" id="searchform">
@@ -97,7 +97,7 @@
 
 					</select>
     				</div>
-   				!	
+   			
 				<!--
 				sorterat efter  
 
@@ -171,16 +171,18 @@
           <div class="card mb-4 shadow-sm">
 
 		<img src="static/img/{{value[1]}}" class="img-fluid" alt="Responsive image">
+            
 
-            <!--svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title></title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Bild</text></svg-->
-            <div class="card-body">
-		    <p class="card-text">{{key}}</p>
+			<div class="card-body">
+		    <p class="card-text-lg"><b>{{key}}</b></p>
+                    <p class="card-text">{{value[3]}}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
 			<button type="button" class="btn btn-sm btn-outline-secondary"><a href="{{value[2]}}">Hemsida</a></button>
 			<!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>-->
                 </div>
-		<small class="text-muted">{{value[0]}}</small>
+		<small class="text-muted">{{value[0]}} {{value[4]}}</small>
+
               </div>
             </div>
           </div>
