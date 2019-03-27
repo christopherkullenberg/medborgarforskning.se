@@ -44,6 +44,10 @@ def rendermedborgarforskning():
 def renderstartaprojekt():
     return render_template('startaprojekt.html')
 
+@app.route('/om-arcs')
+def renderabout():
+    return render_template('om_arcs.html')
+
 @app.route("/<string:query>/") # use this for building APO web function
 def query(query):
     result = {'Projektnamn': query}

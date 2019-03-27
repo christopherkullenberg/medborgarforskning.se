@@ -46,141 +46,33 @@
     <div class="container">
       <div class="row">
         <div class="col-xl-9 mx-auto">
-          
-		<h2 class="mb-5">
-		
-			<form action = "/result" method = "POST" id="myform">
-  				
-				
-				<div class="row">
-	  	
-					Visa 
 
-    				<div class="col-auto">
-      					<select class="form-control-lg" id="research_area" name="typeofproject" onchange="this.form.submit();">
-					        
-						<!-- gets the default value from Flask -->
-                                        	<option value="{{selection}}" selected="selected">{{selection}}</option>
-						
-						<option value="alla medborgarforsknings">alla medborgarforsknings</option>
-						<option value="skol">skol</option>
-						<option value="biologi">biologi</option>
-						<option value="astronomi">astronomi</option>
-						<option value="samhällsvetenskap">samhällsvetenskap</option>
-						<option value="geografi">geografi</option>
-						<option value="fysik">fysik</option>
-						<option value="historia">historia</option>
+                <h2 class="mb-5">
+                Om ARCS               
+                </h2>
 
-					</select>
-    				</div>
-					projekt i 
-    
-   				 <div class="col-auto">
-      					<select class="form-control-lg" id="location_area" name="locationofproject" onchange="this.form.submit();">
-                                                
-						<!-- gets the default value from Flask -->
-						<option value="{{selectionloc}}" selected="selected">{{selectionloc}}</option>
-
-						<option>hela Sverige</option>
-						<option>inomhus</option>
-						<option>utomhus</option>
-						<option>skolprojekt</option>
-						<option>södra Sverige</option>
-						<option>norra Sverige</option>
-						<option>östra Sverige</option>
-						<option>västra Sverige</option>
-						<option>digitalt</option>
-						<option>analogt</option>
-						<option>vid vatten</option>
-				
-
-					</select>
-    				</div>
-   			
-
-				</form>
-
-  				</div>
-		</h2>
-
-
-
-
-
-
-        </div>
-        <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-          <form>
-            <div class="form-row">
-              <div class="col-12 col-md-9 mb-2 mb-md-0">
-             
-		      <!-- <p>Jag vill...</p>-->
-	      
-	      </div>
-              <div class="col-12 col-md-3">
-              </div>
-            </div>
-          </form>
         </div>
       </div>
     </div>
+    </div>
   </header>
 
-
   <p class="frontpagetext">
-Medborgarforskning handlar om att forskare och allmänheten hjälps åt för att ta fram ny kunskap. På medborgarforskning.se kan alla som vill lära sig mer om medborgarforskning (citizen science), söka bland projekt att delta i och bidra till portalen med egna kunskaper och erfarenheter.
+Medborgarforskning.se är ett treårigt samarbete mellan Göteborgs universitet, Sveriges lantbruksuniversitet (SLU), Umeå universitet och den ideella föreningen Vetenskap & Allmänhet (VA). Syftet är att hjälpa svenska universitet och högskolor att använda medborgarforskning på ett ansvarsfullt och hållbart sätt för att samverka med samhället. Målet är att portalen ska bli en naturlig knutpunkt och resurs för alla som är intresserade av medborgarforskning. 
   </p>
 
+<p class="frontpagetext">
+I utvecklingen av portalen har deltagarna sedan 2018 kartlagt pågående och historiska svenska medborgarforskningprojekt, undersökt svenska forskares syn på medborgarforskning, och sammanställt vetenskaplig kunskap kring datakvalitet, tekniska hjälpmedel, etik och kommunikation i medborgarforskningsprojekt.
+</p>
 
-  <p class="frontpagetext">
-  Du som är forskare kan: hitta information om medborgarforskning som metod, få tips och inspiration till att starta egna projekt, utbyta erfarenheter och knyta kontakter med andra forskare och frivilliga.
-  </p>
+<p class="frontpagetext">
+Samarbetsprojektet går under namnet ARCS (Arenas for Cooperation through Citizen Science). 
+Den svenska titeln för projektet är Arenor för samverkan via medborgarforskning. Projektet finansieras av Vinnova, Göteborgs universitet, Sveriges lantbruksuniversitet och Umeå universitet.
+</p>
 
-  <p class="frontpagetext">
-Du som inte är forskare kan: göra precis samma saker som forskarna. Medborgarforskning är för alla.
-  </p>
-
-
-  <!-- result grid -->
-
-  <div class="album py-5 bg-light">
-    <div class="container">
-      <div class="row">
-
-
-	      {% for key, value in result.items() %}
-
-
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-
-		<img src="static/img/{{value[1]}}" class="img-fluid" alt="Responsive image">
-            
-
-			<div class="card-body">
-		    <p class="card-text-lg"><b>{{key}}</b></p>
-                    <p class="card-text">{{value[3]}}</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-			<button type="button" class="btn btn-sm btn-outline-secondary"><a href="{{value[2]}}">Hemsida</a></button>
-			<!-- <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>-->
-                </div>
-		<small class="text-muted">{{value[0]}} {{value[4]}}</small>
-
-              </div>
-            </div>
-          </div>
-        </div>
-
-            {% endfor %}
-
-
-         </div>
-     </div>
-  </div> 
-  <!-- /result grid -->
-
-
+<p class="frontpagetext">
+Projektledare är Dick Kasperowski, docent i vetenskapsteori vid Göteborgs universitet. 
+</p>
 
 
 

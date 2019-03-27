@@ -44,7 +44,12 @@ h6 {
  * Guld-gul #99803d
  */
 
+p.frontpagetext{
+  margin-top: 1rem;
+  margin-left: 8rem;
+  margin-right: 8rem;
 
+}
 
 header.masthead {
   position: relative;
