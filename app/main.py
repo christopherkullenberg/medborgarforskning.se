@@ -48,6 +48,11 @@ def renderstartaprojekt():
 def renderabout():
     return render_template('om_arcs.html')
 
+@app.route('/litteratur')
+def renderlitteratur():
+    return render_template('litteratur.html')
+
+
 @app.route("/<string:query>/") # use this for building APO web function
 def query(query):
     result = {'Projektnamn': query}
