@@ -9,7 +9,7 @@ body {
 }
 
 a {
-  color: #99803d;
+  color: #157FFB;
   font-family: 'Roboto', sans-serif;
 }
 
@@ -45,6 +45,7 @@ h6 {
  */
 
 p.frontpagetext{
+  font-family: 'Roboto', sans-serif;
   margin-top: 1rem;
   margin-left: 8rem;
   margin-right: 8rem;

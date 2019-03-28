@@ -1,6 +1,7 @@
 from flask import Flask, flash, redirect, render_template
 from flask import request, session, abort
 import sqlite3
+from csbiblio import literaturequery
 
 # Database structure:
 # CREATE TABLE projects(id INTEGER PRIMARY KEY, name TEXT, datecreated TEXT, 
@@ -50,6 +51,7 @@ def renderabout():
 
 @app.route('/litteratur')
 def renderlitteratur():
+    print(literaturequery("civic"))
     return render_template('litteratur.html')
 
 
