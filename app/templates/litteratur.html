@@ -51,15 +51,63 @@
                 Litteratur om medborgarforskning 
                 </h2>
 
+		      <form action = "/litteratur" method = "POST" id="searchliterature">
+                 <input type="text" class="form-control form-control-lg" placeholder="Sök litteratur..." name="searchliterature">
+                       </form>
+
+
+
         </div>
       </div>
     </div>
     </div>
   </header>
 
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Författare</th>
+      <th scope="col">Årtal</th>
+      <th scope="col">Titel</th>
+      <th scope="col">Tidsskrift</th>
+      <th scope="col">Nummer</th>
+      <th scope="col">Volym</th>
+      <th scope="col">Fulltext / DOI</th>
+      <th scope="col">Nyckelord</th>
+
+
+
+    </tr>
+  </thead>
+  <tbody>
+
+
+{% for key, value in results.items() %}
+
+
+    <tr>
+      <td>{{value[0]}}</td>
+      <td>{{value[1]}}</td>
+      <td>{{key}}</td>
+      <td>{{value[2]}}</td>
+      <td>{{value[3]}}</td>
+      <td>{{value[4]}}</td>
+      <td><a href="https://doi.org/{{value[5]}}">{{value[5]}}</a></td>
+      <td>{{value[7]}}</td>
+{% endfor %}
+
+  </tbody>
+</table>
+
+
+
+
+<!--
 <p>
 <script src="https://bibbase.org/show?bib=https%3A%2F%2Fapi.zotero.org%2Fgroups%2F2090013%2Fitems%3Fkey%3DNtJiWsJzyZhYtWXlUkGdfrnp%26format%3Dbibtex%26limit%3D100&jsonp=1"></script> 
 </p>
+-->
+
 
   <!-- Footer -->
   <footer class="footer bg-light">

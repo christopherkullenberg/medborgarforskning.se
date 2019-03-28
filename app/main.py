@@ -49,11 +49,18 @@ def renderstartaprojekt():
 def renderabout():
     return render_template('om_arcs.html')
 
-@app.route('/litteratur')
+@app.route('/litteratur', methods = ['POST', 'GET'])
 def renderlitteratur():
-    print(literaturequery("civic"))
-    return render_template('litteratur.html')
-
+    #print(literaturequery("civic"))
+    results = {"default": "234"}
+    if request.method == 'POST':
+        searchstring = request.form
+        results =  literaturequery(searchstring['searchliterature'])
+        #for k, v in literaturequery(searchstring['searchliterature']).items():
+        #    print(v[0])
+    else:
+         results = literaturequery("air quality")
+    return render_template('litteratur.html', results=results)
 
 @app.route("/<string:query>/") # use this for building APO web function
 def query(query):
