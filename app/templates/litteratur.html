@@ -70,8 +70,7 @@
       <th scope="col">Årtal</th>
       <th scope="col">Titel</th>
       <th scope="col">Tidsskrift</th>
-      <th scope="col">Nummer</th>
-      <th scope="col">Volym</th>
+      <th scope="col">Nummer/Volym</th>
       <th scope="col">Fulltext / DOI</th>
       <th scope="col">Nyckelord</th>
 
@@ -82,18 +81,17 @@
   <tbody>
 
 
-{% for key, value in results.items() %}
+{% for row in results %}
 
 
     <tr>
-      <td>{{value[0]}}</td>
-      <td>{{value[1]}}</td>
-      <td>{{key}}</td>
-      <td>{{value[2]}}</td>
-      <td>{{value[3]}}</td>
-      <td>{{value[4]}}</td>
-      <td><a href="https://doi.org/{{value[5]}}">{{value[5]}}</a></td>
-      <td>{{value[7]}}</td>
+      <td>{{row[2]}}</td>
+      <td>{{row[3]}}</td>
+      <td>{{row[1]}}</td>
+      <td>{{row[4]}}</td>
+      <td>{{row[5]}}({{row[6]}})</td>
+      <td><a href="https://doi.org/{{row[7]}}">{{row[7][0:20]}}</a></td>
+      <td>{{row[9]}}</td>
 {% endfor %}
 
   </tbody>

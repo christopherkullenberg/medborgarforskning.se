@@ -1,7 +1,6 @@
 from flask import Flask, flash, redirect, render_template
 from flask import request, session, abort
 import sqlite3
-from csbiblio import literaturequery
 
 # Database structure:
 # CREATE TABLE projects(id INTEGER PRIMARY KEY, name TEXT, datecreated TEXT, 
@@ -53,13 +52,24 @@ def renderabout():
 def renderlitteratur():
     #print(literaturequery("civic"))
     results = {"default": "234"}
+    litdb = sqlite3.connect('ARCSLiterature.sqlite3')
+    cursor = litdb.cursor()
+
     if request.method == 'POST':
         searchstring = request.form
-        results =  literaturequery(searchstring['searchliterature'])
-        #for k, v in literaturequery(searchstring['searchliterature']).items():
-        #    print(v[0])
+        results = cursor.execute('SELECT * FROM\
+                                  bibliography WHERE Keywords LIKE "%' 
+                                  + searchstring['searchliterature'] + '%" OR\
+                                  Author LIKE "%'
+                                  + searchstring['searchliterature'] + '%" OR\
+                                  Abstract LIKE "%'                                                                + searchstring['searchliterature'] + '%";')
+        print(results)
+    
     else:
-         results = literaturequery("air quality")
+        results = cursor.execute('SELECT * FROM bibliography WHERE Year < 3000\
+                                  ORDER BY Year DESC LIMIT 20;')
+       
+        
     return render_template('litteratur.html', results=results)
 
 @app.route("/<string:query>/") # use this for building APO web function
