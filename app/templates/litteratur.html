@@ -53,25 +53,32 @@
 
 		      <form action = "/litteratur" method = "POST" id="searchliterature">
                  <input type="text" class="form-control form-control-lg" placeholder="Sök litteratur..." name="searchliterature">
-                       </form>
 
+			<div class="form-check form-check-inline">
+  				<input type="radio" id="ticker"  name="Year" value="Y" checked>
+				<label class="form-check-label" for="Year">Sortera på årtal</label>
+			</div>
 
+			<div class="form-check form-check-inline">
+  				<input type="radio" id="ticker" name="Author" value="A">
+  				<label class="form-check-label" for="Author">Sortera på författare</label>
+			</div>
 
+		       </form>
         </div>
       </div>
     </div>
     </div>
   </header>
 
+ <div style="overflow-x:auto;">
 <table class="table">
   <thead>
     <tr>
       <th scope="col">Författare</th>
       <th scope="col">Årtal</th>
       <th scope="col">Titel</th>
-      <th scope="col">Tidsskrift</th>
-      <th scope="col">Nummer/Volym</th>
-      <th scope="col">Fulltext / DOI</th>
+      <th scope="col">Källa</th>
       <th scope="col">Nyckelord</th>
 
 
@@ -88,15 +95,13 @@
       <td>{{row[2]}}</td>
       <td>{{row[3]}}</td>
       <td>{{row[1]}}</td>
-      <td>{{row[4]}}</td>
-      <td>{{row[5]}}({{row[6]}})</td>
-      <td><a href="https://doi.org/{{row[7]}}">{{row[7][0:20]}}</a></td>
+      <td>{{row[4]}} {{row[5]}}({{row[6]}})<br> <a href="https://doi.org/{{row[7]}}"><b>{{row[7]}}</b></a></td>
       <td>{{row[9]}}</td>
 {% endfor %}
 
   </tbody>
 </table>
-
+ </div>
 
 
 
@@ -122,7 +127,7 @@
 		    <a href="#">&zwnj;</a>
             </li>
             <li class="list-inline-item">
-		    <b><a href="#">Vetenskaplig litteratur</a></b><br>
+		    <b><a href="/litteratur">Vetenskaplig litteratur</a></b><br>
 		    <a href="#">Om medborgarforskning</a><br>
 		    <a href="#">Om datakvalitet</a><br>
 		    <a href="#">Om teknikimplementering</a><br>

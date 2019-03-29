@@ -35,11 +35,18 @@ def createdatabase(datadict):
     except sqlite3.OperationalError:
         print("File already exists, remove it first")
         sys.exit()
+    
     for k, v in datadict.items():
-        cursor.execute('''INSERT INTO bibliography(Title, Author, Year, Source,
-                          Issue, Volume, DOI, Abstract, Keywords)
+        try:
+            cursor.execute('''INSERT INTO bibliography(Title, Author, Year, 
+                          Source, Issue, Volume, DOI, Abstract, Keywords)
                           VALUES(?,?,?,?,?,?,?,?,?)''',
-                          (k, v[0], v[1], v[2], v[3], v[4], v[5], v[6], v[7]))
+                          (k.title(), v[0], v[1], v[2].title(), v[3], 
+                          v[4], v[5], v[6], v[7]))
+        except sqlite3.IntegrityError:
+            print("Found duplicate... continuing")
+            continue
+                          
     conn.commit()
 
 createdatabase(parsecsv())

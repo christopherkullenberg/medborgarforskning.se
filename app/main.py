@@ -57,13 +57,20 @@ def renderlitteratur():
 
     if request.method == 'POST':
         searchstring = request.form
+        orderby = "Year DESC"
+        print(searchstring)
+        for k, v in searchstring.items():
+            if k == "Author":
+                orderby = "Author ASC"
+        print(orderby)
+        #print(searchstring['Author'])
         results = cursor.execute('SELECT * FROM\
                                   bibliography WHERE Keywords LIKE "%' 
                                   + searchstring['searchliterature'] + '%" OR\
                                   Author LIKE "%'
                                   + searchstring['searchliterature'] + '%" OR\
-                                  Abstract LIKE "%'                                                                + searchstring['searchliterature'] + '%";')
-        print(results)
+                                  Abstract LIKE "%'                                                                + searchstring['searchliterature'] + '%"\
+                                  ORDER BY ' + orderby + ';')
     
     else:
         results = cursor.execute('SELECT * FROM bibliography WHERE Year < 3000\
