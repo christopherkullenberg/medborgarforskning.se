@@ -54,7 +54,6 @@ def renderlitteratur():
     results = {"default": "234"}
     litdb = sqlite3.connect('ARCSLiterature.sqlite3')
     cursor = litdb.cursor()
-
     if request.method == 'POST':
         searchstring = request.form
         orderby = "Year DESC"
@@ -63,28 +62,29 @@ def renderlitteratur():
             if k == "Author":
                 orderby = "Author ASC"
         print(orderby)
-        #print(searchstring['Author'])
         results = cursor.execute('SELECT * FROM\
                                   bibliography WHERE Keywords LIKE "%' 
                                   + searchstring['searchliterature'] + '%" OR\
                                   Author LIKE "%'
                                   + searchstring['searchliterature'] + '%" OR\
-                                  Abstract LIKE "%'                                                                + searchstring['searchliterature'] + '%"\
+                                  Abstract LIKE "%'    
+                                  + searchstring['searchliterature'] + '%" OR\
+                                  Title LIKE "%'
+                                  + searchstring['searchliterature'] + '%"\
                                   ORDER BY ' + orderby + ';')
     
     else:
         results = cursor.execute('SELECT * FROM bibliography WHERE Year < 3000\
                                   ORDER BY Year DESC LIMIT 20;')
-       
-        
-    return render_template('litteratur.html', results=results)
+    return render_template('litteratur.html', 
+                           results = results)
 
 @app.route("/<string:query>/") # use this for building APO web function
 def query(query):
     result = {'Projektnamn': query}
     return render_template('index.html', result = result)
 
-@app.route('/result',methods = ['POST', 'GET'])
+@app.route('/result', methods = ['POST', 'GET'])
 def result():
     '''This selects projects from the main select dropdowns and dynamically
     updates the landing page with the results. It uses greedy LIKE searches

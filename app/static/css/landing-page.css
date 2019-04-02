@@ -5,36 +5,38 @@
  */
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', regular;
 }
 
 a {
   color: #157FFB;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', regular;
 }
 
 i {
   color: #ff7f00;
+  font-family: 'Roboto', regular;
+
 }
 
 
 h1{
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Raleway', black;
 },
 h2 {
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Raleway', black;
 },
 h3{
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Raleway', black;
 },
 h4{
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Raleway', black;
 },
 h5{
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Raleway', black;
 },
 h6 {
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Raleway', black;
   font-weight: 700;
 }
 
@@ -43,6 +45,8 @@ h6 {
  * Orange #ff7f00
  * Guld-gul #99803d
  */
+
+
 
 
 table{
@@ -54,11 +58,9 @@ table{
 tr:hover {background-color: #f5f5f5;}
 tr:nth-child(even) {background-color: #f2f2f2;}
 
-p.frontpagetext{
-  font-family: 'Roboto', sans-serif;
+p{
+  font-family: 'Roboto', regular;
   margin-top: 1rem;
-  margin-left: 8rem;
-  margin-right: 8rem;
 
 }
 
