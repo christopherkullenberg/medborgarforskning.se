@@ -16,27 +16,31 @@ a {
 i {
   color: #ff7f00;
   font-family: 'Roboto', regular;
-
 }
 
 
+
+
 h1{
-  font-family: 'Raleway', black;
+  font-family: 'Raleway', sans-serif;
 },
 h2 {
-  font-family: 'Raleway', black;
+  font-family: 'Raleway', sans-serif;
+  font-style: black;
 },
 h3{
-  font-family: 'Raleway', black;
+  font-family: 'Raleway', sans-serif;
 },
-h4{
-  font-family: 'Raleway', black;
+h4 {
+  font-family: 'Raleway', sans-serif;
 },
+
+
 h5{
-  font-family: 'Raleway', black;
+  font-family: 'Raleway', sans-serif;
 },
 h6 {
-  font-family: 'Raleway', black;
+  font-family: 'Raleway', sans-serif;
   font-weight: 700;
 }
 
@@ -47,7 +51,10 @@ h6 {
  */
 
 
-
+footer li{
+     float: right;
+     margin: 50px;
+}
 
 table{
   font-size: 12px;
