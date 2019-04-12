@@ -1,12 +1,16 @@
 from flask import Flask, flash, redirect, render_template
 from flask import request, session, abort
 import sqlite3
+#from flask_restful import Resource, Api
+
 
 # Database structure:
 # CREATE TABLE projects(id INTEGER PRIMARY KEY, name TEXT, datecreated TEXT, 
 #                       numberofparticipants INT, keywords TEXT);
 
 app = Flask(__name__)
+#api = Api(app)
+
 
 def renderresults(dbquery, selection, selectionloc):
     '''This function renders the results of CS projects based on 
@@ -79,10 +83,11 @@ def renderlitteratur():
     return render_template('litteratur.html', 
                            results = results)
 
-@app.route("/<string:query>/") # use this for building APO web function
-def query(query):
+@app.route("/<string:query>/<string:query2>") # use this for building APO web function
+def query(query, query2):
     result = {'Projektnamn': query}
-    return render_template('index.html', result = result)
+    r3 = {'tvan': query2}
+    return result['Projektnamn'] + r3['tvan']
 
 @app.route('/result', methods = ['POST', 'GET'])
 def result():
