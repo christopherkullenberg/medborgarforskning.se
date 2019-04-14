@@ -1,16 +1,71 @@
 from flask import Flask, flash, redirect, render_template
 from flask import request, session, abort
 import sqlite3
-#from flask_restful import Resource, Api
+import json
 
-
-# Database structure:
-# CREATE TABLE projects(id INTEGER PRIMARY KEY, name TEXT, datecreated TEXT, 
-#                       numberofparticipants INT, keywords TEXT);
 
 app = Flask(__name__)
-#api = Api(app)
 
+############################
+# API functions and routes #
+############################
+
+def apisearchprojects(searchstring, orderby, order):
+    ''' Searches the project database and returns
+    the query results and the cursor'''
+    db = sqlite3.connect('testdb.sqlite3')
+    cursor = db.cursor()
+    dbquery = cursor.execute('SELECT * FROM projects WHERE (name LIKE "%'
+                             + searchstring + '%" OR keywords LIKE "%' 
+                             + searchstring + '%") ORDER BY ' 
+                             + orderby.title() 
+                             + ' ' + order.upper() + ';')
+    print(dbquery)
+    return dbquery, cursor
+
+def apisearchliterature(searchstring, orderby, order):
+    ''' Searches the literature database and returns
+    the query results and the cursor'''
+    db = sqlite3.connect("ARCSLiterature.sqlite3")
+    cursor = db.cursor()
+    dbquery = cursor.execute('SELECT * FROM\
+                              bibliography WHERE Keywords LIKE "%' 
+                              + searchstring + '%" OR Author LIKE "%'
+                              + searchstring + '%" OR Abstract LIKE "%'    
+                              + searchstring + '%" OR Title LIKE "%'
+                              + searchstring + '%" ORDER BY ' + orderby.title()
+                              + ' ' + order.upper() + ';')
+    return dbquery, cursor
+ 
+@app.route('''/api/database=<string:query>&searchstring=<string:query2>&orderby=<string:query3>&order=<string:query4>''')
+# Route for API URL pattern
+# Example queries: 
+# http://localhost/api/database=projects&searchstring=biologi&orderby=name&order=desc
+# http://localhost/api/database=literature&searchstring=birds&orderby=year&order=asc 
+def query(query, query2, query3, query4):
+    if query == "projects":
+        result = apisearchprojects(query2, query3, query4)[0]
+        cursor = apisearchprojects(query2, query3, query4)[1]
+        items = [dict(zip([key[0] for key in cursor.description], row)) 
+                 for row in result]
+        return json.dumps({'items': items}, ensure_ascii=False).encode('utf8')
+    
+    elif query == "literature":
+        result = apisearchliterature(query2, query3, query4)[0]
+        cursor = apisearchliterature(query2, query3, query4)[1]
+        items = [dict(zip([key[0] for key in cursor.description], row)) 
+                 for row in result]
+        return json.dumps({'items': items}, ensure_ascii=False).encode('utf8')
+    
+    
+    else:
+        datatype = "Error. Datatype must be 'projects' or 'literature'"
+        return datatype 
+
+
+#####################################
+# Web frontend functions and routes #
+#####################################
 
 def renderresults(dbquery, selection, selectionloc):
     '''This function renders the results of CS projects based on 
@@ -83,12 +138,6 @@ def renderlitteratur():
     return render_template('litteratur.html', 
                            results = results)
 
-@app.route("/<string:query>/<string:query2>") # use this for building APO web function
-def query(query, query2):
-    result = {'Projektnamn': query}
-    r3 = {'tvan': query2}
-    return result['Projektnamn'] + r3['tvan']
-
 @app.route('/result', methods = ['POST', 'GET'])
 def result():
     '''This selects projects from the main select dropdowns and dynamically
@@ -128,19 +177,6 @@ def searchprojects():
         selectionloc = "baserat på sökord"
         return(renderresults(dbquery, selection, selectionloc))
 
-
-# Just and example function
-@app.route("/hello")
-def hello():
-    return "Hello World from Flaskan. Testar att starta om"
-
-
-# Just an example function
-@app.route("/gendercounter/<string:name>/")
-def getGender(name):
-    import gendercounter
-    namnet = gendercounter.from_string(name)
-    return str(namnet.genderfrequency())
 
 
 
