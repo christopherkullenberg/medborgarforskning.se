@@ -1,11 +1,7 @@
 import csv
 import re
 import sqlite3
-import sys
-
-conn = sqlite3.connect('ARCSLiterature.sqlite3')
-cursor = conn.cursor()
-
+import sym
 
 def doi_to_kw():
     with open('doi_keywords.csv', 'r') as keywordfile:
@@ -15,16 +11,34 @@ def doi_to_kw():
             doi_kwdict[row['DOI']] = row['Author Keywords']
         return doi_kwdict
 
-dictionary = doi_to_kw()
+
+def doi_to_q():
+    with open('doi_q.csv', 'r') as qfile:
+        data = csv.DictReader(qfile, delimiter=',', quotechar='"')
+        doi_qdict = {}
+        for row in data:
+            doi_qdict[row['DOI']] = row['Q']
+        return doi_qdict
+
+
 
 
 def getkeywords(DOI, dictionary):
     try:
         return dictionary[DOI]
-    
+   
     except KeyError:
         return ""
-        
+
+
+def getqs(DOI, dictionary):
+    try:
+        return dictionary[DOI]
+
+    except KeyError:
+        return ""
+
+
 
 
 def parsecsv():
@@ -41,8 +55,9 @@ def parsecsv():
                                           row['DOI'],
                                           row['Abstract Note'],
                                           row['Manual Tags'],
-                                          getkeywords(row['DOI'], dictionary)
-                                          ]
+                                          getkeywords(row['DOI'], doi_to_kw()),
+                                          getqs(row['DOI'], doi_to_q())
+                                              ]
 
             else:
                 continue
@@ -53,7 +68,7 @@ def createdatabase(datadict):
         cursor.execute('''CREATE TABLE bibliography(id INTEGER PRIMARY KEY,\
                    Title TEXT UNIQUE, Author TEXT, Year INTEGER, Source TEXT,\
                    Issue INTEGER, Volume INTEGER, DOI TEXT, Abstract TEXT,\
-                   ManualTags TEXT, AuthorKeywords TEXT);''')
+                   ManualTags TEXT, AuthorKeywords TEXT, Q TEXT);''')
     except sqlite3.OperationalError:
         print("File already exists, remove it first")
         sys.exit()
@@ -61,18 +76,19 @@ def createdatabase(datadict):
     for k, v in datadict.items():
         try:
             cursor.execute('''INSERT INTO bibliography(Title, Author, Year, 
-                          Source, Issue, Volume, DOI, Abstract, ManualTags, AuthorKeywords)
-                          VALUES(?,?,?,?,?,?,?,?,?,?)''',
+                          Source, Issue, Volume, DOI, Abstract, ManualTags, AuthorKeywords, Q)
+                          VALUES(?,?,?,?,?,?,?,?,?,?,?)''',
                           (k.title(), v[0], v[1], v[2].title(), v[3], 
-                          v[4], v[5], v[6], v[7], v[8]))
+                          v[4], v[5], v[6], v[7], v[8], v[9]))
         except sqlite3.IntegrityError:
             print("Found duplicate... continuing")
-            continue
-                          
+            continue                      
     conn.commit()
 
-createdatabase(parsecsv())
+    
 
 
-
-
+if __name__ == "__main__":  
+    conn = sqlite3.connect('ARCSLiterature.sqlite3')
+    cursor = conn.cursor()    
+    createdatabase(parsecsv())
