@@ -1,11 +1,13 @@
 # docker-compose.yml - #TODO update to use Ansible configuration - currently based on Web Dev Cookbook template
 # Using Compose File reference version 2.2 due to docker version installed
-version: '2' # version of docker-config standard not the file version
+version: '2.2' # version of docker-config standard not the file version
 
 services:
   db:
     image: postgres:12.1
+    container_name: ARCS-PG-Database
     environment:
+      # TODO set db to use socket rather than ip network
       - POSTGRES_DB=pg-docker
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=docker
@@ -15,20 +17,25 @@ services:
       - 5432:5432
     networks:
       - db_network
+
+    healthcheck:
+      test: "exit 0"
   djangoapp:
+    container_name: ARCSCore
     build: .
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     volumes:
-#      - ./arcsApp
       - ./arcsApp:/var/www/arcsApp/
     ports:
       - 8000:8000
-    command:
-      python3 manage.py runserver 127.0.0.1:8000
-
+#    command:
+#      - python3 manage.py runserver 0.0.0.0:8000
+#      CMD ["gunicorn", "--chdir", "hello", "--bind", ":8000", "hello.wsgi:application"]
   nginximg:
     image: nginx:latest
+    container_name: ARCServer
     depends_on:
       - djangoapp
     ports:
@@ -43,7 +50,7 @@ networks:
     driver: bridge
   db_network:
     driver: bridge
-#  databas
+
 #      - '/var/run/docker.sock:/tmp/docker.sock:ro'
 #      - './config/my.cnf:/etc/mysql/conf.d/my.cnf'
 #      - './mysql:/var/lib/mysql'
@@ -67,9 +74,7 @@ networks:
 #        - './apps/myapp2:/usr/src/app/myapp2'
 #          ports:
 #            - '8000'
-#      links:
-#         - db
-#      environment:
+#        environment:
 #         - 'SITE_HOST'
 #         - 'MEDIA_HOST'
 #         - 'STATIC_HOST'
@@ -80,17 +85,3 @@ networks:
 #         - 'MYSQL_PASSWORD'
 #         - 'MYSQL_DATABASE'
 #      media:
-
-#image: 'httpd:latest' volumes:
-#  - './media:/usr/local/apache2/htdocs'
-#  ports: - '80' environment:
-#    - 'VIRTUAL_HOST=${MEDIA_HOST}'
-#    static:
-#      image:
-#        'httpd:latest'
-#      volumes:
-#        - './static:/usr/local/apache2/htdocs'
-#        ports:
-#          environment:
-#            - 'VIRTUAL_HOST=${STATIC_HOST}'
-#            - '80'
