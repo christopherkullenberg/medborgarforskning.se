@@ -2,6 +2,11 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
+import warnings
+
+if __name__ == '__main__':     # inserted due to django-cms incompatablilty with psycopg2
+    warnings.filterwarnings(
+        'ignore', r'The psycopg2.*release 2\.8', UserWarning, 'psycopg2')
 
 
 def main():
@@ -15,6 +20,8 @@ def main():
             "forget to activate a virtual environment?"
         ) from exc
     execute_from_command_line(sys.argv)
+
+
 
 
 if __name__ == '__main__':

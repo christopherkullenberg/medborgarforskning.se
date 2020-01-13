@@ -4,16 +4,16 @@
 # Author: Jonathan Brier & Christopher Kullenberg
 #
 
-ArcsCore
+#[requires]
+# our Docerfile is based on Python 3.6
+#python_version ==3.6
+
+#ArcsCore
 # postgresslq=
 Django~=2.2.9
-uwsgi = "2.0.18"
-"psycopg2" = "*"
-django-cms = "3.7.1"
-python-dev = "*"
-zlib = "*"
-libjpeg = "*"
-
-[requires]
-# our Docerfile is based on Python 3.6
-python_version = "3.6"
+uwsgi ==2.0.18
+psycopg2==2.7
+django-cms ==3.7.1
+#python-dev
+#zlib
+#libjpeg

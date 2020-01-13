@@ -22,16 +22,17 @@ FROM python:3.6
 RUN mkdir -p /var/www/arcsApp/
 WORKDIR /var/www/arcsApp/
 
+
+# install our two dependencies
+COPY ./requirements.txt .
+RUN pip install -r requirements.txt
+
 # copy our project code
 COPY ./arcsApp/ /var/www/arcsApp/
 
-# install our two dependencies
-RUN pip install django==2.2.9 uwsgi==2.0.18 psycopg2 django-cms==3.7.1 # TODO load from requirements.txt
-# RUN pip install gunicorn django
-# RUN pip install -r requirements.txt
 
 # expose the port 8000
-# EXPOSE 8000
+EXPOSE 8000
 
 # define the default command to run when starting the container
 # CMD ["gunicorn", "--chdir", "hello", "--bind", ":8000", "hello.wsgi:application"]
