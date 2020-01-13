@@ -1,0 +1,16 @@
+#
+# Script Name: requirments.txt
+# Description: state the requirements for the django ARCSystem Application
+# Author: Jonathan Brier & Christopher Kullenberg
+#
+
+ArcsCore
+# postgresslq=
+Django~=2.2.9
+uwsgi = "2.0.18"
+"psycopg2" = "*"
+# django-cms = "3.7.1"
+
+[requires]
+# our Docerfile is based on Python 3.6
+python_version = "3.6"

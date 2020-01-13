@@ -1,3 +1,9 @@
+#
+# File Name: README.md
+# Description: provide the overview of the ARCSCore project
+# Author: Jonathan Brier & Christopher Kullenberg
+#
+
 # medborgarforskning.se
 Welcome to the [medborgarforskning.se](https://medborgarforskning.se) Documentation!
 
@@ -36,6 +42,8 @@ The project list will follow and extend upon the PPSR-Core standard for
 * Coding Style Guide
 * Process for changes impacting GDPR protected data, Terms of Service, Privacy, Cookies, Tracking, and processing of information about individuals.
 * Community Guidelines
+
+# Design and Decisions
 
 # How to Install and Setup an instance of ARCS
 ## Docker setup
