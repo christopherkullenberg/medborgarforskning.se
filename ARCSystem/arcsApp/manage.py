@@ -4,11 +4,6 @@ import os
 import sys
 import warnings
 
-if __name__ == '__main__':     # inserted due to django-cms incompatablilty with psycopg2
-    warnings.filterwarnings(
-        'ignore', r'The psycopg2.*release 2\.8', UserWarning, 'psycopg2')
-
-
 def main():
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'arcsApp.settings')
     try:
@@ -24,5 +19,7 @@ def main():
 
 
 
-if __name__ == '__main__':
-    main()
+if __name__ == '__main__':     # inserted due to django-cms incompatablilty with psycopg2
+    warnings.filterwarnings(
+        'ignore', r'The psycopg2.*release 2\.8', UserWarning, 'psycopg2')
+#    main()

@@ -1,13 +1,22 @@
-# docker-compose.yml - #TODO update to use Ansible configuration - currently based on Web Dev Cookbook template
-# Using Compose File reference version 2.2 due to docker version installed
-version: '2.2' # version of docker-config standard not the file version
+#
+# File Name: docker-compose.yaml
+# Description: Configuration to build each docker container for a component of the ARCSystem.
+# Author: Jonathan Brier & Christopher Kullenberg
+#
+
+# TODO update to use Ansible configuration
+# Using Compose File reference version 2.2 due to docker version installed https://docs.docker.com/compose/compose-file/compose-file-v2/
+version: "2.2" # version of docker-config standard not the file version
+
 
 services:
   db:
     image: postgres:12.1
-    container_name: ARCS-PG-Database
+    container_name: ARCS-PG-DB
+    restart: always
     environment:
       # TODO set db to use socket rather than ip network
+      # TODO move sensative info to environment file
       - POSTGRES_DB=pg-docker
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=docker
@@ -17,11 +26,12 @@ services:
       - 5432:5432
     networks:
       - db_network
-
     healthcheck:
       test: "exit 0"
+
   djangoapp:
     container_name: ARCSCore
+    restart: always
     build: .
     depends_on:
       db:
@@ -30,21 +40,31 @@ services:
       - ./arcsApp:/var/www/arcsApp/
     ports:
       - 8000:8000
-#    command:
-#      - python3 manage.py runserver 0.0.0.0:8000
+    command: uwsgi --http :8000 --wsgi-file test.py # THIS WORKS! but not secure or using nginx
+    #python manage.py runserver 0.0.0.0:8000 # This is the stated way to work, but is getting gateway connection refused
 #      CMD ["gunicorn", "--chdir", "hello", "--bind", ":8000", "hello.wsgi:application"]
+    networks:
+      - nginx_network
+      - db_network
+
   nginximg:
     image: nginx:latest
     container_name: ARCServer
+    restart: always
     depends_on:
       - djangoapp
     ports:
-      - '80:80'
-      - '443:443'
+      - 80:80
+      - 443:443
     volumes:
-      - './nginx.conf:/etc/nginx/nginx.conf' #copy local nginx.conf file from /opt directory relative to execution
+      - ./nginx.conf:/etc/nginx/nginx.conf #copy local nginx.conf file from /opt directory relative to execution
+      - ./arcsApp/static/:/var/www/arcsApp/static
+#      - ./uwsgi_params:/var/
     networks:
       - nginx_network
+
+
+
 networks:
   nginx_network:
     driver: bridge
@@ -53,13 +73,7 @@ networks:
 
 #      - '/var/run/docker.sock:/tmp/docker.sock:ro'
 #      - './config/my.cnf:/etc/mysql/conf.d/my.cnf'
-#      - './mysql:/var/lib/mysql'
 #      - './data:/usr/local/share/data'
-#    environment:
-#      - 'MYSQL_ROOT_PASSWORD'
-#      - 'MYSQL_USER'
-#      - 'MYSQL_PASSWORD'
-#      - 'MYSQL_DATABASE'
 #      ArcsCore:
 #        build: .
 #        command:

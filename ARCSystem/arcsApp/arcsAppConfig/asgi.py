@@ -1,16 +1,17 @@
 """
-ASGI config for djangodemo project.
+ASGI config for arcsApp project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
 For more information on this file, see
-https://docs.djangoproject.com/en/3.0/howto/deployment/asgi/
+https://docs.djangoproject.com/en/2.2/howto/deployment/asgi/
 """
 
 import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'djangodemo.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'arcsApp.settings')
 
-application = get_asgi_application()
+#application = get_asgi_application() #TODO revert temporary disable to run text.py
+application = test.py

@@ -1,0 +1,2 @@
+# eventually move settings.py to base.py for shared config then for process specific configuration place in local.py, production.py, staging,py, test.py or other appropriate config for diverging configuration
+# reference - https://deltapython.com/2017/08/27/django-settings-py-and-your-database/

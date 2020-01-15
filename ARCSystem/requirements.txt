@@ -9,7 +9,6 @@
 #python_version ==3.7
 
 ### ArcsCore
-# postgresslq=
 Django~=2.2.9
 uwsgi ==2.0.18
 psycopg2==2.7
