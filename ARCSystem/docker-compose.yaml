@@ -6,6 +6,7 @@
 
 # TODO update to use Ansible configuration
 # Using Compose File reference version 2.2 due to docker version installed https://docs.docker.com/compose/compose-file/compose-file-v2/
+
 version: "2.2" # version of docker-config standard not the file version
 
 
@@ -37,11 +38,12 @@ services:
       db:
         condition: service_healthy
     volumes:
-      - ./arcsApp:/var/www/arcsApp/
+      - ./arcsApp:/arcsApp/
     ports:
       - 8000:8000
-    command: uwsgi --http :8000 --wsgi-file test.py # THIS WORKS! but not secure or using nginx
-    #python manage.py runserver 0.0.0.0:8000 # This is the stated way to work, but is getting gateway connection refused
+    command: uwsgi --http-socket :8000 --wsgi-file test.py --uid 100 --gid 100 # THIS WORKS! but not secure or using nginx
+#    command: python manage.py runserver 0.0.0.0:8000
+    # python manage.py runserver 0.0.0.0:8000 # This is the stated way to work, but is getting gateway connection refused
 #      CMD ["gunicorn", "--chdir", "hello", "--bind", ":8000", "hello.wsgi:application"]
     networks:
       - nginx_network
@@ -72,14 +74,13 @@ networks:
     driver: bridge
 
 #      - '/var/run/docker.sock:/tmp/docker.sock:ro'
-#      - './config/my.cnf:/etc/mysql/conf.d/my.cnf'
 #      - './data:/usr/local/share/data'
 #      ArcsCore:
 #        build: .
 #        command:
 #          python3 manage.py runserver 0.0.0.0:8000
 #          volumes:
-#            - './ARCSystem:/usr/src/app/ARCSystem'
+#         - './ARCSystem:/usr/src/app/ARCSystem'
 #        - './media:/usr/src/app/media'
 #        - './static:/usr/src/app/static'
 #        - './templates:/usr/src/app/templates'
