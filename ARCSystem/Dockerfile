@@ -13,7 +13,7 @@ RUN apt-get clean && apt-get update && apt-get install \
 COPY arcsApp /share/nginx/static/
 #COPY arcsApp /share/nginx/media/
 COPY ./nginx.conf .
-COPY ./uwsgi_params /etc/nginx/
+#COPY ./uwsgi_params /etc/nginx/
 VOLUME /usr/share/nginx/static/
 #VOLUME /usr/share/nginx/media/
 VOLUME /etc/nginx/
