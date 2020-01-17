@@ -4,22 +4,6 @@
 # Author: Jonathan Brier & Christopher Kullenberg
 #
 
-# Builds the ARCServer container and mount the volumes for the nginx server
-FROM nginx
-#update packages
-RUN apt-get clean && apt-get update && apt-get install \
-  -y --no-install-recommends
-
-COPY arcsApp /share/nginx/static/
-#COPY arcsApp /share/nginx/media/
-COPY ./nginx.conf .
-#COPY ./uwsgi_params /etc/nginx/
-VOLUME /usr/share/nginx/static/
-#VOLUME /usr/share/nginx/media/
-VOLUME /etc/nginx/
-
-
-
 # Builds the ARCSapp container mounting the volumes for the django app and run the configuration
 FROM python:3.7
 
@@ -32,17 +16,17 @@ RUN apt-get clean && apt-get update && apt-get install \
   -y --no-install-recommends python3 python3-virtualenv uwsgi-emperor libssl-dev
 
 # create virtual environment for total python control #TODO install python packages in virutalenv
-# RUN python -m virtualenv --python=/usr/bin/python3 /opt/venv
+RUN python -m virtualenv --python=/usr/bin/python3 /opt/venv
 # RUN python -m venv --python=/usr/bin/python3 /opt/venv
 
 # update pip
-RUN pip install --upgrade pip
-#RUN . /opt/venv/bin/activate && pip install --upgrade pip
+#RUN pip install --upgrade pip
+RUN . /opt/venv/bin/activate && pip install --upgrade pip
 
 # install dependencies
-COPY ./requirements.txt .
-RUN pip install -r requirements.txt
-#RUN . /opt/venv/bin/activate && pip install -r requirements.txt
+#COPY ./requirements.txt .
+# RUN pip install -r requirements.txt
+RUN . /opt/venv/bin/activate && pip install -r requirements.txt
 
 # COPY ./emperor.uwsgi.service /etc/systemd/system/
 #CMD ["systemctl", "start", "emperor.uwsgi.service"]
@@ -60,7 +44,7 @@ WORKDIR /arcsApp/
 COPY ./arcsApp/ .
 
 # expose the port 8000
-EXPOSE 8000
+# EXPOSE 8000
 
 # start the wsgi server and load configuration file uwsgi.ini
 #RUN uwsgi --ini uwsgi.ini

@@ -25,7 +25,7 @@ SECRET_KEY = 'd2&)t$0y$4m2ktp%_u2y%e4h7kp@w)my13x3xt(tpf(guy&wbq'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [] #TODO set the domain name(s) here for production, but while empty it validates localhots or asterisk will accept all
 
 
 # Application definition
@@ -75,8 +75,11 @@ WSGI_APPLICATION = 'arcsApp.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'pg-docker',
+        'USER': 'pg-postgres',
+        'HOST': 'db', # set in docker-compose.yaml as the image name not database name
+        'PORT': 5432 # default postgres port
     }
 }
 

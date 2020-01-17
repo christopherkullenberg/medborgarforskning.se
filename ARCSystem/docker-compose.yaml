@@ -38,13 +38,12 @@ services:
       db:
         condition: service_healthy
     volumes:
+      - ./requirements.txt .
       - ./arcsApp:/arcsApp/
     ports:
       - 8000:8000
         #    command: uwsgi --http-socket :8000 --wsgi-file manage.py --uid 100 --gid 100 # THIS WORKS! but not secure or using nginx
-    command: python manage.py runserver 0.0.0.0:8000
-    # python manage.py runserver 0.0.0.0:8000 # This is the stated way to work, but is getting gateway connection refused
-#      CMD ["gunicorn", "--chdir", "hello", "--bind", ":8000", "hello.wsgi:application"]
+    command: CMD ["python", "manage.py", "runserver" "0.0.0.0:8000"] # works for testing and dev over 8000, but need to switch to command above or load: uwsgi --ini uwsgi.ini
     networks:
       - nginx_network
       - db_network
@@ -53,6 +52,7 @@ services:
     image: nginx:latest
     container_name: ARCServer
     restart: always
+    build: ./nginx/
     depends_on:
       - djangoapp
     ports:
@@ -66,37 +66,11 @@ services:
       - nginx_network
 
 
-
 networks:
   nginx_network:
     driver: bridge
   db_network:
     driver: bridge
 
-#      - '/var/run/docker.sock:/tmp/docker.sock:ro'
-#      - './data:/usr/local/share/data'
-#      ArcsCore:
-#        build: .
-#        command:
-#          python3 manage.py runserver 0.0.0.0:8000
-#          volumes:
-#         - './ARCSystem:/usr/src/app/ARCSystem'
-#        - './media:/usr/src/app/media'
-#        - './static:/usr/src/app/static'
-#        - './templates:/usr/src/app/templates'
-#        - './apps/external:/usr/src/app/external'
-#        - './apps/myapp1:/usr/src/app/myapp1'
-#        - './apps/myapp2:/usr/src/app/myapp2'
-#          ports:
-#            - '8000'
-#        environment:
-#         - 'SITE_HOST'
-#         - 'MEDIA_HOST'
-#         - 'STATIC_HOST'
-#         - 'VIRTUAL_HOST=${SITE_HOST}'
-#         - 'VIRTUAL_PORT=8000'
-#         - 'MYSQL_HOST=db'
-#         - 'MYSQL_USER'
-#         - 'MYSQL_PASSWORD'
-#         - 'MYSQL_DATABASE'
-#      media:
+#volumes:
+#  postgresdb
