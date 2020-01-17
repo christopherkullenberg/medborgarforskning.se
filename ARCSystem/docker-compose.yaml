@@ -73,30 +73,3 @@ networks:
   db_network:
     driver: bridge
 
-#      - '/var/run/docker.sock:/tmp/docker.sock:ro'
-#      - './data:/usr/local/share/data'
-#      ArcsCore:
-#        build: .
-#        command:
-#          python3 manage.py runserver 0.0.0.0:8000
-#          volumes:
-#         - './ARCSystem:/usr/src/app/ARCSystem'
-#        - './media:/usr/src/app/media'
-#        - './static:/usr/src/app/static'
-#        - './templates:/usr/src/app/templates'
-#        - './apps/external:/usr/src/app/external'
-#        - './apps/myapp1:/usr/src/app/myapp1'
-#        - './apps/myapp2:/usr/src/app/myapp2'
-#          ports:
-#            - '8000'
-#        environment:
-#         - 'SITE_HOST'
-#         - 'MEDIA_HOST'
-#         - 'STATIC_HOST'
-#         - 'VIRTUAL_HOST=${SITE_HOST}'
-#         - 'VIRTUAL_PORT=8000'
-#         - 'MYSQL_HOST=db'
-#         - 'MYSQL_USER'
-#         - 'MYSQL_PASSWORD'
-#         - 'MYSQL_DATABASE'
-#      media:
