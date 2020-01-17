@@ -41,8 +41,8 @@ services:
       - ./arcsApp:/arcsApp/
     ports:
       - 8000:8000
-    command: uwsgi --http-socket :8000 --wsgi-file test.py --uid 100 --gid 100 # THIS WORKS! but not secure or using nginx
-#    command: python manage.py runserver 0.0.0.0:8000
+        #    command: uwsgi --http-socket :8000 --wsgi-file manage.py --uid 100 --gid 100 # THIS WORKS! but not secure or using nginx
+    command: python manage.py runserver 0.0.0.0:8000
     # python manage.py runserver 0.0.0.0:8000 # This is the stated way to work, but is getting gateway connection refused
 #      CMD ["gunicorn", "--chdir", "hello", "--bind", ":8000", "hello.wsgi:application"]
     networks:
