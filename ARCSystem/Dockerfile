@@ -16,22 +16,16 @@ RUN apt-get clean && apt-get update && apt-get install \
   -y --no-install-recommends python3 python3-virtualenv uwsgi-emperor libssl-dev
 
 # create virtual environment for total python control #TODO install python packages in virutalenv
-RUN python -m virtualenv --python=/usr/bin/python3 /opt/venv
-# RUN python -m venv --python=/usr/bin/python3 /opt/venv
+# RUN python -m virtualenv --python=/usr/bin/python3 /opt/venv
 
 # update pip
-#RUN pip install --upgrade pip
-RUN . /opt/venv/bin/activate && pip install --upgrade pip
+RUN pip install --upgrade pip
+#RUN . /opt/venv/bin/activate && pip install --upgrade pip
 
 # install dependencies
-#COPY ./requirements.txt .
-# RUN pip install -r requirements.txt
-RUN . /opt/venv/bin/activate && pip install -r requirements.txt
-
-# COPY ./emperor.uwsgi.service /etc/systemd/system/
-#CMD ["systemctl", "start", "emperor.uwsgi.service"]
-#CMD systemctl start emperor.uwsgi.service
-#CMD systemctl status emperor.uwsgi.service
+COPY ./requirements.txt .
+RUN pip install -r requirements.txt
+# RUN . /opt/venv/bin/activate && pip install -r requirements.txt
 
 # arbitrary location choice: you can change the directory
 # RUN mkdir -p /var/www/arcsApp/
@@ -44,7 +38,7 @@ WORKDIR /arcsApp/
 COPY ./arcsApp/ .
 
 # expose the port 8000
-# EXPOSE 8000
+ EXPOSE 8000
 
 # start the wsgi server and load configuration file uwsgi.ini
 #RUN uwsgi --ini uwsgi.ini

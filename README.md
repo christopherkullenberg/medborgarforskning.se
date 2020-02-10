@@ -43,15 +43,39 @@ The project list will follow and extend upon the PPSR-Core standard for
 * Process for changes impacting GDPR protected data, Terms of Service, Privacy, Cookies, Tracking, and processing of information about individuals.
 * Community Guidelines
 
+## Project Vocabulary and Terms
+* Project - refers to the top level of the Django framework - the initialized collection of components and apps. Also referred to the collection of all the files in the Repo.  
+* App - is a term used in Django to refer to the features of the site that perform a function. ie to handle pages there could be a page app. For a post there could be a post app.
+* Component - refers to a part of the ARCSCore Project that can be run independent of other major sections of the platform.
+*
+
 # Design and Decisions
+## Coding Style
+Python Core Style - PEP8 https://pep8.org/
+Django Style - https://docs.djangoproject.com/en/2.2/internals/contributing/writing-code/coding-style/
+
+
+## System Architecture
+ARCS is build to be a series of containers which host each component.
 
 # How to Install and Setup an instance of ARCS
 ## Docker setup
 
 **Prerequisites**
-* Docker version 1.13.1, build b2f74b2/1.13.1
+* Docker version 1.13.1, build b2f74b2/1.13.1 - as this is what the RHEL 7 has by default.
 * Ansible...
 
+# First run and controlling the containers
+## First Run Only
+The first run will setup the docker images
+
+Commands:
+1. Copy the Git repo to a directory which will act as the base of your server. We assume you are installing in a Linux environment.
+2. install.sh
+Follow the prompts from the script to configure your first installation.
+
+## Ongoing
+2.
 
 ## Programming and Application Environment
 LTS versions of software are selected for longer support periods and ease of maintenance by the community.

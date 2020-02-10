@@ -48,13 +48,16 @@ services:
     networks:
       - nginx_network
       - db_network
+    healthcheck:
+      test: "exit 0"
 
   nginximg:
     image: nginx:latest
     container_name: ARCServer
     restart: always
     depends_on:
-      - djangoapp
+      djangoapp:
+        condition: service_healthy
     ports:
       - 80:80
       - 443:443
