@@ -4,7 +4,7 @@
 # Author: Jonathan Brier & Christopher Kullenberg
 #
 
-# Builds the ARCSapp container mounting the volumes for the django app and run the configuration
+# Builds the Arcs_app container mounting the volumes for the django app and run the configuration
 FROM python:3.7
 
 # recommended by django https://docs.docker.com/compose/django/
@@ -28,14 +28,14 @@ RUN pip install -r requirements.txt
 # RUN . /opt/venv/bin/activate && pip install -r requirements.txt
 
 # arbitrary location choice: you can change the directory
-# RUN mkdir -p /var/www/arcsApp/
-# WORKDIR /var/www/arcsApp/
-RUN mkdir -p /arcsApp/
-WORKDIR /arcsApp/
+# RUN mkdir -p /var/www/arcs_project/
+# WORKDIR /var/www/arcs_project/
+RUN mkdir -p /arcs_project/
+WORKDIR /arcs_project/
 
 # copy project code to container
-#COPY arcsApp /var/www/arcsApp/
-COPY ./arcsApp/ .
+#COPY arcs_project /var/www/arcs_project/
+COPY ./arcs_project/ .
 
 # expose the port 8000
  EXPOSE 8000
