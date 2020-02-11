@@ -6,6 +6,7 @@
 
 # Builds the ARCServer container and mount the volumes for the nginx server
 FROM nginx
+
 #update packages
 RUN apt-get clean && apt-get update && apt-get install \
   -y --no-install-recommends

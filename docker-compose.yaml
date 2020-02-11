@@ -38,7 +38,7 @@ services:
       db:
         condition: service_healthy
     volumes:
-      - ./arcs_project:/arcs_project/
+      - ./ArcsSystem/arcs_project:/arcs_project/
     ports:
       - 8000:8000
         #    command: uwsgi --http-socket :8000 --wsgi-file manage.py --uid 100 --gid 100 # THIS WORKS! but not secure or using nginx
