@@ -1,0 +1,107 @@
+The following are notes for the testing - replace with real readme.
+
+Setup Environment:
+docker
+
+
+Development Environment:
+docker
+
+Site Features:
+- Projects Database
+-- PPSR-Core fields + Additionals suggested by ARCS
+-- Metadata exchanged with other platforms
+-- Input form for adding a project (specifically those from Sweden)
+-- Find projects applicable to doing in Sweden from other portals and mark for
+import into the Swedish Database for tracking.
+- Researcher Database
+- Literature Based Practices and Considerations
+-- Work Package Summaries
+--- Data Qualty and Standards
+--- Communications
+--- Technologies
+--- Ethics
+- Papers database
+-- Tagging structure to track the publications in citizen science as started by
+CSA.
+-- Indications of what are open access publications and what require author contact
+- Discussion Forum
+-- Development of the Community Guidelines
+-- Devleopment of an integration with the EU portal (multi-language support)
+
+
+Nice to Have Features
+- External Resources
+-- Professional Associations
+-- Communities of Practice
+- History and perspective of Citizen Science in Sweden
+- Implmentation of Science Product Index for tracking proejct performance =
+https://academic.oup.com/bioscience/article/68/5/315/4990263
+-
+
+TODO:
+
+- Technology identification
+-- Main Framework
+--- Django - framework
+---- https://docs.djangoproject.com/en/2.2/releases/
+---- https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/development_environment
+---- https://docs.djangoproject.com/en/2.2/topics/db/
+---- https://developer.mozilla.org/en-US/docs/Learn/Server-side/Django/development_environment
+---- investigate https://github.com/nephila/djangocms-installer
+--- docker
+---- https://www.jetbrains.com/help/pycharm/docker.html?keymap=primary_default_for_gnome
+---- https://docs.docker.com/get-started/part2/
+---- https://linuxize.com/post/how-to-install-and-use-docker-compose-on-ubuntu-18-04/
+---- https://linuxize.com/post/how-to-install-and-use-docker-on-ubuntu-18-04/
+---- https://github.com/realpython/dockerizing-django/blob/master/web/docker_django/apps/todo/models.py
+---- https://docs.docker.com/machine/overview/
+--- nginx - server
+---- https://github.com/docker-library/docs/tree/master/nginx
+---- https://docs.docker.com/samples/library/nginx/
+---- https://github.com/realpython/dockerizing-django/tree/master/nginx
+---- https://realpython.com/django-development-with-docker-compose-and-machine/
+-- Forums - probably django
+--- TODO
+-- Newsletters
+--- TODO
+-- Database
+--- TODO
+-- Visualizations
+--- D3.js
+--- Leaflet w/OpenStreetMap
+---- https://django-leaflet.readthedocs.io/en/latest/#
+---- https://leafletjs.com/examples/quick-start/
+---- https://wiki.openstreetmap.org/wiki/Leaflet
+---- https://wiki.openstreetmap.org/wiki/Deploying_your_own_Slippy_Map
+---- https://wiki.openstreetmap.org/wiki/Using_OpenStreetMap
+
+
+
+Configuration:
+
+- Security
+-- https://developer.mozilla.org/en-US/docs/Web/Security/Subresource_Integrity
+
+- Translation Software Identificaiton
+-- promsing work with Mozilla Pontoon https://mozilla-pontoon.readthedocs.io/en/latest/user/localizing-your-projects.html
+-- Example of Itnerface: https://pontoon.mozilla.org/
+
+- Web Accessability Guidelines 2.1
+-- GU Web Accessability Standards (verify compliance)
+
+- GDPR Data Collection
+-- Database Fields
+-- Consent and contracts
+--- GDPR Cookies
+---- https://django-cookie-consent.readthedocs.io/en/latest/
+---- https://github.com/bmihelac/django-cookie-consent/
+---- https://www.privacypolicies.com/blog/gdpr-consent-examples/
+---- https://eugdprcompliant.com/cookies-consent-gdpr/
+---- https://cookieconsent.osano.com/download/
+---- https://www.civicuk.com/cookie-control/
+
+
+- GDPR Data Processing
+-- Scripts/manipulations list
+
