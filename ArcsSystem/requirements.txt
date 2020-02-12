@@ -9,13 +9,17 @@
 #python_version ==3.7
 
 ### ArcsCore
-Django~=2.2.9
+Django~=2.2.10
 uwsgi ==2.0.18
 psycopg2==2.7
-django-cms ==3.7.1
-djangocms-installer
 #uwsgi-plugin-python
 #uwsgi-emperor
+
+
+### djangocms
+#django-cms ==3.7.1
+#djangocms-installer
+
 
 ### from django-cms requirements.txt
 # django-cms>=3.7,<3.8

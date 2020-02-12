@@ -6,13 +6,14 @@
 
 # Builds the ARCServer container and mount the volumes for the nginx server
 FROM nginx
+
 #update packages
 RUN apt-get clean && apt-get update && apt-get install \
   -y --no-install-recommends
 
-COPY arcsApp /share/nginx/static/
-COPY arcsApp /share/nginx/media/
+#COPY arcs_project /share/nginx/static/
+#COPY arcs_project /share/nginx/media/
 COPY nginx.conf .
-VOLUME /usr/share/nginx/static/
-VOLUME /usr/share/nginx/media/
-VOLUMEOLUME /etc/nginx/
+#VOLUME /usr/share/nginx/static/
+#VOLUME /usr/share/nginx/media/
+VOLUME /etc/nginx/

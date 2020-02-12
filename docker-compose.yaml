@@ -33,16 +33,16 @@ services:
   djangoapp:
     container_name: ARCSCore
     restart: always
-    build: .
+    build: ./ArcsSystem
     depends_on:
       db:
         condition: service_healthy
     volumes:
-      - ./arcsApp:/arcsApp/
+      - ./ArcsSystem/arcs_project:/arcs_project/
     ports:
       - 8000:8000
         #    command: uwsgi --http-socket :8000 --wsgi-file manage.py --uid 100 --gid 100 # THIS WORKS! but not secure or using nginx
-    command: python manage.py runserver 0.0.0.0:8000
+    command: python /arcs_project_code/manage.py runserver 0.0.0.0:8000
     # python manage.py runserver 0.0.0.0:8000 # This is the stated way to work, but is getting gateway connection refused
 #      CMD ["gunicorn", "--chdir", "hello", "--bind", ":8000", "hello.wsgi:application"]
     networks:
@@ -55,6 +55,7 @@ services:
     image: nginx:latest
     container_name: ARCServer
     restart: always
+    build: ./nginx
     depends_on:
       djangoapp:
         condition: service_healthy
@@ -62,8 +63,8 @@ services:
       - 80:80
       - 443:443
     volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf #copy local nginx.conf file from /opt directory relative to execution
-      - ./arcsApp/static/:/var/www/arcsApp/static
+#      - nginx.conf:/etc/nginx/nginx.conf #copy local nginx.conf file from /opt directory relative to execution
+      - ./ArcsSystem/arcs_project/static/:/var/www/arcs_project/static
 #      - ./uwsgi_params:/var/
     networks:
       - nginx_network
@@ -75,4 +76,3 @@ networks:
     driver: bridge
   db_network:
     driver: bridge
-
