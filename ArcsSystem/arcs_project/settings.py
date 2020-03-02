@@ -25,7 +25,7 @@ SECRET_KEY = 'bre=h5g+29%aw6&cpwbn9b75&ei&-=h_*c3778rcd9j%avnp-g'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost','127.0.0.1', '[::1]','arcs.local']
 
 
 # Application definition

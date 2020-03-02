@@ -41,13 +41,14 @@ services:
       - ./ArcsSystem/arcs_project:/arcs_project/
     ports:
       - 8000:8000
-        #    command: uwsgi --http-socket :8000 --wsgi-file manage.py --uid 100 --gid 100 # THIS WORKS! but not secure or using nginx
-    command: python /arcs_project_code/manage.py runserver 0.0.0.0:8000
-    # python manage.py runserver 0.0.0.0:8000 # This is the stated way to work, but is getting gateway connection refused
-#      CMD ["gunicorn", "--chdir", "hello", "--bind", ":8000", "hello.wsgi:application"]
+    command: ["gunicorn", "-c", "gunicorn.conf.py", "--bind", ":8000", "--chdir", "/arcs_project_code", "arcs_project.wsgi:application"]
     networks:
-      - nginx_network
-      - db_network
+      db_network:
+        aliases:
+          - db-network
+      nginx_network:
+        aliases:
+          - djangoapp-app
     healthcheck:
       test: "exit 0"
 
@@ -56,19 +57,19 @@ services:
     container_name: ARCServer
     restart: always
     build: ./nginx
-    depends_on:
+    depends_on: # TODO reenable for production
       djangoapp:
         condition: service_healthy
     ports:
       - 80:80
       - 443:443
     volumes:
-#      - nginx.conf:/etc/nginx/nginx.conf #copy local nginx.conf file from /opt directory relative to execution
       - ./ArcsSystem/arcs_project/static/:/var/www/arcs_project/static
-#      - ./uwsgi_params:/var/
+      - ./ArcsSystem/arcs_project/media/:/var/www/arcs_project/media # TODO review if this should be placed outside the WWW directory
     networks:
       - nginx_network
-
+    healthcheck:
+      test: "exit 0"
 
 
 networks:
