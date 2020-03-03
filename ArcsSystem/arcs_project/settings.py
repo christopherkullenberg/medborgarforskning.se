@@ -20,13 +20,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'bre=h5g+29%aw6&cpwbn9b75&ei&-=h_*c3778rcd9j%avnp-g'
+SECRET_KEY = 'bre=h5g+29%aw6&cpwbn9b75&ei&-=h_*c3778rcd9j%avnp-g' # TODO extract to environment variable
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True # TODO extract to environment variable
 
-ALLOWED_HOSTS = ['localhost','127.0.0.1', '[::1]','arcs.local']
-
+ALLOWED_HOSTS = ['localhost','127.0.0.1','dev.medborgarforskning.se', '130.241.189.115']
+#ALLOWED_HOSTS = ['localhost','127.0.0.1', 'dev.medborgarforskning.se', 'arcs.local']
 
 # Application definition
 
@@ -73,7 +73,7 @@ WSGI_APPLICATION = 'arcs_project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-DATABASES = {
+DATABASES = { # TODO switch to postgres
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
@@ -118,4 +118,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT = '/var/www/arcs_collected_static/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, '/static')]

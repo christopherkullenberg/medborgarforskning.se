@@ -15,14 +15,15 @@ services:
     image: postgres:12.1
     container_name: ARCS-PG-DB
     restart: always
-    environment:
+    environment: # https://www.postgresql.org/docs/12/libpq-envars.html
       # TODO set db to use socket rather than ip network
       # TODO move sensative info to environment file
+      #- postgres-variables.env # See: https://docs.docker.com/compose/environment-variables/
       - POSTGRES_DB=pg-docker
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=docker
     volumes:
-      - ./postgresdb:/var/lib/postgresql/data
+      - pgdatabase_volume:/var/lib/postgresql/data # Docker controlled volume persistant after container being removed
     ports:
       - 5432:5432
     networks:
@@ -38,10 +39,11 @@ services:
       db:
         condition: service_healthy
     volumes:
-      - ./ArcsSystem/arcs_project:/arcs_project/
+      - static_volume:/opt/arcs_project_code/arcs_collected_static # Docker controlled volume persistant after container being removed and shared with nginx
+      - media_volume:/opt/arcs_project_code/arcs_project/media # Docker controlled volume persistant after container being removed and shared with nginx
     ports:
       - 8000:8000
-    command: ["gunicorn", "-c", "gunicorn.conf.py", "--bind", ":8000", "--chdir", "/arcs_project_code", "arcs_project.wsgi:application"]
+    command: ["gunicorn", "-c", "gunicorn.conf.py", "--bind", ":8000", "--chdir", "/opt/arcs_project_code", "arcs_project.wsgi:application"]
     networks:
       db_network:
         aliases:
@@ -64,8 +66,8 @@ services:
       - 80:80
       - 443:443
     volumes:
-      - ./ArcsSystem/arcs_project/static/:/var/www/arcs_project/static
-      - ./ArcsSystem/arcs_project/media/:/var/www/arcs_project/media # TODO review if this should be placed outside the WWW directory
+      - static_volume:/var/www/arcs_collected_static/static
+      - media_volume:/var/www/arcs_collected_static/media # TODO review if media should be controlled by the django app for permissions
     networks:
       - nginx_network
     healthcheck:
@@ -77,3 +79,8 @@ networks:
     driver: bridge
   db_network:
     driver: bridge
+
+volumes:
+  pgdatabase_volume:
+  static_volume:
+  media_volume:

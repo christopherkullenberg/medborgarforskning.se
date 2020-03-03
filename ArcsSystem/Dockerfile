@@ -19,19 +19,21 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   libssl-dev # TODO check if this is still needed for https
 
 # arbitrary location choice: you can change the directory
-RUN mkdir -p /arcs_project_code/
-WORKDIR /arcs_project_code
+RUN mkdir -p /opt/arcs_project_code/
+WORKDIR /opt/arcs_project_code
+
+COPY entrypoint.sh .
 
 # install dependencies
 RUN pip install pipenv
-COPY Pipfile Pipfile.lock /arcs_project_code/
+COPY Pipfile Pipfile.lock /opt/arcs_project_code/
 RUN pipenv install --system
 
-# copy project code to container
-COPY . /arcs_project_code/
+# make directory for collected static files shared with nginx
+RUN mkdir -p /var/www/arcs_collected_static/static/
 
-# expose the port 8000
- EXPOSE 8000
+# copy project code to container
+COPY . /opt/arcs_project_code/
 
 # start the app
-#CMD ["arcs_project/entrypoint.sh"]
+CMD ["entrypoint.sh"] # TODO identify why this does not execute
