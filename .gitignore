@@ -132,4 +132,5 @@ dmypy.json
 .idea/
 
 # ARCS Generated Files we don't want synced
-postgresdb/
+postgresdb
+arcs_collected_static/
