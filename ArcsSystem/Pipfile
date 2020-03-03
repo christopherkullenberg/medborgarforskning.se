@@ -7,9 +7,13 @@ verify_ssl = true
 
 [packages]
 django = "==2.2.10"
-psycopg2 = "==2.7"
+wagtail = "==2.8"
+django-cookie-consent = "==0.2.0"
+djangorestframework = "==3.11.0"
+subdomains = "==3.0.1"
+wagtailmenus = "==3.0.1"
+psycopg2 = "==2.8.4"
 gunicorn = "==20.0.4"
-uwsgi = "==2.0.18"
 
 [requires]
 python_version = "3.7"
