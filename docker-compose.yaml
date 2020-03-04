@@ -15,6 +15,7 @@ services:
     image: postgres:12.1
     container_name: ARCS-PG-DB
     restart: always
+    #build: ./postgresdb # TODO finish postgres config for ssl if keeping tcp/ip connection type - not needed if socket, but tcp is needed for swarm
     environment: # https://www.postgresql.org/docs/12/libpq-envars.html
       # TODO set db to use socket rather than ip network
       # TODO move sensative info to environment file
@@ -39,7 +40,8 @@ services:
       db:
         condition: service_healthy
     volumes:
-      - static_volume:/opt/arcs_project_code/arcs_collected_static # Docker controlled volume persistant after container being removed and shared with nginx
+      #- .:/opt/arcs_project_code #allow  editing code on host to reflect copy on server
+      - static_volume:/var/www/arcs_collected_static/static # Docker controlled volume persistant after container being removed and shared with nginx
       - media_volume:/opt/arcs_project_code/arcs_project/media # Docker controlled volume persistant after container being removed and shared with nginx
     ports:
       - 8000:8000

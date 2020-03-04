@@ -32,8 +32,11 @@ RUN pipenv install --system
 # make directory for collected static files shared with nginx
 RUN mkdir -p /var/www/arcs_collected_static/static/
 
-# copy project code to container
+# copy project code to container # TODO consider replacing by volume
 COPY . /opt/arcs_project_code/
 
-# start the app
-CMD ["entrypoint.sh"] # TODO identify why this does not execute
+# collectstatic static on build (but you'll need to run a commands if you're not rebuilding on project code changes)
+RUN python manage.py collectstatic --noinput
+
+# start the app # TODO identify why this does not execute
+CMD ["entrypoint.sh"]
