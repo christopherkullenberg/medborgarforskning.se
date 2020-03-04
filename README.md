@@ -58,6 +58,20 @@ Django Style - https://docs.djangoproject.com/en/2.2/internals/contributing/writ
 ## System Architecture
 ARCS is build to be a series of containers which host each component.
 
+## Repository Structure
+./
+├── .git/
+│   ├──
+│	  └── directoryexample/
+├── Arcs/
+│   ├──
+│	  └──
+├── ArcsSystem/
+│   ├──
+│   └── .../
+├── install.sh
+└── README.md
+
 # How to Install and Setup an instance of ARCS
 ## Docker setup
 
