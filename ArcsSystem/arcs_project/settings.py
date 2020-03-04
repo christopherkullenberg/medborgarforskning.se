@@ -25,8 +25,8 @@ SECRET_KEY = 'bre=h5g+29%aw6&cpwbn9b75&ei&-=h_*c3778rcd9j%avnp-g' # TODO extract
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True # TODO extract to environment variable
 
-ALLOWED_HOSTS = ['localhost','127.0.0.1','dev.medborgarforskning.se', '130.241.189.115']
-#ALLOWED_HOSTS = ['localhost','127.0.0.1', 'dev.medborgarforskning.se', 'arcs.local']
+### use domain name not IP address for security
+ALLOWED_HOSTS = ['localhost','127.0.0.1','dev.medborgarforskning.se', 'arcstest.brierjon.com']
 
 # Application definition
 
