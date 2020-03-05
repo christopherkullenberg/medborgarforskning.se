@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+
+
+
+{% block content %}
+
+<article>
+  <hgroup>
+    <h1>{{ project.name }}</h1>
+  </hgroup>
+
+  <picture>
+    {# TODO implement additional web image format handling #}
+    <source srcset="name.webp" type="image/webp" alt="{#TODO alt text#}">{#Webp image support first#}
+		<source srcset="name.jpg" type="image/jpg" alt="{#TODO alt text#}">{#jpg support next#}
+    <img src="{{ project.image_dir }}" alt="Bild för projektet {{ project.name }}" width="300" height="300"/>
+  </picture>
+
+  <div>
+    <h2>Project information</h2>
+  </div>
+
+  <div>
+    <h3>PROJECT STATUS:</h3>
+    <p>{{ project.status }}</p>
+  </div>
+
+  <div>
+    <h3>PROJECT DESCRIPTION:</h3>
+    <p>{{ project.description }}</p>
+  </div>
+
+  <div>
+    <h3>PROJECT TARGET AUDIENCE:</h3>
+    <p>{{ project.target_audience}}</p>
+  </div>
+
+  <div>
+      <h3>PROJECT RECORD LAST UPDATED:</h3>
+      <p>{# TODO Insert last updated field when created in the model #}</p>
+  </div>
+
+  <div>
+      <h3>MEDIA LINKS:</h3>
+      <ul>
+      </ul>
+  </div>
+
+  <div>
+    <h2>Contact information</h2>
+    <h3>NAME: {{ project.contact_name }}</h3>
+    <h3>CONTACT'S ROLE: {{ project.contact_role }}</h3>
+    <h3>AFFILIATION: {{ project.contact_affiliation }}</h3>
+    <h3>CONTACT EMAIL: {{ project.contact_email }}</h3>
+    <h3>CONTACT PHONE: {{ project.contact_phone }}</h3>
+  </div>
+
+</article>
+
+
+{% endblock content %}

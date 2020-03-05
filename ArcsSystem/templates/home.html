@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+
+<main id="content">{# Contents of Main are for the main target of the page. #}
+
+  <section>
+    <h1> Welcome</h1>
+    <p> This is static page welcome text controlled by the admin. </p>
+  </section>
+
+  <section id="projects">
+    <h1>projects</h1>
+  </section>
+
+  <section id="papers">
+    <h1>papers</h1>
+  </section>
+
+  <section id="data-quality">
+    <h1>Data Quality</h1>
+  </section>
+
+  <section id="community">
+    <h1>CitSciSE Community</h1>
+  </section>
+
+  <section id="testing">
+    {# Contents of this section are just for testing - remove. #}
+    <h1>rendering home.html main</h1>
+    <p>Blog Name: {{ blog_name }}</p>
+    <p>Blog Tagline: {{ blog_tagline }}</p>
+    <p>Project Title: {{ project_title }}</p>
+    <p>Product Title: {{ product_title }}</p>
+  </section>
+
+</main>
+
+<aside>
+    {# Place content of side bar here or remove from template if no sidebar in view. #}
+    <h1>rendering home.html aside</h1>
+    <h2>An H2 title</h2>
+    <h3>Temporary quicklinks an h3</h3>
+        <ol>
+          <li><a href="blog/">blog/</a></li>
+          <li><a href="projects/">projects/</a></li>
+          <li><a href="products/">products/</a></li>
+        </ol>
+</aside>
+
+{% endblock content %}

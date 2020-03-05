@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form action="/submitproject/" method="post">
+  <fieldset>
+    <legend>Required Project Fields:</legend>
+    <label for="project_submitname">Project name: </label> <!-- TODO replace with django template for  -->
+    <input id="project_submitname" type="text" name="name_field" value="Default name for a project."> <!-- TODO replace with django template for  -->
+
+    <label for="project_submiturl">Enter project landingpage URL: </label> <!-- TODO replace with django template for  -->
+    <input id="project_submiturl" type="text" name="projecturl_field" value="Official URL of the project."> <!-- TODO replace with django template for  -->
+
+    Briefly describe the project
+    <label for="project_leaddescription">Enter project landingpage URL: </label> <!-- TODO replace with django template for  -->
+    <input id="project_leaddescription" type="text" name="projecturl_field" value="Official URL of the project."> <!-- TODO replace with django template for  -->
+
+
+    Contact person (optional)
+    <label for="project_submiturl">Enter project landingpage URL: </label> <!-- TODO replace with django template for  -->
+    <input id="project_submiturl" type="text" name="projecturl_field" value="Official URL of the project."> <!-- TODO replace with django template for  -->
+
+
+    Your email
+    <label for="project_submiturl">Enter project landingpage URL: </label> <!-- TODO replace with django template for  -->
+    <input id="project_submiturl" type="text" name="projecturl_field" value="Official URL of the project."> <!-- TODO replace with django template for  -->
+
+
+    Processing of personal data.
+
+    I agree that my personal data is stored so that I can be contacted about the citizen research project that I have participated in.
+    Read more about how Gothenburg University processes personal data on this page (opens in new tab).
+    <label for="project_submiturl">Do you consent to the data handing?: </label> <!-- TODO replace with django template for  -->
+    <input id="project_submiturl" type="radio" name="projectleaddataconsent_radio" value="Consent to Data Handling."> <!-- TODO replace with django template for  -->
+
+
+    <button type="submit" value="Submit">Submit Project to ARCS</button> <!-- TODO replace with django template for  -->
+  </fieldset>
+</form>
+
+{% endblock content %}

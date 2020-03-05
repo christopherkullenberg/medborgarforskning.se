@@ -15,7 +15,28 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.urls import include
+
+### Wagtail requirements Start #
+from django.urls import re_path
+from wagtail.admin import urls as wagtailadmin_urls
+from wagtail.core import urls as wagtail_urls
+from wagtail.documents import urls as wagtaildocs_urls
+from django.conf.urls.static import static
+from django.conf import settings
+### Wagtail requirements End #
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-]
+    path('', include('blog.urls')),
+    ### Wagtail paths start #
+    re_path(r'^cms/', include(wagtailadmin_urls)),
+    re_path(r'^documents/', include(wagtaildocs_urls)),
+    re_path(r'^pages/', include(wagtail_urls)),
+    ### Wagtail paths end #
+    path('project/',include('projects.urls')),
+    path('paper/',include('products.urls')),
+    path('people/',include('users.urls')),
+
+#] # Replace line below with just a ] for production
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) # TODO only for dev. disable for production
