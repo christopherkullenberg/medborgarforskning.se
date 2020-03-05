@@ -35,6 +35,11 @@ RUN mkdir -p /var/www/arcs_collected_static/static/
 # copy project code to container # TODO consider replacing by volume
 COPY . /opt/arcs_project_code/
 
+# remove old static files collected in previous build to ensure only the fresh files are there
+RUN rm -r /var/www/arcs_collected_static/static/
+
+# TODO print to console = Bye Bye Old Static Files - Empty! Note: this is a static statement and not a check.
+
 # collectstatic static on build (but you'll need to run a commands if you're not rebuilding on project code changes)
 RUN python manage.py collectstatic --noinput
 
