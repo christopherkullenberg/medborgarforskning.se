@@ -1,0 +1,47 @@
+@font-face {
+  font-family: 'Playfair Display';
+  src: url(https://fonts.googleapis.com/css?family=Playfair+Display&display=swap);
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Lato;
+  src: url(https://fonts.googleapis.com/css?family=Lato&display=swap);
+  font-display: swap;
+}
+
+
+
+h1 {
+  font-family: 'Playfair Display';
+  color: red;
+
+}
+
+h2 {
+  font-family: 'Playfair Display';
+  color: #000000;
+}
+
+h3 {
+  font-family: 'Playfair Display';
+  color: #000000;
+}
+
+p {
+  font-family: Lato;
+  font-style: normal;
+  color: #000000;
+}
+
+p.italic {
+  font-family: Lato;
+  font-style: italic;
+  color: #000000;
+}
+
+p.bold {
+  font-family: Lato;
+  font-style: bold;
+  color: #000000;
+}

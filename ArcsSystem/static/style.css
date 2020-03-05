@@ -1,0 +1,34 @@
+
+h1 {
+  font-family: 'Playfair Display', ;
+  color: red;
+
+}
+
+h2 {
+  font-family: 'Playfair Display', ;
+  color: #000000;
+}
+
+h3 {
+  font-family: 'Playfair Display', ;
+  color: #000000;
+}
+
+p.normal {
+  font-family: Lato;
+  font-style: normal;
+  color: #000000;
+}
+
+p.italic {
+  font-family: Lato;
+  font-style: italic;
+  color: #000000;
+}
+
+p.bold {
+  font-family: Lato;
+  font-style: bold;
+  color: #000000;
+}
