@@ -67,14 +67,26 @@ services:
     ports:
       - 80:80
       - 443:443
+    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
     volumes:
       - static_volume:/var/www/arcs_collected_static/static
       - media_volume:/var/www/arcs_collected_static/media # TODO review if media should be controlled by the django app for permissions
+      - ./data/certbot/conf:/etc/letsencrypt # links to where the certificates are... TODO
+      - ./data/certbot/www:/var/www/certbot # links to where the certificates are... TODO
     networks:
       - nginx_network
-    healthcheck:
-      test: "exit 0"
+    #healthcheck:
+    #  test: "exit 0"
 
+  letsencrypt:
+      image: certbot/certbot
+      container_name: LetsEncrypt
+      restart: unless-stopped
+      volumes:
+        - ./data/certbot/conf:/etc/letsencrypt
+        - ./data/certbot/www:/var/www/certbot
+      entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+# TODO verify secure file permissions of volumes
 
 networks:
   nginx_network:
