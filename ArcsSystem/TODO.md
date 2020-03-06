@@ -10,7 +10,7 @@ Homepage
 about.html
 About Home
 
-policy.html - include revision history link 
+policy.html - include revision history link
 Terms of Use
 Privacy Policy - include GDPR policy
 Cookie Policy
@@ -44,4 +44,6 @@ project_submissionform.html
 Form for submittingthe project for inclusion
 
 project_managementform.html
-Form for editing and maintaining the project fields
+Form for editing and maintaining the project
+
+# For later --- TODO https://docs.readthedocs.io/en/stable/intro/import-guide.html
