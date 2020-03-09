@@ -4,7 +4,7 @@
 # Description: basic init script to check for system dependencies and enable
 #              controls to manage spinup and configuration
 # Author: Jonathan Brier & Christopher Kullenberg
-# 
+#
 #
 #
 #
@@ -12,6 +12,10 @@
 # TODO ASK if this is a local config, dev deployment, production deployment to automate system config
 # TODO build config file for nginx ie ask for install domain
 # TODO build config features to spin up part of ARCS
+
+### initializes the config files for local, testing, staging, and production
+# TODO
+
 # TODO run basic security heuristics for config of DNS and certificate ie run observatory.mozilla.org or similar
 
 
