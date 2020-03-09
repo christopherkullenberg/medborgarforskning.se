@@ -6,11 +6,11 @@ if ! [ -x "$(command -v docker-compose)" ]; then
   exit 1
 fi
 
-domains=(arcstest.brierjon.com medborgarforskning.se www.medborgarforskning.se dev.medborgarforskning.se)
-rsa_key_size=4096
-data_path="./data/certbot"
-email="jonathan.brier@gu.se" # Adding a valid address is strongly recommended
-staging=1 # Set to 1 if you're testing your setup to avoid hitting request limits
+domains=(arcstest.brierjon.com medborgarforskning.se www.medborgarforskning.se dev.medborgarforskning.se) # TODO move to domains config variable
+rsa_key_size=4096 # TODO move to RSA certificate config variable
+data_path="./../../data/certbot"
+email="jonathan.brier@gu.se" # Adding a valid address is strongly recommended # TODO move to admin email config variable
+staging=1 # Set to 1 if you're testing your setup to avoid hitting request limits # TODO move to environment type config variable
 
 if [ -d "$data_path" ]; then
   read -p "Existing data found for $domains. Continue and replace existing certificate? (y/N) " decision
@@ -20,14 +20,16 @@ if [ -d "$data_path" ]; then
 fi
 
 
-if [ ! -e "$data_path/conf/options-ssl-nginx.conf" ] || [ ! -e "$data_path/conf/ssl-dhparams.pem" ]; then
-  echo "### Downloading recommended TLS parameters ..."
-  mkdir -p "$data_path/conf"
-  curl -s https://raw.githubusercontent.com/certbot/certbot/master/certbot-nginx/certbot_nginx/_internal/tls_configs/options-ssl-nginx.conf > "$data_path/conf/options-ssl-nginx.conf"
-  curl -s https://raw.githubusercontent.com/certbot/certbot/master/certbot/certbot/ssl-dhparams.pem > "$data_path/conf/ssl-dhparams.pem"
-  echo
-fi
+#if [ ! -e "$data_path/conf/options-ssl-nginx.conf" ] || [ ! -e "$data_path/conf/ssl-dhparams.pem" ]; then
+#  echo "### Downloading recommended TLS parameters ..."
+#  mkdir -p "$data_path/conf"
+#  curl -s https://raw.githubusercontent.com/certbot/certbot/master/certbot-nginx/certbot_nginx/_internal/tls_configs/options-ssl-nginx.conf > "$data_path/conf/options-ssl-nginx.conf"
+#  curl -s https://raw.githubusercontent.com/certbot/certbot/master/certbot/certbot/ssl-dhparams.pem > "$data_path/conf/ssl-dhparams.pem"
+#  echo
+#fi
 
+### nginx will not start without a certificate with ssl enabled - generate a self signed dummy certificate that will be replaced by LetsEncrypt certificate automation
+##### Begin LetsEncrypt init assit with nginx #####
 echo "### Creating dummy certificate for $domains ..."
 path="/etc/letsencrypt/live/$domains"
 mkdir -p "$data_path/conf/live/$domains"
@@ -38,7 +40,7 @@ docker-compose run --rm --entrypoint "\
     -subj '/CN=localhost'" certbot
 echo
 
-
+#
 echo "### Starting nginx ..."
 docker-compose up --force-recreate -d nginx
 echo
@@ -49,7 +51,7 @@ docker-compose run --rm --entrypoint "\
   rm -Rf /etc/letsencrypt/archive/$domains && \
   rm -Rf /etc/letsencrypt/renewal/$domains.conf" certbot
 echo
-
+##### End LetsEncrypt init assit with nginx #####
 
 echo "### Requesting Let's Encrypt certificate for $domains ..."
 #Join $domains to -d args

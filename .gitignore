@@ -134,3 +134,13 @@ dmypy.json
 # ARCS Generated Files we don't want synced
 postgresdb
 arcs_collected_static/
+ssl-dhparams.pem
+options-ssl-nginx.conf
+
+# ARCS Testing Files and Directory we don't want synced
+tempcertificates/
+live/
+test.pass
+log/letsencrypt/
+log/nginx/
+data/certbot/
