@@ -47,7 +47,7 @@ services:
       - media_volume:/opt/arcs_project_code/arcs_project/media # Docker controlled volume persistant after container being removed and shared with nginx
     ports:
       - 8000:8000
-    command: ["gunicorn", "-c", "gunicorn.conf.py", "--bind", ":8000", "--chdir", "/opt/arcs_project_code", "arcs_project.wsgi:application"]
+    entrypoint: ["gunicorn", "-c", "gunicorn.conf.py", "--bind", ":8000", "--chdir", "/opt/arcs_project_code", "arcs_project.wsgi:application"]
     networks:
       db_network:
         aliases:
@@ -64,6 +64,8 @@ services:
     restart: always
     build: ./nginx
     depends_on:
+      letsencrypt:
+        condition: service_healthy
       djangoapp:
         condition: service_healthy
     ports:
