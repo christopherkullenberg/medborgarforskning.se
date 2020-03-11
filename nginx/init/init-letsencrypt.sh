@@ -6,7 +6,7 @@ if ! [ -x "$(command -v docker-compose)" ]; then
   exit 1
 fi
 
-#domains=(arcstest.brierjon.com medborgarforskning.se www.medborgarforskning.se dev.medborgarforskning.se) # TODO move to domains config variable
+#domains=(medborgarforskning.se www.medborgarforskning.se dev.medborgarforskning.se) # TODO move to domains config variable
 domains=(arcstest.brierjon.com) # TODO move to domains config variable
 rsa_key_size=4096 # TODO move to RSA certificate config variable
 data_path="./../../data/certbot"
@@ -74,6 +74,7 @@ esac
 # Enable staging mode if needed
 if [ $staging != "0" ]; then staging_arg="--staging"; fi
 
+echo "### Requesting Let's Encrypt certificate for $domain_args for $email ..."
 docker-compose run --rm --entrypoint "\
   certbot certonly --webroot -w /var/www/certbot \
     $staging_arg \
