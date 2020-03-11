@@ -64,8 +64,6 @@ services:
     restart: always
     build: ./nginx
     depends_on:
-      letsencrypt:
-        condition: service_healthy
       djangoapp:
         condition: service_healthy
     ports:

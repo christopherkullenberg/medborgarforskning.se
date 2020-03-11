@@ -23,3 +23,7 @@
 # TODO add PATH commands for easy control ie spin up, backup
 # TODO ask for user to create the database username and password
 # TODO set directory structure permissions
+
+# TODO ask if user would like to test their server build else display the command to start the system - only need this script on first run
+## this initializes a build of the docker-compose and generates the LetsEncrypt certificates
+# sudo ./init-letsencrypt.sh

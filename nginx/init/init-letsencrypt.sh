@@ -6,7 +6,8 @@ if ! [ -x "$(command -v docker-compose)" ]; then
   exit 1
 fi
 
-domains=(arcstest.brierjon.com medborgarforskning.se www.medborgarforskning.se dev.medborgarforskning.se) # TODO move to domains config variable
+#domains=(arcstest.brierjon.com medborgarforskning.se www.medborgarforskning.se dev.medborgarforskning.se) # TODO move to domains config variable
+domains=(arcstest.brierjon.com) # TODO move to domains config variable
 rsa_key_size=4096 # TODO move to RSA certificate config variable
 data_path="./../../data/certbot"
 email="jonathan.brier@gu.se" # Adding a valid address is strongly recommended # TODO move to admin email config variable
@@ -53,6 +54,10 @@ docker-compose run --rm --entrypoint "\
 echo
 ##### End LetsEncrypt init assit with nginx #####
 
+##### Wait for nginximg to boot - it can take a while ####
+echo "### Waiting for 35 seconds for nginx to start ###"
+sleep 35
+
 echo "### Requesting Let's Encrypt certificate for $domains ..."
 #Join $domains to -d args
 domain_args=""
@@ -80,4 +85,4 @@ docker-compose run --rm --entrypoint "\
 echo
 
 echo "### Reloading nginx ..."
-docker-compose exec nginximg nginximg -s reload
+docker-compose exec nginximg nginx -s reload
