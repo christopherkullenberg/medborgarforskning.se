@@ -7,7 +7,7 @@ if ! [ -x "$(command -v docker-compose)" ]; then
 fi
 
 #domains=(medborgarforskning.se www.medborgarforskning.se dev.medborgarforskning.se) # TODO move to domains config variable
-domains=(arcstest.brierjon.com) # TODO move to domains config variable
+domains=(dev.medborgarforskning.se) # TODO move to domains config variable
 rsa_key_size=4096 # TODO move to RSA certificate config variable
 data_path="./../../data/certbot"
 email="jonathan.brier@gu.se" # Adding a valid address is strongly recommended # TODO move to admin email config variable
