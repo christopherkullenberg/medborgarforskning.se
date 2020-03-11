@@ -74,7 +74,8 @@ services:
       - static_volume:/var/www/arcs_collected_static/static
       - media_volume:/var/www/arcs_collected_static/media # TODO review if media should be controlled by the django app for permissions
       - ./data/certbot/conf:/etc/letsencrypt # links to where the certificates are stored for ther server #TODO review if loation is preferred path
-      - ./data/certbot/www:/var/www/certbot # links to where the .well-known directory text verification is placed #TODO review if loation is preferred path
+      - ./data/certbot/www:/var/www/certbot/ # links to where the .well-known directory text verification is placed #TODO review if loation is preferred path
+      #- ./nginx/.well-known:/var/www/certbot/.well-known # mount the static well-known files to be served
       - ./log/nginx/:/var/log/nginx/ # make access and error logs available on host server #TODO review is this is preferred paths
     networks:
       - nginx_network

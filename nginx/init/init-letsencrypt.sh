@@ -11,7 +11,7 @@ domains=(arcstest.brierjon.com) # TODO move to domains config variable
 rsa_key_size=4096 # TODO move to RSA certificate config variable
 data_path="./../../data/certbot"
 email="jonathan.brier@gu.se" # Adding a valid address is strongly recommended # TODO move to admin email config variable
-staging=1 # Set to 1 if you're testing your setup to avoid hitting request limits # TODO move to environment type config variable
+staging=0 # Set to 1 if you're testing your setup to avoid hitting request limits # TODO move to environment type config variable
 
 if [ -d "$data_path" ]; then
   read -p "Existing data found for $domains. Continue and replace existing certificate? (y/N) " decision
@@ -84,6 +84,11 @@ docker-compose run --rm --entrypoint "\
     --agree-tos \
     --force-renewal" letsencrypt
 echo
+
+##### Wait for certificates issuing before reboot - it can take a while ####
+echo "### Waiting for 10 seconds for certificates before reboot ###"
+sleep 10
+
 
 echo "### Reloading nginx ..."
 docker-compose exec nginximg nginx -s reload
