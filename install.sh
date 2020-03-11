@@ -25,5 +25,5 @@
 # TODO set directory structure permissions
 
 # TODO ask if user would like to test their server build else display the command to start the system - only need this script on first run
-## this initializes a build of the docker-compose and generates the LetsEncrypt certificates
+## this initializes a build of the docker-compose and generates the LetsEncrypt certificates only needed on first install to generate a certficate
 # sudo ./init-letsencrypt.sh
