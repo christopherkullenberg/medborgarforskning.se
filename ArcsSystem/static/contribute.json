@@ -1,2 +1,32 @@
 # See https://infosec.mozilla.org/guidelines/web_security#http-strict-transport-security
-# TODO https://www.contributejson.org/
+# TODO https://www.contributejson.org/ why not make it easy to find ARCS based platforms in a similar way. And collect like https://www.contributejson.org/examples but part of the portal infrastructure :)
+{
+  "name": "medborgarforknign.se",
+  "description": "A plaform for the best practices of citizen science in Sweden and a curated collection of projects in Sweden",
+  "participate": {
+   "docs": "https://tecken.readthedocs.io",
+   "irc": "irc://...",
+   "irc-contacts": [
+      "-",
+      "-"
+   ],
+  },
+  "projects": {
+    "url": "https://medborgarforskning.se/projects",
+    "license": "Coming Soon...",
+  },
+  "repository": {
+    "url": "https://github.com/christopherkullenberg/medborgarforskning.se",
+    "license": "Coming Soon...",
+  },
+  "bugs": {
+   "list": "https://github.com/christopherkullenberg/medborgarforskning.se/issues",
+   "report": "https://github.com/christopherkullenberg/medborgarforskning.se/issues/new",
+  },
+  "keywords": [
+    "HTML5",
+    "Python",
+    "Django",
+    "CSS3",
+  ]
+}

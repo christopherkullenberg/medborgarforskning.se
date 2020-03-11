@@ -10,8 +10,11 @@ FROM nginx
 ### remove the default config files copy the ARCS default nginx.conf
 RUN rm /etc/nginx/nginx.conf
 
-###
+### add the ARCS configured nginx.conf to the server image
 COPY nginx.conf /etc/nginx/
+
+### add .well-known static files to server
+COPY ./.well-known/ /var/www/.well-known
 
 ### copy a custom mime.types file from ARCS to docker image
 #RUN rm /etc/nginx/mime.types

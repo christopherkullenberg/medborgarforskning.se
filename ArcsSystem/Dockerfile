@@ -1,6 +1,6 @@
 #
 # File Name: Dockerfile
-# Description: Setup the nginx docker container.
+# Description: Setup the djangoapp docker container.
 # Author: Jonathan Brier & Christopher Kullenberg
 #
 

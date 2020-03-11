@@ -5,6 +5,7 @@
 #
 
 # TODO update to use Ansible configuration
+# TODO verify secure file permissions of volumes
 # Using Compose File reference version 2.2 due to docker version installed https://docs.docker.com/compose/compose-file/compose-file-v2/
 
 version: "2.2" # version of docker-config standard not the file version
@@ -33,6 +34,7 @@ services:
       test: "exit 0"
 
   djangoapp:
+    image: python:3.7
     container_name: ARCSCore
     restart: always
     build: ./ArcsSystem
@@ -45,7 +47,7 @@ services:
       - media_volume:/opt/arcs_project_code/arcs_project/media # Docker controlled volume persistant after container being removed and shared with nginx
     ports:
       - 8000:8000
-    command: ["gunicorn", "-c", "gunicorn.conf.py", "--bind", ":8000", "--chdir", "/opt/arcs_project_code", "arcs_project.wsgi:application"]
+    entrypoint: ["gunicorn", "-c", "gunicorn.conf.py", "--bind", ":8000", "--chdir", "/opt/arcs_project_code", "arcs_project.wsgi:application"]
     networks:
       db_network:
         aliases:
@@ -61,20 +63,36 @@ services:
     container_name: ARCServer
     restart: always
     build: ./nginx
-    depends_on: # TODO reenable for production
+    depends_on:
       djangoapp:
         condition: service_healthy
     ports:
       - 80:80
       - 443:443
+    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'" # TODO reeneable for LetsEncrypt
     volumes:
       - static_volume:/var/www/arcs_collected_static/static
       - media_volume:/var/www/arcs_collected_static/media # TODO review if media should be controlled by the django app for permissions
+      - ./data/certbot/conf:/etc/letsencrypt # links to where the certificates are stored for ther server #TODO review if loation is preferred path
+      - ./data/certbot/www:/var/www/certbot/ # links to where the .well-known directory text verification is placed #TODO review if loation is preferred path
+      #- ./nginx/.well-known:/var/www/certbot/.well-known # mount the static well-known files to be served
+      - ./log/nginx/:/var/log/nginx/ # make access and error logs available on host server #TODO review is this is preferred paths
     networks:
       - nginx_network
     healthcheck:
       test: "exit 0"
 
+  letsencrypt:
+    image: certbot/certbot
+    container_name: LetsEncrypt
+    restart: unless-stopped
+    volumes:
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
+      - ./log/letsencrypt:/var/log/letsencrypt # TODO check directory permission for this on server
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'" # TODO reeneable for LetsEncrypt
+    healthcheck:
+      test: "exit 0"
 
 networks:
   nginx_network:

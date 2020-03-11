@@ -1,1 +1,5 @@
+# default robots.txt for the top domain specified for the ArcsSystem
 # TODO https://www.robotstxt.org/ - also implemented as <meta> in page header
+
+User-agent: *
+Disallow:
