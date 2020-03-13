@@ -27,15 +27,18 @@
 ###### END Current manual process from fresh repo ######
 
 ### TODO for Script in order it should to execute config ###
-# TODO ASK if this is a local config, dev deployment, production deployment to automate system config
+# TODO ASK if this run of the install is a local config, dev deployment, production deployment to automate system config
 # TODO build config file for nginx ie ask for install domain
+
 # TODO build config features to spin up part of ARCS
 
 ### initializes the config files for local, testing, staging, and production
 # TODO
 
-# TODO run basic security heuristics for config of DNS and certificate ie run observatory.mozilla.org or similar
+# TODO ARCS+: run basic security heuristics for config of DNS and certificate ie run observatory.mozilla.org or similar
 
+# TODO ARCS+: prompt user if they are using the LetsEncrypt default to add a CAA record to DNS and SPF Record for an authorized email SMTP server
+# TODO ARCS+: prompt the user to register with webmaster tools. - show list of free suggestions - webmaster.google.com, bing webmaster, etc. rational: help understand SEO of content,
 
 # TODO add docker build - spin-up and down controls etc
 # TODO add PATH commands for easy control ie spin up, backup
