@@ -11,7 +11,10 @@ FROM nginx
 RUN rm /etc/nginx/nginx.conf
 
 ### add the ARCS configured nginx.conf to the server image
-COPY nginx.conf /etc/nginx/
+COPY conf/nginx.conf /etc/nginx/
+
+### add the modular includes for the nginx.conf to the server ###
+COPY conf/includes/. /etc/nginx/
 
 ### add .well-known static files to server
 COPY ./.well-known/ /var/www/.well-known
