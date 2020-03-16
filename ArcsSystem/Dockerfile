@@ -44,4 +44,4 @@ RUN rm -r /var/www/arcs_collected_static/static/
 RUN python manage.py collectstatic --noinput
 
 # start the app # TODO identify why this does not execute
-CMD ["entrypoint.sh"]
+# CMD ["entrypoint.sh"]
