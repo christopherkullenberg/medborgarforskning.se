@@ -1,1 +1,39 @@
 version: "2.2" # version of docker-config standard not the file version
+# Sets a default dev environment if not other docker-compose file is included.
+
+# Create a docker-compose.production.yaml file with the fields and run with:
+# docker-compose -f docker-compose.yaml -f docker-compose.production.yaml up (or with --build)
+
+# This inherits settings from docker-compose.yaml so you only need to define what is extended or replaced.
+
+services:
+  db:
+    container_name: ARCS-PG-DB-debug
+    #environment: # https://www.postgresql.org/docs/12/libpq-envars.html
+      #- postgres-variables.env # See: https://docs.docker.com/compose/environment-variables/
+      #- POSTGRES_DB=pg-docker-debug-replica
+      #- POSTGRES_USER=postgresdebug
+      #- POSTGRES_PASSWORD=dockerdebug
+    #volumes:
+      #- pgdatabase_replica_volume:/var/lib/postgresql/data # Docker controlled volume persistant after container being removed
+    #command: '-d'
+
+
+  djangoapp:
+    container_name: ARCSCore-debug
+    #environment:
+      #- DEBUG=true
+
+
+  nginximg:
+    container_name: ARCServer-debug
+
+
+  letsencrypt:
+    container_name: LetsEncrypt-debug
+    # TODO enable staging for letsencrypt or disable image to prevent testing from reaching too many requests
+
+volumes:
+  pgdatabase_replica_volume:
+  static_volume:
+  media_volume:

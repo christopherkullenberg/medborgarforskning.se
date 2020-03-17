@@ -16,7 +16,7 @@ ENV PYTHONUNBUFFERED 1
 
 # update packages
 RUN apt-get update && apt-get install -y --no-install-recommends \
-  libssl-dev # TODO check if this is still needed for https
+  wait-for-it libssl-dev # TODO check if libssl-dev is still needed for https
 
 # arbitrary location choice: you can change the directory
 RUN mkdir -p /opt/arcs_project_code/

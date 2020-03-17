@@ -1,0 +1,23 @@
+version: "2.2" # version of docker-config standard not the file version
+# Overrides the docker-compose.yaml as it acts like an overrive, but will replace
+# the override when run as: docker-compose -f docker-compose.yaml -f docker-compose.production.yaml up --build
+
+# This inherits settings from docker-compose.yaml so you only need to define what is extended or replaced.
+
+services:
+  db:
+    container_name: ARCS-PG-DB-production
+    #command: '-d'
+
+
+  djangoapp:
+    container_name: ARCSCore-production
+    environment:
+      -
+
+  nginximg:
+    container_name: ARCServer-production
+
+
+  letsencrypt:
+    container_name: LetsEncrypt-production

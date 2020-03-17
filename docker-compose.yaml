@@ -1,6 +1,10 @@
 #
 # File Name: docker-compose.yaml
 # Description: Configuration to build each docker container for a component of the ARCSystem.
+#  use this docker-compose.yaml for the core setup regardless of environment then override or extend for
+#  specific environments with an additional docker-compose.something.yaml file. The default environment configuration is
+#  dev environment is docker-compose.override.yaml which is checked first if no other yaml is provided. Suggested naming scheme docker-compose.environmentname.yaml for additional envrionments.
+#
 # Author: Jonathan Brier & Christopher Kullenberg
 #
 
@@ -33,6 +37,7 @@ services:
     healthcheck:
       test: "exit 0"
 
+
   djangoapp:
     image: python:3.7
     container_name: ARCSCore
@@ -47,6 +52,7 @@ services:
       - media_volume:/opt/arcs_project_code/arcs_project/media # Docker controlled volume persistant after container being removed and shared with nginx
     ports:
       - 8000:8000
+    # TODO add wait-for-it.sh to ensure database is up and avaialble - depends_on only provides order of build and healthcheck just checks if image is running. https://docs.docker.com/compose/startup-order/
     entrypoint: ["gunicorn", "-c", "gunicorn.conf.py", "--bind", ":8000", "--chdir", "/opt/arcs_project_code", "arcs_project.wsgi:application"]
     networks:
       db_network:
@@ -57,6 +63,7 @@ services:
           - djangoapp-app
     healthcheck:
       test: "exit 0"
+
 
   nginximg:
     image: nginx:latest
