@@ -38,7 +38,8 @@ COPY . /opt/arcs_project_code/
 # remove old static files collected in previous build to ensure only the fresh files are there
 RUN rm -r /var/www/arcs_collected_static/static/
 
-# TODO print to console = Bye Bye Old Static Files - Empty! Note: this is a static statement and not a check.
+# print to console the static files are removed.
+RUN echo "Bye Bye Old Static Files - Empty! Note: this is a static statement and not a check."
 
 # collectstatic static on build (but you'll need to run a commands if you're not rebuilding on project code changes)
 RUN python manage.py collectstatic --noinput
