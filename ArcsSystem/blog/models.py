@@ -9,7 +9,7 @@ class Post(models.Model):
     '''
     title = models.CharField(max_length=100, default='title')
     published = models.DateField()
-    content = models.TextField()
+    content = models.TextField() #summernote field
     tags = TaggableManager()
 
     def __str__(self):

@@ -3,19 +3,20 @@
 {% load i18n %}
 
 {% block content %}
+{{ blog_title }}
 
 
-{% for b in blog %}
-<p>b.title</p>
+<p> hello</p>
+
+
+{% for post in object_list %}
+
+{{ object.title }}
 
 {% endfor %}
 
-{% for b in blog %}
-<p>{{b}}</p>
-
-{% endfor %}
 
 
-{{blog_title}}
+
 
 {% endblock content %}

@@ -24,9 +24,8 @@ def blog_list_view(request):
         'blog_published': blog.published,
         'blog_content' : blog.content,
         'blog_tags' : blog.tags,
-        #'product_title' : product.title,
-        #'project_name': project.name,
     }
+
     return render(request, 'blog/blog_list.html', context)
 
 def blog_detail_view(request):
