@@ -146,6 +146,16 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+if ENVIRONMENT == 'production':
+    SECURE_BROWSER_XSS_FILTER = UserAttributeSimilarityValidator
+    X_FRAME_OPTIONS = 'DENY'
+    SECURE_SSL_REDIRECT = True
+    SECURE_HSTS_SECONDS = 31536000
+    SECURE_HSTS_INCLUDE_SUBDOMAIN = True
+    SECURE_HSTS_PRELOAD = False # TODO seto to true
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
