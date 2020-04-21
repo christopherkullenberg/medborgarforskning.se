@@ -27,7 +27,7 @@ from django.conf import settings
 ### Wagtail requirements End #
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('manage-arcs/', admin.site.urls),
     path('', include('blog.urls')),
     ### Wagtail paths start #
     re_path(r'^cms/', include(wagtailadmin_urls)),
