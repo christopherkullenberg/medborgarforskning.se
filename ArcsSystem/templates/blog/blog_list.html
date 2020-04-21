@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+
+
+{% for b in blog %}
+<p>b.title</p>
+
+{% endfor %}
+
+{% for b in blog %}
+<p>{{b}}</p>
+
+{% endfor %}
+
+
+{{blog_title}}
+
+{% endblock content %}

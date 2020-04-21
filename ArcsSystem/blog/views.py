@@ -15,7 +15,7 @@ def template_view(request):
     return render(request, 'exampletemplate.html', context)
 '''
 
-def home_view(request):
+def blog_list_view(request):
     '''
     '''
     blog = Post.objects.get(id=1)
@@ -27,7 +27,7 @@ def home_view(request):
         #'product_title' : product.title,
         #'project_name': project.name,
     }
-    return render(request, 'home.html', context)
+    return render(request, 'blog/blog_list.html', context)
 
 def blog_detail_view(request):
     '''

@@ -1,5 +1,6 @@
 from django.db import models
 from taggit.managers import TaggableManager
+from django.urls import reverse
 
 
 class Post(models.Model):
@@ -13,6 +14,11 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+    #def get_absolute_url(self):
+    #    return reverse ('post_detail',
+    #        args=[published.created_on.year, published.created_on.strftime('%m'),
+    #        published.created_on.strftime('%d'), self.title])
 
 
 class Author(models.Model):
