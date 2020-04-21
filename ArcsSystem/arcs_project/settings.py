@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'projects', # enables the projects app of ArcsCore
     'users', # initializes CustomUser and users app a.k.a. "People app" of ArcsCore
     'django_summernote', # Installing summernote (CK)
-    
+    'taggit', # for handling tags/keywords (CK)
+
 ### AllAuth for social authentications start #
     'django.contrib.sites',
     'allauth',
@@ -66,7 +67,7 @@ INSTALLED_APPS = [
     'wagtail.core',
 
     'modelcluster',
-    'taggit',
+    #'taggit', # I disabled this because we have it above (CK)
     'wagtail.contrib.modeladmin', # for wagtail menus
     'wagtailmenus', # initialize wagtail menus
 ### Wagtail app requirement end #

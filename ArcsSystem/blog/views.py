@@ -20,8 +20,10 @@ def home_view(request):
     '''
     blog = Post.objects.get(id=1)
     context = {
-        'blog_name' : blog.name,
+        'blog_title' : blog.title,
+        'blog_published': blog.published,
         'blog_content' : blog.content,
+        'blog_tags' : blog.tags,
         #'product_title' : product.title,
         #'project_name': project.name,
     }
@@ -32,8 +34,9 @@ def blog_detail_view(request):
     '''
     blog = Post.objects.get(id=1)
     context = {
-        'blog_name' : blog.name,
-        #'blog_tagline' : blog.tagline,
+        'blog_title' : blog.title,
+        'blog_published': blog.published,
         'blog_content' : blog.content,
+        'blog_tags' : blog.tags,
     }
     return render(request, 'blog/blog_detail.html', context)

@@ -1,4 +1,5 @@
 from django.db import models
+from taggit.managers import TaggableManager
 
 '''
 class Blog(models.Model):
@@ -10,11 +11,13 @@ class Blog(models.Model):
 '''
 
 class Post(models.Model):
-    name = models.CharField(max_length=100, default='default')
+    title = models.CharField(max_length=100, default='title')
+    published = models.DateField()
     content = models.TextField()
+    tags = TaggableManager()
 
     def __str__(self):
-        return self.name
+        return self.title
 
 
 class Author(models.Model):

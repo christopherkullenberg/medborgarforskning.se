@@ -10,6 +10,7 @@ class AuthorAdmin(admin.ModelAdmin):
 
 class PostAdmin(SummernoteModelAdmin):
     summernote_fields = ('content',)
+    published = ('published',)
 
 
 #admin.site.register(Blog, BlogAdmin)
