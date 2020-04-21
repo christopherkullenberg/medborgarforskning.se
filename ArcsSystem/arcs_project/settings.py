@@ -32,16 +32,24 @@ ALLOWED_HOSTS = ['localhost','127.0.0.1', '0.0.0.0','dev.medborgarforskning.se',
 
 INSTALLED_APPS = [
     'django.contrib.admin',
-    'django.contrib.auth',
+    'django.contrib.auth', # also required by AllAuth
     'django.contrib.contenttypes',
     'django.contrib.sessions',
-    'django.contrib.messages',
+    'django.contrib.messages', # also required by AllAuth
     'django.contrib.staticfiles',
     'django.contrib.sitemaps', # enables django to generate sitemap
     'blog', # enables the blog app of ArcsCore
     'products', # enables the products app of ArcsCore
     'projects', # enables the projects app of ArcsCore
     'users', # initializes CustomUser and users app a.k.a. "People app" of ArcsCore
+
+### AllAuth for social authentications start #
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.orcid',
+### AllAuth for social authentications end #
 
 ### Wagtail app requirement start #
     'wagtail.contrib.forms',
@@ -65,6 +73,8 @@ INSTALLED_APPS = [
     #'wagtail.wagtailforms',
 ### Wagtail forms install end #
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -90,7 +100,7 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
-                'django.template.context_processors.request',
+                'django.template.context_processors.request', # `allauth` needs this from django
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.i18n',
@@ -102,6 +112,29 @@ TEMPLATES = [
         },
     },
 ]
+
+AUTHENTICATION_BACKENDS = (
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
+# Provider specific settings
+SOCIALACCOUNT_PROVIDERS = {
+    'orcid': {
+        # Base domain of the API. Default value: 'orcid.org', for the production API
+        'BASE_DOMAIN':'orcid.org',  # sandbox.orcid.org for the sandbox API
+        # Member API or Public API? Default: False (for the public API)
+        'MEMBER_API': True,  # for the member API
+        'APP': {
+            'client_id': 'APP-04ZPI85NJK4Z97OR', # TODO extract to secrets file variable for setup config - this is dev testing only will stop working
+            'secret': '9a9e5e9c-414c-4833-b44c-a13c1dbb00e3',
+            'key': ''
+        }
+    }
+}
 
 WSGI_APPLICATION = 'arcs_project.wsgi.application'
 
@@ -146,16 +179,16 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-if ENVIRONMENT == 'production':
-    SECURE_BROWSER_XSS_FILTER = UserAttributeSimilarityValidator
-    X_FRAME_OPTIONS = 'DENY'
-    SECURE_SSL_REDIRECT = True
-    SECURE_HSTS_SECONDS = 31536000
-    SECURE_HSTS_INCLUDE_SUBDOMAIN = True
-    SECURE_HSTS_PRELOAD = False # TODO seto to true
-    SECURE_CONTENT_TYPE_NOSNIFF = True
-    SESSION_COOKIE_SECURE = True
-    CSRF_COOKIE_SECURE = True
+#if ENVIRONMENT == 'production':
+#    SECURE_BROWSER_XSS_FILTER = UserAttributeSimilarityValidator
+#    X_FRAME_OPTIONS = 'DENY'
+#    SECURE_SSL_REDIRECT = True
+#    SECURE_HSTS_SECONDS = 31536000
+#    SECURE_HSTS_INCLUDE_SUBDOMAIN = True
+#    SECURE_HSTS_PRELOAD = False # TODO seto to true
+#    SECURE_CONTENT_TYPE_NOSNIFF = True
+#    SESSION_COOKIE_SECURE = True
+#    CSRF_COOKIE_SECURE = True
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
