@@ -7,7 +7,7 @@ verify_ssl = true
 
 [packages]
 django = "==2.2.11"
-wagtail = "==2.8"
+wagtail = "==2.8.1"
 django-cookie-consent = "==0.2.0"
 djangorestframework = "==3.11.0"
 subdomains = "==3.0.1"
