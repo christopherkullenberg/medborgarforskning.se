@@ -38,5 +38,6 @@ urlpatterns = [
     path('paper/',include('products.urls')),
     path('people/',include('users.urls')),
 
+
 #] # Replace line below with just a ] for production
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) # TODO only for dev. disable for production

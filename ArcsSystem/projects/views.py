@@ -1,4 +1,7 @@
 from django.shortcuts import render
+
+from django.shortcuts import get_object_or_404
+from django.contrib.auth.models import User
 from django.views.generic import ListView
 from django.views.generic import DetailView
 from projects.models import Project
@@ -33,3 +36,14 @@ class ProjectDetailView(DetailView):
     '''
     model = Project
     template_name = 'projects/project_detail.html'
+
+
+
+class ProjectSubmitView(DetailView):
+    '''
+    This is not working, dont know how to make logged in user (CK)
+    '''
+    model = Project
+    template_name = 'projects/project_submissionform.html'
+    # def get_object(self):
+    #     return get_object_or_404(User, pk=request.session['user_id'])

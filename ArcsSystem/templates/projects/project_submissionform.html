@@ -2,6 +2,9 @@
 
 {% block content %}
 
+{% if user.is_authenticated %}
+
+
 <form action="/submitproject/" method="post">
   <fieldset>
     <legend>Basic Project Fields:</legend>
@@ -37,3 +40,5 @@
       <button type="submit" value="Submit">Submit</button>
   </fieldset>
 </form>
+
+{% endif %}
