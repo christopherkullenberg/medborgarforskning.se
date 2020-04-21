@@ -27,7 +27,8 @@ from django.conf import settings
 ### Wagtail requirements End #
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('manage-arcs/', admin.site.urls),
+    re_path(r'^accounts/', include('allauth.urls')),
     path('', include('blog.urls')),
     path('blog/', include('blog.urls')),
     ### Wagtail paths start #
