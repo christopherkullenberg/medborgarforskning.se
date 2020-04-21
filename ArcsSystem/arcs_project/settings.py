@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'products', # enables the products app of ArcsCore
     'projects', # enables the projects app of ArcsCore
     'users', # initializes CustomUser and users app a.k.a. "People app" of ArcsCore
-
+    'django_summernote', # Installing summernote (CK)
+    
 ### Wagtail app requirement start #
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',

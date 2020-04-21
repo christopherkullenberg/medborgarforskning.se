@@ -37,6 +37,7 @@ urlpatterns = [
     path('project/',include('projects.urls')),
     path('paper/',include('products.urls')),
     path('people/',include('users.urls')),
+    path('summernote/', include('django_summernote.urls')), # adding summernote (CK)
 
 
 #] # Replace line below with just a ] for production
