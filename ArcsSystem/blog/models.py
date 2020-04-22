@@ -16,7 +16,7 @@ class Post(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('blog:blog_detail', kwargs={"id": self.id})
+        return reverse('blog:blog_detail_view', kwargs={"pk": self.id})
 
     #        args=[published.created_on.year, published.created_on.strftime('%m'),
     #        published.created_on.strftime('%d'), self.title])
