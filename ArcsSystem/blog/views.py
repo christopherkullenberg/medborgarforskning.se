@@ -15,8 +15,9 @@ def template_view(request):
     return render(request, 'exampletemplate.html', context)
 '''
 
-def blog_list_view(request):
-    '''
+class blog_list_view(ListView):
+    template_name = 'blog/blog_list.html'
+    queryset = Post.objects.all()
     '''
     blog = Post.objects.get(id=1)
     context = {
@@ -27,11 +28,13 @@ def blog_list_view(request):
     }
 
     return render(request, 'blog/blog_list.html', context)
+    '''
 
-def blog_detail_view(request):
+class blog_detail_view(DetailView):
+    template_name = 'blog/blog_detail.html'
+    queryset = Post.objects.all()
     '''
-    '''
-    blog = Post.objects.get(id=1)
+    blog = Post.objects.get(id)
     context = {
         'blog_title' : blog.title,
         'blog_published': blog.published,
@@ -39,3 +42,4 @@ def blog_detail_view(request):
         'blog_tags' : blog.tags,
     }
     return render(request, 'blog/blog_detail.html', context)
+    '''

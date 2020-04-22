@@ -3,19 +3,12 @@
 {% load i18n %}
 
 {% block content %}
-{{ blog_title }}
 
+<h1>Blog home page (list view)</h1>
 
-<p> hello</p>
-
-
-{% for post in object_list %}
-
-{{ object.title }}
-
+{% for instance in object_list %}
+    <p>{{ instance.id }} - <a href='{{ instance.get_absolute_url }}'>{{ instance.title}}</a></p>
 {% endfor %}
-
-
 
 
 
