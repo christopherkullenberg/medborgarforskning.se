@@ -2,10 +2,16 @@
 {% load static %}
 {% load i18n %}
 
+{% block title %}Home{% endblock title %}
+
 {% block content %}
-
-<main id="content">{# Contents of Main are for the main target of the page. #}
-
+{% if user.is_authenticated %}
+  Hi {{ user.username }}!
+  <p><a href="/accounts/logout">logout</a></p>
+{% else %}
+  <a href="/accounts/login">login</a> |
+  <a href="/accounts/signup">signup</a>
+{% endif %}
   <section>
     <h1> Welcome</h1>
     <p> This is static page welcome text controlled by the admin. </p>
@@ -35,8 +41,6 @@
     <p>Project Title: {{ project_title }}</p>
     <p>Product Title: {{ product_title }}</p>
   </section>
-
-</main>
 
 <aside>
     {# Place content of side bar here or remove from template if no sidebar in view. #}
