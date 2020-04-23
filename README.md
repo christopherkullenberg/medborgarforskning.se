@@ -5,7 +5,7 @@
 #
 
 # medborgarforskning.se
-Welcome to the [medborgarforskning.se](https://medborgarforskning.se) Documentation!
+Welcome to the [medborgarforskning.se](https://medborgarforskning.se) Documentation! This is the domain to use anywhere the documentation mentions domain.
 
 Medborgarforskning.se is a portal for connecting citizen science researchers and publics in Sweden and elsewhere.
 
@@ -54,6 +54,8 @@ The project list will follow and extend upon the PPSR-Core standard for
 Python Core Style - PEP8 https://pep8.org/
 Django Style - https://docs.djangoproject.com/en/2.2/internals/contributing/writing-code/coding-style/
 
+## Translation
+Translation is integrated with Django core. Translations occur in templates from the use of {% trans %} where no variable is used or {% blocktrans %} {% endblocktrans %} where the terms and variables would be places between. Each template must include {% load i18n %} at the top of the template to activate translation of the content within the template. More on this can be read about in the Django translation page. https://docs.djangoproject.com/en/2.2/topics/i18n/translation/
 
 ## System Architecture
 ARCS is build to be a series of containers which host each component.
@@ -78,6 +80,38 @@ ARCS is build to be a series of containers which host each component.
 **Prerequisites**
 * Docker version 1.13.1, build b2f74b2/1.13.1 - as this is what the RHEL 7 has by default.
 * Ansible...
+* Domain w/DNS access
+
+# Email Addresses
+# list of standard emails to consider https://tools.ietf.org/html/rfc2142
+1. webmaster@domain # This email is the primary email to alert the admin of the site of issues.
+2. abuse@domain # This email is presented as an option to report inappropriate content.
+3. security@domain # This is one of the options presented in the security.txt file to report a security issue found with the site or send notice to users.
+4. www@domain # alias of webmaster@domain as stated in rfc2142
+# additional emails for this platform
+1. info@domain
+2. aggregatemail@domain # This email is used by the DMARC record to report aggregate spam emails.
+3. forensicmail@domain # This email is used by the DMARC record to report details of the spam emails not in aggregate.
+
+
+
+# Domain DNS configuration
+- The following domain records should be configured
+1. A record and AAAA record - for your server's IP address - ipv4 and ipv6
+2. CNAME records for the domain Name
+- dev.domain - development domain
+- domain - primary Domain
+- www -
+3. (recommended) CAA record - to state which certificate authorities should be allowed to issue certificates.
+- 0 issue "letsencrypt.org" # The platform by default is configured for letsencrypt a trusted free certificate authority.
+- 0 iodef "mailto:--replacwithyouremail--" # Email of person to be notified
+4. SFP record - authorizes which servers should be able to send email on behalf of the domain. https://tools.ietf.org/html/rfc7208 There are tools available to assist in configuring for your domain.
+5. TXT record - plain text record in the DNS
+- (recommended) DKIM entry - email handling cryptographic key - will improve your email delivery. Requires coordination with the email provider who will generate the key to enter in the DNS.
+- (recommended) DMARC entry - depends on implementing DKIM and SPF - email handling for the emails from your domain and in this configuration the subdomains - improves email delivery. More info at https://dmarc.org/
+--  v=DMARC1; p=none; rua=mailto:aggregatemail@domain; ruf=mailto:forensicmail@domain; sp=quarantine; fo=1:d:s
+6. DNSSEC - hopefully your DNS provider has this enabled by default, but it is important to maintaining the integrity of the domain resolving to your server.
+
 
 # First run and controlling the containers
 ## First Run Only

@@ -32,8 +32,8 @@ ALLOWED_HOSTS = ['localhost','127.0.0.1', '0.0.0.0','dev.medborgarforskning.se',
 
 INSTALLED_APPS = [
     'django.contrib.admin',
-    'django.contrib.auth', # also required by AllAuth
-    'django.contrib.contenttypes',
+    'django.contrib.auth', # Core authentication framework and its default models. Required by AllAuth.
+    'django.contrib.contenttypes', # Django content type system (allows permissions to be associated with models).
     'django.contrib.sessions',
     'django.contrib.messages', # also required by AllAuth
     'django.contrib.staticfiles',
@@ -79,10 +79,10 @@ SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware', # Manages sessions across requests
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware', # Associates users with requests using sessions.
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     ### Wagtail app requirement start #
@@ -121,21 +121,6 @@ AUTHENTICATION_BACKENDS = (
     # `allauth` specific authentication methods, such as login by e-mail
     'allauth.account.auth_backends.AuthenticationBackend',
 )
-
-# Provider specific settings
-SOCIALACCOUNT_PROVIDERS = {
-    'orcid': {
-        # Base domain of the API. Default value: 'orcid.org', for the production API
-        'BASE_DOMAIN':'orcid.org',  # sandbox.orcid.org for the sandbox API
-        # Member API or Public API? Default: False (for the public API)
-        'MEMBER_API': True,  # for the member API
-        'APP': {
-            'client_id': 'APP-04ZPI85NJK4Z97OR', # TODO extract to secrets file variable for setup config - this is dev testing only will stop working
-            'secret': '9a9e5e9c-414c-4833-b44c-a13c1dbb00e3',
-            'key': ''
-        }
-    }
-}
 
 WSGI_APPLICATION = 'arcs_project.wsgi.application'
 
@@ -180,7 +165,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-#if ENVIRONMENT == 'production':
+#if ENVIRONMENT == 'production': # TODO: enable for production - though reverse proxy helps configure on this too
 #    SECURE_BROWSER_XSS_FILTER = UserAttributeSimilarityValidator
 #    X_FRAME_OPTIONS = 'DENY'
 #    SECURE_SSL_REDIRECT = True
@@ -191,7 +176,7 @@ AUTH_PASSWORD_VALIDATORS = [
 #    SESSION_COOKIE_SECURE = True
 #    CSRF_COOKIE_SECURE = True
 
-# Internationalization
+### Internationalization Start ###
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
@@ -202,13 +187,75 @@ LANGUAGE_CODES = [
 ]
 
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
+### Internationalization End ###
+
+### AllAuth Config ###
+# Configuration options: https://django-allauth.readthedocs.io/en/latest/configuration.html
+
+#Account adapters
+#ACCOUNT_ADAPTER = 'arcsauthenticator.adapter.CustomProcessAdapter' # specifies the adapter to modify default behavior else DefaultAccountAdapter
+
+#all-auth registraion settings
+ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 1
+ACCOUNT_EMAIL_CONFIRMATION_HMAC = True
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+ACCOUNT_DEFAULT_HTTP_PROTOCOL = "https"
+ACCOUNT_LOGIN_ATTEMPTS_LIMIT = 5
+ACCOUNT_LOGIN_ATTEMPTS_TIMEOUT = 86400 # 1 day. This does ot prevent admin login frombeing brut forced.
+ACCOUNT_LOGOUT_REDIRECT_URL ='/accounts/login/' #or any other page
+LOGIN_REDIRECT_URL = '/accounts/email/' # redirects to profile page by default
+ACCOUNT_PRESERVE_USERNAME_CASING = False # reduces the delays in iexact lookups
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = True
+ACCOUNT_UNIQUE_EMAIL=True
+ACCOUNT_USERNAME_MIN_LENGTH = 5
+ACCOUNT_USERNAME_REQUIRED =True
+ACCOUNT_USERNAME_VALIDATORS = None
+ACCOUNT_AUTHENTICATION_METHOD= "username_email" #users can login with either their userename or email
+
+
+#Account Signup
+ACCOUNT_FORMS = {'signup': '.forms.SignupForm',}
+
+#Social Account Settings - Provider specific settings
+SOCIALACCOUNT_PROVIDERS = {
+    'orcid': {
+        # Base domain of the API. Default value: 'orcid.org', for the production API
+        'BASE_DOMAIN':'orcid.org',  # sandbox.orcid.org for the sandbox API
+        # Member API or Public API? Default: False (for the public API)
+        'MEMBER_API': True,  # for the member API
+        'APP': {
+            'client_id': 'APP-04ZPI85NJK4Z97OR', # TODO extract to secrets file variable for setup config - this is dev testing only will stop working
+            'secret': '9a9e5e9c-414c-4833-b44c-a13c1dbb00e3', # TODO move to environment variable
+            'key': ''
+        }
+    }
+}
+SOCIALACCOUNT_QUERY_EMAIL=ACCOUNT_EMAIL_REQUIRED
+SOCIALACCOUNT_EMAIL_REQUIRED=ACCOUNT_EMAIL_REQUIRED
+SOCIALACCOUNT_STORE_TOKENS=False
+
+### End AllAuth Config ###
+
+### Email Config Begin ###
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend" # prints to console for dev only TODO: switch with env for smtp for prod
+#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+#DEFAULT_FROM_EMAIL = env("FROM_EMAIL")
+#EMAIL_HOST = env("HOST_EMAIL")
+#EMAIL_HOST_USER = #env("FROM_EMAIL")
+#EMAIL_HOST_PASSWORD = #env("EMAIL_HOST_PASSWORD")
+#EMAIL_PORT = #'587'
+#EMAIL_USE_TLS = False # True
+
+EMAIL_RECIPIENT_LIST = [
+    "jonathan.brier@gu.se",
+]
+
+### Email Config ###
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
