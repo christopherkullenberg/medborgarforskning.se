@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'projects', # enables the projects app of ArcsCore
     'users', # initializes CustomUser and users app a.k.a. "People app" of ArcsCore
     'django_summernote', # Installing summernote (CK)
-    
+
 ### AllAuth for social authentications start #
     'django.contrib.sites',
     'allauth',
@@ -195,6 +195,11 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
+
+LANGUAGE_CODES = [
+    'en-us',
+    'sv'
+]
 
 TIME_ZONE = 'UTC'
 
