@@ -15,3 +15,7 @@ class blog_list_view(ListView):
 class blog_detail_view(DetailView):
     template_name = 'blog/blog_detail.html'
     queryset = Post.objects.all()
+
+class ArchiveIndexView(ListView):
+    template_name = 'blog/blog_list.html'
+    queryset = Post.objects.all()
