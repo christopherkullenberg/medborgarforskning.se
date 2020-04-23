@@ -6,6 +6,7 @@ from products.models import Product
 from projects.models import Project
 
 
+
 class blog_list_view(ListView):
     template_name = 'blog/blog_list.html'
     queryset = Post.objects.all()
