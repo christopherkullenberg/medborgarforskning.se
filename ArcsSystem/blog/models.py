@@ -2,6 +2,8 @@ from django.db import models
 from taggit.managers import TaggableManager
 from django.urls import reverse
 
+import datetime
+
 
 class Post(models.Model):
     '''
@@ -18,7 +20,7 @@ class Post(models.Model):
     # Ref doc - https://docs.djangoproject.com/en/2.2/ref/models/instances/#get-absolute-url
     def get_absolute_url(self):
         #return reverse('blog:archive_date_detail', args={'pk' : str(self.id)})
-        return reverse('blog:archive_date_detail', args={'year' : str(self.published), 'month' : str(self.published), 'day' : str(self.published), 'pk' : str(self.id)})
+        return reverse('blog:archive_date_detail', kwargs={'year' : self.published.year, 'month' : self.published.month, 'day' : self.published.day, 'pk' : self.id})
         # instance.published|date:'Y', instance.published|date:'m', instance.published|date:'d' instance.id
 
 class Author(models.Model):
