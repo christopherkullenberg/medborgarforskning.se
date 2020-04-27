@@ -12,6 +12,7 @@ from products.models import Product
 from projects.models import Project
 
 
+
 class BlogPostListView(ListView):
     template_name = 'blog/blog_list.html'
     queryset = Post.objects.all()
@@ -29,6 +30,7 @@ class BlogPostDetailView(DetailView):
 class BlogPostIndexView(ListView):
     template_name = 'blog/blog_list.html'
     queryset = Post.objects.all()
+    paginate_by = 3    # Change this to include more posts 
 
 class BlogPostYearArchiveView(YearArchiveView):
     template_name = 'blog/blog_list.html'

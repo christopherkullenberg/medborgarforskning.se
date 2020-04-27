@@ -38,10 +38,16 @@ INSTALLED_APPS = [
     'django.contrib.messages', # also required by AllAuth
     'django.contrib.staticfiles',
     'django.contrib.sitemaps', # enables django to generate sitemap
+
+### ArcsCore apps
     'blog', # enables the blog app of ArcsCore
     'products', # enables the products app of ArcsCore
     'projects', # enables the projects app of ArcsCore
+
+### Custom user apps
     'users', # initializes CustomUser and users app a.k.a. "People app" of ArcsCore
+
+### Third party apps
     'django_summernote', # Installing summernote (CK)
     'taggit', # for handling tags/keywords (CK)
 
