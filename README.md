@@ -100,7 +100,6 @@ The Docker environment consists of the following dependencies:
 * Django 2.2.x
 * Python 3.x
 * Postgresql
-
 * Virtual Environment
 
 
@@ -111,3 +110,14 @@ For full requirements, see the ``requirements.txt`` file.
 The configuration integrates a testing process in with git and spin-up to avoid issues in production.
 
 1. Continuous Integrated Testing
+
+
+# Merge process
+
+``git checkout master`` 
+``git pull origin master``
+``git merge test``
+``git push origin master`` 
+
+
+

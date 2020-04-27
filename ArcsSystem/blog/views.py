@@ -30,6 +30,7 @@ class BlogPostDetailView(DetailView):
 class BlogPostIndexView(ListView):
     template_name = 'blog/blog_list.html'
     queryset = Post.objects.all()
+    # Pagination documentation https://docs.djangoproject.com/en/3.0/topics/pagination/
     paginate_by = 3    # Change this to include more posts 
 
 class BlogPostYearArchiveView(YearArchiveView):
