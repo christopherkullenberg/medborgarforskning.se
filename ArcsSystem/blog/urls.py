@@ -13,7 +13,6 @@ app_name = 'blog'
 
 urlpatterns = [
     path('', BlogPostIndexView.as_view(model=Post), name='blog_list_view'),
-    path('<int:pk>/', BlogPostDetailView.as_view(), name='blog_detail_view'),
     #path('<slug:slug>/', BlogPostDetailView.as_view(), name='blog_detail_view'),
     # Example: /2020/
     path('<int:year>/',
@@ -26,6 +25,6 @@ urlpatterns = [
     path('<int:year>/<int:month>/<int:day>/',
         BlogPostDayArchiveView.as_view(month_format='%m'),
         name="archive_day_numeric"),
-    path('<int:year>/<str:month>/<int:day>/<int:pk>/', DateDetailView.as_view(model=Post, date_field="published", month_format='%m'),name="archive_date_detail"),
-    re_path(r'^(?P<year>\d+)/(?P<month>\d+)/(?P<day>\d+)/(?P<pk>\d+)/$', DateDetailView.as_view(model=Post, date_field="published"),name="archive_date_detail"),
+    path('<int:year>/<str:month>/<int:day>/<str:slug>/', DateDetailView.as_view(model=Post, date_field="published", month_format='%m'),name="archive_date_detail"),
+    #re_path(r'^(?P<year>\d+)/(?P<month>\d+)/(?P<day>\d+)/(?P<pk>\d+)/$', DateDetailView.as_view(model=Post, date_field="published"),name="archive_date_detail"),
     ]
