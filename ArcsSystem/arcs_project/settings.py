@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/2.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
+from django.utils.translation import gettext_lazy as _ # This is needed to gather the strings of languages available on the site
 
 import os
 
@@ -87,6 +88,7 @@ SITE_ID = 1
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware', # local must be placed before CommonMiddleware as it needs an activated language. CacheMiddleware if used should be before Locale - https://docs.djangoproject.com/en/2.2/topics/i18n/translation/#how-django-discovers-language-preference
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -100,6 +102,9 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'arcs_project.urls'
 
+# More on Template Configuration https://docs.djangoproject.com/en/2.2/topics/templates/
+# This configuration currently has a common templates directory being referred to outside the app directory for the templates.
+# Templates will also be looked for in each app's directory
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -198,10 +203,17 @@ AUTH_PASSWORD_VALIDATORS = [
 #    SESSION_COOKIE_SECURE = True
 #    CSRF_COOKIE_SECURE = True
 
+
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en-us' # Default language used if no translation is available - ie language found in the templates
+
+# For organization and resadability order alphabetically according to two letter language code
+LANGUAGES = [
+    ('en', _('English')), # The sublanguages like en-us can also be stated to differentiate translations
+    ('sv', _('Swedish')),
+]
 
 TIME_ZONE = 'UTC'
 
@@ -223,6 +235,18 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')] # sets where collectstatic
 # Media files (Users uploaded)
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+
+# Set the paths to find the local string files used in translation of the site templates - https://docs.djangoproject.com/en/2.2/ref/settings/#locale-paths
+# In order of precidence - for robustness and review add the locale path
+# 1. LOCALE_PATHS
+# 2. locale directory of an app
+# 3. django/conf/locale directory as a fallback
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'locale')
+]
+
+
 
 # Set Wagtail Site Name
 WAGTAIL_SITE_NAME = 'Pages and Blog of ARCS'
