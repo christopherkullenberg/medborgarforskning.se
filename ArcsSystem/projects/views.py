@@ -47,3 +47,11 @@ class ProjectSubmitView(DetailView):
     template_name = 'projects/project_submissionform.html'
     # def get_object(self):
     #     return get_object_or_404(User, pk=request.session['user_id'])
+
+
+class SearchResultsView(ListView):
+    model = ProjectListView
+    template_name = 'projects/search_results.html'
+
+    def get_queryset(self):
+        return Project.objects.filter(name__icontains="artportalen")
