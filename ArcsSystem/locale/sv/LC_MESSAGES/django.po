@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-04-28 09:37+0000\n"
+"POT-Creation-Date: 2020-04-29 09:11+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,6 +41,54 @@ msgstr "nästa"
 #: templates/blog/blog_list.html:31
 msgid "last"
 msgstr "sista"
+
+#: templates/projects/project_detail.html:22
+msgid "Project information"
+msgstr "Projektinformation"
+
+#: templates/projects/project_detail.html:26
+msgid "PROJECT STATUS:"
+msgstr "PROJEKTSTATUS:"
+
+#: templates/projects/project_detail.html:31
+msgid "PROJECT DESCRIPTION:"
+msgstr "PROJEKTBESKRIVNING:"
+
+#: templates/projects/project_detail.html:36
+msgid "PROJECT TARGET AUDIENCE:"
+msgstr "MÅLGRUPP:"
+
+#: templates/projects/project_detail.html:41
+msgid "PROJECT RECORD LAST UPDATED:"
+msgstr "UPPDATERAD:"
+
+#: templates/projects/project_detail.html:46
+msgid "MEDIA LINKS:"
+msgstr "MEDIELÄNKAR:"
+
+#: templates/projects/project_detail.html:52
+msgid "Contact information"
+msgstr "Kontaktinformation"
+
+#: templates/projects/project_detail.html:53
+msgid "NAME:"
+msgstr "NAMN:"
+
+#: templates/projects/project_detail.html:54
+msgid "CONTACT'S ROLE:"
+msgstr "KONTAKTPERSONENS ROLL:"
+
+#: templates/projects/project_detail.html:55
+msgid "AFFILIATION:"
+msgstr "AFFILIERING:"
+
+#: templates/projects/project_detail.html:56
+msgid "CONTACT EMAIL:"
+msgstr "KONTAKTPERSONENS E-POST:"
+
+#: templates/projects/project_detail.html:57
+msgid "CONTACT PHONE:"
+msgstr "TELEFONNUMMER:"
 
 #~ msgid "Confirm"
 #~ msgstr "Bekräfta"
