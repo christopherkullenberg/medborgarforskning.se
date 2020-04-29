@@ -9,7 +9,7 @@ from products.models import Arcsreport
 from django.db.models import Q
 
 
-
+'''
 
 class ProductListView(ListView):
     '''
@@ -51,3 +51,4 @@ class SearchResultsView(ListView):
             Q(abstract__icontains=query
             ))
         return object_list
+'''

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+
+
+{% block content %}
+
+<h1>{{ article.title }}</h1>
+
+<p><b>Keywords:</b> {{ article.keyword }}</p>
+<p><b>Abstract:</b> {{ article.abstract }}</p>
+
+{% endblock content %}

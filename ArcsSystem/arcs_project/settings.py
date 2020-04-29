@@ -42,7 +42,8 @@ INSTALLED_APPS = [
 
 ### ArcsCore apps
     'blog', # enables the blog app of ArcsCore
-    'products', # enables the products app of ArcsCore
+    'publications', # enables the oublications app of ArcsCore
+    'products', #try to get rid of this one
     'projects', # enables the projects app of ArcsCore
 
 ### Custom user apps

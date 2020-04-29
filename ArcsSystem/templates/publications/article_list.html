@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+
+{% block content %}
+
+
+<form action="{% url 'search_results' %}" method="get">
+  <input name="x" type="text" placeholder="Search...">
+</form>
+
+
+{% for article in object_list %}
+<div class="post-entry">
+<h2><a href="">{{ article.title }}</a></h2>
+
+</div>
+{% endfor %}
+
+
+
+{% endblock content %}

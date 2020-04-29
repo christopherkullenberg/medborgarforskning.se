@@ -1,10 +1,11 @@
-from django.urls import path
-from .views import ProductListView
-from .views import ProductDetailView
-from .views import ArticleDetailView
-from .views import ArcsreportDetailView
-from .views import SearchResultsView
+#from django.urls import path
+#from .views import ProductListView
+#from .views import ProductDetailView
+#from .views import ArticleDetailView
+#from .views import ArcsreportDetailView
+#from .views import SearchResultsView
 
+'''
 urlpatterns = [
     path('', ProductListView.as_view(),
         name='product_list'),
@@ -16,3 +17,4 @@ urlpatterns = [
             name='arcsreport_detail'),
     path('search/', SearchResultsView.as_view(), name ='search_results'),
 ]
+'''

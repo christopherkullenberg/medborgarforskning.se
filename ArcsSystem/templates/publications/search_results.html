@@ -7,9 +7,9 @@
 
 {% block content %}
 
-{% for product in object_list %}
+{% for article in object_list %}
 <div class="post-entry">
-<h2><a href="{% url 'product_detail' product.pk %}">{{ product.name }}</a></h2>
+<h2><a href="{% url 'article_detail' article.pk %}">{{ article.title }}</a></h2>
 
 </div>
 {% endfor %}
