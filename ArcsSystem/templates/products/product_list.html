@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+<form action="{% url 'search_results' %}" method="get">
+  <input name="q" type="text" placeholder="Search...">
+</form>
+
+
+{% for product in object_list %}
+<div class="post-entry">
+<h2><a href="{% url 'product_detail' product.pk %}">{{ product.name }}</a></h2>
+
+</div>
+{% endfor %}
+
+
+
+{% endblock content %}
