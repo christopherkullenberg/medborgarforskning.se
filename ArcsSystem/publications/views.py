@@ -14,20 +14,20 @@ class ArticleListView(ListView):
     '''
     '''
     model = Article
-    template_name = 'publications/article_list.html'
+    template_name = 'publications/article_publication_list.html'
 
 
 class ArticleDetailView(DetailView):
     '''
     '''
     model = Article
-    template_name = 'publications/article_detail.html'
+    template_name = 'publications/article_publication_detail.html'
 
 
 
-class SearchResultsView(ListView):
+class SearchPublicationsView(ListView):
     model = Article
-    template_name = 'publications/search_results.html'
+    template_name = 'publications/search_publications_results.html'
 
     def get_queryset(self):
         query = self.request.GET.get('x')

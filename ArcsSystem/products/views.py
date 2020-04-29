@@ -1,12 +1,12 @@
-from django.shortcuts import render
-from django.shortcuts import get_object_or_404
-from django.contrib.auth.models import User
-from django.views.generic import ListView
-from django.views.generic import DetailView
-from products.models import Product
-from products.models import Article
-from products.models import Arcsreport
-from django.db.models import Q
+#from django.shortcuts import render
+#from django.shortcuts import get_object_or_404
+#from django.contrib.auth.models import User
+#from django.views.generic import ListView
+#from django.views.generic import DetailView
+#from products.models import Product
+#from products.models import Article
+#from products.models import Arcsreport
+#from django.db.models import Q
 
 
 '''

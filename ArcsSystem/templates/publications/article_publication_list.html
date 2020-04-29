@@ -6,10 +6,6 @@
 {% block content %}
 
 
-<form action="{% url 'search_results' %}" method="get">
-  <input name="x" type="text" placeholder="Search...">
-</form>
-
 
 {% for article in object_list %}
 <div class="post-entry">
