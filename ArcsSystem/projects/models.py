@@ -1,5 +1,12 @@
 from django.db import models
 
+
+
+class Keyword(models.Model):
+    keyword = models.TextField()
+    def __str__(self):
+        return f'{self.keyword}'
+
 class Project(models.Model):
     '''Required alphabetical'''
     aim = models.CharField(max_length=200, default='Empty')
@@ -15,6 +22,7 @@ class Project(models.Model):
     contact_affiliation = models.CharField(max_length=200, default='Empty')
     contact_email = models.CharField(max_length=200, default='Empty')
     contact_phone = models.CharField(max_length=200, default='Empty')
+    keywords = models.ManyToManyField(Keyword)
 
     # keywords
 
