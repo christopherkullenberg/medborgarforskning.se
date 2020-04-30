@@ -5,13 +5,6 @@
 {% block title %}Home{% endblock title %}
 
 {% block content %}
-{% if user.is_authenticated %}
-  Hi {{ user.username }}!
-  <p><a href="/accounts/logout">logout</a></p>
-{% else %}
-  <a href="/accounts/login">login</a> |
-  <a href="/accounts/signup">signup</a>
-{% endif %}
   <section>
     <h1> Welcome</h1>
     <p> This is static page welcome text controlled by the admin. </p>
