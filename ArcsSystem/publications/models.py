@@ -24,6 +24,11 @@ class Publication(models.Model):
 class Article(Publication):
     '''
     '''
+    doi = models.CharField(max_length=200, default="doi")
+    py = models.IntegerField(default="0")
+    authors = models.CharField(max_length=500, default="Author")
+
+
     def __str__(self):
         return self.title
 

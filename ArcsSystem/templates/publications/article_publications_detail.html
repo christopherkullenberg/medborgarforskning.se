@@ -8,7 +8,18 @@
 
 <h1>{{ article.title }}</h1>
 
-<p><b>Keywords:</b> {{ article.keyword }}</p>
+<p><b>Author(s):</b> {{ article.authors }}</p>
+
+<p><b>Publication Year:</b> {{ article.py }}</p>
+
+<p><b>Keywords:</b>
+  {% for keyword in article.keywords.all %}
+      {{ keyword }},    <!-- looks ugly but here is a comma -->
+  {% endfor %}
+</p>
+
 <p><b>Abstract:</b> {{ article.abstract }}</p>
+
+<p><b>Doi /URL: </b><a href="https://doi.org/{{ article.doi }}" >{{ article.doi }}</a></p>
 
 {% endblock content %}
