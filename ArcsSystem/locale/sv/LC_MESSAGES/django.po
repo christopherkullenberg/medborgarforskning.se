@@ -1,0 +1,97 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-04-29 09:11+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: arcs_project/settings.py:214
+msgid "English"
+msgstr "Engelska"
+
+#: arcs_project/settings.py:215
+msgid "Swedish"
+msgstr "Svenska"
+
+#: templates/blog/blog_list.html:7
+msgid "Blog home page (list view)"
+msgstr "Blog hem sida (listvy)"
+
+#: templates/blog/blog_list.html:15
+msgid "Blog detail view"
+msgstr "Blog detaljvy"
+
+#: templates/blog/blog_list.html:30
+msgid "next"
+msgstr "nästa"
+
+#: templates/blog/blog_list.html:31
+msgid "last"
+msgstr "sista"
+
+#: templates/projects/project_detail.html:22
+msgid "Project information"
+msgstr "Projektinformation"
+
+#: templates/projects/project_detail.html:26
+msgid "PROJECT STATUS:"
+msgstr "PROJEKTSTATUS:"
+
+#: templates/projects/project_detail.html:31
+msgid "PROJECT DESCRIPTION:"
+msgstr "PROJEKTBESKRIVNING:"
+
+#: templates/projects/project_detail.html:36
+msgid "PROJECT TARGET AUDIENCE:"
+msgstr "MÅLGRUPP:"
+
+#: templates/projects/project_detail.html:41
+msgid "PROJECT RECORD LAST UPDATED:"
+msgstr "UPPDATERAD:"
+
+#: templates/projects/project_detail.html:46
+msgid "MEDIA LINKS:"
+msgstr "MEDIELÄNKAR:"
+
+#: templates/projects/project_detail.html:52
+msgid "Contact information"
+msgstr "Kontaktinformation"
+
+#: templates/projects/project_detail.html:53
+msgid "NAME:"
+msgstr "NAMN:"
+
+#: templates/projects/project_detail.html:54
+msgid "CONTACT'S ROLE:"
+msgstr "KONTAKTPERSONENS ROLL:"
+
+#: templates/projects/project_detail.html:55
+msgid "AFFILIATION:"
+msgstr "AFFILIERING:"
+
+#: templates/projects/project_detail.html:56
+msgid "CONTACT EMAIL:"
+msgstr "KONTAKTPERSONENS E-POST:"
+
+#: templates/projects/project_detail.html:57
+msgid "CONTACT PHONE:"
+msgstr "TELEFONNUMMER:"
+
+#~ msgid "Confirm"
+#~ msgstr "Bekräfta"
+
+#~ msgid "Change Password"
+#~ msgstr "Ändra lösenord"

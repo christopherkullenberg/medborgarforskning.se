@@ -1,21 +1,33 @@
 from django.db import models
+from taggit.managers import TaggableManager
+from django.urls import reverse
 
-'''
-class Blog(models.Model):
-    name = models.CharField(max_length=100)
-    tagline = models.TextField()
+import datetime
 
-    def __str__(self):
-        return self.name
-'''
 
 class Post(models.Model):
-    name = models.CharField(max_length=100, default='default')
-    content = models.TextField()
+    '''
+    This is the basic model for a blog post
+    '''
+    slug = models.SlugField()
+    title = models.CharField(max_length=100, default='title')
+    published = models.DateField()# todo make name more focused on date like datapublished - could be confused with published status
+    content = models.TextField() #summernote field
+    tags = TaggableManager()
 
     def __str__(self):
-        return self.name
+        return self.title
 
+    # Ref doc - https://docs.djangoproject.com/en/2.2/ref/models/instances/#get-absolute-url
+    def get_absolute_url(self):
+        #return reverse('blog:archive_date_detail', args={'pk' : str(self.id)})
+        return reverse('blog:archive_date_detail',
+                       kwargs={'year' : self.published.year,
+                               'month' : self.published.month,
+                               'day' : self.published.day,
+                               'slug' : self.slug #change from pk id
+                               })
+        # instance.published|date:'Y', instance.published|date:'m', instance.published|date:'d' instance.id
 
 class Author(models.Model):
     name = models.CharField(max_length=200)
@@ -23,20 +35,3 @@ class Author(models.Model):
 
     def __str__(self):
         return self.name
-
-'''
-class Entry(models.Model):
-    blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
-    headline = models.CharField(max_length=255)
-    body_text = models.TextField()
-    pub_date = models.DateField()
-    mod_date = models.DateField()
-    authors = models.ManyToManyField(Author)
-    number_of_comments = models.IntegerField()
-    number_of_pingbacks = models.IntegerField()
-    rating = models.IntegerField()
-
-    def __str__(self):
-        return self.headline
-'''
-# Create your models here.

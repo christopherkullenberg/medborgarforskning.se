@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
-
+{% load static %}
+{% load i18n %}
 
 
 
@@ -18,42 +19,42 @@
   </picture>
 
   <div>
-    <h2>Project information</h2>
+    <h2>{% trans "Project information" %}</h2>
   </div>
 
   <div>
-    <h3>PROJECT STATUS:</h3>
+    <h3>{% trans "PROJECT STATUS:" %}</h3>
     <p>{{ project.status }}</p>
   </div>
 
   <div>
-    <h3>PROJECT DESCRIPTION:</h3>
+    <h3>{% trans "PROJECT DESCRIPTION:" %}</h3>
     <p>{{ project.description }}</p>
   </div>
 
   <div>
-    <h3>PROJECT TARGET AUDIENCE:</h3>
+    <h3>{% trans "PROJECT TARGET AUDIENCE:" %}</h3>
     <p>{{ project.target_audience}}</p>
   </div>
 
   <div>
-      <h3>PROJECT RECORD LAST UPDATED:</h3>
+      <h3>{% trans "PROJECT RECORD LAST UPDATED:" %}</h3>
       <p>{# TODO Insert last updated field when created in the model #}</p>
   </div>
 
   <div>
-      <h3>MEDIA LINKS:</h3>
+      <h3>{% trans "MEDIA LINKS:" %}</h3>
       <ul>
       </ul>
   </div>
 
   <div>
-    <h2>Contact information</h2>
-    <h3>NAME: {{ project.contact_name }}</h3>
-    <h3>CONTACT'S ROLE: {{ project.contact_role }}</h3>
-    <h3>AFFILIATION: {{ project.contact_affiliation }}</h3>
-    <h3>CONTACT EMAIL: {{ project.contact_email }}</h3>
-    <h3>CONTACT PHONE: {{ project.contact_phone }}</h3>
+    <h2>{% trans "Contact information" %}</h2>
+    <h3>{% trans  "NAME:" %} {{ project.contact_name }}</h3>
+    <h3>{% trans "CONTACT'S ROLE:" %} {{ project.contact_role }}</h3>
+    <h3>{% trans "AFFILIATION:" %} {{ project.contact_affiliation }}</h3>
+    <h3>{% trans "CONTACT EMAIL:" %} {{ project.contact_email }}</h3>
+    <h3>{% trans "CONTACT PHONE:" %} {{ project.contact_phone }}</h3>
   </div>
 
 </article>

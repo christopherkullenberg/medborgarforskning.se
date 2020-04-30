@@ -1,10 +1,15 @@
 {% extends 'base.html' %}
-
+{% load i18n %}
 
 {% block content %}
 
 {# this tag will insert a comment in the HMTL, but won't be rendered #}
 
-<p> Did this replace (now we are at blog_detail.html)</p>
+
+
+<h1>{% trans {{ object.title }} }</h1>
+<p>{% trans {{ object.content }} }</p>
+
+
 
 {% endblock content %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+
+<h1>{% trans Blog home page (list view) }</h1>
+
+{% for instance in object_list %}
+    <p>{{ instance.id }} - <a href='{{ instance.get_absolute_url }}'>{% trans {{ instance.title}} }, {{ instance.published }}</a></p>
+{% endfor %}
+
+
+
+{% endblock content %}

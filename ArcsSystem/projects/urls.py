@@ -4,6 +4,7 @@ from django.urls import path
 from .views import ProjectDetailView
 from .views import ProjectListView
 from .views import ProjectSubmitView
+from .views import SearchResultsView
 
 #from .views import #insertviewname
 
@@ -16,5 +17,6 @@ urlpatterns = [
         name='project_submissionform' ),
     path('<int:pk>/', ProjectDetailView.as_view(),
         name='project_detail'),
+    path('search/', SearchResultsView.as_view(), name ='search_results'),
 
 ]
