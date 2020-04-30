@@ -6,10 +6,14 @@
 {% block content %}
 
 
+<form action="" method="get">
+  <input name="q" type="text" placeholder="Search...">
+</form>
+
 
 {% for article in object_list %}
 <div class="post-entry">
-<h2><a href="">{{ article.title }}</a></h2>
+<h2><a href="{{ article.pk }}">{{ article.title }}</a></h2>
 
 </div>
 {% endfor %}

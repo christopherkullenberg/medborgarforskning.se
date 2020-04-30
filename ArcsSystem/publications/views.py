@@ -14,14 +14,14 @@ class ArticleListView(ListView):
     '''
     '''
     model = Article
-    template_name = 'publications/article_publication_list.html'
+    template_name = 'publications/article_publications_list.html'
 
 
 class ArticleDetailView(DetailView):
     '''
     '''
     model = Article
-    template_name = 'publications/article_publication_detail.html'
+    template_name = 'publications/article_publications_detail.html'
 
 
 
@@ -30,11 +30,11 @@ class SearchPublicationsView(ListView):
     template_name = 'publications/search_publications_results.html'
 
     def get_queryset(self):
-        query = self.request.GET.get('x')
+        query = self.request.GET.get('q')
         #
         object_list = Article.objects.filter(
-            Q(title__icontains=query))
-            #Q(keywords__keyword__icontains=query) |
-            #Q(abstract__icontains=query
-            #))
+            Q(title__icontains=query) |
+            Q(keywords__keyword__icontains=query) |
+            Q(abstract__icontains=query)
+            )
         return object_list
