@@ -265,7 +265,7 @@ ACCOUNT_USERNAME_REQUIRED = True
 
 # Request e-mail address from 3rd party account provider? E.g. using OpenID
 # AX, or the Facebook 'email' permission.
-# SOCIALACCOUNT_QUERY_EMAIL = ACCOUNT_EMAIL_REQUIRED
+SOCIALACCOUNT_QUERY_EMAIL = ACCOUNT_EMAIL_REQUIRED
 
 # Attempt to bypass the signup form by using fields (e.g. username, email)
 # retrieved from the social account provider. If a conflict arises due to a
@@ -301,15 +301,9 @@ LOGIN_REDIRECT_URL = '/' # redirects to profile page by default
 ACCOUNT_PRESERVE_USERNAME_CASING = False # reduces the delays in iexact lookups
 ACCOUNT_USERNAME_VALIDATORS = None
 
-
-#Account Signup
-ACCOUNT_FORMS = {'signup': '.forms.SignupForm',}
-
 #Social Account Settings - Provider specific settings
-
-SOCIALACCOUNT_QUERY_EMAIL=ACCOUNT_EMAIL_REQUIRED
-SOCIALACCOUNT_EMAIL_REQUIRED=ACCOUNT_EMAIL_REQUIRED
-SOCIALACCOUNT_STORE_TOKENS=False
+SOCIALACCOUNT_EMAIL_REQUIRED=ACCOUNT_EMAIL_REQUIRED # TODO verify this is still needed
+SOCIALACCOUNT_STORE_TOKENS=False # TODO verify this is still needed
 
 ### End AllAuth Config ###
 
