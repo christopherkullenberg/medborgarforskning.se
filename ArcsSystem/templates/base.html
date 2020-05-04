@@ -1,43 +1,124 @@
-{% load static %}{% load i18n %}{% load menu_tags %}<!DOCTYPE HTML>
-<html lang="en"> <!-- TODO replace "en" with django template for language -->
-	<header role="banner">
+{% load static %}{% load i18n %}{% load account %}{% load menu_tags %}<!DOCTYPE HTML>
+<html lang="{{ LANGUAGE_CODE }}">
+	<head role="banner">
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-		<meta name="Description" content="Medborgarforskning.se - Den svenska portalen för medborgarforskning">
+		<meta name="Description" content="{% trans "Medborgarforskning.se - The Swedish portal for citizen science." %}">
 		<!-- TODO Insert django tag for additional page metadata fields -->
-
 		<link href="{% static 'css/base-style.css' %}" rel="stylesheet">
 		<link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
 		<!-- TODO Insert django tag for additional scripts for the page-->
-
 		<!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 		<link href="https://fonts.googleapis.com/css?family=Lato|Playfair+Display&display=swap" rel="stylesheet" /> <!--TODO change to serve locally as it does not support integrity hash-->
-		<title>Medborgarforskning.se</title> <!-- TODO replace "Medborgarforskning.se" with django template for the page title -->
-	</header>
-
-	<!-- Load main nave as template include. -->
-	{% main_menu template="nav_main.html" %} <!-- TODO investigate why Pages don't display in the Menu, but static links do via Wagtail Admin -->
+		<title>{% block head_title %}Medborgarforskning.se{% endblock %}</title> <!-- TODO replace "Medborgarforskning.se" with django template for the page title -->
+    {% block extra_head %}
+    {% endblock %}
+	</head>
 	<!-- open body of page -->
-
 	<body>
-	  {% block content %}
-		<h1> Medborgarforskning.se!</h1>
-		<p> This base.html block should be replaced by a template defined block.
+		<!--<header-->
+		<div class="row">
+			<div class="col d-flex justify-content-center align-items-center" >
+				<div class="row">
+					<div class="col">
+						<img class="header-icons" src="{% static 'icons/Facebook_Brands_Icon_4.png' %}"/>
+					</div>
+					<div class="col">
+						<img class="header-icons" src="{% static 'icons/Linkedin_Brands_Icon_4.png' %}"/>
+					</div>
+					<div class="col">
+						<img class="header-icons" src="{% static 'icons/Instagram_Brands_Icon_4.png' %}"/>
+					</div>
+					<div class="col">
+						<img class="header-icons" src="{% static 'icons/Twitter_Square_Brands_Icon_4.png' %}"/>
+					</div>
+				</div>
+			</div>
+			<div id="header-main-logo" class="col d-flex justify-content-center align-items-center">
+				<img src="{% static 'icons/medborgarforskning-C-1000px_1.png' %}"/>
+			</div>
+			<div class="col d-flex justify-content-center align-items-center">
+				<div class="row">
+				<div class="col">
+					<img class="header-icons" src="{% static 'icons/Language_Icon_4.png' %}"/>
+				</div>
+				<div class="col">
+					<img class="header-icons" src="{% static 'icons/Hearing_Icon_3.png' %}"/>
+				</div>
+				<div class="col">
+					<img class="header-icons" src="{% static 'icons/Account_Circle_Icon_5.png' %}"/>
+				</div>
+			</div>
+		</div>
+		</div>
+		<div class="row header-main-menu">
+			<div class="col main-menu-buttons d-flex justify-content-center align-items-center text-center">
+				GETTING STARTED WITH CITIZEN SCIENCE
+			</div>
+			<div class="col main-menu-buttons d-flex justify-content-center align-items-center text-center">
+				CITIZEN SCIENCE IN PRACTICE
+			</div>
+			<div class="col main-menu-buttons d-flex justify-content-center align-items-center text-center">
+				CITIZEN SCIENCE IN SWEDEN
+			</div>
+			<div class="col d-flex justify-content-center align-items-center">
+				<!-- Actual search box -->
+				<div class="form-group has-search">
+					<svg class="form-control-feedback" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+					  <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 011.415 0l3.85 3.85a1 1 0 01-1.414 1.415l-3.85-3.85a1 1 0 010-1.415z" clip-rule="evenodd"/>
+					  <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 100-11 5.5 5.5 0 000 11zM13 6.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" clip-rule="evenodd"/>
+					</svg>
+					<input type="text" class="form-control" placeholder="Search">
+				</div>
+			</div>
+		</div>
 
-	  {% endblock content %}
-		<!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		{% block body %}
+
+		{% if messages %}
+		<div>
+			<strong>Messages:</strong>
+			<ul>
+				{% for message in messages %}
+				<li>{{message}}</li>
+				{% endfor %}
+			</ul>
+		</div>
+		{% endif %}
+
+		<div>
+			{% if user.is_authenticated %}
+			  {% trans "Hi" %} {{ user.username }}!
+			  <p><a href="{% url 'account_logout' %}">Sign Out</a></p>
+			{% else %}
+			  <a href="{% url 'account_login' %}">{% trans "Sign In" %}</a> |
+			  <a href="{% url 'account_signup' %}">{% trans "Sign Up" %}</a>
+			{% endif %}
+		</div>
+
+			<main id="content">{# Contents of Main are for the main target of the page. #}
+
+	  	{% block content %}
+			<h1>{% trans "Medborgarforskning.se!" %}</h1>
+			<p>{% trans "This base.html block should be replaced by a template defined block." %}
+	  	{% endblock content %}
+			</main>
+			{% endblock body %}
+			<!-- allauth base.html -->
+			{% block extra_body %}
+	    {% endblock %}
+			<!-- End allauth base.html -->
+			<!-- Optional JavaScript -->
+    	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-	</body>
 
+	</body>
 	<footer>
 		<nav id="footer-nav" aria-label="Footer">
 			<!-- list of links to about and other reference and contact -->
 		</nav>
-
   </footer>
-
 </html>
