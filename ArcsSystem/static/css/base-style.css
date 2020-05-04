@@ -60,10 +60,10 @@ body {
 
 .header-main-menu {
   background-color: #255C61;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-top: 15px;
-  padding-bottom: 15px;
+  padding-left: 60px !important;
+  padding-right: 60px !important;
+  padding-top: 15px !important;
+  padding-bottom: 15px !important;
 }
 
 .main-menu-buttons {
@@ -91,4 +91,51 @@ body {
     pointer-events: none;
     color: #aaa;
     padding: 10px;
+}
+
+.container-footer {
+   border-top: 1px solid;
+}
+
+.container-footer-menu {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.main-footer-participiate {
+  background-color: #255C61;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.footer-patner-logo {
+  width: 120px;
+}
+
+.footer-menu-font>li>a{
+  font-family: Lato;
+  font-style: bold !important;
+  color: #255C61;
+}
+
+.policy-footer-font, .policy-footer-font a{
+    font-family: Lato;
+    font-size: 12px;
+}
+
+.policy-footer-font a{
+    color: #255C61;
+}
+
+.policy-footer-menu{
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.cc-by-footer {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border-top: 1px solid;
 }

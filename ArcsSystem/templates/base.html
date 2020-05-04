@@ -18,61 +18,81 @@
 	<!-- open body of page -->
 	<body>
 		<!--<header-->
-		<div class="row">
-			<div class="col d-flex justify-content-center align-items-center" >
-				<div class="row">
-					<div class="col">
-						<img class="header-icons" src="{% static 'icons/Facebook_Brands_Icon_4.png' %}"/>
-					</div>
-					<div class="col">
-						<img class="header-icons" src="{% static 'icons/Linkedin_Brands_Icon_4.png' %}"/>
-					</div>
-					<div class="col">
-						<img class="header-icons" src="{% static 'icons/Instagram_Brands_Icon_4.png' %}"/>
-					</div>
-					<div class="col">
-						<img class="header-icons" src="{% static 'icons/Twitter_Square_Brands_Icon_4.png' %}"/>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col d-flex justify-content-center align-items-center" >
+					<div class="row">
+						<div class="col">
+							<a href="#">
+								<img class="header-icons" src="{% static 'icons/Facebook_Brands_Icon_4.png' %}"/>
+							</a>
+						</div>
+						<div class="col">
+							<a href="#">
+								<img class="header-icons" src="{% static 'icons/Linkedin_Brands_Icon_4.png' %}"/>
+							</a>
+						</div>
+						<div class="col">
+							<a href="#">
+								<img class="header-icons" src="{% static 'icons/Instagram_Brands_Icon_4.png' %}"/>
+							</a>
+						</div>
+						<div class="col">
+							<a href="#">
+								<img class="header-icons" src="{% static 'icons/Twitter_Square_Brands_Icon_4.png' %}"/>
+							</a>
+						</div>
 					</div>
 				</div>
-			</div>
-			<div id="header-main-logo" class="col d-flex justify-content-center align-items-center">
-				<img src="{% static 'icons/medborgarforskning-C-1000px_1.png' %}"/>
-			</div>
-			<div class="col d-flex justify-content-center align-items-center">
-				<div class="row">
-				<div class="col">
-					<img class="header-icons" src="{% static 'icons/Language_Icon_4.png' %}"/>
+				<div id="header-main-logo" class="col d-flex justify-content-center align-items-center">
+					<img src="{% static 'icons/medborgarforskning-C-1000px_1.png' %}"/>
 				</div>
-				<div class="col">
-					<img class="header-icons" src="{% static 'icons/Hearing_Icon_3.png' %}"/>
+				<div class="col d-flex justify-content-center align-items-center">
+					<div class="row">
+					<div class="col">
+						<a href="#">
+							<img class="header-icons" src="{% static 'icons/Language_Icon_4.png' %}"/>
+						</a>
+					</div>
+					<div class="col">
+						<a href="#">
+							<img class="header-icons" src="{% static 'icons/Hearing_Icon_3.png' %}"/>
+						</a>
+					</div>
+					<div class="col">
+						<a href="#">
+							<img class="header-icons" src="{% static 'icons/Account_Circle_Icon_5.png' %}"/>
+						</a>
+					</div>
 				</div>
-				<div class="col">
-					<img class="header-icons" src="{% static 'icons/Account_Circle_Icon_5.png' %}"/>
 				</div>
 			</div>
 		</div>
-		</div>
-		<div class="row header-main-menu">
-			<div class="col main-menu-buttons d-flex justify-content-center align-items-center text-center">
-				GETTING STARTED WITH CITIZEN SCIENCE
-			</div>
-			<div class="col main-menu-buttons d-flex justify-content-center align-items-center text-center">
-				CITIZEN SCIENCE IN PRACTICE
-			</div>
-			<div class="col main-menu-buttons d-flex justify-content-center align-items-center text-center">
-				CITIZEN SCIENCE IN SWEDEN
-			</div>
-			<div class="col d-flex justify-content-center align-items-center">
+		<nav class="navbar navbar-expand-lg header-main-menu">
+		  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+			  <li class="nav-item active">
+				<a class="nav-link main-menu-buttons" href="#"> GETTING STARTED WITH CITIZEN SCIENCE </a>
+			  </li>
+			  <li class="nav-item">
+				<a class="nav-link main-menu-buttons" href="#"> CITIZEN SCIENCE IN PRACTICE </a>
+			  </li>
+			  <li class="nav-item">
+				<a class="nav-link main-menu-buttons" href="#"> CITIZEN SCIENCE IN SWEDEN </a>
+			  </li>
+			</ul>
+			<form class="form-inline">
 				<!-- Actual search box -->
 				<div class="form-group has-search">
 					<svg class="form-control-feedback" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
 					  <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 011.415 0l3.85 3.85a1 1 0 01-1.414 1.415l-3.85-3.85a1 1 0 010-1.415z" clip-rule="evenodd"/>
 					  <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 100-11 5.5 5.5 0 000 11zM13 6.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" clip-rule="evenodd"/>
 					</svg>
-					<input type="text" class="form-control" placeholder="Search">
+					<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
 				</div>
-			</div>
-		</div>
+			</form>
+		  </div>
+		</nav>
 
 		{% block body %}
 
@@ -114,11 +134,87 @@
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+		<div class="container-fluid container-footer">
+			<nav class="navbar navbar-default navbar-expand-lg container-footer-menu">
+				<!-- Collection of nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse justify-content-start">
+					<ul class="nav navbar-nav footer-menu-font">
+						<li class="nav-item"><a href="#" class="nav-link">About us</a></li>
+						<li class="nav-item"><a href="#" class="nav-link">PRESS</a></li>
+						<li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
+						<li class="nav-item"><a href="#" class="nav-link">For Developers-API</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right ml-auto">
+						<li class="nav-item d-flex justify-content-center align-items-center"> Follow medborgarforskning.se: </li>
+						<li class="nav-item"><a href="#" class="nav-link">
+							<img class="header-icons" src="{% static 'icons/Facebook_Brands_Icon_4.png' %}"/>
+						</a></li>
+						<li class="nav-item"><a href="#" class="nav-link">
+							<img class="header-icons" src="{% static 'icons/Linkedin_Brands_Icon_4.png' %}"/>
+						</a></li>
+						<li class="nav-item"><a href="#" class="nav-link">
+							<img class="header-icons" src="{% static 'icons/Instagram_Brands_Icon_4.png' %}"/>
+						</a></li>
+						<li class="nav-item"><a href="#" class="nav-link">
+							<img class="header-icons" src="{% static 'icons/Twitter_Square_Brands_Icon_4.png' %}"/>
+						</a></li>
+					</ul>
+
+				</div>
+			</nav>
+				<div class="row main-footer-participiate d-flex justify-content-center align-items-center">
+					<div class="col main-menu-buttons">
+						ARCS Partners:
+					</div>
+					<div class="col participiate-logo">
+						<img class="footer-patner-logo"  src="{% static 'icons/gu-neg-500px-square-300x300.png' %}"/>
+					</div>
+					<div class="col participiate-logo">
+						<img class="footer-patner-logo"  src="{% static 'icons/slu-neg-500px-300x300.png' %}"/>
+					</div>
+					<div class="col participiate-logo">
+						<img class="footer-patner-logo"  src="{% static 'icons/umu-neg-500px-300x300.png' %}"/>
+					</div>
+					<div class="col">
+						<img class="footer-patner-logo"  src="{% static 'icons/va-neg-500px-square-B-300x300.png' %}"/>
+					</div>
+				</div>
+				<div class="row justify-content-center policy-footer-font policy-footer-menu">
+					<div class="col-4">
+						<div class="row">
+							<div class="col">
+								<a href="#">
+								Terms of service
+								</a>
+							</div>
+							<div class="col">
+								<a href="#">
+								Privacy policy
+								</a>
+							</div>
+							<div class="col">
+								<a href="#">
+								Cookies policy
+								</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-4">
+						<a href="#">
+						Powered by: The ARCS open source platform
+						</a>
+					</div>
+				</div>
+				<div class="row cc-by-footer justify-content-center">
+					<div class="col-1">
+						<img id="cc-by" src="{% static 'icons/CC-BY_icon.svg' %}"/>
+					</div>
+					<div class="col-7 policy-footer-font d-flex align-items-center">
+						<p>Except where otherwise <a href="#"> noted,</a> content on this site is licensed under a <a href="#"> Creative Commons Attribution 4.0 International License.</a></p>
+					</div>
+				</div>
+		</div>
 
 	</body>
-	<footer>
-		<nav id="footer-nav" aria-label="Footer">
-			<!-- list of links to about and other reference and contact -->
-		</nav>
-  </footer>
+
 </html>
