@@ -8,18 +8,22 @@
 
 <h1>{{ article.title }}</h1>
 
-<p><b>Author(s):</b> {{ article.authors }}</p>
+<p><b>{% trans "Authors" %}:</b> {{ article.authors }}</p>
 
-<p><b>Publication Year:</b> {{ article.py }}</p>
+<p><b>{% trans "Publication Year" %}:</b> {{ article.py }}</p>
+<p><b>{% trans "Journal" %}:</b> {{ article.source }}</p>
+<p><b>{% trans "Volume/Issue" %}:</b> {{ article.volume }}({{ article.issue }})</p>
 
-<p><b>Keywords:</b>
+<p><b>{% trans "Keywords" %}:</b>
   {% for keyword in article.keywords.all %}
       {{ keyword }},    <!-- looks ugly but here is a comma -->
   {% endfor %}
 </p>
 
-<p><b>Abstract:</b> {{ article.abstract }}</p>
+<p><b>DOI /URL: </b><a href="https://doi.org/{{ article.doi }}" >{{ article.doi }}</a></p>
 
-<p><b>Doi /URL: </b><a href="https://doi.org/{{ article.doi }}" >{{ article.doi }}</a></p>
+
+<p><b>{% trans "Abstract" %}:</b> {{ article.abstract }}</p>
+
 
 {% endblock content %}
