@@ -24,7 +24,6 @@ class ArticleDetailView(DetailView):
     template_name = 'publications/article_publications_detail.html'
 
 
-
 class SearchPublicationsView(ListView):
     model = Article
     template_name = 'publications/search_publications_results.html'
