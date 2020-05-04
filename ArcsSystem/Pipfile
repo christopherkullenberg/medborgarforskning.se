@@ -19,4 +19,4 @@ django-allauth = "==0.41.0"
 django-taggit = "*"
 
 [requires]
-python_version = "3.7"
+python_version = "3"
