@@ -8,7 +8,7 @@ from .views import SearchResultsView
 
 #from .views import #insertviewname
 
-
+app_name = 'projects'
 
 urlpatterns = [
     path('', ProjectListView.as_view(),
