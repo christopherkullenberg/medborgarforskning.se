@@ -36,5 +36,5 @@ class SearchPublicationsView(ListView):
             Q(title__icontains=query) |
             Q(keywords__keyword__icontains=query) |
             Q(abstract__icontains=query)
-            )
+            ).distinct()
         return object_list

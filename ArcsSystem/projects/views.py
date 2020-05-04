@@ -59,5 +59,5 @@ class SearchResultsView(ListView):
         #
         object_list = Project.objects.filter(
             Q(name__icontains=query) | Q(keywords__keyword__icontains=query)
-        )
+        ).distinct()
         return object_list
