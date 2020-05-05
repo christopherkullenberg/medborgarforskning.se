@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.urls import path,reverse
 
 
 class Keyword(models.Model):
@@ -25,7 +25,8 @@ class Project(models.Model):
     keywords = models.ManyToManyField(Keyword)
 
     # keywords
-
+    def get_absolute_url(self):
+        return reverse("project_detail", kwargs={'pk': self.id})
 
     def __str__(self):
         return self.name
