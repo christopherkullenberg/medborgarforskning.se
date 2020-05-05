@@ -61,3 +61,17 @@ class SearchResultsView(ListView):
             Q(name__icontains=query) | Q(keywords__keyword__icontains=query)
         ).distinct()
         return object_list
+
+
+class StaticKeywordView(ListView):
+    model = Project
+    template_name = 'projects/search_results_pure.html'
+
+    def get_queryset(self):
+        query = "bird"
+        #
+        object_list = Project.objects.filter(
+            Q(name__icontains=query) | Q(keywords__keyword__icontains=query)
+        ).distinct()
+        return object_list
+        

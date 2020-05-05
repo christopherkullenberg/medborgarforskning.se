@@ -1,7 +1,12 @@
+
 {% extends 'base.html' %}
 {% load i18n %}
 
 {% block content %}
+
+
+
+
 
 {# this tag will insert a comment in the HMTL, but won't be rendered #}
 
@@ -11,6 +16,15 @@
 <p> {{ object.content }} </p>
 
 {% endautoescape %}
+
+
+
+{% for project in search_results %}
+
+
+<p>{{ project.title }}...</p>
+
+{% endfor %}
 
 
 {% endblock content %}
