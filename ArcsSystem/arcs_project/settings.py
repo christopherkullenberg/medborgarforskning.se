@@ -27,7 +27,7 @@ SECRET_KEY = 'bre=h5g+29%aw6&cpwbn9b75&ei&-=h_*c3778rcd9j%avnp-g' # TODO extract
 DEBUG = True # TODO extract to environment variable
 
 ### use domain name not IP address for security
-ALLOWED_HOSTS = ['localhost','127.0.0.1', '0.0.0.0','dev.medborgarforskning.se', 'arcstest.brierjon.com']
+ALLOWED_HOSTS = ['localhost','127.0.0.1', '0.0.0.0','dev.medborgarforskning.se', 'arcstest.brierjon.com', "*"]
 
 # Application definition
 
