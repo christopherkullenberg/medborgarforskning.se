@@ -35,17 +35,21 @@ with open('publications.yaml', 'w') as f:
         authors = v[0].replace('"', ' ')
         py = v[1]
         source = v[2].replace('"', ' ')
+        if len(v[3]) == 0:
+            continue
         issue = v[3]
         volume = v[4]
+        if len(v[5]) == 0:
+            continue
         DOI = v[5]
         abstract = v[6].replace('"', ' ')
-        keywords = v[7].replace('"', ' ')
+        #keywords = v[7].replace('"', ' ')
 
-        f.write('- model: publications.Article\n')
+        f.write('- model: publications.article\n')
         f.write('  pk: ' + str(pk) + "\n")
         f.write('  fields:\n')
         f.write('    title: "' + title.replace(':', ' ') + '"\n')
-        f.write('    keywords: "' + keywords + '"\n')
+        #f.write('    keywords: "' + keywords + '"\n')
         f.write('    abstract: "' + abstract + '"\n')
         f.write('    doi: ' + DOI + "\n")
         f.write('    py: ' + py + "\n")
