@@ -320,10 +320,6 @@ LOGIN_REDIRECT_URL = '/' # redirects to profile page by default
 ACCOUNT_PRESERVE_USERNAME_CASING = False # reduces the delays in iexact lookups
 ACCOUNT_USERNAME_VALIDATORS = None
 
-#Social Account Settings - Provider specific settings
-SOCIALACCOUNT_EMAIL_REQUIRED=ACCOUNT_EMAIL_REQUIRED # TODO verify this is still needed
-SOCIALACCOUNT_STORE_TOKENS=False # TODO verify this is still needed
-
 ### End AllAuth Config ###
 
 ### Email Config Begin ###
