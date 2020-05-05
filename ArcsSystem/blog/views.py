@@ -8,8 +8,8 @@ from django.views.generic.dates import DayArchiveView
 from blog.models import (Author,
                          Post
                          )
-from products.models import Product
-from projects.models import Project
+#from products.models import Product
+#from projects.models import Project
 
 
 
@@ -31,7 +31,7 @@ class BlogPostIndexView(ListView):
     template_name = 'blog/blog_list.html'
     queryset = Post.objects.all()
     # Pagination documentation https://docs.djangoproject.com/en/3.0/topics/pagination/
-    paginate_by = 3    # Change this to include more posts 
+    paginate_by = 3    # Change this to include more posts
 
 class BlogPostYearArchiveView(YearArchiveView):
     template_name = 'blog/blog_list.html'
