@@ -8,8 +8,8 @@ from django.views.generic.dates import DayArchiveView
 from blog.models import (Author,
                          Post
                          )
-from products.models import Product
-from projects.models import Project
+#from products.models import Product
+#from projects.models import Project
 
 
 

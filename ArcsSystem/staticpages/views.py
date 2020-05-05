@@ -1,13 +1,14 @@
 from django.shortcuts import render
+from django.views.generic import ListView
+from django.views.generic import DetailView
+from staticpages.models import Page
 
-'''
-# Quick Fuction based template
-def template_view(request):
-'''
-'''
-    context = {
-        }
-    return render(request, 'exampletemplate.html', context)
-'''
+class StaticDetailView(DetailView):
+    model = Page
+    template_name = 'staticpages/staticpage.html'
 
-# Create your views here.
+
+class PageListView(ListView):
+    model = Page
+    template_name = 'staticpages/staticpage_list.html'
+    

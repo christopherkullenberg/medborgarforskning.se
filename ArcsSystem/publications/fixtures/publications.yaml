@@ -1,0 +1,110 @@
+- model: publications.article
+  pk: 1
+  fields:
+    title: "Social Media as a Platform for a Citizen Science Community of Practice"
+    abstract: "As citizen science inherently relies upon unpaid contributors, providing a positive experience for participants is critical. This case study describes the use of social media to support participants of the New Zealand Garden Bird Survey and examines the group’s interactions in its first year through the lens of a community of practice. Communities of practice can provide forums for learning, which is an important outcome of participation by environmental volunteers. Social media can provide the setting for an online community of practice that can support dispersed groups of volunteers and requires little daily input from administrators. While the NZ Garden Bird Survey runs for only nine days annually in June–July, this Facebook group continued to be active and attract new members throughout the year. In the first year of its existence, the group grew to 1,275 members who generated nearly 75,000 interactions (posts, comments, likes, and shares). The group was used to share enthusiasm, ideas, and knowledge about New Zealand’s garden birds. A wide range of birding expertise, from novice to expert, was displayed. The group’s interactions include shared interests, contributed stories, and collective learning. This paper documents our experiences setting up and administering this group and provides advice for citizen science programs that want to use social media to support a community of practice."
+    doi: 10.5334/cstp.108
+    py: 2018
+    authors: "Liberatore, Andrea; Bowkett, Erin; MacLeod, Catriona J.; Spurr, Eric; Longnecker, Nancy"
+    source: "Citizen Science: Theory and Practice"
+    volume: 3
+    issue: 1
+- model: publications.article
+  pk: 2
+  fields:
+    title: "Citizen science and observer variability during American pika surveys"
+    abstract: "Within- and between-group observer variability can confound scientific discovery. If observer variability can be quantified and is addressed, data collected by participants with wide ranges of experience and training can yield more reliable inferences. The American pika (Ochotona princeps) is a mammalian sentinel of climate change that has received consideration for listing under the United States Endangered Species Act. As a result, numerous pika monitoring initiatives have been started throughout the mountains in western North America. Some initiatives employ research teams of biological science technicians (professionals), whereas many rely on networks of citizen scientists, or volunteers, for data collection. To date, few studies have quantified observer variability during pika surveys; none have explored the reliability of professional crews or volunteers. We conducted pika surveys in Glacier National Park, Montana, to quantify observer variability. We investigated observer variability 1) among a crew of professionals, 2) among volunteers, and 3) between professionals and volunteers. Professionals were more consistent at identifying pika signs and estimating potential home ranges and consistently found more pika signs than did the volunteers, with the exception of pika sightings. Estimates of pika occupancy were consistent at each site among volunteers conducting sitting surveys. We suggest that sitting surveys conducted by volunteers can reliably detect pika site occupancy. However, data on population dynamics of pikas (e.g., density) should be collected by professionals. Observer variability analyses of this nature should be common practice for wildlife-resource managers and scientists, especially with observers of varying levels of experience and motivation. (c) 2012 The Wildlife Society."
+    doi: 10.1002/jwmg.373
+    py: 2012
+    authors: "Moyer-Horner, Lucas; Smith, Matthew M.; Belt, Jami"
+    source: "JOURNAL OF WILDLIFE MANAGEMENT"
+    volume: 76
+    issue: 7
+- model: publications.article
+  pk: 3
+  fields:
+    title: "Knowledge Gain and Behavioral Change in Citizen-Science Programs"
+    abstract: "Citizen-science programs are often touted as useful for advancing conservation literacy, scientific knowledge, and increasing scientific-reasoning skills among the public. Guidelines for collaboration among scientists and the public are lacking and the extent to which these citizen-science initiatives change behavior is relatively unstudied. Over two years, we studied 82 participants in a three-day program that included education about non-native invasive plants and collection of data on the occurrence of those plants. Volunteers were given background knowledge about invasive plant ecology and trained on a specific protocol for collecting invasive plant data. They then collected data and later gathered as a group to analyze data and discuss responsible environmental behavior with respect to invasive plants. We tested whether participants without experience in plant identification and with little knowledge of invasive plants increased their knowledge of invasive species ecology, participation increased knowledge of scientific methods, and participation affected behavior. Knowledge of invasive plants increased on average 24%, but participation was insufficient to increase understanding of how scientific research is conducted. Participants reported increased ability to recognize invasive plants and increased awareness of effects of invasive plants on the environment, but this translated into little change in behavior regarding invasive plants. Potential conflicts between scientific goals, educational goals, and the motivation of participants must be considered during program design."
+    doi: 10.1111/j.1523-1739.2011.01745.x
+    py: 2011
+    authors: "Jordan, Rebecca C.; Gray, Steven A.; Howe, David V.; Brooks, Wesley R.; Ehrenfeld, Joan G."
+    source: "CONSERVATION BIOLOGY"
+    volume: 25
+    issue: 6
+- model: publications.article
+  pk: 4
+  fields:
+    title: "Oil frontiers and indigenous resistance in the Peruvian Amazon"
+    abstract: ""
+    doi: 10.1016/j.ecolecon.2010.04.022
+    py: 2010
+    authors: "Orta-Martínez, Martí; Finer, Matt"
+    source: "Ecological Economics"
+    volume: 70
+    issue: 2
+- model: publications.article
+  pk: 5
+  fields:
+    title: "Impacts of petroleum activities for the Achuar people of the Peruvian Amazon  summary of existing evidence and research gaps"
+    abstract: ""
+    doi: 10.1088/1748-9326/2/4/045006
+    py: 2007
+    authors: "Orta Martínez, Martí; Napolitano, Dora A; MacLennan, Gregor J; O’Callaghan, Cristina; Ciborowski, Sylvia; Fabregas, Xavier"
+    source: "Environmental Research Letters"
+    volume: 2
+    issue: 4
+- model: publications.article
+  pk: 6
+  fields:
+    title: "Getting to know ourselves and our places through participation in civic social assessment"
+    abstract: "Civic science (involving citizens as researchers) expands opportunities for learning among citizens, scientists, and managers. Citizens have knowledge that often is inaccessible using traditional research methods. How we think about places-be they communities, forests, or a forest site-frames and often limits what we can discover. This is especially true when we are interested in learning about the relations between people and places that are important to them. Limiting ourselves to traditional research methods results in incomplete knowledge and limited understanding. This paper reports on a study that used nontraditional research methods to actively involve citizens in a community assessment process. The paper (I) demonstrates that researchers can gain a more complete understanding of social systems using nontraditional methods; (2) illustrates how people can reconnect with their, community and gain a new understanding of themselves and others through engagement in a self-assessment process; and (3) describes one example of civic science used in community assessment."
+    doi: 10.1080/089419200403866
+    py: 2000
+    authors: "Kruger, L. E.; Shannon, M. A."
+    source: "Society & Natural Resources"
+    volume: 13
+    issue: 5
+- model: publications.article
+  pk: 7
+  fields:
+    title: "Community environmental policing  Assessing new strategies of public participation in environmental regulation"
+    abstract: "This paper evaluates a new form of public participation in environmental monitoring and regulation advanced through local “bucket brigades,” which allow community members to sample air emissions near industrial facilities. These brigades represent a new form of community environmental policing, in which residents participate in collecting, analyzing, and deploying environmental information, and more importantly, in an array of public policy dialogues. Use of this sampling technology has had marked effects on local residents' perceptions and participation in emergency response and citizens' right‐to‐know. However, when viewed through the lens of the more developed literature on community policing, the bucket brigades are currently limited in their ability to encourage “co‐production” of environmental protection between citizens and the state. Means are examined to strengthen the bucket brigades and to more broadly support community participation in environmental regulation. © 2003 by the Association for Public Policy Analysis and Management."
+    doi: 10.1002/pam.10138
+    py: 2003
+    authors: "O'Rourke, Dara; Macey, Gregg P."
+    source: "Journal of Policy Analysis and Management"
+    volume: 22
+    issue: 3
+- model: publications.article
+  pk: 8
+  fields:
+    title: "Moving engagement  upstream ? Nanotechnologies and the Royal Society and Royal Academy of Engineering's inquiry"
+    abstract: "In response to the impetus that is gathering in the UK for upstream public engagement, we analyze the impacts of the Royal Society and Royal Academy of Engineering report of 2004 on Nanoscience and Nanotechnologies: Opportunities and Uncertainties. The paper presents an analysis of 24 interviews with stakeholders to the nanotechnology debate. It uses these to discuss the inquiry process and the recommendations contained within the report, as well as to explore and critique the notion of  upstream.  We find broad support for the inquiry, which was positioned by many stakeholders itself as upstream, primarily because of its broad framing and wide stakeholder involvement. A number of both explicit and implicit upstream elements are also contained within its recommendations. However, the interviews also suggest that the notion of upstream engagement is a contested concept with a range of associated dilemmas and tensions. In drawing out some of the promise and perils of moving public debate upstream, the paper concludes that there is a risk of merely replacing the perceived deficit in public understanding of science with a perceived deficit in public engagement with science."
+    doi: 10.1177/0963662506076141
+    py: 2007
+    authors: "Rogers-Hayden, Tee; Pidgeon, Nick"
+    source: "Public Understanding of Science"
+    volume: 16
+    issue: 3
+- model: publications.article
+  pk: 9
+  fields:
+    title: "The role of research in evaluating conservation strategies in Tanzania  the case of the Katavi-Rukwa ecosystem"
+    abstract: "Strict protectionism, resource extraction, protected-area community outreach, ecotourism, an integrated conservation and development program, comanagement schemes, and citizen-science initiatives are all being used to help conserve the remote Katavi Rukwa ecosystem in western Tanzania. Biological and social research show that protectionism is successful in the conservation of large mammals but fails to capture diverse species communities; extractivism is appropriate for some resources but not for others; protected-area outreach can be effective for some communities; and devolved control over wildlife, in conjunction with ecotourism and citizen science, has considerable potential in the area. The long-term nature of the research provides the necessary time frame to evaluate outcomes of different conservation strategies, uncovers dynamics within communities that affect attitudes and responses to conservation initiatives, provides impartial recommendations because changing research personnel offers different viewpoints, and, probably most importantly, enhances trust among stakeholders. Currently, there are limited institutional mechanisms for ensuring the input of biological and social science in shaping conservation practice in Tanzania, and long-term research can help informally bridge the gap."
+    doi: 10.1111/j.1523-1739.2007.00703.x
+    py: 2007
+    authors: "Mulder, Monique Borgerhoff; Caro, Tim; Msago, Omari Ayubu"
+    source: "Conservation Biology"
+    volume: 21
+    issue: 3
+- model: publications.article
+  pk: 10
+  fields:
+    title: "Shifting subject positions - Experts and lay people in public dialogue"
+    abstract: "Public dialogue about science, technology and medicine is an established part of the activities of a range of charities, private corporations, governmental departments and scientific institutions. However, the extent to which these activities challenge or bridge the lay-expert divide is questionable. Expertise is contested, by the public and the community of scholars who study and/or facilitate public engagement. In this paper, we explore the dynamics of expertise and their implications for the lay-expert divide at a series of public events about the new genetics. We examine participants' claims to expertise and consider how this relates to their claims to credibility and legitimacy and the way in which these events unfolded. Using a combination of ethnographic and discursive analysis, we found that participants supplemented technical expertise with other expert and lay perspectives. We can also link participants' claims to expertise to their generally positive appraisal of genetic research and services. The colonization of lay positions by expert speakers and the hybrid positioning of lay-experts was characteristic of the consensus and conservatism that emerged. This leads us to conclude that public engagement activities will not challenge the dominance of technical expertise in decision-making about science, technology and medicine without more explicit and reflexive problematization of the dynamics of expertise therein."
+    doi: 10.1177/03063127056068492
+    py: 2007
+    authors: "Kerr, Anne; Cunningham-Burley, Sarah; Tutton, Richard"
+    source: "Social Studies of Science"
+    volume: 37
+    issue: 3

@@ -1,0 +1,31 @@
+
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+
+{% load publications_extras %}
+
+
+
+{# this tag will insert a comment in the HMTL, but won't be rendered #}
+
+{% autoescape off %} <!-- This makes Summernote possible -->
+
+<h1>{{ object.title }}</h1>
+<p> {{ object.content }} </p>
+
+{% endautoescape %}
+
+
+
+
+
+<h2>Related literature</h2>
+<ul>
+{% for q in "citizen"|query_publications %}
+<li>{{q}}</li>
+{% endfor %}
+</ul>
+
+{% endblock content %}
