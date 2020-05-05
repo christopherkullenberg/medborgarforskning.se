@@ -37,3 +37,11 @@ class SearchPublicationsView(ListView):
             Q(abstract__icontains=query)
             ).distinct()
         return object_list
+
+    def get_queryset_template(query):
+        object_list = Article.objects.filter(
+            Q(title__icontains=query) |
+            Q(keywords__keyword__icontains=query) |
+            Q(abstract__icontains=query)
+            ).distinct()
+        return object_list

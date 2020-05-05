@@ -4,7 +4,7 @@
 
 {% block content %}
 
-
+{% load publications_extras %}
 
 
 
@@ -19,12 +19,13 @@
 
 
 
-{% for project in search_results %}
 
 
-<p>{{ project.title }}...</p>
-
+<h2>Related literature</h2>
+<ul>
+{% for q in "citizen"|query_publications %}
+<li>{{q}}</li>
 {% endfor %}
-
+</ul>
 
 {% endblock content %}

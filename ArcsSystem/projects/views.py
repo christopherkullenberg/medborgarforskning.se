@@ -68,10 +68,9 @@ class StaticKeywordView(ListView):
     template_name = 'projects/search_results_pure.html'
 
     def get_queryset(self):
-        query = "bird"
+        query = self.request.GET.get('q')
         #
         object_list = Project.objects.filter(
             Q(name__icontains=query) | Q(keywords__keyword__icontains=query)
         ).distinct()
         return object_list
-        
