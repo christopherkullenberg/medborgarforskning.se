@@ -5,11 +5,12 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 		<meta name="Description" content="{% trans "Medborgarforskning.se - The Swedish portal for citizen science." %}">
 		<!-- TODO Insert django tag for additional page metadata fields -->
-		<link href="{% static 'css/base-style.css' %}" rel="stylesheet">
+
 		<link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
 		<!-- TODO Insert django tag for additional scripts for the page-->
 		<!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+		<link href="{% static 'css/base-style.css' %}" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Lato|Playfair+Display&display=swap" rel="stylesheet" /> <!--TODO change to serve locally as it does not support integrity hash-->
 		<title>{% block head_title %}Medborgarforskning.se{% endblock %}</title> <!-- TODO replace "Medborgarforskning.se" with django template for the page title -->
     {% block extra_head %}
