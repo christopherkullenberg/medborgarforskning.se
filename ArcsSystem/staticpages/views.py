@@ -5,10 +5,9 @@ from staticpages.models import Page
 
 class StaticDetailView(DetailView):
     model = Page
-    template_name = 'staticpages/staticpage.html'
+    template_name = 'staticpages/static_variant2.html'
 
 
 class PageListView(ListView):
     model = Page
     template_name = 'staticpages/staticpage_list.html'
-    

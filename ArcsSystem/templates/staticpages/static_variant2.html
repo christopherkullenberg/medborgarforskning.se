@@ -1,0 +1,62 @@
+
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+
+{% load publications_extras %}
+
+
+
+{# this tag will insert a comment in the HMTL, but won't be rendered #}
+
+{% autoescape off %} <!-- This makes Summernote possible -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-9">
+            <div class="row">
+                <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'blog:blog_list_view' %}"> Home </a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'staticpages:staticpage_list' %}">Resources</a></li>
+                    <li class="breadcrumb-item active" aria-current="page"> {{object.title}} </li>
+                  </ol>
+                </nav>
+        	</div>
+            <div class="row text-justify text-style">
+                <div class="col">
+                    <h2 font-weight-bold text-header-style > {{ object.title }}</h2>
+                    <p > Publication Date: {{object.published}}</p>
+                    <img class="img-fluid" src="https://cdn.pixabay.com/photo/2020/05/03/15/45/oilseed-rape-5125544_1280.jpg"/>
+                    <br>
+                    <p> {{ object.content }} </p>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="row visual-Mindmap-style">
+                <div class="col">
+                    <h4 class="text-header-visual-mindmap"> Explore Visual - Mindmap </h4>
+                    <img class="img-fluid" src="https://cdn.pixabay.com/photo/2015/04/28/13/24/butterfly-743549_1280.jpg">
+                </div>
+            </div>
+            <div class="row visual-Mindmap-style">
+                <div class="col">
+                    <h2 class="text-header-style"> Related literature</h2>
+                    <ul>
+                    {% for q in "citizen"|query_publications %}
+                    <li><a href="{% url 'publications:article_publications_detail' q.id %}">{{q}}</a></li>
+                    {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endautoescape %}
+{% endblock content %}

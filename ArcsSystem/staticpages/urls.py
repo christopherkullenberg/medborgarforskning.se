@@ -8,8 +8,7 @@ from staticpages.models import Page
 app_name = 'staticpages'
 
 urlpatterns = [
-    path('', PageListView.as_view(),
-    name='staticpage_list'),
+    path('', PageListView.as_view(), name='staticpage_list'),
     path('<slug:slug>/', StaticDetailView.as_view(), name='staticpage'),
     # Example: /2020/
     #path('<str:slug>/', StaticDetailView.as_view()),

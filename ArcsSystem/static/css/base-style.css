@@ -178,3 +178,17 @@ body {
     margin-right: 30px;
     padding: 10px;
 }
+
+.visual-Mindmap-style{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: 15px;
+    background-color: #FFFFFF;
+    padding: 15px;
+
+}
+
+.text-header-visual-mindmap{
+    font-family: Playfair;
+    font-size: 18px;
+}
