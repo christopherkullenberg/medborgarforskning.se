@@ -2,6 +2,7 @@
 {% load static %}
 {% load i18n %}
 {% load publications_extras %} <!-- for publications dynamic box -->
+{% load blog_extras %}
 
 {% block title %}Home{% endblock title %}
 
@@ -99,7 +100,13 @@
         </div>
         <div class="col light-green-style">
             <h2 class="font-weight-bold text-header-style"> CitSciSE Community </h2>
-            <h6 class="font-weight-bold">{% trans "Recent Blog Posts" %} <h6>
+            <h6 class="font-weight-bold">{% trans "Recent Blog Posts" %}<h6>
+              {% for blog in "citizen"|latest_blogs %}
+              <p>{{ blog.published }}: <a href="http://example.com">{{blog}}</a></p>
+
+                {% endfor %}
+
+
         </div>
     </div>
 </<div>
