@@ -1,13 +1,10 @@
-{% extends 'base.html' %}
-{% load static %}
-{% load i18n %}
-{% block content %}
+{% extends 'base.html' %}{% load static %}{% load i18n %}{% block content %}
 
 {% if user.is_authenticated %}
 
-
 <form action='.' method='post'>
   {% csrf_token %}
+    <p>{% trans "Your account and email will be associated with this submission for follow-up." %}</p>
   <fieldset>
     {{ form.as_p }}
     <button type='submit' value='Save'>Submit Project to ARCS</button> <!-- TODO replace with django template for  -->
@@ -15,6 +12,17 @@
 </form>
 {% else %}
 <p>{% trans "Plese sign in or create an account to add a project." %}</p>
+<p>{% trans "To submit a project you'll be asked to provide the following information." %}</p>
+<ul>
+  <li>{% trans "A common name for identifying the project." %}</li>
+  <li>{% trans "A brief description of the project." %}</li>
+  <li>{% trans "The aim of the project." %}</li>
+  <li>{% trans "The status of the projet ie if it is active or historical." %}</li>
+  <li>{% trans "The target audience of the project." %}</li>
+  <li>{% trans "Your affiliation to the project as the person submitting the project." %}</li>
+  <li>{% trans "Keywords for the project." %}</li>
+</ul>
+<p>{% trans "Following submission your project will be reviewed before becoming visibile on the site and included in the metadata exchange. Review the citizen science assessment criteria for visiblity and exchange." %}</p>
 {% endif %}
 
 {% endblock content %}

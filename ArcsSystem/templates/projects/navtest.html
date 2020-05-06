@@ -1,0 +1,6 @@
+{% for project in object_list %}
+<div class="post-entry">
+<h2><a href="{% url 'project_detail' project.pk %}">{{ project.name }}</a></h2>
+
+</div>
+{% endfor %}

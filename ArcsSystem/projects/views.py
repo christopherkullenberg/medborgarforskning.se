@@ -9,11 +9,13 @@ from django.views.generic import (
     UpdateView,
     DeleteView
 )
-from django.views.generic import CreateView
 from projects.models import Project
 from django.db.models import Q
 
-from .forms import InitialProjectSubmissionModelForm
+from .forms import (
+    InitialProjectSubmissionModelForm,
+    ProjectUpdateManagementForm
+)
 
 '''
 # Quick Fuction based template
@@ -46,16 +48,9 @@ class ProjectDetailView(DetailView):
     model = Project
     template_name = 'projects/project_detail.html'
 
-
-
-#class ProjectSubmitView(DetailView):
-#    '''
-#    This is not working, dont know how to make logged in user (CK)
-#    '''
-#    model = Project
-#    template_name = 'projects/project_submissionform.html'
-    # def get_object(self):
-    #     return get_object_or_404(User, pk=request.session['user_id'])
+    def get_object(self):
+        pk = self.kwargs.get("pk")
+        return get_object_or_404(Project, id=pk)
 
 
 class SearchResultsView(ListView):
@@ -88,3 +83,17 @@ class ProjectSubmissionCreateView(CreateView):
     form_class = InitialProjectSubmissionModelForm
     queryset = Project.objects.all()
     # success_url = '/submitted-for-review' # overrides the get_absolute_url function in the model #default is project detail view - unpublished projects can be viewed until approved then can be edited once published.
+
+    def get_object(self):
+        pk = self.kwargs.get("pk")
+        return get_object_or_404(Project, id=pk)
+
+class ProjectUpdateView(UpdateView):
+    template_name = 'projects/project_submissionform.html'
+    form_class = ProjectUpdateManagementForm
+    queryset = Project.objects.all()
+    # success_url = '/submitted-for-review' # overrides the get_absolute_url function in the model #default is project detail view - unpublished projects can be viewed until approved then can be edited once published.
+
+    def get_object(self):
+        pk = self.kwargs.get("pk")
+        return get_object_or_404(Project, id=pk)

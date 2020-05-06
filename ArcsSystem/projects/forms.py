@@ -17,6 +17,24 @@ class InitialProjectSubmissionModelForm(forms.ModelForm):
         'aim',
         'name',
         'description',
+        'status',
+        'target_audience',
+        'contact_name',
+        'contact_role',
+        'contact_affiliation',
+        'keywords'
+        ]
+
+class ProjectUpdateManagementForm(forms.ModelForm):
+    """Form for maintaining the projects approved and added to the database.
+    """
+    model = Project
+    class Meta:
+        model = Project
+        fields = [
+        'aim',
+        'name',
+        'description',
         'start_date',
         'end_date',
         'status',
@@ -28,9 +46,3 @@ class InitialProjectSubmissionModelForm(forms.ModelForm):
         'contact_phone',
         'keywords'
         ]
-
-
-class ProjectManagementForm(forms.ModelForm):
-    """Form for maintaining the projects approved and added to the database.
-    """
-    pass
