@@ -17,6 +17,7 @@ gunicorn = "==20.0.4"
 django-summernote = "*"
 django-allauth = "==0.41.0"
 django-taggit = "*"
+pyyaml = "*"
 
 [requires]
 python_version = "3"

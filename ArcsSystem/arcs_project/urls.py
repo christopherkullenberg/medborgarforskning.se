@@ -38,7 +38,8 @@ urlpatterns = [
     re_path(r'^pages/', include(wagtail_urls)),
     ### Wagtail paths end #
     path('project/',include('projects.urls')),
-    path('paper/',include('products.urls')),
+    path('resources/', include('staticpages.urls')),
+    path('publications/',include('publications.urls')),
     path('people/',include('users.urls')),
     path('summernote/', include('django_summernote.urls')), # adding summernote (CK)
 

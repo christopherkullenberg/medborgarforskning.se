@@ -45,3 +45,136 @@ p.bold {
   font-style: bold;
   color: #000000;
 }
+
+body {
+  background-color: #C3D3D0 !important;
+}
+
+#header-main-logo {
+  margin: 30px;
+}
+
+.header-icons {
+  width: 25px;
+}
+
+.header-main-menu {
+  background-color: #255C61;
+  padding-left: 60px !important;
+  padding-right: 60px !important;
+  padding-top: 15px !important;
+  padding-bottom: 15px !important;
+}
+
+.main-menu-buttons {
+  font-family: Lato;
+  font-style: bold;
+  color: #FFFFFF;
+}
+
+.has-search .form-control {
+    padding-left: 2.375rem;
+}
+
+.form-group.has-search{
+  margin-bottom: 0;
+}
+
+.has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
+    padding: 10px;
+}
+
+.container-footer {
+   border-top: 1px solid;
+}
+
+.container-footer-menu {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.main-footer-participiate {
+  background-color: #255C61;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.footer-patner-logo {
+  width: 120px;
+}
+
+.footer-menu-font>li>a{
+  font-family: Lato;
+  font-style: bold !important;
+  color: #255C61;
+}
+
+.policy-footer-font, .policy-footer-font a{
+    font-family: Lato;
+    font-size: 12px;
+}
+
+.policy-footer-font a{
+    color: #255C61;
+}
+
+.policy-footer-menu{
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.cc-by-footer {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border-top: 1px solid;
+}
+
+.text-header-style {
+    font-weight: : bold !important;
+    font-family: Playfair;
+    font-size: 25px;
+}
+
+.text-style{
+    font-family: Playfair;
+    font-size: 15px;
+}
+
+.greenish-brown-color{
+    background-color: #9FB0A0;
+}
+
+.greenish-brown-color-bottom-sytyle{
+    background-color: #9FB0A0;
+    font-family: Lato;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.green-brown-color-bottom-sytyle{
+    background-color: #255C61;
+    font-family: Lato;
+    font-weight: bold;
+    font-size: 12px;
+    color: #FFFFFF;
+}
+
+.light-green-style{
+    background-color: #d2e1df;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: 30px;
+    margin-right: 30px;
+    padding: 10px;
+}

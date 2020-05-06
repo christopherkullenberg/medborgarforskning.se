@@ -6,7 +6,7 @@ from .views import ProjectSubmissionCreateView
 
 #from .views import #insertviewname
 
-
+app_name = 'projects'
 
 urlpatterns = [
     path('', ProjectListView.as_view(),
@@ -15,6 +15,7 @@ urlpatterns = [
          name='project_submissionform' ),
     path('<int:pk>/', ProjectDetailView.as_view(),
         name='project_detail'),
-    path('search/', SearchResultsView.as_view(), name ='search_results'),
+    path('search/', SearchResultsView.as_view(),
+         name ='search_results'),
 
 ]

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+
+{% block content %}
+
+
+<h1> {% trans "Search our resources" %}</h1>
+
+
+<form action="search" method="get">
+  <input name="q" type="text" placeholder="Search...">
+</form>
+
+
+{% for article in object_list %}
+<div class="post-entry">
+<h2><a href="{% url 'publications:article_publications_detail' article.pk %}"">{{ article.py }}. {{ article.title }}</a></h2>
+
+</div>
+{% endfor %}
+
+
+
+{% endblock content %}
