@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-06 16:24+0000\n"
+"POT-Creation-Date: 2020-05-06 17:28+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -647,9 +647,100 @@ msgid ""
 "%(site_name)s. As a final step, please complete the following form:"
 msgstr ""
 
+#: templates/staticpages/main-page.html:22
+msgid "Welcome"
+msgstr ""
+
+#: templates/staticpages/main-page.html:23
+msgid ""
+"Welcome to medborgarforskning.se – Sweden's portal for persons interested in "
+"learning about citizen science and how to get started in Sweden as well as "
+"those who have been involved for years. While this site uses the term "
+"citizen science it is more than this term. Citizen science is about "
+"researchers and the public cooperating to develop new knowledge. At "
+"medborgarforskning.se anyone who wants to learn more about citizen science "
+"can search for projects to participate in and contribute to the portal with "
+"their own knowledge and experience.<br><br> As a researcher, you can find "
+"information about the methodology of citizen science, get tips and "
+"inspiration to start your own projects, exchange experiences and make "
+"connections with other researchers and volunteers.You can also post your "
+"projects on the portal to reach different target groups.<br><br> If you're "
+"not a researcher, you can do exactly the same things as the researchers. "
+"Citizen science is for everyone."
+msgstr ""
+
+#: templates/staticpages/main-page.html:31
+#, fuzzy
+#| msgid "Project information"
+msgid "Projects parts"
+msgstr "Projektinformation"
+
+#: templates/staticpages/main-page.html:32
+msgid ""
+"The database at medborgarforskning.se contains citizen science projects and "
+"activities from Sweden that are available for participation. This includes "
+"both Swedish and international initiatives. You can use filters to search "
+"and sort among the projects to find, for example, projects that deal with a "
+"specific topic (e.g. birds or health), take place in specific locations (eg "
+"outdoors in nature or in cities), or aimed at different participants (e.g. "
+"children or adults). On the project pages you will find more information "
+"about what is involved as well as contact information for the organizer."
+msgstr ""
+
+#: templates/staticpages/main-page.html:56
+msgid "Previous"
+msgstr ""
+
+#: templates/staticpages/main-page.html:60
+msgid "Next"
+msgstr ""
+
 #: templates/staticpages/main-page.html:69
 msgid "Get involved with CitSciSE"
 msgstr "Bli involverad i CitSciSE"
+
+#: templates/staticpages/main-page.html:72
+msgid ""
+"If you would like to improve the content on CitSciSE or would like to learn "
+"more about how to integrate with CitSciSE. Please see our contact "
+"information below and the API for accessing the site's content."
+msgstr ""
+
+#: templates/staticpages/main-page.html:77
+msgid "Data Quality"
+msgstr ""
+
+#: templates/staticpages/main-page.html:78
+msgid "Getting Started"
+msgstr ""
+
+#: templates/staticpages/main-page.html:79
+msgid ""
+"Some of the first questions in citizen science is can we trust the data and "
+"is the data of sufficient quality. Fundamental readings and resources on "
+"Data Quality, Data Standards and Technologies have been compiled in the "
+"resources to help address your question."
+msgstr ""
+
+#: templates/staticpages/main-page.html:82
+msgid "DATA QUALITY THEMES"
+msgstr ""
+
+#: templates/staticpages/main-page.html:88
+msgid "DATA QUALITY STANDARDS"
+msgstr ""
+
+#: templates/staticpages/main-page.html:93
+msgid "Recent papers"
+msgstr ""
+
+#: templates/staticpages/main-page.html:102
+msgid "Recent Blog Posts"
+msgstr ""
+
+#: templates/staticpages/static_variant2.html:47
+msgid "Related literature"
+msgstr "Relaterad litteratur"
 
 #: templates/staticpages/staticpage_list.html:7
 #, fuzzy
