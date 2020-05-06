@@ -46,7 +46,7 @@
                 <div class="col">
                     <h2 class="text-header-style"> {% trans "Related literature" %}</h2>
 
-                    {% for q in "citizen"|query_publications %}
+                    {% for q in "ethics"|query_publications %}
                     <p><a href="{% url 'publications:article_publications_detail' q.id %}">{{q}}</a></p>
                     {% endfor %}
 
