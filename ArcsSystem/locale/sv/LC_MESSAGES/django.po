@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-04 13:06+0000\n"
+"POT-Creation-Date: 2020-05-06 13:40+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,6 +25,46 @@ msgstr "Engelska"
 #: arcs_project/settings.py:202
 msgid "Swedish"
 msgstr "Svenska"
+
+#: projects/models.py:39
+msgid "Project"
+msgstr ""
+
+#: projects/models.py:40
+msgid "Projects"
+msgstr ""
+
+#: projects/models.py:43
+msgid "Primary focus of the project."
+msgstr ""
+
+#: projects/models.py:45
+msgid "Common name for the project."
+msgstr ""
+
+#: projects/models.py:46
+msgid "Date the project started."
+msgstr ""
+
+#: projects/models.py:47
+msgid "Date the project concluded."
+msgstr ""
+
+#: projects/models.py:51
+msgid "Project primary audience."
+msgstr ""
+
+#: projects/models.py:52
+msgid "Name of the person maintaining this entry. Default is your account."
+msgstr ""
+
+#: projects/models.py:53
+msgid "Maintainer’s role or position with this project."
+msgstr ""
+
+#: projects/models.py:54
+msgid "Maintainer’s institutional affiliation."
+msgstr ""
 
 #: templates/account/account_inactive.html:5
 #: templates/account/account_inactive.html:8
@@ -162,7 +202,7 @@ msgid ""
 msgstr ""
 
 #: templates/account/login.html:6 templates/account/login.html:10
-#: templates/account/login.html:43 templates/base.html:95
+#: templates/account/login.html:43 templates/base.html:116
 msgid "Sign In"
 msgstr ""
 
@@ -320,7 +360,7 @@ msgid "Signup"
 msgstr ""
 
 #: templates/account/signup.html:8 templates/account/signup.html:18
-#: templates/base.html:96 templates/socialaccount/signup.html:8
+#: templates/base.html:117 templates/socialaccount/signup.html:8
 #: templates/socialaccount/signup.html:19
 msgid "Sign Up"
 msgstr ""
@@ -388,15 +428,15 @@ msgstr ""
 msgid "Medborgarforskning.se - The Swedish portal for citizen science."
 msgstr ""
 
-#: templates/base.html:92
+#: templates/base.html:113
 msgid "Hi"
 msgstr "Hej"
 
-#: templates/base.html:103
+#: templates/base.html:124
 msgid "Medborgarforskning.se!"
 msgstr ""
 
-#: templates/base.html:104
+#: templates/base.html:125
 msgid "This base.html block should be replaced by a template defined block."
 msgstr ""
 
@@ -467,6 +507,55 @@ msgstr "KONTAKTPERSONENS E-POST:"
 #: templates/projects/project_detail.html:57
 msgid "CONTACT PHONE:"
 msgstr "TELEFONNUMMER:"
+
+#: templates/projects/project_submissionform.html:7
+msgid ""
+"Your account and email will be associated with this submission for follow-up."
+msgstr ""
+
+#: templates/projects/project_submissionform.html:14
+msgid "Plese sign in or create an account to add a project."
+msgstr ""
+
+#: templates/projects/project_submissionform.html:15
+msgid ""
+"To submit a project you'll be asked to provide the following information."
+msgstr ""
+
+#: templates/projects/project_submissionform.html:17
+msgid "A common name for identifying the project."
+msgstr ""
+
+#: templates/projects/project_submissionform.html:18
+msgid "A brief description of the project."
+msgstr ""
+
+#: templates/projects/project_submissionform.html:19
+msgid "The aim of the project."
+msgstr ""
+
+#: templates/projects/project_submissionform.html:20
+msgid "The status of the projet ie if it is active or historical."
+msgstr ""
+
+#: templates/projects/project_submissionform.html:21
+msgid "The target audience of the project."
+msgstr ""
+
+#: templates/projects/project_submissionform.html:22
+msgid "Your affiliation to the project as the person submitting the project."
+msgstr ""
+
+#: templates/projects/project_submissionform.html:23
+msgid "Keywords for the project."
+msgstr ""
+
+#: templates/projects/project_submissionform.html:25
+msgid ""
+"Following submission your project will be reviewed before becoming visibile "
+"on the site and included in the metadata exchange. Review the citizen "
+"science assessment criteria for visiblity and exchange."
+msgstr ""
 
 #: templates/publications/article_publications_detail.html:11
 msgid "Authors"
@@ -556,11 +645,6 @@ msgstr ""
 msgid ""
 "You are about to use your %(provider_name)s account to login to\n"
 "%(site_name)s. As a final step, please complete the following form:"
-msgstr ""
-
-#: templates/staticpages/staticpage.html:10
-#, python-format
-msgid "%(object.title)s"
 msgstr ""
 
 #: templates/staticpages/staticpage_list.html:7
