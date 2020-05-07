@@ -192,3 +192,27 @@ body {
     font-family: Playfair;
     font-size: 18px;
 }
+
+.search-list{
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.detail-view{
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+h1.detail-view{
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+h2.detail-view{
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+h3.detail-view{
+  margin-top: 25px;
+  margin-bottom: 25px;
+}

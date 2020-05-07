@@ -5,7 +5,7 @@
 
 
 {% block content %}
-
+<div class="detail-view">
 <h1>{{ article.title }}</h1>
 
 <p><b>{% trans "Authors" %}:</b> {{ article.authors }}</p>
@@ -24,6 +24,6 @@
 
 
 <p><b>{% trans "Abstract" %}:</b> {{ article.abstract }}</p>
-
+<div>
 
 {% endblock content %}
