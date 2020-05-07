@@ -5,8 +5,8 @@
 
 {% block content %}
 
-
-<h1> {% trans "Search our resources" %}</h1>
+<div class="search-list">
+<h1 class="search-list"> {% trans "Search our resources" %}</h1>
 
 
 <form action="search" method="get">
@@ -15,12 +15,12 @@
 
 
 {% for article in object_list %}
-<div class="post-entry">
-<h2><a href="{% url 'publications:article_publications_detail' article.pk %}"">{{ article.py }}. {{ article.title }}</a></h2>
+<div class="search-list>
+<h2 class="search-list"><a href="{% url 'publications:article_publications_detail' article.pk %}"">{{ article.py }}. {{ article.title }}</a></h2>
 
 </div>
 {% endfor %}
-
+</div>
 
 
 {% endblock content %}

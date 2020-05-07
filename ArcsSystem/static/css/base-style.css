@@ -196,6 +196,16 @@ body {
 .search-list{
   margin-left: 50px;
   margin-right: 50px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+h1.search-list{
+  margin: 10px;
+}
+
+.post-entry{
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .detail-view{
