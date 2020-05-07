@@ -73,13 +73,13 @@
 		  <div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
 			  <li class="nav-item active">
-				<a class="nav-link main-menu-buttons" href="#"> GETTING STARTED WITH CITIZEN SCIENCE </a>
+				<a class="nav-link main-menu-buttons" href="#"> {% trans "GETTING STARTED WITH CITIZEN SCIENCE" %} </a>
 			  </li>
 			  <li class="nav-item">
-				<a class="nav-link main-menu-buttons" href="#"> CITIZEN SCIENCE IN PRACTICE </a>
+				<a class="nav-link main-menu-buttons" href="#"> {% trans "CITIZEN SCIENCE IN PRACTICE" %} </a>
 			  </li>
 			  <li class="nav-item">
-				<a class="nav-link main-menu-buttons" href="#"> CITIZEN SCIENCE IN SWEDEN </a>
+				<a class="nav-link main-menu-buttons" href="#"> {% trans "CITIZEN SCIENCE IN SWEDEN" %} </a>
 			  </li>
 			</ul>
 			<form class="form-inline">
@@ -111,7 +111,7 @@
 		<div>
 			{% if user.is_authenticated %}
 			  {% trans "Hi" %} {{ user.username }}!
-			  <p><a href="{% url 'account_logout' %}">Sign Out</a></p>
+			  <p><a href="{% url 'account_logout' %}">{% trans "Sign Out" %}</a></p>
 			{% else %}
 			  <a href="{% url 'account_login' %}">{% trans "Sign In" %}</a> |
 			  <a href="{% url 'account_signup' %}">{% trans "Sign Up" %}</a>
@@ -140,13 +140,13 @@
 				<!-- Collection of nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse justify-content-start">
 					<ul class="nav navbar-nav footer-menu-font">
-						<li class="nav-item"><a href="#" class="nav-link">About us</a></li>
-						<li class="nav-item"><a href="#" class="nav-link">PRESS</a></li>
-						<li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
-						<li class="nav-item"><a href="#" class="nav-link">For Developers-API</a></li>
+						<li class="nav-item"><a href="#" class="nav-link">{% trans "About us" %}</a></li>
+						<li class="nav-item"><a href="#" class="nav-link">{% trans "PRESS" %}</a></li>
+						<li class="nav-item"><a href="#" class="nav-link">{% trans "Contact" %}</a></li>
+						<li class="nav-item"><a href="#" class="nav-link">{% trans "For Developers-API" %}</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right ml-auto">
-						<li class="nav-item d-flex justify-content-center align-items-center"> Follow medborgarforskning.se: </li>
+						<li class="nav-item d-flex justify-content-center align-items-center">{% trans "Follow medborgarforskning.se" %}: </li>
 						<li class="nav-item"><a href="#" class="nav-link">
 							<img class="header-icons" src="{% static 'icons/Facebook_Brands_Icon_4.png' %}"/>
 						</a></li>
@@ -185,24 +185,24 @@
 						<div class="row">
 							<div class="col">
 								<a href="#">
-								Terms of service
+								{% trans "Terms of service" %}
 								</a>
 							</div>
 							<div class="col">
 								<a href="#">
-								Privacy policy
+								{% trans "Privacy policy" %}
 								</a>
 							</div>
 							<div class="col">
 								<a href="#">
-								Cookies policy
+								{% trans "Cookies policy" %}
 								</a>
 							</div>
 						</div>
 					</div>
 					<div class="col-4">
 						<a href="#">
-						Powered by: The ARCS open source platform
+						{% trans "Powered by: The ARCS open source platform" %}
 						</a>
 					</div>
 				</div>
@@ -211,7 +211,7 @@
 						<img id="cc-by" src="{% static 'icons/CC-BY_icon.svg' %}"/>
 					</div>
 					<div class="col-7 policy-footer-font d-flex align-items-center">
-						<p>Except where otherwise <a href="#"> noted,</a> content on this site is licensed under a <a href="#"> Creative Commons Attribution 4.0 International License.</a></p>
+						<p>Except where otherwise <a href="#"> noted, </a> content on this site is licensed under a <a href="#"> Creative Commons Attribution 4.0 International License.</a></p>
 					</div>
 				</div>
 		</div>
