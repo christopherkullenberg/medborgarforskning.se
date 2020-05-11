@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load i18n %}
+{% load staticpages_tree %}
 
 {% block content %}
 
@@ -14,6 +15,21 @@
 {% endfor %}
 </ul>
 
+
+<h3> Ordered by category </h3>
+<ul>
+{% for q in "whatever"|get_categories %}
+<li>{{q.category}} - <a href="{{ q.get_absolute_url }}">{{ q.title }}</a></li>
+{% endfor %}
+</ul>
+
+
+
+<h3>Single cateory all</h3>
+{% for q in "etik"|get_category %}
+
+<li>{{q.category}} - <a href="{{ q.get_absolute_url }}">{{ q.title }}</a></li>
+{% endfor %}
 
 
 {% endblock content %}
