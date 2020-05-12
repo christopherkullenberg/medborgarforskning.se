@@ -25,6 +25,7 @@ class TreeView(ListView):
 
 class CategoryView(ListView):
     model = Page
+    template_name = 'staticpages/category_list.html'
 
     def get_category(query):
         object_list = Page.objects.filter(

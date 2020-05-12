@@ -19,6 +19,7 @@ django-summernote = "*"
 django-allauth = "==0.41.0"
 django-taggit = "==1.2.0"
 pyyaml = "==5.3.1"
+django-modeltranslation = "*"
 
 [requires]
 python_version = "3"

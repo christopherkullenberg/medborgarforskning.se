@@ -18,5 +18,10 @@ class Page(models.Model):
                                'slug' : self.slug
                                })
 
+    def get_category_url(self):
+        return reverse('staticpages:staticpage',
+                       kwargs={'category' : self.category
+                               })
+
     def __str__(self):
         return self.title

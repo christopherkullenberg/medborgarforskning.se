@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% load staticpages_tree %}
+
+{% block content %}
+
+<h1>{% trans "Arcs Resources" %}</h1>
+
+<ul>
+{% for page in object_list %}
+<li>{{ page.title }}</li>
+
+
+{% endfor %}
+</ul>
+
+
+
+{% endblock content %}

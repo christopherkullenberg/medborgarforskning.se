@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     #'products', #try to get rid of this one
     'projects', # enables the projects app of ArcsCore
     'staticpages',
+    'workpackages',
 
 ### Custom user apps
     'users', # initializes CustomUser and users app a.k.a. "People app" of ArcsCore
