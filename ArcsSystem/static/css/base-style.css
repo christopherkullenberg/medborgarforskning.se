@@ -14,7 +14,7 @@
 
 h1 {
   font-family: 'Playfair Display';
-  color: red;
+  color: #000000;
 
 }
 
@@ -66,11 +66,60 @@ body {
   padding-bottom: 15px !important;
 }
 
+.main-menu-buttons-font {
+  font-family: Lato;
+  font-style: bold;
+  color: #FFFFFF;
+}
+
+.change-language-item:hover{
+    background-color: #C3D3D0 ;
+}
+
+.language-selected-color{
+    background-color: #174255;
+    font-family: Lato;
+    color: #FFFFFF;
+}
+
+.header-main-menu-body{
+    background-color: #C3D3D0 ;
+}
+
+.header-main-menu a:hover{
+    color:  #FFFFFF;
+}
+
+
 .main-menu-buttons {
   font-family: Lato;
   font-style: bold;
   color: #FFFFFF;
 }
+
+.header-main-menu .dropdown-divider {
+    border-color: #000000;
+    border-width: medium;
+}
+
+.header-main-menu .dropdown-menu ul{
+    list-style: none;
+    padding-left: 0px;
+}
+
+.header-main-menu .dropdown-menu ul li:before{
+  content: "-";
+  padding-right: 5px;
+  position: absolute;
+  color:  #000000;
+}
+
+.header-main-menu .dropdown-menu ul li{
+    margin-left: 40px;
+}
+
+
+
 
 .has-search .form-control {
     padding-left: 2.375rem;
@@ -191,4 +240,38 @@ body {
 .text-header-visual-mindmap{
     font-family: Playfair;
     font-size: 18px;
+}
+
+.search-list{
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+h1.search-list{
+  margin: 10px;
+}
+
+.post-entry{
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.detail-view{
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+h1.detail-view{
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+h2.detail-view{
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+h3.detail-view{
+  margin-top: 25px;
+  margin-bottom: 25px;
 }
