@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ['localhost','127.0.0.1', '0.0.0.0','dev.medborgarforskning.se',
 # Application definition
 
 INSTALLED_APPS = [
+    'modeltranslation', # for Django 1.7 and above must be prior to django.contrib.admin - https://django-modeltranslation.readthedocs.io/en/latest/installation.html#required-settings
     'django.contrib.admin',
     'django.contrib.auth', # Core authentication framework and its default models. Required by AllAuth.
     'django.contrib.contenttypes', # Django content type system (allows permissions to be associated with models).
@@ -45,7 +46,7 @@ INSTALLED_APPS = [
     'publications', # enables the oublications app of ArcsCore
     #'products', #try to get rid of this one
     'projects', # enables the projects app of ArcsCore
-    'staticpages', 
+    'staticpages',
 
 ### Custom user apps
     'users', # initializes CustomUser and users app a.k.a. "People app" of ArcsCore
@@ -193,6 +194,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 ### Internationalization Start ###
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
+
+#_ = lambda s: s # required per statement for django-modeltranslation https://django-modeltranslation.readthedocs.io/en/latest/installation.html#required-settings
 
 LANGUAGE_CODE = 'en-us' # Default language used if no translation is available - ie language found in the templates
 
