@@ -53,7 +53,7 @@
 				<div class="col d-flex justify-content-center align-items-center">
 					<div class="row d-flex justify-content-center align-items-center">
 					<div class="col">
-<<<<<<< HEAD
+
 						<div class="dropdown">
 							<button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 							  <img class="header-icons" src="{% static 'icons/Language_Icon_4.png' %}"/>
@@ -72,24 +72,6 @@
 								<input id="language-input-value" name="language" type="hidden" value="">
 							</form>
 						</div>
-=======
-						<a href="#">
-							<img class="header-icons" src="{% static 'icons/Language_Icon_4.png' %}"/>
-							<form action="{% url 'set_language' %}" method="post" style="display:inline">{% csrf_token %}
-    						<input name="next" type="hidden" value="{{ redirect_to }}">
-						    <select name="language" onchange="this.form.submit()">
-						        {% get_current_language as LANGUAGE_CODE %}
-						        {% get_available_languages as LANGUAGES %}
-						        {% get_language_info_list for LANGUAGES as languages %}
-						        {% for language in languages %}
-						            <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected{% endif %}>
-						                {{ language.name_local }} ({{ language.code }})
-						            </option>
-						        {% endfor %}
-						    </select>
-						</form>
-						</a>
->>>>>>> origin
 					</div>
 					<div class="col">
 						<a href="#">
@@ -108,7 +90,6 @@
 		<nav class="navbar navbar-expand-lg  header-main-menu">
 		  <div class="collapse navbar-collapse body" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
-<<<<<<< HEAD
 			  <li class="nav-item dropdown active">
 				<a class="nav-link dropdown-toggle font-weight-bold main-menu-buttons-font" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {% trans "GETTING STARTED WITH CITIZEN SCIENCE" %} </a>
 					<div class="dropdown-menu main-menu-buttons header-main-menu-body" aria-labelledby="navbarDropdown">
@@ -180,16 +161,6 @@
 							</ul>
 						<div class="dropdown-divider"></div>
 				</div>
-=======
-			  <li class="nav-item active">
-				<a class="nav-link main-menu-buttons" href="#"> {% trans "GETTING STARTED WITH CITIZEN SCIENCE" %} </a>
-			  </li>
-			  <li class="nav-item">
-				<a class="nav-link main-menu-buttons" href="#"> {% trans "CITIZEN SCIENCE IN PRACTICE" %} </a>
-			  </li>
-			  <li class="nav-item">
-				<a class="nav-link main-menu-buttons" href="#"> {% trans "CITIZEN SCIENCE IN SWEDEN" %} </a>
->>>>>>> origin
 			  </li>
 			<li class="nav-item dropdown">
 				<a class="nav-link dropdown-toggle font-weight-bold main-menu-buttons-font" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {% trans "CITIZEN SCIENCE IN SWEDEN" %} </a>
