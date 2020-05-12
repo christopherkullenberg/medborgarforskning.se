@@ -13,9 +13,11 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
 from django.urls import path
 from django.urls import include
+from django.utils.translation import gettext_lazy as _
 
 ### Wagtail requirements Start #
 from django.urls import re_path
@@ -27,22 +29,24 @@ from django.conf import settings
 ### Wagtail requirements End #
 
 urlpatterns = [
-    path('manage-arcs/', admin.site.urls),
-    path('accounts/profile/', include('users.urls')),
-    path('accounts/', include('allauth.urls')),
+    path('i18n/', include('django.conf.urls.i18n')),
+]
+
+urlpatterns += i18n_patterns(
     path('', include('blog.urls')),
-    path('blog/', include('blog.urls')),
+    path(_('manage-arcs/'), admin.site.urls),
+    path(_('accounts/profile/'), include('users.urls')),
+    path(_('accounts/'), include('allauth.urls')),
+    path(_('blog/'), include('blog.urls')),
     ### Wagtail paths start #
     re_path(r'^cms/', include(wagtailadmin_urls)),
-    re_path(r'^documents/', include(wagtaildocs_urls)),
-    re_path(r'^pages/', include(wagtail_urls)),
+    re_path(_(r'^documents/'), include(wagtaildocs_urls)),
+    re_path(_(r'^pages/'), include(wagtail_urls)),
     ### Wagtail paths end #
-    path('project/',include('projects.urls')),
-    path('resources/', include('staticpages.urls')),
-    path('publications/',include('publications.urls')),
-    path('people/',include('users.urls')),
-    path('summernote/', include('django_summernote.urls')), # adding summernote (CK)
-
-
-#] # Replace line below with just a ] for production
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) # TODO only for dev. disable for production
+    path(_('project/'),include('projects.urls')),
+    path(_('resources/'), include('staticpages.urls')),
+    path(_('publications/'),include('publications.urls')),
+    path(_('people/'),include('users.urls')),
+    path('summernote/', include('django_summernote.urls')), # adding summernote (CK))
+    #) # Replace line below with just a ] for production
+)+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) # TODO only for dev. disable for production

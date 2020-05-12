@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-05-04 13:06+0000\n"
+"POT-Creation-Date: 2020-05-07 10:52+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,6 +25,90 @@ msgstr "Engelska"
 #: arcs_project/settings.py:202
 msgid "Swedish"
 msgstr "Svenska"
+
+#: arcs_project/urls.py:37
+msgid "manage-arcs/"
+msgstr ""
+
+#: arcs_project/urls.py:38
+msgid "accounts/profile/"
+msgstr ""
+
+#: arcs_project/urls.py:39
+msgid "accounts/"
+msgstr ""
+
+#: arcs_project/urls.py:40
+msgid "blog/"
+msgstr ""
+
+#: arcs_project/urls.py:43
+msgid "^documents/"
+msgstr ""
+
+#: arcs_project/urls.py:44
+msgid "^pages/"
+msgstr ""
+
+#: arcs_project/urls.py:46
+msgid "project/"
+msgstr "projekt"
+
+#: arcs_project/urls.py:47
+#, fuzzy
+#| msgid "Search our resources"
+msgid "resources/"
+msgstr "Sök i våra resurser"
+
+#: arcs_project/urls.py:48
+#, fuzzy
+#| msgid "Publication Year"
+msgid "publications/"
+msgstr "Publikationsår"
+
+#: arcs_project/urls.py:49
+msgid "people/"
+msgstr ""
+
+#: projects/models.py:41
+msgid "Project"
+msgstr ""
+
+#: projects/models.py:42
+msgid "Projects"
+msgstr ""
+
+#: projects/models.py:45
+msgid "Primary focus of the project."
+msgstr ""
+
+#: projects/models.py:47
+msgid "Common name for the project."
+msgstr ""
+
+#: projects/models.py:48
+msgid "Date the project started."
+msgstr ""
+
+#: projects/models.py:49
+msgid "Date the project concluded."
+msgstr ""
+
+#: projects/models.py:52
+msgid "Project primary audience."
+msgstr ""
+
+#: projects/models.py:53
+msgid "Name of the person maintaining this entry. Default is your account."
+msgstr ""
+
+#: projects/models.py:54
+msgid "Maintainer’s role or position with this project."
+msgstr ""
+
+#: projects/models.py:55
+msgid "Maintainer’s institutional affiliation."
+msgstr ""
 
 #: templates/account/account_inactive.html:5
 #: templates/account/account_inactive.html:8
@@ -162,7 +246,7 @@ msgid ""
 msgstr ""
 
 #: templates/account/login.html:6 templates/account/login.html:10
-#: templates/account/login.html:43 templates/base.html:95
+#: templates/account/login.html:43 templates/base.html:129
 msgid "Sign In"
 msgstr ""
 
@@ -193,7 +277,7 @@ msgid "Forgot Password?"
 msgstr "Ändra lösenord"
 
 #: templates/account/logout.html:5 templates/account/logout.html:8
-#: templates/account/logout.html:17
+#: templates/account/logout.html:17 templates/base.html:127
 msgid "Sign Out"
 msgstr ""
 
@@ -320,7 +404,7 @@ msgid "Signup"
 msgstr ""
 
 #: templates/account/signup.html:8 templates/account/signup.html:18
-#: templates/base.html:96 templates/socialaccount/signup.html:8
+#: templates/base.html:130 templates/socialaccount/signup.html:8
 #: templates/socialaccount/signup.html:19
 msgid "Sign Up"
 msgstr ""
@@ -386,19 +470,67 @@ msgstr ""
 
 #: templates/base.html:6
 msgid "Medborgarforskning.se - The Swedish portal for citizen science."
-msgstr ""
+msgstr "Medborgarforskning.se - Den svenska portalen för medborgarforskning"
+
+#: templates/base.html:89
+msgid "GETTING STARTED WITH CITIZEN SCIENCE"
+msgstr "KOM IGÅNG MED MEDBORGARFORSKNING"
 
 #: templates/base.html:92
+msgid "CITIZEN SCIENCE IN PRACTICE"
+msgstr "MEDBORGARFORSKNING I PRAKTIKEN"
+
+#: templates/base.html:95
+msgid "CITIZEN SCIENCE IN SWEDEN"
+msgstr "MEDBORGARFORSKNING I SVERIGE"
+
+#: templates/base.html:126
 msgid "Hi"
 msgstr "Hej"
 
-#: templates/base.html:103
+#: templates/base.html:137
 msgid "Medborgarforskning.se!"
 msgstr ""
 
-#: templates/base.html:104
+#: templates/base.html:138
 msgid "This base.html block should be replaced by a template defined block."
 msgstr ""
+
+#: templates/base.html:156
+msgid "About us"
+msgstr "Om oss"
+
+#: templates/base.html:157
+msgid "PRESS"
+msgstr "PRESS"
+
+#: templates/base.html:158
+msgid "Contact"
+msgstr "Kontakt"
+
+#: templates/base.html:159
+msgid "For Developers-API"
+msgstr "API för utvecklare"
+
+#: templates/base.html:162
+msgid "Follow medborgarforskning.se"
+msgstr "Följ medborgarforskning.se"
+
+#: templates/base.html:201
+msgid "Terms of service"
+msgstr "Användaravtal"
+
+#: templates/base.html:206
+msgid "Privacy policy"
+msgstr "Integritetspolicy"
+
+#: templates/base.html:211
+msgid "Cookies policy"
+msgstr "Cookiepolicy"
+
+#: templates/base.html:218
+msgid "Powered by: The ARCS open source platform"
+msgstr "Powered by: The ARCS open source platform"
 
 #: templates/blog/blog_list.html:7
 msgid "Blog home page (list view)"
@@ -467,6 +599,55 @@ msgstr "KONTAKTPERSONENS E-POST:"
 #: templates/projects/project_detail.html:57
 msgid "CONTACT PHONE:"
 msgstr "TELEFONNUMMER:"
+
+#: templates/projects/project_submissionform.html:7
+msgid ""
+"Your account and email will be associated with this submission for follow-up."
+msgstr ""
+
+#: templates/projects/project_submissionform.html:14
+msgid "Plese sign in or create an account to add a project."
+msgstr ""
+
+#: templates/projects/project_submissionform.html:15
+msgid ""
+"To submit a project you'll be asked to provide the following information."
+msgstr ""
+
+#: templates/projects/project_submissionform.html:17
+msgid "A common name for identifying the project."
+msgstr ""
+
+#: templates/projects/project_submissionform.html:18
+msgid "A brief description of the project."
+msgstr ""
+
+#: templates/projects/project_submissionform.html:19
+msgid "The aim of the project."
+msgstr ""
+
+#: templates/projects/project_submissionform.html:20
+msgid "The status of the projet ie if it is active or historical."
+msgstr ""
+
+#: templates/projects/project_submissionform.html:21
+msgid "The target audience of the project."
+msgstr ""
+
+#: templates/projects/project_submissionform.html:22
+msgid "Your affiliation to the project as the person submitting the project."
+msgstr ""
+
+#: templates/projects/project_submissionform.html:23
+msgid "Keywords for the project."
+msgstr ""
+
+#: templates/projects/project_submissionform.html:25
+msgid ""
+"Following submission your project will be reviewed before becoming visibile "
+"on the site and included in the metadata exchange. Review the citizen "
+"science assessment criteria for visiblity and exchange."
+msgstr ""
 
 #: templates/publications/article_publications_detail.html:11
 msgid "Authors"
@@ -558,13 +739,133 @@ msgid ""
 "%(site_name)s. As a final step, please complete the following form:"
 msgstr ""
 
-#: templates/staticpages/staticpage.html:10
-#, python-format
-msgid "%(object.title)s"
+#: templates/staticpages/main-page.html:23
+msgid "Welcome"
+msgstr "Välkommen"
+
+#: templates/staticpages/main-page.html:24
+msgid ""
+"Welcome to medborgarforskning.se – Sweden's portal for persons interested in "
+"learning about citizen science and how to get started in Sweden as well as "
+"those who have been involved for years. While this site uses the term "
+"citizen science it is more than this term. Citizen science is about "
+"researchers and the public cooperating to develop new knowledge. At "
+"medborgarforskning.se anyone who wants to learn more about citizen science "
+"can search for projects to participate in and contribute to the portal with "
+"their own knowledge and experience.<br><br> As a researcher, you can find "
+"information about the methodology of citizen science, get tips and "
+"inspiration to start your own projects, exchange experiences and make "
+"connections with other researchers and volunteers.You can also post your "
+"projects on the portal to reach different target groups.<br><br> If you're "
+"not a researcher, you can do exactly the same things as the researchers. "
+"Citizen science is for everyone."
 msgstr ""
+"Välkommen till medborgarforskning.se - den svenska portalen för dig som är "
+"intresserad av att lära dig mer om medborgarforskning, för dig som redan "
+"medborgarforskar och för dig som vill börja. Medborgarforskning betyder att "
+"forskare och medborgare samarbetar på olika sätt för att skapa kunskap. På "
+"medborgarforskning.se kan vem som helst lära sig mer om detta och hitta "
+"projekt och samarbeten för att bidra med sina kunskaper och erfarenheter. "
+"Som forskare kan du hitta information om medborgarforskningens metoder och "
+"få tips och inspiration till att starta ett eget projekt, utbyta "
+"erfarenheter och nätverka med andra forskare och volonärer. Om du redan har "
+"ett befintligt projekt kan du även använda portalen för att nå nya "
+"målgrupper. Även om du inte är forskare på ett lärosäte kan du använda "
+"portalen på samma sätt. Medborgarforskning är för alla!"
+
+#: templates/staticpages/main-page.html:32
+msgid "Project database"
+msgstr "Projektdatabas"
+
+#: templates/staticpages/main-page.html:33
+msgid ""
+"The database at medborgarforskning.se contains citizen science projects and "
+"activities from Sweden that are available for participation. This includes "
+"both Swedish and international initiatives. You can use filters to search "
+"and sort among the projects to find, for example, projects that deal with a "
+"specific topic (e.g. birds or health), take place in specific locations (eg "
+"outdoors in nature or in cities), or aimed at different participants (e.g. "
+"children or adults). On the project pages you will find more information "
+"about what is involved as well as contact information for the organizer."
+msgstr ""
+"Vår databas på medborgarforskning.se innehåller projekt som är på gång i "
+"Sverige. Du kan låta dig bli inspirerad eller börja bidra till något av "
+"projekten idag! Men databasen innehåller även internationella projekt från "
+"runt om i världen. Genom att använda våra sökfilter kan du du enkelt hitta "
+"medborgarforskningsprojekt efter ämne, plats eller efter specifika "
+"målgrupper. Du kan även hitta kontaktinformation till varje projekt så att "
+"du enkelt kan hitta det som passar dig. "
+
+#: templates/staticpages/main-page.html:57
+msgid "Previous"
+msgstr "Föregående"
+
+#: templates/staticpages/main-page.html:61
+msgid "Next"
+msgstr "Nästa"
+
+#: templates/staticpages/main-page.html:70
+msgid "Get involved with CitSciSE"
+msgstr "Bli involverad i CitSciSE"
+
+#: templates/staticpages/main-page.html:73
+msgid ""
+"If you would like to improve the content on CitSciSE or would like to learn "
+"more about how to integrate with CitSciSE. Please see our contact "
+"information below and the API for accessing the site's content."
+msgstr ""
+"Om du vill bidra med innehåll till medborgarforskning.se eller vill ha mer "
+"information om hur du integrerar våra tjänster i ditt projekt, vänligen "
+"använd kontaktformuläret nedan för att få tillgång till våra APIer."
+
+#: templates/staticpages/main-page.html:78
+msgid "Data Quality"
+msgstr "Datakvalitet"
+
+#: templates/staticpages/main-page.html:79
+msgid "Getting Started"
+msgstr "Kom igång"
+
+#: templates/staticpages/main-page.html:80
+msgid ""
+"Some of the first questions in citizen science is can we trust the data and "
+"is the data of sufficient quality. Fundamental readings and resources on "
+"Data Quality, Data Standards and Technologies have been compiled in the "
+"resources to help address your question."
+msgstr ""
+"En av de första frågorna som dyker upp i medborgarforskning är datakvalitet "
+"- kan vi lita på våra undersökningar? På medborgarforskning.se har vi samlat "
+"de grundläggande kunskapsresurser för datakvalitet och teknikimplementering "
+"som kan hjälpa dig på vägen."
+
+#: templates/staticpages/main-page.html:83
+msgid "DATA QUALITY THEMES"
+msgstr "DATAKVALITET TEMAN"
+
+#: templates/staticpages/main-page.html:89
+msgid "DATA QUALITY STANDARDS"
+msgstr "DATAKVALITET"
+
+#: templates/staticpages/main-page.html:94
+msgid "Recent papers"
+msgstr "Nya artiklar"
+
+#: templates/staticpages/main-page.html:103
+msgid "Recent Blog Posts"
+msgstr "Nya bloggposter"
+
+#: templates/staticpages/static_variant2.html:47
+msgid "Related literature"
+msgstr "Relaterad litteratur"
 
 #: templates/staticpages/staticpage_list.html:7
 #, fuzzy
 #| msgid "Search our resources"
 msgid "Arcs Resources"
 msgstr "Sök i våra resurser"
+
+#~ msgid "Except where otherwise"
+#~ msgstr "Förutom när annat"
+
+#~ msgid "noted"
+#~ msgstr "anges"

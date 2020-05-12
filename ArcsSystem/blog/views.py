@@ -8,6 +8,7 @@ from django.views.generic.dates import DayArchiveView
 from blog.models import (Author,
                          Post
                          )
+from django.db.models import Q
 #from products.models import Product
 #from projects.models import Project
 
@@ -50,3 +51,21 @@ class BlogPostDayArchiveView(DayArchiveView):
     queryset = Post.objects.all()
     date_field = "published"
     allow_future = True
+
+class SearchBlogView(ListView):
+    model = Post
+
+    #def get_queryset(self):
+    #    query = self.request.GET.get('q')
+        #
+    #    object_list = Article.objects.filter(
+    #        Q(title__icontains=query) |
+    #        Q(keywords__keyword__icontains=query) |
+    #        Q(abstract__icontains=query)
+    #        ).distinct()
+    #    return object_list
+
+    def get_queryset_template(query):
+        object_list = Post.objects.filter(
+            Q(title__icontains=query)).distinct()
+        return object_list

@@ -5,19 +5,19 @@
 
 {% block content %}
 
-
+<div class="search-list">
 <form action="{% url 'projects:search_results' %}" method="get">
   <input name="q" type="text" placeholder="Search...">
 </form>
 
 
 {% for project in object_list %}
-<div class="post-entry">
+<div>
 <h2><a href="{% url 'projects:project_detail' project.pk %}">{{ project.name }}</a></h2>
 
 </div>
 {% endfor %}
-
+</div>
 
 
 {% endblock content %}
