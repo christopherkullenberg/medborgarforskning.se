@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 from taggit.managers import TaggableManager
 from django.urls import reverse
 
@@ -9,8 +10,12 @@ class Post(models.Model):
     '''
     This is the basic model for a blog post
     '''
+    class Meta:
+        verbose_name = _('Post')
+        verbose_name_plural = _('Posts')
+
     slug = models.SlugField()
-    title = models.CharField(max_length=100, default='title')
+    title = models.CharField(max_length=100, default=_('title'))
     published = models.DateField()# todo make name more focused on date like datapublished - could be confused with published status
     content = models.TextField() #summernote field
     tags = TaggableManager()
@@ -30,6 +35,10 @@ class Post(models.Model):
         # instance.published|date:'Y', instance.published|date:'m', instance.published|date:'d' instance.id
 
 class Author(models.Model):
+    '''Basic author placeholder in the blog'''
+    class Meta:
+        verbose_name = _('Author')
+        verbose_name_plural = _('Authors')
     name = models.CharField(max_length=200)
     email = models.EmailField()
 
