@@ -18,7 +18,7 @@ class Theme(models.Model):
     wp_parent = models.ForeignKey(WorkPackage,
                                   default=1,
                                   verbose_name="Work Package",
-                                  on_delete=models.SET_DEFAULT))
+                                  on_delete=models.SET_DEFAULT)
 
     def __str__(self):
         return f'{self.title}'
