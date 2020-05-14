@@ -28,6 +28,12 @@ from django.conf.urls.static import static
 from django.conf import settings
 ### Wagtail requirements End #
 
+# Setting the Admin Login Text - changes what is seen when logging into the backend of django admin
+admin.site.site_title = _("ARCS Admin Portal") # Seen at the login form for the admin
+admin.site.site_header = _("ARCS Admin") # Seen at top of admin after login to admin
+admin.site.index_title = _("Welcome to the ARCS Admin Portal") # Seen at top of app list on login to admin
+
+
 urlpatterns = [
     path('i18n/', include('django.conf.urls.i18n')),
 ]
