@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import Author, Post
 from django_summernote.admin import SummernoteModelAdmin
-from modeltranslation.admin import TranslationAdmin
+from modeltranslation.admin import TranslationAdmin, TabbedTranslationAdmin
 
 
 #class BlogAdmin(admin.ModelAdmin):
@@ -10,7 +10,7 @@ from modeltranslation.admin import TranslationAdmin
 class AuthorAdmin(admin.ModelAdmin):
     list_display = ('name','email')
 
-class PostAdmin(SummernoteModelAdmin, TranslationAdmin):
+class PostAdmin(SummernoteModelAdmin, TabbedTranslationAdmin):
     summernote_fields = ('content',)
     published = ('published',)
 
