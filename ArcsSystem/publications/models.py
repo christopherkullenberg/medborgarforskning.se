@@ -18,8 +18,8 @@ class Publication(models.Model):
     '''
     '''
     class Meta:
-        verbose_name = _('Publicaiton')
-        verbose_name_plural = _('Publicaitons')
+        verbose_name = _('Publication')
+        verbose_name_plural = _('Publications')
 
     title = models.CharField(max_length=200)
     keywords = models.ManyToManyField(Keyword)
