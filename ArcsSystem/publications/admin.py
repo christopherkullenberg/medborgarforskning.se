@@ -1,9 +1,9 @@
 from django.contrib import admin
-from modeltranslation.admin import TranslationAdmin
+from modeltranslation.admin import TranslationAdmin, TabbedTranslationAdmin
 from .models import Article, Keyword
 
 
-class ArticleAdmin(TranslationAdmin):
+class ArticleAdmin(TabbedTranslationAdmin):
     fieldsets = [
         (u'Article', {'fields': ('title','abstract')})
     ]
