@@ -66,11 +66,60 @@ body {
   padding-bottom: 15px !important;
 }
 
+.main-menu-buttons-font {
+  font-family: Lato;
+  font-style: bold;
+  color: #FFFFFF;
+}
+
+.change-language-item:hover{
+    background-color: #C3D3D0 ;
+}
+
+.language-selected-color{
+    background-color: #174255;
+    font-family: Lato;
+    color: #FFFFFF;
+}
+
+.header-main-menu-body{
+    background-color: #C3D3D0 ;
+}
+
+.header-main-menu a:hover{
+    color:  #FFFFFF;
+}
+
+
 .main-menu-buttons {
   font-family: Lato;
   font-style: bold;
   color: #FFFFFF;
 }
+
+.header-main-menu .dropdown-divider {
+    border-color: #000000;
+    border-width: medium;
+}
+
+.header-main-menu .dropdown-menu ul{
+    list-style: none;
+    padding-left: 0px;
+}
+
+.header-main-menu .dropdown-menu ul li:before{
+  content: "-";
+  padding-right: 5px;
+  position: absolute;
+  color:  #000000;
+}
+
+.header-main-menu .dropdown-menu ul li{
+    margin-left: 40px;
+}
+
+
+
 
 .has-search .form-control {
     padding-left: 2.375rem;
