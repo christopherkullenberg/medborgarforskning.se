@@ -8,7 +8,14 @@ import datetime
 
 class Post(models.Model):
     '''
-    This is the basic model for a blog post
+    This is the basic model for a blog post.
+
+    Summernote Warning: Please mind, that the widget does not provide any escaping.
+    If you expose the widget to external users without taking care of this,
+    it could potentially lead to an injection vulnerability.
+    Therefore you can use the SummernoteTextFormField or SummernoteTextField,
+    which escape all harmful tags through mozilla's package bleach:
+    https://github.com/summernote/django-summernote
     '''
     class Meta:
         verbose_name = _('Post')
