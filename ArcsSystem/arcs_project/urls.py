@@ -39,7 +39,6 @@ urlpatterns = [
 ]
 
 urlpatterns += i18n_patterns(
-    path('', include('blog.urls')),
     path(_('manage-arcs/'), admin.site.urls),
     path(_('accounts/profile/'), include('users.urls')),
     path(_('accounts/'), include('allauth.urls')),
@@ -50,9 +49,10 @@ urlpatterns += i18n_patterns(
     re_path(_(r'^pages/'), include(wagtail_urls)),
     ### Wagtail paths end #
     path(_('project/'),include('projects.urls')),
-    path(_('resources/'), include('staticpages.urls')),
+#    path(_('resources/'), include('staticpages.urls')), # TODO remove - make relative sections of urls.py in staticpages use this prefix
     path(_('publications/'),include('publications.urls')),
     path(_('people/'),include('users.urls')),
     path('summernote/', include('django_summernote.urls')), # adding summernote (CK))
+    path(_(''), include('staticpages.urls')),
     #) # Replace line below with just a ] for production
 )+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) # TODO only for dev. disable for production

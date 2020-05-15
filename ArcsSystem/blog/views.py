@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.utils import timezone
 from django.views.generic import ListView
 from django.views.generic import DetailView
+from django.views.generic.dates import ArchiveIndexView
 from django.views.generic.dates import YearArchiveView
 from django.views.generic.dates import MonthArchiveView
 from django.views.generic.dates import DayArchiveView
@@ -28,29 +29,43 @@ class BlogPostDetailView(DetailView):
         context['now'] = timezone.now()
         return context
 
-class BlogPostIndexView(ListView):
-    template_name = 'staticpages/main-page.html'
-    queryset = Post.objects.all()
-    # Pagination documentation https://docs.djangoproject.com/en/3.0/topics/pagination/
-    paginate_by = 3    # Change this to include more posts
-
-class BlogPostYearArchiveView(YearArchiveView):
+class BlogPostIndexView(ArchiveIndexView):
+    ''' This view to shows all the publications and can be paginated to beginning of time.
+    '''
     template_name = 'blog/blog_list.html'
     queryset = Post.objects.all()
     date_field = "published"
-    allow_future = True
+    make_object_list = True
+    allow_future = False
+    # Pagination documentation https://docs.djangoproject.com/en/2.2/topics/pagination/
+    paginate_by = 3    # Change this to include more posts
+
+class BlogPostYearArchiveView(YearArchiveView):
+    ''' This view show all the publications with pagination to tab through the history of the year in the URL.
+    '''
+    template_name = 'blog/blog_list.html'
+    queryset = Post.objects.all()
+    date_field = "published"
+    make_object_list = True
+    allow_future = False
+    # Pagination documentation https://docs.djangoproject.com/en/2.2/topics/pagination/
+    paginate_by = 3    # Change this to include more posts
 
 class BlogPostMonthArchiveView(MonthArchiveView):
     template_name = 'blog/blog_list.html'
     queryset = Post.objects.all()
     date_field = "published"
-    allow_future = True
+    allow_future = False
+    # Pagination documentation https://docs.djangoproject.com/en/2.2/topics/pagination/
+    paginate_by = 3    # Change this to include more posts
 
 class BlogPostDayArchiveView(DayArchiveView):
     template_name = 'blog/blog_list.html'
     queryset = Post.objects.all()
     date_field = "published"
-    allow_future = True
+    allow_future = False
+    # Pagination documentation https://docs.djangoproject.com/en/2.2/topics/pagination/
+    paginate_by = 3    # Change this to include more posts, bettre safe than sorry 
 
 class SearchBlogView(ListView):
     model = Post
