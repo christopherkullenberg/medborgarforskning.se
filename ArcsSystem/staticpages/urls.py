@@ -15,8 +15,9 @@ urlpatterns = [
     path('terms/', TermsPageView.as_view(), name='terms_detail'),
     path('privacy/cookies/', TermsPageView.as_view(), name='cookies_detail'),
     path('privacy/', TermsPageView.as_view(), name='privacy_detail'),
-    path('privacy/', TermsPageView.as_view(), name='privacy_detail'),
     path('sourcecode/', TermsPageView.as_view(), name='sourcecode_detail'),
+    path('press/', TermsPageView.as_view(), name='press_detail'), # the press/ view will be static parent to press related subpages
+    #path('contact/', .as_view(), name='contact_form'), # this is a contact form - standard for the site
 
     # generic static page views
     path('resources/', PageListView.as_view(), name='staticpage_list'),
