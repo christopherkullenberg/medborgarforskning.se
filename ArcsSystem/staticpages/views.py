@@ -15,3 +15,6 @@ class PageListView(ListView):
 
 class HomePageView(TemplateView):
     template_name = 'staticpages/main-page.html'
+
+class TermsPageView(TemplateView):
+    template_name = 'staticpages/terms-cookies-privacy_detail.html'
