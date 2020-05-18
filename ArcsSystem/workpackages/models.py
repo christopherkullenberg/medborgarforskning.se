@@ -1,17 +1,30 @@
 from django.db import models
 from taggit.managers import TaggableManager
+from django.utils.translation import gettext_lazy as _
+
 
 
 class WorkPackage(models.Model):
+    '''
+    '''
+    class Meta:
+        verbose_name = _('Work package')
+        verbose_name_plural = _('Work packages')
+
     name = models.TextField()
     introduction = models.TextField()
     detailed_content = models.TextField()
 
     def __str__(self):
-        return self.title
+        return self.name
 
 
 class Theme(models.Model):
+    '''
+    '''
+    class Meta:
+        verbose_name = _('Theme')
+        verbose_name_plural = _('Themes')
     title = models.TextField()
     body = models.TextField()
     related_papers_tags = TaggableManager()
