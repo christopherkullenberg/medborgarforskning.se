@@ -25,7 +25,7 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=docker
     volumes:
-      - pgdatabase_volume:/var/lib/postgresql/data # Docker controlled volume persistant after container being removed
+      - pgdatabase_volume:/var/lib/postgresql/data:Z # Docker controlled volume persistant after container being removed
     ports:
       - 5432:5432
     networks:
@@ -43,8 +43,8 @@ services:
         condition: service_healthy
     volumes:
       #- .:/opt/arcs_project_code #allow  editing code on host to reflect copy on server
-      - static_volume:/var/www/arcs_collected_static/static # Docker controlled volume persistant after container being removed and shared with nginx
-      - media_volume:/opt/arcs_project_code/arcs_project/media # Docker controlled volume persistant after container being removed and shared with nginx
+      - static_volume:/var/www/arcs_collected_static/static:Z # Docker controlled volume persistant after container being removed and shared with nginx
+      - media_volume:/opt/arcs_project_code/arcs_project/media:Z # Docker controlled volume persistant after container being removed and shared with nginx
     ports:
       - 8000:8000
     entrypoint: ["gunicorn", "-c", "gunicorn.conf.py", "--bind", ":8000", "--chdir", "/opt/arcs_project_code", "arcs_project.wsgi:application"]
@@ -71,12 +71,12 @@ services:
       - 443:443
     command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'" # TODO reeneable for LetsEncrypt
     volumes:
-      - static_volume:/var/www/arcs_collected_static/static
-      - media_volume:/var/www/arcs_collected_static/media # TODO review if media should be controlled by the django app for permissions
-      - ./data/certbot/conf:/etc/letsencrypt # links to where the certificates are stored for ther server #TODO review if loation is preferred path
-      - ./data/certbot/www:/var/www/certbot/ # links to where the .well-known directory text verification is placed #TODO review if loation is preferred path
+      - static_volume:/var/www/arcs_collected_static/static:Z
+      - media_volume:/var/www/arcs_collected_static/media:Z # TODO review if media should be controlled by the django app for permissions
+      - ./data/certbot/conf:/etc/letsencrypt:Z # links to where the certificates are stored for ther server #TODO review if loation is preferred path
+      - ./data/certbot/www:/var/www/certbot/:Z # links to where the .well-known directory text verification is placed #TODO review if loation is preferred path
       #- ./nginx/.well-known:/var/www/certbot/.well-known # mount the static well-known files to be served
-      - ./log/nginx/:/var/log/nginx/ # make access and error logs available on host server #TODO review is this is preferred paths
+      - ./log/nginx/:/var/log/nginx/:Z # make access and error logs available on host server #TODO review is this is preferred paths
     networks:
       - nginx_network
     healthcheck:
@@ -87,9 +87,9 @@ services:
     container_name: LetsEncrypt
     restart: unless-stopped
     volumes:
-      - ./data/certbot/conf:/etc/letsencrypt
-      - ./data/certbot/www:/var/www/certbot
-      - ./log/letsencrypt:/var/log/letsencrypt # TODO check directory permission for this on server
+      - ./data/certbot/conf:/etc/letsencrypt:Z
+      - ./data/certbot/www:/var/www/certbot:Z
+      - ./log/letsencrypt:/var/log/letsencrypt:Z # TODO check directory permission for this on server
     entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'" # TODO reeneable for LetsEncrypt
     healthcheck:
       test: "exit 0"
