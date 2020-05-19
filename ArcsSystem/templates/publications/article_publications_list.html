@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load i18n %}
+{% load workpackages_extra %}
 
 
 {% block content %}
@@ -22,5 +23,21 @@
 {% endfor %}
 </div>
 
+
+<h3>{{ "Ethics"|get_wp_name }}</h3>
+
+<p>
+{{ "Ethics"|get_wp_intro }}
+</p>
+
+<p>
+{{ "Ethics"|get_wp_detailed_content }}
+</p>
+
+
+{% for theme in "Ethics"|get_wp_themes %}
+<p><b>{{ theme.title}}</b></p>
+<p>{{ theme.body }}</p>
+{% endfor %}
 
 {% endblock content %}

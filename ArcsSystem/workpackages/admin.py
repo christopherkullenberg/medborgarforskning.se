@@ -12,8 +12,10 @@ class WorkPackageAdmin(TabbedTranslationAdmin):
     fieldsets = [(u'WorkPackage', {'fields': ('name','introduction','detailed_content')})
         ]
 
-class ThemeAdmin(SummernoteModelAdmin):
+class ThemeAdmin(TabbedTranslationAdmin):
     summernote_fields = ('body',)
+    fieldsets = [(u'Theme', {'fields': ('title','body', 'wp_parent')})
+        ]
 
 
 

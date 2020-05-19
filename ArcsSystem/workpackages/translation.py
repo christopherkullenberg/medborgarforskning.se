@@ -11,6 +11,9 @@ class WorkPackageTranslationOptions(TranslationOptions):
     ''' Registers Work Oackage post fields for translation  '''
     fields = ('name', 'introduction', 'detailed_content')
 
+class ThemeTranslationOptions(TranslationOptions):
+    ''' Registers theme post fields for translation  '''
+    fields = ('title', 'body')
 # order matters if you are loading a model depedning on another model
 translator.register(WorkPackage, WorkPackageTranslationOptions)
-#   translator.register(Article, ArticleTranslationOptions)
+translator.register(Theme, ThemeTranslationOptions)
