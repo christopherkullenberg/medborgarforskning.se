@@ -307,7 +307,7 @@ SOCIALACCOUNT_PROVIDERS = {
         # Base domain of the API. Default value: 'orcid.org', for the production API
         'BASE_DOMAIN':'orcid.org',  # sandbox.orcid.org for the sandbox API
         # Member API or Public API? Default: False (for the public API)
-        'MEMBER_API': True,  # for the member API
+        'MEMBER_API': False,  # for the member API
         'APP': {
             'client_id': 'APP-04ZPI85NJK4Z97OR', # TODO extract to secrets file variable for setup config - this is dev testing only will stop working
             'secret': '9a9e5e9c-414c-4833-b44c-a13c1dbb00e3', # TODO move to environment variable
@@ -327,14 +327,16 @@ ACCOUNT_USERNAME_VALIDATORS = None
 
 ### End AllAuth Config ###
 
-### Email Config Begin ###
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend" # prints to console for dev only TODO: switch with env for smtp for prod
-#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+### Email Config Begin ### #TODO switch to env config
+#EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend" # prints to console for dev only TODO: switch with env for smtp for prod
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 #DEFAULT_FROM_EMAIL = env("FROM_EMAIL")
+DEFAULT_FROM_EMAIL = 'noreply@medborgarforskning.se'
 #EMAIL_HOST = env("HOST_EMAIL")
+EMAIL_HOST = 'smtp.gu.se'
 #EMAIL_HOST_USER = #env("FROM_EMAIL")
 #EMAIL_HOST_PASSWORD = #env("EMAIL_HOST_PASSWORD")
-#EMAIL_PORT = #'587'
+EMAIL_PORT = '587'
 #EMAIL_USE_TLS = False # True
 
 EMAIL_RECIPIENT_LIST = [
