@@ -118,9 +118,6 @@ body {
     margin-left: 40px;
 }
 
-
-
-
 .has-search .form-control {
     padding-left: 2.375rem;
 }
@@ -242,12 +239,67 @@ body {
     font-size: 18px;
 }
 
+.project-menu-filter{
+    padding-top: 50px;
+    padding-bottom: 50px;
+
+}
+
+.project-filter-menu-font{
+    font-family: Playfair;
+    font-size: 25px;
+}
+
+.project-item-details{
+    font: Lato;
+    font-size: 12px;
+}
+
+#project-items-link{
+    color: #000000;
+}
+
+.project-items-justify{
+    padding-top: 10px;
+}
+
+.login-form{
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
 .search-list{
   margin-left: 50px;
   margin-right: 50px;
   margin-top: 40px;
   margin-bottom: 40px;
 }
+
+.projects-filter-buttons{
+    background-color: #255C61;
+    color: #ffffff ;
+    font-family: MELLANRUBRIKER;
+}
+
+.project-item{
+    border: 1px solid;
+    border-color: green;
+    margin-left: 20px;
+    margin-bottom: 40px;
+    border-radius: 3px 3px 3px 3px;
+}
+
+.project-pageination{
+    background-color: #9FB0A0 !important;
+    color: #255C61 !important;
+    font-family: Lato;
+}
+
+.page-item.active .page-link{
+    color: #ffffff !important;
+    background-color: #255C61 !important;
+}
+
 h1.search-list{
   margin: 10px;
 }
@@ -255,6 +307,18 @@ h1.search-list{
 .post-entry{
   margin-top: 5px;
   margin-bottom: 5px;
+}
+
+.Lato-font{
+    font-family: Lato;
+}
+
+.green-blue-color{
+    background-color: #255C61;
+}
+
+.project-keywords-btn{
+    margin-bottom: 10px;
 }
 
 .detail-view{
