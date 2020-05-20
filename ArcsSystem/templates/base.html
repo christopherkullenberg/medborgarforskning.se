@@ -27,36 +27,36 @@
 					<div class="row">
 						<div class="col">
 							<a href="#">
-								<img class="header-icons" src="{% static 'icons/Facebook_Brands_Icon_4.png' %}"/>
+								<img class="header-icons" src="{% static 'icons/Facebook_Brands_Icon_4.png' %}" alt="{% trans "Facebook icon in the header linking to Medborgarforskning.se on Facebook" %}"/>
 							</a>
 						</div>
 						<div class="col">
 							<a href="https://www.linkedin.com/company/arcs-citsci/">
-								<img class="header-icons" src="{% static 'icons/Linkedin_Brands_Icon_4.png' %}"/>
+								<img class="header-icons" src="{% static 'icons/Linkedin_Brands_Icon_4.png'%}" alt="{% trans "LinkedIn icon in the heaer linking to Medborgarforskning.se on LinkedIn" %}"/>
 							</a>
 						</div>
 						<div class="col">
 							<a href="#">
-								<img class="header-icons" src="{% static 'icons/Instagram_Brands_Icon_4.png' %}"/>
+								<img class="header-icons" src="{% static 'icons/Instagram_Brands_Icon_4.png'%}" alt="{% trans "Instagram icon in the header linking to Medborgarforskning.se on Instagram" %}"/>
 							</a>
 						</div>
 						<div class="col">
 							<a href="https://twitter.com/CitSciSE">
-								<img class="header-icons" src="{% static 'icons/Twitter_Square_Brands_Icon_4.png' %}"/>
+								<img class="header-icons" src="{% static 'icons/Twitter_Square_Brands_Icon_4.png'%}" alt="{% trans "Twitter icon in the header linking to Medborgarforskning.se on Twitter" %}"/>
 							</a>
 						</div>
 					</div>
 				</div>
 				<a id="header-main-logo" class="col d-flex justify-content-center align-items-center" href= {% url 'staticpages:homepage_view' %}>
-					<img src="{% static 'icons/medborgarforskning-C-1000px_1.png' %}"/>
+					<img src="{% static 'icons/medborgarforskning-C-1000px_1.png' %}" alt="{% trans "Medborgarforskning.se Logo linking to the site homepage" %}"/>
 				</a>
 				<div class="col d-flex justify-content-center align-items-center">
 					<div class="row d-flex justify-content-center align-items-center">
 					<div class="col">
 
 						<div class="dropdown">
-							<button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							  <img class="header-icons" src="{% static 'icons/Language_Icon_4.png' %}"/>
+							<button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+							  <img class="header-icons" src="{% static 'icons/Language_Icon_4.png' %}" alt="{% trans "Globe icon for switching languages" %}"/>
 							</button>
 							<div class="dropdown-menu header-main-menu-body" aria-labelledby="dropdownMenuButton">
 								{% get_current_language as LANGUAGE_CODE %}
@@ -75,12 +75,12 @@
 					</div>
 					<div class="col">
 						<a href="#">
-							<img class="header-icons" src="{% static 'icons/Hearing_Icon_3.png' %}"/>
+							<img class="header-icons" src="{% static 'icons/Hearing_Icon_3.png' %}" alt="{% trans "Ear icon to launch text to speech of the current page" %}"/>
 						</a>
 					</div>
 					<div class="col">
 						<a href="#">
-							<img class="header-icons" src="{% static 'icons/Account_Circle_Icon_5.png' %}"/>
+							<img class="header-icons" src="{% static 'icons/Account_Circle_Icon_5.png' %}" alt="{% trans "Profile icon for login and account details" %}"/>
 						</a>
 					</div>
 				</div>
@@ -91,7 +91,7 @@
 		  <div class="collapse navbar-collapse body" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
 			  <li class="nav-item dropdown active">
-				<a class="nav-link dropdown-toggle font-weight-bold main-menu-buttons-font" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{% trans "GETTING STARTED WITH CITIZEN SCIENCE" %}</a>
+				<a class="nav-link dropdown-toggle font-weight-bold main-menu-buttons-font" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{% trans "Getting Started With Citizen Science" %}</a>
 					<div class="dropdown-menu main-menu-buttons header-main-menu-body" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item font-weight-bold" href="#">{% trans "What is Citizen Science?" %}</a>
 						<div class="dropdown-divider"></div>
@@ -110,7 +110,7 @@
 					</div>
 			  </li>
 			  <li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle font-weight-bold main-menu-buttons-font" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">  {% trans "CITIZEN SCIENCE IN PRACTICE" %} </a>
+				<a class="nav-link dropdown-toggle font-weight-bold main-menu-buttons-font" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">  {% trans "Citizen Science in Practice" %} </a>
 					<div class="dropdown-menu main-menu-buttons header-main-menu-body" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item font-weight-bold" href="#">{%trans "Data Standards and Quality" %}</a>
 						<div class="dropdown-divider"></div>
@@ -163,7 +163,7 @@
 				</div>
 			</li>
 			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle font-weight-bold main-menu-buttons-font" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {% trans "CITIZEN SCIENCE IN SWEDEN" %} </a>
+				<a class="nav-link dropdown-toggle font-weight-bold main-menu-buttons-font" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {% trans "Citizen Science in Sweden" %} </a>
 				<div class="dropdown-menu main-menu-buttons header-main-menu-body" aria-labelledby="navbarDropdown">
 					<a class="dropdown-item font-weight-bold" href="#">{%trans "Citizen Science Projects" %}</a>
 					<div class="dropdown-divider"></div>
@@ -283,16 +283,16 @@
 					<ul class="nav navbar-nav navbar-right ml-auto">
 						<li class="nav-item d-flex justify-content-center align-items-center">{% trans "Follow medborgarforskning.se" %}: </li>
 						<li class="nav-item"><a href="https://www.linkedin.com/company/arcs-citsci/" class="nav-link">
-							<img class="header-icons" src="{% static 'icons/Facebook_Brands_Icon_4.png' %}"/>
+							<img class="header-icons" src="{% static 'icons/Facebook_Brands_Icon_4.png' %}" alt="{% trans "Facebook icon in the footer linking to Medborgarforskning.se on Facebook" %}"/>
 						</a></li>
 						<li class="nav-item"><a href="#" class="nav-link">
-							<img class="header-icons" src="{% static 'icons/Linkedin_Brands_Icon_4.png' %}"/>
+							<img class="header-icons" src="{% static 'icons/Linkedin_Brands_Icon_4.png' %}" alt="{% trans "LinkedIn icon in the footer linking to Medborgarforskning.se on LinkedIn" %}"/>
 						</a></li>
 						<li class="nav-item"><a href="#" class="nav-link">
-							<img class="header-icons" src="{% static 'icons/Instagram_Brands_Icon_4.png' %}"/>
+							<img class="header-icons" src="{% static 'icons/Instagram_Brands_Icon_4.png' %}" alt="{% trans "Instagram icon in the footer linking to Medborgarforskning.se on Instagram" %}"/>
 						</a></li>
 						<li class="nav-item"><a href="https://twitter.com/CitSciSE" class="nav-link">
-							<img class="header-icons" src="{% static 'icons/Twitter_Square_Brands_Icon_4.png' %}"/>
+							<img class="header-icons" src="{% static 'icons/Twitter_Square_Brands_Icon_4.png' %}" alt="{% trans "Twitter icon in the footer linking to Medborgarforskning.se on Twitter" %}"/>
 						</a></li>
 					</ul>
 
@@ -303,16 +303,16 @@
 						ARCS Partners:
 					</div>
 					<div class="col participiate-logo">
-						<img class="footer-patner-logo"  src="{% static 'icons/gu-neg-500px-square-300x300.png' %}"/>
+						<img class="footer-patner-logo"  src="{% static 'icons/gu-neg-500px-square-300x300.png' %}" alt="{% trans "" %}"/>
 					</div>
 					<div class="col participiate-logo">
-						<img class="footer-patner-logo"  src="{% static 'icons/slu-neg-500px-300x300.png' %}"/>
+						<img class="footer-patner-logo"  src="{% static 'icons/slu-neg-500px-300x300.png' %}" alt="{% trans "" %}"/>
 					</div>
 					<div class="col participiate-logo">
-						<img class="footer-patner-logo"  src="{% static 'icons/umu-neg-500px-300x300.png' %}"/>
+						<img class="footer-patner-logo"  src="{% static 'icons/umu-neg-500px-300x300.png' %}" alt="{% trans "" %}"/>
 					</div>
 					<div class="col">
-						<img class="footer-patner-logo"  src="{% static 'icons/va-neg-500px-square-B-300x300.png' %}"/>
+						<img class="footer-patner-logo"  src="{% static 'icons/va-neg-500px-square-B-300x300.png' %}" alt="{% trans "" %}"/>
 					</div>
 				</div>
 				<div class="row justify-content-center policy-footer-font policy-footer-menu">
@@ -343,7 +343,7 @@
 				</div>
 				<div class="row cc-by-footer justify-content-center">
 					<div class="col-1">
-						<img id="cc-by" src="{% static 'icons/CC-BY_icon.svg' %}"/>
+						<img id="cc-by" src="{% static 'icons/CC-BY_icon.svg' %}" alt="{% trans "" %}"/>
 					</div>
 					<div class="col-7 policy-footer-font d-flex align-items-center">
 						<p>Except where otherwise <a href="#"> noted, </a> content on this site is licensed under a <a href="https://creativecommons.org/licenses/by/4.0/deed.{{ LANGUAGE_CODE }}"> Creative Commons Attribution 4.0 International License.</a></p>
