@@ -246,13 +246,13 @@ body {
 }
 
 .project-filter-menu-font{
-    font-family: Playfair;
-    font-size: 25px;
+    font-family: Playfair Display;
+    font-size: 24px;
 }
 
 .project-item-details{
-    font: Lato;
-    font-size: 12px;
+    font-family: Lato ;
+    font-size: 14px;
 }
 
 #project-items-link{
@@ -278,7 +278,7 @@ body {
 .projects-filter-buttons{
     background-color: #255C61;
     color: #ffffff ;
-    font-family: MELLANRUBRIKER;
+    font-family: Lato;
 }
 
 .project-item{
@@ -313,12 +313,20 @@ h1.search-list{
     font-family: Lato;
 }
 
+.Helvetica-font{
+font-family: Helvetica
+}
+
 .green-blue-color{
     background-color: #255C61;
 }
 
 .project-keywords-btn{
     margin-bottom: 10px;
+}
+
+.projects-keywords-buttons-font{
+    font-family: Playfair Display;
 }
 
 .detail-view{

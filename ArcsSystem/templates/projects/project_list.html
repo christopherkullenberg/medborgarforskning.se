@@ -56,7 +56,7 @@
         <div class="row ">
         {% endif %}
         <div class="col-4 project-item">
-            
+
             <div class="row">
                 <div class="col Lato-font project-items-justify greenish-brown-color">
                     <p class="font-weight-bold"><a id="project-items-link" href="{% url 'projects:project_detail' project.pk %}">project {{forloop.counter}}: {{ project.name }}</a></p>
@@ -87,7 +87,7 @@
             <div class="row Lato-font project-item-details">
                 <div class="col justify-content-center align-items-center project-keywords-btn">
                     {% for keyword in project.keywords.all %}
-                    <button class="btn projects-filter-buttons" type="button" name="button">
+                    <button class="btn projects-filter-buttons projects-keywords-buttons-font" type="button" name="button">
                         {{keyword}}
                     </button>
 
