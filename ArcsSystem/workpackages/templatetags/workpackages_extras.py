@@ -10,6 +10,12 @@ register = template.Library()
 def get_wp_name(WPname):
     result = WorkPackage.objects.get(name=WPname)
     return result.name
+    '''
+    if language == "en":
+        return result.name_en
+    elif language == "sv":
+        return result.name_sv
+    '''
 
 def get_wp_intro(WPname):
     result = WorkPackage.objects.get(name=WPname)

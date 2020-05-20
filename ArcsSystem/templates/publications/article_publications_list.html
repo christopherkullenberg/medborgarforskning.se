@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load i18n %}
-{% load workpackages_extra %}
+{% load workpackages_extras %}
 
 
 {% block content %}
@@ -24,11 +24,23 @@
 </div>
 
 
-<h3>{{ "Ethics"|get_wp_name }}</h3>
+{% if LANGUAGE_CODE == "en" %}
+   <h3>{{ "Ethics"|get_wp_name }}</h3>
+{% endif %}
 
-<p>
-{{ "Ethics"|get_wp_intro }}
-</p>
+{% if LANGUAGE_CODE == "sv" %}
+    <h3>{{ "Etik"|get_wp_name }}</h3>
+{% endif %}
+
+
+{% if LANGUAGE_CODE == "en" %}
+    <p>{{ "Ethics"|get_wp_intro }}</p>
+{% endif %}
+
+{% if LANGUAGE_CODE == "sv" %}
+    <p>{{ "Etik"|get_wp_intro }}</p>
+{% endif %}
+
 
 <p>
 {{ "Ethics"|get_wp_detailed_content }}
