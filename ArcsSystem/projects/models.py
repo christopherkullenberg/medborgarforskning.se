@@ -28,6 +28,11 @@ UN_REGIONS_CHOICES = [
 ]
 
 class Keyword(models.Model):
+    '''Keywords for the projects'''
+    class Meta:
+        verbose_name = _('Keyword')
+        verbose_name_plural = _('Keywords')
+
     keyword = models.TextField()
     def __str__(self):
         return f'{self.keyword}'

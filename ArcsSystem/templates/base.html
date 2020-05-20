@@ -31,7 +31,7 @@
 							</a>
 						</div>
 						<div class="col">
-							<a href="#">
+							<a href="https://www.linkedin.com/company/arcs-citsci/">
 								<img class="header-icons" src="{% static 'icons/Linkedin_Brands_Icon_4.png' %}"/>
 							</a>
 						</div>
@@ -41,15 +41,15 @@
 							</a>
 						</div>
 						<div class="col">
-							<a href="#">
+							<a href="https://twitter.com/CitSciSE">
 								<img class="header-icons" src="{% static 'icons/Twitter_Square_Brands_Icon_4.png' %}"/>
 							</a>
 						</div>
 					</div>
 				</div>
-				<div id="header-main-logo" class="col d-flex justify-content-center align-items-center">
+				<a id="header-main-logo" class="col d-flex justify-content-center align-items-center" href= {% url 'staticpages:homepage_view' %}>
 					<img src="{% static 'icons/medborgarforskning-C-1000px_1.png' %}"/>
-				</div>
+				</a>
 				<div class="col d-flex justify-content-center align-items-center">
 					<div class="row d-flex justify-content-center align-items-center">
 					<div class="col">
@@ -282,7 +282,7 @@
 					</ul>
 					<ul class="nav navbar-nav navbar-right ml-auto">
 						<li class="nav-item d-flex justify-content-center align-items-center">{% trans "Follow medborgarforskning.se" %}: </li>
-						<li class="nav-item"><a href="#" class="nav-link">
+						<li class="nav-item"><a href="https://www.linkedin.com/company/arcs-citsci/" class="nav-link">
 							<img class="header-icons" src="{% static 'icons/Facebook_Brands_Icon_4.png' %}"/>
 						</a></li>
 						<li class="nav-item"><a href="#" class="nav-link">
@@ -291,7 +291,7 @@
 						<li class="nav-item"><a href="#" class="nav-link">
 							<img class="header-icons" src="{% static 'icons/Instagram_Brands_Icon_4.png' %}"/>
 						</a></li>
-						<li class="nav-item"><a href="#" class="nav-link">
+						<li class="nav-item"><a href="https://twitter.com/CitSciSE" class="nav-link">
 							<img class="header-icons" src="{% static 'icons/Twitter_Square_Brands_Icon_4.png' %}"/>
 						</a></li>
 					</ul>
@@ -319,24 +319,24 @@
 					<div class="col-4">
 						<div class="row">
 							<div class="col">
-								<a href="#">
+								<a href="{% url 'staticpages:terms_detail' %}">
 								{% trans "Terms of service" %}
 								</a>
 							</div>
 							<div class="col">
-								<a href="#">
+								<a href="{% url 'staticpages:privacy_detail' %}">
 								{% trans "Privacy policy" %}
 								</a>
 							</div>
 							<div class="col">
-								<a href="#">
+								<a href="{% url 'staticpages:cookies_detail' %}">
 								{% trans "Cookies policy" %}
 								</a>
 							</div>
 						</div>
 					</div>
 					<div class="col-4">
-						<a href="#">
+						<a href="{% url 'staticpages:sourcecode_detail' %}">
 						{% trans "Powered by: The ARCS open source platform" %}
 						</a>
 					</div>
@@ -346,7 +346,7 @@
 						<img id="cc-by" src="{% static 'icons/CC-BY_icon.svg' %}"/>
 					</div>
 					<div class="col-7 policy-footer-font d-flex align-items-center">
-						<p>Except where otherwise <a href="#"> noted, </a> content on this site is licensed under a <a href="#"> Creative Commons Attribution 4.0 International License.</a></p>
+						<p>Except where otherwise <a href="#"> noted, </a> content on this site is licensed under a <a href="https://creativecommons.org/licenses/by/4.0/deed.{{ LANGUAGE_CODE }}"> Creative Commons Attribution 4.0 International License.</a></p>
 					</div>
 				</div>
 		</div>

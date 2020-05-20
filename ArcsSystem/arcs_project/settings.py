@@ -27,11 +27,12 @@ SECRET_KEY = 'bre=h5g+29%aw6&cpwbn9b75&ei&-=h_*c3778rcd9j%avnp-g' # TODO extract
 DEBUG = True # TODO extract to environment variable
 
 ### use domain name not IP address for security
-ALLOWED_HOSTS = ['localhost','127.0.0.1', '0.0.0.0','dev.medborgarforskning.se', 'arcstest.brierjon.com', "*"]
+ALLOWED_HOSTS = ['localhost','127.0.0.1','dev.medborgarforskning.se', 'medborgarforskning.se']
 
 # Application definition
 
 INSTALLED_APPS = [
+    'modeltranslation', # for Django 1.7 and above must be prior to django.contrib.admin - https://django-modeltranslation.readthedocs.io/en/latest/installation.html#required-settings
     'django.contrib.admin',
     'django.contrib.auth', # Core authentication framework and its default models. Required by AllAuth.
     'django.contrib.contenttypes', # Django content type system (allows permissions to be associated with models).
@@ -45,7 +46,7 @@ INSTALLED_APPS = [
     'publications', # enables the oublications app of ArcsCore
     #'products', #try to get rid of this one
     'projects', # enables the projects app of ArcsCore
-    'staticpages', 
+    'staticpages',
 
 ### Custom user apps
     'users', # initializes CustomUser and users app a.k.a. "People app" of ArcsCore
@@ -187,12 +188,14 @@ AUTH_PASSWORD_VALIDATORS = [
 #    SECURE_HSTS_INCLUDE_SUBDOMAIN = True
 #    SECURE_HSTS_PRELOAD = False # TODO seto to true
 #    SECURE_CONTENT_TYPE_NOSNIFF = True
-#    SESSION_COOKIE_SECURE = True
-#    CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
 
 
 ### Internationalization Start ###
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
+
+#_ = lambda s: s # required per statement for django-modeltranslation https://django-modeltranslation.readthedocs.io/en/latest/installation.html#required-settings
 
 LANGUAGE_CODE = 'en-us' # Default language used if no translation is available - ie language found in the templates
 
