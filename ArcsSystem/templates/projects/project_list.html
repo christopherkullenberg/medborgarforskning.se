@@ -1,22 +1,132 @@
 {% extends 'base.html' %}
-
-
-
+{% load static %}
+{% load i18n %}
 
 {% block content %}
 
-<div class="search-list">
-<form action="{% url 'projects:search_results' %}" method="get">
-  <input name="q" type="text" placeholder="Search...">
-</form>
+<div class="container ">
+    <div class="row project-menu-filter d-flex justify-content-center align-items-center">
+        <div class="col d-flex justify-content-center align-items-cente">
+            <!-- <div class="search-list">
+                <form action="{% url 'projects:search_results' %}" method="get">
+                  <input name="q" type="text" placeholder="Search...">
+                </form>
+            </div> -->
+            <h5 class="font-weight-bold project-filter-menu-font">Show</h5>
+        </div>
+        <div class="col">
+            <div class="dropdown">
+              <button class="btn projects-filter-buttons dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                biology
+              </button>
+              <div class="dropdown-menu header-main-menu-body" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Action</a>
+              </div>
+            </div>
+        </div>
+        <div class="col d-flex justify-content-center align-items-cente">
+            <h5 class="font-weight-bold project-filter-menu-font">project in</h5>
+        </div>
+        <div class="col">
+            <div class="dropdown">
+              <button class="btn projects-filter-buttons dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                the North
+              </button>
+              <div class="dropdown-menu header-main-menu-body" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Action</a>
+              </div>
+            </div>
+        </div>
+        <div class="col d-flex justify-content-center align-items-cente">
+            <h5 class="font-weight-bold project-filter-menu-font">sorted by</h5>
+        </div>
+        <div class="col">
+            <div class="dropdown">
+              <button class="btn projects-filter-buttons dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                date published
+              </button>
+              <div class="dropdown-menu header-main-menu-body" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Action</a>
+              </div>
+            </div>
+        </div>
+    </div>
+
+    {% for project in object_list %}
+
+        {% if forloop.counter0|divisibleby:3  %}
+        <div class="row ">
+        {% endif %}
+        <div class="col-4 project-item">
+
+            <div class="row">
+                <div class="col Lato-font project-items-justify greenish-brown-color">
+                    <p class="font-weight-bold"><a id="project-items-link" href="{% url 'projects:project_detail' project.pk %}">project {{forloop.counter}}: {{ project.name }}</a></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <img class="mg-fluid w-100" src="{{project.image_dir}}" alt="{% trans 'Responsive image' %}"/>
+                </div>
+            </div>
+            <div class="row Lato-font project-items-justify">
+                <div class="col project-item-details">
+                    <p class="font-weight-bold">PROJECT FOCUS:</p>
+                    <p>{{project.aim}}</p>
+                </div>
+            </div>
+            <div class="row Lato-font">
+                <div class="col project-item-details">
+                    <p class="font-weight-bold">DESCRIPTION:</p>
+                    <p>{{project.description|truncatewords:25}}</p>
+                </div>
+            </div>
+            <div class="row Lato-font">
+                <div class="col project-item-details">
+                    <p class="font-weight-bold">STATUS: {{project.status}}</p>
+                </div>
+            </div>
+            <div class="row Lato-font project-item-details">
+                <div class="col justify-content-center align-items-center project-keywords-btn">
+                    {% for keyword in project.keywords.all %}
+                    <button class="btn projects-filter-buttons projects-keywords-buttons-font" type="button" name="button">
+                        {{keyword}}
+                    </button>
+
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% if forloop.counter|divisibleby:3 %}
+        </div>
+        {% endif %}
+    {% endfor %}
+    {% if object_list|length|divisibleby:3 is False %}
+        </div>
+        {% endif %}
 
 
-{% for project in object_list %}
-<div>
-<h2><a href="{% url 'projects:project_detail' project.pk %}">{{ project.name }}</a></h2>
+    <div class="row">
+        <div class="col d-flex justify-content-center align-items-center">
+            <nav aria-label="...">
+              <ul class="pagination">
+                <li class="page-item disabled">
+                  <a class="page-link project-pageination" href="#" tabindex="-1">Previous</a>
+                </li>
+                <li class="page-item"><a class="page-link project-pageination" href="#">1</a></li>
+                <li class="page-item active">
+                  <a class="page-link project-pageination" href="#">2 <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="page-item"><a class="page-link project-pageination" href="#">3</a></li>
+                <li class="page-item">
+                  <a class="page-link project-pageination" href="#">Next</a>
+                </li>
+              </ul>
+            </nav>
+        </div>
 
-</div>
-{% endfor %}
+    </div>
+
 </div>
 
 

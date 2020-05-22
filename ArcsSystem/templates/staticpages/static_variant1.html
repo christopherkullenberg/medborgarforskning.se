@@ -1,5 +1,5 @@
-
 {% extends 'base.html' %}
+{% load static %}
 {% load i18n %}
 
 {% block content %}
@@ -28,7 +28,7 @@
                 <div class="col">
                     <h2 font-weight-bold text-header-style > {{ object.title }}</h2>
                     <p > Publication Date: {{object.published}}</p>
-                    <img class="img-fluid" src="https://cdn.pixabay.com/photo/2020/05/03/15/45/oilseed-rape-5125544_1280.jpg"/>
+                    <img class="img-fluid" src="{% static "devplaceholder/knowledge-1052014_1920.jpg" %}" alt="{% trans '' %}"/>
                     <br>
                     <p> {{ object.content }} </p>
                 </div>
@@ -39,7 +39,7 @@
             <div class="row visual-Mindmap-style">
                 <div class="col">
                     <h4 class="text-header-visual-mindmap"> Explore Visual - Mindmap </h4>
-                    <img class="img-fluid" src="https://cdn.pixabay.com/photo/2015/04/28/13/24/butterfly-743549_1280.jpg">
+                    <img class="img-fluid" src="{% static "devplaceholder/book-520626_1920.jpg" %}" alt="{% trans '' %}"/>
                 </div>
             </div>
             <div class="row visual-Mindmap-style">

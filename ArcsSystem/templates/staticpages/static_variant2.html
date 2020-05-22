@@ -1,6 +1,6 @@
-
 {% extends 'base.html' %}
 {% load i18n %}
+{% load static %}
 
 {% block content %}
 
@@ -28,18 +28,51 @@
                 <div class="col">
                     <h2 font-weight-bold text-header-style > {{ object.title }}</h2>
                     <p > Publication Date: {{object.published}}</p>
-                    <img class="img-fluid" src="https://cdn.pixabay.com/photo/2020/05/03/15/45/oilseed-rape-5125544_1280.jpg"/>
+                    <img class="img-fluid" src="{% static "devplaceholder/library-863148_1920.jpg" %}" alt="{% trans '' %}"/>
                     <br>
                     <p> {{ object.content }} </p>
                 </div>
 
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="accordion">
+                      <div class="accordion__item">
+                        <div class="accordion__item__header" >
+                         Theme 1
+                        </div>
+
+                        <div class="accordion__item__content">
+                          <p> Explain of your item goes here...</p>
+                		 </div>
+                      </div>
+                	        <div class="accordion__item">
+                        <div class="accordion__item__header">
+                         Theme 2
+                        </div>
+
+                        <div class="accordion__item__content">
+                          <p> Explain of your item goes here...</p>
+                		 </div>
+                      </div>
+                	        <div class="accordion__item">
+                        <div class="accordion__item__header">
+                         Theme 3
+                        </div>
+
+                        <div class="accordion__item__content">
+                          <p> Explain of your item goes here...</p>
+                		 </div>
+                      </div>
+                    </div> <!-- id accordion end -->
+                </div>
             </div>
         </div>
         <div class="col-3">
             <div class="row visual-Mindmap-style">
                 <div class="col">
                     <h4 class="text-header-visual-mindmap"> Explore Visual - Mindmap </h4>
-                    <img class="img-fluid" src="https://cdn.pixabay.com/photo/2015/04/28/13/24/butterfly-743549_1280.jpg">
+                    <img class="img-fluid" src="{% static "devplaceholder/open-book-1428428_1920.jpg" %}" alt="{% trans '' %}"/>
                 </div>
             </div>
             <div class="row visual-Mindmap-style">
@@ -60,3 +93,10 @@
 
 {% endautoescape %}
 {% endblock content %}
+
+{% block extra_head %}
+<script src="{% static 'scripts/accordion.js' %}" type="text/javascript"></script>
+    <!-- Accordion CSS -->
+<link rel="stylesheet" href="{% static 'css/accordion_style.css' %}">
+
+{% endblock extra_head %}
