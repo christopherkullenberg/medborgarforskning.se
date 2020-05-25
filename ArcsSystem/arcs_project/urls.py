@@ -34,12 +34,9 @@ admin.site.site_header = _("ARCS Admin") # Seen at top of admin after login to a
 admin.site.index_title = _("Welcome to the ARCS Admin Portal") # Seen at top of app list on login to admin
 
 
-if settings.DEBUG:
-    import debug_toolbar
-    urlpatterns = [
-        path('__debug__/', include(debug_toolbar.urls)),
-        path('i18n/', include('django.conf.urls.i18n')),
-    ]
+urlpatterns = [
+    path('i18n/', include('django.conf.urls.i18n')),
+]
 
 urlpatterns += i18n_patterns(
     path(_('manage-arcs/'), admin.site.urls),

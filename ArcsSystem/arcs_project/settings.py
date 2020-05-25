@@ -36,11 +36,10 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth', # Core authentication framework and its default models. Required by AllAuth.
     'django.contrib.contenttypes', # Django content type system (allows permissions to be associated with models).
-    'django.contrib.sessions', # sets so only session is set in a cookie and managed in the database
+    'django.contrib.sessions',
     'django.contrib.messages', # also required by AllAuth
     'django.contrib.staticfiles',
     'django.contrib.sitemaps', # enables django to generate sitemap
-    'debug_toolbar',
 
 ### ArcsCore apps
     'blog', # enables the blog app of ArcsCore
@@ -93,7 +92,6 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware', # Manages sessions across requests
     'django.middleware.locale.LocaleMiddleware', # local must be placed before CommonMiddleware as it needs an activated language. CacheMiddleware if used should be before Locale - https://docs.djangoproject.com/en/2.2/topics/i18n/translation/#how-django-discovers-language-preference
-    'debug_toolbar.middleware.DebugToolbarMiddleware', # should be placed early as possible, but after middleware that encodes a response's content - https://django-debug-toolbar.readthedocs.io/en/latest/installation.html#enabling-middleware
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware', # Associates users with requests using sessions.
@@ -141,11 +139,6 @@ AUTHENTICATION_BACKENDS = (
 
 WSGI_APPLICATION = 'arcs_project.wsgi.application'
 
-### adding for debug_toolbar
-INTERNAL_IPS = [
-    '127.0.0.1',
-]
-###
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
