@@ -285,6 +285,17 @@ body {
     color: #000;
 }
 
+.password-reset-form{
+    font-family: Helvetica;
+}
+
+#password-reset-btn{
+    margin: 0 auto;
+    display: block;
+    background-color: #e6e6e6;
+    margin-bottom: 10px;
+}
+
 .search-list{
   margin-left: 50px;
   margin-right: 50px;
