@@ -268,6 +268,23 @@ body {
     padding-bottom: 40px;
 }
 
+.login-btn{
+    padding: 10px;
+    background-color: #e6e6e6;
+    font-family: Helvetica;
+    display: block;
+    margin: 0 auto;
+}
+
+.login-form-style{
+    font-family: Helvetica;
+    font-size: 14px;
+}
+
+.socialaccount_providers_btn:hover{
+    color: #000;
+}
+
 .search-list{
   margin-left: 50px;
   margin-right: 50px;
@@ -314,7 +331,7 @@ h1.search-list{
 }
 
 .Helvetica-font{
-font-family: Helvetica
+font-family: Helvetica;
 }
 
 .green-blue-color{
@@ -328,6 +345,16 @@ font-family: Helvetica
 .projects-keywords-buttons-font{
     font-family: Playfair Display;
 }
+
+.socialaccount_providers_btn{
+    background-color: #fff !important;
+    width: 200px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-family: Helvetica;
+}
+
+.
 
 .detail-view{
   margin-left: 50px;

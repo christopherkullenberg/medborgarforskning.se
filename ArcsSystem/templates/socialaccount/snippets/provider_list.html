@@ -7,7 +7,7 @@
 {% for brand in provider.get_brands %}
 <div class="row ">
     <div class="col">
-        <a class="btn btn-outline-dark socialaccount_provider {{provider.id}} {{brand.id}}" href="{% provider_login_url provider.id openid=brand.openid_url process=process %}" role="button">{{brand.name}}</a>
+        <a class="btn  btn-outline-dark socialaccount_providers_btn socialaccount_provider {{provider.id}} {{brand.id}}" href="{% provider_login_url provider.id openid=brand.openid_url process=process %}" role="button">{{brand.name}}</a>
     </div>
 </div>
 
@@ -15,7 +15,7 @@
 {% endif %}
 <div class="row">
     <div class="col">
-        <a class="btn btn-outline-dark socialaccount_provider {{provider.id}}" href="{% provider_login_url provider.id process=process scope=scope auth_params=auth_params %}" role="button">{{provider.name}}</a>
+        <a class="btn btn-outline-dark socialaccount_providers_btn socialaccount_provider {{provider.id}}" href="{% provider_login_url provider.id process=process scope=scope auth_params=auth_params %}" role="button">{{provider.name}}</a>
     </div>
 </div>
 {% endfor %}
