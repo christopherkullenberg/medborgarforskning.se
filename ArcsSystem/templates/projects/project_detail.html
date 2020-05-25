@@ -15,7 +15,7 @@
     {# TODO implement additional web image format handling #}
     <source srcset="name.webp" type="image/webp" alt="{#TODO alt text#}">{#Webp image support first#}
 		<source srcset="name.jpg" type="image/jpg" alt="{#TODO alt text#}">{#jpg support next#}
-    <img src="{{ project.image_dir }}" alt="Bild för projektet {{ project.name }}" width="300" height="300"/>
+    <img src="{{ project.image_dir }}"  alt="{% blocktrans %}Bild för projektet {{ project.name }}{% endblocktrans %}" width="300" height="300"/>
   </picture>
 
   <div class="detail-view">
