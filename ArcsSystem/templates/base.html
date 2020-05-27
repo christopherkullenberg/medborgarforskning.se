@@ -1,4 +1,9 @@
-{% load static %}{% load i18n %}{% load account %}{% load menu_tags %}<!DOCTYPE HTML>
+{% load static %}
+{% load i18n %}
+{% load account %}
+{% load menu_tags %}
+<!DOCTYPE HTML>
+
 <html lang="{{ LANGUAGE_CODE }}">
 	<head role="banner">
 		<meta charset="utf-8" />
@@ -11,9 +16,10 @@
 		<link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
 		<!-- TODO Insert django tag for additional scripts for the page-->
 		<!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 		<link href="{% static 'css/base-style.css' %}" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Lato|Playfair+Display&display=swap" rel="stylesheet" /> <!--TODO change to serve locally as it does not support integrity hash-->
+
 		<title>{% block head_title %}Medborgarforskning.se{% endblock %}</title> <!-- TODO replace "Medborgarforskning.se" with django template for the page title -->
     {% block extra_head %}
     {% endblock %}
@@ -52,182 +58,74 @@
 				</a>
 				<div class="col d-flex justify-content-center align-items-center">
 					<div class="row d-flex justify-content-center align-items-center">
-					<div class="col">
+						<div class="col">
+							<div class="dropdown">
+								<button class="btn header-menu-btn-font dropdown-toggle hide-extend-language-icon" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+								  <img class="header-icons" src="{% static 'icons/Language_Icon_4.png' %}" alt="{% trans 'Globe icon for switching languages' %}"/>
+								  <br>
+								  Language
+								</button>
+								<div class="dropdown-menu header-main-menu-body" aria-labelledby="dropdownMenuButton">
+									{% get_current_language as LANGUAGE_CODE %}
+									{% get_available_languages as LANGUAGES %}
+									{% get_language_info_list for LANGUAGES as languages %}
+									{% for language in languages %}
+										<a class="dropdown-item change-language-item {% if language.code == LANGUAGE_CODE %}language-selected-color{% endif %}" value="{{ language.code }}" href="#">
+											{% if language.code == "en" %}
+												<svg class="flag-svg-align" xmlns="http://www.w3.org/2000/svg" width="25px" height="25px" viewBox="0 0 1802 1802">
+													<path fill="#000000" d="M901 0.45c497.37,0 900.55,403.18 900.55,900.55 0,497.37 -403.18,900.55 -900.55,900.55 -497.37,0 -900.55,-403.18 -900.55,-900.55 0,-497.37 403.18,-900.55 900.55,-900.55zm238.05 228.26c53.15,83.37 96.34,185.66 126.02,300.81l244.61 0c-84.69,-138.47 -215.31,-245.82 -370.63,-300.81zm159.49 478.17c7.66,61.64 11.68,125.59 11.68,191.2 0,60.49 -3.46,119.58 -9.97,176.72l292.37 0c13.93,-55.65 21.38,-113.84 21.38,-173.8 0,-67.28 -9.33,-132.4 -26.75,-194.12l-288.71 0zm-28.4 539.44c-30.6,126.97 -77.43,239.11 -135.96,328.64 167.16,-57.83 306.15,-176.06 390.74,-328.64l-254.78 0zm-602.32 328.64c-58.53,-89.53 -105.36,-201.67 -135.96,-328.64l-254.78 0c84.59,152.58 223.58,270.81 390.74,328.64zm-166.07 -500.16c-6.51,-57.14 -9.97,-116.23 -9.97,-176.72 0,-65.61 4.02,-129.56 11.68,-191.2l-288.71 0c-17.42,61.72 -26.75,126.84 -26.75,194.12 0,59.96 7.45,118.15 21.38,173.8l292.37 0zm35.18 -545.28c29.68,-115.15 72.87,-217.44 126.02,-300.81 -155.32,54.99 -285.94,162.34 -370.63,300.81l244.61 0zm364.07 -331.89c-72.97,84.03 -132.21,198.32 -171.01,331.89l342.02 0c-38.8,-133.57 -98.04,-247.86 -171.01,-331.89zm-208.56 509.25c-8.53,61.45 -13.03,125.46 -13.03,191.2 0,60.6 3.86,119.71 11.12,176.72l420.94 0c7.26,-57.01 11.12,-116.12 11.12,-176.72 0,-65.74 -4.5,-129.75 -13.03,-191.2l-417.12 0zm31.83 539.44c38.56,142.29 100.07,263.95 176.73,352.2 76.66,-88.25 138.17,-209.91 176.73,-352.2l-353.46 0z"/>
+												</svg>
+											{% elif language.code == "sv" %}
+												<svg class="flag-svg-align" xmlns="http://www.w3.org/2000/svg" width="25px" height="16px" viewBox="0 0 130.1 81.31">
+													<path fill="#000000" d="M3.83 81.31l36.83 0 0 -32.52 -40.66 0 0 28.7c0,2.1 1.72,3.82 3.83,3.82l0 0zm122.45 -81.31c2.1,0 3.82,1.72 3.82,3.83l0 28.7 -73.18 0 0 -32.53 69.36 0zm3.82 77.49c0,2.1 -1.72,3.82 -3.82,3.82l-69.36 0 0 -32.52 73.18 0 0 28.7zm-130.1 -73.66c0,-2.11 1.72,-3.83 3.83,-3.83l36.83 0 0 32.53 -40.66 0 0 -28.7 0 0z"/>
+												</svg>
+											{% endif %}
 
-						<div class="dropdown">
-							<button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
-							  <img class="header-icons" src="{% static 'icons/Language_Icon_4.png' %}" alt="{% trans 'Globe icon for switching languages' %}"/>
-							</button>
-							<div class="dropdown-menu header-main-menu-body" aria-labelledby="dropdownMenuButton">
-								{% get_current_language as LANGUAGE_CODE %}
-								{% get_available_languages as LANGUAGES %}
-								{% get_language_info_list for LANGUAGES as languages %}
-								{% for language in languages %}
-									<a class="dropdown-item change-language-item {% if language.code == LANGUAGE_CODE %}language-selected-color{% endif %}" value="{{ language.code }}" href="#"> {{ language.name_local }}</a>
-								{% endfor %}
+											{{ language.name_local }}
+										</a>
+									{% endfor %}
+								</div>
+								<form id="form-languages-submit" action="{% url 'set_language' %}" method="post">
+									{% csrf_token %}
+									<input name="next" type="hidden" value="{{ redirect_to }}"/>
+									<input id="language-input-value" name="language" type="hidden" value=""/>
+								</form>
 							</div>
-							<form id="form-languages-submit" action="{% url 'set_language' %}" method="post">
-								{% csrf_token %}
-								<input name="next" type="hidden" value="{{ redirect_to }}">
-								<input id="language-input-value" name="language" type="hidden" value="">
-							</form>
+						</div>
+						<div class="col">
+							<button class="btn header-menu-btn-font">
+								<img class="header-icons" src="{% static 'icons/Hearing_Icon_3.png' %}" alt="{% trans 'Ear icon to launch text to speech of the current page' %}"/>
+								<br>
+								Listen
+							</button>
+						</div>
+						<div class="col">
+							<button class="btn header-menu-btn-font">
+								<img class="header-icons" src="{% static 'icons/Account_Circle_Icon_5.png' %}" alt="{% trans 'Profile icon for login and account details' %}"/>
+								<br>
+								Login
+							</button>
 						</div>
 					</div>
-					<div class="col">
-						<a href="#">
-							<img class="header-icons" src="{% static 'icons/Hearing_Icon_3.png' %}" alt="{% trans 'Ear icon to launch text to speech of the current page' %}"/>
-						</a>
-					</div>
-					<div class="col">
-						<a href="#">
-							<img class="header-icons" src="{% static 'icons/Account_Circle_Icon_5.png' %}" alt="{% trans 'Profile icon for login and account details' %}"/>
-						</a>
-					</div>
-				</div>
 				</div>
 			</div>
 		</div>
 		<nav class="navbar navbar-expand-lg  header-main-menu">
-		  <div class="collapse navbar-collapse body" id="navbarSupportedContent">
-			<ul class="navbar-nav mr-auto">
-			  <li class="nav-item dropdown active">
-				<a class="nav-link dropdown-toggle font-weight-bold main-menu-buttons-font" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{% trans "Getting Started With Citizen Science" %}</a>
-					<div class="dropdown-menu main-menu-buttons header-main-menu-body" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item font-weight-bold" href="#">{% trans "What is Citizen Science?" %}</a>
-						<div class="dropdown-divider"></div>
-							<ul>
-								<li class="nav-item dropdown">
-									<a class="dropdown-item" href="#">{% trans "Swedish Citizen Science" %}</a>
-								</li>
-							</ul>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item font-weight-bold" href="#">{% trans "Case Studies" %}</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item font-weight-bold" href="#">{%trans "FAQ" %}</a>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item font-weight-bold" href="#">{%trans "Additional Resources" %}</a>
-						<div class="dropdown-divider"></div>
-					</div>
-			  </li>
-			  <li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle font-weight-bold main-menu-buttons-font" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">  {% trans "Citizen Science in Practice" %} </a>
-					<div class="dropdown-menu main-menu-buttons header-main-menu-body" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item font-weight-bold" href="#">{%trans "Data Standards and Quality" %}</a>
-						<div class="dropdown-divider"></div>
-						<ul>
-							<li nav-item dropdown>
-								<a class="dropdown-item" href="#">{%trans "Methods" %}</a>
-							</li>
-							<div class="dropdown-divider"></div>
-							<li nav-item dropdown>
-								<a class="dropdown-item" href="#">{%trans "Visual of Papers and Themes" %}</a>
-							</li>
-						</ul>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item font-weight-bold" href="#">{%trans "Technology" %}</a>
-						<div class="dropdown-divider"></div>
-							<ul>
-								<li nav-item dropdown>
-									<a class="dropdown-item" href="#">{%trans "Methods" %}</a>
-								</li>
-								<div class="dropdown-divider"></div>
-								<li nav-item dropdown>
-									<a class="dropdown-item" href="#">{%trans "Visual of Papers and Themes" %}</a>
-								</li>
-							</ul>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item font-weight-bold" href="#">{%trans "Ethics" %}</a>
-						<div class="dropdown-divider"></div>
-							<ul>
-								<li nav-item dropdown>
-									<a class="dropdown-item" href="#">{%trans "Methods" %}</a>
-								</li>
-								<div class="dropdown-divider"></div>
-								<li nav-item dropdown>
-									<a class="dropdown-item" href="#">{%trans "Visual of Papers and Themes" %}</a>
-								</li>
-							</ul>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item font-weight-bold" href="#">{%trans "Communications" %}</a>
-						<div class="dropdown-divider"></div>
-							<ul>
-								<li nav-item dropdown>
-									<a class="dropdown-item" href="#">{%trans "Methods" %}</a>
-								</li>
-								<div class="dropdown-divider"></div>
-								<li nav-item dropdown>
-									<a class="dropdown-item" href="#">{%trans "Visual of Papers and Themes" %}</a>
-								</li>
-							</ul>
-						<div class="dropdown-divider"></div>
-				</div>
-			</li>
-			<li class="nav-item dropdown">
-				<a class="nav-link dropdown-toggle font-weight-bold main-menu-buttons-font" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {% trans "Citizen Science in Sweden" %} </a>
-				<div class="dropdown-menu main-menu-buttons header-main-menu-body" aria-labelledby="navbarDropdown">
-					<a class="dropdown-item font-weight-bold" href="#">{%trans "Citizen Science Projects" %}</a>
-					<div class="dropdown-divider"></div>
-						<ul>
-							<li nav-item dropdown>
-								<a class="dropdown-item" href="#">{%trans "Map of Projects" %}</a>
-							</li>
-							<div class="dropdown-divider"></div>
-							<li nav-item dropdown>
-								<a class="dropdown-item" href="#">{%trans "Add your Projects" %}</a>
-							</li>
-						</ul>
-					<div class="dropdown-divider"></div>
-					<a class="dropdown-item font-weight-bold" href="#">{%trans "Predifined List of Projects" %}</a>
-					<div class="dropdown-divider"></div>
-						<ul>
-							<li nav-item dropdown>
-								<a class="dropdown-item" href="#">{%trans "Funders" %}</a>
-							</li>
-							<div class="dropdown-divider"></div>
-							<li nav-item dropdown>
-								<a class="dropdown-item" href="#">{%trans "Associated Affiliates" %}</a>
-							</li>
-							<div class="dropdown-divider"></div>
-							<li nav-item dropdown>
-								<a class="dropdown-item" href="#">{%trans "Reserchers" %}</a>
-							</li>
-						</ul>
-					<div class="dropdown-divider"></div>
-					<a class="dropdown-item font-weight-bold" href="#">{%trans "Proudacts" %}</a>
-					<div class="dropdown-divider"></div>
-						<ul>
-							<li nav-item dropdown>
-								<a class="dropdown-item" href="#">{%trans "Papers" %}</a>
-							</li>
-							<div class="dropdown-divider"></div>
-							<li nav-item dropdown>
-								<a class="dropdown-item" href="#">{%trans "Policy" %}</a>
-							</li>
-							<div class="dropdown-divider"></div>
-							<li nav-item dropdown>
-								<a class="dropdown-item" href="#">{%trans "Data" %}</a>
-							</li>
-							<div class="dropdown-divider"></div>
-							<li nav-item dropdown>
-								<a class="dropdown-item" href="#">{%trans "Broader Impacts" %}</a>
-							</li>
-					</ul>
-				<div class="dropdown-divider"></div>
-				</div>
-			</li>
-
-		</ul>
-		<form class="form-inline ml-auto">
-			<!-- Actual search box -->
-			<div class="form-group has-search">
-				<svg class="form-control-feedback" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-				  <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 011.415 0l3.85 3.85a1 1 0 01-1.414 1.415l-3.85-3.85a1 1 0 010-1.415z" clip-rule="evenodd"/>
-				  <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 100-11 5.5 5.5 0 000 11zM13 6.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" clip-rule="evenodd"/>
-				</svg>
-				<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+			<div class="col-9">
+				{% include "nav_main.html" %}
 			</div>
-		</form>
-		  </div>
+			<div class="col-3">
+				<form id="form-search-nev" class="form-inline ml-auto">
+				<!-- Actual search box -->
+				<div class="form-group has-search">
+					<svg class="form-control-feedback" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+					  <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 011.415 0l3.85 3.85a1 1 0 01-1.414 1.415l-3.85-3.85a1 1 0 010-1.415z" clip-rule="evenodd"/>
+					  <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 100-11 5.5 5.5 0 000 11zM13 6.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" clip-rule="evenodd"/>
+					</svg>
+					<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+				</div>
+				</form>
+			</div>
 		</nav>
 
 		{% block body %}
@@ -253,14 +151,16 @@
 			{% endif %}
 		</div>
 
-			<main id="content">{# Contents of Main are for the main target of the page. #}
-
+		<main id="content">{# Contents of Main are for the main target of the page. #}
 	  	{% block content %}
 			<h1>{% trans "Medborgarforskning.se!" %}</h1>
 			<p>{% trans "This base.html block should be replaced by a template defined block." %}
 	  	{% endblock content %}
-			</main>
+		</main>
+
+
 			{% endblock body %}
+
 			<!-- allauth base.html -->
 			{% block extra_body %}
 	    {% endblock %}
@@ -275,13 +175,13 @@
 				<!-- Collection of nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse justify-content-start">
 					<ul class="nav navbar-nav footer-menu-font">
-						<li class="nav-item"><a href="#" class="nav-link">{% trans "About us" %}</a></li>
+						<li class="nav-item"><a href="#" class="nav-link">{% trans "ABOUT US" %}</a></li>
 						<li class="nav-item"><a href="#" class="nav-link">{% trans "PRESS" %}</a></li>
-						<li class="nav-item"><a href="#" class="nav-link">{% trans "Contact" %}</a></li>
+						<li class="nav-item"><a href="#" class="nav-link">{% trans "CONTACT" %}</a></li>
 						<li class="nav-item"><a href="#" class="nav-link">{% trans "For Developers-API" %}</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right ml-auto">
-						<li class="nav-item d-flex justify-content-center align-items-center">{% trans "Follow medborgarforskning.se" %}: </li>
+						<li class="nav-item font-weight-bold d-flex justify-content-center align-items-center">{% trans "Follow medborgarforskning.se" %}: </li>
 						<li class="nav-item"><a href="https://www.linkedin.com/company/arcs-citsci/" class="nav-link">
 							<img class="header-icons" src="{% static 'icons/Facebook_Brands_Icon_4.png' %}" alt="{% trans 'Facebook icon in the footer linking to Medborgarforskning.se on Facebook' %}"/>
 						</a></li>
@@ -298,55 +198,62 @@
 
 				</div>
 			</nav>
-				<div class="row main-footer-participiate d-flex justify-content-center align-items-center">
-					<div class="col main-menu-buttons">
-						ARCS Partners:
-					</div>
-					<div class="col participiate-logo">
-						<img class="footer-patner-logo"  src="{% static 'icons/gu-neg-500px-square-300x300.png' %}" alt="{% trans '' %}"/>
-					</div>
-					<div class="col participiate-logo">
-						<img class="footer-patner-logo"  src="{% static 'icons/slu-neg-500px-300x300.png' %}" alt="{% trans '' %}"/>
-					</div>
-					<div class="col participiate-logo">
-						<img class="footer-patner-logo"  src="{% static 'icons/umu-neg-500px-300x300.png' %}" alt="{% trans '' %}"/>
-					</div>
+				<div class="row main-footer-participiate ">
 					<div class="col">
-						<img class="footer-patner-logo"  src="{% static 'icons/va-neg-500px-square-B-300x300.png' %}" alt="{% trans '' %}"/>
+						<div class="container">
+							<div class="row">
+								<div class="col main-menu-buttons">
+									ARCS Partners:
+								</div>
+								<div class="col-auto participiate-logo ">
+									<img class="footer-patner-logo"  src="{% static 'icons/gu-neg-500px-square-300x300.png' %}" alt="{% trans '' %}"/>
+								</div>
+								<div class="col-auto participiate-logo">
+									<img class="footer-patner-logo"  src="{% static 'icons/slu-neg-500px-300x300.png' %}" alt="{% trans '' %}"/>
+								</div>
+								<div class="col-auto participiate-logo">
+									<img class="footer-patner-logo"  src="{% static 'icons/umu-neg-500px-300x300.png' %}" alt="{% trans '' %}"/>
+								</div>
+								<div class="col-auto participiate-logo">
+									<img class="footer-patner-logo"  src="{% static 'icons/va-neg-500px-square-B-300x300.png' %}" alt="{% trans '' %}"/>
+								</div>
+								<div class="col"></div>
+							</div>
+						</div>
 					</div>
 				</div>
-				<div class="row justify-content-center policy-footer-font policy-footer-menu">
-					<div class="col-4">
+				<div class="row d-flex justify-content-center align-items-center policy-footer-font policy-footer-menu">
+					<div class="col-auto">
 						<div class="row">
-							<div class="col">
+							<div class="col-auto">
 								<a href="{% url 'staticpages:terms_detail' %}">
 								{% trans "Terms of service" %}
 								</a>
 							</div>
-							<div class="col">
+							<div class="col-auto">
 								<a href="{% url 'staticpages:privacy_detail' %}">
 								{% trans "Privacy policy" %}
 								</a>
 							</div>
-							<div class="col">
+							<div class="col-auto">
 								<a href="{% url 'staticpages:cookies_detail' %}">
 								{% trans "Cookies policy" %}
 								</a>
 							</div>
 						</div>
 					</div>
-					<div class="col-4">
+					<div class="col-auto">
 						<a href="{% url 'staticpages:sourcecode_detail' %}">
 						{% trans "Powered by: The ARCS open source platform" %}
 						</a>
 					</div>
 				</div>
-				<div class="row cc-by-footer justify-content-center">
-					<div class="col-1">
+				<div class="row cc-by-footer d-flex justify-content-center align-items-center">
+					<div class="col-auto">
 						<img id="cc-by" src="{% static 'icons/CC-BY_icon.svg' %}" alt="{% trans '' %}"/>
 					</div>
-					<div class="col-7 policy-footer-font d-flex align-items-center">
-						<p>Except where otherwise <a href="#"> noted, </a> content on this site is licensed under a <a href="https://creativecommons.org/licenses/by/4.0/deed.{{ LANGUAGE_CODE }}"> Creative Commons Attribution 4.0 International License.</a></p>
+					<div class="col-auto policy-footer-font d-flex justify-content-center align-items-center">
+						<p class="mb-0">Except where otherwise <a href="#"> noted, </a> content on this site is licensed under a <a href="https://creativecommons.org/licenses/by/4.0/deed.{{ LANGUAGE_CODE }}"> Creative Commons Attribution 4.0 International License.</a></p>
 					</div>
 				</div>
 		</div>

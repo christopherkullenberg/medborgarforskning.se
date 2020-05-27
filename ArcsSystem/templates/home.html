@@ -1,50 +1,113 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load i18n %}
-
+{% load blog_extras %}
+{% load publications_extras %} <!-- for publications dynamic box -->
 {% block title %}Home{% endblock title %}
 
 {% block content %}
-  <section>
-    <h1> Welcome</h1>
-    <p> This is static page welcome text controlled by the admin. </p>
-  </section>
+{{ var1 }}
 
-  <section id="projects">
-    <h1>Projects</h1>
-  </section>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="row">
+                <div class="col">
+                    <img class="img-fluid" src="{% static "devplaceholder/sami-takarautio-UZOpP-YHe9Q-unsplash.jpg"%}" alt="{% trans '' %}"/>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <br>
+                    <h1>{% trans "Welcome" %}</h1>
+                    <p>{% trans  "Welcome to medborgarforskning.se – Sweden's portal for persons interested in learning about citizen science and how to get started in Sweden as well as those who have been involved for years. While this site uses the term citizen science it is more than this term. <p class='bold'>Citizen science is about researchers and the public cooperating to develop new knowledge. At medborgarforskning.se anyone who wants to learn more about citizen science can search for projects to participate in and contribute to the portal with their own knowledge and experience.</p> As a researcher, you can find information about the methodology of citizen science, get tips and inspiration to start your own projects, exchange experiences and make connections with other researchers and volunteers.You can also post your projects on the portal to reach different target groups.<br><br> If you're not a researcher, you can do exactly the same things as the researchers. Citizen science is for everyone." %}
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="row">
+                <div class="col">
+                    <h1>{% trans "Projects" %}</h1>
+                    <p> {% trans "The database at medborgarforskning.se contains citizen science projects and activities from Sweden that are available for participation. This includes both Swedish and international initiatives. You can use filters to search and sort among the projects to find, for example, projects that deal with a specific topic (e.g. birds or health), take place in specific locations (eg outdoors in nature or in cities), or aimed at different participants (e.g. children or adults). On the project pages you will find more information about what is involved as well as contact information for the organizer." %} <p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                          <li data-target="#carouselExampleSlidesOnly" data-slide-to="0" class="active"></li>
+                          <li data-target="#carouselExampleSlidesOnly" data-slide-to="1"></li>
+                          <li data-target="#carouselExampleSlidesOnly" data-slide-to="2"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                              <img class="d-block w-100" src="{% static "devplaceholder/blake-carpenter-JYMCHXVyUqQ-unsplash.jpg" %}" alt="{% trans 'First slide' %}">
+                            </div>
+                            <div class="carousel-item">
+                              <img class="d-block w-100" src="{% static "devplaceholder/hobby-5114150_1920.jpg" %}" alt="{% trans 'Second slide' %}">
+                            </div>
+                            <div class="carousel-item">
+                              <img class="d-block w-100" src="{% static "devplaceholder/library-438389_1920.jpg" %}" alt="{% trans 'Third slide' %}">
+                            </div>
+                        </div>
+                      <a class="carousel-control-prev" href="#carouselExampleSlidesOnly" role="button" data-slide="prev">
+                           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                           <span class="sr-only">{% trans "Previous" %}</span>
+                         </a>
+                         <a class="carousel-control-next" href="#carouselExampleSlidesOnly" role="button" data-slide="next">
+                           <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                           <span class="sr-only">{% trans "Next" %}</span>
+                         </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row greenish-brown-color ">
+        <div class="col-4 d-flex justify-content-center align-items-center">
+            <h1>{% trans "Get involved with CitSciSE" %}</h1>
+        </div>
+        <div class="col-8 d-flex justify-content-center align-items-center">
+            <p class="mb-0">{% trans "If you would like to improve the content on CitSciSE or would like to learn more about how to integrate with CitSciSE. Please see our contact information below and the API for accessing the site's content." %}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col light-green-style">
+            <h1> {% trans "Data Quality" %} </h1>
+            <p class="bold" >{% trans "Getting Started" %}</p>
+            <p class="text-justify ">{% trans "Some of the first questions in citizen science is can we trust the data and is the data of sufficient quality. Fundamental readings and resources on Data Quality, Data Standards and Technologies have been compiled in the resources to help address your question." %}</p>
+            <div class="row">
+                <div class="col ">
+                    <button type="button" class="btn btn-block home-page-buttons greenish-brown-color">{% trans "DATA QUALITY THEMES" %}</button>
+                </div>
+            </div>
+            <br>
+            <div class="row ">
+                <div class="col">
+                    <button type="button" class="btn btn-block home-page-buttons white-font-color light-green-color">{% trans "DATA QUALITY STANDARDS" %}</button>
+                </div>
+            </div>
+        </div>
+        <div class="col light-green-style">
+            <h1>{% trans "Papers" %}</h1>
+            <p class="bold">{% trans "Recent papers" %}</p>
 
-  <section id="papers">
-    <h1>Papers</h1>
-  </section>
+                 {% for q in "citizen"|query_publications %}
+                 <p><a href="{% url 'publications:article_publications_detail' q.id %}">{{q}}</a></p>
+                 {% endfor %}
 
-  <section id="data-quality">
-    <h1>Data Quality</h1>
-  </section>
+        </div>
+        <div class="col light-green-style">
+            <h1>{% trans "CitSciSE Community" %}</h1>
+            <p class="bold">{% trans "Recent Blog Posts" %}<p>
+              {% for blog in "citizen"|latest_blogs %}
+              <p>{{ blog.published }}: <a href="http://example.com">{{blog}}</a></p>
 
-  <section id="community">
-    <h1>CitSciSE Community</h1>
-  </section>
+                {% endfor %}
 
-  <section id="testing">
-    {# Contents of this section are just for testing - remove. #}
-    <h1>rendering home.html main</h1>
-    <p>Blog Name: {{ blog_name }}</p>
-    <p>Blog Tagline: {{ blog_tagline }}</p>
-    <p>Project Title: {{ project_title }}</p>
-    <p>Product Title: {{ product_title }}</p>
-  </section>
 
-<aside>
-    {# Place content of side bar here or remove from template if no sidebar in view. #}
-    <h1>rendering home.html aside</h1>
-    <h2>An H2 title</h2>
-    <h3>Temporary quicklinks an h3</h3>
-        <ol>
-          <li><a href="blog/">blog/</a></li>
-          <li><a href="projects/">projects/</a></li>
-          <li><a href="products/">products/</a></li>
-        </ol>
-</aside>
-
+        </div>
+    </div>
+</div>
 {% endblock content %}
