@@ -16,8 +16,8 @@ class WorkpackagesCategoryView(ListView):
     model = Theme
     template_name = 'workpackages/category_view.html'
 
-
-
+    def category(self):
+        return self.kwargs['category']
 
 class WorkpackagesDetailView(DetailView):
     ''''''

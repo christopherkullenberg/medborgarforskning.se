@@ -4,33 +4,22 @@
 {% load i18n %}
 {% load workpackages_extras %}
 
+
 {% block content %}
 
 <h1>{% trans "Arcs Resources" %}</h1>
 
-
-
 <ul>
 {% for theme in object_list %}
-<li><a href="{{ theme.title }}">{{ theme.wp_parent }}: {{ theme.title }}</a></li>
-
-
+  <li><a href="{{ theme.title }}">{{ theme.wp_parent }}: {{ theme.title }}</a></li>
 {% endfor %}
 </ul>
 
+<h3>{{ view.category|get_wp_name }}</h3>
 
-
-{% if LANGUAGE_CODE == "en" %}
-   <h3>{{ "Ethics"|get_wp_name }}</h3>
-{% endif %}
-
-{% if LANGUAGE_CODE == "sv" %}
-    <h3>{{ "Etik"|get_wp_name }}</h3>
-{% endif %}
-
-{% for theme in "Ethics"|get_wp_themes %}
-<p><b>{{ theme.title}}</b></p>
-<p>{{ theme.body }}</p>
+{% for theme in view.category|get_wp_themes %}
+  <p>{{ theme.title}}</p>
+  <p>{{ theme.body }}</p>
 {% endfor %}
 
 {% endblock content %}
