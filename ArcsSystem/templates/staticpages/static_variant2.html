@@ -15,7 +15,7 @@
 <div class="container">
     <div class="row">
         <div class="col-9">
-            <div class="row">
+            <div class="row" style="border-bottom: 1px solid;">
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{% url 'blog:blog_list_view' %}"> Home </a></li>
@@ -24,11 +24,11 @@
                   </ol>
                 </nav>
         	</div>
-            <div class="row text-justify text-style">
+            <div class="row text-justify" style="padding-top: 10px;">
                 <div class="col">
                     <h1 class="font-weight-bold"> {{ object.title }}</h1>
-                    <p > Publication Date: {{object.published}}</p>
                     <img class="img-fluid" src="{% static "devplaceholder/library-863148_1920.jpg" %}" alt="{% trans '' %}"/>
+                    <p style="padding-top: 10px;"> Publication Date: {{object.published}}</p>
                     <br>
                     <p> {{ object.content }} </p>
                 </div>
@@ -36,28 +36,28 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <div class="accordion">
+                    <div class="accordion ">
                       <div class="accordion__item">
                         <div class="accordion__item__header" >
-                         Theme 1
+                         <p class="home-page-buttons bold"> THEME 1</p>
                         </div>
 
                         <div class="accordion__item__content">
-                          <p> Explain of your item goes here...</p>
-                		 </div>
+                            <p> Explain of your item goes here...</p>
+                		</div>
                       </div>
                 	        <div class="accordion__item">
                         <div class="accordion__item__header">
-                         Theme 2
+                            <p class="home-page-buttons bold"> THEME 2</p>
                         </div>
 
                         <div class="accordion__item__content">
-                          <p> Explain of your item goes here...</p>
-                		 </div>
+                            <p> Explain of your item goes here...</p>
+                		</div>
                       </div>
                 	        <div class="accordion__item">
                         <div class="accordion__item__header">
-                         Theme 3
+                            <p class="home-page-buttons bold"> THEME 3</p>
                         </div>
 
                         <div class="accordion__item__content">
@@ -71,13 +71,13 @@
         <div class="col-3">
             <div class="row visual-Mindmap-style">
                 <div class="col">
-                    <h4 class="text-header-visual-mindmap"> Explore Visual - Mindmap </h4>
+                    <h1 > Explore Visual - Mindmap </h1>
                     <img class="img-fluid" src="{% static "devplaceholder/open-book-1428428_1920.jpg" %}" alt="{% trans '' %}"/>
                 </div>
             </div>
             <div class="row visual-Mindmap-style">
                 <div class="col">
-                    <h2 class="text-header-style"> {% trans "Related literature" %}</h2>
+                    <h1> {% trans "Related literature" %}</h1>
 
                     {% for q in "ethics"|query_publications %}
                     <p><a href="{% url 'publications:article_publications_detail' q.id %}">{{q}}</a></p>

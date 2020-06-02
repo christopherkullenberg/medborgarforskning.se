@@ -318,6 +318,17 @@ body {
 
 }
 
+.breadcrumb{
+    background-color: #C3D3D0;
+    color: #255C61;
+    font-family: Lato;
+    font-size: 14px;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    content: ">>";
+}
+
 .text-header-visual-mindmap{
     font-family: Playfair;
     font-size: 18px;
