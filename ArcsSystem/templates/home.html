@@ -33,33 +33,81 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col">
-                    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
-                        <ol class="carousel-indicators">
-                          <li data-target="#carouselExampleSlidesOnly" data-slide-to="0" class="active"></li>
-                          <li data-target="#carouselExampleSlidesOnly" data-slide-to="1"></li>
-                          <li data-target="#carouselExampleSlidesOnly" data-slide-to="2"></li>
-                        </ol>
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                              <img class="d-block w-100" src="{% static "devplaceholder/blake-carpenter-JYMCHXVyUqQ-unsplash.jpg" %}" alt="{% trans 'First slide' %}">
+                <div id="main-page-slider" class="col">
+                    <!--Carousel Wrapper-->
+                    <div id="multi-item-example" class="carousel slide carousel-multi-item carousel-multi-item-selector" data-ride="carousel">
+                        <div class="row slider-header d-flex justify-content-center align-items-center">
+                            <div class="col">
+                                <p class="bold mb-0">Project: Faunaväkteri</p>
                             </div>
-                            <div class="carousel-item">
-                              <img class="d-block w-100" src="{% static "devplaceholder/hobby-5114150_1920.jpg" %}" alt="{% trans 'Second slide' %}">
-                            </div>
-                            <div class="carousel-item">
-                              <img class="d-block w-100" src="{% static "devplaceholder/library-438389_1920.jpg" %}" alt="{% trans 'Third slide' %}">
+                            <div class="col">
+                                <!--Controls-->
+                                <div class="controls-top slider-top-controler">
+                                  <a class="btn-floating" href="#multi-item-example" data-slide="next"><img id="icon-preview-rotate" class="next-icon-slider" src="{% static 'icons/Arrow_Right_Drop_Circle_Outline_Icon_3.png'%}" alt="next-icon"/></a>
+                                  <a class="btn-floating" href="#multi-item-example" data-slide="next"><img class="next-icon-slider" src="{% static 'icons/Arrow_Right_Drop_Circle_Outline_Icon_3.png'%}" alt="next-icon"/></a>
+                                </div>
+                                <!--/.Controls-->
                             </div>
                         </div>
-                      <a class="carousel-control-prev" href="#carouselExampleSlidesOnly" role="button" data-slide="prev">
-                           <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                           <span class="sr-only">{% trans "Previous" %}</span>
-                         </a>
-                         <a class="carousel-control-next" href="#carouselExampleSlidesOnly" role="button" data-slide="next">
-                           <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                           <span class="sr-only">{% trans "Next" %}</span>
-                         </a>
+
+                      <!--Indicators-->
+                      <ol class="carousel-indicators">
+                        <li data-target="#multi-item-example" data-slide-to="0" class="active slider-selector"></li>
+                        <li data-target="#multi-item-example" data-slide-to="1" class="slider-selector"></li>
+                        <li data-target="#multi-item-example" data-slide-to="2" class="slider-selector"></li>
+                      </ol>
+                      <!--/.Indicators-->
+                      <!--Slides-->
+                      <div class="carousel-inner" role="listbox">
+                        <!--First slide-->
+                        <div class="carousel-item active">
+
+                          <div class="col-md">
+                            <div class="card mb-2 border-slider-content">
+                                <img class="d-block w-100" src="{% static "devplaceholder/blake-carpenter-JYMCHXVyUqQ-unsplash.jpg" %}" alt="{% trans 'First slide' %}">
+                                <div class="card-body content-slider">
+                                <p class="bold">PROJECT FOCUS: Fauna and insects</p>
+                                <p class="bold">DESCRIPTION: Monitoring of fauna for insect activity.</p>
+                                <p class="bold">ONTACT POINT: Pavel Bina at SLU - [email or "button"]</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!--/.First slide-->
+                        <!--Second slide-->
+                        <div class="carousel-item">
+
+                          <div class="col-md">
+                            <div class="card mb-2 border-slider-content">
+                                <img class="d-block w-100" src="{% static "devplaceholder/hobby-5114150_1920.jpg" %}" alt="{% trans 'Second slide' %}">
+                                <div class="card-body content-slider">
+                                    <p class="bold">PROJECT FOCUS: Fauna and insects</p>
+                                    <p class="bold">DESCRIPTION: Monitoring of fauna for insect activity.</p>
+                                    <p class="bold">ONTACT POINT: Pavel Bina at SLU - [email or "button"]</p>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!--/.Second slide-->
+                        <!--Third slide-->
+                        <div class="carousel-item">
+
+                          <div class="col-md">
+                            <div class="card mb-2 border-slider-content">
+                                <img class="d-block w-100" src="{% static "devplaceholder/library-438389_1920.jpg" %}" alt="{% trans 'Third slide' %}">
+                                <div class="card-body content-slider">
+                                    <p class="bold">PROJECT FOCUS: Fauna and insects</p>
+                                    <p class="bold">DESCRIPTION: Monitoring of fauna for insect activity.</p>
+                                    <p class="bold">ONTACT POINT: Pavel Bina at SLU - [email or "button"]</p>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!--/.Third slide-->
+                      </div>
+                      <!--/.Slides-->
                     </div>
+                    <!--/.Carousel Wrapper-->
                 </div>
             </div>
         </div>
@@ -102,11 +150,8 @@
             <h1>{% trans "CitSciSE Community" %}</h1>
             <p class="bold">{% trans "Recent Blog Posts" %}<p>
               {% for blog in "citizen"|latest_blogs %}
-              <p>{{ blog.published }}: <a href="http://example.com">{{blog}}</a></p>
-
+            <p>{{ blog.published }}: <a href="http://example.com">{{blog}}</a></p>
                 {% endfor %}
-
-
         </div>
     </div>
 </div>
