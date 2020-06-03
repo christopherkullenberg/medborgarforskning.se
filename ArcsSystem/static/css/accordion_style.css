@@ -5,7 +5,8 @@
 
 .title {
     text-align: center;
-    font-family: Lato !important;
+    font-family: Helvetica !important;
+    font-size: 14 !important;
     margin-top: 50px;
     margin-bottom: 50px
 }
@@ -25,7 +26,8 @@
     cursor: pointer;
     position: relative;
     color: black;
-    font-family: Lato !important;
+    font-family: Helvetica !important;
+    font-size: 14;
     font-weight: 400;
     font-size: 20px;
     border-radius: 5px;

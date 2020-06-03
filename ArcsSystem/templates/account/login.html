@@ -30,7 +30,7 @@
 
             <div class="row">
                 <div class="col d-flex justify-content-center align-items-center">
-                    <form class="login Helvetica-font" method="POST" action="{% url 'account_login' %}">
+                    <form class="login login-form-style Helvetica-font" method="POST" action="{% url 'account_login' %}">
                       {% csrf_token %}
                       {{ form.as_p }}
                       {% if redirect_field_value %}
@@ -38,7 +38,7 @@
                       {% endif %}
                       <a class="button secondaryAction " href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
                       <br>
-                      <button class="primaryAction" type="submit">{% trans "Login" %}</button>
+                      <button class="btn btn-light login-btn" type="submit">{% trans "Login" %}</button>
                     </form>
                 </div>
             </div>
