@@ -12,12 +12,24 @@
 
 <form action="search" method="get">
   <input name="q" type="text" placeholder="Search...">
+
+
+  <br>
+  <input type="radio" id="year" name="sortmethod" value="year">
+      <label for="sortmethod">Sort by year</label>
+  <input type="radio" id="title" name="sortmethod" value="title">
+      <label for="title">Sort by title</label>
+  <input type="radio" id="author" name="sortmethod" value="author">
+      <label for="author">Sort by author</label>
+     <input type="submit" value="Submit">
 </form>
 
 
 {% for article in object_list %}
 <div class="search-list>
-<h2 class="search-list"><a href="{% url 'publications:article_publications_detail' article.pk %}"">{{ article.py }}. {{ article.title }}</a></h2>
+
+<h2 class="search-list">
+  <a href="{% url 'publications:article_publications_detail' article.pk %}"">{{ article.py }}. {{ article.title }}</a></h2>
 
 </div>
 {% endfor %}
