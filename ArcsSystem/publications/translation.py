@@ -1,5 +1,5 @@
 from modeltranslation.translator import translator, TranslationOptions
-from .models import Article, Publication
+from .models import Article
 
 # Supported fields - https://django-modeltranslation.readthedocs.io/en/latest/registration.html#supported-fields-matrix
 
@@ -12,5 +12,5 @@ class ArticleTranslationOptions(TranslationOptions):
     fields = ('title', 'abstract')
 
 # order matters if you are loading a model depedning on another model
-translator.register(Publication, PublicationTranslationOptions)
+#translator.register(Publication, PublicationTranslationOptions)
 translator.register(Article, ArticleTranslationOptions)

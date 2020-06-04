@@ -30,18 +30,25 @@ class SearchPublicationsView(ListView):
 
     def get_queryset(self):
         query = self.request.GET.get('q')
-        #
+        sortmethod = self.request.GET.get('sortmethod')
+        if sortmethod == "year":
+            orderquery = "py"
+        elif sortmethod == "title":
+            orderquery = "title"
+        else:
+            orderquery = "authors"
+
         object_list = Article.objects.filter(
-            Q(title__icontains=query) |
+            Q(title_en__icontains=query) |
             Q(keywords__keyword__icontains=query) |
-            Q(abstract__icontains=query)
-            ).distinct()
+            Q(abstract_en__icontains=query)
+            ).distinct().order_by(orderquery)
         return object_list
 
     def get_queryset_template(query):
         object_list = Article.objects.filter(
-            Q(title__icontains=query) |
+            Q(title_en__icontains=query) |
             Q(keywords__keyword__icontains=query) |
-            Q(abstract__icontains=query)
+            Q(abstract_en__icontains=query)
             ).distinct()
         return object_list

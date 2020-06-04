@@ -2,6 +2,7 @@ from django.urls import path
 from django.urls import re_path
 from .views import StaticDetailView
 from .views import PageListView
+from .views import CategoryView
 from .views import HomePageView
 from .views import TermsPageView
 from django.views.generic.dates import DateDetailView
@@ -19,8 +20,5 @@ urlpatterns = [
     path('press/', TermsPageView.as_view(), name='press_detail'), # the press/ view will be static parent to press related subpages
     #path('contact/', .as_view(), name='contact_form'), # this is a contact form - standard for the site
 
-    # generic static page views
-    path('resources/', PageListView.as_view(), name='staticpage_list'),
-    path('resources/<slug:slug>/', StaticDetailView.as_view(), name='staticpage'),
-
+    
     ]
