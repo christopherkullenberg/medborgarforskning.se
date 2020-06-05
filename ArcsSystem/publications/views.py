@@ -15,6 +15,7 @@ class ArticleListView(ListView):
     '''
     model = Article
     template_name = 'publications/article_publications_list.html'
+    queryset = Article.objects.order_by('-py')[:20]
 
 
 class ArticleDetailView(DetailView):
