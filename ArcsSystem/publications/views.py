@@ -52,3 +52,12 @@ class SearchPublicationsView(ListView):
             Q(abstract_en__icontains=query)
             ).distinct()
         return object_list
+
+    def list_5_recent_publications(query):
+        number = 5
+        object_list = Article.objects.filter(
+            Q(title_en__icontains=query) |
+            Q(keywords__keyword__icontains=query) |
+            Q(abstract_en__icontains=query)
+            ).distinct().order_by("py")[:number]
+        return object_list
