@@ -340,10 +340,13 @@ EMAIL_HOST = 'smtp.gu.se'
 #EMAIL_HOST_PASSWORD = #env("EMAIL_HOST_PASSWORD")
 EMAIL_PORT = '587'
 #EMAIL_USE_TLS = False # True
+#EMAIL_USE_SSL = False # depends on provider
+#EMAIL_SSL_KEYFILE
+#EMAIL_SSL_CERTFILE
 
-EMAIL_RECIPIENT_LIST = [
-    "jonathan.brier@gu.se",
-]
+#EMAIL_RECIPIENT_LIST = [
+#    "jonathan.brier@gu.se",
+#]
 
 ### Email Config ###
 
