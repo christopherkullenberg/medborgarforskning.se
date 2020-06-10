@@ -1,0 +1,251 @@
+@font-face {
+  font-family: 'Playfair Display';
+  src: url(https://fonts.googleapis.com/css?family=Playfair+Display&display=swap);
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Lato;
+  src: url(https://fonts.googleapis.com/css?family=Lato&display=swap);
+  font-display: swap;
+}
+
+body{
+    background-color: #C3D3D0 !important;
+    font-family: Lato !important;
+    font-size: 14 !important;
+}
+
+h1 {
+  font-family: 'Playfair Display';
+  color: #000000;
+  font-size: 26px;
+  font-weight:bold;
+}
+
+h2 {
+  font-family: 'Playfair Display';
+  color: #000000;
+}
+
+h3 {
+  font-family: 'Playfair Display';
+  color: #000000;
+}
+
+.background-blue-color{
+    background-color: #174255;
+}
+
+.background-dark-green-color{
+    background-color: #255C61 !important;
+}
+
+.background-light-green-color, .change-language-item:hover{
+    background-color: #C3D3D0 !important;
+}
+
+.background-greenish-color{
+    background-color: #9FB0A0;
+}
+
+.black-font-color{
+    color: #000000;
+}
+
+.font-white-color{
+    color: #fff;
+}
+
+.font-dark-green-color{
+    color: #255C61 !important;
+}
+
+.font-light-green-color{
+    color: C3D3D0 !important;
+}
+
+.font-greenish-color{
+    color: #9FB0A0;
+}
+
+.custom-container{
+    width: 84% !important;
+    margin: 0 auto;
+    padding: 0;
+}
+
+
+#main-header{
+    margin-top: 20px;
+    margin-bottom: 30px;
+    margin-right: 0;
+    margin-left: 0;
+    width: 100%;
+    padding: 0;
+}
+
+.main-media-icons{
+    width: 30px;
+}
+
+.main-media-btns{
+    width: 30px;
+}
+
+.social-media-padding{
+    padding-right: 27px;
+
+}
+
+#header-btn{
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+#main-header-buttons{
+    margin-right: 0;
+    padding-right: 0;
+}
+
+#login, a:hover, a::after{
+    color: #255C61;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.hide-extend-language-icon::after{
+        display: none;
+}
+
+.flag-svg-align{
+    margin-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.language-selected-color{
+    background-color: #174255;
+    font-family: Lato;
+    color: #FFFFFF;
+}
+
+.language-selected-color svg path{
+    fill: #fff;
+}
+
+.language-selected-color:hover{
+    background-color: #174255 !important;
+    color: #fff;
+}
+
+.main-menu-buttons-font{
+    font-size: 16;
+    font-weight: bold;
+    color: #fff !important;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    text-align:center
+}
+
+.header-main-menu{
+    display: block;
+    padding: 0;
+}
+
+.header-main-menu .dropdown-divider {
+    border-color: #00;
+    width: 6rem;0000;
+    border-width: medium;
+}
+
+.header-main-menu .dropdown-menu ul{
+    list-style: none;
+    padding-left: 0px;
+}
+
+.header-main-menu .dropdown-menu ul li:before{
+  content: "-";
+  padding-right: 5px;
+  position: absolute;
+  color:  #000000;
+}
+
+.header-main-menu .dropdown-menu ul li{
+    margin-left: 40px;
+}
+
+.header-menu-li-style{
+    width: 27%;
+
+}
+
+#form-search-nev{
+    float: right;
+}
+
+.has-search .form-control {
+    padding-left: 2.375rem;
+}
+
+.form-group.has-search{
+  margin-bottom: 0;
+}
+
+.has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
+    padding: 10px;
+}
+
+.footer-navbar{
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+}
+
+.footer-navbar-padding {
+    padding-right: 2.5rem;
+}
+
+.main-footer-participiate {
+  padding-left: 0;
+  padding-right: 10px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.footer-patner-logo {
+  width: 120px;
+}
+
+.policy-footer-font, .policy-footer-font a{
+    font-family: Lato;
+    font-size: 12px;
+}
+
+.policy-footer-font a{
+    color: #255C61;
+}
+
+.policy-footer-menu{
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.cc-by-footer {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    border-top: 1px solid;
+}
+
+#cc-by{
+    height: 30px;
+}
