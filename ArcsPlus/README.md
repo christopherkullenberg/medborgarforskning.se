@@ -4,7 +4,7 @@
 #Version: 0.1
 #Developers: Jonathan Brier | Christopher Kullenberg
 #Developers email: jonathan.brier@gu.se | christopher.kullenberg@gu.se
-#Description: This is an overview README which provides an orientation to the  
+#Description: This is an overview README which provides an orientation to the ARCSPlus 
 # directory structure. This is the project's top most directory containing the
 # implementations and development code for ARCSCore, ARCSPlus, and
 # Medborgarforsking. This is implemented as a meta level project not to be
