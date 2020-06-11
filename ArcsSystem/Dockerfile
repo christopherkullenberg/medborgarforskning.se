@@ -16,7 +16,7 @@ ENV PYTHONUNBUFFERED 1
 
 # update packages
 RUN apt-get update && apt-get install -y --no-install-recommends \
-  libssl-dev # TODO check if this is still needed for https
+  gettext libssl-dev # TODO check if this is still needed for https
 
 # arbitrary location choice: you can change the directory
 RUN mkdir -p /opt/arcs_project_code/
@@ -39,6 +39,9 @@ COPY . /opt/arcs_project_code/
 RUN rm -r /var/www/arcs_collected_static/static/
 
 # TODO print to console = Bye Bye Old Static Files - Empty! Note: this is a static statement and not a check.
+
+# make sure the translation strings are compiled
+RUN python manage.py compilemessages
 
 # collectstatic static on build (but you'll need to run a commands if you're not rebuilding on project code changes)
 RUN python manage.py collectstatic --noinput
