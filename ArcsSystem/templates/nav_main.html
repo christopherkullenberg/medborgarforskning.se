@@ -38,7 +38,7 @@
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle main-menu-buttons-font" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">  {% trans "Citizen Science in Practice" %} </a>
             <div class="dropdown-menu main-menu-buttons light-grayish-cyan-background-color" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item font-weight-bold" href="#">{%trans "Data Standards and Quality" %}</a>
+                    <a class="dropdown-item font-weight-bold" href="{% url 'workpackages:category_view' 'Data-Quality' %}">{%trans "Data Standards and Quality" %}</a>
                     <div class="dropdown-divider"></div>
                     <ul>
                         <li nav-item dropdown>
@@ -50,7 +50,7 @@
                         </li>
                     </ul>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item font-weight-bold" href="#">{%trans "Technology" %}</a>
+                    <a class="dropdown-item font-weight-bold" href="{% url 'workpackages:category_view' 'Technology' %}">{%trans "Technology" %}</a>
                     <div class="dropdown-divider"></div>
                     <ul>
                         <li nav-item dropdown>
@@ -62,7 +62,7 @@
                         </li>
                     </ul>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item font-weight-bold" href="#">{%trans "Ethics" %}</a>
+                    <a class="dropdown-item font-weight-bold" href="{% url 'workpackages:category_view' 'Ethics' %}">{%trans "Ethics" %}</a>
                     <div class="dropdown-divider"></div>
                     <ul>
                         <li nav-item dropdown>
@@ -74,7 +74,7 @@
                         </li>
                     </ul>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item font-weight-bold" href="#">{%trans "Communications" %}</a>
+                    <a class="dropdown-item font-weight-bold" href="{% url 'workpackages:category_view' 'Communications' %}">{%trans "Communications" %}</a>
                     <div class="dropdown-divider"></div>
                     <ul>
                         <li nav-item dropdown>
@@ -91,7 +91,7 @@
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle main-menu-buttons-font" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> {% trans "Citizen Science in Sweden" %} </a>
             <div class="dropdown-menu main-menu-buttons light-grayish-cyan-background-color" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item font-weight-bold" href="#">{%trans "Citizen Science Projects" %}</a>
+                <a class="dropdown-item font-weight-bold" href="{% url 'projects:project_list' %}">{%trans "Citizen Science Projects" %}</a>
                 <div class="dropdown-divider"></div>
                 <ul>
                     <li nav-item dropdown>
@@ -99,7 +99,7 @@
                     </li>
                     <div class="dropdown-divider"></div>
                     <li nav-item dropdown>
-                            <a class="dropdown-item" href="#">{%trans "Add your Projects" %}</a>
+                            <a class="dropdown-item" href="{% url 'projects:project_submissionform' %}">{%trans "Add your Projects" %}</a>
                     </li>
                 </ul>
                 <div class="dropdown-divider"></div>
@@ -119,25 +119,7 @@
                     </li>
                 </ul>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item font-weight-bold" href="#">{%trans "Proudacts" %}</a>
-                <div class="dropdown-divider"></div>
-                <ul>
-                    <li nav-item dropdown>
-                        <a class="dropdown-item" href="#">{%trans "Papers" %}</a>
-                    </li>
-                    <div class="dropdown-divider"></div>
-                    <li nav-item dropdown>
-                        <a class="dropdown-item" href="#">{%trans "Policy" %}</a>
-                    </li>
-                    <div class="dropdown-divider"></div>
-                    <li nav-item dropdown>
-                        <a class="dropdown-item" href="#">{%trans "Data" %}</a>
-                    </li>
-                    <div class="dropdown-divider"></div>
-                    <li nav-item dropdown>
-                        <a class="dropdown-item" href="#">{%trans "Broader Impacts" %}</a>
-                    </li>
-                </ul>
+                <a class="dropdown-item font-weight-bold" href="{% url 'publications:article_publications_list' %}">{%trans "Publications" %}</a>
                 <div class="dropdown-divider"></div>
             </div>
         </li>
