@@ -13,7 +13,7 @@ version: "2.2" # version of docker-config standard not the file version
 
 services:
   db:
-    image: postgres:12.1
+    image: postgres:12.3
     container_name: ARCS-PG-DB
     restart: always
     #build: ./postgresdb # TODO finish postgres config for ssl if keeping tcp/ip connection type - not needed if socket, but tcp is needed for swarm
