@@ -1,5 +1,6 @@
 # FIRST Deploy script - for first deploy - not update of the running site
 #download the zip of the repo to the server (or copy git repo)
+(if deploy is another branch the zip directory and extracted directory path need update)
 
 #scp [local path to file] [remote file path]
 scp ~/Downloads/medborgarforskning.se-master.zip arcs:/home/xbriej@GU.GU.SE/arcgit/
