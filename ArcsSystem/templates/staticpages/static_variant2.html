@@ -79,7 +79,7 @@
                 <div class="col">
                     <h1> {% trans "Related literature" %}</h1>
 
-                    {% for q in "ethics"|query_publications %}
+                    {% for q in "ethics"|list_5_recent_publications %}
                     <p><a href="{% url 'publications:article_publications_detail' q.id %}">{{q}}</a></p>
                     {% endfor %}
 

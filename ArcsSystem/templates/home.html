@@ -141,9 +141,11 @@
             <h1>{% trans "Papers" %}</h1>
             <p class="bold">{% trans "Recent papers" %}</p>
 
-                 {% for q in "citizen"|query_publications %}
-                 <p><a href="{% url 'publications:article_publications_detail' q.id %}">{{q}}</a></p>
+
+                 {% for q in 5|recent_publications %}
+                     <p><a href="{% url 'publications:article_publications_detail' q.id %}">{{q}}</a></p>
                  {% endfor %}
+
 
         </div>
         <div class="col light-green-style">
