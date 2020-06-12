@@ -7,13 +7,19 @@ register = template.Library()
 
 
 
-def query_publications(query):
-    result = SearchPublicationsView.get_queryset_template(query)
+# def query_publications(query):
+#     result = SearchPublicationsView.get_queryset_template(query)
+#     return result
+
+def query_publications(query, number=5):
+    # TODO - this now only returns 5 pubs, abstract this in the future.
+    result = SearchPublicationsView.related_publications(query, number)
     return result
 
-def list_5_recent_publications(query):
-    result = SearchPublicationsView.list_5_recent_publications(query)
+def recent_publications(number=3):
+    result = SearchPublicationsView.recent_publications(number)
     return result
+
 
 
 def lower(value): # Only one argument.
@@ -22,4 +28,4 @@ def lower(value): # Only one argument.
 
 register.filter('lower', lower)
 register.filter('query_publications', query_publications)
-register.filter('list_5_recent_publications', list_5_recent_publications)
+register.filter('recent_publications', recent_publications)

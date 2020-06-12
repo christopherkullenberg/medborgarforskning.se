@@ -29,6 +29,7 @@ class SearchPublicationsView(ListView):
     model = Article
     template_name = 'publications/search_publications_results.html'
 
+
     def get_queryset(self):
         query = self.request.GET.get('q')
         sortmethod = self.request.GET.get('sortmethod')
@@ -54,11 +55,14 @@ class SearchPublicationsView(ListView):
             ).distinct()
         return object_list
 
-    def list_5_recent_publications(query):
-        number = 5
+    def related_publications(query, number):
         object_list = Article.objects.filter(
             Q(title_en__icontains=query) |
             Q(keywords__keyword__icontains=query) |
             Q(abstract_en__icontains=query)
-            ).distinct().order_by("py")[:number]
+            ).distinct().order_by("-py")[:number]
+        return object_list
+
+    def recent_publications(number):
+        object_list = Article.objects.all().distinct().order_by("-py")[:number]
         return object_list
