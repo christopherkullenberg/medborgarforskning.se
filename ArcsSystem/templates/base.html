@@ -133,9 +133,34 @@
 		</div>
 
 		<!--content-->
+
+
+		{% block body %}
+
+		{% if messages %}
+		<div>
+			<strong>Messages:</strong>
+			<ul>
+				{% for message in messages %}
+				<li>{{message}}</li>
+				{% endfor %}
+			</ul>
+		</div>
+		{% endif %}
+
+		<main id="content">{# Contents of Main are for the main target of the page. #}
+	  	{% block content %}
+			<h1>{% trans "Medborgarforskning.se!" %}</h1>
+			<p>{% trans "This base.html block should be replaced by a template defined block." %}
+	  	{% endblock content %}
+		</main>
+
+
+		{% endblock body %}
+
 		<hr>
 		<!--Footer -->
-		<div class="container-fluid p-0">
+		<div class="container-fluid">
 			<div class="custom-container h">
 				<div class="row m-0">
 					<div class="col-6 h" style="padding: 0;">
@@ -143,38 +168,38 @@
 							<!-- Collection of nav links, forms, and other content for toggling -->
 							<div class="collapse navbar-collapse justify-content-start">
 								<ul class="nav navbar-nav">
-									<li class="nav-item"><a class="nav-link font-dark-green-color" href="#" style="padding-left: 0;"><strong class="footer-navbar-padding">{% trans "ABOUT US" %}</strong></a></li>
-									<li class="nav-item"><a class="nav-link font-dark-green-color" href="#"><strong class="footer-navbar-padding">{% trans "PRESS" %}</strong></a></li>
-									<li class="nav-item"><a class="nav-link font-dark-green-color" href="#"><strong class="footer-navbar-padding">{% trans "CONTACT" %}</strong></a></li>
-									<li class="nav-item"><a class="nav-link font-dark-green-color" href="#">{% trans "For Developers-API" %}</a></li>
+									<li class="nav-item"><a class="nav-link pt-0 font-dark-green-color" href="#" style="padding-left: 0;"><strong class="footer-navbar-padding">{% trans "ABOUT US" %}</strong></a></li>
+									<li class="nav-item"><a class="nav-link pt-0 font-dark-green-color" href="#"><strong class="footer-navbar-padding">{% trans "PRESS" %}</strong></a></li>
+									<li class="nav-item"><a class="nav-link pt-0 font-dark-green-color" href="#"><strong class="footer-navbar-padding">{% trans "CONTACT" %}</strong></a></li>
+									<li class="nav-item"><a class="nav-link pt-0 font-dark-green-color" href="#">{% trans "For Developers-API" %}</a></li>
 								</ul>
 							</div>
 						</nav>
 					</div>
-					<div class="col-6 h" style="padding: 0;">
+					<div class="col-6 h" style="padding-right: 0;">
 						<div class="row m-0">
 							<div class="col-6 h" style="padding: 0;">
 								<p class="nav-item font-weight-bold d-flex justify-content-end align-items-center">{% trans "Follow medborgarforskning.se" %}: </p>
 							</div>
 							<div class="col-6 h d-flex justify-content-end " style="padding: 0;">
 								<div class="row m-0">
-									<div class="col-3">
+									<div class="col-3" style="padding-left: 25px;">
 										<a href="#">
 											<img class="main-media-icons" src="{% static 'icons/Facebook_Brands_Icon_4.png' %}" alt="{% trans 'Facebook icon in the header linking to Medborgarforskning.se on Facebook' %}"/>
 										</a>
 									</div>
-									<div class="col-3">
+									<div class="col-3" style="padding-left: 25px;">
 										<a href="https://www.linkedin.com/company/arcs-citsci/">
 											<img class="main-media-icons" src="{% static 'icons/Linkedin_Brands_Icon_4.png'%}" alt="{% trans 'LinkedIn icon in the header linking to Medborgarforskning.se on LinkedIn' %}"/>
 										</a>
 									</div>
-									<div class="col-3">
-										<a href="#">
+									<div class="col-3" style="padding-left: 25px;">
+										<a href="#" >
 											<img class="main-media-icons" src="{% static 'icons/Instagram_Brands_Icon_4.png'%}" alt="{% trans 'Instagram icon in the header linking to Medborgarforskning.se on Instagram' %}"/>
 										</a>
 									</div>
 									<div class="col-3" style="padding-right: 0;">
-										<a href="https://twitter.com/CitSciSE">
+										<a href="https://twitter.com/CitSciSE" style="float:right;">
 											<img class="main-media-icons" src="{% static 'icons/Twitter_Square_Brands_Icon_4.png'%}" alt="{% trans 'Twitter icon in the header linking to Medborgarforskning.se on Twitter' %}"/>
 										</a>
 									</div>
@@ -187,11 +212,11 @@
 		</div>
 		<div class="container-fluid background-dark-green-color">
 			<div class="custom-container">
-				<div class="row main-footer-participiate ">
+				<div class="row main-footer-participiate m-0">
 					<div class="col">
 						<div class="row">
 							<div class="col-2 h font-white-color" style="padding-left: 0;">
-								ARCS Partners:
+								<strong>ARCS Partners:</strong>
 							</div>
 							<div class="col-10">
 								<div class="row justify-content-start">

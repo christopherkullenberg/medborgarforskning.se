@@ -52,9 +52,13 @@
 
 .accordion__item__header.active {
     background-color: #174255;
-    color: #ffffff;
+    color: #ffffff !important;
     transition: .4s;
     border-radius:5px 5px 0px 0px;
+}
+
+.accordion__item__header.active p{
+    color: #fff !important;
 }
 
 .accordion__item__header.active::before {

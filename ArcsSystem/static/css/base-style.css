@@ -250,6 +250,10 @@ body, .header-main-menu-body {
     color: #FFFFFF;
 }
 
+.slider-color{
+    background-color: #c3d3d0;
+}
+
 #main-page-slider{
     margin-top: 10px;
     margin-bottom: 10px;
