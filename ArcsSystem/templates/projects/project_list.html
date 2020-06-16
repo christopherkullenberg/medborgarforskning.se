@@ -7,48 +7,61 @@
 <div class="container-fluid">
     <div class="custom-container">
         <div class="row project-menu-filter d-flex justify-content-center align-items-center">
-            <div class="col d-flex justify-content-start align-items-cente">
-                <!-- <div class="search-list">
-                    <form action="{% url 'projects:search_results' %}" method="get">
-                      <input name="q" type="text" placeholder="Search...">
-                    </form>
-                </div> -->
-                <h2 class="project-filter-menu-font">Show</h2>
-            </div>
-            <div class="col">
-                <div class="dropdown">
-                  <button class="btn projects-filter-buttons dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    biology
-                  </button>
-                  <div class="dropdown-menu header-main-menu-body" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Action</a>
-                  </div>
+            <div class="col-3 h">
+                <div class="row">
+                    <div class="col d-flex justify-content-start align-items-cente">
+                        <!-- <div class="search-list">
+                            <form action="{% url 'projects:search_results' %}" method="get">
+                              <input name="q" type="text" placeholder="Search...">
+                            </form>
+                        </div> -->
+                        <h2 class="project-filter-menu-font">Show</h2>
+                    </div>
+                    <div class="col">
+                        <div class="dropdown">
+                          <button class="btn projects-filter-buttons dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            biology
+                          </button>
+                          <div class="dropdown-menu main-menu-buttons background-light-green-color" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">Action</a>
+                          </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="col d-flex justify-content-center align-items-cente">
-                <h2 class="project-filter-menu-font">project in</h2>
-            </div>
-            <div class="col">
-                <div class="dropdown">
-                  <button class="btn projects-filter-buttons dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    the North
-                  </button>
-                  <div class="dropdown-menu header-main-menu-body" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Action</a>
-                  </div>
+            <div class="col-3 h">
+                <div class="row">
+                    <div class="col d-flex justify-content-center align-items-cente">
+                        <h2 class="project-filter-menu-font">project in</h2>
+                    </div>
+                    <div class="col">
+                        <div class="dropdown">
+                          <button class="btn projects-filter-buttons dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            the North
+                          </button>
+                          <div class="dropdown-menu main-menu-buttons background-light-green-color" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">Action</a>
+                          </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="col d-flex justify-content-center align-items-cente">
-                <h2 class="project-filter-menu-font">sorted by</h2>
-            </div>
-            <div class="col">
-                <div class="dropdown">
-                  <button class="btn projects-filter-buttons dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    date published
-                  </button>
-                  <div class="dropdown-menu header-main-menu-body" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Action</a>
-                  </div>
+
+            <div class="col-6 h">
+                <div class="row">
+                    <div class="col d-flex justify-content-center align-items-cente">
+                        <h2 class="project-filter-menu-font">sorted by</h2>
+                    </div>
+                    <div class="col">
+                        <div class="dropdown">
+                          <button class="btn projects-filter-buttons dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            date published
+                          </button>
+                          <div class="dropdown-menu main-menu-buttons background-light-green-color" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="#">Action</a>
+                          </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -61,7 +74,7 @@
             <div class="col-4 project-item">
 
                 <div class="row">
-                    <div class="col Lato-font project-items-justify greenish-brown-color">
+                    <div class="col Lato-font project-items-justify background-greenish-color">
                         <p class="font-weight-bold"><a id="project-items-link" href="{% url 'projects:project_detail' project.pk %}">project {{forloop.counter}}: {{ project.name }}</a></p>
                     </div>
                 </div>

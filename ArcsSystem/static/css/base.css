@@ -120,6 +120,7 @@ font-family: Helvetica;
     padding-right: 0;
 }
 
+
 #login, a:hover, a::after{
     color: #255C61;
     text-decoration: none;
@@ -158,6 +159,10 @@ font-family: Helvetica;
     overflow-wrap: break-word;
     word-break: break-word;
     text-align:center
+}
+
+.main-menu-buttons a:hover{
+    background-color: #C3D3D0;
 }
 
 .header-main-menu{
@@ -214,6 +219,13 @@ font-family: Helvetica;
     pointer-events: none;
     color: #aaa;
     padding: 10px;
+}
+
+.footer-menu-nav{
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 25px;
+    margin-bottom: 10px;
 }
 
 .footer-navbar{
@@ -397,8 +409,110 @@ font-family: Helvetica;
     font-size: 18px;
 }
 
+.projects-filter-buttons, .projects-filter-buttons:hover{
+    background-color: #255C61;
+    color: #ffffff ;
+    font-family: Lato;
+}
+
+.project-item-details{
+    font-family: Lato ;
+    font-size: 14px;
+}
+
+#project-items-link{
+    color: #000000;
+}
+
+.project-items-justify{
+    padding-top: 10px;
+}
+
+.login-form{
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+
+.login-btn{
+    padding: 10px;
+    background-color: #e6e6e6;
+    font-family: Helvetica;
+    display: block;
+    margin: 0 auto;
+}
+
+.login-form-style{
+    font-family: Helvetica;
+    font-size: 14px;
+}
+
+.socialaccount_providers_btn:hover{
+    color: #000;
+}
+
+.password-reset-form{
+    font-family: Helvetica;
+}
+
+#password-reset-btn{
+    margin: 0 auto;
+    display: block;
+    background-color: #e6e6e6;
+    margin-bottom: 10px;
+}
+
+.search-list{
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
 .projects-filter-buttons{
     background-color: #255C61;
     color: #ffffff ;
     font-family: Lato;
+}
+
+.project-item{
+    border: 1px solid;
+    border-color: green;
+    margin-left: 20px;
+    margin-bottom: 40px;
+    border-radius: 3px 3px 3px 3px;
+}
+
+.project-pageination{
+    background-color: #9FB0A0 !important;
+    color: #255C61 !important;
+    font-family: Lato;
+}
+
+.page-item.active .page-link{
+    color: #ffffff !important;
+    background-color: #255C61 !important;
+}
+
+.project-keywords-btn{
+    margin-bottom: 10px;
+}
+
+.projects-keywords-buttons-font{
+    font-family: Playfair Display;
+}
+
+.socialaccount_providers_btn{
+    background-color: #fff !important;
+    width: 200px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-family: Helvetica;
+}
+
+
+.detail-view{
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
