@@ -133,13 +133,13 @@
                 <p class="text-justify ">{% trans "Some of the first questions in citizen science is can we trust the data and is the data of sufficient quality. Fundamental readings and resources on Data Quality, Data Standards and Technologies have been compiled in the resources to help address your question." %}</p>
                 <div class="row">
                     <div class="col ">
-                        <button type="button" class="btn btn-block home-page-buttons background-greenish-color">{% trans "DATA QUALITY THEMES" %}</button>
+                        <button type="button" class="btn btn-block home-page-buttons background-greenish-color" onclick='window.location.href={% url 'workpackages:category_view' 'Data-Quality' %}'>{% trans "Data Quality Themes" %}</button>
                     </div>
                 </div>
                 <br>
                 <div class="row ">
                     <div class="col">
-                        <button type="button" class="btn btn-block home-page-buttons white-font-color background-dark-green-color font-white-color" style="margin-bottom:15px;">{% trans "DATA QUALITY STANDARDS" %}</button>
+                        <button type="button" class="btn btn-block home-page-buttons white-font-color background-dark-green-color font-white-color" style="margin-bottom:15px;">{% trans "Data Quality Standards" %}</button>
                     </div>
                 </div>
             </div>

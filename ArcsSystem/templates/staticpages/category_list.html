@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% load staticpages_tree %}
+{% load workpackages_extras %}
+
+
+{% block content %}
+
+<h1>{% trans "Arcs Resources" %}</h1>
+
+<ul>
+{% for page in object_list %}
+<li>{{ page}}</li>
+
+
+{% endfor %}
+</ul>
+
+
+
+{% if LANGUAGE_CODE == "en" %}
+   <h3>{{ "Ethics"|get_wp_name }}</h3>
+{% endif %}
+
+{% if LANGUAGE_CODE == "sv" %}
+    <h3>{{ "Etik"|get_wp_name }}</h3>
+{% endif %}
+
+
+
+
+{% endblock content %}

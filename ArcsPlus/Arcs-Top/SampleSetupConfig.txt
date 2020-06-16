@@ -1,0 +1,63 @@
+#Directory: Arcs-Top
+#File: SampleSetupConfig.txt
+#Codename: SetupConfig
+#Version: 0.1
+#Developers: Jonathan Brier | Christopher Kullenberg
+#Developers email: jonathan.brier@gu.se | christopher.kullenberg@gu.se
+#Description: The following is a reference Config for setup and configuration of
+# the ArcsSystem for Citizen Science which allows for hosting a variety of apps
+# for those interested in curating citizen science projects, content, and
+# outputs.
+
+# Set Instance Type:
+#  "Dev" (Development): configures parameters and files for local testing  
+#                      and provides debugging support.
+#  "Test" (Testing): configures paramters and files for live hosting with
+#                   debugging support.
+#  "Prod" (Production): configures paramters and files for live deployment locking
+                        down the configurations without debugging only logging.
+Instance="Dev"
+
+# Primary Host Root DOMAIN: 
+#   This can be in the format of example.com or subexample.example.com and all 
+#   URLs for the platform will take form at and below the Root. This choice will 
+#   have implications for your site's TLS certificates aka for https to be 
+#   valid.
+#       For example: 
+          if you enter "medborgarforskning.se" your search would be at 
+           search.medborgarforskning.se
+          if you enter "sub.medborgarforskning.se" your search URL would be at
+           search.sub.medborgarforskning.se.
+DefaultDomain="medborgarforskning.se"
+
+
+# Location of Certificates for inclusion on the Server.
+# Default relative to setup.sh: /certificates
+CertPath="/certificates"
+
+
+# Default Port for host Server
+HostPort="443"
+# Required Port for upgrading from http and CertBot certificates
+RequiredPort="80" 
+
+# Selection of which components of the ARCSSystem to spin up. Current script 
+#   only currently assumes single server configuration for all containers.
+ArcsSystemComponents="all"
+
+
+# All lines below this are TODO and not yet supported 
+
+# TODO - Implement Certbot for LetsEncrypt default if no certificates found
+#  for naked domain https://certbot.eff.org/
+# TODO - Also implement Wildcard Certificate for all subdomains - implements as
+#  a docker container. See: https://certbot.eff.org/docs/install.html#running-with-docker
+
+# Secondary Domains:
+# TODO - secondary domain support not implemented. Allow for hosting at both 
+#         native language URLs and other languages. Implement with primary as
+#         canonical URL on all pages for search indexing.
+
+# Multiple Server Scalable-Production Config:
+# TODO - setup for process for hosting containers on multiple servers for 
+#         scaling, load balancing, etc.

@@ -24,11 +24,15 @@
         	</div>
             <div class="row text-justify" style="padding-top: 10px;">
                 <div class="col">
-                    <h1>{{ object.title }}</h1>
+                    <h1>{{ post.title }}</h1>
+                    <p>{% for t in post.tags.names %}</p>
+                    {{ t }}
+                    {% endfor %}
+
                     <img class="img-fluid" src="{% static "devplaceholder/library-863148_1920.jpg" %}" alt="{% trans '' %}"/>
-                    <p>{{ object.content|safe }}</p>
+                    <p>{{ post.content|safe }}</p>
                     <br>
-                    <p> {{ object.content }} </p>
+                    <p> {{ post.content }} </p>
                 </div>
 
             </div>
@@ -76,10 +80,12 @@
             <div class="row visual-Mindmap-style">
                 <div class="col">
                     <h1> {% trans "Related Content" %}</h1>
-
-                    {% for q in "ethics"|query_publications %}
+                     <h2>{% trans "Recent publications" %}</h2>
+                    {% with post.tags.names|query_publications:5 as blog_sidebar_papers %}
+                    {% for q in blog_sidebar_papers %}
                     <p><a href="{% url 'publications:article_publications_detail' q.id %}">{{q}}</a></p>
                     {% endfor %}
+                  {% endwith %}
 
                 </div>
             </div>

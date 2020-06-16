@@ -1,0 +1,20 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+
+<h1>{% trans "Arcs Resources" %}</h1>
+
+<ul>
+{% for theme in object_list %}
+<li><a href="{{  }}">{{ theme.title }}</a></li>
+
+
+{% endfor %}
+</ul>
+
+
+
+{% endblock content %}

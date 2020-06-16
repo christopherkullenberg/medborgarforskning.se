@@ -41,12 +41,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sitemaps', # enables django to generate sitemap
 
+
 ### ArcsCore apps
     'blog', # enables the blog app of ArcsCore
     'publications', # enables the oublications app of ArcsCore
     #'products', #try to get rid of this one
     'projects', # enables the projects app of ArcsCore
     'staticpages',
+    'workpackages',
 
 ### Custom user apps
     'users', # initializes CustomUser and users app a.k.a. "People app" of ArcsCore
@@ -338,10 +340,13 @@ EMAIL_HOST = 'smtp.gu.se'
 #EMAIL_HOST_PASSWORD = #env("EMAIL_HOST_PASSWORD")
 EMAIL_PORT = '587'
 #EMAIL_USE_TLS = False # True
+#EMAIL_USE_SSL = False # depends on provider
+#EMAIL_SSL_KEYFILE
+#EMAIL_SSL_CERTFILE
 
-EMAIL_RECIPIENT_LIST = [
-    "jonathan.brier@gu.se",
-]
+#EMAIL_RECIPIENT_LIST = [
+#    "jonathan.brier@gu.se",
+#]
 
 ### Email Config ###
 

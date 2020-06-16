@@ -14,28 +14,30 @@ class Keyword(models.Model):
         return f'{self.keyword}'
 
 
-class Publication(models.Model):
-    '''
-    '''
-    class Meta:
-        verbose_name = _('Publication')
-        verbose_name_plural = _('Publications')
+#class Publication(models.Model):
+#    '''
+#    '''
+#    class Meta:
+#        verbose_name = _('Publication')
+#        verbose_name_plural = _('Publications')
+#
+#    title = models.CharField(max_length=200)
+#    keywords = models.ManyToManyField(Keyword)
+#    abstract = models.CharField(max_length=5000, default=_('Empty'))
+#
+#    def __str__(self):
+#        return self.title
 
-    title = models.CharField(max_length=200)
-    keywords = models.ManyToManyField(Keyword)
-    abstract = models.CharField(max_length=5000, default=_('Empty'))
 
-    def __str__(self):
-        return self.title
-
-
-class Article(Publication):
+class Article(models.Model):
     ''' Defines minimal fields necessary to hold a peer reviewed article
     '''
     class Meta:
         verbose_name = _('Article')
         verbose_name_plural = _('Articles')
-
+    title = models.CharField(max_length=200, default="title")
+    keywords = models.ManyToManyField(Keyword)
+    abstract = models.CharField(max_length=5000, default=_('Empty'))
     doi = models.CharField(max_length=200, default=_("doi"))
     py = models.IntegerField(default="0")
     authors = models.CharField(max_length=500, default=_("Author"))
@@ -48,12 +50,12 @@ class Article(Publication):
         return self.title
 
 
-class Arcsreport(Publication):
-    '''
-    '''
-    class Meta:
-        verbose_name = _('Arcs Report')
-        verbose_name_plural = _('Arcs Reports')
-
-    def __str__(self):
-        return self.title
+#class Arcsreport(Publication):
+#    '''
+#    '''
+#    class Meta:
+#        verbose_name = _('Arcs Report')
+#        verbose_name_plural = _('Arcs Reports')
+#
+#    def __str__(self):
+#        return self.title
