@@ -55,5 +55,6 @@ urlpatterns += i18n_patterns(
     path('summernote/', include('django_summernote.urls')), # adding summernote (CK))
     path('resources/', include('workpackages.urls')),
     path(_(''), include('staticpages.urls')),
+    path(_('org/'), include('organizations.urls')),
     #) # Replace line below with just a ] for production
 )+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) # TODO only for dev. disable for production

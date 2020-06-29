@@ -1,5 +1,7 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from django.urls import reverse
+
 
 # Create your models here.
 class Organization(models.Model):
@@ -30,3 +32,6 @@ class Organization(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('organizations:organization_detail', args=[str(self.id)])

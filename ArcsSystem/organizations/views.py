@@ -1,5 +1,16 @@
 from django.shortcuts import render
 
+from django.shortcuts import get_object_or_404
+from django.contrib.auth.models import User
+from django.views.generic import (
+    CreateView,
+    DetailView,
+    ListView,
+)
+
+from organizations.models import Organization
+from django.db.models import Q
+
 '''
 # Quick Fuction based template
 def template_view(request):
@@ -10,12 +21,12 @@ def template_view(request):
     return render(request, 'exampletemplate.html', context)
 '''
 
-# Create your views here.
-def organization_detail_view(request):
-''' This view shows which organizations are included in the database. It can
-be extended with content of papers, researchers, etc that are associated with
-the organization via relationships in the database.
-'''
-    context = {
-        }
-    return render(request, 'organization_detail.html', context)
+class OrganiztionList(ListView):
+    model = Organization
+    template_name = 'organizations/organization_list.html'
+    queryset = Organization.objects.all()
+
+class OrganizationDetailView(DetailView):
+
+    model = Organization
+    template_name = 'organizations/organization_detail.html'

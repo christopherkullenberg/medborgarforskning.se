@@ -1,3 +1,18 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load i18n %}
+
+{% block content %}
+
+
+{% for organization in organization_list %}
+    <div class="custom-container">
+        <h2>
+            <p>{{ organization.get_absolute_url }}</p>
+            <a href="{{ organization.get_absolute_url }}">{{ organization.name }} ({{ organization.wikidataID }})</a>
+        </h2>
+    </div>
+{% endfor %}
+
+
+{% endblock content %}
