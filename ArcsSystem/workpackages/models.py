@@ -21,8 +21,9 @@ class WorkPackage(models.Model):
     def get_absolute_url(self):
         # reverse expects the view name
         return reverse('workpackages:category_view',
-                       kwargs={'name' : self.name}
+                       kwargs={'category' : self.name}
                        )
+
 
 class Theme(models.Model):
     '''
