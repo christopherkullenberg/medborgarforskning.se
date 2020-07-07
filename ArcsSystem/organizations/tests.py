@@ -3,6 +3,7 @@ from django.test import Client, TestCase
 from .models import Organization
 from django.urls import reverse
 from django.conf import settings
+from django.test.utils import setup_test_environment
 
 ### May want to break this test file up by test focus ie test_models.py, test_forms.py, test_views.py it becomes very large.)
 
@@ -67,4 +68,10 @@ class OrganizationTestCare(TestCase):
             no_response = self.client.get(self.organization.get_absolute_url())
             self.assertEqual(no_response.status_code, 404)
 
-    
+
+    def test_organizations_query(self):
+        for each_language in self.languages_list:
+            with translation.override(each_language):
+                response = self.client.get(reverse('organizations:organization_list'))
+                self.assertEqual(response.status_code, 200)
+                self.assertQuerysetEqual(response.context['organization_list'], ['<Organization: University of Gothenburg>'])
