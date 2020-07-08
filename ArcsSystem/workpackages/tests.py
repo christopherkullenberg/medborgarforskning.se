@@ -39,10 +39,21 @@ class WorkPackageTestCare(TestCase):
             self.assertEqual(no_response.status_code, 404)
 
 
+    def test_workpackages_display_view(self):
+        for each_language in self.languages_list:
+            with translation.override(each_language):
+                response_list = self.client.get(reverse('workpackages:workpackages_list'))
+                response_detail = self.client.get(self.workpackage.get_absolute_url(), kwargs={'category' : self.workpackage.name})
+                response_theme = self.client.get(reverse('workpackages:theme_view', kwargs={'category' : self.workpackage.name, 'title' : self.theme.title}))
+                self.assertEqual(response_list.resolver_match.func.__name__, 'WorkpackagesListView')
+                self.assertEqual(response_detail.resolver_match.func.__name__, 'WorkpackagesCategoryView')
+                self.assertEqual(response_theme.resolver_match.func.__name__, 'WorkpackagesDetailView')
+
+
+
     # def test_workpackage_details_view(self):
     #     for each_language in self.languages_list:
     #         with translation.override(each_language):
-    #             print(reverse('workpackages:theme_view', kwargs={'category' : self.workpackage.name, 'title' : self.theme.title}))
     #             response = self.client.get(reverse('workpackages:theme_view', kwargs={'category' : self.workpackage.name, 'title' : self.theme.title}))
     #             no_response = self.client.get('resources/12345')
     #             self.assertEqual(no_response.status_code, 404)

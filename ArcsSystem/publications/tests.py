@@ -60,7 +60,6 @@ class PublicationTestCare(TestCase):
                 no_response = self.client.get('publications/12345')
                 self.assertEqual(no_response.status_code, 404)
                 self.assertEqual(response.status_code, 200)
-
         with translation.override('pr'):
             no_response = self.client.get(self.Article.get_absolute_url())
             self.assertEqual(no_response.status_code, 404)
@@ -96,8 +95,3 @@ class PublicationTestCare(TestCase):
                 self.assertEqual(response_list.resolver_match.func.__name__, 'ArticleListView')
                 self.assertEqual(response_detail.resolver_match.func.__name__, 'ArticleDetailView')
                 self.assertEqual(response_search.resolver_match.func.__name__, 'SearchPublicationsView')
-
-
-    # def test_publications_view(self):
-    #     for each_language in self.languages_list:
-    #         with translation.override(each_language):

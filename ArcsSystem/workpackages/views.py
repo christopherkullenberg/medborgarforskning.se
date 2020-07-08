@@ -22,4 +22,6 @@ class WorkpackagesCategoryView(ListView):
 class WorkpackagesDetailView(DetailView):
     ''''''
     model = Theme
+    slug_field = 'title'
+    slug_url_kwarg = 'title'
     template_name = 'workpackages/theme_view.html'

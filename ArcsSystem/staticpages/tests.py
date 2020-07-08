@@ -44,4 +44,44 @@ class ResourceTestCare(TestCase):
             no_response = self.client.get(reverse('staticpages:homepage_view'))
             self.assertEqual(no_response.status_code, 404)
 
-    
+
+    def test_staticpages_terms_view(self):
+        for each_language in self.languages_list:
+            with translation.override(each_language):
+                response = self.client.get(reverse('staticpages:terms_detail'))
+                self.assertEqual(response.status_code, 200)
+                self.assertTemplateUsed(response, 'staticpages/terms-cookies-privacy_detail.html')
+        with translation.override('pr'):
+            no_response = self.client.get(reverse('staticpages:terms_detail'))
+            self.assertEqual(no_response.status_code, 404)
+
+    def test_staticpages_privacy_detail_view(self):
+        for each_language in self.languages_list:
+            with translation.override(each_language):
+                response = self.client.get(reverse('staticpages:privacy_detail'))
+                self.assertEqual(response.status_code, 200)
+                self.assertTemplateUsed(response, 'staticpages/terms-cookies-privacy_detail.html')
+        with translation.override('pr'):
+            no_response = self.client.get(reverse('staticpages:privacy_detail'))
+            self.assertEqual(no_response.status_code, 404)
+
+    # def test_staticpages_list_view(self):
+    #     for each_language in self.languages_list:
+    #         with translation.override(each_language):
+    #             response = self.client.get(reverse('staticpages:homepage_view'))
+    #             self.assertEqual(response.status_code, 200)
+    #             self.assertTemplateUsed(response, 'home.html')
+    #     with translation.override('pr'):
+    #         no_response = self.client.get(reverse('staticpages:homepage_view'))
+    #         self.assertEqual(no_response.status_code, 404)
+    #
+    #
+    # def test_staticpages_list_view(self):
+    #     for each_language in self.languages_list:
+    #         with translation.override(each_language):
+    #             response = self.client.get(reverse('staticpages:homepage_view'))
+    #             self.assertEqual(response.status_code, 200)
+    #             self.assertTemplateUsed(response, 'home.html')
+    #     with translation.override('pr'):
+    #         no_response = self.client.get(reverse('staticpages:homepage_view'))
+    #         self.assertEqual(no_response.status_code, 404)

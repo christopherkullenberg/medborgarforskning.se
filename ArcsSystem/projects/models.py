@@ -1,6 +1,10 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.urls import path,reverse
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from django.conf import settings
+import os
 
 STATUS_CHOICES = [
     ('0', 'Not Selected'),
@@ -53,7 +57,7 @@ class Project(models.Model):
     start_date = models.DateTimeField(help_text=_('Date the project started.'), null=True)
     end_date = models.DateTimeField(help_text=_('Date the project concluded.'), null=True)
     status = models.CharField(max_length=30, default='0', choices=STATUS_CHOICES)
-    image_dir = 'http://localhost:8000/media/images/wild-otter-mom-and-pup_d-large.max-165x165.jpg'
+    image_dir = models.CharField(max_length= 200, default= '')
     target_audience = models.CharField(help_text=_('Project primary audience.'),max_length=5000, default='')
     contact_name = models.CharField(help_text=_('Name of the person maintaining this entry. Default is your account.'),max_length=200, default='')
     contact_role = models.CharField(help_text=_('Maintainer’s role or position with this project.'),max_length=200, default='')
@@ -67,5 +71,18 @@ class Project(models.Model):
         # reverse expects the view name
         return reverse('projects:project_list')
 
+    def get_absolute_url_details(self):
+        return reverse('projects:project_detail', args=[str(self.id)])
+
+
     def __str__(self):
         return self.name
+
+
+@receiver(post_save, sender=Project)
+def generate_image_dir(sender, instance, created, **kwargs):
+    if created:
+        path = settings.MEDIA_ROOT + '/images/projects/' + str(instance.id)
+        os.makedirs(path)
+        instance.image_dir = '/media/images/projects/' + str(instance.id)
+        instance.save()
