@@ -28,11 +28,32 @@ from django.conf.urls.static import static
 from django.conf import settings
 ### Wagtail requirements End #
 
+### Sitemap requirements start #
+from django.contrib.sitemaps.views import sitemap
+from django.contrib.sitemaps import views
+from blog.sitemaps import BlogSitemap
+from organizations.sitemaps import OrganizationSitemap
+from projects.sitemaps import ProjectSitemap
+from publications.sitemaps import PublicationSitemap
+from staticpages.sitemaps import StaticpagesSitemap
+from workpackages.sitemaps import WorkPackageSitemap
+
+### Sitemap requirements end #
+
 # Setting the Admin Login Text - changes what is seen when logging into the backend of django admin
 admin.site.site_title = _("ARCS Admin Portal") # Seen at the login form for the admin
 admin.site.site_header = _("ARCS Admin") # Seen at top of admin after login to admin
 admin.site.index_title = _("Welcome to the ARCS Admin Portal") # Seen at top of app list on login to admin
 
+
+sitemaps = {
+    'Blog': BlogSitemap,
+    'Organization': OrganizationSitemap,
+    'Project': ProjectSitemap,
+    'Publication': PublicationSitemap,
+    'Stiticpages': StaticpagesSitemap,
+    # 'WorkPackage': WorkPackageSitemap
+}
 
 urlpatterns = [
     path('i18n/', include('django.conf.urls.i18n')),
@@ -57,4 +78,7 @@ urlpatterns += i18n_patterns(
     path(_(''), include('staticpages.urls')),
     path(_('org/'), include('organizations.urls')),
     #) # Replace line below with just a ] for production
+    path(('sitemap.xml'), views.index, {'sitemaps': sitemaps}),
+    path('sitemap-<section>.xml', views.sitemap, {'sitemaps': sitemaps},
+     name='django.contrib.sitemaps.views.sitemap'),
 )+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) # TODO only for dev. disable for production
