@@ -2,6 +2,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from taggit.managers import TaggableManager
 from django.urls import reverse
+from django.conf import settings
 
 import datetime
 
@@ -22,8 +23,19 @@ class Post(models.Model):
         verbose_name_plural = _('Posts')
 
     slug = models.SlugField()
-    title = models.CharField(max_length=100, default=_('title'))
-    published = models.DateField()# todo make name more focused on date like datapublished - could be confused with published status
+    title = models.CharField(
+        db_index=True,
+        max_length=100,
+        default=_('title'),
+        )
+    author = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_DEFAULT,
+        default=1,
+        ) # Deleting the user accout assoicated will change author to "ID default which should be set to ARCS or other generic value"
+    published = models.DateField(
+        db_index=True,
+        )# todo make name more focused on date like datapublished - could be confused with published status
     content = models.TextField() #summernote field
     tags = TaggableManager()
 

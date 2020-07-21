@@ -36,16 +36,50 @@ class Article(models.Model):
     class Meta:
         verbose_name = _('Article')
         verbose_name_plural = _('Articles')
-    title = models.CharField(max_length=200, default="title")
-    keywords = models.ManyToManyField(Keyword)
-    abstract = models.CharField(max_length=5000, default=_('Empty'))
-    doi = models.CharField(max_length=200, default=_("doi"))
-    py = models.IntegerField(default="0")
-    authors = models.CharField(max_length=500, default=_("Author"))
-    source = models.CharField(max_length=200, default=_("Journal Name"))
-    volume = models.CharField(max_length=200, default=_("Volume"))
-    issue = models.CharField(max_length=200, default=_("Issue"))
 
+    title = models.CharField(
+        max_length=200,
+        default="title",
+        )
+    keywords = models.ManyToManyField(Keyword)
+    abstract = models.CharField(
+        max_length=5000,
+        default=_('Empty'),
+        )
+    doi = models.CharField(
+        help_text=_("DOI without http"),
+        max_length=200,
+        blank=True,
+        ) # format like 10.1016/J.BIOCON.2016.05.015
+    py = models.IntegerField(
+        help_text=_("Publication Year - YYYY"),
+        default="0000",
+        ) #Todo make variable semantic - move to PubYear
+    authors = models.CharField(
+        help_text=_("Author String"),
+        max_length=500,
+        default=_("Author"),
+        ) # ['author1','author2','author3...etc']
+    # authors_sementic = # TODO add field to resolved authors to ORCID ['authorWikidataID1','','authorWikidataID3']
+    source = models.CharField(
+        help_text=_("Source Name"),
+        max_length=200,
+        blank=True,
+        )
+    volume = models.CharField(
+        help_text=_("Volume"),
+        max_length=200,
+        blank=True,
+        )
+    issue = models.CharField(
+        help_text=_("Issue Number"),
+        max_length=200,
+        blank=True,
+        )
+    # wikidataID = models.CharField(
+    #     max_length=200,
+    #     blank=True
+    #     ) # formate of Q56417560
 
     def __str__(self):
         return self.title
