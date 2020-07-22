@@ -19,6 +19,4 @@ urlpatterns = [
     path('sourcecode/', TermsPageView.as_view(), name='sourcecode_detail'),
     path('press/', TermsPageView.as_view(), name='press_detail'), # the press/ view will be static parent to press related subpages
     #path('contact/', .as_view(), name='contact_form'), # this is a contact form - standard for the site
-
-    
     ]

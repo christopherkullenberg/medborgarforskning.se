@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load i18n %}
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
 {% load blog_extras %}
 {% load publications_extras %} <!-- for publications dynamic box -->
 {% block title %}Home{% endblock title %}
-
 {% block content %}
 {{ var1 }}
 
@@ -15,14 +16,17 @@
             <div class="col-6 h" style="padding-right:25px;">
                 <div class="row">
                     <div class="col">
-                        <img class="img-fluid" src="{% static "devplaceholder/sami-takarautio-UZOpP-YHe9Q-unsplash.jpg"%}" alt="{% trans '' %}"/>
+                        {% image page.welcome_image original class="img-fluid" alt=" " %}
+                        <!-- <img class="img-fluid" src="" alt="{% trans '' %}"/> -->
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
                         <br>
-                        <h1>{% trans "Welcome" %}</h1>
-                        <p class="font-weight-bold">{% trans  "Welcome to medborgarforskning.se – Sweden's portal for persons interested in learning about citizen science and how to get started in Sweden as well as those who have been involved for years. While this site uses the term citizen science it is more than this term. Citizen science is about researchers and the public cooperating to develop new knowledge. At medborgarforskning.se anyone who wants to learn more about citizen science can search for projects to participate in and contribute to the portal with their own knowledge and experience.<br><br> As a researcher, you can find information about the methodology of citizen science, get tips and inspiration to start your own projects, exchange experiences and make connections with other researchers and volunteers.You can also post your projects on the portal to reach different target groups.<br><br> If you're not a researcher, you can do exactly the same things as the researchers. Citizen science is for everyone." %}
+                        <!-- <h1>{% trans "Welcome" %}</h1> -->
+                        <h1>{{ page.welcome_title }}</h1>
+                        <p class="font-weight-bold">{{ page.welcome_body }}</p>
+                        <!-- <p class="font-weight-bold">{% trans  "Welcome to medborgarforskning.se – Sweden's portal for persons interested in learning about citizen science and how to get started in Sweden as well as those who have been involved for years. While this site uses the term citizen science it is more than this term. Citizen science is about researchers and the public cooperating to develop new knowledge. At medborgarforskning.se anyone who wants to learn more about citizen science can search for projects to participate in and contribute to the portal with their own knowledge and experience.<br><br> As a researcher, you can find information about the methodology of citizen science, get tips and inspiration to start your own projects, exchange experiences and make connections with other researchers and volunteers.You can also post your projects on the portal to reach different target groups.<br><br> If you're not a researcher, you can do exactly the same things as the researchers. Citizen science is for everyone." %}</p> -->
                     </div>
                 </div>
             </div>
@@ -30,7 +34,8 @@
                 <div class="row">
                     <div class="col">
                         <h1>{% trans "Projects" %}</h1>
-                        <p> {% trans "The database at medborgarforskning.se contains citizen science projects and activities from Sweden that are available for participation. This includes both Swedish and international initiatives. You can use filters to search and sort among the projects to find, for example, projects that deal with a specific topic (e.g. birds or health), take place in specific locations (eg outdoors in nature or in cities), or aimed at different participants (e.g. children or adults). On the project pages you will find more information about what is involved as well as contact information for the organizer." %} <p>
+                        <p>{{ page.project_body }}</p>
+                        <!-- <p> {% trans "The database at medborgarforskning.se contains citizen science projects and activities from Sweden that are available for participation. This includes both Swedish and international initiatives. You can use filters to search and sort among the projects to find, for example, projects that deal with a specific topic (e.g. birds or health), take place in specific locations (eg outdoors in nature or in cities), or aimed at different participants (e.g. children or adults). On the project pages you will find more information about what is involved as well as contact information for the organizer." %} <p> -->
                     </div>
                     <div class="row">
                         <div id="main-page-slider" class="col">
@@ -118,19 +123,24 @@
     <div class="custom-container ">
         <div class="row ml-0 main-page-box background-greenish-color">
             <div class="col-4 d-flex justify-content-center align-items-center">
-                <h1>{% trans "Get involved with CitSciSE" %}</h1>
+                <h1>{{ page.get_CitSciSE_title }}</h1>
+                <!-- <h1>{% trans "Get involved with CitSciSE" %}</h1> -->
             </div>
             <div class="col-8 d-flex justify-content-center align-items-center">
-                <p class="mb-0">{% trans "If you would like to improve the content on CitSciSE or would like to learn more about how to integrate with CitSciSE. Please see our contact information below and the API for accessing the site's content." %}</p>
+                <p class="mb-0">{{ page.get_CitSciSE_body }}</p>
+                <!-- <p class="mb-0">{% trans "If you would like to improve the content on CitSciSE or would like to learn more about how to integrate with CitSciSE. Please see our contact information below and the API for accessing the site's content." %}</p> -->
             </div>
         </div>
     </div>
     <div class="custom-container">
         <div class="row ml-0">
             <div class="col h slider-color items-box">
-                <h1> {% trans "Data Quality" %} </h1>
-                <p class="font-weight-bold" >{% trans "Getting Started" %}</p>
-                <p class="text-justify ">{% trans "Some of the first questions in citizen science is can we trust the data and is the data of sufficient quality. Fundamental readings and resources on Data Quality, Data Standards and Technologies have been compiled in the resources to help address your question." %}</p>
+                <h1>{{ page.data_quality_box_title }}</h1>
+                <!-- <h1> {% trans "Data Quality" %} </h1> -->
+                <p class="font-weight-bold" >{{ page.data_quality_box_subtitle }}</p>
+                <!-- <p class="font-weight-bold" >{% trans "Getting Started" %}</p> -->
+                <p class="text-justify ">{{ page.data_quality_box_body }}</p>
+                <!-- <p class="text-justify ">{% trans "Some of the first questions in citizen science is can we trust the data and is the data of sufficient quality. Fundamental readings and resources on Data Quality, Data Standards and Technologies have been compiled in the resources to help address your question." %}</p> -->
                 <div class="row">
                     <div class="col ">
                         <button type="button" class="btn btn-block home-page-buttons background-greenish-color" onclick='window.location.href={% url 'workpackages:category_view' 'Data-Quality' %}'>{% trans "Data Quality Themes" %}</button>
@@ -144,8 +154,10 @@
                 </div>
             </div>
             <div class="col h slider-color items-box">
-                <h1>{% trans "Papers" %}</h1>
-                <p class="font-weight-bold">{% trans "Recent papers" %}</p>
+                <h1>{{ page.paper_box_title }}</h1>
+                <!-- <h1>{% trans "Papers" %}</h1> -->
+                <p class="font-weight-bold">{{ page.paper_box_subtitle }}</p>
+                <!-- <p class="font-weight-bold">{% trans "Recent papers" %}</p> -->
 
                 {% for q in "citizen"|query_publications %}
                     <p><a href="{% url 'publications:article_publications_detail' q.id %}">{{q}}</a></p>
@@ -153,8 +165,10 @@
 
             </div>
             <div class="col h slider-color items-box mr-0">
-                <h1>{% trans "CitSciSE Community" %}</h1>
-                <p class="font-weight-bold">{% trans "Recent Blog Posts" %}<p>
+                <h1>{{ page.CitSciSE_box_title }}</h1>
+                <!-- <h1>{% trans "CitSciSE Community" %}</h1> -->
+                <p class="font-weight-bold">{{ page.CitSciSE_box_subtitle }}</p>
+                <!-- <p class="font-weight-bold">{% trans "Recent Blog Posts" %}<p> -->
 
                 {% for blog in "citizen"|latest_blogs %}
                     <p>{{ blog.published }}: <a href="http://example.com">{{blog}}</a></p>
