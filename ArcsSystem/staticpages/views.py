@@ -35,14 +35,16 @@ class CategoryView(ListView):
         return object_list
 
 class HomePageView(TemplateView):
-    model = HomePage.objects.prefetch_related('welcome_image')[0]
+
     template_name = 'home.html'
-
     def get_context_data(self, **kwargs):
+        try:
+            model = HomePage.objects.prefetch_related('welcome_image')[0]
+        except :
+            model = None
         context = super().get_context_data(**kwargs)
-        context["page"] = self.model
+        context["page"] = model
         return context
-
 
 class TermsPageView(TemplateView):
     template_name = 'staticpages/terms-cookies-privacy_detail.html'

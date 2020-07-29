@@ -3,6 +3,17 @@ from django.utils.translation import gettext_lazy as _
 from taggit.managers import TaggableManager
 from django.urls import reverse
 
+from wagtail.core.models import Page
+from wagtail.core.fields import StreamField
+from wagtail.core import blocks
+from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel, MultiFieldPanel
+from wagtail.images.blocks import ImageChooserBlock
+from wagtail.search import index
+
+from modelcluster.fields import ParentalKey
+from modelcluster.contrib.taggit import ClusterTaggableManager
+from taggit.models import TaggedItemBase
+
 import datetime
 
 
@@ -51,3 +62,51 @@ class Author(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class BlogPage(Page):
+    ''' Blog page Database fields'''
+    blogSlug = models.SlugField()
+    blogAuthor = models.CharField(max_length=255)
+    authorEmail = models.EmailField()
+    publishedDate = models.DateField("Post date")
+    blogTags = TaggableManager()
+
+    body = StreamField([
+        ('title', blocks.CharBlock(classname="full title")),
+        ('content', blocks.RichTextBlock()),
+    ])
+
+    # Search index configuration
+
+    search_fields = Page.search_fields + [
+        index.SearchField('body'),
+        index.FilterField('publishedDate'),
+        index.FilterField('blogTags'),
+    ]
+
+    # Editor panels configuration
+    content_panels = Page.content_panels + [
+        FieldPanel('blogSlug'),
+        FieldPanel('blogAuthor'),
+        FieldPanel('authorEmail'),
+        FieldPanel('publishedDate'),
+        StreamFieldPanel('body'),
+    ]
+
+    promote_panels = [
+        MultiFieldPanel(Page.promote_panels, "Common page configuration"),
+        FieldPanel('blogTags')
+
+    ]
+
+    template = 'blog/blog_list.html'
+
+    def get_absolute_url(self):
+        #return reverse('blog:archive_date_detail', args={'pk' : str(self.id)})
+        return reverse('blog:archive_date_detail',
+                       kwargs={'year' : self.publishedDate.year,
+                               'month' : self.publishedDate.month,
+                               'day' : self.publishedDate.day,
+                               'slug' : self.blogSlug #change from pk id
+                               })

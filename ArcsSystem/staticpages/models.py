@@ -6,7 +6,7 @@ from taggit.managers import TaggableManager
 from wagtail.core.models import Page as page_wagtail
 from wagtail.core.fields import RichTextField
 from wagtail.images.edit_handlers import ImageChooserPanel
-from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel
+from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel, InlinePanel
 
 
 class Page(models.Model):
