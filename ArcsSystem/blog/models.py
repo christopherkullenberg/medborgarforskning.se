@@ -1,5 +1,10 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from django.utils import translation
+from django.db.models.signals import pre_save
+from django.dispatch import receiver
+
+
 from taggit.managers import TaggableManager
 from django.urls import reverse
 
@@ -9,13 +14,14 @@ from wagtail.core import blocks
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel, MultiFieldPanel
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.search import index
+from wagtail.core.signals import page_published
 
 from modelcluster.fields import ParentalKey
 from modelcluster.contrib.taggit import ClusterTaggableManager
 from taggit.models import TaggedItemBase
 
 import datetime
-
+import re
 
 class Post(models.Model):
     '''
@@ -63,19 +69,29 @@ class Author(models.Model):
     def __str__(self):
         return self.name
 
+class BlogPageTag(TaggedItemBase):
+    content_object = ParentalKey(
+        'BlogPage',
+        related_name='tagged_items',
+        on_delete=models.CASCADE
+    )
+
 
 class BlogPage(Page):
     ''' Blog page Database fields'''
-    blogSlug = models.SlugField()
+
+    template = 'blog/blog_list.html'
+
     blogAuthor = models.CharField(max_length=255)
     authorEmail = models.EmailField()
-    publishedDate = models.DateField("Post date")
-    blogTags = TaggableManager()
+    publishedDate = models.DateField('Post date')
+    blogTags = ClusterTaggableManager(through=BlogPageTag, blank=True)
 
     body = StreamField([
-        ('title', blocks.CharBlock(classname="full title")),
+        ('title', blocks.CharBlock(classname='full title')),
         ('content', blocks.RichTextBlock()),
     ])
+
 
     # Search index configuration
 
@@ -87,26 +103,80 @@ class BlogPage(Page):
 
     # Editor panels configuration
     content_panels = Page.content_panels + [
-        FieldPanel('blogSlug'),
         FieldPanel('blogAuthor'),
         FieldPanel('authorEmail'),
         FieldPanel('publishedDate'),
         StreamFieldPanel('body'),
+        FieldPanel('blogTags'),
     ]
 
     promote_panels = [
         MultiFieldPanel(Page.promote_panels, "Common page configuration"),
-        FieldPanel('blogTags')
-
     ]
-
-    template = 'blog/blog_list.html'
 
     def get_absolute_url(self):
         #return reverse('blog:archive_date_detail', args={'pk' : str(self.id)})
-        return reverse('blog:archive_date_detail',
-                       kwargs={'year' : self.publishedDate.year,
-                               'month' : self.publishedDate.month,
-                               'day' : self.publishedDate.day,
-                               'slug' : self.blogSlug #change from pk id
-                               })
+
+        language_code = translation.get_language()
+        if language_code == 'sv':
+            return reverse('blog:archive_date_detail',
+                           kwargs={'year' : self.publishedDate.year,
+                                   'month' : self.publishedDate.month,
+                                   'day' : self.publishedDate.day,
+                                   'slug' : self.slug_sv #change from pk id
+                                   })
+
+        else:
+            return reverse('blog:archive_date_detail',
+                           kwargs={'year' : self.publishedDate.year,
+                                   'month' : self.publishedDate.month,
+                                   'day' : self.publishedDate.day,
+                                   'slug' : self.slug_en #change from pk id
+                                   })
+
+
+# @receiver(pre_save, sender=BlogPage)
+def receiver(sender,instance, **kwargs):
+    if instance.title_sv != None and instance.slug_sv == None:
+        title_sv = spinalcase(instance.title_sv)
+        instance.slug_sv = title_sv
+        instance.save()
+
+
+page_published.connect(receiver, sender=BlogPage)
+
+def lowercase(string):
+    """Convert string into lower case.
+    Args:
+        string: String to convert.
+    Returns:
+        string: Lowercase case string.
+    """
+
+    return str(string).lower()
+
+def snakecase(string):
+    """Convert string into snake case.
+    Join punctuation with underscore
+    Args:
+        string: String to convert.
+    Returns:
+        string: Snake cased string.
+    """
+
+    string = re.sub(r"[\-\.\s]", '_', str(string))
+    if not string:
+        return string
+    return lowercase(string[0]) + re.sub(r"[A-Z]", lambda matched: '_' + lowercase(matched.group(0)), string[1:])
+
+
+def spinalcase(string):
+    """Convert string into spinal case.
+    Join punctuation with hyphen.
+    Args:
+        string: String to convert.
+    Returns:
+        string: Spinal cased string.
+    """
+
+    return re.sub(r"_", "-", snakecase(string))

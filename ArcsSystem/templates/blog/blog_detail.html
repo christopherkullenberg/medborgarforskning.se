@@ -25,18 +25,21 @@
         	</div>
             <div class="row text-justify" style="padding-top: 10px;">
                 <div class="col">
-                    <h1>{{ post.title }}</h1>
-                    <p>{% for t in post.tags.names %}</p>
-                    {{ t }}
-                    {% endfor %}
-
+                    <h1>{{ object.title }} </h1>
+                    {% if object.blogTags.count %}
+                        {% for t in object.blogTags.all %}
+                            <p>
+                                {{ t }}
+                            </p>
+                        {% endfor %}
+                    {% endif %}
                     <img class="img-fluid" src="{% static "devplaceholder/library-863148_1920.jpg" %}" alt="{% trans '' %}"/>
-                    <p>{{ post.content|safe }}</p>
+                    <p>{{ object.body|safe }}</p>
                     <br>
-                    <p> {{ post.content }} </p>
+                    <p> {{ object.body }} </p>
                 </div>
-
             </div>
+
             <div class="row">
                 <div class="col">
                     <div class="accordion ">
@@ -81,12 +84,14 @@
             <div class="row visual-Mindmap-style">
                 <div class="col">
                     <h1> {% trans "Related Content" %}</h1>
-                     <h2>{% trans "Recent publications" %}</h2>
-                    {% with post.tags.names|query_publications:5 as blog_sidebar_papers %}
-                    {% for q in blog_sidebar_papers %}
-                    <p><a href="{% url 'publications:article_publications_detail' q.id %}">{{q}}</a></p>
-                    {% endfor %}
-                  {% endwith %}
+                    <h2>{% trans "Recent publications" %}</h2>
+                        {% for tag in object.blogTags.all %}
+                            {% with post.tags.names|query_publications:5 as blog_sidebar_papers %}
+                                {% for q in blog_sidebar_papers %}
+                                    <p><a href="{% url 'publications:article_publications_detail' q.id %}">{{ q }}</a></p>
+                                {% endfor %}
+                            {% endwith %}
+                        {% endfor %}
 
                 </div>
             </div>

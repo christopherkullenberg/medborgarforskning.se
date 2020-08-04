@@ -11,18 +11,13 @@
 
             <h1>{% trans "Blog home page (list view)" %}</h1>
 
-            {% for instance in blog_entries %}
+            {% for instance in object_list %}
                 {% for block in instance.body %}
                     {% if block.block_type == 'title' %}
                         <p>{{ instance.id }} -  <a href='{{ instance.get_absolute_url }}'> {% include_block block %}, {{ instance.publishedDate }}</a><p>
                     {% endif %}
                 {% endfor %}
             {% endfor %}
-
-            <!-- {% for instance in object_list %}
-                <p>{{ instance.id }} - <a href='{{ instance.get_absolute_url }}'>{{ instance.title}}, {{ instance.published }}</a></p>
-            {% endfor %} -->
-
             <h1>
             {% trans "Blog detail view" %}
             </h1>
