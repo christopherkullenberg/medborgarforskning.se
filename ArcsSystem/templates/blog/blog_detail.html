@@ -19,24 +19,22 @@
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{% url 'staticpages:homepage_view' %}"> Home </a></li>
                     <li class="breadcrumb-item"><a href="{% url 'blog:blog_list_view' %}">Blogs</a></li>
-                    <li class="breadcrumb-item active" aria-current="page"> {{object.title}} </li>
+                    <li class="breadcrumb-item active" aria-current="page"> {{blogpage.title}} </li>
                   </ol>
                 </nav>
         	</div>
             <div class="row text-justify" style="padding-top: 10px;">
                 <div class="col">
-                    <h1>{{ object.title }} </h1>
-                    {% if object.blogTags.count %}
-                        {% for t in object.blogTags.all %}
+                    <h1>{{ blogpage.title }} </h1>
+                        {% for tag in blogpage.blogTags.names %}
                             <p>
-                                {{ t }}
+                                {{ tag }}
                             </p>
                         {% endfor %}
-                    {% endif %}
                     <img class="img-fluid" src="{% static "devplaceholder/library-863148_1920.jpg" %}" alt="{% trans '' %}"/>
-                    <p>{{ object.body|safe }}</p>
+                    <p>{{ blogpage.body|safe }}</p>
                     <br>
-                    <p> {{ object.body }} </p>
+                    <p> {{ blogpage.body }} </p>
                 </div>
             </div>
 
@@ -85,14 +83,14 @@
                 <div class="col">
                     <h1> {% trans "Related Content" %}</h1>
                     <h2>{% trans "Recent publications" %}</h2>
-                        {% for tag in object.blogTags.all %}
-                            {% with post.tags.names|query_publications:5 as blog_sidebar_papers %}
-                                {% for q in blog_sidebar_papers %}
-                                    <p><a href="{% url 'publications:article_publications_detail' q.id %}">{{ q }}</a></p>
-                                {% endfor %}
-                            {% endwith %}
-                        {% endfor %}
-
+                    <!-- {% for tag in blogpage.blogTags.names %}
+                        {{ tag }}
+                    {% endfor %} -->
+                        {% with blogpage.blogTags.names|query_publications:5 as blog_sidebar_papers %}
+                            {% for q in blog_sidebar_papers %}
+                                <p><a href="{% url 'publications:article_publications_detail' q.id %}">{{ q }}</a></p>
+                            {% endfor %}
+                        {% endwith %}
                 </div>
             </div>
         </div>

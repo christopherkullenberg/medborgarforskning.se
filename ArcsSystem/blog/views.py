@@ -36,7 +36,6 @@ class BlogPostIndexView(ArchiveIndexView):
     ''' View showing all the blog posts and can be paginated to beginning of time.
     '''
 
-
     template_name = 'blog/blog_list.html'
     queryset = BlogPage.objects.all()
     date_field = "publishedDate"
@@ -47,14 +46,11 @@ class BlogPostIndexView(ArchiveIndexView):
 
     def get_context_data(self, **kwargs):
         language_code = translation.get_language()
-        model = BlogPage.objects.all()
         if (language_code == 'en'):
-            model = model.exclude(slug_en = None)
+            self.queryset = self.queryset.exclude(slug_en = None)
         else:
-            model = model.exclude(slug_sv = None)
-
+            self.queryset = self.queryset.exclude(slug_sv = None)
         context = super().get_context_data(**kwargs)
-        context["blog_entries"] = model
         return context
 
 class BlogPostYearArchiveView(YearArchiveView):
