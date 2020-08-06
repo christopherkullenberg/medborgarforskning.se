@@ -4,9 +4,12 @@ from django.urls import reverse
 from taggit.managers import TaggableManager
 
 from wagtail.core.models import Page as page_wagtail
+from wagtail.images.blocks import ImageChooserBlock
+from wagtail.core.fields import StreamField
+from wagtail.core import blocks
 from wagtail.core.fields import RichTextField
 from wagtail.images.edit_handlers import ImageChooserPanel
-from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel, InlinePanel
+from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel, InlinePanel, StreamFieldPanel
 
 
 class Page(models.Model):
@@ -38,6 +41,44 @@ class Page(models.Model):
         return self.title
 
 class HomePage(page_wagtail):
+    template = 'home.html'
+
+    welcome_body = StreamField([
+        ('title', blocks.CharBlock(classname="full title", default='Welcome')),
+        ('content', blocks.RichTextBlock()),
+    ])
+
+    project_body = StreamField([
+        ('title', blocks.CharBlock(classname="full title", default='Projects')),
+        ('content', blocks.RichTextBlock()),
+    ])
+
+    get_CitSciSE_box = StreamField([
+        ('title', blocks.CharBlock(classname="full title", default='Get involved with CitSciSE')),
+        ('content', blocks.RichTextBlock()),
+    ])
+
+    data_box = StreamField([
+        ('title', blocks.CharBlock(classname="full title", default='Data Quality')),
+        ('subtitle', blocks.CharBlock(classname="full title", default='Getting Started')),
+        ('content', blocks.RichTextBlock()),
+
+    ])
+
+    paper_box = StreamField([
+        ('title', blocks.CharBlock(classname="full title", default='Papers')),
+        ('subtitle', blocks.CharBlock(classname="full title", default='Recent papers')),
+        ('content', blocks.RichTextBlock()),
+
+    ])
+
+    CitSciSE_box = StreamField([
+        ('title', blocks.CharBlock(classname="full title", default='CitSciSE Community')),
+        ('subtitle', blocks.CharBlock(classname="full title", default='Recent Blog Posts')),
+        ('content', blocks.RichTextBlock()),
+
+    ])
+
     welcome_image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
@@ -45,46 +86,21 @@ class HomePage(page_wagtail):
         on_delete=models.SET_NULL,
         related_name='welcomeImage'
         )
-    welcome_title = models.CharField(max_length=100, default='Welcome')
-    welcome_body = models.TextField()
-    project_title = models.CharField(max_length=100, default='Projects')
-    project_body = models.TextField()
-    get_CitSciSE_title = models.CharField(max_length=100, default='Get involved with CitSciSE')
-    get_CitSciSE_body = models.TextField()
-    data_quality_box_title = models.CharField(max_length=100, default='Data Quality')
-    data_quality_box_subtitle = models.CharField(max_length=100, default='Getting Started')
-    data_quality_box_body = models.TextField()
-    paper_box_title = models.CharField(max_length=100, default='Papers')
-    paper_box_subtitle = models.CharField(max_length=100, default='Recent papers')
-    paper_box_body = models.CharField(max_length=200)
-    CitSciSE_box_title = models.CharField(max_length=100, default='CitSciSE Community')
-    CitSciSE_box_subtitle = models.CharField(max_length=100, default='Recent Blog Posts')
-    CitSciSE_box_body = models.CharField(max_length=200)
+
 
     content_panels = page_wagtail.content_panels + [
-        FieldPanel('welcome_title'),
-        FieldPanel('welcome_body'),
-        FieldPanel('project_title'),
-        FieldPanel('project_body'),
-        FieldPanel('get_CitSciSE_title'),
-        FieldPanel('get_CitSciSE_body'),
-        FieldPanel('data_quality_box_title'),
-        FieldPanel('data_quality_box_subtitle'),
-        FieldPanel('data_quality_box_body'),
-        FieldPanel('paper_box_title'),
-        FieldPanel('paper_box_subtitle'),
-        FieldPanel('paper_box_body'),
-        FieldPanel('CitSciSE_box_title'),
-        FieldPanel('CitSciSE_box_subtitle'),
-        FieldPanel('CitSciSE_box_body'),
+        StreamFieldPanel('welcome_body'),
+        StreamFieldPanel('project_body'),
+        StreamFieldPanel('get_CitSciSE_box'),
+        StreamFieldPanel('data_box'),
+        StreamFieldPanel('paper_box'),
+        StreamFieldPanel('CitSciSE_box'),
         ]
 
     promote_panels = [
         MultiFieldPanel(page_wagtail.promote_panels, "Common page configuration"),
         ImageChooserPanel('welcome_image'),
     ]
-
-    template = 'home.html'
 
     def get_absolute_url(self):
         return reverse('staticpages:homepage_view')
