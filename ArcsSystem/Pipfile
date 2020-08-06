@@ -7,7 +7,7 @@ verify_ssl = true
 django-debug-toolbar = "==2.2"
 
 [packages]
-django = "==2.2.14"
+django = "==2.2.15"
 wagtail = "==2.9.3"
 django-cookie-consent = "==0.2.6"
 djangorestframework = "==3.11.0"
