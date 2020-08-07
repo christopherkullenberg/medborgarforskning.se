@@ -273,7 +273,12 @@
                 {% endif %}
 
                 {% for blog in 5|latest_blogs %}
-                    <p>{{ blog.publishedDate }}: <a href="{{ blog.get_absolute_url }}">{{ blog }}</a></p>
+                    {% get_current_language as LANGUAGE_CODE %}
+                    {% if LANGUAGE_CODE == "en" and blog.slug_en is not None %}
+                        <p>{{ blog.publishedDate }}: <a href="{{ blog.get_absolute_url }}">{{ blog }}</a></p>
+                    {% elif LANGUAGE_CODE == "sv" and blog.slug_sv is not None %}
+                        <p>{{ blog.publishedDate }}: <a href="{{ blog.get_absolute_url }}">{{ blog }}</a></p>
+                    {% endif %}
                 {% endfor %}
 
             </div>

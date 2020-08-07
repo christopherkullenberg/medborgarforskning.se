@@ -12,13 +12,21 @@
         <div class="col">
 
             <h1>{% trans "Blog home page (list view)" %}</h1>
-
             {% for instance in object_list %}
-                {% for block in instance.body %}
-                    {% if block.block_type == 'title' %}
-                        <p>{{ instance.id }} -  <a href='{{ instance.get_absolute_url }}'> {% include_block block %}, {{ instance.publishedDate }}</a><p>
-                    {% endif %}
-                {% endfor %}
+                {% get_current_language as LANGUAGE_CODE %}
+                {% if LANGUAGE_CODE == "en" and instance.slug_en is not None %}
+                    {% for block in instance.body %}
+                        {% if block.block_type == 'title' %}
+                            <p>{{ instance.id }} -  <a href='{{ instance.get_absolute_url }}'> {% include_block block %}, {{ instance.publishedDate }}</a><p>
+                        {% endif %}
+                    {% endfor %}
+                {% elif LANGUAGE_CODE == "sv" and instance.slug_sv is not None %}
+                    {% for block in instance.body %}
+                        {% if block.block_type == 'title' %}
+                            <p>{{ instance.id }} -  <a href='{{ instance.get_absolute_url }}'> {% include_block block %}, {{ instance.publishedDate }}</a><p>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
             {% endfor %}
             <h1>
             {% trans "Blog detail view" %}

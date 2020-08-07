@@ -4,7 +4,6 @@ from django.utils import translation
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
 
-
 from taggit.managers import TaggableManager
 from django.urls import reverse
 
