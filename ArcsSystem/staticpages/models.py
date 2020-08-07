@@ -11,7 +11,6 @@ from wagtail.core.fields import RichTextField
 from wagtail.images.edit_handlers import ImageChooserPanel
 from wagtail.admin.edit_handlers import FieldPanel, MultiFieldPanel, InlinePanel, StreamFieldPanel
 
-
 class Page(models.Model):
     '''Defines a basic page'''
     class Meta:
@@ -68,16 +67,12 @@ class HomePage(page_wagtail):
     paper_box = StreamField([
         ('title', blocks.CharBlock(classname="full title", default='Papers')),
         ('subtitle', blocks.CharBlock(classname="full title", default='Recent papers')),
-        ('content', blocks.RichTextBlock()),
-
     ])
 
     CitSciSE_box = StreamField([
         ('title', blocks.CharBlock(classname="full title", default='CitSciSE Community')),
         ('subtitle', blocks.CharBlock(classname="full title", default='Recent Blog Posts')),
-        ('content', blocks.RichTextBlock()),
-
-    ])
+        ])
 
     welcome_image = models.ForeignKey(
         'wagtailimages.Image',

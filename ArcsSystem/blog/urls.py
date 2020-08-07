@@ -1,3 +1,4 @@
+from django.utils.translation import gettext_lazy as _
 from django.urls import path
 from django.urls import re_path
 from blog.views import BlogPostListView
