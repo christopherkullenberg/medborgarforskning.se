@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import translation
 from django.utils.translation import gettext_lazy as _
 from django.urls import reverse
 from taggit.managers import TaggableManager
@@ -99,3 +100,41 @@ class HomePage(page_wagtail):
 
     def get_absolute_url(self):
         return reverse('staticpages:homepage_view')
+
+
+class TermsPage(page_wagtail):
+    ''' basic page for terms '''
+
+    template = 'staticpages/terms-cookies-privacy_detail.html'
+
+    terms_title = models.CharField(max_length=100, default='title')
+    version_number = models.CharField(max_length=100, default='v01')
+    terms_content = RichTextField()
+
+    content_panels = page_wagtail.content_panels + [
+        FieldPanel('terms_title'),
+        FieldPanel('version_number'),
+        FieldPanel('terms_content')
+    ]
+
+    promote_panels = [
+        MultiFieldPanel(page_wagtail.promote_panels, "Common page configuration"),
+        ]
+
+class PrivacyPage(page_wagtail):
+    ''' basic page for privacy '''
+
+    template = 'staticpages/privacy.html'
+
+    privacy_title = models.CharField(max_length=100, default='title')
+    # version_number = models.CharField(max_length=100, default='v01')
+    privacy_content = RichTextField()
+
+    content_panels = page_wagtail.content_panels + [
+        FieldPanel('privacy_title'),
+        FieldPanel('privacy_content')
+    ]
+
+    promote_panels = [
+        MultiFieldPanel(page_wagtail.promote_panels, "Common page configuration"),
+        ]

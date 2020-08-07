@@ -90,6 +90,7 @@ class BlogPostDayArchiveView(DayArchiveView):
 
 
 
+
 class SearchBlogView(ListView):
     ''' View showing a list of blogs based on the search query terms.
         Search of:

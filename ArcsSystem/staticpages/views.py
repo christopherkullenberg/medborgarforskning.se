@@ -3,7 +3,7 @@ from django.views.generic import ListView
 from django.views.generic import DetailView
 from django.views.generic import TemplateView
 from staticpages.models import Page
-from staticpages.models import HomePage
+from staticpages.models import HomePage, TermsPage, PrivacyPage
 from django.db.models import Q
 
 class StaticDetailView(DetailView):
@@ -48,3 +48,17 @@ class HomePageView(TemplateView):
 
 class TermsPageView(TemplateView):
     template_name = 'staticpages/terms-cookies-privacy_detail.html'
+
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["termpage"] = TermsPage.objects.all()
+        return context
+
+class PrivacyPageView(TemplateView):
+    template_name = 'staticpages/privacy.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["privacypage"] = PrivacyPage.objects.all()
+        return context

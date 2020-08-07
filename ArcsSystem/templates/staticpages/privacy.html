@@ -9,10 +9,9 @@
     <div class="custom-container">
         <div class="row">
             <div class="col">
-                {% for instance in termpage %}
-                    <h1>{{ instance.terms_title}}</h1>
-                    <h1> {{ instance.version_number }}
-                    <h1>{{ instance.terms_content|richtext }}</h1>
+                {% for instance in privacypage %}
+                    <h1>{{ instance.privacy_title}}</h1>
+                    <h1>{{ instance.privacy_content|richtext }}</h1>
                 {% endfor %}
             </div>
         </div>
