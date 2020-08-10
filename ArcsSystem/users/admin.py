@@ -25,5 +25,19 @@ class CustomUserAdmin(UserAdmin):
         'username',
         'date_joined',
         ]
-        
+    readonly_fields = [
+        'slug',
+        'orcid',
+        'accepted_eula',
+        'accepted_eula_date',
+        'accepted_eula_version'
+    ]
+    list_filter = [
+        'is_staff',
+        'is_superuser',
+        'is_active',
+        'groups',
+        'accepted_eula_version'
+        ]
+
 admin.site.register(CustomUser, CustomUserAdmin)
