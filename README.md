@@ -65,12 +65,15 @@ ARCS is build to be a series of containers which host each component.
 ├── .git/
 │   ├──
 │	  └── directoryexample/
-├── Arcs/
+├── ArcsPlus/
 │   ├──
 │	  └──
 ├── ArcsSystem/
 │   ├──
 │   └── .../
+├── docs/
+├── log/
+├── nginx/
 ├── install.sh
 └── README.md
 
@@ -148,10 +151,7 @@ The configuration integrates a testing process in with git and spin-up to avoid 
 
 # Merge process
 
-``git checkout master`` 
+``git checkout master``
 ``git pull origin master``
 ``git merge test``
-``git push origin master`` 
-
-
-
+``git push origin master``
