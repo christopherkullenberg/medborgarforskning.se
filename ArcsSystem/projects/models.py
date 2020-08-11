@@ -71,7 +71,6 @@ class Project(models.Model):
         verbose_name = _('Project')
         verbose_name_plural = _('Projects')
 
-<<<<<<< Updated upstream
     '''Required alphabetical'''
     aim = models.CharField(help_text=_('Primary focus of the project.'),max_length=200, default='')
     description = models.CharField(max_length=5000, default='')
@@ -86,7 +85,6 @@ class Project(models.Model):
     contact_affiliation = models.CharField(help_text=_('Maintainer’s institutional affiliation.'),max_length=200, default='')
     contact_email = models.CharField(max_length=200, default='')
     contact_phone = models.CharField(max_length=200, default='')
-=======
 
     aim = models.CharField(
         help_text=_('Primary focus of the project.'),
@@ -162,7 +160,6 @@ class Project(models.Model):
         max_length=200,
         default='',
         )
->>>>>>> Stashed changes
     keywords = models.ManyToManyField(Keyword)
 
     search_fields = ['name','description']
