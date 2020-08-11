@@ -1,6 +1,6 @@
 from modeltranslation.translator import translator, TranslationOptions
 from modeltranslation.decorators import register
-from .models import  HomePage, TermsPage, PrivacyPage
+from .models import  HomePage, TermsPage, PrivacyPage, SourcecodePage, PressPage
 
 # Supported fields - https://django-modeltranslation.readthedocs.io/en/latest/registration.html#supported-fields-matrix
 
@@ -30,4 +30,18 @@ class PrivacyPageTranslationOptions(TranslationOptions):
     fields = (
         'privacy_title',
         'privacy_content'
+    )
+
+@register(SourcecodePage)
+class SourcecodePageTranslationOptions(TranslationOptions):
+    fields = (
+    'sourcecode_title',
+    'sourcecode_content'
+    )
+
+@register(PressPage)
+class PressPageTranslationOptions(TranslationOptions):
+    fields = (
+    'press_title',
+    'press_body'
     )
