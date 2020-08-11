@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sitemaps', # enables django to generate sitemap
 
+    'rest_framework', #enables the Djanog rest framework.
 
 ### ArcsCore apps
     'blog', # enables the blog app of ArcsCore
@@ -88,6 +89,10 @@ INSTALLED_APPS = [
     #'wagtail.wagtailforms',
 ### Wagtail forms install end #
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES' : [ 'rest_framework.permissions.AllowAny' , ] #TODO verify this permission config
+    }
 
 SITE_ID = 1
 
