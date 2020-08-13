@@ -1,6 +1,6 @@
 from django import forms
 
-from projects.models import Project
+from projects.models import ProjectEntry, ProjectSubmission
 
 # Make sure to use: https://docs.djangoproject.com/en/2.2/ref/csrf/
 
@@ -10,9 +10,9 @@ class InitialProjectSubmissionModelForm(forms.ModelForm):
     fields and has a different workflow after a project is included in the
     database of projects.
     """
-    model = Project
+    model = ProjectSubmission
     class Meta:
-        model = Project
+        model = ProjectSubmission
         fields = [
         'aim',
         'name',
@@ -25,12 +25,12 @@ class InitialProjectSubmissionModelForm(forms.ModelForm):
         'keywords'
         ]
 
-class ProjectUpdateManagementForm(forms.ModelForm):
+class ProjectEntryUpdateManagementForm(forms.ModelForm):
     """Form for maintaining the projects approved and added to the database.
     """
-    model = Project
+    model = ProjectEntry
     class Meta:
-        model = Project
+        model = ProjectEntry
         fields = [
         'aim',
         'name',
