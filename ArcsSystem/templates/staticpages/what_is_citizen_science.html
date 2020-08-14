@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load wagtailcore_tags %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="custom-container">
+        <div class="row">
+            <div class="col">
+                {% for instance in citizen_science %}
+                    {% for post in instance.get_children %}
+                    <a href="{% pageurl post.specific %}">{{ post.title }}</a>
+                    {% endfor %}
+                {% endfor %}
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{# this tag will insert a comment in the HMTL, but won't be rendered #}
+{# terms-cookies-privacy page #}
+
+{% endblock content %}

@@ -55,6 +55,20 @@ class Page(models.Model):
     def __str__(self):
         return self.title
 
+
+# class HomeIndexPage(page_wagtail):
+#     title_index = models.CharField(max_length=100, default='title')
+#
+#     # Parent page / subpage type rules
+#
+#     # parent_page_types = ['staticpages.HomeIndexPage']
+#     # subpage_types = ['staticpages.HomePage',
+#     #                  'staticpages.TermsPage',
+#     #                  'staticpages.PrivacyPage',
+#     #                  'staticpages.SourcecodePage',
+#     #                  'staticpages.PressPage' ]
+
+
 class HomePage(page_wagtail):
     template = 'home.html'
 
@@ -113,6 +127,8 @@ class HomePage(page_wagtail):
         ImageChooserPanel('welcome_image'),
     ]
 
+    max_count = 1
+
     def get_absolute_url(self):
         return reverse('staticpages:homepage_view')
 
@@ -135,6 +151,8 @@ class TermsPage(page_wagtail):
     promote_panels = [
         MultiFieldPanel(page_wagtail.promote_panels, "Common page configuration"),
         ]
+    max_count = 1
+
 
 class PrivacyPage(page_wagtail):
     ''' basic page for privacy '''
@@ -152,6 +170,8 @@ class PrivacyPage(page_wagtail):
     promote_panels = [
         MultiFieldPanel(page_wagtail.promote_panels, "Common page configuration"),
         ]
+    max_count = 1
+
 
 class SourcecodePage(page_wagtail):
     ''' basic page for source code '''
@@ -170,6 +190,7 @@ class SourcecodePage(page_wagtail):
     promote_panels = [
         MultiFieldPanel(page_wagtail.promote_panels, "Common page configuration"),
         ]
+    max_count = 1
 
 
 class PressPageTag(TaggedItemBase):
@@ -216,6 +237,8 @@ class PressPage(page_wagtail):
         MultiFieldPanel(page_wagtail.promote_panels, "Common page configuration"),
     ]
 
+    max_count = 1
+
     def get_absolute_url(self):
         language_code = translation.get_language()
         if language_code == 'sv':
@@ -233,6 +256,258 @@ class PressPage(page_wagtail):
                                    'day' : self.pressPublishedDate.day,
                                    'slug' : self.slug_en #change from pk id
                                    })
+
+class CitizenSciencePage(page_wagtail):
+    template_name = 'staticpages/getting_started.html'
+
+    citizen_science_menu_title = models.CharField(max_length=100, default='Getting started with Citizen Science')
+    content_panels = page_wagtail.content_panels + [
+        FieldPanel('citizen_science_menu_title'),
+        ]
+
+    promote_panels = [
+        MultiFieldPanel(page_wagtail.promote_panels, "Common page configuration"),
+    ]
+
+    # Parent page / subpage type rules
+    subpage_types = ['staticpages.CaseStudiesPage',
+                     'staticpages.FAQPage',
+                     'staticpages.AdditionalResourcesPage',
+                     'staticpages.WhatsCitizenSciencePage']
+    parent_page_types = ['wagtailcore.Page']
+
+    # max_count = 1
+
+    def get_absolute_url(self):
+        return reverse('staticpages:getting_started',
+                       kwargs={
+                               'slug' : self.title #change from pk id
+                               })
+
+
+class WhatIsCitizenSciencePage(page_wagtail):
+    template_name = 'staticpages/what_is_citizen_science.html'
+
+    what_citizen_science_body =  StreamField([
+        ('title', blocks.CharBlock(classname='full title')),
+        ('content', blocks.RichTextBlock()),
+    ])
+    # Editor panels configuration
+    content_panels = page_wagtail.content_panels + [
+        StreamFieldPanel('what_citizen_science_body'),
+    ]
+
+    promote_panels = [
+        MultiFieldPanel(page_wagtail.promote_panels, "Common page configuration"),
+    ]
+
+    # subpage_types = ['staticpages.SwedishCitizenSciencePage']
+    # parent_page_types = ['staticpages.CitizenSciencePage']
+
+    max_count = 1
+
+    def get_url_parts(self, *args, **kwargs):
+        url_parts = super(WhatIsCitizenSciencePage, self).get_url_parts(*args, **kwargs)
+
+        if url_parts is None:
+            # in this case, the page doesn't have a well-defined URL in the first place -
+            # for example, it's been created at the top level of the page tree
+            # and hasn't been associated with a site record
+            return None
+
+        site_id, root_url, page_path = url_parts
+        page_path = page_path.replace("pages/","")
+
+        # return '/' in place of the real page path
+        return (site_id, root_url, page_path)
+
+class WhatsCitizenSciencePage(page_wagtail):
+
+    template_name = 'staticpages/what_is_citizen_science.html'
+
+    citizen_science_body =  StreamField([
+        ('title', blocks.CharBlock(classname='full title')),
+        ('content', blocks.RichTextBlock()),
+    ])
+
+    # Editor panels configuration
+    content_panels = page_wagtail.content_panels + [
+        StreamFieldPanel('citizen_science_body'),
+    ]
+
+    promote_panels = [
+        MultiFieldPanel(page_wagtail.promote_panels, "Common page configuration"),
+    ]
+
+    subpage_types = ['staticpages.SwedishCitizenSciencePage']
+    max_count = 1
+
+    def get_url_parts(self, *args, **kwargs):
+        url_parts = super(WhatsCitizenSciencePage, self).get_url_parts(*args, **kwargs)
+
+        if url_parts is None:
+            # in this case, the page doesn't have a well-defined URL in the first place -
+            # for example, it's been created at the top level of the page tree
+            # and hasn't been associated with a site record
+            return None
+
+        site_id, root_url, page_path = url_parts
+        page_path = page_path.replace("pages/","")
+
+        # return '/' in place of the real page path
+        return (site_id, root_url, page_path)
+
+
+class SwedishCitizenSciencePage(page_wagtail):
+
+    template_name = 'staticpages/swedish_citizen_science.html'
+
+    swedish_citizen_science_body =  StreamField([
+        ('title', blocks.CharBlock(classname='full title')),
+        ('content', blocks.RichTextBlock()),
+    ])
+
+    # Editor panels configuration
+    content_panels = page_wagtail.content_panels + [
+        StreamFieldPanel('swedish_citizen_science_body'),
+    ]
+
+    promote_panels = [
+        MultiFieldPanel(page_wagtail.promote_panels, "Common page configuration"),
+    ]
+
+    subpage_types = []
+    parent_page_types = ['staticpages.WhatsCitizenSciencePage']
+    max_count = 1
+
+    def get_url_parts(self, *args, **kwargs):
+        url_parts = super(SwedishCitizenSciencePage, self).get_url_parts(*args, **kwargs)
+
+        if url_parts is None:
+            # in this case, the page doesn't have a well-defined URL in the first place -
+            # for example, it's been created at the top level of the page tree
+            # and hasn't been associated with a site record
+            return None
+
+        site_id, root_url, page_path = url_parts
+        page_path = page_path.replace("pages/","")
+
+        # return '/' in place of the real page path
+        return (site_id, root_url, page_path)
+
+
+class CaseStudiesPage(page_wagtail):
+
+    template_name = 'staticpages/case_studies.html'
+
+    case_studies_body =  StreamField([
+        ('title', blocks.CharBlock(classname='full title')),
+        ('content', blocks.RichTextBlock()),
+    ])
+
+    # Editor panels configuration
+    content_panels = page_wagtail.content_panels + [
+        StreamFieldPanel('case_studies_body'),
+    ]
+
+    promote_panels = [
+        MultiFieldPanel(page_wagtail.promote_panels, "Common page configuration"),
+    ]
+
+    subpage_types = []
+    parent_page_types = ['staticpages.CitizenSciencePage']
+    max_count = 1
+
+    def get_url_parts(self, *args, **kwargs):
+        url_parts = super(CaseStudiesPage, self).get_url_parts(*args, **kwargs)
+
+        if url_parts is None:
+            # in this case, the page doesn't have a well-defined URL in the first place -
+            # for example, it's been created at the top level of the page tree
+            # and hasn't been associated with a site record
+            return None
+
+        site_id, root_url, page_path = url_parts
+        page_path = page_path.replace("pages/","")
+
+        # return '/' in place of the real page path
+        return (site_id, root_url, page_path)
+
+
+class FAQPage(page_wagtail):
+
+    template_name = 'staticpages/faq.html'
+
+    faq_body =  StreamField([
+        ('title', blocks.CharBlock(classname='full title')),
+        ('content', blocks.RichTextBlock()),
+    ])
+
+    # Editor panels configuration
+    content_panels = page_wagtail.content_panels + [
+        StreamFieldPanel('faq_body'),
+    ]
+
+    promote_panels = [
+        MultiFieldPanel(page_wagtail.promote_panels, "Common page configuration"),
+    ]
+
+    subpage_types = []
+    parent_page_types = ['staticpages.CitizenSciencePage']
+    max_count = 1
+
+    def get_url_parts(self, *args, **kwargs):
+        url_parts = super(FAQPage, self).get_url_parts(*args, **kwargs)
+
+        if url_parts is None:
+            # in this case, the page doesn't have a well-defined URL in the first place -
+            # for example, it's been created at the top level of the page tree
+            # and hasn't been associated with a site record
+            return None
+
+        site_id, root_url, page_path = url_parts
+        page_path = page_path.replace("pages/","")
+
+        # return '/' in place of the real page path
+        return (site_id, root_url, page_path)
+
+
+class AdditionalResourcesPage(page_wagtail):
+
+    template_name = 'staticpages/additional_resources.html'
+
+    additional_resources_body =  StreamField([
+        ('title', blocks.CharBlock(classname='full title')),
+        ('content', blocks.RichTextBlock()),
+    ])
+
+    # Editor panels configuration
+    content_panels = page_wagtail.content_panels + [
+        StreamFieldPanel('additional_resources_body'),
+    ]
+
+    promote_panels = [
+        MultiFieldPanel(page_wagtail.promote_panels, "Common page configuration"),
+    ]
+
+    subpage_types = []
+    parent_page_types = ['staticpages.CitizenSciencePage']
+    max_count = 1
+
+    def get_url_parts(self, *args, **kwargs):
+        url_parts = super(AdditionalResourcesPage, self).get_url_parts(*args, **kwargs)
+
+        if url_parts is None:
+            # in this case, the page doesn't have a well-defined URL in the first place -
+            # for example, it's been created at the top level of the page tree
+            # and hasn't been associated with a site record
+            return None
+
+        site_id, root_url, page_path = url_parts
+        page_path = page_path.replace("pages/","")
+
+        # return '/' in place of the real page path
+        return (site_id, root_url, page_path)
 
 
 def receiver(sender,instance, **kwargs):

@@ -15,7 +15,13 @@ from staticpages.models import (HomePage,
                                 TermsPage,
                                 PrivacyPage,
                                 SourcecodePage,
-                                PressPage)
+                                PressPage,
+                                CitizenSciencePage,
+                                WhatsCitizenSciencePage,
+                                SwedishCitizenSciencePage,
+                                CaseStudiesPage,
+                                FAQPage,
+                                AdditionalResourcesPage)
 from django.db.models import Q
 
 class StaticDetailView(DetailView):
@@ -58,9 +64,9 @@ class HomePageView(TemplateView):
         context["page"] = model
         return context
 
+
 class TermsPageView(TemplateView):
     template_name = 'staticpages/terms-cookies-privacy_detail.html'
-
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -122,3 +128,85 @@ class PressPostMonthArchiveView(MonthArchiveView):
     allow_future = False
     # Pagination documentation https://docs.djangoproject.com/en/2.2/topics/pagination/
     paginate_by = 5    # Change this to include more posts
+
+class GettingStartedwithCitizenScience(TemplateView):
+    template_name = 'staticpages/getting_started.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["citizen_page"] = CitizenSciencePage.objects.all()
+        return context
+
+class WhatsCitizenScience(TemplateView):
+
+    template_name = 'staticpages/what_is_citizen_science.html'
+    queryset = WhatsCitizenSciencePage.objects.all()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["citizen_science"] = self.queryset
+        return context
+
+    def get_submenu(number):
+        model = WhatsCitizenSciencePage.objects.all()
+        object_list = model.distinct()[:number]
+        return object_list
+
+
+class SwedishCitizenScience(TemplateView):
+    template_name = 'staticpages/swedish_citizen_science.html'
+    model = SwedishCitizenSciencePage.objects.all()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["swedish_citizen_science"] = self.model
+        return context
+
+    def get_submenu(number):
+        model = SwedishCitizenSciencePage.objects.all()
+        object_list = model.distinct()[:number]
+        return object_list
+
+
+class CaseStudies(TemplateView):
+    template_name = 'staticpages/case_studies.html'
+    queryset = CaseStudiesPage.objects.all()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context = self.queryset
+        return context
+
+    def get_submenu(number):
+        model = CaseStudiesPage.objects.all()
+        object_list = model.distinct()[:number]
+        return object_list
+
+class FAQ(TemplateView):
+    template_name = 'staticpages/faq.html'
+    model = FAQPage.objects.all()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["faq"] = self.model
+        return context
+
+    def get_submenu(number):
+        model = FAQPage.objects.all()
+        object_list = model.distinct()[:number]
+        return object_list
+
+
+class AditionalResources(TemplateView):
+    template_name = 'staticpages/additional_resources.html'
+    model = AdditionalResourcesPage.objects.all()
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["additional_resources"] = self.model
+        return context
+
+    def get_submenu(number):
+        model = AdditionalResourcesPage.objects.all()
+        object_list = model.distinct()[:number]
+        return object_list
