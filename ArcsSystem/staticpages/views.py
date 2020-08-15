@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.utils.translation import gettext_lazy as _
 from django.utils import translation
 from django.utils import timezone
@@ -155,11 +155,11 @@ class WhatsCitizenScience(TemplateView):
 
 class SwedishCitizenScience(TemplateView):
     template_name = 'staticpages/swedish_citizen_science.html'
-    model = SwedishCitizenSciencePage.objects.all()
+    queryset = SwedishCitizenSciencePage.objects.all()
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["swedish_citizen_science"] = self.model
+        context["swedish_citizen_science"] = self.queryset
         return context
 
     def get_submenu(number):
@@ -174,7 +174,8 @@ class CaseStudies(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context = self.queryset
+        context['case_studies'] = self.queryset
+        print(context)
         return context
 
     def get_submenu(number):
@@ -210,3 +211,26 @@ class AditionalResources(TemplateView):
         model = AdditionalResourcesPage.objects.all()
         object_list = model.distinct()[:number]
         return object_list
+
+
+class GetSubmenu(TemplateView):
+
+    template_name = 'staticpages/case_studies.html'
+
+    def dispatch(self, request, *args, **kwargs):
+        what_is_citizen_science = WhatsCitizenSciencePage.objects.latest('id')
+        case_studies_query = CaseStudiesPage.objects.latest('id')
+        faq_query = FAQPage.objects.latest('id')
+        additional_resources_query = AdditionalResourcesPage.objects.latest('id')
+
+        if (kwargs['title2'] == what_is_citizen_science.slug):
+            return render(self.request, 'staticpages/what_is_citizen_science.html', {'citizen_science':WhatsCitizenSciencePage.objects.all()})
+        if (kwargs['title2'] == case_studies_query.slug):
+            return render(self.request, 'staticpages/case_studies.html', {'case_studies':CaseStudiesPage.objects.all()})
+        if (kwargs['title2'] == faq_query.slug):
+            return render(self.request, 'staticpages/faq.html', {'faq':FAQPage.objects.all()})
+        if (kwargs['title2'] == additional_resources_query.slug):
+            return render(self.request, 'staticpages/additional_resources.html', {'additional_resources':AdditionalResourcesPage.objects.all()})
+
+        else:
+            return redirect("/")
