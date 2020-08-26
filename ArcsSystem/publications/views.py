@@ -55,12 +55,22 @@ class SearchPublicationsView(ListView):
             ).distinct()
         return object_list
 
+    # def related_publications(query, number):
+    #     object_list = Article.objects.filter(
+    #         Q(title_en__icontains=query) |
+    #         Q(keywords__keyword__icontains=query) |
+    #         Q(abstract_en__icontains=query)
+    #         ).distinct().order_by("-py")[:number]
+    #     return object_list
+
     def related_publications(query, number):
-        object_list = Article.objects.filter(
-            Q(title_en__icontains=query) |
-            Q(keywords__keyword__icontains=query) |
-            Q(abstract_en__icontains=query)
-            ).distinct().order_by("-py")[:number]
+        condition = None
+        for tag in query:
+            if condition:
+                condition = Q(title_en__icontains=tag) | Q(keywords__keyword__icontains=tag) | Q(abstract_en__icontains=tag) | condition
+            else:
+                condition = Q(title_en__icontains=tag) | Q(keywords__keyword__icontains=tag) | Q(abstract_en__icontains=tag)
+        object_list = Article.objects.filter(condition).distinct().order_by("-py")[:number]
         return object_list
 
     def recent_publications(number):

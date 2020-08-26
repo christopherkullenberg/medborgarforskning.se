@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load i18n %}
+{% load wagtailcore_tags %}
 
 {% block content %}
 
@@ -18,24 +19,25 @@
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{% url 'staticpages:homepage_view' %}"> Home </a></li>
                     <li class="breadcrumb-item"><a href="{% url 'blog:blog_list_view' %}">Blogs</a></li>
-                    <li class="breadcrumb-item active" aria-current="page"> {{object.title}} </li>
+                    <li class="breadcrumb-item active" aria-current="page"> {{blogpage.title}} </li>
                   </ol>
                 </nav>
         	</div>
             <div class="row text-justify" style="padding-top: 10px;">
                 <div class="col">
-                    <h1>{{ post.title }}</h1>
-                    <p>{% for t in post.tags.names %}</p>
-                    {{ t }}
-                    {% endfor %}
-
+                    <h1>{{ blogpage.title }} </h1>
+                        {% for tag in blogpage.blogTags.names %}
+                            <p>
+                                {{ tag }}
+                            </p>
+                        {% endfor %}
                     <img class="img-fluid" src="{% static "devplaceholder/library-863148_1920.jpg" %}" alt="{% trans '' %}"/>
-                    <p>{{ post.content|safe }}</p>
+                    <p>{{ blogpage.body|safe }}</p>
                     <br>
-                    <p> {{ post.content }} </p>
+                    <p> {{ blogpage.body }} </p>
                 </div>
-
             </div>
+
             <div class="row">
                 <div class="col">
                     <div class="accordion ">
@@ -80,13 +82,15 @@
             <div class="row visual-Mindmap-style">
                 <div class="col">
                     <h1> {% trans "Related Content" %}</h1>
-                     <h2>{% trans "Recent publications" %}</h2>
-                    {% with post.tags.names|query_publications:5 as blog_sidebar_papers %}
-                    {% for q in blog_sidebar_papers %}
-                    <p><a href="{% url 'publications:article_publications_detail' q.id %}">{{q}}</a></p>
-                    {% endfor %}
-                  {% endwith %}
-
+                    <h2>{% trans "Recent publications" %}</h2>
+                    <!-- {% for tag in blogpage.blogTags.names %}
+                        {{ tag }}
+                    {% endfor %} -->
+                        {% with blogpage.blogTags.names|query_publications:5 as blog_sidebar_papers %}
+                            {% for q in blog_sidebar_papers %}
+                                <p><a href="{% url 'publications:article_publications_detail' q.id %}">{{ q }}</a></p>
+                            {% endfor %}
+                        {% endwith %}
                 </div>
             </div>
         </div>

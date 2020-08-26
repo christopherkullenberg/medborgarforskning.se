@@ -1,7 +1,5 @@
 {% extends 'base.html' %}
 {% load wagtailcore_tags %}
-{% load wagtail_modeltranslation %}
-
 {% load static %}
 {% load i18n %}
 
@@ -11,25 +9,26 @@
     <div class="row">
         <div class="col">
 
-            <h1>{% trans "Blog home page (list view)" %}</h1>
+            <h1>{% trans "Trans page (list view)" %}</h1>
             {% for instance in object_list %}
+
                 {% get_current_language as LANGUAGE_CODE %}
                 {% if LANGUAGE_CODE == "en" and instance.slug_en is not None %}
-                    {% for block in instance.body %}
+                    {% for block in instance.press_body %}
                         {% if block.block_type == 'title' %}
-                            <p>{{ instance.id }} -  <a href='{{ instance.get_absolute_url }}'> {% include_block block %}, {{ instance.publishedDate }}</a><p>
+                            <p>{{ instance.id }} -  <a href='{{ instance.get_absolute_url }}'> {% include_block block %}, {{ instance.pressPublishedDate }}</a><p>
                         {% endif %}
                     {% endfor %}
                 {% elif LANGUAGE_CODE == "sv" and instance.slug_sv is not None %}
-                    {% for block in instance.body %}
+                    {% for block in instance.press_body %}
                         {% if block.block_type == 'title' %}
-                            <p>{{ instance.id }} -  <a href='{{ instance.get_absolute_url }}'> {% include_block block %}, {{ instance.publishedDate }}</a><p>
+                            <p>{{ instance.id }} -  <a href='{{ instance.get_absolute_url }}'> {% include_block block %}, {{ instance.pressPublishedDate }}</a><p>
                         {% endif %}
                     {% endfor %}
                 {% endif %}
             {% endfor %}
             <h1>
-            {% trans "Blog detail view" %}
+            {% trans "Press detail view" %}
             </h1>
 
             <div class="pagination">
@@ -52,4 +51,5 @@
         </div>
     </div>
 </div>
+
 {% endblock content %}
