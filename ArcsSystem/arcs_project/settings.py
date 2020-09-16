@@ -58,6 +58,7 @@ INSTALLED_APPS = [
 ### Third party apps
     'django_summernote', # Installing summernote (CK)
     'taggit', # for handling tags/keywords (CK)
+    'django_cron', # For adding cron tasks to project
 
 ### AllAuth for social authentications start #
     'django.contrib.sites',
@@ -84,8 +85,8 @@ INSTALLED_APPS = [
     #'taggit', # I disabled this because we have it above (CK)
     'wagtail.contrib.modeladmin', # for wagtail menus
     'wagtailmenus', # initialize wagtail menus
-    'wagtail_modeltranslation.makemigrations',
-    'wagtail_modeltranslation.migrate',
+    # 'wagtail_modeltranslation.makemigrations',
+    # 'wagtail_modeltranslation.migrate',
     ### Wagtail app requirement end #
     ### Wagtail forms install #
     #'wagtail.wagtailforms',
@@ -386,3 +387,31 @@ WAGTAIL_APPEND_SLASH = False
 
 # Enable our CustomUser abstract user for futurproofing and custom auth uses
 AUTH_USER_MODEL = 'users.CustomUser'
+
+
+#####################################################################################
+# API required codes
+#####################################################################################
+# API key to SciStarter
+SCISTARTER_API_KEY = 'Put your SciStarter API key here'
+
+# This is required for adding cron tasks
+# List of strings, each being a cron class
+CRON_CLASSES = [
+    "cron.APICronJob.APICronJob",
+]
+
+API_SEARCH_QUERY_DICT = { # An empty dict if you want all projects
+    "q": "sweden", # broad search
+    # "phrase": val,
+    # "topic": val,
+    # "activity": val,
+    # "url": val,
+    # "lat": val, # Latitude in decimal degrees (lng must be provided as well)
+    # "lng": val, # Longitude in decimal degrees (lat must be provided as well)
+    # "UN": val, # either the name or code of a UN geographical region (http://unstats.un.org/unsd/methods/m49/m49regin.htm), to limit the search to projects explicitly in that region (if a project does not specify a UN region, it will be excluded)
+}
+
+#####################################################################################
+# End of API required codes
+#####################################################################################
