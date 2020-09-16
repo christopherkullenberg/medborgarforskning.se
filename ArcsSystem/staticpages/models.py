@@ -55,20 +55,6 @@ class Page(models.Model):
     def __str__(self):
         return self.title
 
-
-# class HomeIndexPage(page_wagtail):
-#     title_index = models.CharField(max_length=100, default='title')
-#
-#     # Parent page / subpage type rules
-#
-#     # parent_page_types = ['staticpages.HomeIndexPage']
-#     # subpage_types = ['staticpages.HomePage',
-#     #                  'staticpages.TermsPage',
-#     #                  'staticpages.PrivacyPage',
-#     #                  'staticpages.SourcecodePage',
-#     #                  'staticpages.PressPage' ]
-
-
 class HomePage(page_wagtail):
     template = 'home.html'
 
@@ -285,41 +271,41 @@ class CitizenSciencePage(page_wagtail):
                                })
 
 
-class WhatIsCitizenSciencePage(page_wagtail):
-    template_name = 'staticpages/what_is_citizen_science.html'
-
-    what_citizen_science_body =  StreamField([
-        ('title', blocks.CharBlock(classname='full title')),
-        ('content', blocks.RichTextBlock()),
-    ])
-    # Editor panels configuration
-    content_panels = page_wagtail.content_panels + [
-        StreamFieldPanel('what_citizen_science_body'),
-    ]
-
-    promote_panels = [
-        MultiFieldPanel(page_wagtail.promote_panels, "Common page configuration"),
-    ]
-
-    # subpage_types = ['staticpages.SwedishCitizenSciencePage']
-    # parent_page_types = ['staticpages.CitizenSciencePage']
-
-    max_count = 1
-
-    def get_url_parts(self, *args, **kwargs):
-        url_parts = super(WhatIsCitizenSciencePage, self).get_url_parts(*args, **kwargs)
-
-        if url_parts is None:
-            # in this case, the page doesn't have a well-defined URL in the first place -
-            # for example, it's been created at the top level of the page tree
-            # and hasn't been associated with a site record
-            return None
-
-        site_id, root_url, page_path = url_parts
-        page_path = page_path.replace("pages/","")
-
-        # return '/' in place of the real page path
-        return (site_id, root_url, page_path)
+# class WhatIsCitizenSciencePage(page_wagtail):
+#     template_name = 'staticpages/what_is_citizen_science.html'
+#
+#     what_citizen_science_body =  StreamField([
+#         ('title', blocks.CharBlock(classname='full title')),
+#         ('content', blocks.RichTextBlock()),
+#     ])
+#     # Editor panels configuration
+#     content_panels = page_wagtail.content_panels + [
+#         StreamFieldPanel('what_citizen_science_body'),
+#     ]
+#
+#     promote_panels = [
+#         MultiFieldPanel(page_wagtail.promote_panels, "Common page configuration"),
+#     ]
+#
+#     # subpage_types = ['staticpages.SwedishCitizenSciencePage']
+#     # parent_page_types = ['staticpages.CitizenSciencePage']
+#
+#     max_count = 1
+#
+#     def get_url_parts(self, *args, **kwargs):
+#         url_parts = super(WhatIsCitizenSciencePage, self).get_url_parts(*args, **kwargs)
+#
+#         if url_parts is None:
+#             # in this case, the page doesn't have a well-defined URL in the first place -
+#             # for example, it's been created at the top level of the page tree
+#             # and hasn't been associated with a site record
+#             return None
+#
+#         site_id, root_url, page_path = url_parts
+#         page_path = page_path.replace("pages/","")
+#
+#         # return '/' in place of the real page path
+#         return (site_id, root_url, page_path)
 
 class WhatsCitizenSciencePage(page_wagtail):
 

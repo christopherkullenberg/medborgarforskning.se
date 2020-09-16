@@ -6,7 +6,7 @@ from .models import  (HomePage,
                       SourcecodePage,
                       PressPage,
                       CitizenSciencePage,
-                      WhatIsCitizenSciencePage,
+                      # WhatIsCitizenSciencePage,
                       SwedishCitizenSciencePage,
                       CaseStudiesPage,
                       FAQPage,
@@ -64,11 +64,11 @@ class CitizenScienceTranslationOptions(TranslationOptions):
     )
 
 
-@register(WhatIsCitizenSciencePage)
-class WhatIsCitizenSciencePageTranslationOptions(TranslationOptions):
-    fields = (
-        'what_citizen_science_body',
-    )
+# @register(WhatIsCitizenSciencePage)
+# class WhatIsCitizenSciencePageTranslationOptions(TranslationOptions):
+#     fields = (
+#         'what_citizen_science_body',
+#     )
 
 @register(SwedishCitizenSciencePage)
 class SwedishCitizenScienceTranslationOptions(TranslationOptions):
