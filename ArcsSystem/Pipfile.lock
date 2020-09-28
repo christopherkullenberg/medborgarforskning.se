@@ -81,6 +81,14 @@
             "index": "pypi",
             "version": "==0.2.6"
         },
+        "django-countries": {
+            "hashes": [
+                "sha256:2e852c9693818d64d28758a720a0cb8277673ac495af8b855c4dc64940703bd2",
+                "sha256:e2ae9b76f9a0b5f3f365b5b81fe4972df0a5878c930139586f43f7d6d50a9594"
+            ],
+            "index": "pypi",
+            "version": "==6.1.2"
+        },
         "django-modelcluster": {
             "hashes": [
                 "sha256:942ec7ea970c9ef9ded76a1c79cfe69432a7f1c106b505c501d40f100bcbc91a",
@@ -297,6 +305,7 @@
                 "sha256:1d7a042116536098d05d599ef2b8616759f02985c85b4fef50c78a5aaf10822a",
                 "sha256:2b6aab710c2a1647e928e36d69c21e76b453cd455f4e2621000e54b2a9b8cce8"
             ],
+
             "version": "==1.1.1"
         },
         "urllib3": {

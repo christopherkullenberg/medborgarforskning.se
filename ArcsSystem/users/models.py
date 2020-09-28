@@ -50,6 +50,7 @@ class CustomUser(AbstractUser):
     #location_zipcode = models.CharField("ZIP / Postal code", max_length=12, blank=True) # by zip code granularity to find those nearby? #TODO validate format
     # creattion_date = models.DateField(null=True, blank=True)
 
+
     # add additional fields for users here, extends core Django User
     def __str__(self):
         return self.username
