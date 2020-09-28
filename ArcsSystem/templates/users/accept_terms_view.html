@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+
+{% block content %}
+
+<h1>{{ term_object.terms_title }}</h1>
+<h4>{{ term_object.version_number }}</h4>
+{{ term_object.terms_content|richtext }}
+
+<form action="{% url 'accept-terms' %}" method="POST">
+    {% csrf_token %}
+    <input id="term-form-input-value" name="accept" type="hidden" value="true" />
+    <input name="term-version" type="hidden" value="{{ term_object.version_number }}" />
+    <a class="term-form-buttons" ival="true" href="#">Accept</a>
+    <a class="term-form-buttons" ival="false" href="#">Deny</a>
+</form>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".term-form-buttons").on('click', function (e) {
+            $("#term-form-input-value").val($(this).attr('ival'));
+            $(this).parent().submit();
+        });
+    });
+
+</script>
+
+{% endblock %}

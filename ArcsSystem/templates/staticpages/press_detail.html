@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load wagtailcore_tags %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-9">
+            <div class="row text-justify" style="padding-top: 10px;">
+                <div class="col">
+                    <h1>{{ presspage.title }} </h1>
+                        {% for tag in presspage.pressTags.names %}
+                            <p>
+                                {{ tag }}
+                            </p>
+                        {% endfor %}
+                    <p>{{ pressTags.body|safe }}</p>
+                    <br>
+                    <p> {{ pressTags.body }} </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

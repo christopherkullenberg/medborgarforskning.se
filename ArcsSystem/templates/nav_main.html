@@ -1,6 +1,9 @@
 {% load static %}
 {% load i18n %}
+{% load wagtailcore_tags %}
+{% load staticpages_tree %}
 {% block main_menu %}
+
 <!-- <nav role="navigation" id="main-nav" aria-label="Main navigation">
   <ul>
     {% for item in menu_items %}
@@ -25,24 +28,34 @@
                         {% trans "Getting Started With Citizen Science" %}
                     </a>
                     <div class="dropdown-menu main-menu-buttons background-light-green-color" aria-labelledby="navbarDropdown">
-                          <a class="dropdown-item font-weight-bold" href="#">{% trans "What is Citizen Science?" %}</a>
-                          <div class="dropdown-divider"></div>
-                              <ul>
-                                  <li class="nav-item dropdown">
-                                      <a class="dropdown-item" href="#">{% trans "Swedish Citizen Science" %}</a>
-                                  </li>
-                              </ul>
-                          <div class="dropdown-divider"></div>
-                          <a class="dropdown-item font-weight-bold" href="#">{% trans "Case Studies" %}</a>
-                          <div class="dropdown-divider"></div>
-                          <a class="dropdown-item font-weight-bold" href="#">{%trans "FAQ" %}</a>
-                          <div class="dropdown-divider"></div>
-                          <a class="dropdown-item font-weight-bold" href="#">{%trans "Additional Resources" %}</a>
+                        {% for submenu in 1|get_citizen_science %}
+                            <a class="dropdown-item font-weight-bold" href="{% pageurl submenu.specific %}">{% trans "What is Citizen Science?" %}</a>
+                        {% endfor %}
+                        <div class="dropdown-divider"></div>
+                            <ul>
+                                <li class="nav-item dropdown">
+                                    {% for submenu in 1|get_swedish_citizen_science %}
+                                        <a class="dropdown-item" href="{% pageurl submenu.specific %}">{% trans "Swedish Citizen Science" %}</a>
+                                    {% endfor %}
+                                </li>
+                            </ul>
+                        <div class="dropdown-divider"></div>
+                        {% for submenu in 1|get_case_studies %}
+                            <a class="dropdown-item font-weight-bold" href="{% pageurl submenu.specific %}">{% trans "Case Studies" %}</a>
+                        {% endfor %}
+                        <div class="dropdown-divider"></div>
+                        {% for submenu in 1|get_faq %}
+                            <a class="dropdown-item font-weight-bold" href="{% pageurl submenu.specific %}">{%trans "FAQ" %}</a>
+                        {% endfor %}
+                        <div class="dropdown-divider"></div>
+                        {% for submenu in 1|get_additional_resources %}
+                            <a class="dropdown-item font-weight-bold" href="{% pageurl submenu.specific %}">{%trans "Additional Resources" %}</a>
+                        {% endfor %}
                     </div>
                 </li>
                 <li class="nav-item dropdown header-menu-li-style col-3">
                     <a class="nav-link dropdown-toggle main-menu-buttons-font text-wrap" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 10rem;">
-                         {% trans "Citizen Science in Practice" %}
+                        {% trans "Citizen Science in Practice" %}
                     </a>
                     <div class="dropdown-menu main-menu-buttons background-light-green-color" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item font-weight-bold" href="{% url 'workpackages:category_view' 'Data-Quality' %}">{%trans "Data Standards and Quality" %}</a>

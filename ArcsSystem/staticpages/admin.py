@@ -10,3 +10,4 @@ class PageAdmin(SummernoteModelAdmin):
 
 #admin.site.register(Blog, BlogAdmin)
 admin.site.register(Page, PageAdmin)
+     

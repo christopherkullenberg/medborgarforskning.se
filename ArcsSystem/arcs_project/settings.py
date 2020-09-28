@@ -32,6 +32,7 @@ ALLOWED_HOSTS = ['localhost','127.0.0.1','dev.medborgarforskning.se', 'medborgar
 # Application definition
 
 INSTALLED_APPS = [
+    'wagtail_modeltranslation',
     'modeltranslation', # for Django 1.7 and above must be prior to django.contrib.admin - https://django-modeltranslation.readthedocs.io/en/latest/installation.html#required-settings
     'django.contrib.admin',
     'django.contrib.auth', # Core authentication framework and its default models. Required by AllAuth.
@@ -83,10 +84,12 @@ INSTALLED_APPS = [
     #'taggit', # I disabled this because we have it above (CK)
     'wagtail.contrib.modeladmin', # for wagtail menus
     'wagtailmenus', # initialize wagtail menus
-### Wagtail app requirement end #
-### Wagtail forms install #
+    # 'wagtail_modeltranslation.makemigrations',
+    # 'wagtail_modeltranslation.migrate',
+    ### Wagtail app requirement end #
+    ### Wagtail forms install #
     #'wagtail.wagtailforms',
-### Wagtail forms install end #
+    ### Wagtail forms install end #
 ]
 
 SITE_ID = 1
@@ -104,6 +107,7 @@ MIDDLEWARE = [
     'wagtail.core.middleware.SiteMiddleware',
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
     ### Wagtail app requirement end #
+    'users.LicenceMiddleware.LicenceMiddleware', # Check if user accepted license or not
 ]
 
 ROOT_URLCONF = 'arcs_project.urls'
@@ -192,7 +196,7 @@ AUTH_PASSWORD_VALIDATORS = [
 #    SECURE_HSTS_PRELOAD = False # TODO seto to true
 #    SECURE_CONTENT_TYPE_NOSNIFF = True
 SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
+# CSRF_COOKIE_SECURE = True
 
 
 ### Internationalization Start ###
@@ -254,6 +258,7 @@ ACCOUNT_EMAIL_REQUIRED = True
 # with an unverified e-mail address. In case of "optional", the e-mail
 # verification mail is still sent, whereas in case of "none" no e-mail
 # verification mails are sent.
+# ACCOUNT_EMAIL_VERIFICATION = "none"
 ACCOUNT_EMAIL_VERIFICATION = "optional"
 
 # Subject-line prefix to use for email messages sent. By default, the name
@@ -285,6 +290,8 @@ ACCOUNT_USERNAME_MIN_LENGTH = 8
 # user will be asked to do so even if ACCOUNT_AUTHENTICATION_METHOD is set
 # to email. Set to False when you do not wish to prompt the user to enter a
 # username.
+ACCOUNT_USER_MODEL_USERNAME_FIELD = 'username'
+# ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_USERNAME_REQUIRED = True
 
 # render_value parameter as passed to PasswordInput fields.
@@ -377,6 +384,9 @@ LOCALE_PATHS = [
 
 # Set Wagtail Site Name
 WAGTAIL_SITE_NAME = 'Pages and Blog of ARCS'
+
+# Don't add a trailing slash to Wagtail-served URLs
+WAGTAIL_APPEND_SLASH = False
 
 # Enable our CustomUser abstract user for futurproofing and custom auth uses
 AUTH_USER_MODEL = 'users.CustomUser'

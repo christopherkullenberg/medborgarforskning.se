@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{object.username}} public profile</h1>
+
+<!-- <p>orcid: {{object.orcid}}</p> -->
+<p>title: {{ object.title }}</p>
+<p>bio_general: {{ object.bio_general }}</p>
+<p>Research interests: {{ object.bio_research_interest }}</p>
+<p>Personal website: {{ object.personal_website_address }}</p>
+<p>institution: {{ object.institution }}</p>
+<p>affiliation: {{ object.affiliation }}</p>
+
+{% endblock %}

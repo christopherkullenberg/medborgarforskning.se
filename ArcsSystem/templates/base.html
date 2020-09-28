@@ -62,7 +62,7 @@
 				</div>
 				<div id="main-header-buttons" class="col-3 h p-0 d-flex align-items-center">
 					<div id="header-btn" class="row ">
-						<div class="col-4 p-0 d-flex justify-content-end align-items-center">
+						<div class="col-3 p-0 d-flex justify-content-end align-items-center">
 							<div class="dropdown p-0">
 								<button class="btn p-0 dropdown-toggle font-dark-green-color hide-extend-language-icon" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
 								  <img class="main-media-btns" src="{% static 'icons/Language_Icon_4.png' %}" alt="{% trans 'Globe icon for switching languages' %}"/>
@@ -95,14 +95,14 @@
 								</form>
 							</div>
 						</div>
-						<div class="col-4 p-0 d-flex justify-content-end align-items-center">
+						<div class="col-3 p-0 d-flex justify-content-end align-items-center">
 							<button class="btn p-0 font-dark-green-color background-light-green-color">
 								<img class="main-media-btns" src="{% static 'icons/Hearing_Icon_3.png' %}" alt="{% trans 'Ear icon to launch text to speech of the current page' %}"/>
 								<br>
 								<strong>Listen</strong>
 							</button>
 						</div>
-						<div id="login" class="col-4 p-0 d-flex justify-content-end align-items-center">
+						<div id="login" class="col-3 p-0 d-flex justify-content-end align-items-center">
 							<button class="btn p-0 font-dark-green-color background-light-green-color" style="float:right;">
 								{% if user.is_authenticated %}
 								  	<a href="{% url 'account_logout' %}">
@@ -117,6 +117,15 @@
 		  								<strong>{% trans "Login" %}</strong>
 									</a>
 								{% endif %}
+							</button>
+						</div>
+						<div id="signup" class="col-3 p-0 d-flex justify-content-end align-items-center">
+							<button class="btn p-0 font-dark-green-color background-light-green-color" style="float:right;">
+								<a class="font-dark-green-color" href="{% url 'account_signup' %}">
+									<img class="main-media-btns" src="{% static 'icons/Account_Circle_Icon_5.png' %}" alt="{% trans 'Profile icon for login and account details' %}"/>
+									<br>
+									<strong>{% trans "Signup" %}</strong>
+								</a>
 							</button>
 						</div>
 					</div>

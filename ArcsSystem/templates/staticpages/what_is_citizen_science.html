@@ -9,10 +9,13 @@
     <div class="custom-container">
         <div class="row">
             <div class="col">
-                {% for instance in termpage %}
-                    <h1>{{ instance.terms_title}}</h1>
-                    <h1>{{ instance.terms_content|richtext }}</h1>
+                {% for instance in citizen_science %}
+                    {% for post in instance.get_children %}
+                    <a href="{% pageurl post.specific %}">{{ post.title }}</a>
+                    {% endfor %}
                 {% endfor %}
+
+
             </div>
         </div>
     </div>
