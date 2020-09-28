@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, HttpResponseRedirect, reverse
+from django.views.decorators.csrf import csrf_exempt
 from .models import CustomUser
 from django.views.generic.base import TemplateView
 from django.views.generic import DetailView
@@ -72,6 +73,7 @@ class AcceptTermsPageView(TemplateView):
 
     template_name = "users/accept_terms_view.html"
 
+    @csrf_exempt
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
             latest_term = TermsPage.objects.latest('version_number')
@@ -82,6 +84,7 @@ class AcceptTermsPageView(TemplateView):
         else:
             return HttpResponseRedirect(reverse('account_login'))
 
+    @csrf_exempt
     def post(self, request, *args, **kwargs):
         if request.user.is_authenticated:
             acceptFlag = (request.POST.get("accept", "") == 'true');
