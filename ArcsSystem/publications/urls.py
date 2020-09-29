@@ -16,6 +16,6 @@ urlpatterns = [
         name='article_publications_detail'),
     #path('arcsreport/<int:pk>/', ArcsreportDetailView.as_view(),
     #        name='arcsreport_detail'),
-    path('search/', SearchPublicationsView.as_view(),
+    path('search', SearchPublicationsView.as_view(),
          name ='search_publications_results'),
 ]

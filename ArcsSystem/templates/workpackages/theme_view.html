@@ -3,9 +3,36 @@
 {% load static %}
 {% load i18n %}
 
+{% load workpackages_extras %}
+
 {% block content %}
 
-<h1>{% trans "Arcs Resources" %}</h1>
+<div style="margin-right: 30px; margin-left: 30px">
+
+
+
+
+
+
+<h2>{{ theme.title|break_slug }}</h2>
+
+<br>
+
+<hr>
+{{ theme.body}}
+<hr>
+
+<h2> Publ... </h2>
+
+
+
+
+
+
+
+</div>
+
+
 
 <ul>
     {% for theme in object_list %}

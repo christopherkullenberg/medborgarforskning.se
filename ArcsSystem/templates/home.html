@@ -216,7 +216,7 @@
                 {% endif %}
                 <div class="row">
                     <div class="col ">
-                        <button type="button" class="btn btn-block home-page-buttons background-greenish-color" onclick='window.location.href={% url 'workpackages:category_view' 'Data-Quality' %}'>{% trans "Data Quality Themes" %}</button>
+
                     </div>
                 </div>
                 <br>
@@ -248,7 +248,7 @@
                 {% endif %}
 
                 {% for q in 5|recent_publications %}
-                    <p><a href="{% url 'publications:article_publications_detail' q.id %}">{{ q }}</a></p>
+                    <p><a href="{% url 'publications:article_publications_detail' q.id %}">{{ q|break_text:45|safe  }} </a></p>
                 {% endfor %}
             </div>
             <div class="col h slider-color items-box mr-0">
