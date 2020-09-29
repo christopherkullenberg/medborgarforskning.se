@@ -4,7 +4,7 @@ from django.urls import path,reverse
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.conf import settings
-from django_countries.fields import CountryField
+# from django_countries.fields import CountryField
 import uuid
 import os
 
