@@ -69,13 +69,14 @@
         {% for project in object_list %}
 
         {% if forloop.counter0|divisibleby:3  %}
+
             <div class="row ">
             {% endif %}
             <div class="col-4 project-item">
 
                 <div class="row">
                     <div class="col Lato-font project-items-justify background-greenish-color">
-                        <p class="font-weight-bold"><a id="project-items-link" href="{% url 'projects:project_detail' ProjectEntry.pk %}">project {{forloop.counter}}: {{ ProjectEntry.name }}</a></p>
+                        <p class="font-weight-bold"><a id="project-items-link" href="#">project {{forloop.counter}}: {{ project.name }}</a></p>
                     </div>
                 </div>
                 <div class="row">
@@ -86,23 +87,23 @@
                 <div class="row Lato-font project-items-justify">
                     <div class="col project-item-details">
                         <p class="font-weight-bold">PROJECT FOCUS:</p>
-                        <p>{{ProjectEntry.aim}}</p>
+                        <p>{{project.aim}}</p>
                     </div>
                 </div>
                 <div class="row Lato-font">
                     <div class="col project-item-details">
                         <p class="font-weight-bold">DESCRIPTION:</p>
-                        <p>{{ProjectEntry.description|truncatewords:25}}</p>
+                        <p>{{project.description|truncatewords:25}}</p>
                     </div>
                 </div>
                 <div class="row Lato-font">
                     <div class="col project-item-details">
-                        <p class="font-weight-bold">STATUS: {{ProjectEntry.status}}</p>
+                        <p class="font-weight-bold">STATUS: {{project.status}}</p>
                     </div>
                 </div>
                 <div class="row Lato-font project-item-details">
                     <div class="col justify-content-center align-items-center project-keywords-btn">
-                        {% for keyword in ProjectEntry.keywords.all %}
+                        {% for keyword in project.keywords.all %}
                         <button class="btn projects-filter-buttons projects-keywords-buttons-font" type="button" name="button">
                             {{keyword}}
                         </button>

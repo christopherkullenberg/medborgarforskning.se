@@ -22,7 +22,8 @@ class InitialProjectSubmissionModelForm(forms.ModelForm):
         'contact_name',
         'contact_role',
         'contact_affiliation',
-        'keywords'
+        'keywords',
+        'science_type',
         ]
 
 class ProjectEntryUpdateManagementForm(forms.ModelForm):
@@ -44,5 +45,6 @@ class ProjectEntryUpdateManagementForm(forms.ModelForm):
         'contact_affiliation',
         'contact_email',
         'contact_phone',
-        'keywords'
+        'keywords',
+        'science_type',
         ]

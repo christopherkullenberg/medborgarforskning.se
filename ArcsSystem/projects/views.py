@@ -34,12 +34,13 @@ class ProjectListView(ListView):
     '''
     model = ProjectEntry
     template_name = 'projects/project_list.html'
-#def project_list_view(request):
-#    project_list = Project.objects.all()
-#    context = {
-#        'project_list' : project_list,
-#    }
-#    return render(request, 'project_list.html', context)
+
+    # def project_list_view(request):
+    #    project_list = Project.objects.all()
+    #    context = {
+    #        'project_list' : project_list,
+    #    }
+    #    return render(request, 'project_list.html', context)
 
 
 class ProjectDetailView(DetailView):
