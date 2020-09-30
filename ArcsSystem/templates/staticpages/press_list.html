@@ -10,7 +10,7 @@
         <div class="col">
 
             <h1>{% trans "Trans page (list view)" %}</h1>
-            {% for instance in object_list %}
+            {% for instance in latest %}
 
                 {% get_current_language as LANGUAGE_CODE %}
                 {% if LANGUAGE_CODE == "en" and instance.slug_en is not None %}
