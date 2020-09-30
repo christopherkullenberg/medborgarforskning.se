@@ -24,6 +24,60 @@
 
 
 <p><b>{% trans "Abstract" %}:</b> {{ article.abstract }}</p>
+
+
 <div>
+
+	
+	{% if forms %}
+
+
+
+
+	<br><br><hr><br><br>
+
+		
+
+	<h5> Article id is: {{article.id}}</h5>
+
+	<h6>This part is only for admin. No other user will be able to access it</h6>
+
+<br>
+
+	<button class="form-control col-3" onclick='$( "#admindiv" ).toggle();'> Toggle menu </button>
+	<br><br>
+
+	<form method="get"  action="{% url 'publications:admin_change' %}">
+
+		<input type="hidden" name="pub_id" value="{{article.id}}">
+
+
+	<div id="admindiv" class="row">
+	{% for form in forms %}
+
+	<div class="col-3" >
+
+		{{form.cat }}
+
+		<hr>
+
+		{{form}}
+
+
+	</div>
+
+	{% endfor %}
+
+</div>
+<br><br>
+
+<button class="form-control col-2 btn btn-success"> Make changes > </button>
+
+</form>
+
+{% endif %}
+
+
+
 
 {% endblock content %}

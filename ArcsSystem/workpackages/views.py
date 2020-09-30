@@ -4,7 +4,7 @@ from workpackages.models import WorkPackage, Theme
 from django.views import View
 
 from .models import Theme, WorkPackage
-
+from publications.models import Article
 # Create your views here.
 
 
@@ -15,14 +15,13 @@ class WorkpackagesListView(View):
 
     def get(self, request):
 
-        print("dsfdsf")
-
         context = {}
         superThemes = WorkPackage.objects.all()
         context["superThemes"] = superThemes
         context["list_theme"] = []
         for st in superThemes:
             context["list_theme"].append([st , Theme.objects.filter(wp_parent=st.id)])
+
         return render(request, self.template_name, context)
 
 class WorkpackagesThemeView(View):
@@ -32,22 +31,13 @@ class WorkpackagesThemeView(View):
 
     def get(self, request, category):
 
-
         this_theme = Theme.objects.get(title = category)
-
         context = {"theme": this_theme}
-
+        context["pubs"] = []
+        for pub_id in this_theme.get_pub_ids():
+            context["pubs"].append(Article.objects.get(id=int(pub_id)))
+            
         return render(request, self.template_name, context)
-
-
-
-
-
-
-
-
-
-
 
 
 # class WorkpackagesListView(ListView):

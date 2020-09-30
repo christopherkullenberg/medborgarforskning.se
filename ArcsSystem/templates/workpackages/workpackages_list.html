@@ -5,23 +5,19 @@
 {% load workpackages_extras %}
 {% block content %}
 
-<h1 align="center">{% trans "Categories" %}</h1>
-<br>
-
-<hr>
+<h5 align="center"> <div style="width: 60% ;margin-bottom: 100px;">Categories <br> <hr></div></h5>
 
 
-<div style="margin-right: 30px; margin-left: 30px">
+<div style="margin-right: 100px; margin-left: 100px; margin-top: 40px">
   <div class="row">
 
   	{% for st in list_theme %}
 
     <div class="col-3">
 
-    	{{st.0.name}}
-    	<br>
+    	<h6 align="center">{{st.0.name}}</h6>
     	<hr>
-    	<h5> About {{st.0.name}} :</h5>
+    	<h5> Short about {{st.0.name}} :</h5>
     	<div style="height: 130px">
     	{{st.0.introduction}}
     	</div>
@@ -50,14 +46,32 @@
 <br>
 <br>
 <br>
-
-<ul>
-{% for wp in object_list %}
-<li><a href="{{ wp.name }}">{{ wp.name }}</a></li>
+<br>
 
 
-{% endfor %}
-</ul>
+                <h5 align="center">More info</h5>
+
+
+
+<hr>
+
+
+{% for st in list_theme %}
+
+<br>
+
+    <div class="col-12" style="padding-right: 200px; padding-left: 200px; padding-bottom: 100px">
+
+        <h5> About {{st.0.name}} </h5> 
+
+        <hr>
+
+        {{st.0.detailed_content}}
+
+
+    </div>
+
+    {% endfor %}
 
 
 

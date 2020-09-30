@@ -14,11 +14,12 @@ class WorkPackageAdmin(TabbedTranslationAdmin):
 
 class ThemeAdmin(TabbedTranslationAdmin):
     summernote_fields = ('body',)
-    fieldsets = [(u'Theme', {'fields': ('title','body', 'wp_parent')})
+
+    fieldsets = [(u'Theme', {'fields': ('title','body', 'wp_parent','related_publications')})
         ]
 
 
 
 #admin.site.register(Blog, BlogAdmin)
 admin.site.register(WorkPackage, WorkPackageAdmin)
-admin.site.register(Theme, ThemeAdmin)
+admin.site.register(Theme,ThemeAdmin)

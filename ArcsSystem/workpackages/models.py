@@ -34,10 +34,27 @@ class Theme(models.Model):
     title = models.SlugField()
     body = models.TextField()
     related_papers_tags = TaggableManager()
+    related_publications = models.CharField(max_length=1000, blank=True, null=False)
     wp_parent = models.ForeignKey(WorkPackage,
                                   default=1,
                                   verbose_name="Work Package",
                                   on_delete=models.SET_DEFAULT)
+
+    def get_pub_ids(self):
+
+        return self.related_publications.split("&")[:-1]
+
+    def save_pub_ids(self, li):
+
+        string = ""
+        for el in li:
+            string += el + "&"
+        self.related_publications = string
+        self.save()
+
+
+
+
 
     def __str__(self):
         return f'{self.title}'
