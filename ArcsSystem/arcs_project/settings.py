@@ -84,8 +84,8 @@ INSTALLED_APPS = [
     #'taggit', # I disabled this because we have it above (CK)
     'wagtail.contrib.modeladmin', # for wagtail menus
     'wagtailmenus', # initialize wagtail menus
-    'wagtail_modeltranslation.makemigrations',
-    'wagtail_modeltranslation.migrate',
+    # 'wagtail_modeltranslation.makemigrations',
+    # 'wagtail_modeltranslation.migrate',
     ### Wagtail app requirement end #
     ### Wagtail forms install #
     #'wagtail.wagtailforms',

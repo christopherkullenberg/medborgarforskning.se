@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
 from django.utils import translation
 from django.utils import timezone
@@ -89,6 +90,27 @@ class SourcecodePageView(TemplateView):
         context["sourceodepage"] = SourcecodePage.objects.all()
         return context
 
+class PressPostIndexView(ArchiveIndexView):
+    template_name = 'staticpages/press_list.html'
+    # we need to set another solution to check language on website
+
+    # def get_context_data(self, **kwargs):
+    #     language_code = translation.get_language()
+    #     # Call the base implementation first to get a context
+    #     context = super().get_context_data(**kwargs)
+    #     if (language_code == 'en'):
+    #         context["object_list"] = BlogPage.objects.exclude(slug_en = None)
+    #     else:
+    #         context["object_list"] = BlogPage.objects.exclude(slug_sv = None)
+    #     return context
+
+    queryset = PressPage.objects.all()
+    date_field = "pressPublishedDate"
+    make_object_list = True
+    allow_future = False
+    # Pagination documentation https://docs.djangoproject.com/en/2.2/topics/pagination/
+    paginate_by = 3    # Change this to include more posts
+
 
 class PressPostDateDetailView(DateDetailView):
     template_name = 'staticpages/press_detail.html'
@@ -100,15 +122,6 @@ class PressPostDateDetailView(DateDetailView):
         context['now'] = timezone.now()
         return context
 
-
-class PressPostIndexView(ArchiveIndexView):
-    template_name = 'staticpages/press_list.html'
-    queryset = PressPage.objects.all()
-    date_field = "pressPublishedDate"
-    make_object_list = True
-    allow_future = False
-    # Pagination documentation https://docs.djangoproject.com/en/2.2/topics/pagination/
-    paginate_by = 5    # Change this to include more posts
 
 class PressPostYearArchiveView(YearArchiveView):
     template_name = 'staticpages/press_detail.html'
@@ -129,28 +142,19 @@ class PressPostMonthArchiveView(MonthArchiveView):
     # Pagination documentation https://docs.djangoproject.com/en/2.2/topics/pagination/
     paginate_by = 5    # Change this to include more posts
 
-class GettingStartedwithCitizenScience(TemplateView):
-    template_name = 'staticpages/getting_started.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["citizen_page"] = CitizenSciencePage.objects.all()
-        return context
 
 class WhatsCitizenScience(TemplateView):
 
     template_name = 'staticpages/what_is_citizen_science.html'
-    queryset = WhatsCitizenSciencePage.objects.all()
+    # queryset = WhatsCitizenSciencePage.objects.all()
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["citizen_science"] = self.queryset
+        context["citizen_science"] = WhatsCitizenSciencePage.objects.all()
         return context
 
-    def get_submenu(number):
-        model = WhatsCitizenSciencePage.objects.all()
-        object_list = model.distinct()[:number]
-        return object_list
+    def get_absolute_url(self):
+        return reverse('staticpages:what_is_citizen_science')
 
 
 class SwedishCitizenScience(TemplateView):
@@ -162,10 +166,8 @@ class SwedishCitizenScience(TemplateView):
         context["swedish_citizen_science"] = self.queryset
         return context
 
-    def get_submenu(number):
-        model = SwedishCitizenSciencePage.objects.all()
-        object_list = model.distinct()[:number]
-        return object_list
+    def get_absolute_url(self):
+        return reverse('staticpages:swedish_citizen_science')
 
 
 class CaseStudies(TemplateView):
@@ -175,13 +177,10 @@ class CaseStudies(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['case_studies'] = self.queryset
-        print(context)
         return context
 
-    def get_submenu(number):
-        model = CaseStudiesPage.objects.all()
-        object_list = model.distinct()[:number]
-        return object_list
+    def get_absolute_url(self):
+        return reverse('staticpages:case_studies')
 
 class FAQ(TemplateView):
     template_name = 'staticpages/faq.html'
@@ -198,6 +197,10 @@ class FAQ(TemplateView):
         return object_list
 
 
+    def get_absolute_url(self):
+        return reverse('staticpages:faq')
+
+
 class AditionalResources(TemplateView):
     template_name = 'staticpages/additional_resources.html'
     model = AdditionalResourcesPage.objects.all()
@@ -212,25 +215,28 @@ class AditionalResources(TemplateView):
         object_list = model.distinct()[:number]
         return object_list
 
+    def get_absolute_url(self):
+        return reverse('staticpages:additional_resources')
 
-class GetSubmenu(TemplateView):
 
-    template_name = 'staticpages/case_studies.html'
-
-    def dispatch(self, request, *args, **kwargs):
-        what_is_citizen_science = WhatsCitizenSciencePage.objects.latest('id')
-        case_studies_query = CaseStudiesPage.objects.latest('id')
-        faq_query = FAQPage.objects.latest('id')
-        additional_resources_query = AdditionalResourcesPage.objects.latest('id')
-
-        if (kwargs['title2'] == what_is_citizen_science.slug):
-            return render(self.request, 'staticpages/what_is_citizen_science.html', {'citizen_science':WhatsCitizenSciencePage.objects.all()})
-        if (kwargs['title2'] == case_studies_query.slug):
-            return render(self.request, 'staticpages/case_studies.html', {'case_studies':CaseStudiesPage.objects.all()})
-        if (kwargs['title2'] == faq_query.slug):
-            return render(self.request, 'staticpages/faq.html', {'faq':FAQPage.objects.all()})
-        if (kwargs['title2'] == additional_resources_query.slug):
-            return render(self.request, 'staticpages/additional_resources.html', {'additional_resources':AdditionalResourcesPage.objects.all()})
-
-        else:
-            return redirect("/")
+# class GetSubmenu(TemplateView):
+#
+#     template_name = 'staticpages/case_studies.html'
+#
+#     def dispatch(self, request, *args, **kwargs):
+#         what_is_citizen_science = WhatsCitizenSciencePage.objects.latest('id')
+#         case_studies_query = CaseStudiesPage.objects.latest('id')
+#         faq_query = FAQPage.objects.latest('id')
+#         additional_resources_query = AdditionalResourcesPage.objects.latest('id')
+#
+#         if (kwargs['title2'] == what_is_citizen_science.slug):
+#             return render(self.request, 'staticpages/what_is_citizen_science.html', {'citizen_science':WhatsCitizenSciencePage.objects.all()})
+#         if (kwargs['title2'] == case_studies_query.slug):
+#             return render(self.request, 'staticpages/case_studies.html', {'case_studies':CaseStudiesPage.objects.all()})
+#         if (kwargs['title2'] == faq_query.slug):
+#             return render(self.request, 'staticpages/faq.html', {'faq':FAQPage.objects.all()})
+#         if (kwargs['title2'] == additional_resources_query.slug):
+#             return render(self.request, 'staticpages/additional_resources.html', {'additional_resources':AdditionalResourcesPage.objects.all()})
+#
+#         else:
+#             return redirect("/")

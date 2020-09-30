@@ -28,29 +28,27 @@
                         {% trans "Getting Started With Citizen Science" %}
                     </a>
                     <div class="dropdown-menu main-menu-buttons background-light-green-color" aria-labelledby="navbarDropdown">
-                        {% for submenu in 1|get_citizen_science %}
-                            <a class="dropdown-item font-weight-bold" href="{% pageurl submenu.specific %}">{% trans "What is Citizen Science?" %}</a>
-                        {% endfor %}
+
+                        <a class="dropdown-item font-weight-bold" href="{% url 'staticpages:what_is_citizen_science'  %}">{% trans "What is Citizen Science?" %}</a>
+
                         <div class="dropdown-divider"></div>
                             <ul>
                                 <li class="nav-item dropdown">
-                                    {% for submenu in 1|get_swedish_citizen_science %}
-                                        <a class="dropdown-item" href="{% pageurl submenu.specific %}">{% trans "Swedish Citizen Science" %}</a>
-                                    {% endfor %}
+
+                                    <a class="dropdown-item" href="{% url 'staticpages:swedish_citizen_science' %}">{% trans "Swedish Citizen Science" %}</a>
+
                                 </li>
                             </ul>
                         <div class="dropdown-divider"></div>
-                        {% for submenu in 1|get_case_studies %}
-                            <a class="dropdown-item font-weight-bold" href="{% pageurl submenu.specific %}">{% trans "Case Studies" %}</a>
-                        {% endfor %}
+                            <a class="dropdown-item font-weight-bold" href="{% url 'staticpages:case_studies' %}">{% trans "Case Studies" %}</a>
                         <div class="dropdown-divider"></div>
-                        {% for submenu in 1|get_faq %}
-                            <a class="dropdown-item font-weight-bold" href="{% pageurl submenu.specific %}">{%trans "FAQ" %}</a>
-                        {% endfor %}
+
+                            <a class="dropdown-item font-weight-bold" href="{% url 'staticpages:faq' %}">{%trans "FAQ" %}</a>
+
                         <div class="dropdown-divider"></div>
-                        {% for submenu in 1|get_additional_resources %}
-                            <a class="dropdown-item font-weight-bold" href="{% pageurl submenu.specific %}">{%trans "Additional Resources" %}</a>
-                        {% endfor %}
+
+                            <a class="dropdown-item font-weight-bold" href="{% url 'staticpages:additional_resources' %}">{%trans "Additional Resources" %}</a>
+
                     </div>
                 </li>
                 <li class="nav-item dropdown header-menu-li-style col-3">

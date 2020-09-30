@@ -223,8 +223,6 @@ class PressPage(page_wagtail):
         MultiFieldPanel(page_wagtail.promote_panels, "Common page configuration"),
     ]
 
-    max_count = 1
-
     def get_absolute_url(self):
         language_code = translation.get_language()
         if language_code == 'sv':
