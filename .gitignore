@@ -6,6 +6,9 @@ __pycache__/
 # C extensions
 *.so
 
+# pipenv stuff
+ArcsSystem/Pipfile.lock
+
 # Distribution / packaging
 .Python
 build/
