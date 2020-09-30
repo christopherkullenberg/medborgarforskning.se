@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, HttpResponseRedirect, reverse
 
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.models import User
@@ -47,11 +47,12 @@ class ProjectDetailView(DetailView):
     '''
     '''
     model = ProjectEntry
+    print(model)
     template_name = 'projects/project_detail.html'
 
     def get_object(self):
         pk = self.kwargs.get("pk")
-        return get_object_or_404(Project, id=pk)
+        return get_object_or_404(self.model, id=pk)
 
 
 class SearchResultsView(ListView):
@@ -84,6 +85,18 @@ class ProjectSubmissionCreateView(CreateView):
     form_class = InitialProjectSubmissionModelForm
     queryset = ProjectSubmission.objects.all()
     # success_url = '/submitted-for-review' # overrides the get_absolute_url function in the model #default is project detail view - unpublished projects can be viewed until approved then can be edited once published.
+
+    def post(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            if request.method == 'POST':
+                form=InitialProjectSubmissionModelForm(request.POST)
+                if form.is_valid():
+                    request.user.save()
+                    # return render_to_response("projects/project_submissionform.html", RequestContext(request))
+                    return reverse('projects:project_detail')
+                else:
+                    return redirect("/")
+
 
     def get_object(self):
         pk = self.kwargs.get("pk")

@@ -1,6 +1,6 @@
 from django import forms
 
-from projects.models import ProjectEntry, ProjectSubmission
+from projects.models import ProjectEntry, ProjectSubmission, Keyword, ScienceType
 
 # Make sure to use: https://docs.djangoproject.com/en/2.2/ref/csrf/
 
@@ -22,9 +22,19 @@ class InitialProjectSubmissionModelForm(forms.ModelForm):
         'contact_name',
         'contact_role',
         'contact_affiliation',
+        'start_date',
+        'end_date',
+        'url',
         'keywords',
         'science_type',
+        'contact_email',
+        'contact_phone',
+        'target_audience',
+        'image_dir',
+        'latitude',
+        'longitude'
         ]
+# keywords = forms.inlineformset_factory(Keyword, ProjectEntry, form=InitialProjectSubmissionModelForm)
 
 class ProjectEntryUpdateManagementForm(forms.ModelForm):
     """Form for maintaining the projects approved and added to the database.

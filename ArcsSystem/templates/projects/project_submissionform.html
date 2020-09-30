@@ -2,7 +2,7 @@
 
 {% if user.is_authenticated %}
 
-<form action='.' method='post'>
+<form action='.' method='POST'>
   {% csrf_token %}
     <p>{% trans "Your account and email will be associated with this submission for follow-up." %}</p>
   <fieldset>
@@ -21,7 +21,19 @@
   <li>{% trans "The target audience of the project." %}</li>
   <li>{% trans "Your affiliation to the project as the person submitting the project." %}</li>
   <li>{% trans "Keywords for the project." %}</li>
-  <li>{% trans "ScienceType for the project." %}</li></li>
+  <li>{% trans "ScienceType for the project." %}</li>
+  <li>{% trans "start_date for the project." %}</li>
+  <li>{% trans "end_date for the project." %}</li>
+  <li>{% trans "url" % }</li>
+  <li>{'keywords'}</li>
+  <li>{'science_type'}</li>
+  <li>{'contact_email'}</li>
+  <li>{'contact_phone'}</li>
+  <li>{'target_audience'}</li>
+  <li>{'image_dir'}</li>
+  <li>{'latitude'}</li>
+  <li>{'longitude}</li>
+
 </ul>
 <p>{% trans "Following submission your project will be reviewed before becoming visibile on the site and included in the metadata exchange. Review the citizen science assessment criteria for visiblity and exchange." %}</p>
 {% endif %}

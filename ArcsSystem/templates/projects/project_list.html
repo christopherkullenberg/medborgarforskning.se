@@ -76,7 +76,7 @@
 
                 <div class="row">
                     <div class="col Lato-font project-items-justify background-greenish-color">
-                        <p class="font-weight-bold"><a id="project-items-link" href="#">project {{forloop.counter}}: {{ project.name }}</a></p>
+                        <p class="font-weight-bold"><a id="project-items-link" href="{ url 'projects:project_detail' pk=form.instance.pk}">project {{forloop.counter}}: {{ project.name }}</a></p>
                     </div>
                 </div>
                 <div class="row">

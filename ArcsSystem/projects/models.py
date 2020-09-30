@@ -123,16 +123,16 @@ class Project(models.Model):
     status = models.CharField(db_index=True, max_length=30, default='0', choices=STATUS_CHOICES,) ## maps to PPSR PMM  projectStatus
     start_date = models.DateTimeField(help_text=_('Date the project started.'), db_index=True, null=True,) ## maps to PPSR PMM  projectStartDate
     #duration = models.CharField(max_length=30, default='0',) ## maps to PPSR PMM projectDuration - value should be calculated as diff from start to end or if started and no end - infinit
-    science_type = models.ManyToManyField(ScienceType) ## maps to PPSR PMM projectScienceType
+    science_type = models.ManyToManyField(ScienceType, blank = True, null = True) ## maps to PPSR PMM projectScienceType
 
     '''PPSR PMM Optional Fields'''
     # has_tag = ## maps to PPSR PMM hasTag
     #difficulty_level = ## maps to PPSR PMM difficultyLevel
-    keywords = models.ManyToManyField(Keyword) ## maps to PPSR PMM keyword
+    keywords = models.ManyToManyField(Keyword, blank = True, null = True) ## maps to PPSR PMM keyword
     end_date = models.DateTimeField(help_text=_('Date the project ended.'), db_index=True, null=True, ) ## maps to PPSR PMM projectEndDate
 
 
-    url = models.URLField(max_length=500) ## maps to PPSR PMM projectUrl
+    url = models.URLField(max_length=500, blank = True) ## maps to PPSR PMM projectUrl
     #un_regions = ## maps to PPSR PMM unRegions
     #language = ## maps to PPSR PMM language - language encoding of the record
 
