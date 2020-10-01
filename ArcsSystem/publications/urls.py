@@ -5,6 +5,8 @@ from .views import ArticleDetailView
 #from .views import ArcsreportDetailView
 from .views import SearchPublicationsView
 
+from .views import ChangeThemePub
+
 app_name = 'publications'
 
 urlpatterns = [
@@ -16,6 +18,10 @@ urlpatterns = [
         name='article_publications_detail'),
     #path('arcsreport/<int:pk>/', ArcsreportDetailView.as_view(),
     #        name='arcsreport_detail'),
-    path('search/', SearchPublicationsView.as_view(),
+    path('search', SearchPublicationsView.as_view(),
          name ='search_publications_results'),
+
+    path('admin_change', ChangeThemePub,
+         name ='admin_change'),
+
 ]

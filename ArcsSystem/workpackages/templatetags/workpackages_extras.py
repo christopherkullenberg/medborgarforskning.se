@@ -6,7 +6,8 @@ from workpackages.models import WorkPackage, Theme
 register = template.Library()
 
 
-
+def break_slug(string):
+    return string.replace("_", " ")
 def get_wp_name(WPname):
     result = WorkPackage.objects.get(name=WPname)
     return result.name
@@ -41,3 +42,4 @@ register.filter('get_wp_name', get_wp_name)
 register.filter('get_wp_intro', get_wp_intro)
 register.filter('get_wp_detailed_content', get_wp_detailed_content)
 register.filter('get_wp_themes', get_wp_themes)
+register.filter("break_slug", break_slug)

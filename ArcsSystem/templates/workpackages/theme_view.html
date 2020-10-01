@@ -3,16 +3,61 @@
 {% load static %}
 {% load i18n %}
 
+{% load workpackages_extras %}
+
 {% block content %}
 
-<h1>{% trans "Arcs Resources" %}</h1>
+<div style="margin-right: 30px; margin-left: 30px">
 
-<ul>
-    {% for theme in object_list %}
-        <li><a href="#">{{ theme.title }}</a></li>
 
-    {% endfor %}
-</ul>
+
+
+
+
+<h5 align="center"> Category : {{ theme.wp_parent}}</h5> 
+<h5 align="center"> Theme :  {{ theme.title|break_slug }}</h5> 
+
+
+
+
+<br>
+<br>
+<br>
+<div class="col-12" style="padding-right: 200px; padding-left: 200px; padding-bottom: 100px">
+
+	<h5> About  {{ theme.title|break_slug }}</h5>
+
+	<hr>
+
+<!-- 	<span style = "font-family: Arial; font-size: px"> -->
+
+
+	{{ theme.body}}
+
+</div>
+
+
+<div class="col-12" style="padding-right: 200px; padding-left: 200px; padding-bottom: 100px">
+
+	<h5> Related publications</h5>
+	<hr>
+    {% for article in pubs %}
+	    <div class="search-list">
+	        <h2 class="search-list"> <a href="{{ article.get_absolute_url }}">{{ article.py }}. {{ article.title }}</a></h2>
+	    </div>
+	{% endfor %}
+</div>
+
+
+
+
+
+
+
+
+</div>
+
+
 
 
 

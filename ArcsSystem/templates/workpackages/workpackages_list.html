@@ -2,18 +2,76 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load i18n %}
-
+{% load workpackages_extras %}
 {% block content %}
 
-<h1>{% trans "Arcs Resources" %}</h1>
-
-<ul>
-{% for wp in object_list %}
-<li><a href="{{ wp.name }}">{{ wp.name }}</a></li>
+<h5 align="center"> <div style="width: 60% ;margin-bottom: 100px;">Categories <br> <hr></div></h5>
 
 
-{% endfor %}
-</ul>
+<div style="margin-right: 100px; margin-left: 100px; margin-top: 40px">
+  <div class="row">
+
+  	{% for st in list_theme %}
+
+    <div class="col-3">
+
+    	<h6 align="center">{{st.0.name}}</h6>
+    	<hr>
+    	<h5> Short about {{st.0.name}} :</h5>
+    	<div style="height: 130px">
+    	{{st.0.introduction}}
+    	</div>
+
+    	<hr>
+
+
+
+    	<h5>Themes</h5>
+    	{% for theme in st.1 %}
+
+    	<a href="{{theme.title}}/">{{theme.title|break_slug}}</a>
+    	<br>
+
+    	{% endfor %}
+
+    </div>
+
+    {% endfor %}
+
+
+  </div>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+                <h5 align="center">More info</h5>
+
+
+
+<hr>
+
+
+{% for st in list_theme %}
+
+<br>
+
+    <div class="col-12" style="padding-right: 200px; padding-left: 200px; padding-bottom: 100px">
+
+        <h5> About {{st.0.name}} </h5> 
+
+        <hr>
+
+        {{st.0.detailed_content}}
+
+
+    </div>
+
+    {% endfor %}
 
 
 
