@@ -19,7 +19,7 @@
 
 {% for theme in view.category|get_wp_themes %}
   <p>{{ theme.title}}</p>
-  <p>{{ theme.body }}</p>
+  <p>{{ theme.body|safe }}</p>
 {% endfor %}
 
 {% endblock content %}

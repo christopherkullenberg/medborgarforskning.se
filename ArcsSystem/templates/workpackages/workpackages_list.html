@@ -19,7 +19,7 @@
     	<hr>
     	<h5> Short about {{st.0.name}} :</h5>
     	<div style="height: 130px">
-    	{{st.0.introduction}}
+    	{{st.0.introduction|safe}}
     	</div>
 
     	<hr>
@@ -62,11 +62,11 @@
 
     <div class="col-12" style="padding-right: 200px; padding-left: 200px; padding-bottom: 100px">
 
-        <h5> About {{st.0.name}} </h5> 
+        <h5> About {{st.0.name}} </h5>
 
         <hr>
 
-        {{st.0.detailed_content}}
+        {{st.0.detailed_content|safe}}
 
 
     </div>
