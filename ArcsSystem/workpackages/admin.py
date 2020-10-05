@@ -7,12 +7,12 @@ from .models import WorkPackage, Theme
 #class BlogAdmin(admin.ModelAdmin):
 #    list_display = ('name', 'tagline')
 
-class WorkPackageAdmin(TabbedTranslationAdmin):
+class WorkPackageAdmin(SummernoteModelAdmin, TabbedTranslationAdmin):
     summernote_fields = ("introduction", "detailed_content")
     fieldsets = [(u'WorkPackage', {'fields': ('name','introduction','detailed_content')})
         ]
 
-class ThemeAdmin(TabbedTranslationAdmin):
+class ThemeAdmin(SummernoteModelAdmin, TabbedTranslationAdmin):
     summernote_fields = ('body',)
 
     fieldsets = [(u'Theme', {'fields': ('title','body', 'wp_parent','related_publications')})
