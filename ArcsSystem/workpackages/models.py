@@ -11,7 +11,7 @@ class WorkPackage(models.Model):
         verbose_name = _('Work package')
         verbose_name_plural = _('Work packages')
 
-    name = models.SlugField()
+    name = models.CharField(max_length=300, null=False)
     introduction = models.TextField()
     detailed_content = models.TextField()
 
@@ -31,7 +31,7 @@ class Theme(models.Model):
     class Meta:
         verbose_name = _('Theme')
         verbose_name_plural = _('Themes')
-    title = models.SlugField()
+    title = models.CharField(max_length=300, null=False)
     body = models.TextField()
     related_papers_tags = TaggableManager()
     related_publications = models.CharField(max_length=1000, blank=True, null=False)
