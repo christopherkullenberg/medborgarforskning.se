@@ -31,12 +31,12 @@ class WorkpackagesThemeView(View):
 
     def get(self, request, category):
 
-        this_theme = Theme.objects.get(title = category)
+        this_theme = Theme.objects.get(id = category)
         context = {"theme": this_theme}
         context["pubs"] = []
         for pub_id in this_theme.get_pub_ids():
             context["pubs"].append(Article.objects.get(id=int(pub_id)))
-            
+
         return render(request, self.template_name, context)
 
 

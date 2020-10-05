@@ -21,7 +21,7 @@ class WorkPackage(models.Model):
     def get_absolute_url(self):
         # reverse expects the view name
         return reverse('workpackages:category_view',
-                       kwargs={'category' : self.name}
+                       kwargs={'category' : self.id}
                        )
 
 
