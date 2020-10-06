@@ -10,6 +10,7 @@
 {% for article in object_list %}
 <div class="post-entry">
   <p><a href="{% url 'publications:article_publications_detail' article.pk %}">{{ article.py }}. {{ article.title }}</a></p>
+  <p>{{ article.authors }}<p>
 </div>
 {% endfor %}
 
