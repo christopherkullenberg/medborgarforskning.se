@@ -10,9 +10,13 @@ from staticpages.models import TermsPage
 from django.contrib.auth import logout
 from datetime import date
 
+from django import forms
+
 # Create your views here.
 from django.views.generic.base import TemplateView
 from django.views.generic import DetailView
+
+from projects.models import ProjectSubmission, ProjectEntry
 
 class UserPublicProfilePageView(DetailView):
     template_name = 'users/public_profile_view.html'
@@ -35,8 +39,61 @@ class UserPublicProfilePageView(DetailView):
         #     raise Http404()
         return obj
 
+def UserPrivateProfilePageView(request):
 
-class UserPrivateProfilePageView(TemplateView):
+    template_name = 'users/private_profile_view.html'
+    context = {}
+
+    # new page : get page
+    if request.method == "GET":
+        # admin part
+        if request.user.is_superuser:
+            context["Admin_project_submissions"] = ProjectSubmission.objects.all()
+            # all users 
+        if request.user.is_authenticated:
+            context["My_approved_projects"] = ProjectEntry.objects.filter(created_by = request.user)
+            context["My_pending_projects"] =  ProjectSubmission.objects.filter(created_by = request.user)
+
+        return render(request, template_name, context)
+
+    # this is the admin accept sub-forms part
+    if request.method == "POST":
+        #check if admin
+        if request.user.is_superuser:
+
+
+            for name in request.POST:
+
+                if "acpt_" in name:
+
+                    accept_subForm(name[5:])
+        return HttpResponseRedirect(reverse('userprofile_private_view'))
+
+
+
+
+
+def accept_subForm(id):
+
+    sub_model = ProjectSubmission.objects.get(id = int(id))
+    sub_model.delete()
+
+    keywords = sub_model.__dict__ 
+    if "_state" in keywords:
+        del keywords["_state"]
+    if "id" in keywords:
+        del keywords["id"]
+
+    new_model = ProjectEntry(**keywords)
+    new_model.save()
+
+
+
+def create_admin_form():
+    return [[forms.BooleanField(label="", required=False, widget=forms.TextInput(attrs={'name':'off'})), sub] for sub in ProjectSubmission.objects.all()]
+
+
+class UserEidtMyPageView(TemplateView):
 
     template_name = "users/private_profile_view.html"
 

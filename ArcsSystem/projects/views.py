@@ -1,5 +1,4 @@
-from django.shortcuts import render
-
+from django.shortcuts import render, redirect, HttpResponseRedirect, reverse
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.models import User
 from django.views.generic import (
@@ -50,7 +49,10 @@ class ProjectDetailView(DetailView):
 
     def get_object(self):
         pk = self.kwargs.get("pk")
-        return get_object_or_404(Project, id=pk)
+        return get_object_or_404(ProjectEntry, id=pk)
+
+    def get_table_data(self):
+        return [self.object]
 
 
 class SearchResultsView(ListView):
@@ -78,15 +80,80 @@ class StaticKeywordView(ListView):
         ).distinct()
         return object_list
 
-class ProjectSubmissionCreateView(CreateView):
-    template_name = 'projects/project_submissionform.html'
-    form_class = InitialProjectSubmissionModelForm
-    queryset = ProjectSubmission.objects.all()
-    # success_url = '/submitted-for-review' # overrides the get_absolute_url function in the model #default is project detail view - unpublished projects can be viewed until approved then can be edited once published.
+def ProjectSubmissionView(request, pk):
 
-    def get_object(self):
-        pk = self.kwargs.get("pk")
-        return get_object_or_404(Project, id=pk)
+    template_name = 'projects/project_detail.html'
+    context = {}
+
+    # new page : get page
+    if request.method == "GET":
+        if request.user.is_authenticated:
+            pro_sub = ProjectSubmission.objects.get(id= pk)
+            if int(request.user.id) == pro_sub.created_by.id or request.user.is_superuser:
+                context = {"object": pro_sub}
+                return render(request, template_name, context)
+            else:
+                raise Http404
+
+
+    # this is the save sub-form part
+    # if request.method == "POST":
+    #     #check if user
+    #     if request.user.is_authenticated:
+    #         form = InitialProjectSubmissionModelForm(request.POST, request.FILES)
+    #         if form.is_valid():
+    #             form.instance.created_by = request.user
+    #             form.save()
+    #             return HttpResponseRedirect(reverse('userprofile_private_view'))
+    #         else:
+    #             raise Http404
+
+
+def ProjectSubmissionCreateView(request):
+
+    template_name = 'projects/project_submissionform.html'
+    context = {}
+
+    # new page : get page
+    if request.method == "GET":
+        if request.user.is_authenticated:
+            keywords = {
+            "contact_email": request.user.email, 
+            "contact_name": request.user.first_name + " " + request.user.last_name, 
+            }
+
+            context["Submission"] = InitialProjectSubmissionModelForm(keywords)
+
+        return render(request, template_name, context)
+
+    # this is the save sub-form part
+    if request.method == "POST":
+        #check if user
+        if request.user.is_authenticated:
+            form = InitialProjectSubmissionModelForm(request.POST, request.FILES)
+            if form.is_valid():
+                form.instance.created_by = request.user
+                form.save()
+                return HttpResponseRedirect(reverse('userprofile_private_view'))
+            else:
+                raise Http404
+
+# class ProjectSubmissionCreateView_old(CreateView):
+#     template_name = 'projects/project_submissionform.html'
+#     form_class = InitialProjectSubmissionModelForm
+
+
+#     queryset = ProjectSubmission.objects.all()
+#     # success_url = '/submitted-for-review' # overrides the get_absolute_url function in the model #default is project detail view - unpublished projects can be viewed until approved then can be edited once published.
+
+#     def get_object(self):
+#         pk = self.kwargs.get("pk")
+#         return get_object_or_404(Project, id=pk)
+
+#     def form_valid(self, form):
+#         form.instance.created_by = self.request.user
+#         form.save()
+#         return super(ProjectSubmissionCreateView, self).form_valid(form)
 
 class ProjectUpdateView(UpdateView):
     template_name = 'projects/project_submissionform.html'

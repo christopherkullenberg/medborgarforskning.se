@@ -14,15 +14,18 @@ class InitialProjectSubmissionModelForm(forms.ModelForm):
     class Meta:
         model = ProjectSubmission
         fields = [
-        'aim',
         'name',
+        'aim',
+        "image",
         'description',
         'status',
         'target_audience',
         'contact_name',
+        "contact_email",
         'contact_role',
         'contact_affiliation',
-        'keywords'
+        'keywords',
+
         ]
 
 class ProjectEntryUpdateManagementForm(forms.ModelForm):

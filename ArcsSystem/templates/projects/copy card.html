@@ -1,0 +1,53 @@
+<div class="row">
+    {% for ProjectEntry in object_list %}
+    <div style="padding-left: 20px; padding-right: 20px" class="col-lg-3 col-md-4 col-xs-6 mb-5">
+        <div class="project-item">
+            <div class="row">
+                <div class=" col">  
+                    <div  class="col project-items-justify blackFieldWhiteText">
+                        <h4 align="center"><a style="color: white; font-size: 16px" id="project-items-link" href="{% url 'projects:project_detail' ProjectEntry.id %}"> {{ ProjectEntry.name|truncatechars:20 }}</a></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                {% if ProjectEntry.image %}
+                <div class="col">
+                    <img class="mg-fluid w-100" src="{{ProjectEntry.image.url}}" alt="{% trans 'Responsive image' %}"/>
+                </div>
+                {% else %}
+                <div class="col" >
+                    <div style="height: 20px; background: coral; margin-bottom: 5px">
+                        <h5 align="center"  > No image</h5>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+            <div class="col" style="padding-right: 5px; padding-left: 5px; margin-top: 3px">
+                <div class="row Lato-font ">
+                    <div class="col" >
+                        <span class="font-weight-bold">PROJECT FOCUS: </span> <span >{{ProjectEntry.aim|truncatechars:40}}</span>
+                    </div>
+                </div>
+                <hr>
+                <div class="row Lato-font">
+
+                    <div class="col">
+                        <span >DESCRIPTION: </span> <span >{{ProjectEntry.description|truncatechars:40}}</span>
+                    </div>
+                </div>
+                <hr>
+                <div class="row Lato-font">
+                    <div class="col ">
+                        STATUS: {{ProjectEntry.get_status_name}}
+                    </div>
+                </div>
+                <hr>
+                keywords:
+                {% for keyword in ProjectEntry.keywords.all %}
+                <span style="background: black; color: white; margin: 3px; padding: 3px; border-radius: 5px">{{keyword}} </span> 
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>

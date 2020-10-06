@@ -418,6 +418,7 @@ font-family: Helvetica;
 .project-item-details{
     font-family: Lato ;
     font-size: 14px;
+    margin-left: 20px;
 }
 
 #project-items-link{
@@ -425,7 +426,29 @@ font-family: Helvetica;
 }
 
 .project-items-justify{
-    padding-top: 10px;
+    font-family: Lato ;
+    font-size: 20px;
+    padding-top: 5px;
+    border-top-right-radius: 7px;
+    border-top-left-radius: 7px;
+
+}
+
+/*isak add here 
+*/
+.blackFieldWhiteText{
+    background: black;
+
+}
+
+.blackFieldWhiteText>*{
+    color: white;
+
+}
+
+/*isak add ends here*/
+
+
 }
 
 .login-form{
@@ -475,11 +498,13 @@ font-family: Helvetica;
 }
 
 .project-item{
-    border: 1px solid;
-    border-color: green;
-    margin-left: 20px;
-    margin-bottom: 40px;
-    border-radius: 3px 3px 3px 3px;
+    height: 100%;
+    border: 2px solid;
+    border-color: black;
+
+    margin-bottom: 5px;
+    border-top-right-radius: 6px;
+    border-top-left-radius: 6px;
 }
 
 .project-pageination{

@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Private Profile view</h1>
+
+<form id="edit-save-private-profile-form" isEditing="false" action="{% url 'userprofile_private_view' %}" method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type = "submit" id="edit-save-private-profile-submit-button" href="#">Start editing</button>
+</form>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#edit-save-private-profile-submit-button").on('click', function (e) {
+            var isEditing = $("#edit-save-private-profile-form").attr('isEditing');
+            var errorlist = document.getElementsByClassName('errorlist').length
+
+            if (isEditing == "false") {
+                $("#edit-save-private-profile-form").attr('isEditing', "true");
+                $("#edit-save-private-profile-submit-button").text("Save");
+                toggleEnabled(true);
+                e.preventDefault();
+                
+            }
+            else {
+                $("#edit-save-private-profile-form").attr('isEditing', "false");
+                $("#edit-save-private-profile-submit-button").text("Start editing");
+                $("#edit-save-private-profile-form").submit();
+            }
+        });
+    });
+
+    function toggleEnabled(state) {
+        $.each($("#edit-save-private-profile-form > p > input"), function () {
+            if($(this).prop('id')=='id_username'){
+                return;
+            }
+            if (state) {
+                $(this).removeAttr('disabled');
+            }
+            else {
+                $(this).attr('disabled', 'disabled');
+            }
+        });
+        $.each($("#edit-save-private-profile-form > p > select"), function () {
+
+            if (state) {
+                $(this).removeAttr('disabled');
+            }
+            else {
+                $(this).attr('disabled', 'disabled');
+            }
+        });
+    }
+</script>
+
+{% endblock %}

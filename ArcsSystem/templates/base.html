@@ -102,32 +102,58 @@
 								<strong>Listen</strong>
 							</button>
 						</div>
-						<div id="login" class="col-3 p-0 d-flex justify-content-end align-items-center">
-							<button class="btn p-0 font-dark-green-color background-light-green-color" style="float:right;">
-								{% if user.is_authenticated %}
-								  	<a href="{% url 'account_logout' %}">
+
+<!-- user login starts here -->
+
+						<!-- user is loged in: show my_page and logout -->
+						{% if user.is_authenticated %}
+							<div id="my_page" class="col-3 p-0 d-flex justify-content-end align-items-center">
+								<button class="btn p-0 font-dark-green-color background-light-green-color" style="float:right;">
+									  	<a href="{% url 'userprofile_private_view' %}">
+											<img class="main-media-btns" src="{% static 'icons/Account_Circle_Icon_5.png' %}" alt="{% trans 'Profile icon for login and account details' %}"/>
+									  		<br>
+											<strong>{% trans "My page" %}</strong>
+										</a>
+								</button>
+							</div>
+
+							<div id="login" class="col-3 p-0 d-flex justify-content-end align-items-center">
+								<button class="btn p-0 font-dark-green-color background-light-green-color" style="float:right;">
+									  	<a href="{% url 'account_logout' %}">
+											<img class="main-media-btns" src="{% static 'icons/Account_Circle_Icon_5.png' %}" alt="{% trans 'Profile icon for login and account details' %}"/>
+									  		<br>
+											<strong>{% trans "Logout" %}</strong>
+										</a>
+								</button>
+							</div>
+							
+						<!-- user is NOT loged in: show Signup, login -->
+						{% else %}
+							<div id="signup" class="col-3 p-0 d-flex justify-content-end align-items-center">
+								<button class="btn p-0 font-dark-green-color background-light-green-color" style="float:right;">
+									<a class="font-dark-green-color" href="{% url 'account_signup' %}">
 										<img class="main-media-btns" src="{% static 'icons/Account_Circle_Icon_5.png' %}" alt="{% trans 'Profile icon for login and account details' %}"/>
-								  		<br>
-										<strong>{{ user.username }}</strong>
+										<br>
+										<strong>{% trans "Signup" %}</strong>
 									</a>
-								{% else %}
+								</button>
+							</div>
+
+							<div id="logout" class="col-3 p-0 d-flex justify-content-end align-items-center">
+								<button class="btn p-0 font-dark-green-color background-light-green-color" style="float:right;">
 								  	<a class="font-dark-green-color" href="{% url 'account_login' %}">
 										<img class="main-media-btns" src="{% static 'icons/Account_Circle_Icon_5.png' %}" alt="{% trans 'Profile icon for login and account details' %}"/>
 		  								<br>
 		  								<strong>{% trans "Login" %}</strong>
 									</a>
-								{% endif %}
-							</button>
-						</div>
-						<div id="signup" class="col-3 p-0 d-flex justify-content-end align-items-center">
-							<button class="btn p-0 font-dark-green-color background-light-green-color" style="float:right;">
-								<a class="font-dark-green-color" href="{% url 'account_signup' %}">
-									<img class="main-media-btns" src="{% static 'icons/Account_Circle_Icon_5.png' %}" alt="{% trans 'Profile icon for login and account details' %}"/>
-									<br>
-									<strong>{% trans "Signup" %}</strong>
-								</a>
-							</button>
-						</div>
+								</button>
+							</div>
+						{% endif %}
+
+
+
+<!-- user login ends here -->
+
 					</div>
 				</div>
 			</div>

@@ -5,8 +5,10 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.conf import settings
 # from django_countries.fields import CountryField
+from django.contrib.auth.models import User
 import uuid
 import os
+from users.models import CustomUser
 
 # Define the options for the state of operation a project might be classified
 # Defined here as used in more than one model
@@ -128,7 +130,7 @@ class Project(models.Model):
     '''PPSR PMM Optional Fields'''
     # has_tag = ## maps to PPSR PMM hasTag
     #difficulty_level = ## maps to PPSR PMM difficultyLevel
-    keywords = models.ManyToManyField(Keyword) ## maps to PPSR PMM keyword
+    keywords = models.ManyToManyField(Keyword, blank=True) ## maps to PPSR PMM keyword
     end_date = models.DateTimeField(help_text=_('Date the project ended.'), db_index=True, null=True, ) ## maps to PPSR PMM projectEndDate
 
 
@@ -154,8 +156,8 @@ class Project(models.Model):
     image_dir = models.CharField(max_length= 200,default= '',)
     #image_proj_main = FileField(upload_to=None, max_length=100, **options,)
     #image_proj_main_credit = models.CharField(max_length=300, null=True, blank=True)
-    latitude = models.DecimalField(max_digits=9,decimal_places=6) ## maps to PPSR PMM projectPinLatitude
-    longitude = models.DecimalField(max_digits=9,decimal_places=6) ## maps to PPSR PMM projectPinLongitude
+    latitude = models.DecimalField(max_digits=9,decimal_places=6, blank=True, null=True) ## maps to PPSR PMM projectPinLatitude
+    longitude = models.DecimalField(max_digits=9,decimal_places=6, blank=True, null=True) ## maps to PPSR PMM projectPinLongitude
     # ## maps to PPSR PMM projectGeographicCoverage - geoObject
     # coverage_latitude = models.DecimalField(max_digits=9,decimal_places=6) ## maps to PPSR PMM projectGeographicCoverageCentroidLatitude
     # coverage_longitude = models.DecimalField(max_digits=9,decimal_places=6)# ## maps to PPSR PMM projectGeographicCoverageCentroidLongitude
@@ -237,8 +239,18 @@ class Project(models.Model):
 
 
 
+    # This is to get the user 
+
+
 
     search_fields = ['name','description']
+
+    created_by = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, blank=True, null=True )
+    #lable = 'Upload image',  help_text = 'Choose an image that will in one picure decribe your project'
+    image = models.ImageField(null=True, blank=True, upload_to="project_images")
+
+
+
 
     def get_absolute_url(self):
         # reverse expects the view name
@@ -247,6 +259,11 @@ class Project(models.Model):
     def create_project_platform_UUID():
         # Global UUID by for ARCSCore
         return 'ARCS' + str(uuid.uuid4) # TODO consider replacing ARCS string with configurable string for namespacing
+
+    def get_status_name(self):
+        return STATUS_CHOICES[int(self.status)][1]
+
+
 
     def __str__(self):
         return self.name

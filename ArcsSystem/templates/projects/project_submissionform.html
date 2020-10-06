@@ -2,13 +2,16 @@
 
 {% if user.is_authenticated %}
 
-<form action='.' method='post'>
+<form action='.' method='post' enctype="multipart/form-data">
   {% csrf_token %}
     <p>{% trans "Your account and email will be associated with this submission for follow-up." %}</p>
   <fieldset>
-    {{ form.as_p }}
+    {{ Submission.as_p }}
     <button type='submit' value='Save'>Submit Project to ARCS</button> <!-- TODO replace with django template for  -->
+    
   </fieldset>
+
+
 </form>
 {% else %}
 <p>{% trans "Plese sign in or create an account to add a project." %}</p>

@@ -8,15 +8,40 @@
 
 <article>
   <hgroup class="detail-view">
-    <h1>{{ project.name }}</h1>
+    <h1>{{ object.name }}</h1>
   </hgroup>
 
-  <picture class="detail-view">
+<!--   <picture class="detail-view">
+
     {# TODO implement additional web image format handling #}
     <source srcset="name.webp" type="image/webp" alt="{#TODO alt text#}">{#Webp image support first#}
 		<source srcset="name.jpg" type="image/jpg" alt="{#TODO alt text#}">{#jpg support next#}
-    <img src="{{ project.image_dir }}"  alt="{% blocktrans %}Bild för projektet {{ project.name }}{% endblocktrans %}" width="300" height="300"/>
+    <img src="{{ object.image_dir }}"  alt="{% blocktrans %}Bild för projektet {{ object.name }}{% endblocktrans %}" width="300" height="300"/>
+  </picture> -->
+
+{% if object.image %}
+
+<picture class="detail-view">
+
+<img  src="{{object.image.url}}" alt="{% trans 'Responsive image' %}" style="width: 200px; height: 200px;" />
+
   </picture>
+
+{% else %}
+
+
+{{object.image}}
+
+
+  <div style="height: 100px; background: coral">
+
+
+  <h5 align="center"  > No image</h5>
+  </div>
+
+
+{% endif %}
+
 
   <div class="detail-view">
     <h2>{% trans "Project information" %}</h2>
@@ -24,17 +49,17 @@
 
   <div class="detail-view">
     <h3>{% trans "PROJECT STATUS:" %}</h3>
-    <p>{{ project.status }}</p>
+    <p>{{ object.get_status_name }}</p>
   </div>
 
   <div class="detail-view">
     <h3>{% trans "PROJECT DESCRIPTION:" %}</h3>
-    <p>{{ project.description }}</p>
+    <p>{{ object.description }}</p>
   </div>
 
   <div class="detail-view">
     <h3>{% trans "PROJECT TARGET AUDIENCE:" %}</h3>
-    <p>{{ project.target_audience}}</p>
+    <p>{{ object.target_audience}}</p>
   </div>
 
   <div class="detail-view">
@@ -50,14 +75,16 @@
 
   <div class="detail-view">
     <h2>{% trans "Contact information" %}</h2>
-    <h3>{% trans  "NAME:" %} {{ project.contact_name }}</h3>
-    <h3>{% trans "CONTACT'S ROLE:" %} {{ project.contact_role }}</h3>
-    <h3>{% trans "AFFILIATION:" %} {{ project.contact_affiliation }}</h3>
-    <h3>{% trans "CONTACT EMAIL:" %} {{ project.contact_email }}</h3>
-    <h3>{% trans "CONTACT PHONE:" %} {{ project.contact_phone }}</h3>
+    <h3>{% trans  "NAME:" %} {{ object.contact_name }}</h3>
+    <h3>{% trans "CONTACT'S ROLE:" %} {{ object.contact_role }}</h3>
+    <h3>{% trans "AFFILIATION:" %} {{ object.contact_affiliation }}</h3>
+    <h3>{% trans "CONTACT EMAIL:" %} {{ object.contact_email }}</h3>
+    <h3>{% trans "CONTACT PHONE:" %} {{ object.contact_phone }}</h3>
   </div>
 
 </article>
+
+<br><br><br><br><hr><br><br><br><br>
 
 
 {% endblock content %}
