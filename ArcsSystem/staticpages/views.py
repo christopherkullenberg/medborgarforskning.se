@@ -107,7 +107,7 @@ class PressPostIndexView(ArchiveIndexView):
     queryset = PressPage.objects.all()
     date_field = "pressPublishedDate"
     make_object_list = True
-    allow_future = False
+    allow_future = True
     # Pagination documentation https://docs.djangoproject.com/en/2.2/topics/pagination/
     paginate_by = 3    # Change this to include more posts
 
@@ -116,6 +116,7 @@ class PressPostDateDetailView(DateDetailView):
     template_name = 'staticpages/press_detail.html'
     model = PressPage
     queryset = PressPage.objects.all()
+    allow_future = True
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -184,18 +185,12 @@ class CaseStudies(TemplateView):
 
 class FAQ(TemplateView):
     template_name = 'staticpages/faq.html'
-    model = FAQPage.objects.all()
+    queryset = FAQPage.objects.all()
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["faq"] = self.model
+        context["faq"] = self.queryset
         return context
-
-    def get_submenu(number):
-        model = FAQPage.objects.all()
-        object_list = model.distinct()[:number]
-        return object_list
-
 
     def get_absolute_url(self):
         return reverse('staticpages:faq')
