@@ -10,7 +10,14 @@
         <div class="row">
             <div class="col">
                 {% for instance in additional_resources %}
-                    <p>{{ instance.title }}</p>
+                    {% for block in instance.additional_resources_body %}
+                        {% if block.block_type == 'title' %}
+                            {{ block.value }}
+                        {% endif %}
+                        {% if block.block_type == 'content' %}
+                            {{ block.value }}
+                        {% endif %}
+                    {% endfor %}
                 {% endfor %}
             </div>
         </div>
