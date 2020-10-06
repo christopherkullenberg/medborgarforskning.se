@@ -113,7 +113,7 @@ class BlogPage(Page):
         MultiFieldPanel(Page.promote_panels, "Common page configuration"),
     ]
 
-    def get_absolute_url(self):
+    def get_absolute_url(self, *args, **kwargs):
         #return reverse('blog:archive_date_detail', args={'pk' : str(self.id)})
 
         language_code = translation.get_language()
