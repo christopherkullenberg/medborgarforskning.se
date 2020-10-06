@@ -286,6 +286,8 @@ class WhatsCitizenSciencePage(page_wagtail):
         MultiFieldPanel(page_wagtail.promote_panels, "Common page configuration"),
     ]
 
+
+    parent_page_types = ['staticpages.CitizenSciencePage']
     subpage_types = ['staticpages.SwedishCitizenSciencePage']
     max_count = 1
 

@@ -185,18 +185,12 @@ class CaseStudies(TemplateView):
 
 class FAQ(TemplateView):
     template_name = 'staticpages/faq.html'
-    model = FAQPage.objects.all()
+    queryset = FAQPage.objects.all()
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["faq"] = self.model
+        context["faq"] = self.queryset
         return context
-
-    def get_submenu(number):
-        model = FAQPage.objects.all()
-        object_list = model.distinct()[:number]
-        return object_list
-
 
     def get_absolute_url(self):
         return reverse('staticpages:faq')
