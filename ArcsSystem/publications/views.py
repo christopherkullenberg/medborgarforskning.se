@@ -34,7 +34,7 @@ class Asing_theme_form(forms.Form):
             field.widget.attrs['class'] = "form-control col-md-4"
 
             self.fields[str(th.id)] = field
-            
+
 
 
 # forms end here
@@ -47,12 +47,12 @@ def ChangeThemePub(request):
             for th in Theme.objects.all():
                 pub_ids = th.get_pub_ids()
                 th_id = str(th.id)
-                # if box is checked 
+                # if box is checked
                 if th_id in request.GET:
                     # and pub_id not in theme
                     if pub_id not in pub_ids:
                         # then add pub_id
-                        th.save_pub_ids(pub_ids + [pub_id])   
+                        th.save_pub_ids(pub_ids + [pub_id])
                 # if box in not checked
                 else:
                     # and pub id in theme
@@ -108,6 +108,7 @@ class SearchPublicationsView(ListView):
         object_list = Article.objects.filter(
             Q(title_en__icontains=query) |
             Q(keywords__keyword__icontains=query) |
+            Q(authors__icontains=query) |
             Q(abstract_en__icontains=query)
             ).distinct().order_by(orderquery)
         return object_list
@@ -116,6 +117,7 @@ class SearchPublicationsView(ListView):
         object_list = Article.objects.filter(
             Q(title_en__icontains=query) |
             Q(keywords__keyword__icontains=query) |
+            Q(authors__icontains=query) |
             Q(abstract_en__icontains=query)
             ).distinct()
         return object_list
