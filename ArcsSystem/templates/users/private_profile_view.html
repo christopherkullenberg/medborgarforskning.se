@@ -5,195 +5,206 @@
 {% block content %}
 <h1>Private Profile view</h1>
 
-{% if Admin_project_submissions %}
+<div class="col-md-2">
+    <a class="form-control" href="edit/"> Edit my profile</a>
+    
+</div>
+<br><hr><br>
 
 <div class="custom-container">
 
-<form id="edit-save-private-profile-form" isEditing="false" action="{% url 'userprofile_private_view' %}" method="POST">
-    {% csrf_token %}
-
-    <button> submit </button>
+    {% if Admin_project_submissions %}
 
 
 
-<div class="row">
-    {% for ProjectEntry in Admin_project_submissions %}
-    <div style="padding-left: 20px; padding-right: 20px" class="col-lg-3 col-md-4 col-xs-6 mb-5">
-        <div class="project-item">
-            <input class="form-control " type="checkbox" name= "acpt_{{ProjectEntry.id}}">
-            <div class="row">
-                <div class=" col">  
-                    <div  class="col project-items-justify blackFieldWhiteText">
-                        <h4 align="center"><a style="color: white; font-size: 16px" id="project-items-link" href="{% url 'projects:project_submission_detail' ProjectEntry.id %}"> {{ ProjectEntry.name|truncatechars:20 }}</a></h4>
+    <form id="edit-save-private-profile-form" isEditing="false" action="{% url 'userprofile_private_view' %}" method="POST">
+        {% csrf_token %}
+
+        <button class="col-md-2 form-control btn-success"> Aprove publications </button>
+        <br>
+
+
+
+        <div class="row">
+            {% for ProjectEntry in Admin_project_submissions %}
+            <div style="padding-left: 20px; padding-right: 20px" class="col-lg-3 col-md-4 col-xs-6 mb-5">
+                <div class="project-item">
+                    <input class="form-control " type="checkbox" name= "acpt_{{ProjectEntry.id}}">
+                    <div class="row">
+                        <div class=" col">  
+                            <div  class="col project-items-justify blackFieldWhiteText">
+                                <h4 align="center"><a style="color: white; font-size: 16px" id="project-items-link" href="{% url 'projects:project_submission_detail' ProjectEntry.id %}"> {{ ProjectEntry.name|truncatechars:20 }}</a></h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        {% if ProjectEntry.image %}
+                        <div class="col">
+                            <img class="mg-fluid w-100" src="{{ProjectEntry.image.url}}" alt="{% trans 'Responsive image' %}"/>
+                        </div>
+                        {% else %}
+                        <div class="col" >
+                            <div style="height: 20px; background: coral; margin-bottom: 5px">
+                                <h5 align="center"  > No image</h5>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="col" style="padding-right: 5px; padding-left: 5px; margin-top: 3px">
+                        <div class="row Lato-font ">
+                            <div class="col" >
+                                <span class="font-weight-bold">PROJECT FOCUS: </span> <span >{{ProjectEntry.aim|truncatechars:40}}</span>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row Lato-font">
+
+                            <div class="col">
+                                <span >DESCRIPTION: </span> <span >{{ProjectEntry.description|truncatechars:40}}</span>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row Lato-font">
+                            <div class="col ">
+                                STATUS: {{ProjectEntry.get_status_name}}
+                            </div>
+                        </div>
+                        <hr>
+                        keywords:
+                        {% for keyword in ProjectEntry.keywords.all %}
+                        <span style="background: black; color: white; margin: 3px; padding: 3px; border-radius: 5px">{{keyword}} </span> 
+                        {% endfor %}
                     </div>
                 </div>
             </div>
-            <div class="row">
-                {% if ProjectEntry.image %}
-                <div class="col">
-                    <img class="mg-fluid w-100" src="{{ProjectEntry.image.url}}" alt="{% trans 'Responsive image' %}"/>
-                </div>
-                {% else %}
-                <div class="col" >
-                    <div style="height: 20px; background: coral; margin-bottom: 5px">
-                        <h5 align="center"  > No image</h5>
-                    </div>
-                </div>
-                {% endif %}
-            </div>
-            <div class="col" style="padding-right: 5px; padding-left: 5px; margin-top: 3px">
-                <div class="row Lato-font ">
-                    <div class="col" >
-                        <span class="font-weight-bold">PROJECT FOCUS: </span> <span >{{ProjectEntry.aim|truncatechars:40}}</span>
-                    </div>
-                </div>
-                <hr>
-                <div class="row Lato-font">
+            {% endfor %}
+        </div>
+    </form>
 
+    {% endif %}
+
+
+
+
+    <br>
+    <hr>
+    <h5> My projects </h5>
+
+    <div class="row">
+        {% for ProjectEntry in My_approved_projects %}
+        <div style="padding-left: 20px; padding-right: 20px" class="col-lg-3 col-md-4 col-xs-6 mb-5">
+            <div class="project-item">
+                <div class="row">
+                    <div class=" col">  
+                        <div  class="col project-items-justify blackFieldWhiteText">
+                            <h4 align="center"><a style="color: white; font-size: 16px" id="project-items-link" href="{% url 'projects:project_detail' ProjectEntry.id %}"> {{ ProjectEntry.name|truncatechars:20 }}</a></h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    {% if ProjectEntry.image %}
                     <div class="col">
-                        <span >DESCRIPTION: </span> <span >{{ProjectEntry.description|truncatechars:40}}</span>
+                        <img class="mg-fluid w-100" src="{{ProjectEntry.image.url}}" alt="{% trans 'Responsive image' %}"/>
                     </div>
-                </div>
-                <hr>
-                <div class="row Lato-font">
-                    <div class="col ">
-                        STATUS: {{ProjectEntry.get_status_name}}
+                    {% else %}
+                    <div class="col" >
+                        <div style="height: 20px; background: coral; margin-bottom: 5px">
+                            <h5 align="center"  > No image</h5>
+                        </div>
                     </div>
+                    {% endif %}
                 </div>
-                <hr>
-                keywords:
-                {% for keyword in ProjectEntry.keywords.all %}
-                <span style="background: black; color: white; margin: 3px; padding: 3px; border-radius: 5px">{{keyword}} </span> 
-                {% endfor %}
+                <div class="col" style="padding-right: 5px; padding-left: 5px; margin-top: 3px">
+                    <div class="row Lato-font ">
+                        <div class="col" >
+                            <span class="font-weight-bold">PROJECT FOCUS: </span> <span >{{ProjectEntry.aim|truncatechars:40}}</span>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row Lato-font">
+
+                        <div class="col">
+                            <span >DESCRIPTION: </span> <span >{{ProjectEntry.description|truncatechars:40}}</span>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row Lato-font">
+                        <div class="col ">
+                            STATUS: {{ProjectEntry.get_status_name}}
+                        </div>
+                    </div>
+                    <hr>
+                    keywords:
+                    {% for keyword in ProjectEntry.keywords.all %}
+                    <span style="background: black; color: white; margin: 3px; padding: 3px; border-radius: 5px">{{keyword}} </span> 
+                    {% endfor %}
+                </div>
             </div>
         </div>
+        {% endfor %}
     </div>
-    {% endfor %}
-</div>
-</form>
-
-{% endif %}
 
 
+    <br> <br> <hr>
+
+    <h5> My pending projects </h5>
 
 
-<br>
-<hr>
-<h5> My projects </h5>
 
-<div class="row">
-    {% for ProjectEntry in My_approved_projects %}
-    <div style="padding-left: 20px; padding-right: 20px" class="col-lg-3 col-md-4 col-xs-6 mb-5">
-        <div class="project-item">
-            <div class="row">
-                <div class=" col">  
-                    <div  class="col project-items-justify blackFieldWhiteText">
-                        <h4 align="center"><a style="color: white; font-size: 16px" id="project-items-link" href="{% url 'projects:project_detail' ProjectEntry.id %}"> {{ ProjectEntry.name|truncatechars:20 }}</a></h4>
+    <div class="row">
+        {% for ProjectEntry in My_pending_projects %}
+        <div style="padding-left: 20px; padding-right: 20px" class="col-lg-3 col-md-4 col-xs-6 mb-5">
+            <div class="project-item">
+                <div class="row">
+                    <div class=" col">  
+                        <div  class="col project-items-justify blackFieldWhiteText">
+                            <h4 align="center"><a style="color: white; font-size: 16px" id="project-items-link" href="{% url 'projects:project_submission_detail' ProjectEntry.id %}"> {{ ProjectEntry.name|truncatechars:20 }}</a></h4>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                {% if ProjectEntry.image %}
-                <div class="col">
-                    <img class="mg-fluid w-100" src="{{ProjectEntry.image.url}}" alt="{% trans 'Responsive image' %}"/>
-                </div>
-                {% else %}
-                <div class="col" >
-                    <div style="height: 20px; background: coral; margin-bottom: 5px">
-                        <h5 align="center"  > No image</h5>
-                    </div>
-                </div>
-                {% endif %}
-            </div>
-            <div class="col" style="padding-right: 5px; padding-left: 5px; margin-top: 3px">
-                <div class="row Lato-font ">
-                    <div class="col" >
-                        <span class="font-weight-bold">PROJECT FOCUS: </span> <span >{{ProjectEntry.aim|truncatechars:40}}</span>
-                    </div>
-                </div>
-                <hr>
-                <div class="row Lato-font">
-
+                <div class="row">
+                    {% if ProjectEntry.image %}
                     <div class="col">
-                        <span >DESCRIPTION: </span> <span >{{ProjectEntry.description|truncatechars:40}}</span>
+                        <img class="mg-fluid w-100" src="{{ProjectEntry.image.url}}" alt="{% trans 'Responsive image' %}"/>
                     </div>
-                </div>
-                <hr>
-                <div class="row Lato-font">
-                    <div class="col ">
-                        STATUS: {{ProjectEntry.get_status_name}}
+                    {% else %}
+                    <div class="col" >
+                        <div style="height: 20px; background: coral; margin-bottom: 5px">
+                            <h5 align="center"  > No image</h5>
+                        </div>
                     </div>
+                    {% endif %}
                 </div>
-                <hr>
-                keywords:
-                {% for keyword in ProjectEntry.keywords.all %}
-                <span style="background: black; color: white; margin: 3px; padding: 3px; border-radius: 5px">{{keyword}} </span> 
-                {% endfor %}
+                <div class="col" style="padding-right: 5px; padding-left: 5px; margin-top: 3px">
+                    <div class="row Lato-font ">
+                        <div class="col" >
+                            <span class="font-weight-bold">PROJECT FOCUS: </span> <span >{{ProjectEntry.aim|truncatechars:40}}</span>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row Lato-font">
+
+                        <div class="col">
+                            <span >DESCRIPTION: </span> <span >{{ProjectEntry.description|truncatechars:40}}</span>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row Lato-font">
+                        <div class="col ">
+                            STATUS: {{ProjectEntry.get_status_name}}
+                        </div>
+                    </div>
+                    <hr>
+                    keywords:
+                    {% for keyword in ProjectEntry.keywords.all %}
+                    <span style="background: black; color: white; margin: 3px; padding: 3px; border-radius: 5px">{{keyword}} </span> 
+                    {% endfor %}
+                </div>
             </div>
         </div>
+        {% endfor %}
     </div>
-    {% endfor %}
-</div>
 
-
-<br> <br> <hr>
-
-<h5> My pending projects </h5>
-
-
-
-<div class="row">
-    {% for ProjectEntry in My_pending_projects %}
-    <div style="padding-left: 20px; padding-right: 20px" class="col-lg-3 col-md-4 col-xs-6 mb-5">
-        <div class="project-item">
-            <div class="row">
-                <div class=" col">  
-                    <div  class="col project-items-justify blackFieldWhiteText">
-                        <h4 align="center"><a style="color: white; font-size: 16px" id="project-items-link" href="{% url 'projects:project_submission_detail' ProjectEntry.id %}"> {{ ProjectEntry.name|truncatechars:20 }}</a></h4>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                {% if ProjectEntry.image %}
-                <div class="col">
-                    <img class="mg-fluid w-100" src="{{ProjectEntry.image.url}}" alt="{% trans 'Responsive image' %}"/>
-                </div>
-                {% else %}
-                <div class="col" >
-                    <div style="height: 20px; background: coral; margin-bottom: 5px">
-                        <h5 align="center"  > No image</h5>
-                    </div>
-                </div>
-                {% endif %}
-            </div>
-            <div class="col" style="padding-right: 5px; padding-left: 5px; margin-top: 3px">
-                <div class="row Lato-font ">
-                    <div class="col" >
-                        <span class="font-weight-bold">PROJECT FOCUS: </span> <span >{{ProjectEntry.aim|truncatechars:40}}</span>
-                    </div>
-                </div>
-                <hr>
-                <div class="row Lato-font">
-
-                    <div class="col">
-                        <span >DESCRIPTION: </span> <span >{{ProjectEntry.description|truncatechars:40}}</span>
-                    </div>
-                </div>
-                <hr>
-                <div class="row Lato-font">
-                    <div class="col ">
-                        STATUS: {{ProjectEntry.get_status_name}}
-                    </div>
-                </div>
-                <hr>
-                keywords:
-                {% for keyword in ProjectEntry.keywords.all %}
-                <span style="background: black; color: white; margin: 3px; padding: 3px; border-radius: 5px">{{keyword}} </span> 
-                {% endfor %}
-            </div>
-        </div>
-    </div>
-    {% endfor %}
 </div>
 
 

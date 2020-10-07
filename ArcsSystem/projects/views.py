@@ -16,6 +16,10 @@ from .forms import (
     ProjectEntryUpdateManagementForm
 )
 
+from django.forms.models import model_to_dict
+from django.http import Http404
+
+
 '''
 # Quick Fuction based template
 def template_view(request):
@@ -53,6 +57,12 @@ class ProjectDetailView(DetailView):
 
     def get_table_data(self):
         return [self.object]
+
+    def get_context_data(self, **kwargs):
+        context = super(ProjectDetailView, self).get_context_data(**kwargs)
+        if self.request.user.is_superuser or int(self.request.user.id) == int(self.kwargs["pk"]):
+            context['edit'] = True
+        return context
 
 
 class SearchResultsView(ListView):
@@ -94,19 +104,74 @@ def ProjectSubmissionView(request, pk):
                 return render(request, template_name, context)
             else:
                 raise Http404
+    raise Http404
+
+# edit part here
+
+def ProjectEditView(request, pk):
+    template_name = 'projects/project_submissionform.html'
+
+    # new page : get page
+    if request.method == "GET":
+        if request.user.is_authenticated:
+            project = ProjectEntry.objects.get(id=pk)
+            if int(request.user.id) == project.created_by.id or request.user.is_superuser:
+                context = {"Submission": InitialProjectSubmissionModelForm(initial = model_to_dict(project))}
+
+                return render(request, template_name, context)
+            else:
+                raise Http404
 
 
-    # this is the save sub-form part
-    # if request.method == "POST":
-    #     #check if user
-    #     if request.user.is_authenticated:
-    #         form = InitialProjectSubmissionModelForm(request.POST, request.FILES)
-    #         if form.is_valid():
-    #             form.instance.created_by = request.user
-    #             form.save()
-    #             return HttpResponseRedirect(reverse('userprofile_private_view'))
-    #         else:
-    #             raise Http404
+    #this is the save sub-form part
+    if request.method == "POST":
+        #check if user
+        if request.user.is_authenticated:
+            project = get_object_or_404(ProjectEntry, id=pk)
+            form = InitialProjectSubmissionModelForm(request.POST, request.FILES, instance=project)
+            # for not valid then stop
+            if not form.is_valid():
+                raise Http404
+            # if user it the owner or admin
+            if int(request.user.id) == project.created_by.id or request.user.is_superuser:
+                form.save()
+                return HttpResponseRedirect(reverse('userprofile_private_view'))
+            # else stop
+            else:
+                raise Http404
+    raise Http404
+
+def ProjectSubmissionEditView(request, pk):
+    template_name = 'projects/project_submissionform.html'
+
+
+    # new page : get page
+    if request.method == "GET":
+        if request.user.is_authenticated:
+            project = ProjectSubmission.objects.get(id=pk)
+            if int(request.user.id) == project.created_by.id or request.user.is_superuser:
+                context = {"Submission": InitialProjectSubmissionModelForm(initial = model_to_dict(project))}
+                return render(request, template_name, context)
+            else:
+                raise Http404
+
+    #this is the save sub-form part
+    if request.method == "POST":
+        #check if user
+        if request.user.is_authenticated:
+            project = get_object_or_404(ProjectSubmission, id=pk)
+            form = InitialProjectSubmissionModelForm(request.POST, request.FILES, instance=project)
+            # for not valid then stop
+            if not form.is_valid():
+                raise Http404
+            # if user it the owner or admin
+            if int(request.user.id) == project.created_by.id or request.user.is_superuser:
+                form.save()
+                return HttpResponseRedirect(reverse('userprofile_private_view'))
+            # else stop
+            else:
+                raise Http404
+    raise Http404
 
 
 def ProjectSubmissionCreateView(request):
@@ -136,6 +201,8 @@ def ProjectSubmissionCreateView(request):
                 form.save()
                 return HttpResponseRedirect(reverse('userprofile_private_view'))
             else:
+
+
                 raise Http404
 
 # class ProjectSubmissionCreateView_old(CreateView):

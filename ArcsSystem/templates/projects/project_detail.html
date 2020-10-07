@@ -6,6 +6,12 @@
 
 {% block content %}
 
+{% if edit %}
+<div class="col-md-2">
+<a class="form-control" href="edit/">edit</a>
+</div>
+{% endif %}
+
 <article>
   <hgroup class="detail-view">
     <h1>{{ object.name }}</h1>

@@ -4,6 +4,8 @@ from .views import ProjectListView
 from .views import SearchResultsView
 from .views import ProjectSubmissionCreateView
 from .views import ProjectSubmissionView
+from .views import ProjectEditView
+from .views import ProjectSubmissionEditView
 
 
 #from .views import #insertviewname
@@ -15,10 +17,23 @@ urlpatterns = [
         name='project_list'),
     path('add/', ProjectSubmissionCreateView, # CK previous attempt TODO replacing with CreateView
          name='project_submissionform' ),
+
+    # show pro
     path('<int:pk>/', ProjectDetailView.as_view(),
         name='project_detail'),
+
+    # edit my pro
+    path('<int:pk>/edit/', ProjectEditView,
+        name='project_edit'),
+
+    # show my sub
     path('project_submission/<int:pk>/', ProjectSubmissionView,
         name='project_submission_detail'),
+
+    # edit my sub
+    path('project_submission/<int:pk>/edit', ProjectSubmissionEditView,
+        name='project_submission_edit'),
+
     path('search/', SearchResultsView.as_view(),
          name ='search_results'),
 

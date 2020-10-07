@@ -2,7 +2,7 @@
 
 {% if user.is_authenticated %}
 
-<form action='.' method='post' enctype="multipart/form-data">
+<form  method='post' enctype="multipart/form-data">
   {% csrf_token %}
     <p>{% trans "Your account and email will be associated with this submission for follow-up." %}</p>
   <fieldset>

@@ -60,12 +60,8 @@ def UserPrivateProfilePageView(request):
     if request.method == "POST":
         #check if admin
         if request.user.is_superuser:
-
-
             for name in request.POST:
-
                 if "acpt_" in name:
-
                     accept_subForm(name[5:])
         return HttpResponseRedirect(reverse('userprofile_private_view'))
 
@@ -89,17 +85,25 @@ def accept_subForm(id):
 
 
 
-def create_admin_form():
-    return [[forms.BooleanField(label="", required=False, widget=forms.TextInput(attrs={'name':'off'})), sub] for sub in ProjectSubmission.objects.all()]
-
-
 class UserEidtMyPageView(TemplateView):
 
-    template_name = "users/private_profile_view.html"
+    template_name = "users/profile_edit_view.html"
 
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
-            form = CustomUserPrivateForm(initial={'username': request.user.username, 'email': request.user.email,'title': request.user.title,'bio_general': request.user.bio_general,'bio_research_interest': request.user.bio_research_interest, 'personal_website_address': request.user.personal_website_address, 'institution': request.user.institution})
+            form = CustomUserPrivateForm(initial={
+
+                'username': request.user.username, 
+                'email': request.user.email,
+                'title': request.user.title,
+                'bio_general': request.user.bio_general,
+                'bio_research_interest': request.user.bio_research_interest,
+                'personal_website_address': request.user.personal_website_address,
+                'institution': request.user.institution,
+                "first_name":  request.user.first_name, 
+                "last_name": request.user.last_name,
+
+                  })
             for key, value in form.fields.items():
                 value.disabled = True
             return render(request, self.template_name, {'form': form})
@@ -120,6 +124,8 @@ class UserEidtMyPageView(TemplateView):
                 # request.user.institution = form["institution"].value()
                 request.user.personal_website_address = form["personal_website_address"].value()
                 request.user.institution = form["institution"].value()
+                request.user.first_name = form["first_name"].value()
+                request.user.last_name = form["last_name"].value()
                 request.user.save()
                 return redirect("userprofile_private_view")
             return render(request, self.template_name, {'form': form})

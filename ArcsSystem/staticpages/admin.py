@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django_summernote.admin import SummernoteModelAdmin
-from .models import Page
+from .models import Page, TermsPage
 # Register your models here.
 
 class PageAdmin(SummernoteModelAdmin):
@@ -10,4 +10,5 @@ class PageAdmin(SummernoteModelAdmin):
 
 #admin.site.register(Blog, BlogAdmin)
 admin.site.register(Page, PageAdmin)
+admin.site.register(TermsPage)
      

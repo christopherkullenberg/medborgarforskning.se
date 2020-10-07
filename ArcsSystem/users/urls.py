@@ -1,5 +1,6 @@
 from django.urls import path
 from users.views import UserPrivateProfilePageView, UserPublicProfilePageView, AcceptTermsPageView, UserEidtMyPageView
+from django.views.decorators.csrf import csrf_exempt
 #from .views import #insertviewname
 
 

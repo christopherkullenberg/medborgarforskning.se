@@ -55,6 +55,9 @@ class CustomUser(AbstractUser):
     def __str__(self):
         return self.username
 
+    def get_first_name(self):
+        return self.first_name
+
 class InterestArea(models.Model):
     interestArea = models.TextField()
     def __str__(self):

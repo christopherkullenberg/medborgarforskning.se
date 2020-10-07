@@ -22,7 +22,7 @@ class CustomUserPrivateForm(UserChangeForm):
 
     class Meta:
         model = get_user_model()
-        fields = ('username', 'email', 'title', 'bio_general', 'bio_research_interest', 'personal_website_address')
+        fields = ('username', 'email', 'title', 'bio_general', 'bio_research_interest', 'personal_website_address', "first_name", "last_name")
 
     def __init__(self, *args, **kwargs):
 

@@ -112,7 +112,7 @@
 									  	<a href="{% url 'userprofile_private_view' %}">
 											<img class="main-media-btns" src="{% static 'icons/Account_Circle_Icon_5.png' %}" alt="{% trans 'Profile icon for login and account details' %}"/>
 									  		<br>
-											<strong>{% trans "My page" %}</strong>
+											<strong>{{user.get_first_name}}</strong>
 										</a>
 								</button>
 							</div>

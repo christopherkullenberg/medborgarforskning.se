@@ -420,6 +420,10 @@ body, .header-main-menu-body {
     border: 1px solid;
     border-color: green;
     margin-left: 20px;
+
+    padding-right: 10px;
+
+
     margin-bottom: 40px;
     border-radius: 3px 3px 3px 3px;
 }

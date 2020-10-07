@@ -3,7 +3,7 @@
 {% block content %}
 <h1>Private Profile view</h1>
 
-<form id="edit-save-private-profile-form" isEditing="false" action="{% url 'userprofile_private_view' %}" method="POST">
+<form id="edit-save-private-profile-form" isEditing="false" method="POST">
     {% csrf_token %}
     {{ form.as_p }}
     <button type = "submit" id="edit-save-private-profile-submit-button" href="#">Start editing</button>
