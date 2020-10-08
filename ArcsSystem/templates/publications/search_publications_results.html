@@ -7,12 +7,20 @@
 
 {% block content %}
 
+<h1>Search results:<h1>
+
+<p>Your search generated {{pub_len}} hits in {{search_time}} Milliseconds</p>
+
 {% for article in object_list %}
-<div class="post-entry">
-  <p><a href="{% url 'publications:article_publications_detail' article.pk %}">{{ article.py }}. {{ article.title }}</a></p>
-  <p>{{ article.authors }}<p>
+<div class="search-list">
+  <p><a href="{{ article.get_absolute_url }}">{{ article.title }}</a> {{ article.py }} {{ article.authors }} </p>
+  <p>{{ article.source }} Volume: {{ article.volume }} Issue: {{ article.issue }} <a href="https://doi.org/{{ article.doi }}">Fulltext</a></p>
 </div>
 {% endfor %}
+
+
+
+
 
 
 

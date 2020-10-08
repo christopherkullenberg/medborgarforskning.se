@@ -14,6 +14,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 
 from django.db.models import Q
+from timeit import default_timer as timer
 
 # forms is here
 
@@ -94,10 +95,17 @@ class SearchPublicationsView(ListView):
     model = Article
     template_name = 'publications/search_publications_results.html'
 
+    def get_context_data(self, **kwargs):
+        context = super(SearchPublicationsView, self).get_context_data(**kwargs)
+        context['pub_len'] = self.pub_len
+        context['search_time'] = self.search_time
+        return context
 
     def get_queryset(self):
         query = self.request.GET.get('q')
+        searchmode = self.request.GET.get('searchmode')
         sortmethod = self.request.GET.get('sortmethod')
+
         if sortmethod == "year":
             orderquery = "py"
         elif sortmethod == "title":
@@ -105,13 +113,34 @@ class SearchPublicationsView(ListView):
         else:
             orderquery = "authors"
 
-        object_list = Article.objects.filter(
-            Q(title_en__icontains=query) |
-            Q(keywords__keyword__icontains=query) |
-            Q(authors__icontains=query) |
-            Q(abstract_en__icontains=query)
-            ).distinct().order_by(orderquery)
+        start = timer()
+        if searchmode == "author":
+            object_list = Article.objects.filter(
+                Q(authors__icontains=query)
+                ).distinct().order_by(orderquery)
+
+
+        elif searchmode == "keyword":
+            object_list = Article.objects.filter(
+                Q(keywords__keyword__icontains=query)
+                ).distinct().order_by(orderquery)
+
+
+        else:
+            searchmode == "general"
+
+            object_list = Article.objects.filter(
+                Q(title_en__icontains=query) |
+                Q(keywords__keyword__icontains=query) |
+                Q(abstract_en__icontains=query)
+                ).distinct().order_by(orderquery)
+        end = timer()
+        searchtime = round((end - start) * 1000, 2)
+        self.pub_len = len(object_list)
+        self.search_time = searchtime
         return object_list
+
+
 
     def get_queryset_template(query):
         object_list = Article.objects.filter(
