@@ -39,6 +39,7 @@ class Post(models.Model):
         verbose_name_plural = _('Posts')
 
     slug = models.SlugField()
+<<<<<<< HEAD
     title = models.CharField(
         db_index=True,
         max_length=100,
@@ -52,6 +53,10 @@ class Post(models.Model):
     published = models.DateField(
         db_index=True,
         )# todo make name more focused on date like datapublished - could be confused with published status
+=======
+    title = models.CharField(max_length=100, default=_('title'))
+    publishedDate = models.DateField()# todo make name more focused on date like datapublished - could be confused with published status
+>>>>>>> cms
     content = models.TextField() #summernote field
     tags = TaggableManager()
 
@@ -62,9 +67,9 @@ class Post(models.Model):
     def get_absolute_url(self):
         #return reverse('blog:archive_date_detail', args={'pk' : str(self.id)})
         return reverse('blog:archive_date_detail',
-                       kwargs={'year' : self.published.year,
-                               'month' : self.published.month,
-                               'day' : self.published.day,
+                       kwargs={'year' : self.publishedDate.year,
+                               'month' : self.publishedDate.month,
+                               'day' : self.publishedDate.day,
                                'slug' : self.slug #change from pk id
                                })
         # instance.published|date:'Y', instance.published|date:'m', instance.published|date:'d' instance.id
@@ -80,73 +85,73 @@ class Author(models.Model):
     def __str__(self):
         return self.name
 
-class BlogPageTag(TaggedItemBase):
-    content_object = ParentalKey(
-        'BlogPage',
-        related_name='tagged_items',
-        on_delete=models.CASCADE
-    )
-
-
-class BlogPage(Page):
-    ''' Blog page Database fields'''
-
-    template = 'blog/blog_list.html'
-
-    blogAuthor = models.CharField(max_length=255)
-    authorEmail = models.EmailField()
-    publishedDate = models.DateField('Post date')
-    blogTags = ClusterTaggableManager(through=BlogPageTag, blank=True)
-
-    body = StreamField([
-        ('title', blocks.CharBlock(classname='full title')),
-        ('content', blocks.RichTextBlock()),
-    ])
-
-
-    # Search index configuration
-
-    search_fields = Page.search_fields + [
-        index.SearchField('body'),
-        index.FilterField('publishedDate'),
-        index.FilterField('blogTags'),
-    ]
-
-    # Editor panels configuration
-    content_panels = Page.content_panels + [
-        FieldPanel('blogAuthor'),
-        FieldPanel('authorEmail'),
-        FieldPanel('publishedDate'),
-        StreamFieldPanel('body'),
-        FieldPanel('blogTags'),
-    ]
-
-    promote_panels = [
-        MultiFieldPanel(Page.promote_panels, "Common page configuration"),
-    ]
-
-    def get_absolute_url(self, *args, **kwargs):
-        #return reverse('blog:archive_date_detail', args={'pk' : str(self.id)})
-
-        language_code = translation.get_language()
-        if language_code == 'sv':
-            return reverse('blog:archive_date_detail',
-                           kwargs={'year' : self.publishedDate.year,
-                                   'month' : self.publishedDate.month,
-                                   'day' : self.publishedDate.day,
-                                   'slug' : self.slug_sv #change from pk id
-                                   })
-
-        else:
-            return reverse('blog:archive_date_detail',
-                           kwargs={'year' : self.publishedDate.year,
-                                   'month' : self.publishedDate.month,
-                                   'day' : self.publishedDate.day,
-                                   'slug' : self.slug_en #change from pk id
-                                   })
-
-
-# @receiver(pre_save, sender=BlogPage)
+# class BlogPageTag(TaggedItemBase):
+#     content_object = ParentalKey(
+#         'BlogPage',
+#         related_name='tagged_items',
+#         on_delete=models.CASCADE
+#     )
+#
+#
+# class BlogPage(Page):
+#     ''' Blog page Database fields'''
+#
+#     template = 'blog/blog_list.html'
+#
+#     blogAuthor = models.CharField(max_length=255)
+#     authorEmail = models.EmailField()
+#     publishedDate = models.DateField('Post date')
+#     blogTags = ClusterTaggableManager(through=BlogPageTag, blank=True)
+#
+#     body = StreamField([
+#         ('title', blocks.CharBlock(classname='full title')),
+#         ('content', blocks.RichTextBlock()),
+#     ])
+#
+#
+#     # Search index configuration
+#
+#     search_fields = Page.search_fields + [
+#         index.SearchField('body'),
+#         index.FilterField('publishedDate'),
+#         index.FilterField('blogTags'),
+#     ]
+#
+#     # Editor panels configuration
+#     content_panels = Page.content_panels + [
+#         FieldPanel('blogAuthor'),
+#         FieldPanel('authorEmail'),
+#         FieldPanel('publishedDate'),
+#         StreamFieldPanel('body'),
+#         FieldPanel('blogTags'),
+#     ]
+#
+#     promote_panels = [
+#         MultiFieldPanel(Page.promote_panels, "Common page configuration"),
+#     ]
+#
+#     def get_absolute_url(self, *args, **kwargs):
+#         #return reverse('blog:archive_date_detail', args={'pk' : str(self.id)})
+#
+#         language_code = translation.get_language()
+#         if language_code == 'sv':
+#             return reverse('blog:archive_date_detail',
+#                            kwargs={'year' : self.publishedDate.year,
+#                                    'month' : self.publishedDate.month,
+#                                    'day' : self.publishedDate.day,
+#                                    'slug' : self.slug_sv #change from pk id
+#                                    })
+#
+#         else:
+#             return reverse('blog:archive_date_detail',
+#                            kwargs={'year' : self.publishedDate.year,
+#                                    'month' : self.publishedDate.month,
+#                                    'day' : self.publishedDate.day,
+#                                    'slug' : self.slug_en #change from pk id
+#                                    })
+#
+#
+@receiver(pre_save, sender=Post)
 def receiver(sender,instance, **kwargs):
     if instance.title_sv != None and instance.slug_sv == None:
         title_sv = spinalcase(instance.title_sv)
@@ -154,7 +159,7 @@ def receiver(sender,instance, **kwargs):
         instance.save()
 
 
-page_published.connect(receiver, sender=BlogPage)
+page_published.connect(receiver, sender=Post)
 
 def lowercase(string):
     """Convert string into lower case.

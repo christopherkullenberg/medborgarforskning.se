@@ -1,6 +1,6 @@
 from modeltranslation.translator import translator, TranslationOptions
 from modeltranslation.decorators import register
-from .models import  Post, Author, BlogPage
+from .models import  Post, Author
 
 # Supported fields - https://django-modeltranslation.readthedocs.io/en/latest/registration.html#supported-fields-matrix
 
@@ -19,8 +19,8 @@ translator.register(Post, PostTranslationOptions)
 
 #translator.register(Author, AuthorTranslationOptions)
 
-@register(BlogPage)
-class BlogPageTranslationOptions(TranslationOptions):
-    fields = (
-        'body',
-    )
+# @register(BlogPage)
+# class BlogPageTranslationOptions(TranslationOptions):
+#     fields = (
+#         'body',
+#     )
