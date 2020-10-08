@@ -9,6 +9,7 @@ from .views import TermsPageView
 from .views import PrivacyPageView
 from .views import PressPostIndexView
 from .views import PressPostDateDetailView
+from .views import SourcecodePageView
 from .views import PressPostYearArchiveView
 from .views import PressPostMonthArchiveView
 from .views import WhatsCitizenScience
@@ -29,6 +30,7 @@ urlpatterns = [
     path('terms/', TermsPageView.as_view(), name='terms_detail'),
     path('privacy/cookies/', TermsPageView.as_view(), name='cookies_detail'),
     path('privacy/', PrivacyPageView.as_view(), name='privacy_detail'),
+    path('sourcecode/', SourcecodePageView.as_view(), name='sourcecode_detail'),
 
     path('press/', PressPostIndexView.as_view(model=PressPage), name='press_list'), # the press/ view will be static parent to press related subpages
     path('press/<int:year>/',

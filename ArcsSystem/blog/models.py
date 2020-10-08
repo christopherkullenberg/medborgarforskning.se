@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from django.utils.translation import ugettext as _
 from django.utils import translation
 from django.db.models.signals import pre_save
 from django.dispatch import receiver
@@ -8,17 +9,17 @@ from taggit.managers import TaggableManager
 from django.urls import reverse
 from django.conf import settings
 
-from wagtail.core.models import Page
-from wagtail.core.fields import StreamField
-from wagtail.core import blocks
-from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel, MultiFieldPanel
-from wagtail.images.blocks import ImageChooserBlock
-from wagtail.search import index
-from wagtail.core.signals import page_published
+# from wagtail.core.models import Page
+# from wagtail.core.fields import StreamField
+# from wagtail.core import blocks
+# from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel, MultiFieldPanel
+# from wagtail.images.blocks import ImageChooserBlock
+# from wagtail.search import index
+# from wagtail.core.signals import page_published
 
-from modelcluster.fields import ParentalKey
-from modelcluster.contrib.taggit import ClusterTaggableManager
-from taggit.models import TaggedItemBase
+# from modelcluster.fields import ParentalKey
+# from modelcluster.contrib.taggit import ClusterTaggableManager
+# from taggit.models import TaggedItemBase
 
 import datetime
 import re
@@ -146,48 +147,48 @@ class Author(models.Model):
 #                                    })
 #
 #
-@receiver(pre_save, sender=Post)
-def receiver(sender,instance, **kwargs):
-    if instance.title_sv != None and instance.slug_sv == None:
-        title_sv = spinalcase(instance.title_sv)
-        instance.slug_sv = title_sv
-        instance.save()
-
-
-page_published.connect(receiver, sender=Post)
-
-def lowercase(string):
-    """Convert string into lower case.
-    Args:
-        string: String to convert.
-    Returns:
-        string: Lowercase case string.
-    """
-
-    return str(string).lower()
-
-def snakecase(string):
-    """Convert string into snake case.
-    Join punctuation with underscore
-    Args:
-        string: String to convert.
-    Returns:
-        string: Snake cased string.
-    """
-
-    string = re.sub(r"[\-\.\s]", '_', str(string))
-    if not string:
-        return string
-    return lowercase(string[0]) + re.sub(r"[A-Z]", lambda matched: '_' + lowercase(matched.group(0)), string[1:])
-
-
-def spinalcase(string):
-    """Convert string into spinal case.
-    Join punctuation with hyphen.
-    Args:
-        string: String to convert.
-    Returns:
-        string: Spinal cased string.
-    """
-
-    return re.sub(r"_", "-", snakecase(string))
+# @receiver(pre_save, sender=Post)
+# def receiver(sender,instance, **kwargs):
+#     if instance.title_sv != None and instance.slug_sv == None:
+#         title_sv = spinalcase(instance.title_sv)
+#         instance.slug_sv = title_sv
+#         instance.save()
+#
+#
+# page_published.connect(receiver, sender=Post)
+#
+# def lowercase(string):
+#     """Convert string into lower case.
+#     Args:
+#         string: String to convert.
+#     Returns:
+#         string: Lowercase case string.
+#     """
+#
+#     return str(string).lower()
+#
+# def snakecase(string):
+#     """Convert string into snake case.
+#     Join punctuation with underscore
+#     Args:
+#         string: String to convert.
+#     Returns:
+#         string: Snake cased string.
+#     """
+#
+#     string = re.sub(r"[\-\.\s]", '_', str(string))
+#     if not string:
+#         return string
+#     return lowercase(string[0]) + re.sub(r"[A-Z]", lambda matched: '_' + lowercase(matched.group(0)), string[1:])
+#
+#
+# def spinalcase(string):
+#     """Convert string into spinal case.
+#     Join punctuation with hyphen.
+#     Args:
+#         string: String to convert.
+#     Returns:
+#         string: Spinal cased string.
+#     """
+#
+#     return re.sub(r"_", "-", snakecase(string))

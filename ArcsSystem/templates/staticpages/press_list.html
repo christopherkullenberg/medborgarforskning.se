@@ -12,20 +12,9 @@
             <h1>{% trans "Trans page (list view)" %}</h1>
             {% for instance in latest %}
 
-                {% get_current_language as LANGUAGE_CODE %}
-                {% if LANGUAGE_CODE == "en" and instance.slug_en is not None %}
-                    {% for block in instance.press_body %}
-                        {% if block.block_type == 'title' %}
-                            <p>{{ instance.id }} -  <a href='{{ instance.get_absolute_url }}'> {% include_block block %}, {{ instance.pressPublishedDate }}</a><p>
-                        {% endif %}
-                    {% endfor %}
-                {% elif LANGUAGE_CODE == "sv" and instance.slug_sv is not None %}
-                    {% for block in instance.press_body %}
-                        {% if block.block_type == 'title' %}
-                            <p>{{ instance.id }} -  <a href='{{ instance.get_absolute_url }}'> {% include_block block %}, {{ instance.pressPublishedDate }}</a><p>
-                        {% endif %}
-                    {% endfor %}
-                {% endif %}
+
+                <p>{{ instance.id }} -  <a href='{{ instance.get_absolute_url }}'> {{ instance.title }} {{ instance.pressPublishedDate }}</a><p>
+
             {% endfor %}
             <h1>
             {% trans "Press detail view" %}

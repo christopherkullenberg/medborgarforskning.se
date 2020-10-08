@@ -3,8 +3,6 @@ from django.utils import translation
 from django.utils.translation import gettext_lazy as _
 from django.urls import reverse
 from taggit.managers import TaggableManager
-from django.conf import settings
-
 
 from modelcluster.fields import ParentalKey
 from modelcluster.contrib.taggit import ClusterTaggableManager
@@ -57,55 +55,128 @@ class Page(models.Model):
     def __str__(self):
         return self.title
 
-class Author(models.Model):
-    '''Basic author placeholder in the blog'''
-    class Meta:
-        verbose_name = _('Author')
-        verbose_name_plural = _('Authors')
-    name = models.CharField(max_length=200)
-    email = models.EmailField()
 
-    def __str__(self):
-        return self.name
-
-class TermsPage(models.Model):
+class TermsPage(page_wagtail):
     ''' basic page for terms '''
 
     template = 'staticpages/terms-cookies-privacy_detail.html'
 
     terms_title = models.CharField(max_length=100, default='title')
     version_number = models.CharField(max_length=100, default='v01')
-    terms_content = models.TextField()
+    terms_content = RichTextField()
+
+    content_panels = page_wagtail.content_panels + [
+        FieldPanel('terms_title'),
+        FieldPanel('version_number'),
+        FieldPanel('terms_content')
+    ]
+
+    promote_panels = [
+        MultiFieldPanel(page_wagtail.promote_panels, "Common page configuration"),
+        ]
     max_count = 1
 
-class PressPage(models.Model):
+
+class PrivacyPage(page_wagtail):
+    ''' basic page for privacy '''
+
+    template = 'staticpages/privacy.html'
+
+    privacy_title = models.CharField(max_length=100, default='title')
+    # version_number = models.CharField(max_length=100, default='v01')
+    privacy_content = RichTextField()
+
+    content_panels = page_wagtail.content_panels + [
+        FieldPanel('privacy_title'),
+        FieldPanel('privacy_content')
+    ]
+    promote_panels = [
+        MultiFieldPanel(page_wagtail.promote_panels, "Common page configuration"),
+        ]
+    max_count = 1
+
+
+class SourcecodePage(page_wagtail):
+    ''' basic page for source code '''
+    template = 'staticpages/source_code.html'
+
+    sourcecode_title = models.CharField(max_length=100, default='Source Code')
+    sourcecode_content = RichTextField()
+    repository = models.URLField()
+
+    content_panels = page_wagtail.content_panels + [
+        ReadOnlyPanel('sourcecode_title', heading='Title'),
+        FieldPanel('sourcecode_content'),
+        FieldPanel('repository')
+    ]
+
+    promote_panels = [
+        MultiFieldPanel(page_wagtail.promote_panels, "Common page configuration"),
+        ]
+    max_count = 1
+
+
+class PressPageTag(TaggedItemBase):
+    content_object = ParentalKey(
+        'PressPage',
+        related_name='tagged_items',
+        on_delete=models.CASCADE
+    )
+
+class PressPage(page_wagtail):
     ''' basic page for Press '''
 
     template = 'staticpages/press_list.html'
 
-    slug = models.SlugField()
     press_title = models.CharField(max_length=100, default='title')
-    author = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
-        on_delete=models.SET_DEFAULT,
-        default=1,
-        ) # Deleting the user accout assoicated will change author to "ID default which should be set to ARCS or other generic value"
     contact_Email = models.EmailField()
-    pressPublishedDate = models.DateField(
-        db_index=True,
-        )# todo make name more focused on date like datapublished - could be confused with published status
-    pressTags = TaggableManager()
-    press_body = models.TextField()
+    pressPublishedDate = models.DateField('Post date')
+    pressTags = ClusterTaggableManager(through=PressPageTag, blank=True)
+
+    press_body = StreamField([
+        ('title', blocks.CharBlock(classname='full title')),
+        ('content', blocks.RichTextBlock()),
+    ])
+
+
+    # Search index configuration
+
+    search_fields = page_wagtail.search_fields + [
+        index.SearchField('press_body'),
+        index.FilterField('pressPublishedDate'),
+        index.FilterField('pressTags'),
+    ]
+
+    # Editor panels configuration
+    content_panels = page_wagtail.content_panels + [
+        FieldPanel('press_title'),
+        FieldPanel('contact_Email'),
+        FieldPanel('pressPublishedDate'),
+        StreamFieldPanel('press_body'),
+        FieldPanel('pressTags'),
+    ]
+
+    promote_panels = [
+        MultiFieldPanel(page_wagtail.promote_panels, "Common page configuration"),
+    ]
 
     def get_absolute_url(self):
-        return reverse('staticpages:archive_date_detail',
-                       kwargs={'year' : self.pressPublishedDate.year,
-                               'month' : self.pressPublishedDate.month,
-                               'day' : self.pressPublishedDate.day,
-                               'slug' : self.slug #change from pk id
-                               })
+        language_code = translation.get_language()
+        if language_code == 'sv':
+            return reverse('staticpages:archive_date_detail',
+                           kwargs={'year' : self.pressPublishedDate.year,
+                                   'month' : self.pressPublishedDate.month,
+                                   'day' : self.pressPublishedDate.day,
+                                   'slug' : self.slug_sv #change from pk id
+                                   })
 
-
+        else:
+            return reverse('staticpages:archive_date_detail',
+                           kwargs={'year' : self.pressPublishedDate.year,
+                                   'month' : self.pressPublishedDate.month,
+                                   'day' : self.pressPublishedDate.day,
+                                   'slug' : self.slug_en #change from pk id
+                                   })
 
 class CitizenSciencePage(page_wagtail):
     template_name = 'staticpages/getting_started.html'

@@ -12,8 +12,10 @@ from django.views.generic.dates import MonthArchiveView
 from django.views.generic.dates import DateDetailView
 
 from staticpages.models import Page
-from staticpages.models import (
+from staticpages.models import (HomePage,
                                 TermsPage,
+                                PrivacyPage,
+                                SourcecodePage,
                                 PressPage,
                                 CitizenSciencePage,
                                 WhatsCitizenSciencePage,
@@ -54,6 +56,15 @@ class CategoryView(ListView):
 class HomePageView(TemplateView):
 
     template_name = 'home.html'
+    def get_context_data(self, **kwargs):
+        try:
+            model = HomePage.objects.prefetch_related('welcome_image')[0]
+        except :
+            model = None
+        context = super().get_context_data(**kwargs)
+        context["page"] = model
+        return context
+
 
 class TermsPageView(TemplateView):
     template_name = 'staticpages/terms-cookies-privacy_detail.html'
@@ -66,8 +77,33 @@ class TermsPageView(TemplateView):
 class PrivacyPageView(TemplateView):
     template_name = 'staticpages/privacy.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["privacypage"] = PrivacyPage.objects.all()
+        return context
+
+class SourcecodePageView(TemplateView):
+    template_name = 'staticpages/source_code.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["sourceodepage"] = SourcecodePage.objects.all()
+        return context
+
 class PressPostIndexView(ArchiveIndexView):
     template_name = 'staticpages/press_list.html'
+    # we need to set another solution to check language on website
+
+    # def get_context_data(self, **kwargs):
+    #     language_code = translation.get_language()
+    #     # Call the base implementation first to get a context
+    #     context = super().get_context_data(**kwargs)
+    #     if (language_code == 'en'):
+    #         context["object_list"] = BlogPage.objects.exclude(slug_en = None)
+    #     else:
+    #         context["object_list"] = BlogPage.objects.exclude(slug_sv = None)
+    #     return context
+
     queryset = PressPage.objects.all()
     date_field = "pressPublishedDate"
     make_object_list = True
