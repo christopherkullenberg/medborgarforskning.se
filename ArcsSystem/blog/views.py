@@ -10,7 +10,6 @@ from django.views.generic.dates import DayArchiveView
 from django.views.generic.dates import DateDetailView
 from blog.models import (Author,
                          Post,
-                         BlogPage,
                          )
 from django.db.models import Q
 
@@ -18,7 +17,7 @@ from django.db.models import Q
 
 class BlogPostListView(ListView):
     template_name = 'blog/blog_list.html'
-    queryset = BlogPage.objects.all()
+    queryset = Post.objects.all()
     date_field = "publishedDate"
     make_object_list = True
     allow_future = False
@@ -31,13 +30,14 @@ class BlogPostDetailView(DetailView):
     ''' View showing the posts itself.
     '''
     template_name = 'blog/blog_detail.html'
-    queryset = BlogPage.objects.all()
+    queryset = Post.objects.all()
 
 class BlogPostDateDetailView(DateDetailView):
     ''' View showing the posts itself.
     '''
     template_name = 'blog/blog_detail.html'
-    object_list = BlogPage.objects.all()
+    object_list = Post.objects.all()
+    make_object_list = True
     allow_future = True
 
 class BlogPostIndexView(ArchiveIndexView):
@@ -45,7 +45,7 @@ class BlogPostIndexView(ArchiveIndexView):
     '''
     template_name = 'blog/blog_list.html'
     # we need to set another solution to check language on website
-    queryset = BlogPage.objects.all()
+    queryset = Post.objects.all()
     date_field = "publishedDate"
     make_object_list = True
     allow_future = True
@@ -57,7 +57,7 @@ class BlogPostYearArchiveView(YearArchiveView):
     ''' View showing all the blog posts of a year sepecified in the url with pagination through all history.
     '''
     template_name = 'blog/blog_list.html'
-    queryset = BlogPage.objects.all()
+    queryset = Post.objects.all()
     date_field = "publishedDate"
     make_object_list = True
     allow_future = True
@@ -69,7 +69,7 @@ class BlogPostMonthArchiveView(MonthArchiveView):
     ''' View showing all the blog posts of a month based on month and year sepecified in the url with pagination through all history.
     '''
     template_name = 'blog/blog_list.html'
-    queryset = BlogPage.objects.all()
+    queryset = Post.objects.all()
     date_field = "publishedDate"
     allow_future = True
     # Pagination documentation https://docs.djangoproject.com/en/2.2/topics/pagination/
@@ -79,7 +79,7 @@ class BlogPostDayArchiveView(DayArchiveView):
     ''' View showing all the blog posts of a day sepecified in the url with pagination through all history.
     '''
     template_name = 'blog/blog_list.html'
-    queryset = BlogPage.objects.all()
+    queryset = Post.objects.all()
     date_field = "publishedDate"
     allow_future = True
     # Pagination documentation https://docs.djangoproject.com/en/2.2/topics/pagination/
@@ -93,7 +93,7 @@ class SearchBlogView(ListView):
         Search of:
         -Blog Post Title
     '''
-    model = BlogPage
+    model = Post
 
     #def get_queryset(self):
     #    query = self.request.GET.get('q')
@@ -106,5 +106,5 @@ class SearchBlogView(ListView):
     #    return object_list
 
     def get_queryset_template(number):
-        object_list = BlogPage.objects.all().distinct()[:number]
+        object_list = Post.objects.all().distinct()[:number]
         return object_list

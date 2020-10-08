@@ -15,29 +15,27 @@
     <div class="row">
         <div class="col-9">
             <div class="row" style="border-bottom: 1px solid;">
+
                 <nav aria-label="breadcrumb">
                   <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{% url 'staticpages:homepage_view' %}"> Home </a></li>
                     <li class="breadcrumb-item"><a href="{% url 'blog:blog_list_view' %}">Blogs</a></li>
-                    <li class="breadcrumb-item active" aria-current="page"> {{blogpage.title}} </li>
+                    <li class="breadcrumb-item active" aria-current="page"> {{post.title}} </li>
                   </ol>
                 </nav>
         	</div>
             <div class="row text-justify" style="padding-top: 10px;">
                 <div class="col">
-                    <h1>{{ blogpage.title }} </h1>
-                        {% for tag in blogpage.blogTags.names %}
+                    <h1>{{ post.title }} </h1>
+                        {% for tag in post.tags.names %}
                             <p>
                                 {{ tag }}
                             </p>
                         {% endfor %}
                     <img class="img-fluid" src="{% static "devplaceholder/library-863148_1920.jpg" %}" alt="{% trans '' %}"/>
-                    <p>{{ blogpage.body|safe }}</p>
-                    <br>
-                    <p> {{ blogpage.body }} </p>
+                    <p>{{ post.content }}</p>
                 </div>
             </div>
-
             <div class="row">
                 <div class="col">
                     <div class="accordion ">
@@ -48,25 +46,25 @@
 
                         <div class="accordion__item__content">
                             <p> Explain of your item goes here...</p>
-                		</div>
                         </div>
-                	        <div class="accordion__item">
+                        </div>
+                            <div class="accordion__item">
                         <div class="accordion__item__header">
                             <p class="home-page-buttons bold"> THEME 2</p>
                         </div>
 
                         <div class="accordion__item__content">
                             <p> Explain of your item goes here...</p>
-                		</div>
+                        </div>
                       </div>
-                	        <div class="accordion__item">
+                            <div class="accordion__item">
                         <div class="accordion__item__header">
                             <p class="home-page-buttons bold"> THEME 3</p>
                         </div>
 
                         <div class="accordion__item__content">
                           <p> Explain of your item goes here...</p>
-                		 </div>
+                         </div>
                       </div>
                     </div> <!-- id accordion end -->
                 </div>
@@ -83,14 +81,11 @@
                 <div class="col">
                     <h1> {% trans "Related Content" %}</h1>
                     <h2>{% trans "Recent publications" %}</h2>
-                    <!-- {% for tag in blogpage.blogTags.names %}
-                        {{ tag }}
-                    {% endfor %} -->
-                        {% with blogpage.blogTags.names|query_publications:5 as blog_sidebar_papers %}
-                            {% for q in blog_sidebar_papers %}
-                                <p><a href="{% url 'publications:article_publications_detail' q.id %}">{{ q }}</a></p>
-                            {% endfor %}
-                        {% endwith %}
+                    {% with post.tags.names|query_publications:5 as blog_sidebar_papers %}
+                        {% for q in blog_sidebar_papers %}
+                            <p><a href="{% url 'publications:article_publications_detail' q.id %}">{{ q }} </a></p>
+                        {% endfor %}
+                    {% endwith %}
                 </div>
             </div>
         </div>
