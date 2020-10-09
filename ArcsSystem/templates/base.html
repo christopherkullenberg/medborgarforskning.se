@@ -1,6 +1,7 @@
 {% load static %}
 {% load i18n %}
 {% load account %}
+{% load staticpages_tree %}
 {% load menu_tags %}
 <!DOCTYPE HTML>
 
@@ -280,12 +281,14 @@
 							</a>
 						</div>
 						<div class="col-auto">
-							<a href="{% url 'staticpages:privacy_detail' %}">
+							{% with x='privacy'|get_page %}
+							<a href="{{ x }}">
+							{% endwith %}
 							<p class="mb-0">{% trans "Privacy policy" %}</p>
 							</a>
 						</div>
 						<div class="col-auto">
-							<a href="{% url 'staticpages:cookies_detail' %}">
+							<a href="#">
 							<p class="mb-0">{% trans "Cookies policy" %}</p>
 							</a>
 						</div>

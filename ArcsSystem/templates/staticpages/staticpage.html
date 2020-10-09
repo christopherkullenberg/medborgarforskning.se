@@ -12,20 +12,13 @@
 
 {% autoescape off %} <!-- This makes Summernote possible -->
 
-<h1>{{ object.title }}</h1>
-<p> {{ object.content }} </p>
+
+{% for instance in page %}
+
+    <h1>{{ instance.title }}</h1>
+    <p> {{ instance.content }} </p>
+
+{% endfor %}
 
 {% endautoescape %}
-
-
-
-
-
-<h2>Related literature</h2>
-<ul>
-{% for q in "citizen"|query_publications %}
-<li>{{q}}</li>
-{% endfor %}
-</ul>
-
 {% endblock content %}

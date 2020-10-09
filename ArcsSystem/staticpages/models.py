@@ -24,34 +24,41 @@ from wagtail.admin.edit_handlers import(
                                 InlinePanel,
                                 StreamFieldPanel,
                                 FieldRowPanel)
-from .edit_handlers import ReadOnlyPanel
 
 import datetime
 import re
 
 class Page(models.Model):
     '''Defines a basic page'''
+    
     class Meta:
         verbose_name = _('Page')
         verbose_name_plural = _('Pages')
 
     slug = models.SlugField()
-    category = models.SlugField(default="uncategorized")
     title = models.CharField(max_length=100, default='title')
+    author = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_DEFAULT,
+        default=1,
+        ) # Deleting the user accout assoicated will change author to "ID default which should be set to ARCS or other generic value"
     published = models.DateField()
     content = models.TextField()
     tags = TaggableManager()
 
 
     def get_absolute_url(self):
-        return reverse('staticpages:staticpage',
-                       kwargs={'category' : self.category,
+        return reverse('staticpages:static_pages',
+                       kwargs={
                                'slug' : self.slug
                                })
 
-    def get_category_url(self):
-        return reverse('staticpages:staticpage',
-                       kwargs={'category' : self.category
+    @staticmethod
+    def get_absolute_url(slug):
+
+        return reverse('staticpages:static_pages',
+                       kwargs={
+                               'slug' : slug
                                })
 
     def __str__(self):
@@ -104,268 +111,3 @@ class PressPage(models.Model):
                                'day' : self.pressPublishedDate.day,
                                'slug' : self.slug #change from pk id
                                })
-
-
-
-class CitizenSciencePage(page_wagtail):
-    template_name = 'staticpages/getting_started.html'
-
-    citizen_science_menu_title = models.CharField(max_length=100, default='Getting started with Citizen Science')
-    content_panels = page_wagtail.content_panels + [
-        FieldPanel('citizen_science_menu_title'),
-        ]
-
-    promote_panels = [
-        MultiFieldPanel(page_wagtail.promote_panels, "Common page configuration"),
-    ]
-
-    # Parent page / subpage type rules
-    subpage_types = ['staticpages.CaseStudiesPage',
-                     'staticpages.FAQPage',
-                     'staticpages.AdditionalResourcesPage',
-                     'staticpages.WhatsCitizenSciencePage']
-    parent_page_types = ['wagtailcore.Page']
-
-    max_count = 1
-
-    def get_absolute_url(self):
-        return reverse('staticpages:getting_started',
-                       kwargs={
-                               'slug' : self.title #change from pk id
-                               })
-
-class WhatsCitizenSciencePage(page_wagtail):
-
-    template_name = 'staticpages/what_is_citizen_science.html'
-
-    citizen_science_body =  StreamField([
-        ('title', blocks.CharBlock(classname='full title')),
-        ('content', blocks.RichTextBlock()),
-    ])
-
-    # Editor panels configuration
-    content_panels = page_wagtail.content_panels + [
-        StreamFieldPanel('citizen_science_body'),
-    ]
-
-    promote_panels = [
-        MultiFieldPanel(page_wagtail.promote_panels, "Common page configuration"),
-    ]
-
-
-    parent_page_types = ['staticpages.CitizenSciencePage']
-    subpage_types = ['staticpages.SwedishCitizenSciencePage']
-    max_count = 1
-
-    def get_url_parts(self, *args, **kwargs):
-        url_parts = super(WhatsCitizenSciencePage, self).get_url_parts(*args, **kwargs)
-
-        if url_parts is None:
-            # in this case, the page doesn't have a well-defined URL in the first place -
-            # for example, it's been created at the top level of the page tree
-            # and hasn't been associated with a site record
-            return None
-
-        site_id, root_url, page_path = url_parts
-        page_path = page_path.replace("pages/","")
-
-        # return '/' in place of the real page path
-        return (site_id, root_url, page_path)
-
-
-class SwedishCitizenSciencePage(page_wagtail):
-
-    template_name = 'staticpages/swedish_citizen_science.html'
-
-    swedish_citizen_science_body =  StreamField([
-        ('title', blocks.CharBlock(classname='full title')),
-        ('content', blocks.RichTextBlock()),
-    ])
-
-    # Editor panels configuration
-    content_panels = page_wagtail.content_panels + [
-        StreamFieldPanel('swedish_citizen_science_body'),
-    ]
-
-    promote_panels = [
-        MultiFieldPanel(page_wagtail.promote_panels, "Common page configuration"),
-    ]
-
-    subpage_types = []
-    parent_page_types = ['staticpages.WhatsCitizenSciencePage']
-    max_count = 1
-
-    def get_url_parts(self, *args, **kwargs):
-        url_parts = super(SwedishCitizenSciencePage, self).get_url_parts(*args, **kwargs)
-
-        if url_parts is None:
-            # in this case, the page doesn't have a well-defined URL in the first place -
-            # for example, it's been created at the top level of the page tree
-            # and hasn't been associated with a site record
-            return None
-
-        site_id, root_url, page_path = url_parts
-        page_path = page_path.replace("pages/","")
-
-        # return '/' in place of the real page path
-        return (site_id, root_url, page_path)
-
-
-class CaseStudiesPage(page_wagtail):
-
-    template_name = 'staticpages/case_studies.html'
-
-    case_studies_body =  StreamField([
-        ('title', blocks.CharBlock(classname='full title')),
-        ('content', blocks.RichTextBlock()),
-    ])
-
-    # Editor panels configuration
-    content_panels = page_wagtail.content_panels + [
-        StreamFieldPanel('case_studies_body'),
-    ]
-
-    promote_panels = [
-        MultiFieldPanel(page_wagtail.promote_panels, "Common page configuration"),
-    ]
-
-    subpage_types = []
-    parent_page_types = ['staticpages.CitizenSciencePage']
-    max_count = 1
-
-    def get_url_parts(self, *args, **kwargs):
-        url_parts = super(CaseStudiesPage, self).get_url_parts(*args, **kwargs)
-
-        if url_parts is None:
-            # in this case, the page doesn't have a well-defined URL in the first place -
-            # for example, it's been created at the top level of the page tree
-            # and hasn't been associated with a site record
-            return None
-
-        site_id, root_url, page_path = url_parts
-        page_path = page_path.replace("pages/","")
-
-        # return '/' in place of the real page path
-        return (site_id, root_url, page_path)
-
-
-class FAQPage(page_wagtail):
-
-    template_name = 'staticpages/faq.html'
-
-    faq_body =  StreamField([
-        ('title', blocks.CharBlock(classname='full title')),
-        ('content', blocks.RichTextBlock()),
-    ])
-
-    # Editor panels configuration
-    content_panels = page_wagtail.content_panels + [
-        StreamFieldPanel('faq_body'),
-    ]
-
-    promote_panels = [
-        MultiFieldPanel(page_wagtail.promote_panels, "Common page configuration"),
-    ]
-
-    subpage_types = []
-    parent_page_types = ['staticpages.CitizenSciencePage']
-    max_count = 1
-
-    def get_url_parts(self, *args, **kwargs):
-        url_parts = super(FAQPage, self).get_url_parts(*args, **kwargs)
-
-        if url_parts is None:
-            # in this case, the page doesn't have a well-defined URL in the first place -
-            # for example, it's been created at the top level of the page tree
-            # and hasn't been associated with a site record
-            return None
-
-        site_id, root_url, page_path = url_parts
-        page_path = page_path.replace("pages/","")
-
-        # return '/' in place of the real page path
-        return (site_id, root_url, page_path)
-
-
-class AdditionalResourcesPage(page_wagtail):
-
-    template_name = 'staticpages/additional_resources.html'
-
-    additional_resources_body =  StreamField([
-        ('title', blocks.CharBlock(classname='full title')),
-        ('content', blocks.RichTextBlock()),
-    ])
-
-    # Editor panels configuration
-    content_panels = page_wagtail.content_panels + [
-        StreamFieldPanel('additional_resources_body'),
-    ]
-
-    promote_panels = [
-        MultiFieldPanel(page_wagtail.promote_panels, "Common page configuration"),
-    ]
-
-    subpage_types = []
-    parent_page_types = ['staticpages.CitizenSciencePage']
-    max_count = 1
-
-    def get_url_parts(self, *args, **kwargs):
-        url_parts = super(AdditionalResourcesPage, self).get_url_parts(*args, **kwargs)
-
-        if url_parts is None:
-            # in this case, the page doesn't have a well-defined URL in the first place -
-            # for example, it's been created at the top level of the page tree
-            # and hasn't been associated with a site record
-            return None
-
-        site_id, root_url, page_path = url_parts
-        page_path = page_path.replace("pages/","")
-
-        # return '/' in place of the real page path
-        return (site_id, root_url, page_path)
-
-
-def receiver(sender,instance, **kwargs):
-    if instance.title_sv != None and instance.slug_sv == None:
-        title_sv = spinalcase(instance.title_sv)
-        instance.slug_sv = title_sv
-        instance.save()
-
-
-page_published.connect(receiver, sender=PressPage)
-
-def lowercase(string):
-    """Convert string into lower case.
-    Args:
-        string: String to convert.
-    Returns:
-        string: Lowercase case string.
-    """
-
-    return str(string).lower()
-
-def snakecase(string):
-    """Convert string into snake case.
-    Join punctuation with underscore
-    Args:
-        string: String to convert.
-    Returns:
-        string: Snake cased string.
-    """
-
-    string = re.sub(r"[\-\.\s]", '_', str(string))
-    if not string:
-        return string
-    return lowercase(string[0]) + re.sub(r"[A-Z]", lambda matched: '_' + lowercase(matched.group(0)), string[1:])
-
-
-def spinalcase(string):
-    """Convert string into spinal case.
-    Join punctuation with hyphen.
-    Args:
-        string: String to convert.
-    Returns:
-        string: Spinal cased string.
-    """
-
-    return re.sub(r"_", "-", snakecase(string))
