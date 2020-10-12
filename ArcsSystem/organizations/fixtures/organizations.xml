@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?><django-objects><object model="organizations.organization" pk="0">   <field name="name" type="TextField">Uppsala universitet</field>
+   <field name="website" type="TextField">http://www.uu.se</field>
+</object>
+<object model="organizations.organization" pk="1">   <field name="name" type="TextField">Lunds universitet</field>
+   <field name="website" type="TextField">http://www.lu.se</field>
+</object>
+<object model="organizations.organization" pk="2">   <field name="name" type="TextField">Göteborgs universitet</field>
+   <field name="website" type="TextField">http://www.gu.se</field>
+</object>
+<object model="organizations.organization" pk="3">   <field name="name" type="TextField">Stockholms universitet</field>
+   <field name="website" type="TextField">http://www.su.se</field>
+</object>
+<object model="organizations.organization" pk="4">   <field name="name" type="TextField">Umeå universitet</field>
+   <field name="website" type="TextField">http://www.umu.se</field>
+</object>
+<object model="organizations.organization" pk="5">   <field name="name" type="TextField">Linköpings universitet</field>
+   <field name="website" type="TextField">http://www.liu.se</field>
+</object>
+<object model="organizations.organization" pk="6">   <field name="name" type="TextField">Karolinska institutet</field>
+   <field name="website" type="TextField">http://ki.se/</field>
+</object>
+<object model="organizations.organization" pk="7">   <field name="name" type="TextField">Kungl. Tekniska högskolan</field>
+   <field name="website" type="TextField">http://www.kth.se/</field>
+</object>
+<object model="organizations.organization" pk="8">   <field name="name" type="TextField">Chalmers tekniska högskola</field>
+   <field name="website" type="TextField">http://www.chalmers.se/</field>
+</object>
+<object model="organizations.organization" pk="9">   <field name="name" type="TextField">Luleå tekniska universitet</field>
+   <field name="website" type="TextField">http://www.ltu.se</field>
+</object>
+<object model="organizations.organization" pk="10">   <field name="name" type="TextField">Handelshögskolan i Stockholm</field>
+   <field name="website" type="TextField">http://www.hhs.se/sv/</field>
+</object>
+<object model="organizations.organization" pk="11">   <field name="name" type="TextField">Sveriges lantbruksuniversitet</field>
+   <field name="website" type="TextField">http://www.slu.se</field>
+</object>
+<object model="organizations.organization" pk="12">   <field name="name" type="TextField">Karlstads universitet</field>
+   <field name="website" type="TextField">http://www.kau.se/</field>
+</object>
+<object model="organizations.organization" pk="13">   <field name="name" type="TextField">Linnéuniversitetet</field>
+   <field name="website" type="TextField">https://lnu.se/</field>
+</object>
+<object model="organizations.organization" pk="14">   <field name="name" type="TextField">Örebro universitet</field>
+   <field name="website" type="TextField">http://www.oru.se/</field>
+</object>
+<object model="organizations.organization" pk="15">   <field name="name" type="TextField">Mittuniversitetet</field>
+   <field name="website" type="TextField">http://www.miun.se/</field>
+</object>
+<object model="organizations.organization" pk="16">   <field name="name" type="TextField">Malmö universitet</field>
+   <field name="website" type="TextField">https://www.mah.se/</field>
+</object>
+<object model="organizations.organization" pk="17">   <field name="name" type="TextField">Blekinge tekniska högskola</field>
+   <field name="website" type="TextField">http://www.bth.se/</field>
+</object>
+<object model="organizations.organization" pk="18">   <field name="name" type="TextField">Försvarshögskolan</field>
+   <field name="website" type="TextField">http://www.fhs.se/</field>
+</object>
+<object model="organizations.organization" pk="19">   <field name="name" type="TextField">Gymnastik- och idrottshögskolan</field>
+   <field name="website" type="TextField">http://gih.se/</field>
+</object>
+<object model="organizations.organization" pk="20">   <field name="name" type="TextField">Högskolan i Borås</field>
+   <field name="website" type="TextField">http://www.hb.se/</field>
+</object>
+<object model="organizations.organization" pk="21">   <field name="name" type="TextField">Högskolan Dalarna</field>
+   <field name="website" type="TextField">http://www.du.se/</field>
+</object>
+<object model="organizations.organization" pk="22">   <field name="name" type="TextField">Högskolan i Gävle</field>
+   <field name="website" type="TextField">http://www.hig.se</field>
+</object>
+<object model="organizations.organization" pk="23">   <field name="name" type="TextField">Högskolan i Halmstad</field>
+   <field name="website" type="TextField">http://www.hh.se/index.html</field>
+</object>
+<object model="organizations.organization" pk="24">   <field name="name" type="TextField">Högskolan Kristianstad</field>
+   <field name="website" type="TextField">http://www.hkr.se/</field>
+</object>
+<object model="organizations.organization" pk="25">   <field name="name" type="TextField">Högskolan i Skövde</field>
+   <field name="website" type="TextField">http://www.his.se/</field>
+</object>
+<object model="organizations.organization" pk="26">   <field name="name" type="TextField">Högskolan Väst</field>
+   <field name="website" type="TextField">http://www.hv.se/</field>
+</object>
+<object model="organizations.organization" pk="27">   <field name="name" type="TextField">Mälardalens högskola</field>
+   <field name="website" type="TextField">http://www.mdh.se/</field>
+</object>
+<object model="organizations.organization" pk="28">   <field name="name" type="TextField">Stiftelsen Högskolan i Jönköping</field>
+   <field name="website" type="TextField">http://www.ju.se</field>
+</object>
+<object model="organizations.organization" pk="29">   <field name="name" type="TextField">Södertörns högskola</field>
+   <field name="website" type="TextField">http://www.sh.se</field>
+</object>
+<object model="organizations.organization" pk="30">   <field name="name" type="TextField">Beckmans designhögskola</field>
+   <field name="website" type="TextField">http://www.beckmans.se/</field>
+</object>
+<object model="organizations.organization" pk="31">   <field name="name" type="TextField">Konstfack</field>
+   <field name="website" type="TextField">http://www.konstfack.se</field>
+</object>
+<object model="organizations.organization" pk="32">   <field name="name" type="TextField">Kungl. Konsthögskolan</field>
+   <field name="website" type="TextField">http://www.kkh.se/</field>
+</object>
+<object model="organizations.organization" pk="33">   <field name="name" type="TextField">Kungl. Musikhögskolan i Stockholm</field>
+   <field name="website" type="TextField">http://www.kmh.se/</field>
+</object>
+<object model="organizations.organization" pk="34">   <field name="name" type="TextField">Stockholms konstnärliga högskola</field>
+   <field name="website" type="TextField">http://www.uniarts.se/</field>
+</object>
+<object model="organizations.organization" pk="35">   <field name="name" type="TextField">Ericastiftelsen</field>
+   <field name="website" type="TextField">http://www.ericastiftelsen.se/</field>
+</object>
+<object model="organizations.organization" pk="36">   <field name="name" type="TextField">Ersta Sköndal Bräcke högskola</field>
+   <field name="website" type="TextField">http://www.esh.se/</field>
+</object>
+<object model="organizations.organization" pk="37">   <field name="name" type="TextField">Högskolan Evidens</field>
+   <field name="website" type="TextField">http://www.evidens4u.se/</field>
+</object>
+<object model="organizations.organization" pk="38">   <field name="name" type="TextField">Gammelkroppa skogsskola</field>
+   <field name="website" type="TextField">http://www.gammelkroppa.se/</field>
+</object>
+<object model="organizations.organization" pk="39">   <field name="name" type="TextField">Johannelunds teologiska högskola</field>
+   <field name="website" type="TextField">http://www.johannelund.nu/</field>
+</object>
+<object model="organizations.organization" pk="40">   <field name="name" type="TextField">Newmaninstitutet</field>
+   <field name="website" type="TextField">http://newman.se/</field>
+</object>
+<object model="organizations.organization" pk="41">   <field name="name" type="TextField">Röda Korsets högskola</field>
+   <field name="website" type="TextField">http://www.rkh.se/</field>
+</object>
+<object model="organizations.organization" pk="42">   <field name="name" type="TextField">Sophiahemmet högskola</field>
+   <field name="website" type="TextField">http://www.shh.se/</field>
+</object>
+<object model="organizations.organization" pk="43">   <field name="name" type="TextField">Stockholms Musikpedagogiska Institut</field>
+   <field name="website" type="TextField">http://www.smi.se/</field>
+</object>
+<object model="organizations.organization" pk="44">   <field name="name" type="TextField">Svenska institutet för kognitiv psykoterapi</field>
+   <field name="website" type="TextField">http://www.cbti.se/</field>
+</object>
+<object model="organizations.organization" pk="45">   <field name="name" type="TextField">Skandinaviens akademi för psykoterapiutveckling</field>
+   <field name="website" type="TextField">http://sapu.se/</field>
+</object>
+<object model="organizations.organization" pk="46">   <field name="name" type="TextField">Enskilda Högskolan Stockholm</field>
+   <field name="website" type="TextField">http://ths.se/</field>
+</object>
+<object model="organizations.organization" pk="47">   <field name="name" type="TextField">Örebro teologiska högskola</field>
+   <field name="website" type="TextField">http://altutbildning.se/orebro-teologiska-hogskola/</field>
+</object>
+</django-objects>
