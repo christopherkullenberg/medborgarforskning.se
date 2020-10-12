@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load i18n %}
-
+{% load publications_extras %}
 
 
 {% block content %}
@@ -28,7 +28,25 @@
 
 <div>
 
-	
+<h2>Similar publications</h2>
+
+{% for k in article.keywords.all|slice:":3" %}  <!-- take the first 3 keywords -->
+
+<p>about {{ k }}:<p>
+
+{% for x in k|query_publications %}
+{% ifnotequal x.doi article.doi %}  <!-- avoids listing the article already in detail view -->
+<div class="search-list">
+  <p><a href="{{ x.get_absolute_url }}">{{ x.title }}</a> {{ x.py }} {{ x.authors }} </p>
+  <p>{{ x.source }} Volume: {{ x.volume }} Issue: {{ x.issue }} <a href="https://doi.org/{{ x.doi }}">Fulltext</a></p>
+</div>
+ {% endifnotequal %}
+{% endfor %}
+{% endfor %}
+
+
+
+
 	{% if forms %}
 
 
@@ -36,7 +54,7 @@
 
 	<br><br><hr><br><br>
 
-		
+
 
 	<h5> Article id is: {{article.id}}</h5>
 

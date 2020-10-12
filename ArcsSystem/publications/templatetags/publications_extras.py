@@ -17,7 +17,7 @@ def break_text(string, length):
 	str_len = len(string)
 	if str_len <= length:
 		return string
-	
+
 	li = string.split(" ")
 	new_string = li[0]
 	count = len(li[0])
@@ -26,7 +26,7 @@ def break_text(string, length):
 			new_string += "<br>" + segment
 			count = len(segment)
 		else:
-			new_string += " " + segment  
+			new_string += " " + segment
 			count += len(segment)+1
 
 	return new_string
