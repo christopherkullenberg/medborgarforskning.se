@@ -1,6 +1,7 @@
 {% load static %}
 {% load i18n %}
 {% load account %}
+{% load staticpages_tree %}
 {% load menu_tags %}
 <!DOCTYPE HTML>
 
@@ -126,7 +127,7 @@
 										</a>
 								</button>
 							</div>
-							
+
 						<!-- user is NOT loged in: show Signup, login -->
 						{% else %}
 							<div id="signup" class="col-3 p-0 d-flex justify-content-end align-items-center">
@@ -200,7 +201,7 @@
 							<div class="collapse navbar-collapse justify-content-start">
 								<ul class="nav navbar-nav">
 									<li class="nav-item"><a class="nav-link pt-0 font-dark-green-color" href="#" style="padding-left: 0;"><strong class="footer-navbar-padding">{% trans "ABOUT US" %}</strong></a></li>
-									<li class="nav-item"><a class="nav-link pt-0 font-dark-green-color" href="#"><strong class="footer-navbar-padding">{% trans "PRESS" %}</strong></a></li>
+									<li class="nav-item"><a class="nav-link pt-0 font-dark-green-color" href="{% url 'staticpages:press_list'%}"><strong class="footer-navbar-padding">{% trans "PRESS" %}</strong></a></li>
 									<li class="nav-item"><a class="nav-link pt-0 font-dark-green-color" href="#"><strong class="footer-navbar-padding">{% trans "CONTACT" %}</strong></a></li>
 									<li class="nav-item"><a class="nav-link pt-0 font-dark-green-color" href="#">{% trans "For Developers-API" %}</a></li>
 								</ul>
@@ -280,19 +281,27 @@
 							</a>
 						</div>
 						<div class="col-auto">
-							<a href="{% url 'staticpages:privacy_detail' %}">
+
+
+							{% for page in 'privacy'|get_page %}
+								<a href="{{ page.get_absolute_url }}">
+							{% endfor %}
 							<p class="mb-0">{% trans "Privacy policy" %}</p>
+
 							</a>
 						</div>
 						<div class="col-auto">
-							<a href="{% url 'staticpages:cookies_detail' %}">
+							{% for page in 'cookies'|get_page %}
+								<a href="{{ page.get_absolute_url }}">
+							{% endfor %}
 							<p class="mb-0">{% trans "Cookies policy" %}</p>
+
 							</a>
 						</div>
 					</div>
 				</div>
 				<div class="col-auto">
-					<a href="{% url 'staticpages:sourcecode_detail' %}">
+					<a href="https://github.com/christopherkullenberg/medborgarforskning.se">
 					<p class="mb-0">{% trans "Powered by: The ARCS open source platform" %}</p>
 					</a>
 				</div>
