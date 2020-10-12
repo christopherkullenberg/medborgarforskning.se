@@ -19,7 +19,7 @@ app_name = 'staticpages'
 urlpatterns = [
     path('', HomePageView.as_view(), name='homepage_view'),
     # Special Static Page Views
-    path('staticpage/<slug:slug>/', StaticPages.as_view(), name='static_pages'),
+    path('<slug:category>/<slug:slug>/', StaticPages.as_view(), name='static_pages'),
     path('terms/', TermsPageView.as_view(), name='terms_detail'),
 
     path('press/', PressPostIndexView.as_view(model=PressPage), name='press_list'), # the press/ view will be static parent to press related subpages

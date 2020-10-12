@@ -26,14 +26,14 @@ class HomePageView(TemplateView):
 
     template_name = 'home.html'
 
-class StaticPages(TemplateView):
+class StaticPages(DetailView):
 
     template_name = 'staticpages/staticpage.html'
+    model =  Page
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['page'] = Page.objects.all()
-        return context
+    def get_page(u):
+        object_list = Page.objects.filter(Q(slug__icontains=u))
+        return object_list
 
 class TermsPageView(TemplateView):
     template_name = 'staticpages/terms-cookies-privacy_detail.html'

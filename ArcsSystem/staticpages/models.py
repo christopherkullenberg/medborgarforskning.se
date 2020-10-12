@@ -5,37 +5,15 @@ from django.urls import reverse
 from taggit.managers import TaggableManager
 from django.conf import settings
 
-
-from modelcluster.fields import ParentalKey
-from modelcluster.contrib.taggit import ClusterTaggableManager
-from taggit.models import TaggedItemBase
-
-from wagtail.search import index
-from wagtail.core.signals import page_published
-from wagtail.core.models import Page as page_wagtail
-from wagtail.images.blocks import ImageChooserBlock
-from wagtail.core.fields import StreamField
-from wagtail.core import blocks
-from wagtail.core.fields import RichTextField
-from wagtail.images.edit_handlers import ImageChooserPanel
-from wagtail.admin.edit_handlers import(
-                                FieldPanel,
-                                MultiFieldPanel,
-                                InlinePanel,
-                                StreamFieldPanel,
-                                FieldRowPanel)
-
-import datetime
-import re
-
 class Page(models.Model):
     '''Defines a basic page'''
-    
+
     class Meta:
         verbose_name = _('Page')
         verbose_name_plural = _('Pages')
 
     slug = models.SlugField()
+    category = models.SlugField(default="uncategorized")
     title = models.CharField(max_length=100, default='title')
     author = models.ForeignKey(
         settings.AUTH_USER_MODEL,
@@ -46,19 +24,11 @@ class Page(models.Model):
     content = models.TextField()
     tags = TaggableManager()
 
-
     def get_absolute_url(self):
         return reverse('staticpages:static_pages',
                        kwargs={
-                               'slug' : self.slug
-                               })
-
-    @staticmethod
-    def get_absolute_url(slug):
-
-        return reverse('staticpages:static_pages',
-                       kwargs={
-                               'slug' : slug
+                                'category' : self.category,
+                                'slug' : self.slug
                                })
 
     def __str__(self):

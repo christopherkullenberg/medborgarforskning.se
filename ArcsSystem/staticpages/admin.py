@@ -4,9 +4,10 @@ from modeltranslation.admin import TranslationAdmin, TabbedTranslationAdmin
 from .models import Page, TermsPage, PressPage
 # Register your models here.
 
-class PageAdmin(SummernoteModelAdmin):
+class PageAdmin(SummernoteModelAdmin, TabbedTranslationAdmin):
     summernote_fields = ('content',)
-    published = ('published', )
+    fieldsets = [(u'Page', {'fields':('slug', 'category', 'published', 'title', 'content',)})
+    ]
 
 class TermsAdmin(SummernoteModelAdmin, TabbedTranslationAdmin):
     summernote_fields = ('terms_content')

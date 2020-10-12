@@ -1,6 +1,6 @@
 from modeltranslation.translator import translator, TranslationOptions
 from modeltranslation.decorators import register
-from .models import  (
+from .models import  (Page,
                       TermsPage,
                       PressPage,)
 
@@ -8,6 +8,13 @@ from .models import  (
 
 # One class per model defining which Model and Fields are registerd for translation via django-modeltranslation
 # https://django-modeltranslation.readthedocs.io/en/latest/registration.html#registration
+
+@register(Page)
+class PageTranslationOptions(TranslationOptions):
+    fields= (
+        'title',
+        'content',
+    )
 
 @register(TermsPage)
 class TermsPageTranslationOptions(TranslationOptions):

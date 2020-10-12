@@ -1,15 +1,9 @@
 
 {% load static %}
-
 {% load i18n %}
-
-{% load wagtailcore_tags %}
-
 {% load staticpages_tree %}
-
+{% load staticpages_tree %}
 {% block main_menu %}
-
-
 
 <!-- <nav role="navigation" id="main-nav" aria-label="Main navigation">
 
@@ -58,68 +52,46 @@
                     </a>
 
                     <div class="dropdown-menu main-menu-buttons background-light-green-color" aria-labelledby="navbarDropdown">
-
-
-
-                        <a class="dropdown-item font-weight-bold" href="#">{% trans "What is Citizen Science?" %}</a>
-
-
+                        {% for page in 'what-is-citizen-science'|get_page %}
+                            <a class="dropdown-item font-weight-bold" href="{{ page.get_absolute_url }}">{% trans "What is Citizen Science?" %}</a>
+                        {% endfor %}
 
                         <div class="dropdown-divider"></div>
 
                             <ul>
-
                                 <li class="nav-item dropdown">
-
-
-
-                                    <a class="dropdown-item" href="#">{% trans "Swedish Citizen Science" %}</a>
-
-
-
+                                    {% for page in 'swedish-citizen'|get_page %}
+                                        <a class="dropdown-item" href="{{ page.get_absolute_url }}">{% trans "Swedish Citizen Science" %}</a>
+                                    {% endfor %}
                                 </li>
-
                             </ul>
 
                         <div class="dropdown-divider"></div>
-
-                            <a class="dropdown-item font-weight-bold" href="#">{% trans "Case Studies" %}</a>
-
-                        <div class="dropdown-divider"></div>
-
-
-
-                            <a class="dropdown-item font-weight-bold" href="#">{%trans "FAQ" %}</a>
-
-
+                        {% for page in 'case-studies'|get_page %}
+                            <a class="dropdown-item font-weight-bold" href="{{ page.get_absolute_url }}">{% trans "Case Studies" %}</a>
+                        {% endfor %}
 
                         <div class="dropdown-divider"></div>
-
-
-
-                            <a class="dropdown-item font-weight-bold" href="#">{%trans "Additional Resources" %}</a>
-
-
-
+                        {% for page in 'faq'|get_page %}
+                            <a class="dropdown-item font-weight-bold" href="{{ page.get_absolute_url }}">{%trans "FAQ" %}</a>
+                        {% endfor %}
+                        <div class="dropdown-divider"></div>
+                        {% for page in 'additional'|get_page %}
+                            <a class="dropdown-item font-weight-bold" href="{{ page.get_absolute_url }}">{%trans "Additional Resources" %}</a>
+                        {% endfor %}
                     </div>
-
                 </li>
-
-
 
                  <li class="nav-item header-menu-li-style col-3">
                     <a class=" main-menu-buttons-font text-wrap" href="{% url 'workpackages:category_view' %}" role="button" aria-haspopup="true" aria-expanded="false" style="width: 10rem;">
                          {% trans "Theme" %}
                     </a>
-
                 </li>
 
                 <li class="nav-item dropdown header-menu-li-style col-3">
 
                     <a class="nav-link dropdown-toggle main-menu-buttons-font text-wrap"  href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 10rem;">
-
                         {% trans "Citizen Science in Sweden" %}
-
                     </a>
 
                     <div class="dropdown-menu main-menu-buttons background-light-green-color" aria-labelledby="navbarDropdown">
@@ -141,7 +113,6 @@
                             <li nav-item dropdown>
 
                                     <a class="dropdown-item" href="{% url 'projects:project_submissionform' %}">{%trans "Add your Projects" %}</a>
-
                             </li>
 
                         </ul>

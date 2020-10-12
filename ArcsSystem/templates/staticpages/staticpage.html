@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load i18n %}
-
+{% load staticpages_tree %}
 {% block content %}
 
 {% load publications_extras %}
@@ -11,14 +11,8 @@
 {# this tag will insert a comment in the HMTL, but won't be rendered #}
 
 {% autoescape off %} <!-- This makes Summernote possible -->
-
-
-{% for instance in page %}
-
-    <h1>{{ instance.title }}</h1>
-    <p> {{ instance.content }} </p>
-
-{% endfor %}
+    <h1> {{ object.title }}</h1>
+    <p> {{ object.content }} </p>
 
 {% endautoescape %}
 {% endblock content %}
