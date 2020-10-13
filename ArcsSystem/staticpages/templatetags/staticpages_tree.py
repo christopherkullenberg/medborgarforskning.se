@@ -9,5 +9,9 @@ def get_page(slug):
     page = StaticPages.get_page(slug)
     return page
 
+def get_menu(category):
+    menu = StaticPages.get_menu(category)
+    return menu
 
 register.filter('get_page', get_page)
+register.filter('get_menu', get_menu)

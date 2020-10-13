@@ -35,6 +35,10 @@ class StaticPages(DetailView):
         object_list = Page.objects.filter(Q(slug__icontains=u))
         return object_list
 
+    def get_menu(cat):
+        object_list = Page.objects.filter(Q(category__icontains=cat))
+        return object_list
+
 class TermsPageView(TemplateView):
     template_name = 'staticpages/terms-cookies-privacy_detail.html'
 
