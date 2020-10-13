@@ -12,15 +12,3 @@ class PostTranslationOptions(TranslationOptions):
 
 
 translator.register(Post, PostTranslationOptions)
-
-#class AuthorTranslationOptions(TranslationOptions):
-#    fields = ('name')
-#    ''' Registers blog author fields for translation '''
-
-#translator.register(Author, AuthorTranslationOptions)
-
-# @register(BlogPage)
-# class BlogPageTranslationOptions(TranslationOptions):
-#     fields = (
-#         'body',
-#     )

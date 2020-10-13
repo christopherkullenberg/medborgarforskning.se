@@ -26,8 +26,6 @@ class BlogTestCare(TestCase):
         self.client = Client()
         self.languages_list = [language_code[0] for language_code in settings.LANGUAGES]
 
-    # test_forms.py
-    # Create your tests here.
 
 
     # test_views.py
@@ -120,3 +118,7 @@ class BlogTestCare(TestCase):
                 self.assertEqual(response_archive_year.resolver_match.func.__name__, 'BlogPostYearArchiveView')
                 self.assertEqual(response_archive_month.resolver_match.func.__name__, 'BlogPostMonthArchiveView')
                 self.assertEqual(response_archive_day.resolver_match.func.__name__, 'BlogPostDayArchiveView')
+
+
+# test_forms.py
+# Create your tests here.

@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load i18n %}
-{% load wagtailcore_tags %}
 
 {% block content %}
 
@@ -79,8 +78,7 @@
             </div>
             <div class="row visual-Mindmap-style">
                 <div class="col">
-                    <h1> {% trans "Related Content" %}</h1>
-                    <h2>{% trans "Recent publications" %}</h2>
+                    <h2>{% trans "Related publications" %}</h2>
                     {% with post.tags.names|query_publications:5 as blog_sidebar_papers %}
                         {% for q in blog_sidebar_papers %}
                             <p><a href="{% url 'publications:article_publications_detail' q.id %}">{{ q }} </a></p>
