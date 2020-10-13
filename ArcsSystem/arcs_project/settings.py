@@ -32,7 +32,6 @@ ALLOWED_HOSTS = ['localhost','127.0.0.1','dev.medborgarforskning.se', 'medborgar
 # Application definition
 
 INSTALLED_APPS = [
-    'wagtail_modeltranslation',
     'modeltranslation', # for Django 1.7 and above must be prior to django.contrib.admin - https://django-modeltranslation.readthedocs.io/en/latest/installation.html#required-settings
     'django.contrib.admin',
     'django.contrib.auth', # Core authentication framework and its default models. Required by AllAuth.
@@ -68,29 +67,6 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.orcid',
 ### AllAuth for social authentications end #
 
-### Wagtail app requirement start #
-    'wagtail.contrib.forms',
-    'wagtail.contrib.redirects',
-    'wagtail.embeds',
-    'wagtail.sites',
-    'wagtail.users',
-    'wagtail.snippets',
-    'wagtail.documents',
-    'wagtail.images',
-    'wagtail.search',
-    'wagtail.admin',
-    'wagtail.core',
-
-    'modelcluster',
-    #'taggit', # I disabled this because we have it above (CK)
-    'wagtail.contrib.modeladmin', # for wagtail menus
-    'wagtailmenus', # initialize wagtail menus
-    # 'wagtail_modeltranslation.makemigrations',
-    # 'wagtail_modeltranslation.migrate',
-    ### Wagtail app requirement end #
-    ### Wagtail forms install #
-    #'wagtail.wagtailforms',
-    ### Wagtail forms install end #
 ]
 
 REST_FRAMEWORK = {
@@ -108,10 +84,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware', # Associates users with requests using sessions.
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    ### Wagtail app requirement start #
-    'wagtail.core.middleware.SiteMiddleware',
-    'wagtail.contrib.redirects.middleware.RedirectMiddleware',
-    ### Wagtail app requirement end #
     'users.LicenceMiddleware.LicenceMiddleware', # Check if user accepted license or not
 ]
 
@@ -135,7 +107,6 @@ TEMPLATES = [
                 'django.template.context_processors.media',
                 'django.template.context_processors.static',
                 'django.template.context_processors.tz', # adds TIME_ZONE variable to RequestContext
-                'wagtailmenus.context_processors.wagtailmenus',
             ],
         },
     },

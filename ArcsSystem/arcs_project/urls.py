@@ -18,16 +18,8 @@ from django.contrib import admin
 from django.urls import path
 from django.urls import include
 from django.utils.translation import gettext_lazy as _
-
-### Wagtail requirements Start #
-from django.urls import re_path
-from wagtail.admin import urls as wagtailadmin_urls
-from wagtail.core import urls as wagtail_urls
-from wagtail.documents import urls as wagtaildocs_urls
 from django.conf.urls.static import static
 from django.conf import settings
-### Wagtail requirements End #
-
 ### Sitemap requirements start #
 from django.contrib.sitemaps.views import sitemap
 from django.contrib.sitemaps import views
@@ -64,11 +56,6 @@ urlpatterns += i18n_patterns(
     path(_('accounts/profile/'), include('users.urls')),
     path(_('accounts/'), include('allauth.urls')),
     path(_('blog/'), include('blog.urls')),
-    ### Wagtail paths start #
-    re_path(r'^cms/', include(wagtailadmin_urls)),
-    re_path(_(r'^documents/'), include(wagtaildocs_urls)),
-    re_path(_(r'^pages/'), include(wagtail_urls)),
-    ### Wagtail paths end #
     path(_('project/'),include('projects.urls')),
 #    path(_('resources/'), include('staticpages.urls')), # TODO remove - make relative sections of urls.py in staticpages use this prefix
     path(_('publications/'),include('publications.urls')),

@@ -53,32 +53,42 @@
 
                     <div class="dropdown-menu main-menu-buttons background-light-green-color" aria-labelledby="navbarDropdown">
                         {% for page in 'what-is-citizen-science'|get_page %}
-                            <a class="dropdown-item font-weight-bold" href="{{ page.get_absolute_url }}">{% trans "What is Citizen Science?" %}</a>
+                            <a class="dropdown-item" href="{{ page.get_absolute_url }}">
                         {% endfor %}
+                            <p class="font-weight-bold">{% trans "What is Citizen Science?" %}</p>
+                            </a>
+
 
                         <div class="dropdown-divider"></div>
-
                             <ul>
                                 <li class="nav-item dropdown">
                                     {% for page in 'swedish-citizen'|get_page %}
-                                        <a class="dropdown-item" href="{{ page.get_absolute_url }}">{% trans "Swedish Citizen Science" %}</a>
+                                        <a class="dropdown-item" href="{{ page.get_absolute_url }}">
                                     {% endfor %}
+                                        <p class="font-weight-bold">{% trans "Swedish Citizen Science" %}</p>
+                                        </a>
                                 </li>
                             </ul>
 
                         <div class="dropdown-divider"></div>
                         {% for page in 'case-studies'|get_page %}
-                            <a class="dropdown-item font-weight-bold" href="{{ page.get_absolute_url }}">{% trans "Case Studies" %}</a>
-                        {% endfor %}
+                            <a class="dropdown-item font-weight-bold" href="{{ page.get_absolute_url }}">
+                                {% endfor %}
+                                <p class="font-weight-bold">{% trans "Case Studies" %}</p>
+                            </a>
 
                         <div class="dropdown-divider"></div>
                         {% for page in 'faq'|get_page %}
-                            <a class="dropdown-item font-weight-bold" href="{{ page.get_absolute_url }}">{%trans "FAQ" %}</a>
-                        {% endfor %}
+                            <a class="dropdown-item font-weight-bold" href="{{ page.get_absolute_url }}">
+                                {% endfor %}
+                                <p class="font-weight-bold">{%trans "FAQ" %}</p>
+                            </a>
                         <div class="dropdown-divider"></div>
                         {% for page in 'additional'|get_page %}
-                            <a class="dropdown-item font-weight-bold" href="{{ page.get_absolute_url }}">{%trans "Additional Resources" %}</a>
-                        {% endfor %}
+                            <a class="dropdown-item font-weight-bold" href="{{ page.get_absolute_url }}">
+                                {% endfor %}
+                                <p class="font-weight-bold">{%trans "Additional Resources" %}</p>
+                                </a>
                     </div>
                 </li>
 

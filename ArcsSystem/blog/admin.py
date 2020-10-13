@@ -15,7 +15,7 @@ class PostAdmin(SummernoteModelAdmin, TabbedTranslationAdmin):
     published = ('published',)
 
 
+# Register your models here.
 #admin.site.register(Blog, BlogAdmin)
 admin.site.register(Author, AuthorAdmin)
 admin.site.register(Post, PostAdmin)
-# Register your models here.
