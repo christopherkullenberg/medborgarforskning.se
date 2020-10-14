@@ -2,6 +2,7 @@ from django.db import models
 from taggit.managers import TaggableManager
 from django.utils.translation import gettext_lazy as _
 from django.urls import path,reverse
+from projects.models import KeywordSwe, KeywordEng
 
 
 class WorkPackage(models.Model):
@@ -39,6 +40,8 @@ class Theme(models.Model):
                                   default=1,
                                   verbose_name="Work Package",
                                   on_delete=models.SET_DEFAULT)
+    sv_keywords = models.ManyToManyField(KeywordSwe, related_name="Theme")
+    en_keywords = models.ManyToManyField(KeywordEng, related_name="Theme")
 
     def get_pub_ids(self):
 
