@@ -1,4 +1,4 @@
-{% extends 'base.html' %}{% load static %}{% load i18n %}{% block content %}
+{% extends 'base.html' %}{% load static %}{% load i18n %}{% load projects_extras %}{% block content %}
 
 
 
@@ -77,12 +77,12 @@
 
 
 
-        <button class="nav-item  btn-danger" type="button" onclick="prevnav()" style="margin: 10px; padding: 5px;">< previus </button>
+        <button class="nav-item  btn-danger" type="button" onclick="prevnav()" style="margin: 10px; padding: 5px;">< Previous </button>
 
 
 
 
-        <button class="nav-item  btn-success" type="button" onclick="nextnav()" style="margin: 10px; padding: 5px;">next > </button>
+        <button class="nav-item  btn-success" type="button" onclick="nextnav()" style="margin: 10px; padding: 5px;">Next > </button>
 
         </div>
 
@@ -724,42 +724,18 @@ $("#id_description_card").change()
 
 
 <datalist id="brow2">
-  <option value="Internet Explorer">
-    <option value="Firefox">
-      <option value="Chrome">
-        <option value="Opera">
-          <option value="Safari">
-          </datalist> 
+  {% for kw in "eng"|get_keywords %}
+    <option value="{{kw}}"> </option> 
+  {% endfor %}
+  </datalist> 
+
+<datalist id="brow">
+  {% for kw in "swe"|get_keywords %}
+    <option value="{{kw}}"> </option> 
+  {% endfor %}
 
 
-
-
-
-          <datalist id="brow">
-            <option value="Internet Explorer">
-              <option value="Firefox">
-                <option value="Chrome">
-                  <option value="Opera">
-                    <option value="Safari">
-                      <option value="Safari">
-                        <option value="Safari">
-                          <option value="Safari">
-                            <option value="Safari">
-                              <option value="Safari">
-                                <option value="Safari">
-                                  <option value="Safari">
-                                    <option value="Safari">
-                                      <option value="Safari">
-                                        <option value="Safari">
-                                          <option value="Safari">
-                                            <option value="Safari">
-                                              <option value="Safari">
-                                                <option value="Safari">
-                                                  <option value="Safari">
-                                                    <option value="Safari">
-                                                      <option value="Safari">
-
-                                                      </datalist>
+   </datalist>
 
                                                       {% endblock content %}
 
