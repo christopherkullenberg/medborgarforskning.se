@@ -50,12 +50,22 @@
                         {% trans "Getting Started With Citizen Science" %}
 
                     </a>
-
                     <div class="dropdown-menu main-menu-buttons background-light-green-color" aria-labelledby="navbarDropdown">
                         {% for page in 'citizen-science'|get_menu %}
-                            <a class="dropdown-item" href="{{ page.get_absolute_url }}">{{ page.title }}</a>
-                            <div class="dropdown-divider"></div>
-                        {% endfor %}            
+                        {% if page.slug in 'swedish-citizen-science' %}
+                        <ul>
+                            <li class="nav-item dropdown">
+                                <a class="dropdown-item" href="{{ page.get_absolute_url }}">
+                                    <p class="font-weight-bold">{{ page.title }}</p>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="dropdown-divider"></div>
+                        {% else %}
+                        <a class="dropdown-item" href="{{ page.get_absolute_url }}">{{ page.title }}</a>
+                        <div class="dropdown-divider"></div>
+                        {% endif %}
+                        {% endfor %}
                     </div>
                 </li>
 
