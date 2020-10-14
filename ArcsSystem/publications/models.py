@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from django.utils.translation import gettext_lazy as _
+from projects.models import KeywordEng
 
 
 class Keyword(models.Model):
@@ -41,7 +42,7 @@ class Article(models.Model):
         max_length=200,
         default="title",
         )
-    keywords = models.ManyToManyField(Keyword)
+    keywords = models.ManyToManyField(KeywordEng, related_name="Article")
     abstract = models.CharField(
         max_length=5000,
         default=_('Empty'),

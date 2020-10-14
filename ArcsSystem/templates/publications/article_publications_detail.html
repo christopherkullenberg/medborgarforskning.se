@@ -46,6 +46,12 @@
 
 
 
+{% for theme in article|get_related_all %}
+{{ theme }}
+
+
+
+{% endfor %}
 
 	{% if forms %}
 

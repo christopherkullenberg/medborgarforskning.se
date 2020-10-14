@@ -46,7 +46,18 @@ def recent_publications(number=3):
     result = SearchPublicationsView.recent_publications(number)
     return result
 
+def get_related_all(Article):
+	print(Article)
+	li = []
+	keyword = Article.keywords.all()
+	for th in keyword:
+		if len(th.Theme.all()) > 0:
 
+			li += th.Theme.all()
+
+
+	print(li)
+	return li
 
 def lower(value): # Only one argument.
     """Converts a string into all lowercase"""
@@ -57,3 +68,4 @@ register.filter('query_publications', query_publications)
 register.filter('recent_publications', recent_publications)
 register.filter('break_text', break_text)
 register.filter('break_slug', break_slug)
+register.filter("get_related_all", get_related_all)
