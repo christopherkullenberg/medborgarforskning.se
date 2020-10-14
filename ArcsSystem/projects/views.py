@@ -19,6 +19,8 @@ from .forms import (
 from django.forms.models import model_to_dict
 from django.http import Http404
 
+from .models import KeywordEng, KeywordSwe, KeywordLine
+
 
 '''
 # Quick Fuction based template
@@ -101,6 +103,7 @@ def ProjectSubmissionView(request, pk):
             pro_sub = ProjectSubmission.objects.get(id= pk)
             if int(request.user.id) == pro_sub.created_by.id or request.user.is_superuser:
                 context = {"object": pro_sub}
+                context['edit'] = True
                 return render(request, template_name, context)
             else:
                 raise Http404
@@ -109,6 +112,8 @@ def ProjectSubmissionView(request, pk):
 # edit part here
 
 def ProjectEditView(request, pk):
+
+
     template_name = 'projects/project_submissionform.html'
 
     # new page : get page
@@ -118,6 +123,16 @@ def ProjectEditView(request, pk):
             if int(request.user.id) == project.created_by.id or request.user.is_superuser:
                 context = {"Submission": InitialProjectSubmissionModelForm(initial = model_to_dict(project))}
 
+
+                sv_list, en_list = project.get_sv_en_keywords()
+                context["keyword_line"] = []
+                context["keyword_len"] = len(sv_list)
+                for i in range(context["keyword_len"]):
+                    context["keyword_line"].append([sv_list[i], en_list[i]])
+
+                if project.image != None:
+                    context["inital_image"] = project.image.url
+
                 return render(request, template_name, context)
             else:
                 raise Http404
@@ -125,21 +140,84 @@ def ProjectEditView(request, pk):
 
     #this is the save sub-form part
     if request.method == "POST":
+        print("post")
         #check if user
         if request.user.is_authenticated:
             project = get_object_or_404(ProjectEntry, id=pk)
             form = InitialProjectSubmissionModelForm(request.POST, request.FILES, instance=project)
+
             # for not valid then stop
             if not form.is_valid():
-                raise Http404
+                return render(request, template_name, {"Submission": form})
+
+            print("valid")
+
+
             # if user it the owner or admin
             if int(request.user.id) == project.created_by.id or request.user.is_superuser:
+
+                form.instance.created_by = request.user
+
+                update_project_entry_keyword_lines(project, * load_keywords_list(request))
+
+                print(project.keywords)
+
                 form.save()
+
                 return HttpResponseRedirect(reverse('userprofile_private_view'))
             # else stop
             else:
                 raise Http404
     raise Http404
+
+def load_keywords(request):
+
+    sve_string = ""
+    eng_string = ""
+
+    for nr in range(1, 11):
+        if "Keyword_sve_" + str(nr) in request.POST or "Keyword_eng_" + str(nr) in request.POST:
+
+
+            if "Keyword_sve_" + str(nr) in request.POST:
+                sve_string += request.POST["Keyword_sve_" + str(nr)].replace("&", "") + "&"
+            else:
+                sve_string += "&"
+
+
+            if "Keyword_eng_" + str(nr) in request.POST:
+                eng_string += request.POST["Keyword_eng_" + str(nr)].replace("&", "") + "&"
+            else:
+                eng_string += "&"
+
+        else:
+
+            break
+    return sve_string, eng_string
+
+def load_keywords_list(request):
+
+    sve_string = []
+    eng_string = []
+
+    for nr in range(1, 11):
+        if "Keyword_sve_" + str(nr) in request.POST or "Keyword_eng_" + str(nr) in request.POST:
+
+
+            if "Keyword_sve_" + str(nr) in request.POST:
+                sve_string += [request.POST["Keyword_sve_" + str(nr)].replace("&", "")]
+            else:
+                sve_string += [""]
+
+
+            if "Keyword_eng_" + str(nr) in request.POST:
+                eng_string += [request.POST["Keyword_eng_" + str(nr)].replace("&", "")]
+            else:
+                eng_string += [""]
+
+
+    return sve_string, eng_string
+
 
 def ProjectSubmissionEditView(request, pk):
     template_name = 'projects/project_submissionform.html'
@@ -151,6 +229,18 @@ def ProjectSubmissionEditView(request, pk):
             project = ProjectSubmission.objects.get(id=pk)
             if int(request.user.id) == project.created_by.id or request.user.is_superuser:
                 context = {"Submission": InitialProjectSubmissionModelForm(initial = model_to_dict(project))}
+                
+                sv_list, en_list = project.get_keywords()
+
+
+                context["keyword_line"] = []
+                context["keyword_len"] = len(sv_list)
+                for i in range(context["keyword_len"]):
+                    context["keyword_line"].append([sv_list[i], en_list[i]])
+
+                if project.image != None:
+                    context["inital_image"] = project.image.url
+
                 return render(request, template_name, context)
             else:
                 raise Http404
@@ -163,9 +253,12 @@ def ProjectSubmissionEditView(request, pk):
             form = InitialProjectSubmissionModelForm(request.POST, request.FILES, instance=project)
             # for not valid then stop
             if not form.is_valid():
-                raise Http404
+                return render(request, template_name, {"Submission": form})
+
             # if user it the owner or admin
             if int(request.user.id) == project.created_by.id or request.user.is_superuser:
+                form.instance.created_by = request.user
+                form.instance.keywords_sv, form.instance.keywords_en = load_keywords(request)
                 form.save()
                 return HttpResponseRedirect(reverse('userprofile_private_view'))
             # else stop
@@ -175,6 +268,10 @@ def ProjectSubmissionEditView(request, pk):
 
 
 def ProjectSubmissionCreateView(request):
+
+
+
+
 
     template_name = 'projects/project_submissionform.html'
     context = {}
@@ -197,13 +294,21 @@ def ProjectSubmissionCreateView(request):
         if request.user.is_authenticated:
             form = InitialProjectSubmissionModelForm(request.POST, request.FILES)
             if form.is_valid():
+
                 form.instance.created_by = request.user
+                form.instance.keywords_sv, form.instance.keywords_en = load_keywords(request)
+
+
                 form.save()
+
                 return HttpResponseRedirect(reverse('userprofile_private_view'))
             else:
 
+                context["Submission"] = form
 
-                raise Http404
+
+                return render(request, template_name, context)
+
 
 # class ProjectSubmissionCreateView_old(CreateView):
 #     template_name = 'projects/project_submissionform.html'
@@ -231,3 +336,92 @@ class ProjectUpdateView(UpdateView):
     def get_object(self):
         pk = self.kwargs.get("pk")
         return get_object_or_404(Project, id=pk)
+
+
+
+def update_project_entry_keyword_lines(model, key_sv, key_en ):
+
+    model.keywords = ""
+
+
+
+    for key_sv, key_en in zip(key_sv, key_en):
+
+
+        # if both are empty continue 
+        if key_sv == "" and key_en == "":
+            continue
+
+        # if sv is empty but not en
+        if key_sv == "":
+
+            matching_keywords_en = KeywordEng.objects.filter(keyword=key_en.lower())
+            if len(matching_keywords_en) > 0:
+                model_keyword_eng = matching_keywords_en.first()
+
+            else:
+                model_keyword_eng = KeywordEng(keyword =  key_en.lower())
+                model_keyword_eng.save()
+            options = model_keyword_eng.line.filter(swe=None)
+
+            if len(options) > 0:
+                model.add_keyword(options.first())
+
+            else:
+                model_keyword_line =  KeywordLine(eng=model_keyword_eng)
+                model_keyword_line.save()
+                model.add_keyword(model_keyword_line)
+
+
+        # if sv is empty but not en
+        elif key_en == "":
+
+            matching_keywords_sv = KeywordSwe.objects.filter(keyword=key_sv.lower())
+            if len(matching_keywords_sv) > 0:
+                model_keyword_swe = matching_keywords_sv.first()
+
+            else:
+                model_keyword_swe = KeywordSwe(keyword =  key_sv.lower())
+                model_keyword_swe.save()
+            options = model_keyword_swe.line.filter(eng=None)
+
+            if len(options) > 0:
+                model.add_keyword(options.first())
+
+            else:
+                model_keyword_line =  KeywordLine(swe=model_keyword_swe)
+                model_keyword_line.save()
+                model.add_keyword(model_keyword_line)
+
+        # both are filed-in        
+        else:
+
+            # en key
+            matching_keywords_en = KeywordEng.objects.filter(keyword=key_en.lower())
+            if len(matching_keywords_en) > 0:
+                model_keyword_eng = matching_keywords_en.first()
+
+            else:
+                model_keyword_eng = KeywordEng(keyword =  key_en.lower())
+                model_keyword_eng.save()
+
+
+            # sv key
+            matching_keywords_sv = KeywordSwe.objects.filter(keyword=key_sv.lower())
+            if len(matching_keywords_sv) > 0:
+                model_keyword_swe = matching_keywords_sv.first()
+
+            else:
+                model_keyword_swe = KeywordSwe(keyword =  key_sv.lower())
+                model_keyword_swe.save()
+
+
+            options = model_keyword_swe.line.filter(eng=model_keyword_eng)
+
+            if len(options) > 0:
+                model.add_keyword(options.first())
+
+            else:
+                model_keyword_line =  KeywordLine(swe=model_keyword_swe, eng=model_keyword_eng)
+                model_keyword_line.save()
+                model.add_keyword(model_keyword_line)

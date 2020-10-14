@@ -53,15 +53,24 @@
     <h2>{% trans "Project information" %}</h2>
   </div>
 
+    <div class="detail-view " style="border: solid black 1px ">
+    <h3>{% trans "PROJECT AIM:" %}</h3>
+    <p>{{ object.aim|safe }}</p>
+  </div>
+
+  
+
+
+  <div class="detail-view">
+    <h3>{% trans "PROJECT DESCRIPTION:" %}</h3>
+    <p>{{ object.description|safe  }}</p>
+  </div>
+
   <div class="detail-view">
     <h3>{% trans "PROJECT STATUS:" %}</h3>
     <p>{{ object.get_status_name }}</p>
   </div>
 
-  <div class="detail-view">
-    <h3>{% trans "PROJECT DESCRIPTION:" %}</h3>
-    <p>{{ object.description }}</p>
-  </div>
 
   <div class="detail-view">
     <h3>{% trans "PROJECT TARGET AUDIENCE:" %}</h3>

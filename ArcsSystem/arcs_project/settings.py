@@ -395,3 +395,29 @@ WAGTAIL_APPEND_SLASH = False
 
 # Enable our CustomUser abstract user for futurproofing and custom auth uses
 AUTH_USER_MODEL = 'users.CustomUser'
+
+
+SUMMERNOTE_CONFIG = {
+
+    'iframe': False,
+
+    'summernote': {
+
+        'width': '100%',
+        'height': '480',
+
+
+        'toolbar': [
+            ['style', ['style']],
+            ['font', ['bold', 'underline', 'clear']],
+            ['fontname', ['fontname']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+#            ['table', ['table']],
+            ['insert', ['picture']],
+            ['view', ['fullscreen', 'codeview', 'help']],
+        ],
+
+    }
+
+}

@@ -31,7 +31,7 @@ urlpatterns = [
         name='project_submission_detail'),
 
     # edit my sub
-    path('project_submission/<int:pk>/edit', ProjectSubmissionEditView,
+    path('project_submission/<int:pk>/edit/', ProjectSubmissionEditView,
         name='project_submission_edit'),
 
     path('search/', SearchResultsView.as_view(),

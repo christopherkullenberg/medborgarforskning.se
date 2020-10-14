@@ -86,7 +86,7 @@
             <div class="row">
                 <div class=" col">  
                     <div  class="col project-items-justify blackFieldWhiteText">
-                        <h4 align="center"><a style="color: white; font-size: 16px" id="project-items-link" href="{% url 'projects:project_detail' ProjectEntry.id %}"> {{ ProjectEntry.name|truncatechars:20 }}</a></h4>
+                        <h4 align="center"><a style="color: white; font-size: 16px" id="project-items-link" href="{% url 'projects:project_detail' ProjectEntry.id %}"> {{ ProjectEntry.get_card_name }}</a></h4>
                     </div>
                 </div>
             </div>
@@ -106,14 +106,14 @@
             <div class="col" style="padding-right: 5px; padding-left: 5px; margin-top: 3px">
                 <div class="row Lato-font ">
                     <div class="col" >
-                        <span class="font-weight-bold">PROJECT FOCUS: </span> <span >{{ProjectEntry.aim|truncatechars:40}}</span>
+                        <span class="font-italic">PROJECT AIM: </span> <span class="font-weight-light" style=" font-size: 14px;" >{{ProjectEntry.get_card_aim}}</span>
                     </div>
                 </div>
                 <hr>
                 <div class="row Lato-font">
 
                     <div class="col">
-                        <span >DESCRIPTION: </span> <span >{{ProjectEntry.description|truncatechars:40}}</span>
+                        <span >DESCRIPTION: </span> <span >{{ProjectEntry.get_card_description}}</span>
                     </div>
                 </div>
                 <hr>
@@ -123,9 +123,9 @@
                     </div>
                 </div>
                 <hr>
-                keywords:
-                {% for keyword in ProjectEntry.keywords.all %}
-                <span style="background: black; color: white; margin: 3px; padding: 3px; border-radius: 5px">{{keyword}} </span> 
+
+                {% for keyword in ProjectEntry.get_keywords %}
+                <a style="color:blue">{{keyword}}, </a> 
                 {% endfor %}
             </div>
         </div>
