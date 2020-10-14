@@ -16,7 +16,7 @@ from django import forms
 from django.views.generic.base import TemplateView
 from django.views.generic import DetailView
 
-from projects.models import ProjectSubmission, ProjectEntry
+from projects.models import ProjectSubmission, ProjectEntry, KeywordSwe, KeywordEng, KeywordLine
 
 class UserPublicProfilePageView(DetailView):
     template_name = 'users/public_profile_view.html'
@@ -69,19 +69,111 @@ def UserPrivateProfilePageView(request):
 
 
 
+
+# this funtion create projectEntry from projectSub 
+# and handels keyword submitions
+# alsow creating keyword line
 def accept_subForm(id):
 
     sub_model = ProjectSubmission.objects.get(id = int(id))
-    sub_model.delete()
 
-    keywords = sub_model.__dict__ 
-    if "_state" in keywords:
-        del keywords["_state"]
-    if "id" in keywords:
-        del keywords["id"]
+    pro_kwargs = sub_model.__dict__.copy()
+    if "_state" in pro_kwargs:
+        del pro_kwargs["_state"]
+    if "id" in pro_kwargs:
+        del pro_kwargs["id"]
+    if "keywords_sv" in pro_kwargs:
+        del pro_kwargs["keywords_sv"]
+    if "keywords_en" in pro_kwargs:
+        del pro_kwargs["keywords_en"]
 
-    new_model = ProjectEntry(**keywords)
+    new_model = ProjectEntry(**pro_kwargs)
     new_model.save()
+
+
+    for key_sv, key_en in zip(*sub_model.get_keywords()):
+
+
+        # if both are empty continue 
+        if key_sv == "" and key_en == "":
+            continue
+
+        # if sv is empty but not en
+        if key_sv == "":
+
+            matching_keywords_en = KeywordEng.objects.filter(keyword=key_en.lower())
+            if len(matching_keywords_en) > 0:
+                model_keyword_eng = matching_keywords_en.first()
+
+            else:
+                model_keyword_eng = KeywordEng(keyword =  key_en.lower())
+                model_keyword_eng.save()
+            options = model_keyword_eng.line.filter(swe=None)
+
+            if len(options) > 0:
+                new_model.add_keyword(options.first())
+
+            else:
+                model_keyword_line =  KeywordLine(eng=model_keyword_eng)
+                model_keyword_line.save()
+                new_model.add_keyword(model_keyword_line)
+
+
+        # if sv is empty but not en
+        elif key_en == "":
+
+            matching_keywords_sv = KeywordSwe.objects.filter(keyword=key_sv.lower())
+            if len(matching_keywords_sv) > 0:
+                model_keyword_swe = matching_keywords_sv.first()
+
+            else:
+                model_keyword_swe = KeywordSwe(keyword =  key_sv.lower())
+                model_keyword_swe.save()
+            options = model_keyword_swe.line.filter(eng=None)
+
+            if len(options) > 0:
+                new_model.add_keyword(options.first())
+
+            else:
+                model_keyword_line =  KeywordLine(swe=model_keyword_swe)
+                model_keyword_line.save()
+                new_model.add_keyword(model_keyword_line)
+
+        # both are filed-in        
+        else:
+
+            # en key
+            matching_keywords_en = KeywordEng.objects.filter(keyword=key_en.lower())
+            if len(matching_keywords_en) > 0:
+                model_keyword_eng = matching_keywords_en.first()
+
+            else:
+                model_keyword_eng = KeywordEng(keyword =  key_en.lower())
+                model_keyword_eng.save()
+
+
+            # sv key
+            matching_keywords_sv = KeywordSwe.objects.filter(keyword=key_sv.lower())
+            if len(matching_keywords_sv) > 0:
+                model_keyword_swe = matching_keywords_sv.first()
+
+            else:
+                model_keyword_swe = KeywordSwe(keyword =  key_sv.lower())
+                model_keyword_swe.save()
+
+
+            options = model_keyword_swe.line.filter(eng=model_keyword_eng)
+
+            if len(options) > 0:
+                new_model.add_keyword(options.first())
+
+            else:
+                model_keyword_line =  KeywordLine(swe=model_keyword_swe, eng=model_keyword_eng)
+                model_keyword_line.save()
+                new_model.add_keyword(model_keyword_line)
+
+    new_model.save()
+    sub_model.delete()
 
 
 

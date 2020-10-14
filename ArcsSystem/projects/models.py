@@ -9,6 +9,7 @@ from django.contrib.auth.models import User
 import uuid
 import os
 from users.models import CustomUser
+from organizations.models import Organization
 
 # Define the options for the state of operation a project might be classified
 # Defined here as used in more than one model
@@ -49,16 +50,49 @@ UN_REGIONS_CHOICES = [
 ]
 
 
-class Keyword(models.Model):
+
+
+class KeywordSwe(models.Model):
+    '''Keywords for the projects'''
+    class Meta:
+        verbose_name = _('Keyword_sv')
+        verbose_name_plural = _('Keywords_sv')
+
+    keyword = models.TextField(unique=True)
+
+    def __str__(self):
+        return f'{self.keyword}'
+
+class KeywordEng(models.Model):
     '''Keywords for the projects'''
     class Meta:
         verbose_name = _('Keyword')
         verbose_name_plural = _('Keywords')
 
-    keyword = models.TextField()
+    keyword = models.TextField(unique=True)
 
     def __str__(self):
         return f'{self.keyword}'
+
+
+
+class KeywordLine(models.Model):
+
+    swe = models.ForeignKey(KeywordSwe, on_delete=models.SET_NULL, blank=True, null=True, related_name='line' )
+    eng = models.ForeignKey(KeywordEng, on_delete=models.SET_NULL, blank=True, null=True, related_name='line' )
+
+    def __str__(self):
+
+        if self.eng == None:
+            return f'{"swe : " + self.swe.keyword}'
+
+        if self.swe == None:
+            return f'{"eng : " + self.eng.keyword}'
+        return f'{"swe : " + self.swe.keyword + " | eng : " + self.eng.keyword}'
+
+
+
+
 
 class ScienceType(models.Model):
     '''Science Types for the projects'''
@@ -119,7 +153,8 @@ class Project(models.Model):
     date_created = models.DateTimeField(_('The date the Project created'), auto_now=True) ## maps to PPSR PMM  projectDateCreated
     date_updated = models.DateTimeField(_('Last date the Project was updated'), auto_now=True) ## maps to PPSR PMM  projectLastUpdatedDate
     name = models.CharField(help_text=_('Common name for the project.'), db_index=True, max_length=200, blank=False,) ## maps to PPSR PMM  PMM projectName
-    aim = models.CharField(help_text=_('Primary focus of the project.'), db_index=True, max_length=200, default='', blank=False,) ## maps to PPSR PMM  projectAim
+
+    aim = models.CharField(help_text=_('Primary focus of the project.'), db_index=True, max_length=600, default='', blank=False,) ## maps to PPSR PMM  projectAim
     description = models.CharField(max_length=5000, default=_(''), blank=False,) ## maps to PPSR PMM  projectDescription
     #status = models.ForeignKey(Status, on_delete=models.CASCADE)
     status = models.CharField(db_index=True, max_length=30, default='0', choices=STATUS_CHOICES,) ## maps to PPSR PMM  projectStatus
@@ -130,11 +165,11 @@ class Project(models.Model):
     '''PPSR PMM Optional Fields'''
     # has_tag = ## maps to PPSR PMM hasTag
     #difficulty_level = ## maps to PPSR PMM difficultyLevel
-    keywords = models.ManyToManyField(Keyword, blank=True) ## maps to PPSR PMM keyword
+    ## maps to PPSR PMM keyword
     end_date = models.DateTimeField(help_text=_('Date the project ended.'), db_index=True, null=True, ) ## maps to PPSR PMM projectEndDate
 
 
-    url = models.URLField(max_length=500) ## maps to PPSR PMM projectUrl
+    url = models.URLField(max_length=500, blank=True, verbose_name="Project url") ## maps to PPSR PMM projectUrl
     #un_regions = ## maps to PPSR PMM unRegions
     #language = ## maps to PPSR PMM language - language encoding of the record
 
@@ -147,7 +182,9 @@ class Project(models.Model):
 
     #PPSR PMM meansOfContact - controlled vocabulary list ie (email, phone, website, physical address)
     contact_role = models.CharField(help_text=_('Maintainer’s role or position with this project.'), max_length=200, default='Not Provided', blank=True,)
-    contact_affiliation = models.CharField(help_text =_('Maintainer’s institutional affiliation.'), max_length=200, default='',) # This is the field presented in the inial form to collect a string to try and resolve semantically, but if not found allows saving the original string too.
+    #contact_affiliation = models.CharField(help_text =_('Maintainer’s institutional affiliation.'), max_length=200, default='',) # This is the field presented in the inial form to collect a string to try and resolve semantically, but if not found allows saving the original string too.
+
+    contact_affiliation = models.ForeignKey(Organization, on_delete=models.SET_NULL, blank=True, null=True )
     # contact_affiliation_semantic = models.ManyToManyField(Organizaiton)
     contact_email = models.CharField(max_length=200, default='',)
     contact_phone = models.CharField(max_length=200, default='',)
@@ -238,10 +275,15 @@ class Project(models.Model):
     '''end temporary notes'''
 
 
+    #card vertion
+
+    name_card = models.CharField(help_text=_('Common name for the project.'), db_index=True, max_length=30, blank=True, verbose_name="Short Name (30 chars)") ## maps to PPSR PMM  PMM projectName
+    aim_card = models.CharField(help_text=_('Primary focus of the project.'), db_index=True, max_length=100, default='', blank=False, verbose_name="Short aim (100 chars)")  ## maps to PPSR PMM  projectAim
+    description_card = models.CharField(max_length=100, default=_(''), blank=False, verbose_name="short description (100 chars)" ) ## maps to PPSR PMM  projectDescription
+
+
 
     # This is to get the user 
-
-
 
     search_fields = ['name','description']
 
@@ -263,6 +305,22 @@ class Project(models.Model):
     def get_status_name(self):
         return STATUS_CHOICES[int(self.status)][1]
 
+    def get_card_name(self):
+        if self.name_card != "" :
+            return self.name_card
+        return self.name
+
+
+    def get_card_aim(self):
+        if self.aim_card != "" :
+            return self.aim_card
+        return self.aim
+
+    def get_card_description(self):
+        if self.description_card != "" :
+            return self.description_card
+        return self.description
+
 
 
     def __str__(self):
@@ -272,6 +330,9 @@ class Project(models.Model):
 class ProjectEntry(Project):
     ''' Extends the Project model to capture the additional fields for a project project that has
     been approved for adding to the database and may be included in the API exchange '''
+
+    keywords = models.CharField(blank=True, max_length=100)
+    # keywords = models.Manytomany(KeywordLine, blank=True)
 
     class Meta:
         # Explicit add of names and plurals instead of relying on model name fallback
@@ -294,10 +355,60 @@ class ProjectEntry(Project):
         return self.name
 
 
+    def add_keyword(self, line):
+
+        self.keywords += str(line.id) + "&"
+
+    def get_keywords(self):
+
+
+
+        lang="en"
+
+
+        if lang == "sv":
+            return [KeywordLine.objects.get(id=int(pk)).swe.keyword if KeywordLine.objects.get(id=int(pk)).swe is not None else KeywordLine.objects.get(id=int(pk)).eng.keyword for pk in  self.keywords.split("&")[:-1] ]
+        if lang == "en":
+            return [KeywordLine.objects.get(id=int(pk)).eng.keyword if KeywordLine.objects.get(id=int(pk)).eng is not None else KeywordLine.objects.get(id=int(pk)).swe.keyword for pk in  self.keywords.split("&")[:-1] ]
+
+    def get_sv_en_keywords(self):
+
+        sv = []
+        en = []
+
+        for line_id in self.keywords.split("&")[:-1]:
+
+            line = KeywordLine.objects.get(id=int(line_id))
+
+            if line.swe == None:
+                sv.append("")
+            else:
+                sv.append(line.swe.keyword)
+
+            if line.eng == None:
+                en.append("")
+            else:
+                en.append(line.eng.keyword)
+
+
+        return sv, en
+
+
+
+
+
+
+
+
+
+
 class ProjectSubmission(Project):
     ''' Extends the Project model for an lead submissions about a potential project that needs review and extending to be added to the database
     for exchange. Once approved it will be moved to the ProjectEntry model and will be available in the shared database.
     We do not want spam inserted to the main project model stores and can enforce fields differently than a Projectentry.'''
+
+    keywords_sv = models.CharField(max_length=50, blank=True, null=True)
+    keywords_en = models.CharField(max_length=50, blank=True, null=True)
 
     class Meta:
         # Explicit add of names and plurals instead of relying on model name fallback
@@ -313,6 +424,12 @@ class ProjectSubmission(Project):
 
     def get_absolute_url_details(self):
         return reverse('projects:project_detail', args=[str(self.id)])
+
+    def get_keywords(self):
+
+        if self.keywords_sv == None or self.keywords_sv == None:
+            return [], []
+        return self.keywords_sv.split("&")[:-1], self.keywords_en.split("&")[:-1], 
 
     def __str__(self):
         return self.name
