@@ -370,7 +370,7 @@ AUTH_USER_MODEL = 'users.CustomUser'
 
 SUMMERNOTE_CONFIG = {
 
-    'iframe': False,
+    'iframe': True,
 
     'summernote': {
 

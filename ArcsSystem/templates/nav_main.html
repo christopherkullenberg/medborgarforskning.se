@@ -52,7 +52,7 @@
                     </a>
                     <div class="dropdown-menu main-menu-buttons background-light-green-color" aria-labelledby="navbarDropdown">
                         {% for page in 'citizen-science'|get_menu %}
-                        {% if page.slug in 'swedish-citizen-science' %}
+                        {% if page.sub_category %}
                         <ul>
                             <li class="nav-item dropdown">
                                 <a class="dropdown-item" href="{{ page.get_absolute_url }}">

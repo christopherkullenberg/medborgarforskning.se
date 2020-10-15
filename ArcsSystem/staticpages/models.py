@@ -12,8 +12,9 @@ class Page(models.Model):
         verbose_name = _('Page')
         verbose_name_plural = _('Pages')
 
+    sub_category = models.BooleanField()
     slug = models.SlugField()
-    category = models.SlugField(default="uncategorized")
+    category = models.SlugField(default="citizen-science")
     title = models.CharField(max_length=100, default='title')
     author = models.ForeignKey(
         settings.AUTH_USER_MODEL,
