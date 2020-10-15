@@ -70,10 +70,25 @@
                 </li>
 
                  <li class="nav-item header-menu-li-style col-3">
-                    <a class=" main-menu-buttons-font text-wrap" href="{% url 'workpackages:category_view' %}" role="button" aria-haspopup="true" aria-expanded="false" style="width: 10rem;">
-                         {% trans "Theme" %}
+                   <a class="nav-link dropdown-toggle main-menu-buttons-font text-wrap" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 13rem;">
+                         {% trans "Knowledge base" %}
                     </a>
-                </li>
+
+                    <div class="dropdown-menu main-menu-buttons background-light-green-color" aria-labelledby="navbarDropdown">
+
+                        <a class="dropdown-item font-weight-bold" href="{% url 'workpackages:category_view' %}">{%trans "ARCS knowledge base" %}</a>
+
+                        <ul>
+                        <div class="dropdown-divider"></div>
+
+
+
+                      <a class="dropdown-item font-weight-bold" href="{% url 'publications:article_publications_list' %}">{%trans "Publications Database" %}</a>
+
+                      </ul>
+                      </div>
+
+
 
                 <li class="nav-item dropdown header-menu-li-style col-3">
 
@@ -85,27 +100,32 @@
 
                         <a class="dropdown-item font-weight-bold" href="{% url 'projects:project_list' %}">{%trans "Citizen Science Projects" %}</a>
 
+
+
+
+                        <!--
                         <div class="dropdown-divider"></div>
 
-                        <ul>
+                        <
 
                             <li nav-item dropdown>
 
                                 <a class="dropdown-item" href="#">{%trans "Map of Projects" %}</a>
 
                             </li>
-
+                            -->
+                            <ul>
                             <div class="dropdown-divider"></div>
 
                             <li nav-item dropdown>
 
-                                    <a class="dropdown-item" href="{% url 'projects:project_submissionform' %}">{%trans "Add your Projects" %}</a>
+                                    <a class="dropdown-item" href="{% url 'projects:project_submissionform' %}">{%trans "Add your Project" %}</a>
                             </li>
 
                         </ul>
 
                         <div class="dropdown-divider"></div>
-
+                        <!--
                         <a class="dropdown-item font-weight-bold" href="#">{%trans "Predefined List of Projects" %}</a>
 
                         <div class="dropdown-divider"></div>
@@ -130,7 +150,7 @@
 
                             <li nav-item dropdown>
 
-                                <a class="dropdown-item" href="#">{%trans "Reserchers" %}</a>
+                                <a class="dropdown-item" href="#">{%trans "Researchers" %}</a>
 
                             </li>
 
@@ -138,8 +158,9 @@
 
                         <div class="dropdown-divider"></div>
 
-                        <a class="dropdown-item font-weight-bold" href="{% url 'publications:article_publications_list' %}">{%trans "Publications" %}</a>
 
+                        <a class="dropdown-item font-weight-bold" href="{% url 'publications:article_publications_list' %}">{%trans "Publications" %}</a>
+                        -->
                     </div>
 
                 </li>
