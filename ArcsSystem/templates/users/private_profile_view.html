@@ -6,8 +6,8 @@
 <h1>Private Profile view</h1>
 
 <div class="col-md-2">
-    <a class="form-control" href="edit/"> Edit my profile</a>
-    
+    <a class="form-control" href={% url 'my_profile_view' %}> Edit my profile</a>
+
 </div>
 <br><hr><br>
 
@@ -31,7 +31,7 @@
                 <div class="project-item">
                     <input class="form-control " type="checkbox" name= "acpt_{{ProjectEntry.id}}">
                     <div class="row">
-                        <div class=" col">  
+                        <div class=" col">
                             <div  class="col project-items-justify blackFieldWhiteText">
                                 <h4 align="center"><a style="color: white; font-size: 16px" id="project-items-link" href="{% url 'projects:project_submission_detail' ProjectEntry.id %}"> {{ ProjectEntry.name|truncatechars:20 }}</a></h4>
                             </div>
@@ -72,7 +72,7 @@
                         <hr>
                         keywords:
                         {% for keyword in ProjectEntry.keywords.all %}
-                        <span style="background: black; color: white; margin: 3px; padding: 3px; border-radius: 5px">{{keyword}} </span> 
+                        <span style="background: black; color: white; margin: 3px; padding: 3px; border-radius: 5px">{{keyword}} </span>
                         {% endfor %}
                     </div>
                 </div>
@@ -95,7 +95,7 @@
         <div style="padding-left: 20px; padding-right: 20px" class="col-lg-3 col-md-4 col-xs-6 mb-5">
             <div class="project-item">
                 <div class="row">
-                    <div class=" col">  
+                    <div class=" col">
                         <div  class="col project-items-justify blackFieldWhiteText">
                             <h4 align="center"><a style="color: white; font-size: 16px" id="project-items-link" href="{% url 'projects:project_detail' ProjectEntry.id %}"> {{ ProjectEntry.name|truncatechars:20 }}</a></h4>
                         </div>
@@ -136,7 +136,7 @@
                     <hr>
                     keywords:
                     {% for keyword in ProjectEntry.keywords.all %}
-                    <span style="background: black; color: white; margin: 3px; padding: 3px; border-radius: 5px">{{keyword}} </span> 
+                    <span style="background: black; color: white; margin: 3px; padding: 3px; border-radius: 5px">{{keyword}} </span>
                     {% endfor %}
                 </div>
             </div>
@@ -156,7 +156,7 @@
         <div style="padding-left: 20px; padding-right: 20px" class="col-lg-3 col-md-4 col-xs-6 mb-5">
             <div class="project-item">
                 <div class="row">
-                    <div class=" col">  
+                    <div class=" col">
                         <div  class="col project-items-justify blackFieldWhiteText">
                             <h4 align="center"><a style="color: white; font-size: 16px" id="project-items-link" href="{% url 'projects:project_submission_detail' ProjectEntry.id %}"> {{ ProjectEntry.name|truncatechars:20 }}</a></h4>
                         </div>
@@ -197,7 +197,7 @@
                     <hr>
                     keywords:
                     {% for keyword in ProjectEntry.keywords.all %}
-                    <span style="background: black; color: white; margin: 3px; padding: 3px; border-radius: 5px">{{keyword}} </span> 
+                    <span style="background: black; color: white; margin: 3px; padding: 3px; border-radius: 5px">{{keyword}} </span>
                     {% endfor %}
                 </div>
             </div>

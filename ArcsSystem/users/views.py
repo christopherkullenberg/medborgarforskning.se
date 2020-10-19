@@ -4,7 +4,7 @@ from .models import CustomUser
 from django.views.generic.base import TemplateView
 from django.views.generic import DetailView
 from django.core.exceptions import ObjectDoesNotExist
-from .forms import CustomUserPrivateForm
+from .forms import CustomUserPrivateForm, CustomUserProfile
 from django import forms
 from staticpages.models import TermsPage
 from django.contrib.auth import logout
@@ -49,7 +49,7 @@ def UserPrivateProfilePageView(request):
         # admin part
         if request.user.is_superuser:
             context["Admin_project_submissions"] = ProjectSubmission.objects.all()
-            # all users 
+            # all users
         if request.user.is_authenticated:
             context["My_approved_projects"] = ProjectEntry.objects.filter(created_by = request.user)
             context["My_pending_projects"] =  ProjectSubmission.objects.filter(created_by = request.user)
@@ -65,12 +65,7 @@ def UserPrivateProfilePageView(request):
                     accept_subForm(name[5:])
         return HttpResponseRedirect(reverse('userprofile_private_view'))
 
-
-
-
-
-
-# this funtion create projectEntry from projectSub 
+# this funtion create projectEntry from projectSub
 # and handels keyword submitions
 # alsow creating keyword line
 def accept_subForm(id):
@@ -94,7 +89,7 @@ def accept_subForm(id):
     for key_sv, key_en in zip(*sub_model.get_keywords()):
 
 
-        # if both are empty continue 
+        # if both are empty continue
         if key_sv == "" and key_en == "":
             continue
 
@@ -139,7 +134,7 @@ def accept_subForm(id):
                 model_keyword_line.save()
                 new_model.add_keyword(model_keyword_line)
 
-        # both are filed-in        
+        # both are filed-in
         else:
 
             # en key
@@ -176,44 +171,35 @@ def accept_subForm(id):
     sub_model.delete()
 
 
-
 class UserEidtMyPageView(TemplateView):
 
     template_name = "users/profile_edit_view.html"
 
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
-            form = CustomUserPrivateForm(initial={
-
-                'username': request.user.username, 
+            form = CustomUserProfile(initial={
                 'email': request.user.email,
                 'title': request.user.title,
                 'bio_general': request.user.bio_general,
                 'bio_research_interest': request.user.bio_research_interest,
                 'personal_website_address': request.user.personal_website_address,
                 'institution': request.user.institution,
-                "first_name":  request.user.first_name, 
+                "first_name":  request.user.first_name,
                 "last_name": request.user.last_name,
 
                   })
-            for key, value in form.fields.items():
-                value.disabled = True
             return render(request, self.template_name, {'form': form})
         else:
             return HttpResponseRedirect(reverse('account_login'))
 
     def post(self, request, *args, **kwargs):
         if request.user.is_authenticated:
-            form = CustomUserPrivateForm(request.POST)
-            print(form.errors.as_data())
-
-            if form.is_valid() :
+            form = CustomUserProfile(request.POST)
+            if form.is_valid():
                 request.user.email = form["email"].value()
                 request.user.title = form["title"].value()
                 request.user.bio_general = form["bio_general"].value()
                 request.user.bio_research_interest = form["bio_research_interest"].value()
-                # request.user.connections = form["connections"].value()
-                # request.user.institution = form["institution"].value()
                 request.user.personal_website_address = form["personal_website_address"].value()
                 request.user.institution = form["institution"].value()
                 request.user.first_name = form["first_name"].value()
@@ -224,6 +210,27 @@ class UserEidtMyPageView(TemplateView):
         else:
             return HttpResponseRedirect(reverse('account_login'))
 
+class MyProfileView(TemplateView):
+    template_name = "users/user_detail_view.html"
+
+    def get(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            form = CustomUserPrivateForm(initial={
+                'username': request.user.username,
+                'email': request.user.email,
+                'title': request.user.title,
+                'bio_general': request.user.bio_general,
+                'bio_research_interest': request.user.bio_research_interest,
+                'personal_website_address': request.user.personal_website_address,
+                'institution': request.user.institution,
+                "first_name":  request.user.first_name,
+                "last_name": request.user.last_name,
+                  })
+            for key, value in form.fields.items():
+                value.disabled = True
+            return render(request, self.template_name, {'form': form})
+        else:
+            return HttpResponseRedirect(reverse('account_login'))
 
 class AcceptTermsPageView(TemplateView):
 
