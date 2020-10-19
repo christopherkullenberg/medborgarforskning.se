@@ -130,7 +130,8 @@ def ProjectEditView(request, pk):
                 for i in range(context["keyword_len"]):
                     context["keyword_line"].append([sv_list[i], en_list[i]])
 
-                if project.image != None:
+                if project.image:
+
                     context["inital_image"] = project.image.url
 
                 return render(request, template_name, context)
@@ -342,6 +343,8 @@ class ProjectUpdateView(UpdateView):
 def update_project_entry_keyword_lines(model, key_sv, key_en ):
 
     model.keywords = ""
+    model.keyword_lines.clear()
+
 
 
 
@@ -366,11 +369,13 @@ def update_project_entry_keyword_lines(model, key_sv, key_en ):
 
             if len(options) > 0:
                 model.add_keyword(options.first())
+                model.keyword_lines.add(options.first())
 
             else:
                 model_keyword_line =  KeywordLine(eng=model_keyword_eng)
                 model_keyword_line.save()
                 model.add_keyword(model_keyword_line)
+                model.keyword_lines.add(options.first())
 
 
         # if sv is empty but not en
@@ -387,11 +392,13 @@ def update_project_entry_keyword_lines(model, key_sv, key_en ):
 
             if len(options) > 0:
                 model.add_keyword(options.first())
+                model.keyword_lines.add(options.first())
 
             else:
                 model_keyword_line =  KeywordLine(swe=model_keyword_swe)
                 model_keyword_line.save()
                 model.add_keyword(model_keyword_line)
+                model.keyword_lines.add(options.first())
 
         # both are filed-in        
         else:
@@ -420,8 +427,10 @@ def update_project_entry_keyword_lines(model, key_sv, key_en ):
 
             if len(options) > 0:
                 model.add_keyword(options.first())
+                model.keyword_lines.add(options.first())
 
             else:
                 model_keyword_line =  KeywordLine(swe=model_keyword_swe, eng=model_keyword_eng)
                 model_keyword_line.save()
                 model.add_keyword(model_keyword_line)
+                model.keyword_lines.add(options.first())

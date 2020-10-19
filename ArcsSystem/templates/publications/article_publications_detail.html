@@ -3,8 +3,137 @@
 {% load i18n %}
 {% load publications_extras %}
 
+script srchttps://d3js.org/d3.v4.min.jsscript
 
 {% block content %}
+<meta charset="utf-8">
+
+
+<style>
+
+.links line {
+  stroke: #999;
+  stroke-opacity: 0.5;
+}
+
+.nodes circle {
+  stroke: #fff;
+  stroke-width: 2px;
+}
+
+text {
+  font-family: sans-serif;
+  font-size: 16px;
+  font: 20px black bold;
+}
+
+</style>
+<svg id="rel_graph" width="1600" height="1200"></svg>
+
+<script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
+
+<script>
+
+
+
+function strength(link) {
+  return 0.1 / Math.min(count(link.source), count(link.target));
+}
+
+var svg = d3.select("#rel_graph"),
+    width = +svg.attr("width"),
+    height = +svg.attr("height");
+
+var color = d3.scaleOrdinal(d3.schemeCategory20);
+
+var simulation = d3.forceSimulation()
+    .force("link", d3.forceLink().id(function(d) { return d.id; }).distance(function(d) { return d.value * 10; }))
+    .force("charge", d3.forceManyBody())
+    .force("center", d3.forceCenter(width / 2, height / 2));
+
+d3.json("\\media\\miserables.json", function(error, graph) {
+  if (error) throw error;
+
+  var link = svg.append("g")
+      .attr("class", "links")
+    .selectAll("line")
+    .data(graph.links)
+    .enter().append("line")
+      .attr("stroke-width", function(d) { return Math.sqrt(d.value/5); });
+
+
+
+  var node = svg.append("g")
+      .attr("class", "nodes")
+    .selectAll("g")
+    .data(graph.nodes)
+    .enter().append("g")
+
+  var circles = node.append("circle")
+
+
+      .attr("r", function(d) { if(d.value){return d.value *0.3 +  1.5};  return 5;})
+
+      .attr("id", function(d) { return d.id; })
+
+      .attr("fill", function(d) { return color(d.group); })
+      .call(d3.drag()
+          .on("start", dragstarted)
+          .on("drag", dragged)
+          .on("end", dragended));
+
+  var lables = node.append("text")
+      .text(function(d) {
+        return d.id;
+      })
+      .attr('x', -30)
+      .attr('y', -30);
+
+  node.append("title")
+      .text(function(d) { return d.id; });
+
+  simulation
+      .nodes(graph.nodes)
+      .on("tick", ticked);
+
+  simulation.force("link")
+      .links(graph.links);
+
+  function ticked() {
+    link
+        .attr("x1", function(d) { return d.source.x; })
+        .attr("y1", function(d) { return d.source.y; })
+        .attr("x2", function(d) { return d.target.x; })
+        .attr("y2", function(d) { return d.target.y; });
+
+    node
+        .attr("transform", function(d) {
+          return "translate(" + d.x + "," + d.y + ")";
+        })
+  }
+});
+
+function dragstarted(d) {
+  if (!d3.event.active) simulation.alphaTarget(0.3).restart();
+  d.fx = d.x;
+  d.fy = d.y;
+}
+
+function dragged(d) {
+  d.fx = d3.event.x;
+  d.fy = d3.event.y;
+}
+
+function dragended(d) {
+  if (!d3.event.active) simulation.alphaTarget(0);
+  d.fx = null;
+  d.fy = null;
+}
+
+</script>
+
+
+
 <div class="detail-view">
 <h1>{{ article.title }}</h1>
 
@@ -44,14 +173,153 @@
 {% endfor %}
 {% endfor %}
 
+<hr>
+<h4>start of related things</h4>
 
 
-{% for theme in article|get_related_all %}
-{{ theme }}
+{{ article|get_related_all:LANGUAGE_CODE|safe  }}
+
+{% for k,v in article|get_all_related:LANGUAGE_CODE|items  %}
+
+<br>
+{{k}}
+<br>
+
+
+
+
+
+{% for k2,v2 in v|items  %}
+
+<hr>
+
+{{k2}}
+<br>
+
+
+
+
+
+{% for k3,v3 in v2|items  %}
+
+<br>
+{{k3}}
+
+{{v3}}
 
 
 
 {% endfor %}
+
+<br><br><br><br>
+
+{% endfor %}
+
+
+
+
+{% endfor %}
+
+
+<div class="row">
+
+
+
+{% if dsfsdf %}
+
+{% for column in article|get_related_all %}
+
+<div class="col-3">
+
+
+{% for relation in column %}
+
+<div class="col-12">{{ relation.get_custom_html|safe }}</div>
+
+
+{% endfor %}
+
+
+</div>
+
+{% endfor %}
+
+</div>
+
+
+
+
+{% for return_dict in article|get_related_all %}
+
+
+{% for key in return_dict %}
+
+{{key}}
+
+{% endfor %}
+
+
+{% endfor %}
+
+
+
+
+
+
+  <ul class="nav nav-tabs">
+
+
+
+
+
+
+    <li class="nav-item">
+      <a class="nav-link active disabled" data-toggle="tab" href="#step1">Details</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link disabled" data-toggle="tab" href="#step_aim">Aim <span class="glyphicon glyphicon-align-left" ></span></a>
+    </li>
+    <li class="nav-item ">
+      <a class="nav-link disabled" data-toggle="tab" href="#step_description">Description</a>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link disabled" data-toggle="tab" href="#step3">Keywords</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link disabled" data-toggle="tab" href="#step4">Card view</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link disabled" data-toggle="tab" href="#step5">Contact info</a>
+
+
+    </li>
+
+    <div  style="margin-left: 10px" class="row">
+
+
+
+        <button class="nav-item  btn-danger" type="button" onclick="prevnav()" style="margin: 10px; padding: 5px;">< Previous </button>
+
+
+
+
+        <button class="nav-item  btn-success" type="button" onclick="nextnav()" style="margin: 10px; padding: 5px;">Next > </button>
+
+        </div>
+
+
+  </ul>
+
+ {% endif %}
+
+
+
+
+
+
+
+
 
 	{% if forms %}
 

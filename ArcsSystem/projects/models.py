@@ -52,6 +52,8 @@ UN_REGIONS_CHOICES = [
 
 
 
+
+
 class KeywordSwe(models.Model):
     '''Keywords for the projects'''
     class Meta:
@@ -74,6 +76,10 @@ class KeywordEng(models.Model):
     def __str__(self):
         return f'{self.keyword}'
 
+    # def get_custom_html(self):
+
+
+
 
 
 class KeywordLine(models.Model):
@@ -89,6 +95,15 @@ class KeywordLine(models.Model):
         if self.swe == None:
             return f'{"eng : " + self.eng.keyword}'
         return f'{"swe : " + self.swe.keyword + " | eng : " + self.eng.keyword}'
+
+    # def get_custom_html(self, lang="en"):
+
+    #     if lang == "sv":
+    #         return [KeywordLine.objects.get(id=int(pk)).swe.keyword if KeywordLine.objects.get(id=int(pk)).swe is not None else KeywordLine.objects.get(id=int(pk)).eng.keyword for pk in  self.keywords.split("&")[:-1] ]
+    #     if lang == "en":
+    #         return [KeywordLine.objects.get(id=int(pk)).eng.keyword if KeywordLine.objects.get(id=int(pk)).eng is not None else KeywordLine.objects.get(id=int(pk)).swe.keyword for pk in  self.keywords.split("&")[:-1] ]
+
+
 
 
 
@@ -310,6 +325,13 @@ class Project(models.Model):
             return self.name_card
         return self.name
 
+    def get_card_image_url(self):
+
+        if self.image:
+            return self.image.url
+        return ""
+
+
 
     def get_card_aim(self):
         if self.aim_card != "" :
@@ -322,6 +344,66 @@ class Project(models.Model):
         return self.description
 
 
+    def get_custom_html(self, lang="en", use="all"):
+
+        di = {}
+        di["en"] = []
+        di["sv"] = []
+
+        #return "<div class='col-4' > <a href='" + self.get_absolute_url_details() +   "'>" + self.name +  "</a> </div>" 
+        html =   '''
+
+
+            <div style="padding-left: 20px; padding-right: 20px" class="col-lg-3 col-md-4 col-xs-6 mb-5">
+                <div class="project-item">
+                    <div class="row">
+                        <div class=" col">  
+                            <div  class="col project-items-justify blackFieldWhiteText">
+                                <h4 align="center"><a style="color: white; font-size: 16px" id="project-items-link" href= " ''' + self.get_absolute_url_details() + ''' ">  ''' + self.get_card_name() + '''</a></h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col">
+                            <img class="mg-fluid w-100" src=" ''' + self.get_card_image_url() + ''' " alt="{% trans 'Responsive image' %} "/>
+                        </div>
+
+                    </div>
+                    <div class="col" style="padding-right: 5px; padding-left: 5px; margin-top: 3px">
+                        <div class="row Lato-font ">
+                            <div class="col" >
+                                <span class="font-italic">PROJECT AIM: </span> <span class="font-weight-light" style=" font-size: 14px;" >  ''' +self.get_card_aim() + ''' </span>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row Lato-font">
+
+                            <div class="col">
+                                <span >DESCRIPTION: </span> <span > ''' +self.get_card_description() + ''' </span>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row Lato-font">
+                            <div class="col ">
+                                STATUS:  ''' + self.get_status_name() + ''' 
+                            </div>
+                        </div>
+                        <hr>
+
+                        '''
+
+        for key in self.get_keywords(lang=lang):
+
+            html += ''' <a style="color:blue"> ''' + key + ''' , </a>  '''
+
+        html += '''</div>
+            </div>
+        </div>'''
+
+        return html
+
+
 
     def __str__(self):
         return self.name
@@ -332,6 +414,7 @@ class ProjectEntry(Project):
     been approved for adding to the database and may be included in the API exchange '''
 
     keywords = models.CharField(blank=True, max_length=100)
+    keyword_lines = models.ManyToManyField(KeywordLine, related_name="Project", blank=True)
     # keywords = models.Manytomany(KeywordLine, blank=True)
 
     class Meta:
@@ -351,6 +434,8 @@ class ProjectEntry(Project):
     def get_absolute_url_details(self):
         return reverse('projects:project_detail', args=[str(self.id)])
 
+
+
     def __str__(self):
         return self.name
 
@@ -359,11 +444,11 @@ class ProjectEntry(Project):
 
         self.keywords += str(line.id) + "&"
 
-    def get_keywords(self):
+    def get_keywords(self, lang="en"):
 
 
 
-        lang="en"
+
 
 
         if lang == "sv":
