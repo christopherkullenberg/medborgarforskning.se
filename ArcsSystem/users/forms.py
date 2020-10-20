@@ -17,16 +17,15 @@ class CustomUserChangeForm(UserChangeForm):
         model = get_user_model()
         fields = ('username', 'email')
 
-class CustomUserPrivateForm(UserChangeForm):
-    # institution = forms.CharField(widget=forms.Select(choices=CHOICES))
 
+class ViewProfile(forms.ModelForm):
     class Meta:
         model = get_user_model()
         fields = ('username', 'email', 'title', 'bio_general', 'bio_research_interest', 'personal_website_address', "first_name", "last_name")
 
     def __init__(self, *args, **kwargs):
 
-        super(UserChangeForm, self).__init__(*args, **kwargs)
+        super(ViewProfile, self).__init__(*args, **kwargs)
 
         self.fields['username'] = forms.SlugField(
             required=False,
@@ -38,17 +37,15 @@ class CustomUserPrivateForm(UserChangeForm):
             choices = choices + ((org.name,org.name),)
         self.fields['institution'] = forms.CharField(widget=forms.Select(choices=choices))
 
+class EditProfileForm(forms.ModelForm):
 
-class CustomUserProfile(UserChangeForm):
-    # institution = forms.CharField(widget=forms.Select(choices=CHOICES))
-
-    class Meta:
+    class Meta():
         model = get_user_model()
         fields = ( 'email', 'title', 'bio_general', 'bio_research_interest', 'personal_website_address', "first_name", "last_name")
 
     def __init__(self, *args, **kwargs):
 
-        super(UserChangeForm, self).__init__(*args, **kwargs)
+        super(EditProfileForm, self).__init__(*args, **kwargs)
         organizations = Organization.objects.all()
         choices = (("", "Select"),)
         for org in organizations:

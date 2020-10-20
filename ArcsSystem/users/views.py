@@ -4,7 +4,7 @@ from .models import CustomUser
 from django.views.generic.base import TemplateView
 from django.views.generic import DetailView
 from django.core.exceptions import ObjectDoesNotExist
-from .forms import CustomUserPrivateForm, CustomUserProfile
+from .forms import EditProfileForm, ViewProfile
 from django import forms
 from staticpages.models import TermsPage
 from django.contrib.auth import logout
@@ -177,7 +177,7 @@ class UserEidtMyPageView(TemplateView):
 
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
-            form = CustomUserProfile(initial={
+            form = EditProfileForm(initial={
                 'email': request.user.email,
                 'title': request.user.title,
                 'bio_general': request.user.bio_general,
@@ -194,7 +194,7 @@ class UserEidtMyPageView(TemplateView):
 
     def post(self, request, *args, **kwargs):
         if request.user.is_authenticated:
-            form = CustomUserProfile(request.POST)
+            form = EditProfileForm(request.POST)
             if form.is_valid():
                 request.user.email = form["email"].value()
                 request.user.title = form["title"].value()
@@ -215,7 +215,7 @@ class MyProfileView(TemplateView):
 
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
-            form = CustomUserPrivateForm(initial={
+            form = ViewProfile(initial={
                 'username': request.user.username,
                 'email': request.user.email,
                 'title': request.user.title,
