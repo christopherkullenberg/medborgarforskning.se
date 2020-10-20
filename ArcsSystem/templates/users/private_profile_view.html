@@ -14,17 +14,11 @@
 <div class="custom-container">
 
     {% if Admin_project_submissions %}
-
-
-
     <form id="edit-save-private-profile-form" isEditing="false" action="{% url 'userprofile_private_view' %}" method="POST">
         {% csrf_token %}
 
         <button class="col-md-2 form-control btn-success"> Aprove publications </button>
         <br>
-
-
-
         <div class="row">
             {% for ProjectEntry in Admin_project_submissions %}
             <div style="padding-left: 20px; padding-right: 20px" class="col-lg-3 col-md-4 col-xs-6 mb-5">
@@ -83,9 +77,6 @@
 
     {% endif %}
 
-
-
-
     <br>
     <hr>
     <h5> My projects </h5>
@@ -143,14 +134,9 @@
         </div>
         {% endfor %}
     </div>
-
-
     <br> <br> <hr>
 
     <h5> My pending projects </h5>
-
-
-
     <div class="row">
         {% for ProjectEntry in My_pending_projects %}
         <div style="padding-left: 20px; padding-right: 20px" class="col-lg-3 col-md-4 col-xs-6 mb-5">

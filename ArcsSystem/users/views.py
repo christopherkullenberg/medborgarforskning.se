@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, HttpResponseRedirect, reverse
 from django.views.decorators.csrf import csrf_exempt
 from .models import CustomUser
 from django.views.generic.base import TemplateView
-from django.views.generic import DetailView
+from django.views.generic import DetailView, ListView
 from django.core.exceptions import ObjectDoesNotExist
 from .forms import EditProfileForm, ViewProfile
 from django import forms
@@ -18,6 +18,14 @@ from django.views.generic import DetailView
 
 from projects.models import ProjectSubmission, ProjectEntry, KeywordSwe, KeywordEng, KeywordLine
 
+class UsersPublicProflieListView(ListView):
+    template_name = 'users/users_list_view.html'
+    queryset = CustomUser.objects.all()
+    make_object_list = True
+    allow_future = False
+    # Pagination documentation https://docs.djangoproject.com/en/2.2/topics/pagination/
+    paginate_by = 3    # Change this to include more post
+
 class UserPublicProfilePageView(DetailView):
     template_name = 'users/public_profile_view.html'
 
@@ -26,7 +34,7 @@ class UserPublicProfilePageView(DetailView):
         if "username" in self.kwargs.keys():
             try:
                 obj = CustomUser.objects.get(username=self.kwargs['username'])
-                print(obj)
+
             except ObjectDoesNotExist:
                 pass
         else:
@@ -34,36 +42,44 @@ class UserPublicProfilePageView(DetailView):
                 obj = self.request.user
             else:
                 pass
-        print(obj)
-        # if obj is None:
-        #     raise Http404()
+
         return obj
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        obj = CustomUser.objects.get(username=self.kwargs['username'])
+        print(obj)
+        context["list_of_projects"] = ProjectEntry.objects.filter(created_by = obj)
+        print(context)
+        return context
 
 def UserPrivateProfilePageView(request):
 
     template_name = 'users/private_profile_view.html'
     context = {}
+    if request.user.is_authenticated:
+        # new page : get page
+        if request.method == "GET":
+            # admin part
+            if request.user.is_superuser:
+                context["Admin_project_submissions"] = ProjectSubmission.objects.all()
+                # all users
+            if request.user.is_authenticated:
+                context["My_approved_projects"] = ProjectEntry.objects.filter(created_by = request.user)
+                context["My_pending_projects"] =  ProjectSubmission.objects.filter(created_by = request.user)
 
-    # new page : get page
-    if request.method == "GET":
-        # admin part
-        if request.user.is_superuser:
-            context["Admin_project_submissions"] = ProjectSubmission.objects.all()
-            # all users
-        if request.user.is_authenticated:
-            context["My_approved_projects"] = ProjectEntry.objects.filter(created_by = request.user)
-            context["My_pending_projects"] =  ProjectSubmission.objects.filter(created_by = request.user)
+            return render(request, template_name, context)
 
-        return render(request, template_name, context)
-
-    # this is the admin accept sub-forms part
-    if request.method == "POST":
-        #check if admin
-        if request.user.is_superuser:
-            for name in request.POST:
-                if "acpt_" in name:
-                    accept_subForm(name[5:])
-        return HttpResponseRedirect(reverse('userprofile_private_view'))
+        # this is the admin accept sub-forms part
+        if request.method == "POST":
+            #check if admin
+            if request.user.is_superuser:
+                for name in request.POST:
+                    if "acpt_" in name:
+                        accept_subForm(name[5:])
+            return HttpResponseRedirect(reverse('userprofile_private_view'))
+    else:
+        return HttpResponseRedirect(reverse('account_login'))
 
 # this funtion create projectEntry from projectSub
 # and handels keyword submitions

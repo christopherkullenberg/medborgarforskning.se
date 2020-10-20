@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>List of users </h1>
+            {{ QuerySet }}
+            {% for user in object_list %}
+                <p><a href="{{ user.username }}">{{ user }}</a></p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

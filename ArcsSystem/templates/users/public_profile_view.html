@@ -1,14 +1,28 @@
 {% extends "base.html" %}
 
 {% block content %}
-<h1>{{object.username}} public profile</h1>
+<div class="container">
+    <div class="row">
+        <div class="col">
 
-<!-- <p>orcid: {{object.orcid}}</p> -->
-<p>title: {{ object.title }}</p>
-<p>bio_general: {{ object.bio_general }}</p>
-<p>Research interests: {{ object.bio_research_interest }}</p>
-<p>Personal website: {{ object.personal_website_address }}</p>
-<p>institution: {{ object.institution }}</p>
-<p>affiliation: {{ object.affiliation }}</p>
-
+            <h1>{{object.username}} public profile</h1>
+            <!-- <p>orcid: {{object.orcid}}</p> -->
+            <p>title: {{ object.title }}</p>
+            <p>bio_general: {{ object.bio_general }}</p>
+            <p>Research interests: {{ object.bio_research_interest }}</p>
+            <p>Personal website: {{ object.personal_website_address }}</p>
+            <p>institution: {{ object.institution }}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            {% if list_of_projects %}
+                <h1>List of projects:</h1>
+                {% for project in list_of_projects %}
+                <h4><a href="{% url 'projects:project_detail' project.id %}"> {{ project.name|truncatechars:20 }}</a></h4>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+</div>
 {% endblock %}

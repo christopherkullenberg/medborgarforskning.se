@@ -1,4 +1,5 @@
 from django.contrib.auth.models import AbstractUser
+from django.urls import path,reverse
 from django.db import models
 import uuid
 
@@ -57,6 +58,12 @@ class CustomUser(AbstractUser):
 
     def get_first_name(self):
         return self.first_name
+
+    def get_absolute_url(self):
+        # reverse expects the view name
+        a = reverse('userprofile_public_view',
+                        kwargs={'slug': self.username})
+        return a
 
 class InterestArea(models.Model):
     interestArea = models.TextField()
