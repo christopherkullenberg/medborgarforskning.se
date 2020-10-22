@@ -199,10 +199,10 @@
 							<!-- Collection of nav links, forms, and other content for toggling -->
 							<div class="collapse navbar-collapse justify-content-start">
 								<ul class="nav navbar-nav">
-									<li class="nav-item"><a class="nav-link pt-0 font-dark-green-color" href="#" style="padding-left: 0;"><strong class="footer-navbar-padding">{% trans "ABOUT US" %}</strong></a></li>
-									<li class="nav-item"><a class="nav-link pt-0 font-dark-green-color" href="{% url 'staticpages:press_list'%}"><strong class="footer-navbar-padding">{% trans "PRESS" %}</strong></a></li>
-									<li class="nav-item"><a class="nav-link pt-0 font-dark-green-color" href="#"><strong class="footer-navbar-padding">{% trans "CONTACT" %}</strong></a></li>
-									<li class="nav-item"><a class="nav-link pt-0 font-dark-green-color" href="#">{% trans "For Developers-API" %}</a></li>
+									<li class="nav-item"><a class="nav-link pt-0 font-dark-green-color" href="/about/about" style="padding-left: 0;"><strong class="footer-navbar-padding">{% trans "ABOUT US" %}</strong></a></li>
+									<li class="nav-item"><a class="nav-link pt-0 font-dark-green-color" href="/press/"><strong class="footer-navbar-padding">{% trans "PRESS" %}</strong></a></li>
+									<li class="nav-item"><a class="nav-link pt-0 font-dark-green-color" href="/about/contact/"><strong class="footer-navbar-padding">{% trans "CONTACT" %}</strong></a></li>
+									<!--<li class="nav-item"><a class="nav-link pt-0 font-dark-green-color" href="#">{% trans "For Developers-API" %}</a></li>-->
 								</ul>
 							</div>
 						</nav>
@@ -252,16 +252,16 @@
 							<div class="col-10">
 								<div class="row justify-content-start">
 									<div class="col-auto participiate-logo footer-navbar-padding">
-										<img class="footer-patner-logo"  src="{% static 'icons/gu-neg-500px-square-300x300.png' %}" alt="{% trans '' %}"/>
+										<a href="https://gu.se"><img class="footer-patner-logo"  src="{% static 'icons/gu-neg-500px-square-300x300.png' %}" alt="{% trans '' %}"/></a>
 									</div>
 									<div class="col-auto participiate-logo footer-navbar-padding">
-										<img class="footer-patner-logo"  src="{% static 'icons/slu-neg-500px-300x300.png' %}" alt="{% trans '' %}"/>
+										<a href="https://slu.se"><img class="footer-patner-logo"  src="{% static 'icons/slu-neg-500px-300x300.png' %}" alt="{% trans '' %}"/></a>
 									</div>
 									<div class="col-auto participiate-logo footer-navbar-padding">
-										<img class="footer-patner-logo"  src="{% static 'icons/umu-neg-500px-300x300.png' %}" alt="{% trans '' %}"/>
+										<a href="https://umu.se"><img class="footer-patner-logo"  src="{% static 'icons/umu-neg-500px-300x300.png' %}" alt="{% trans '' %}"/></a>
 									</div>
 									<div class="col-auto participiate-logo">
-										<img class="footer-patner-logo"  src="{% static 'icons/va-neg-500px-square-B-300x300.png' %}" alt="{% trans '' %}"/>
+										<a href="https://v-a.se"><img class="footer-patner-logo"  src="{% static 'icons/va-neg-500px-square-B-300x300.png' %}" alt="{% trans '' %}"/></a>
 									</div>
 								</div>
 							</div>
@@ -275,25 +275,34 @@
 				<div class="col-auto">
 					<div class="row">
 						<div class="col-auto">
-							<a href="{% url 'staticpages:terms_detail' %}">
+							<a href="about/terms/">
 							<p class="mb-0">{% trans "Terms of service" %}</p>
 							</a>
 						</div>
 						<div class="col-auto">
 
 
-							{% for page in 'privacy'|get_page %}
-								<a href="{{ page.get_absolute_url }}">
-							{% endfor %}
+
+								<a href="/about/privacy/">
+
 							<p class="mb-0">{% trans "Privacy policy" %}</p>
 
 							</a>
 						</div>
 						<div class="col-auto">
-							{% for page in 'cookies'|get_page %}
-								<a href="{{ page.get_absolute_url }}">
-							{% endfor %}
+
+								<a href="/about/cookies/">
+
 							<p class="mb-0">{% trans "Cookies policy" %}</p>
+
+							</a>
+						</div>
+
+						<div class="col-auto">
+
+								<a href="/about/license/">
+
+							<p class="mb-0">{% trans "License" %}</p>
 
 							</a>
 						</div>

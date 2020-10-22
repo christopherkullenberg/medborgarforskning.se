@@ -2,9 +2,9 @@ from django.shortcuts import render, redirect, HttpResponseRedirect, reverse
 from django.views.decorators.csrf import csrf_exempt
 from .models import CustomUser
 from django.views.generic.base import TemplateView
-from django.views.generic import DetailView
+from django.views.generic import DetailView, ListView
 from django.core.exceptions import ObjectDoesNotExist
-from .forms import CustomUserPrivateForm
+from .forms import EditProfileForm, ViewProfile
 from django import forms
 from staticpages.models import TermsPage
 from django.contrib.auth import logout
@@ -18,6 +18,14 @@ from django.views.generic import DetailView
 
 from projects.models import ProjectSubmission, ProjectEntry, KeywordSwe, KeywordEng, KeywordLine
 
+class UsersPublicProflieListView(ListView):
+    template_name = 'users/users_list_view.html'
+    queryset = CustomUser.objects.all()
+    make_object_list = True
+    allow_future = False
+    # Pagination documentation https://docs.djangoproject.com/en/2.2/topics/pagination/
+    paginate_by = 3    # Change this to include more post
+
 class UserPublicProfilePageView(DetailView):
     template_name = 'users/public_profile_view.html'
 
@@ -26,7 +34,7 @@ class UserPublicProfilePageView(DetailView):
         if "username" in self.kwargs.keys():
             try:
                 obj = CustomUser.objects.get(username=self.kwargs['username'])
-                print(obj)
+
             except ObjectDoesNotExist:
                 pass
         else:
@@ -34,43 +42,46 @@ class UserPublicProfilePageView(DetailView):
                 obj = self.request.user
             else:
                 pass
-        print(obj)
-        # if obj is None:
-        #     raise Http404()
+
         return obj
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        obj = CustomUser.objects.get(username=self.kwargs['username'])
+        print(obj)
+        context["list_of_projects"] = ProjectEntry.objects.filter(created_by = obj)
+        print(context)
+        return context
 
 def UserPrivateProfilePageView(request):
 
     template_name = 'users/private_profile_view.html'
     context = {}
+    if request.user.is_authenticated:
+        # new page : get page
+        if request.method == "GET":
+            # admin part
+            if request.user.is_superuser:
+                context["Admin_project_submissions"] = ProjectSubmission.objects.all()
+                # all users
+            if request.user.is_authenticated:
+                context["My_approved_projects"] = ProjectEntry.objects.filter(created_by = request.user)
+                context["My_pending_projects"] =  ProjectSubmission.objects.filter(created_by = request.user)
 
-    # new page : get page
-    if request.method == "GET":
-        # admin part
-        if request.user.is_superuser:
-            context["Admin_project_submissions"] = ProjectSubmission.objects.all()
-            # all users 
-        if request.user.is_authenticated:
-            context["My_approved_projects"] = ProjectEntry.objects.filter(created_by = request.user)
-            context["My_pending_projects"] =  ProjectSubmission.objects.filter(created_by = request.user)
+            return render(request, template_name, context)
 
-        return render(request, template_name, context)
+        # this is the admin accept sub-forms part
+        if request.method == "POST":
+            #check if admin
+            if request.user.is_superuser:
+                for name in request.POST:
+                    if "acpt_" in name:
+                        accept_subForm(name[5:])
+            return HttpResponseRedirect(reverse('userprofile_private_view'))
+    else:
+        return HttpResponseRedirect(reverse('account_login'))
 
-    # this is the admin accept sub-forms part
-    if request.method == "POST":
-        #check if admin
-        if request.user.is_superuser:
-            for name in request.POST:
-                if "acpt_" in name:
-                    accept_subForm(name[5:])
-        return HttpResponseRedirect(reverse('userprofile_private_view'))
-
-
-
-
-
-
-# this funtion create projectEntry from projectSub 
+# this funtion create projectEntry from projectSub
 # and handels keyword submitions
 # alsow creating keyword line
 def accept_subForm(id):
@@ -94,7 +105,7 @@ def accept_subForm(id):
     for key_sv, key_en in zip(*sub_model.get_keywords()):
 
 
-        # if both are empty continue 
+        # if both are empty continue
         if key_sv == "" and key_en == "":
             continue
 
@@ -139,7 +150,7 @@ def accept_subForm(id):
                 model_keyword_line.save()
                 new_model.add_keyword(model_keyword_line)
 
-        # both are filed-in        
+        # both are filed-in
         else:
 
             # en key
@@ -176,44 +187,35 @@ def accept_subForm(id):
     sub_model.delete()
 
 
-
 class UserEidtMyPageView(TemplateView):
 
     template_name = "users/profile_edit_view.html"
 
     def get(self, request, *args, **kwargs):
         if request.user.is_authenticated:
-            form = CustomUserPrivateForm(initial={
-
-                'username': request.user.username, 
+            form = EditProfileForm(initial={
                 'email': request.user.email,
                 'title': request.user.title,
                 'bio_general': request.user.bio_general,
                 'bio_research_interest': request.user.bio_research_interest,
                 'personal_website_address': request.user.personal_website_address,
                 'institution': request.user.institution,
-                "first_name":  request.user.first_name, 
+                "first_name":  request.user.first_name,
                 "last_name": request.user.last_name,
 
                   })
-            for key, value in form.fields.items():
-                value.disabled = True
             return render(request, self.template_name, {'form': form})
         else:
             return HttpResponseRedirect(reverse('account_login'))
 
     def post(self, request, *args, **kwargs):
         if request.user.is_authenticated:
-            form = CustomUserPrivateForm(request.POST)
-            print(form.errors.as_data())
-
-            if form.is_valid() :
+            form = EditProfileForm(request.POST)
+            if form.is_valid():
                 request.user.email = form["email"].value()
                 request.user.title = form["title"].value()
                 request.user.bio_general = form["bio_general"].value()
                 request.user.bio_research_interest = form["bio_research_interest"].value()
-                # request.user.connections = form["connections"].value()
-                # request.user.institution = form["institution"].value()
                 request.user.personal_website_address = form["personal_website_address"].value()
                 request.user.institution = form["institution"].value()
                 request.user.first_name = form["first_name"].value()
@@ -224,6 +226,27 @@ class UserEidtMyPageView(TemplateView):
         else:
             return HttpResponseRedirect(reverse('account_login'))
 
+class MyProfileView(TemplateView):
+    template_name = "users/user_detail_view.html"
+
+    def get(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            form = ViewProfile(initial={
+                'username': request.user.username,
+                'email': request.user.email,
+                'title': request.user.title,
+                'bio_general': request.user.bio_general,
+                'bio_research_interest': request.user.bio_research_interest,
+                'personal_website_address': request.user.personal_website_address,
+                'institution': request.user.institution,
+                "first_name":  request.user.first_name,
+                "last_name": request.user.last_name,
+                  })
+            for key, value in form.fields.items():
+                value.disabled = True
+            return render(request, self.template_name, {'form': form})
+        else:
+            return HttpResponseRedirect(reverse('account_login'))
 
 class AcceptTermsPageView(TemplateView):
 

@@ -10,15 +10,11 @@
 
             <h1>{% trans "Trans page (list view)" %}</h1>
             {% for instance in latest %}
-
-
                 <p>{{ instance.id }} -  <a href='{{ instance.get_absolute_url }}'> {{ instance.title }} {{ instance.pressPublishedDate }}</a><p>
-
             {% endfor %}
             <h1>
             {% trans "Press detail view" %}
             </h1>
-
             <div class="pagination">
                 <span class="step-links">
                     {% if page_obj.has_previous %}

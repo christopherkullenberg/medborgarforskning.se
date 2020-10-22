@@ -6,7 +6,7 @@ from .models import Page, TermsPage, PressPage
 
 class PageAdmin(SummernoteModelAdmin, TabbedTranslationAdmin):
     summernote_fields = ('content',)
-    fieldsets = [(u'Page', {'fields':('slug', 'category', 'published', 'title', 'content',)})
+    fieldsets = [(u'Page', {'fields':('slug', 'category', 'published', 'title', 'content', 'sub_category')})
     ]
 
 class TermsAdmin(SummernoteModelAdmin, TabbedTranslationAdmin):

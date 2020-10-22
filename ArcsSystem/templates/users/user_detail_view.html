@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{# this tag will insert a comment in the HMTL, but won't be rendered #}
+<h1>Private Profile view</h1>
+
+<form id="private-profile-form" method="GET">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <a href="{% url 'userprofile_edit_view' %}">Start editing</a>
+</form>
+
+{% endblock content %}

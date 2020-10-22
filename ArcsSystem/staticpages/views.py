@@ -53,21 +53,16 @@ class PressPostIndexView(ArchiveIndexView):
     queryset = PressPage.objects.all()
     date_field = "pressPublishedDate"
     make_object_list = True
-    allow_future = True
+    allow_future = False
     # Pagination documentation https://docs.djangoproject.com/en/2.2/topics/pagination/
     paginate_by = 3    # Change this to include more posts
 
 
 class PressPostDateDetailView(DateDetailView):
     template_name = 'staticpages/press_detail.html'
-    model = PressPage
-    queryset = PressPage.objects.all()
+    object_list = PressPage.objects.all()
+    make_object_list = True
     allow_future = True
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['now'] = timezone.now()
-        return context
 
 
 class PressPostYearArchiveView(YearArchiveView):
