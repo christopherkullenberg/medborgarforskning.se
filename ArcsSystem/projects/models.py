@@ -60,7 +60,7 @@ class KeywordSwe(models.Model):
         verbose_name = _('Keyword_sv')
         verbose_name_plural = _('Keywords_sv')
 
-    keyword = models.TextField(unique=True)
+    keyword = models.TextField(unique=True, db_index=True)
 
     def __str__(self):
         return f'{self.keyword}'
@@ -71,10 +71,25 @@ class KeywordEng(models.Model):
         verbose_name = _('Keyword')
         verbose_name_plural = _('Keywords')
 
-    keyword = models.TextField(unique=True)
+
+    summary_en = models.CharField(blank=True, null=True, max_length = 20000,)
+    summary_sv = models.CharField(blank=True, null=True, max_length = 20000,)
+    wikidataQ = models.IntegerField(blank=True, null=True)
+
+    keyword = models.TextField(unique=True, db_index=True)
 
     def __str__(self):
         return f'{self.keyword}'
+
+    def get_absolute_url(self):
+        return reverse('keywords:keyword_detail', args=[str(self.id)])
+
+    def get_wikidataQ(self):
+
+        if wikidataQ != None:
+            return "https://wikidata.org/wiki" + "/Q" + str(wikidataQ)
+        return "#"
+
 
     # def get_custom_html(self):
 
@@ -366,7 +381,7 @@ class Project(models.Model):
                     <div class="row">
 
                         <div class="col">
-                            <img class="mg-fluid w-100" src=" ''' + self.get_card_image_url() + ''' " alt="{% trans 'Responsive image' %} "/>
+                            <img class="mg-fluid w-100" src=" ''' + self.get_card_image_url() + ''' " alt=""/>
                         </div>
 
                     </div>

@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'staticpages',
     'workpackages',
     'organizations',
+    'keywords',
 
 ### Custom user apps
     'users', # initializes CustomUser and users app a.k.a. "People app" of ArcsCore

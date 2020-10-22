@@ -40,8 +40,7 @@ class Theme(models.Model):
                                   default=1,
                                   verbose_name="Work Package",
                                   on_delete=models.SET_DEFAULT)
-    sv_keywords = models.ManyToManyField(KeywordSwe, related_name="Theme")
-    en_keywords = models.ManyToManyField(KeywordEng, related_name="Theme")
+
 
     keyword_lines = models.ManyToManyField(KeywordLine, related_name="Theme", blank=True)
 

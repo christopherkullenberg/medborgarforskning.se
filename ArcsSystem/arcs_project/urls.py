@@ -52,6 +52,7 @@ urlpatterns = [
 ]
 
 urlpatterns += i18n_patterns(
+    path(_('keywords/'), include('keywords.urls')),
     path(_('manage-arcs/'), admin.site.urls),
     path(_('accounts/profile/'), include('users.urls')),
     path(_('accounts/'), include('allauth.urls')),

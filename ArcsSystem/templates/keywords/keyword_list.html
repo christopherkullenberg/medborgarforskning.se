@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block content %}
+
+
+{% for keyword in object_list %}
+    <div class="custom-container">
+        <h2>
+
+            <a href="{{ keyword.get_absolute_url }}">{{ keyword.keyword }}</a>
+        </h2>
+    </div>
+{% endfor %}
+
+
+{{object_list}}
+
+
+{% endblock content %}

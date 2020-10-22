@@ -137,12 +137,12 @@ class Article(models.Model):
 
                         '''
 
-        kw_limit = 7
+        kw_limit = 9
 
         if use == "all":
 
             for key in self.keywords.all()[:kw_limit]:
-                html +=  key.keyword + '''<br> '''
+                html += ''' <span style="color:black;"> '''+ key.keyword + '''</span> <br> '''
         else:
 
             kl = self.keywords.filter(id__in=use)[:kw_limit]
@@ -155,8 +155,8 @@ class Article(models.Model):
 
             if count < kw_limit:
 
-                for key in self.keywords.all().exclude(id__in=kl)[:7- count]:
-                    html +=  key.keyword + '''<br> '''
+                for key in self.keywords.all().exclude(id__in=kl)[:kw_limit- count]:
+                    html += ''' <span style="color:black;"> '''+ key.keyword + '''</span> <br> '''
 
 
 

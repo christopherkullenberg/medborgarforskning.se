@@ -15,7 +15,7 @@ class WorkPackageAdmin(SummernoteModelAdmin, TabbedTranslationAdmin):
 class ThemeAdmin(SummernoteModelAdmin, TabbedTranslationAdmin):
     summernote_fields = ('body',)
 
-    fieldsets = [(u'Theme', {'fields': ('title','body', 'wp_parent','related_publications', 'sv_keywords', 'en_keywords')})
+    fieldsets = [(u'Theme', {'fields': ('title','body', 'wp_parent','related_publications', 'keyword_lines')})
         ]
 
 
