@@ -89,6 +89,92 @@ class Article(models.Model):
         return reverse('publications:article_publications_detail', args=[str(self.id)])
 
 
+
+    def get_custom_html(self, lang="en", use ="all"):
+
+        limit = 60
+
+        di = {}
+        di["en"] = []
+        di["sv"] = []
+
+        #return "<div class='col-4' > <a href='" + self.get_absolute_url_details() +   "'>" + self.name +  "</a> </div>" 
+        html =   '''
+
+
+            <div style="padding-left: 20px; padding-right: 20px; font-size:10px" class="col-lg-3 col-md-4 col-xs-6 mb-5">
+                <div class="project-item">
+                    <div class="row">
+                        <div class=" col">  
+
+
+                            ''' + '''  <button style="height:100px; color :white; font-size: 10px" class=" col project-items-justify form-control blackFieldWhiteText" type="button" onclick="location.href=' '''+ self.get_absolute_url() + '''  ';"  /> ''' +  self.title +  ''' </button>  ''' +  '''
+
+
+                        </div>
+                    </div>
+
+                    <div class="col" style="padding-right: 5px; padding-left: 5px; margin-top: 3px">
+
+                        <div class="row Lato-font ">
+                            <div class="col" >
+                                <span  >  
+
+                                ''' + limit_string(self.authors,limit) + " "  + str( self.py) + " " + limit_string(self.source, limit) + " " + self.volume + "("+ self.issue +")"+  ''' 
+
+                                </span>
+                            </div>
+                        </div>
+                        <hr>
+
+
+                        <div class="row Lato-font ">
+                            <div class="col" >
+                                <a href="https://doi.org/''' + self.doi +  '''" > Get full article </a> 
+                            </div>
+                        </div>
+                        <hr>
+
+                        '''
+
+        kw_limit = 9
+
+        if use == "all":
+
+            for key in self.keywords.all()[:kw_limit]:
+                html += ''' <span style="color:black;"> '''+ key.keyword + '''</span> <br> '''
+        else:
+
+            kl = self.keywords.filter(id__in=use)[:kw_limit]
+
+            count = 0
+
+            for key in kl:
+                html += ''' <span style="color:red;"> '''+ key.keyword + '''</span> <br> '''
+                count +=1
+
+            if count < kw_limit:
+
+                for key in self.keywords.all().exclude(id__in=kl)[:kw_limit- count]:
+                    html += ''' <span style="color:black;"> '''+ key.keyword + '''</span> <br> '''
+
+
+
+
+
+        html += '''</div>
+            </div>
+        </div>'''
+
+        return html
+
+        return '''  <button style="height:200px" class="form-control col-4" type="button" onclick="location.href=' '''+ self.get_absolute_url() + '''  ';"  /> ''' +  self.title +  ''' </button>  '''
+
+        return ''' <div class="col-4"> <input class="" type="button" onclick="location.href=' '''+ self.get_absolute_url() + '''  ';" value=" ''' +  self.title +  ''' " />   </div>'''
+
+        return '<div class="col-4">  <a class="buton" href="' + self.get_absolute_url() +   '">' + self.title +  '"</a> </div>' 
+
+
 #class Arcsreport(Publication):
 #    '''
 #    '''
@@ -98,3 +184,11 @@ class Article(models.Model):
 #
 #    def __str__(self):
 #        return self.title
+
+
+def limit_string(string, limit):
+
+    if len(string) <= limit:
+        return string
+    else:
+        return string[:limit-3] + "..." 

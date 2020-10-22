@@ -8,6 +8,7 @@ from django.dispatch import receiver
 from taggit.managers import TaggableManager
 from django.urls import reverse
 from django.conf import settings
+from projects.models import KeywordLine
 
 
 class Post(models.Model):
@@ -21,6 +22,8 @@ class Post(models.Model):
     which escape all harmful tags through mozilla's package bleach:
     https://github.com/summernote/django-summernote
     '''
+
+
     class Meta:
         verbose_name = _('Post')
         verbose_name_plural = _('Posts')
@@ -41,6 +44,7 @@ class Post(models.Model):
         )# todo make name more focused on date like datapublished - could be confused with published status
     content = models.TextField() #summernote field
     tags = TaggableManager()
+    keyword_line = models.ManyToManyField(KeywordLine, related_name="Blog", blank=True)
 
     def __str__(self):
         return self.title
@@ -54,6 +58,9 @@ class Post(models.Model):
                                'day' : self.publishedDate.day,
                                'slug' : self.slug #change from pk id
                                })
+    def get_custom_html(self, lang="en",use="all"):
+
+        return "<a href='" + self.get_absolute_url() +   "' >" + self.title +  "</a> <br>" 
         # instance.published|date:'Y', instance.published|date:'m', instance.published|date:'d' instance.id
 
 class Author(models.Model):
