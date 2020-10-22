@@ -3,7 +3,7 @@ from django import template
 from publications.views import SearchPublicationsView
 from django.db.models import Q
 from collections import defaultdict
-from projects.models import KeywordEng 
+from projects.models import KeywordEng
 
 import json
 
@@ -150,11 +150,11 @@ def recent_publications(number=3):
 # 	return [themes, projects, blogs, publications]
 
 
-# 
+#
 def defaultdict_nodes():
 	return {"value": 0, "group": 2}
 
-# 
+#
 def defaultdict_links():
 	return {"value": 0}
 
@@ -180,7 +180,7 @@ def convert_dict(json_di, value=3):
 
 
 
-	with open("/django-pro/medborgarforskning.se/ArcsSystem/media/miserables.json", "w") as f:
+	with open("media/miserables.json", "w") as f:
 
 		json.dump(r_di, f)
 
@@ -196,17 +196,17 @@ def get_all_related(Article, lang ="en", use="all"):
 	# these are the tabs that are created
 	dict_key_thing = ["Project", "Theme"]
 
-	#allway exlude 
+	#allway exlude
 	uni_exclude_keys = ["citizen science", "newtech"]
 
-	# If true: include keywords from article 
+	# If true: include keywords from article
 	test = True
 
 	# di is where all the Q data is stored.
-	# di, sorts pub, pro and theme after kw-simularaties with article. 
+	# di, sorts pub, pro and theme after kw-simularaties with article.
 	di = {}
 
-	# this is 
+	# this is
 	json_di = {"nodes": defaultdict(defaultdict_nodes), "links": defaultdict(defaultdict_links_super)}
 
  	# init dict part
@@ -218,7 +218,7 @@ def get_all_related(Article, lang ="en", use="all"):
 		di[dict_key]["not"] = defaultdict(list)
 		di[dict_key]["sv"] = {}
 		di[dict_key]["sv"]["not"] = defaultdict(list)
-		
+
 	# use it art.kw, this is for prio and use in get_custom_html
 	use = Article.keywords.all().exclude(keyword__in=uni_exclude_keys)
 
@@ -235,7 +235,7 @@ def get_all_related(Article, lang ="en", use="all"):
 			result_prio =[x for x in result if x in use]
 			#sorts
 			di["pub"][len(result_prio)].append([art, result, result_prio])
-			# exclude art from other kw find art  
+			# exclude art from other kw find art
 			for x in result:
 				di["pub"]["not"][x.id].append(art.id)
 		#all lines
@@ -270,7 +270,7 @@ def get_all_related(Article, lang ="en", use="all"):
 						for x in result:
 							di["Project"]["sv"]["not"][x.id].append(project2.id)
 
-	nav_html = ' <ul class="nav nav-tabs"> ' 
+	nav_html = ' <ul class="nav nav-tabs"> '
 	div_html = ' <div class="col-12">  <div class="tab-content"> <br> '
 	nav_html += ' <li class="nav-item"> <a class="nav-link ' + "active" + '" data-toggle="tab" href="#'+"pub"+'">'+"Publications"+ str(amount_pub)+'</a> </li> '
 	div_html += ' <div id="'+"pub"+'" class="tab-pane container '+ "active" +'">  <div class="row" > '
@@ -312,7 +312,7 @@ def get_all_related(Article, lang ="en", use="all"):
 						break
 
 					json_di["nodes"][kw.keyword]["value"] += 1
-					json_di["nodes"][kw.keyword]["group"] = grup_num  
+					json_di["nodes"][kw.keyword]["group"] = grup_num
 					for kw2 in art[1][c:]:
 						json_di["links"][kw.keyword][kw2.keyword]["value"] += 1
 
@@ -322,10 +322,10 @@ def get_all_related(Article, lang ="en", use="all"):
 		div_html += ' </div></div>'
 
 	nav_html += ' <li class="nav-item"> <a class="nav-link " data-toggle="tab" href="#svg_map_pub"> Keyword map </a> </li> '
-	div_html += ''' <div id="svg_map_pub" class="tab-pane " style="background: black" >  <svg id="rel_graph" style="width:100%;height:1000px;"  width="1000" height="1000"> 
-	'''  + ''' 
+	div_html += ''' <div id="svg_map_pub" class="tab-pane " style="background: black" >  <svg id="rel_graph" style="width:100%;height:1000px;"  width="1000" height="1000">
+	'''  + '''
 
-	 <text x="300" y="70"style="fill:red;font-size:25px;"> Themes </text>  <text x="500" y="70" style="fill:green;font-size:25px;"> Projects </text>  <text x="700" y="70" style="fill:blue;font-size:25px;"> Publications </text> 
+	 <text x="300" y="70"style="fill:red;font-size:25px;"> Themes </text>  <text x="500" y="70" style="fill:green;font-size:25px;"> Projects </text>  <text x="700" y="70" style="fill:blue;font-size:25px;"> Publications </text>
 
 	 <rect x="40" y="40" width="190" height="300" style="stroke:white;stroke-width:1;" />
 
@@ -336,7 +336,7 @@ def get_all_related(Article, lang ="en", use="all"):
 	    <tspan x="50" dy="40"> Number of occurrences: </tspan>
     	<tspan id="value" x="50"  dy="20"  > </tspan>
     	<tspan style="fill:blue;font-size:15px;" x="50"  dy="40"  > <a id="link" href="#">Go to keyword</a>  </tspan>
-	 </text> 
+	 </text>
 	'''  +  '''</svg> </div> '''
 
 	if test:
@@ -388,17 +388,17 @@ def test_sort(art):
 
 
 
-			
+
 # 			result = [x for x in art.keywords.all().exclude(keyword__in=["citizen science", "newtech", kw.keyword]) if x in use]
 
-	
+
 # 			di["pub"][len(result)].append([art, result + [kw]])
 
 # 			for x in result:
 
 # 				di["pub"]["not"][x.id].append(art.id)
 
-# 	nav_html = ' <ul class="nav nav-tabs"> ' 
+# 	nav_html = ' <ul class="nav nav-tabs"> '
 
 # 	div_html = ' <div class="col-12">  <div class="tab-content"> <br> '
 
@@ -441,7 +441,7 @@ def test_sort(art):
 
 
 
-		
+
 
 # 		div_html += ' </div></div>'
 
@@ -452,7 +452,7 @@ def test_sort(art):
 
 
 
-			
+
 # 	return nav_html + div_html
 
 
@@ -494,12 +494,12 @@ def test_sort(art):
 # 		"publications": [],
 # 	}
 
-	
 
 
 
 
-# 	things_limit = 20 
+
+# 	things_limit = 20
 
 # 	themes = []
 # 	projects = []
@@ -587,13 +587,13 @@ def test_sort(art):
 # 								return_dict["blogs"] += [bl]
 
 
-# 	nav_html = ' <ul class="nav nav-tabs"> ' 
+# 	nav_html = ' <ul class="nav nav-tabs"> '
 
 # 	div_html = ' <div class="col-12">  <div class="tab-content"> <br> '
 
 # 	for key, list_of_things in return_dict.items():
 
-	
+
 # 		nav_html += ' <li class="nav-item"> <a class="nav-link ' + class_edit_dict[key] + '" data-toggle="tab" href="#'+key+'">'+key+'</a> </li> '
 
 # 		div_html += ' <div id="'+key+'" class="tab-pane container '+ class_edit_dict[key] +'">  <div class="row" > '
@@ -609,7 +609,7 @@ def test_sort(art):
 # 	nav_html += ' </ul> '
 # 	div_html += ' </div> </div> <br> <br> <br> <br>'
 
-			
+
 # 	return nav_html + div_html
 # 	return [themes, projects, blogs, publications]
 
@@ -643,6 +643,3 @@ register.filter('break_slug', break_slug)
 #register.filter("get_related_all", get_related_all)
 
 register.filter("get_all_related", get_all_related)
-
-
-
