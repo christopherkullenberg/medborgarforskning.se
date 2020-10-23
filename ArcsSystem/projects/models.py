@@ -82,7 +82,7 @@ class KeywordEng(models.Model):
         return f'{self.keyword}'
 
     def get_absolute_url(self):
-        return reverse('keywords:keyword_detail', args=[str(self.id)])
+        return reverse('keywords:keyword_detail', args=[str(self.keyword)])
 
     def get_wikidataQ(self):
 

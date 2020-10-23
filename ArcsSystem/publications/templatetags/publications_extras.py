@@ -346,6 +346,8 @@ def get_all_related(Article, lang ="en", use="all"):
 				json_di["links"][kw.keyword][kw2.keyword]["value"] += 1
 	nav_html += ' </ul> '
 	div_html += ' </div> </div> <br> <br> <br> <br>'
+
+
 	convert_dict(json_di)
 
 	return nav_html + div_html

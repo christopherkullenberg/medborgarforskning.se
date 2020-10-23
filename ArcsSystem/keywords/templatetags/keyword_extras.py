@@ -181,7 +181,7 @@ def get_all_related(Article, lang ="en", use="all"):
 		div_html += ' </div></div>'
 
 	nav_html += ' <li class="nav-item"> <a class="nav-link " data-toggle="tab" href="#svg_map_pub"> Keyword map </a> </li> '
-	div_html += ''' <div id="svg_map_pub" class="tab-pane " style="background: black" >  <svg id="rel_graph" style="width:2000px;height:2000px;"  width="2000" height="2000">
+	div_html += ''' <div id="svg_map_pub" class="tab-pane " style="background: black" >  <svg id="rel_graph" style="width:100%;height:2000px;"  width="2000" height="2000">
 	'''  + '''
 
 	 <text x="300" y="70"style="fill:red;font-size:25px;"> Themes </text>  <text x="500" y="70" style="fill:green;font-size:25px;"> Projects </text>  <text x="700" y="70" style="fill:blue;font-size:25px;"> Publications </text>
@@ -205,7 +205,7 @@ def get_all_related(Article, lang ="en", use="all"):
 				json_di["links"][kw.keyword][kw2.keyword]["value"] += 1
 	nav_html += ' </ul> '
 	div_html += ' </div> </div> <br> <br> <br> <br>'
-	convert_dict(json_di, int(amount_pub/20))
+	convert_dict(json_di, int(amount_pub/50))
 
 	return nav_html + div_html
 

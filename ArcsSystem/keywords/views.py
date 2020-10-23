@@ -26,7 +26,7 @@ def template_view(request):
 class KeywordList(ListView):
     model = KeywordEng
     template_name = 'keywords/keyword_list.html'
-    queryset = KeywordEng.objects.all()
+    queryset = KeywordEng.objects.filter(keyword="end 49\\2002")
 
 
 def keywordDetailView(request, name):

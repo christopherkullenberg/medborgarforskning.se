@@ -12,6 +12,8 @@
         <h1>{{ object.keyword }}</h1>
     </div>
 
+    {{object.summary_en}}
+
     <hr>
 
     <br>
@@ -95,7 +97,7 @@ d3.json("\\media\\miserables.json", function(error, graph) {
 
       .attr("stroke-width", function(d) { return Math.sqrt(d.value/5); });
 
-  link.attr('opacity', function(d) { return d.value/30 + 0.4; } );
+  link.attr('opacity', function(d) { return d.value/30 + 0.2; } );
 
 
 
@@ -111,7 +113,7 @@ d3.json("\\media\\miserables.json", function(error, graph) {
   var circles = node.append("circle")
 
 
-      .attr("r", function(d) { if(d.value){return d.value * 1};  return 5;})
+      .attr("r", function(d) { if(d.value){return d.value*0.8 + 10};  return 5;})
 
       .attr("id", function(d) { return d.id; })
 

@@ -199,6 +199,31 @@ def load_keywords(request):
             break
     return sve_string, eng_string
 
+def remove_space(string):
+
+    start_c = 0
+
+    for char in string:
+        if char == " ":
+            start_c += 1
+        else: 
+            break
+
+    end_c = 0
+    for char in string[::-1]:
+
+        if char == " ":
+            end_c += 1
+        else:
+            break
+
+    if end_c == 0:
+        return string[start_c:None]
+    return string[start_c:-1*end_c]
+
+
+
+
 def load_keywords_list(request):
 
     sve_string = []
@@ -437,3 +462,17 @@ def update_project_entry_keyword_lines(model, key_sv, key_en ):
                 model_keyword_line.save()
                 model.add_keyword(model_keyword_line)
                 model.keyword_lines.add(options.first())
+
+
+
+
+
+
+
+
+
+
+
+
+
+

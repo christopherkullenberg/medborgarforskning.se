@@ -96,6 +96,7 @@ class InitialProjectSubmissionModelForm(forms.ModelForm):
 
 
 
+
     #aim =  SummernoteTextFormField()
 class ProjectEntryUpdateManagementForm(forms.ModelForm):
     """Form for maintaining the projects approved and added to the database.
