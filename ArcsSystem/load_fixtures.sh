@@ -14,7 +14,7 @@ python manage.py loaddata organizations/fixtures/organizations.xml
 echo Organizations fixtures loaded
 
 echo Loading staticpages...
-python manage.py loaddata staticpages/fixtures/staticpages.xml
+python manage.py loaddata staticpages/fixtures/staticpages.json
 echo Staticpages fixtures loaded
 
 
