@@ -9,6 +9,7 @@ register = template.Library()
 
 
 
+
 def get_keywords(string):
 
     if string == "swe":
@@ -22,6 +23,11 @@ def get_keywords(string):
     return []
 
 
+def get_keywords_trans(model_thing, lang):
+	return model_thing.get_keywords(lang)
+
+
 
 
 register.filter("get_keywords", get_keywords)
+register.filter("get_keywords_trans", get_keywords_trans)

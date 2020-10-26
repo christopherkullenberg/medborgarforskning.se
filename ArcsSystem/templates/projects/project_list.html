@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load i18n %}
+{% load projects_extras %}
 
 {% block content %}
 
@@ -124,7 +125,7 @@
                 </div>
                 <hr>
 
-                {% for keyword in ProjectEntry.get_keywords %}
+                {% for keyword in ProjectEntry|get_keywords_trans:LANGUAGE_CODE %}
                 <a style="color:blue">{{keyword}}, </a> 
                 {% endfor %}
             </div>

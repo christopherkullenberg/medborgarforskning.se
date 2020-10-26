@@ -2,6 +2,7 @@ from django.db import models
 from taggit.managers import TaggableManager
 from django.utils.translation import gettext_lazy as _
 from django.urls import path,reverse
+from projects.models import KeywordSwe, KeywordEng, KeywordLine
 
 
 class WorkPackage(models.Model):
@@ -40,6 +41,9 @@ class Theme(models.Model):
                                   verbose_name="Work Package",
                                   on_delete=models.SET_DEFAULT)
 
+
+    keyword_lines = models.ManyToManyField(KeywordLine, related_name="Theme", blank=True)
+
     def get_pub_ids(self):
 
         return self.related_publications.split("&")[:-1]
@@ -51,6 +55,16 @@ class Theme(models.Model):
             string += el + "&"
         self.related_publications = string
         self.save()
+
+    def get_absolute_url(self):
+        # reverse expects the view name
+        return reverse('workpackages:theme_view',
+                       kwargs={'category' : self.id}
+                       )
+
+    def get_custom_html(self, lang="en", use="all"):
+
+        return "<a href='" + self.get_absolute_url() +   "' >" + self.title +  "</a> <br>" 
 
 
 

@@ -123,11 +123,13 @@ def accept_subForm(id):
 
             if len(options) > 0:
                 new_model.add_keyword(options.first())
+                new_model.keyword_lines.add(options.first())
 
             else:
                 model_keyword_line =  KeywordLine(eng=model_keyword_eng)
                 model_keyword_line.save()
                 new_model.add_keyword(model_keyword_line)
+                new_model.keyword_lines.add(options.first())
 
 
         # if sv is empty but not en
@@ -144,11 +146,13 @@ def accept_subForm(id):
 
             if len(options) > 0:
                 new_model.add_keyword(options.first())
+                new_model.keyword_lines.add(options.first())
 
             else:
                 model_keyword_line =  KeywordLine(swe=model_keyword_swe)
                 model_keyword_line.save()
                 new_model.add_keyword(model_keyword_line)
+                new_model.keyword_lines.add(options.first())
 
         # both are filed-in
         else:
@@ -177,11 +181,13 @@ def accept_subForm(id):
 
             if len(options) > 0:
                 new_model.add_keyword(options.first())
+                new_model.keyword_lines.add(options.first())
 
             else:
                 model_keyword_line =  KeywordLine(swe=model_keyword_swe, eng=model_keyword_eng)
                 model_keyword_line.save()
                 new_model.add_keyword(model_keyword_line)
+                new_model.keyword_lines.add(options.first())
 
     new_model.save()
     sub_model.delete()

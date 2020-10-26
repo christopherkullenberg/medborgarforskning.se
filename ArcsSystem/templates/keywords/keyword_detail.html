@@ -1,0 +1,207 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% load keyword_extras %}
+
+
+{% block content %}
+	<br>
+	<br>
+
+    <div class="custom-container">
+        <h1>{{ object.keyword }}</h1>
+    </div>
+
+    <hr>
+
+    <br>
+    <br>
+
+
+{{ object|get_all_related:LANGUAGE_CODE|safe  }}
+
+
+
+<style>
+
+  svg text{
+   -webkit-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
+}
+
+.links line {
+  stroke: white;
+
+}
+
+.nodes circle {
+  stroke: #fff;
+  stroke-width: 1.5px;
+}
+
+text {
+  font-family: sans-serif;
+
+  font-weight: lighter;
+
+
+
+
+  fill: white;
+
+}
+
+</style>
+
+
+<script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
+
+<script>
+
+
+
+function strength(link) {
+  return 0.1 / Math.min(count(link.source), count(link.target));
+}
+
+var svg = d3.select("#rel_graph"),
+    width = +svg.attr("width"),
+    height = +svg.attr("height");
+
+var color = d3.scaleOrdinal(d3.schemeCategory20);
+
+
+//.distance(function(d) { return Math.sqrt(d.value) * 2 + 300; })
+
+var simulation = d3.forceSimulation()
+    .force("link", d3.forceLink().id(function(d) { return d.id; }).distance(function(d) { return Math.sqrt(d.value) * 2 + 200; }))
+    .force("charge", d3.forceManyBody().strength(function(d) { return -(d.value**2  + 400); }))
+    .force("center", d3.forceCenter(width / 2, height / 2));
+
+d3.json("\\media\\miserables.json", function(error, graph) {
+  if (error) throw error;
+
+  var link = svg.append("g")
+      
+
+      .attr("class", "links")
+    .selectAll("line")
+
+    .data(graph.links)
+
+    .enter().append("line") 
+
+      .attr("stroke-width", function(d) { return Math.sqrt(d.value/5); });
+
+  link.attr('opacity', function(d) { return d.value/30 + 0.4; } );
+
+
+
+
+
+
+  var node = svg.append("g")
+      .attr("class", "nodes")
+    .selectAll("g")
+    .data(graph.nodes)
+    .enter().append("g")
+
+  var circles = node.append("circle")
+
+
+      .attr("r", function(d) { if(d.value){return d.value * 1};  return 5;})
+
+      .attr("id", function(d) { return d.id; })
+
+      .attr("fill", function(d) { if(d.group==0) return "green";  if(d.group==1) return "red"; return "blue";})
+      .call(d3.drag()
+          .on("start", dragstarted)
+          .on("drag", dragged)
+          .on("end", dragended));
+
+
+
+  var lables = node.append("text")
+      .text(function(d) {
+        return d.id;
+      })
+      
+      .attr('x', function(d) {return - d.id.length * calc_font_size(d) / 4 ;})
+      .attr('y', function(d) {return - d.value - calc_font_size(d)/2;})
+      .attr('font-size', function(d) {return calc_font_size(d) ;});
+
+  node.append("title")
+      .text(function(d) { return d.id; });
+
+  simulation
+      .nodes(graph.nodes)
+      .on("tick", ticked);
+
+  simulation.force("link")
+      .links(graph.links);
+
+  function ticked() {
+    link
+        .attr("x1", function(d) { return d.source.x; })
+        .attr("y1", function(d) { return d.source.y; })
+        .attr("x2", function(d) { return d.target.x; })
+        .attr("y2", function(d) { return d.target.y; });
+
+
+
+    node
+        .attr("transform", function(d) {
+          return "translate(" + d.x + "," + d.y + ")";
+        })
+  }
+});
+
+
+function dragstarted(d) {
+  if (!d3.event.active) simulation.alphaTarget(0.3).restart();
+  d.fx = d.x;
+  d.fy = d.y;
+
+
+  var info_box = $("#rel_graph").find("text#info_text_svg");
+
+  info_box.find("#name").text(d.id);
+  info_box.find("#value").text(d.value);
+  info_box.find("#link").attr("href", "/keywords/" + d.id  )
+
+}
+
+function dragged(d) {
+  d.fx = d3.event.x;
+  d.fy = d3.event.y;
+}
+
+function dragended(d) {
+  if (!d3.event.active) simulation.alphaTarget(0);
+  d.fx = null;
+  d.fy = null;
+}
+
+
+
+</script>
+
+
+<script type="text/javascript">
+
+// Isaks add functions
+
+// calc font size
+
+function calc_font_size(d) {return Math.sqrt(d.value)  + 16};
+
+  
+
+
+</script>
+
+
+
+{% endblock content %}
