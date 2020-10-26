@@ -1,4 +1,5 @@
-@font-face {
+/* Font style: */
+container-fluid@font-face {
   font-family: 'Playfair Display';
   src: url(https://fonts.googleapis.com/css?family=Playfair+Display&display=swap);
   font-display: swap;
@@ -10,21 +11,75 @@
   font-display: swap;
 }
 
-body{
-    background-color: #C3D3D0 !important;
-    font-family: Lato !important;
-    font-size: 14 !important;
+/* color style: */
+
+.pink-background-color{
+    background-color: #e2005e;
 }
 
+.pink-hover-background-color{
+    background-color:#c90053!
+}
+
+.pink-hover-color{
+    color:#c90053!
+}
+
+.white-background-color {
+    background-color: #fff;
+}
+
+.pink-color{
+    color: #e2005e;
+}
+
+.white-color {
+    color: #fff;
+}
+
+.yellow-background-color{
+    background-color: #ffe05f;
+}
+
+.yellow-color{
+    background-color: #ffe05f;
+}
+
+.light-gray-background-color{
+    background-color: #f8f8f8;
+}
+
+.light-gray-color{
+    background-color: #f8f8f8;
+}
+
+.dark-gray-background-color {
+    background-color: #24273a;
+}
+
+.dark-gray-color {
+    color: #24273a;
+}
+
+.mid-gray-background-color{
+    background-color: #515151;
+}
+
+.mid-gray-color{
+    color: #515151;
+}
+
+/* Headers style */
+
 h1 {
-  font-family: 'Playfair Display';
+  font-family: 'acumin-pro-extra-condensed','HelveticaNeue-CondensedBold','sans-serif';
   color: #000000;
   font-size: 26px;
   font-weight:bold;
 }
 
 h2 {
-  font-family: 'Playfair Display';
+  font-family: 'acumin-pro-extra-condensed','HelveticaNeue-CondensedBold','sans-serif';
   font-size: 24px;
   font-weight: bold;
   color: #000000;
@@ -34,6 +89,18 @@ h3 {
   font-family: 'Playfair Display';
   color: #000000;
 }
+
+/* Menu style: */
+
+
+/* Body style: */
+body{
+    background-color: #fff;
+    font-family: Lato !important;
+    font-size: 14 !important;
+}
+
+
 
 p{
     font-family: Lato !important;
@@ -434,7 +501,7 @@ font-family: Helvetica;
 
 }
 
-/*isak add here 
+/*isak add here
 */
 .blackFieldWhiteText{
     background: black;

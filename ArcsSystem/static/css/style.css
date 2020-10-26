@@ -1,0 +1,64 @@
+/* Font informations */
+.h1{
+    font-family: acumin-pro-extra-condensed,HelveticaNeue-CondensedBold,sans-serif;
+}
+.h2{
+    font-family: acumin-pro,Helvetica,sans-serif;
+}
+
+/* Color informations */
+.pink-background-color{
+    background-color: #e2005e;
+}
+
+.pink-hover-background-color{
+    background-color:#c90053!
+}
+
+.pink-hover-color{
+    color:#c90053!
+}
+
+.white-background-color {
+    background-color: #fff;
+}
+
+.pink-color{
+    color: #e2005e;
+}
+
+.white-color {
+    color: #fff;
+}
+
+.yellow-background-color{
+    background-color: #ffe05f;
+}
+
+.yellow-color{
+    background-color: #ffe05f;
+}
+
+.light-gray-background-color{
+    background-color: #f8f8f8;
+}
+
+.light-gray-color{
+    background-color: #f8f8f8;
+}
+
+.dark-gray-background-color {
+    background-color: #24273a;
+}
+
+.dark-gray-color {
+    color: #24273a;
+}
+
+.mid-gray-background-color{
+    background-color: #515151;
+}
+
+.mid-gray-color{
+    color: #515151;
+}

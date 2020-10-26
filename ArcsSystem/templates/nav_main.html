@@ -1,53 +1,18 @@
-
 {% load static %}
 {% load i18n %}
 {% load staticpages_tree %}
 {% block main_menu %}
 
-<!-- <nav role="navigation" id="main-nav" aria-label="Main navigation">
-
-  <ul>
-
-    {% for item in menu_items %}
-
-    <li class="{{ item.active_class }}">
-
-        <a href="{{ item.href }}">{{ item.text }}</a>
-
-        {% if item.has_children_in_menu %}
-
-          {{ item.sub_menu.render_to_template }}
-
-        {% endif %}
-
-    </li>
-
-    {% endfor %}
-
-  </ul>
-
-</nav> -->
-
 <nav class="navbar navbar-expand-lg header-main-menu">
-
     <nav class="navbar navbar-expand-lg" style="padding: 0; ">
-
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-
             <span class="navbar-toggler-icon"></span>
-
         </button>
-
         <div class="collapse navbar-collapse background-dark-green-color" id="navbarSupportedContent">
-
             <ul class="navbar-nav mr-auto  d-flex justify-content-center align-items-center row m-0" style="width: 100%;">
-
                 <li class="nav-item dropdown header-menu-li-style active col-3 p-0">
-
                     <a class="nav-link dropdown-toggle main-menu-buttons-font text-wrap" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 13rem;">
-
                         {% trans "Getting Started With Citizen Science" %}
-
                     </a>
                     <div class="dropdown-menu main-menu-buttons background-light-green-color" aria-labelledby="navbarDropdown">
                         {% for page in 'citizen-science'|get_menu %}
@@ -72,128 +37,47 @@
                    <a class="nav-link dropdown-toggle main-menu-buttons-font text-wrap" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 13rem;">
                          {% trans "Knowledge base" %}
                     </a>
-
                     <div class="dropdown-menu main-menu-buttons background-light-green-color" aria-labelledby="navbarDropdown">
-
                         <a class="dropdown-item font-weight-bold" href="{% url 'workpackages:category_view' %}">{%trans "ARCS knowledge base" %}</a>
-
                         <ul>
                         <div class="dropdown-divider"></div>
-
-
-
                       <a class="dropdown-item font-weight-bold" href="{% url 'publications:article_publications_list' %}">{%trans "Publications Database" %}</a>
-
                       </ul>
                       </div>
-
-
-
                 <li class="nav-item dropdown header-menu-li-style col-3">
-
                     <a class="nav-link dropdown-toggle main-menu-buttons-font text-wrap"  href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 10rem;">
                         {% trans "Citizen Science in Sweden" %}
                     </a>
 
                     <div class="dropdown-menu main-menu-buttons background-light-green-color" aria-labelledby="navbarDropdown">
-
                         <a class="dropdown-item font-weight-bold" href="{% url 'projects:project_list' %}">{%trans "Citizen Science Projects" %}</a>
 
-
-
-
-                        <!--
-                        <div class="dropdown-divider"></div>
-
-                        <
-
-                            <li nav-item dropdown>
-
-                                <a class="dropdown-item" href="#">{%trans "Map of Projects" %}</a>
-
-                            </li>
-                            -->
-                            <ul>
+                    <ul>
                             <div class="dropdown-divider"></div>
 
                             <li nav-item dropdown>
 
                                     <a class="dropdown-item" href="{% url 'projects:project_submissionform' %}">{%trans "Add your Project" %}</a>
                             </li>
-
                         </ul>
-
                         <div class="dropdown-divider"></div>
-                        <!--
-                        <a class="dropdown-item font-weight-bold" href="#">{%trans "Predefined List of Projects" %}</a>
-
-                        <div class="dropdown-divider"></div>
-
-                        <ul>
-
-                            <li nav-item dropdown>
-
-                                <a class="dropdown-item" href="#">{%trans "Funders" %}</a>
-
-                            </li>
-
-                            <div class="dropdown-divider"></div>
-
-                            <li nav-item dropdown>
-
-                                <a class="dropdown-item" href="#">{%trans "Associated Affiliates" %}</a>
-
-                            </li>
-
-                            <div class="dropdown-divider"></div>
-
-                            <li nav-item dropdown>
-
-                                <a class="dropdown-item" href="#">{%trans "Researchers" %}</a>
-
-                            </li>
-
-                        </ul>
-
-                        <div class="dropdown-divider"></div>
-
-
-                        <a class="dropdown-item font-weight-bold" href="{% url 'publications:article_publications_list' %}">{%trans "Publications" %}</a>
-                        -->
                     </div>
 
                 </li>
-
                 <li class="nav-item col-3" style="padding: 0;">
-
                     <form id="form-search-nev" >
-
                         <!-- Actual search box -->
-
                         <div class="form-group has-search">
-
                             <svg class="form-control-feedback" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-
                               <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 011.415 0l3.85 3.85a1 1 0 01-1.414 1.415l-3.85-3.85a1 1 0 010-1.415z" clip-rule="evenodd"/>
-
                               <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 100-11 5.5 5.5 0 000 11zM13 6.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" clip-rule="evenodd"/>
-
                             </svg>
-
                             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-
                         </div>
-
                     </form>
-
                 </li>
-
             </ul>
-
-
-
         </div>
-
 </nav>
 
 {% endblock main_menu %}
