@@ -164,11 +164,11 @@ class KeywordLine(models.Model):
     def __str__(self):
 
         if self.eng == None:
-            return f'{"swe : " + self.swe.keyword}'
+            return f'{self.swe.keyword}'
 
         if self.swe == None:
-            return f'{"eng : " + self.eng.keyword}'
-        return f'{"swe : " + self.swe.keyword + " | eng : " + self.eng.keyword}'
+            return f'{self.eng.keyword}'
+        return f'{self.swe.keyword + " | " + self.eng.keyword}'
 
     # def get_custom_html(self, lang="en"):
 
@@ -372,7 +372,7 @@ class Project(models.Model):
 
 
 
-    # This is to get the user 
+    # This is to get the user
 
     search_fields = ['name','description']
 
@@ -424,14 +424,14 @@ class Project(models.Model):
         di["en"] = []
         di["sv"] = []
 
-        #return "<div class='col-4' > <a href='" + self.get_absolute_url_details() +   "'>" + self.name +  "</a> </div>" 
+        #return "<div class='col-4' > <a href='" + self.get_absolute_url_details() +   "'>" + self.name +  "</a> </div>"
         html =   '''
 
 
             <div style="padding-left: 20px; padding-right: 20px" class="col-lg-3 col-md-4 col-xs-6 mb-5">
                 <div class="project-item">
                     <div class="row">
-                        <div class=" col">  
+                        <div class=" col">
                             <div  class="col project-items-justify blackFieldWhiteText">
                                 <h4 align="center"><a style="color: white; font-size: 16px" id="project-items-link" href= " ''' + self.get_absolute_url_details() + ''' ">  ''' + self.get_card_name() + '''</a></h4>
                             </div>
@@ -460,7 +460,7 @@ class Project(models.Model):
                         <hr>
                         <div class="row Lato-font">
                             <div class="col ">
-                                STATUS:  ''' + self.get_status_name() + ''' 
+                                STATUS:  ''' + self.get_status_name() + '''
                             </div>
                         </div>
                         <hr>
@@ -588,7 +588,7 @@ class ProjectSubmission(Project):
 
         if self.keywords_sv == None or self.keywords_sv == None:
             return [], []
-        return self.keywords_sv.split("&")[:-1], self.keywords_en.split("&")[:-1], 
+        return self.keywords_sv.split("&")[:-1], self.keywords_en.split("&")[:-1],
 
     def __str__(self):
         return self.name
