@@ -163,7 +163,7 @@ def defaultdict_links_super():
 	return defaultdict(defaultdict_links)
 
 #
-def convert_dict(json_di, value=3):
+def convert_dict(json_di, value=1):
 
 	r_di = {"nodes" : [ {"id": k, "group": v["group"] , "value": v["value"]} for k, v in json_di["nodes"].items() if v["value"] > value ]}
 	r_di["links"] = []
@@ -177,12 +177,13 @@ def convert_dict(json_di, value=3):
 
 				r_di["links"].append({"source": k, "target": k2, "value": v2["value"]})
 
+	return json.dumps(r_di)
 
 
 
-	with open("media/miserables.json", "w") as f:
+	#with open("media/miserables.json", "w") as f:
 
-		json.dump(r_di, f)
+		#json.dump(r_di, f)
 
 
 
@@ -348,9 +349,9 @@ def get_all_related(Article, lang ="en", use="all"):
 	div_html += ' </div> </div> <br> <br> <br> <br>'
 
 
-	convert_dict(json_di)
+	#convert_dict(json_di)
 
-	return nav_html + div_html
+	return [[nav_html + div_html, convert_dict(json_di)]]
 
 
 def test_sort(art):

@@ -41,13 +41,20 @@
 
 
 
-{{ article|get_all_related:LANGUAGE_CODE|safe  }}
+{% for one_list in  article|get_all_related:LANGUAGE_CODE %}
+
+{{one_list.0|safe}}
+
+<script>
+
+    var data = JSON.parse('{{ one_list.1| escapejs }}');
+    console.log(data.links)
+</script>
 
 
 
 
-
-
+{% endfor %}
 
 
 
@@ -139,7 +146,24 @@ text {
 
 <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
 
+
+<script type="text/javascript">
+
+// Isaks add functions
+
+// calc font size
+
+function calc_font_size(d) {return Math.sqrt(d.value)  + 16};
+
+  
+
+
+</script>
+
+
 <script>
+
+
 
 
 
@@ -161,8 +185,7 @@ var simulation = d3.forceSimulation()
     .force("charge", d3.forceManyBody().strength(function(d) { return -(d.value**2  + 400); }))
     .force("center", d3.forceCenter(width / 2, height / 2));
 
-d3.json("\\media\\miserables.json", function(error, graph) {
-  if (error) throw error;
+
 
   var link = svg.append("g")
       
@@ -170,7 +193,7 @@ d3.json("\\media\\miserables.json", function(error, graph) {
       .attr("class", "links")
     .selectAll("line")
 
-    .data(graph.links)
+    .data(data.links)
 
     .enter().append("line") 
 
@@ -186,7 +209,7 @@ d3.json("\\media\\miserables.json", function(error, graph) {
   var node = svg.append("g")
       .attr("class", "nodes")
     .selectAll("g")
-    .data(graph.nodes)
+    .data(data.nodes)
     .enter().append("g")
 
   var circles = node.append("circle")
@@ -217,11 +240,11 @@ d3.json("\\media\\miserables.json", function(error, graph) {
       .text(function(d) { return d.id; });
 
   simulation
-      .nodes(graph.nodes)
+      .nodes(data.nodes)
       .on("tick", ticked);
 
   simulation.force("link")
-      .links(graph.links);
+      .links(data.links);
 
   function ticked() {
     link
@@ -237,7 +260,7 @@ d3.json("\\media\\miserables.json", function(error, graph) {
           return "translate(" + d.x + "," + d.y + ")";
         })
   }
-});
+
 
 
 function dragstarted(d) {
@@ -270,18 +293,6 @@ function dragended(d) {
 </script>
 
 
-<script type="text/javascript">
-
-// Isaks add functions
-
-// calc font size
-
-function calc_font_size(d) {return Math.sqrt(d.value)  + 16};
-
-  
-
-
-</script>
 
 
 
