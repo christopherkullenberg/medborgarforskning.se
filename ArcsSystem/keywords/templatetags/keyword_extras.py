@@ -9,6 +9,9 @@ import json
 register = template.Library()
 
 
+
+
+
 #
 def defaultdict_nodes():
 	return {"value": 0, "group": 2}
@@ -106,7 +109,7 @@ def get_all_related(Article, lang ="en", use="all"):
 				for l in result:
 					di["Theme"]["not"][l.eng.id].append(theme.id)
 					if l.swe != None:
-						di["Theme"]["sv"]["not"][l.swe.id].append(project.id)
+						di["Theme"]["sv"]["not"][l.swe.id].append(theme.id)
 
 			for project in line.Project.all().exclude(id__in=di["Project"]["not"][kw.id] ):
 				result = [l for l in project.keyword_lines.filter(~Q(eng = None)).exclude(eng__keyword__in=uni_exclude_keys) ]
@@ -187,9 +190,7 @@ def get_all_related(Article, lang ="en", use="all"):
 	 <text x="300" y="70"style="fill:red;font-size:25px;"> Themes </text>  <text x="500" y="70" style="fill:green;font-size:25px;"> Projects </text>  <text x="700" y="70" style="fill:blue;font-size:25px;"> Publications </text>
 
 	 <rect x="40" y="40" width="190" height="300" style="stroke:white;stroke-width:1;" />
-
 	 <text id="info_text_svg" x="50" y="80" style="fill:white;font-size:15px;">
-
 	 	<tspan x="50"> Name: </tspan>
 	    <tspan x="50" dy="20" id="name" ></tspan>
 	    <tspan x="50" dy="40"> Number of occurrences: </tspan>

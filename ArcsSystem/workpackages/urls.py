@@ -21,7 +21,7 @@ app_name = 'workpackages'
 urlpatterns = [
     # generic static page views
     path('', WorkpackagesListView.as_view(), name='category_view'),
-    # path('<slug:category>/', WorkpackagesCategoryView.as_view()),
+
     path('<int:category>/', WorkpackagesThemeView.as_view(), name='theme_view'),
 
 ]

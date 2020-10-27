@@ -10,14 +10,21 @@
 
     <div class="custom-container">
         <h1>{{ object.keyword }}</h1>
-    </div>
+    
+    {{object.get_summary|safe}}
 
-    {{object.summary_en}}
+    <br>
+
+    {{object.get_wikidataQ|safe}}
+
+    </div>
 
     <hr>
 
     <br>
     <br>
+
+    
 
 
 {{ object|get_all_related:LANGUAGE_CODE|safe  }}

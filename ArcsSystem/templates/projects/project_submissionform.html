@@ -39,41 +39,41 @@
 
 </script>
 
-      <form  method='post' enctype="multipart/form-data">
-        {% csrf_token %}
+<form  method='post' enctype="multipart/form-data">
+  {% csrf_token %}
 
 
 
-<div class="custom-container">
+  <div class="custom-container">
 
-  <ul class="nav nav-tabs">
-
-
+    <ul class="nav nav-tabs">
 
 
-    <li class="nav-item">
-      <a class="nav-link active disabled" data-toggle="tab" href="#step1">Details</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link disabled" data-toggle="tab" href="#step_aim">Aim <span class="glyphicon glyphicon-align-left" ></span></a>
-    </li>
-    <li class="nav-item ">
-      <a class="nav-link disabled" data-toggle="tab" href="#step_description">Description</a>
-    </li>
-
-    <li class="nav-item">
-      <a class="nav-link disabled" data-toggle="tab" href="#step3">Keywords</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link disabled" data-toggle="tab" href="#step4">Card view</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link disabled" data-toggle="tab" href="#step5">Contact info</a>
 
 
-    </li>
+      <li class="nav-item">
+        <a class="nav-link active disabled" data-toggle="tab" href="#step1">Details</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" data-toggle="tab" href="#step_aim">Aim <span class="glyphicon glyphicon-align-left" ></span></a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link disabled" data-toggle="tab" href="#step_description">Description</a>
+      </li>
 
-    <div  style="margin-left: 10px" class="row">
+      <li class="nav-item">
+        <a class="nav-link disabled" data-toggle="tab" href="#step3">Keywords</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" data-toggle="tab" href="#step4">Card view</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" data-toggle="tab" href="#step5">Contact info</a>
+
+
+      </li>
+
+      <div  style="margin-left: 10px" class="row">
 
 
 
@@ -84,356 +84,356 @@
 
         <button class="nav-item  btn-success" type="button" onclick="nextnav()" style="margin: 10px; padding: 5px;">Next > </button>
 
-        </div>
+      </div>
 
 
-  </ul>
+    </ul>
 
 
-  <div class="tab-content">
+    <div class="tab-content">
 
 
-    <br>
-
-    {% if user.is_authenticated %}
-
-    <div id="step1" class="tab-pane container active">
-
-
-      <h3> Project details  </h3>
       <br>
+
+      {% if user.is_authenticated %}
+
+      <div id="step1" class="tab-pane container active">
+
+
+        <h3> Project details  </h3>
+        <br>
 
 
         <p>{% trans "Your account and email will be associated with this submission for follow-up." %}</p>
 
 
 
-          <div align="center" class="row">
+        <div align="center" class="row">
 
 
 
-            <div class="col-3">
-              <h4>
-                {{Submission.name.label}}
-              </h4>
+          <div class="col-3">
+            <h4>
+              {{Submission.name.label}}
+            </h4>
 
-              {{ Submission.name }}
-              <br>
+            {{ Submission.name }}
+            <br>
 
-              <h6> This will be the label/titel of your project</h6>
-
-            </div>
-
-
-
-            <div class="col-3">
-
-              <h4>
-                {{Submission.image.label}}
-
-              </h4>
-              {{ Submission.image }}
-              <br>
-
-              <h6> This will be the main image, the first image everyone will see, it should show what your project is about</h6>
-            </div>
-
-            <div class="col-3">
-
-              <h4>
-
-                {{Submission.status.label}}
-              </h4>
-
-              {{ Submission.status }}
-              <br>
-
-              <h6>
-                the state of your project
-              </h6>
-
-            </div>
-
-
-            <div class="col-3">
-              <h4>
-                {{Submission.target_audience.label}}
-              </h4>
-              {{ Submission.target_audience }}
-
-              <br>
-              <h6>
-
-                alternativ kanske hade varit bra ?
-
-
-              </h6>
-            </div>
+            <h6> This will be the label/titel of your project</h6>
 
           </div>
 
-          <br>
-          <br>
-
-        </div>       
-        <div class="tab-pane container fade" id="step_aim">
-          <div class="col-12">
-
-            <h4 align="center"> Enter project aim</h4>
-
-            <h5> 
-             Älgjägare spanar efter döda vildsvin  
-
-             Älgjägarna har fått en extra uppgift i
-             år. De ska spana efter döda vildsvin. 
-             Syftet är att stoppa den smittosamma  
-             sjukdomen afrikansk svinpest.         
-
-             Om jägare hittar ett självdött        
-             vildsvin ska de ta prover från        
-             kadavret, rappo..
-
-           </h5>
 
 
-         </div>
+          <div class="col-3">
 
-         {{ Submission.aim }}
-       </div>
-       <div class="tab-pane container fade" id="step_description">
+            <h4>
+              {{Submission.image.label}}
+
+            </h4>
+            {{ Submission.image }}
+            <br>
+
+            <h6> This will be the main image, the first image everyone will see, it should show what your project is about</h6>
+          </div>
+
+          <div class="col-3">
+
+            <h4>
+
+              {{Submission.status.label}}
+            </h4>
+
+            {{ Submission.status }}
+            <br>
+
+            <h6>
+              the state of your project
+            </h6>
+
+          </div>
+
+
+          <div class="col-3">
+            <h4>
+              {{Submission.target_audience.label}}
+            </h4>
+            {{ Submission.target_audience }}
+
+            <br>
+            <h6>
+
+              alternativ kanske hade varit bra ?
+
+
+            </h6>
+          </div>
+
+        </div>
+
+        <br>
+        <br>
+
+      </div>       
+      <div class="tab-pane container fade" id="step_aim">
         <div class="col-12">
 
-          <h4 align="center"> Enter project description </h4>
+          <h4 align="center"> Enter project aim</h4>
 
+          <h5> 
+           Älgjägare spanar efter döda vildsvin  
+
+           Älgjägarna har fått en extra uppgift i
+           år. De ska spana efter döda vildsvin. 
+           Syftet är att stoppa den smittosamma  
+           sjukdomen afrikansk svinpest.         
+
+           Om jägare hittar ett självdött        
+           vildsvin ska de ta prover från        
+           kadavret, rappo..
+
+         </h5>
+
+
+       </div>
+
+       {{ Submission.aim }}
+     </div>
+     <div class="tab-pane container fade" id="step_description">
+      <div class="col-12">
+
+        <h4 align="center"> Enter project description </h4>
+
+
+      </div>
+
+      {{ Submission.description }}
+
+      <hr>
+      <br>
+
+    </div>
+
+    <div id="step3" class="tab-pane fade">
+
+
+
+
+      <div class="col-xxl-5   col-xl-9   col-lg-12 col-md-12 col-sm-12 col-12">
+
+        <h4 align="center" class=""> Nyckelord: </h4>
+
+
+        <br>
+
+        <div class="row">
+
+          <div class="col-4 col-lg-4 col-md-0 "></div>
+          <div class="col-4 col-sm-12 col-md-12 col-lg-5 ">
+            <h5 align="center">Lägg till nyckelord, gärna med översättnig i motsvarande fält på samma rad</h5>
+
+            <div class="row">
+              <button type="button" onclick="add_keyword_input_line()" class="col-6 form-control" style="height: 60px; background: MediumSeaGreen; color: white;"> <h4>Add </h4> </button>
+              <button type="button" onclick="remove_keyword_input_line()" class="col-6 form-control" style="height: 60px; background: IndianRed; color: white;"> <h4>Remove</h4></button>
+            </div>
+
+
+          </div>
+          <div class="col-4"></div>
 
         </div>
 
-        {{ Submission.description }}
+
+        <br>        <br>
+
+
+
+
+
+
+
+
+        <div class="row">
+          <div class="col-1"></div>
+          <div class="col-5"><h5 align="center">Svenska</h5></div>
+          <div class="col-1">  </div>
+          <div class="col-5"><h5 align="center">Engelska</h5></div>
+        </div>
 
         <hr>
-        <br>
-
-      </div>
-
-      <div id="step3" class="tab-pane fade">
 
 
+        <div id="keyword_div">
 
-
-        <div class="col-xxl-5   col-xl-9   col-lg-12 col-md-12 col-sm-12 col-12">
-
-          <h4 align="center" class=""> Nyckelord: </h4>
-
-
-          <br>
-
-          <div class="row">
-
-            <div class="col-4 col-lg-4 col-md-0 "></div>
-            <div class="col-4 col-sm-12 col-md-12 col-lg-5 ">
-              <h5 align="center">Lägg till nyckelord, gärna med översättnig i motsvarande fält på samma rad</h5>
-
-              <div class="row">
-                <button type="button" onclick="add_keyword_input_line()" class="col-6 form-control" style="height: 60px; background: MediumSeaGreen; color: white;"> <h4>Add </h4> </button>
-                <button type="button" onclick="remove_keyword_input_line()" class="col-6 form-control" style="height: 60px; background: IndianRed; color: white;"> <h4>Remove</h4></button>
-              </div>
-
-
-            </div>
-            <div class="col-4"></div>
-
-          </div>
-
-
-          <br>        <br>
-
-
-
-
-
-
-
-
-          <div class="row">
-            <div class="col-1"></div>
-            <div class="col-5"><h5 align="center">Svenska</h5></div>
-            <div class="col-1">  </div>
-            <div class="col-5"><h5 align="center">Engelska</h5></div>
-          </div>
-
-          <hr>
-
-
-          <div id="keyword_div">
-
-
-          </div>
 
         </div>
 
       </div>
 
-
-
-      <div id="step4" class="tab-pane fade">
-
+    </div>
 
 
 
-        <h3>Card view</h3>
+    <div id="step4" class="tab-pane fade">
 
 
-        <div class="row">
 
 
-          <div class="col-6"> 
+      <h3>Card view</h3>
 
-            <div class="col">
 
-              <h4>{{ Submission.name_card.label}}</h4>
+      <div class="row">
 
-              <div class="col-4">
-                {{ Submission.name_card}}
-              </div>
 
+        <div class="col-6"> 
+
+          <div class="col">
+
+            <h4>{{ Submission.name_card.label}}</h4>
+
+            <div class="col-4">
+              {{ Submission.name_card}}
             </div>
-
-
-
-
-            <div class="col">
-
-              <h4>{{ Submission.aim_card.label}}</h4>
-              <div class="col-4">
-                {{ Submission.aim_card}}
-              </div>
-
-            </div>
-
-
-
-
-
-            <div class="col">
-
-              <h4>{{ Submission.description_card.label}}</h4>
-              <div class="col-4">
-                {{ Submission.description_card}}
-              </div>
-
-            </div>
-
 
           </div>
 
 
 
 
-          <div style="padding-left: 20px; padding-right: 20px" class="col-lg-3 col-md-4 col-xs-6 mb-5">
-            <div class="project-item">
-              <div class="row">
-                <div class=" col">  
-                  <div  class="col project-items-justify blackFieldWhiteText">
-                    <h4 align="center" style="color: white; font-size: 16px" id="rep_card_name"> </h4>
-                  </div>
+          <div class="col">
+
+            <h4>{{ Submission.aim_card.label}}</h4>
+            <div class="col-4">
+              {{ Submission.aim_card}}
+            </div>
+
+          </div>
+
+
+
+
+
+          <div class="col">
+
+            <h4>{{ Submission.description_card.label}}</h4>
+            <div class="col-4">
+              {{ Submission.description_card}}
+            </div>
+
+          </div>
+
+
+        </div>
+
+
+
+
+        <div style="padding-left: 20px; padding-right: 20px" class="col-lg-3 col-md-4 col-xs-6 mb-5">
+          <div class="project-item">
+            <div class="row">
+              <div class=" col">  
+                <div  class="col project-items-justify blackFieldWhiteText">
+                  <h4 align="center" style="color: white; font-size: 16px" id="rep_card_name"> </h4>
                 </div>
               </div>
-              <div class="row">
+            </div>
+            <div class="row">
+              <div class="col">
+                <img class="mg-fluid w-100" id="card_img" src="{{ inital_image}}" />
+              </div>
+
+            </div>
+            <div class="col" style="padding-right: 5px; padding-left: 5px; margin-top: 3px">
+              <div class="row Lato-font ">
+                <div class="col" >
+                  <span class="font-weight-bold">PROJECT AIM: </span> <span id="rep_card_aim" ></span>
+                </div>
+              </div>
+              <hr>
+              <div class="row Lato-font">
+
                 <div class="col">
-                  <img class="mg-fluid w-100" id="card_img" src="{{ inital_image}}" />
+                  <span >DESCRIPTION: </span> <span id="rep_card_description"></span>
                 </div>
-
               </div>
-              <div class="col" style="padding-right: 5px; padding-left: 5px; margin-top: 3px">
-                <div class="row Lato-font ">
-                  <div class="col" >
-                    <span class="font-weight-bold">PROJECT AIM: </span> <span id="rep_card_aim" ></span>
-                  </div>
+              <hr>
+              <div class="row Lato-font">
+                <div class="col ">
+                  STATUS: ..........
                 </div>
-                <hr>
-                <div class="row Lato-font">
-
-                  <div class="col">
-                    <span >DESCRIPTION: </span> <span id="rep_card_description"></span>
-                  </div>
-                </div>
-                <hr>
-                <div class="row Lato-font">
-                  <div class="col ">
-                    STATUS: ..........
-                  </div>
-                </div>
-                <hr>
-                keywords: .........
-                {% for keyword in ProjectEntry.keywords.all %}
-                <span style="background: black; color: white; margin: 3px; padding: 3px; border-radius: 5px">{{keyword}} </span> 
-                {% endfor %}
               </div>
+              <hr>
+              keywords: .........
+              {% for keyword in ProjectEntry.keywords.all %}
+              <span style="background: black; color: white; margin: 3px; padding: 3px; border-radius: 5px">{{keyword}} </span> 
+              {% endfor %}
             </div>
           </div>
-
         </div>
-
-
-
 
       </div>
 
-      <div id="step5" class="tab-pane fade">
 
 
-        <h3> Contact info </h3>
 
-        <h5>
-          your email will not be publicly accessible, your contact name.....?
-          <br>
-          you can get mail from peaple that wants to get in contact .....
-        </h5>
+    </div>
 
-        <br><br>
+    <div id="step5" class="tab-pane fade">
 
-        <div class="row">
 
-          <div class="col-3">
-            <h4>{{ Submission.contact_name.label }}</h4>
-            {{ Submission.contact_name }}
-          </div>
-          
+      <h3> Contact info </h3>
 
-          <div class="col-3">
-            <h4>{{ Submission.contact_email.label }}</h4>
-            {{ Submission.contact_email }}
-          </div>
-          
+      <h5>
+        your email will not be publicly accessible, your contact name.....?
+        <br>
+        you can get mail from peaple that wants to get in contact .....
+      </h5>
 
-          <div class="col-3">
-            <h4>{{ Submission.contact_role.label }}</h4>
-            {{ Submission.contact_role }}
-          </div>
-          
+      <br><br>
 
-          <div class="col-3">
-            <h4>{{ Submission.contact_affiliation.label }}</h4>
-            {{ Submission.contact_affiliation }}
-          </div>
+      <div class="row">
 
-          <div class="col-3">
-            <h4>{{ Submission.url.label }}</h4>
-            {{ Submission.url }}
-          </div>
-
+        <div class="col-3">
+          <h4>{{ Submission.contact_name.label }}</h4>
+          {{ Submission.contact_name }}
         </div>
-        <br>
-        <br>
+        
 
-        <h4> I agre to ....</h4>
+        <div class="col-3">
+          <h4>{{ Submission.contact_email.label }}</h4>
+          {{ Submission.contact_email }}
+        </div>
+        
 
-        <input type="checkbox" class="form-control col-2" name="agre">
+        <div class="col-3">
+          <h4>{{ Submission.contact_role.label }}</h4>
+          {{ Submission.contact_role }}
+        </div>
+        
 
-        <br><br>
+        <div class="col-3">
+          <h4>{{ Submission.contact_affiliation.label }}</h4>
+          {{ Submission.contact_affiliation }}
+        </div>
+
+        <div class="col-3">
+          <h4>{{ Submission.url.label }}</h4>
+          {{ Submission.url }}
+        </div>
+
+      </div>
+      <br>
+      <br>
+
+      <h4> I agre to ....</h4>
+
+      <input type="checkbox" class="form-control col-2" name="agre">
+
+      <br><br>
 
 
-        <button class="form-control col-4 btn-success" type='submit' value='Save'>Submit Project to ARCS</button> <!-- TODO replace with django template for  -->
+      <button class="form-control col-4 btn-success" type='submit' value='Save'>Submit Project to ARCS</button> <!-- TODO replace with django template for  -->
 
 
 
@@ -464,27 +464,27 @@
 
 
 
-      {% else %}
-      <p>{% trans "Plese sign in or create an account to add a project." %}</p>
-      <p>{% trans "To submit a project you'll be asked to provide the following information." %}</p>
-      <ul>
-        <li>{% trans "A common name for identifying the project." %}</li>
-        <li>{% trans "A brief description of the project." %}</li>
-        <li>{% trans "The aim of the project." %}</li>
-        <li>{% trans "The status of the projet ie if it is active or historical." %}</li>
-        <li>{% trans "The target audience of the project." %}</li>
-        <li>{% trans "Your affiliation to the project as the person submitting the project." %}</li>
-        <li>{% trans "Keywords for the project." %}</li>
-      </ul>
-      <p>{% trans "Following submission your project will be reviewed before becoming visibile on the site and included in the metadata exchange. Review the citizen science assessment criteria for visiblity and exchange." %}</p>
-      {% endif %}
+    {% else %}
+    <p>{% trans "Plese sign in or create an account to add a project." %}</p>
+    <p>{% trans "To submit a project you'll be asked to provide the following information." %}</p>
+    <ul>
+      <li>{% trans "A common name for identifying the project." %}</li>
+      <li>{% trans "A brief description of the project." %}</li>
+      <li>{% trans "The aim of the project." %}</li>
+      <li>{% trans "The status of the projet ie if it is active or historical." %}</li>
+      <li>{% trans "The target audience of the project." %}</li>
+      <li>{% trans "Your affiliation to the project as the person submitting the project." %}</li>
+      <li>{% trans "Keywords for the project." %}</li>
+    </ul>
+    <p>{% trans "Following submission your project will be reviewed before becoming visibile on the site and included in the metadata exchange. Review the citizen science assessment criteria for visiblity and exchange." %}</p>
+    {% endif %}
 
 
 
-
-    </div>
 
   </div>
+
+</div>
 
 
 
@@ -538,118 +538,118 @@
 
 
 
-  $("#id_name").change({name: "name"}, change_card_passive);
-  $("#id_name_card").change({name: "name"}, change_card_dominant);
+ $("#id_name").change({name: "name"}, change_card_passive);
+ $("#id_name_card").change({name: "name"}, change_card_dominant);
 
-  $("#id_aim").change({name: "aim"}, change_card_passive);
-  $("#id_aim_card").change({name: "aim"}, change_card_dominant);
+ $("#id_aim").change({name: "aim"}, change_card_passive);
+ $("#id_aim_card").change({name: "aim"}, change_card_dominant);
 
-  $("#id_description").change({name: "description"}, change_card_passive);
-  $("#id_description_card").change({name: "description"}, change_card_dominant);
-
-
+ $("#id_description").change({name: "description"}, change_card_passive);
+ $("#id_description_card").change({name: "description"}, change_card_dominant);
 
 
-  function change_card_dominant(event){
 
-    if(this.value.replace(/\s/g, "").length == 0 ){
-      $("#rep_card_" + event.data.name ).html($("#id_"+ event.data.name).val());
+
+ function change_card_dominant(event){
+
+  if(this.value.replace(/\s/g, "").length == 0 ){
+    $("#rep_card_" + event.data.name ).html($("#id_"+ event.data.name).val());
+  }
+
+  else{
+
+    $("#rep_card_" + event.data.name ).html(this.value);
+
+  }
+
+
+};
+
+function change_card_passive(event){
+
+  if( $("#id_" + event.data.name + "_card").val().replace(/\s/g, "").length == 0 ){
+
+    $("#rep_card_" + event.data.name ).html(this.value);
+
+  }
+
+};
+
+
+var secClicked = true;
+
+
+
+function nextnav(){
+
+
+
+  
+
+  if (secClicked == true){
+
+    var current_a_tag = $(".nav-tabs").find(".active");
+    var go_to_next = true;
+
+
+    $(current_a_tag.attr("href")).find("input").each(function(){
+      if($(this).prop('required')){
+        if(this.value.replace(/\s/g, "").length == 0){
+
+          go_to_next = false;
+
+          console.log(this)
+
+          $(this).css("border", "solid red 1px")
+        }
+        else{
+          $(this).css("border", "solid MediumSeaGreen 1px");
+        };
+      } 
+
+    });
+
+    if(current_a_tag.attr("href") == "#step_aim"){
+      console.log($('#id_aim').val())
+      if($('#id_aim').val().length < 30   ){
+        var go_to_next = false;
+        
+      }
+
     }
 
+    if(current_a_tag.attr("href") == "#step_description"){
+      console.log($('#id_description').val());
+
+      if($('#id_description').val().length < 30   ){
+        var go_to_next = false;
+        
+      }
+
+    }
+
+
+
+
+
+
+
+    if(go_to_next == true){
+
+      'current_a_tag.addClass("disabled");'
+
+      current_a_tag.parent().css("background", "MediumSeaGreen");
+      current_a_tag.parent().next().find('a').removeClass('disabled').trigger('click').addClass("disabled");
+
+    }
     else{
-
-      $("#rep_card_" + event.data.name ).html(this.value);
-
+      current_a_tag.parent().css("background", "IndianRed");
     }
 
+    secClicked = false;
 
-  };
-
-  function change_card_passive(event){
-
-    if( $("#id_" + event.data.name + "_card").val().replace(/\s/g, "").length == 0 ){
-
-      $("#rep_card_" + event.data.name ).html(this.value);
-
-    }
-
-  };
-
-
-  var secClicked = true;
-
-
-
-  function nextnav(){
-
-
-
-    
-
-    if (secClicked == true){
-
-      var current_a_tag = $(".nav-tabs").find(".active");
-      var go_to_next = true;
-
-
-      $(current_a_tag.attr("href")).find("input").each(function(){
-        if($(this).prop('required')){
-          if(this.value.replace(/\s/g, "").length == 0){
-
-            go_to_next = false;
-
-            console.log(this)
-
-            $(this).css("border", "solid red 1px")
-          }
-          else{
-            $(this).css("border", "solid MediumSeaGreen 1px");
-          };
-        } 
-
-      });
-
-      if(current_a_tag.attr("href") == "#step_aim"){
-        console.log($('#id_aim').val())
-        if($('#id_aim').val().length < 30   ){
-          var go_to_next = false;
-          
-        }
-
-      }
-
-      if(current_a_tag.attr("href") == "#step_description"){
-        console.log($('#id_description').val());
-
-        if($('#id_description').val().length < 30   ){
-          var go_to_next = false;
-          
-        }
-
-      }
-
-
-
-
-
-
-
-      if(go_to_next == true){
-
-        'current_a_tag.addClass("disabled");'
-
-        current_a_tag.parent().css("background", "MediumSeaGreen");
-        current_a_tag.parent().next().find('a').removeClass('disabled').trigger('click').addClass("disabled");
-
-      }
-      else{
-        current_a_tag.parent().css("background", "IndianRed");
-      }
-
-          secClicked = false;
-
-        setTimeout(function() {
-        secClicked = true;
+    setTimeout(function() {
+      secClicked = true;
     }, 1000);
 
   }
@@ -657,7 +657,7 @@
 
 
 
-  };
+};
 
 function prevnav(){
 
@@ -672,8 +672,8 @@ function prevnav(){
 
     secClicked = false;
 
-        setTimeout(function() {
-        secClicked = true;
+    setTimeout(function() {
+      secClicked = true;
     }, 1000);
 
 
@@ -685,19 +685,19 @@ function prevnav(){
 function readURL() {
 
 
-        if (this.files && this.files[0]) {
-            var reader = new FileReader();
+  if (this.files && this.files[0]) {
+    var reader = new FileReader();
 
-            reader.onload = function (e) {
-                $('#card_img')
-                    .attr('src', e.target.result)
-                    .width(150)
-                    .height(200);
-            };
+    reader.onload = function (e) {
+      $('#card_img')
+      .attr('src', e.target.result)
+      .width(150)
+      .height(200);
+    };
 
-            reader.readAsDataURL(this.files[0]);
-        }
-    }
+    reader.readAsDataURL(this.files[0]);
+  }
+}
 
 $("#id_image").change(readURL)
 
@@ -725,19 +725,19 @@ $("#id_description_card").change()
 
 <datalist id="brow2">
   {% for kw in "eng"|get_keywords %}
-    <option value="{{kw}}"> </option> 
+  <option value="{{kw}}"> </option> 
   {% endfor %}
-  </datalist> 
+</datalist> 
 
 <datalist id="brow">
   {% for kw in "swe"|get_keywords %}
-    <option value="{{kw}}"> </option> 
+  <option value="{{kw}}"> </option> 
   {% endfor %}
 
 
-   </datalist>
+</datalist>
 
-                                                      {% endblock content %}
+{% endblock content %}
 
 
 

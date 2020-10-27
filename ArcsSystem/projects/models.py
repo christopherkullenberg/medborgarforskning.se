@@ -11,6 +11,8 @@ import os
 from users.models import CustomUser
 from organizations.models import Organization
 
+from wikidata.client import Client
+
 # Define the options for the state of operation a project might be classified
 # Defined here as used in more than one model
 STATUS_CHOICES = [
@@ -86,9 +88,52 @@ class KeywordEng(models.Model):
 
     def get_wikidataQ(self):
 
-        if wikidataQ != None:
-            return "https://wikidata.org/wiki" + "/Q" + str(wikidataQ)
-        return "#"
+        if self.wikidataQ != None:
+
+            html = '''<hr> <br> <br>  Source:  <a href="https://wikidata.org/wiki/Q''' +str(self.wikidataQ) +'''" >Wikidata entry</a>  <br> <br> '''
+            html += ''' <div class="row" >'''
+
+            cl = Client()
+
+            ent = cl.get("Q" + str(self.wikidataQ), load=True)
+
+            # first col
+            html += ''' <div class"col-6">    <h5>  '''+ str(ent.description) +''' </h5>  ''' 
+
+
+
+            # image 
+            if "P18" in ent.data["claims"]:
+                prop = cl.get("P18")
+                thing = ent[prop]
+                html += ''' <img style="width:400px;heigth:400px" src="'''+ thing.image_url +'''" alt=""> '''
+            html += ''' </div> '''
+            # end first col
+
+            if "P225" in ent.data["claims"]:
+                prop = cl.get("P225")
+                thing = ent[prop]
+                html += ''' <div class="col-4" style="margin-left:40px" >  <h5> Taxon name: '''+ thing +''' </h5> </div> '''
+
+            html += ''' </div>  '''
+            return html
+        return ""
+
+
+
+    def get_summary(self, lang="en"):
+        if lang == "en":
+            use = self.summary_en
+        if lang == "sv":
+            use = self.summary_sv
+
+        if use != None:
+            return use + '''<br> <br> <p style="font-size:20px;">Source: <a href="https://en.wikipedia.org/wiki/''' + self.keyword +'''" >Wikipedia</a></p>'''
+        return "<p> No short description found </p>"
+
+
+
+
 
 
     # def get_custom_html(self):
@@ -101,6 +146,20 @@ class KeywordLine(models.Model):
 
     swe = models.ForeignKey(KeywordSwe, on_delete=models.SET_NULL, blank=True, null=True, related_name='line' )
     eng = models.ForeignKey(KeywordEng, on_delete=models.SET_NULL, blank=True, null=True, related_name='line' )
+
+    def get_line(self):
+
+        if self.swe == None:
+            swe = ""
+        else:
+            swe = self.swe.keyword
+
+        if self.eng == None:
+            eng = ""
+        else:
+            eng = self.eng.keyword
+        return [swe, eng]
+
 
     def __str__(self):
 

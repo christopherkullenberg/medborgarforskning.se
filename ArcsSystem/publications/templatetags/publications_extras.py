@@ -247,7 +247,7 @@ def get_all_related(Article, lang ="en", use="all"):
 				for l in result:
 					di["Theme"]["not"][l.eng.id].append(theme.id)
 					if l.swe != None:
-						di["Theme"]["sv"]["not"][l.swe.id].append(project.id)
+						di["Theme"]["sv"]["not"][l.swe.id].append(theme.id)
 
 			for project in line.Project.all().exclude(id__in=di["Project"]["not"][kw.id] ):
 				result = [l for l in project.keyword_lines.filter(~Q(eng = None)).exclude(eng__keyword__in=uni_exclude_keys) ]
