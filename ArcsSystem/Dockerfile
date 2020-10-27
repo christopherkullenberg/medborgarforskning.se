@@ -24,10 +24,11 @@ WORKDIR /opt/arcs_project_code
 
 COPY entrypoint.sh .
 
-# install dependencies
+# install dependencies. Note: using pip install instead of pipenv for systemwide container install.
 RUN pip install pipenv
-COPY Pipfile Pipfile.lock /opt/arcs_project_code/
-RUN pipenv install --system
+COPY Pipfile*  /opt/arcs_project_code/
+RUN cd /opt/arcs_project_code/ && pipenv lock --requirements > requirements.txt
+RUN pip install -r /opt/arcs_project_code/requirements.txt
 
 # make directory for collected static files shared with nginx
 RUN mkdir -p /var/www/arcs_collected_static/static/
