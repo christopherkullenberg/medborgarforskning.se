@@ -96,19 +96,33 @@ h3 {
 /* Body style: */
 body{
     background-color: #fff;
-    font-family: Lato !important;
+    font-family: "acumin-pro", Helvetica, sans-serif ;
     font-size: 14 !important;
 }
 
-
-
 p{
-    font-family: Lato !important;
+    font-family: "acumin-pro", Helvetica, sans-serif ;
     font-size: 14px !important;
+}
+/* Color informations */
+.pink-background-color{
+    background-color: #e2005e;
+}
+
+.pink-hover-background-color{
+    background-color:#c90053!
+}
+
+.pink-hover-color{
+    color:#c90053!
 }
 
 .background-blue-color{
-    background-color: #174255;
+    background-color: #07c;
+}
+
+.background-dark-blue-color{
+    background-color: rgb(36, 39, 58);
 }
 
 .background-dark-green-color{
@@ -153,6 +167,12 @@ font-family: Helvetica;
     padding: 0;
 }
 
+/*start for style header */
+
+#header-logo{
+    max-width: 100%;
+    height: auto;
+}
 
 #main-header{
     margin-top: 20px;
@@ -189,9 +209,9 @@ font-family: Helvetica;
 
 
 #login, a:hover, a::after{
-    color: #255C61;
     text-decoration: none;
     white-space: nowrap;
+    color: #e2005e;
 }
 
 .hide-extend-language-icon::after{
@@ -205,7 +225,6 @@ font-family: Helvetica;
 }
 
 .language-selected-color{
-    background-color: #174255;
     font-family: Lato;
     color: #FFFFFF;
 }
@@ -215,9 +234,12 @@ font-family: Helvetica;
 }
 
 .language-selected-color:hover{
-    background-color: #174255 !important;
     color: #fff;
 }
+
+/*end for style header */
+
+
 
 .main-menu-buttons-font{
     font-size: 16;
@@ -229,8 +251,36 @@ font-family: Helvetica;
 }
 
 .main-menu-buttons a:hover{
-    background-color: #C3D3D0;
+    color: #e2005e;
 }
+
+/* change navbar background */
+.navbar-toggler{
+  background-color: white !important;
+}
+
+#hamburger .icon-bar {
+     background: white;
+   }
+
+   #hamburger:hover,
+   #hamburger.is-active {
+     background: white !important;
+   }
+
+   #hamburger:hover .icon-bar,
+   #hamburger.is-active .icon-bar {
+     background: #F4511e !important;
+   }
+
+   #hamburger:focus {
+     background: #F4511e;
+   }
+
+   #hamburger:focus .icon-bar {
+     background: #FFF;
+   }
+
 
 .header-main-menu{
     display: block;
@@ -320,9 +370,9 @@ font-family: Helvetica;
     font-size: 12px;
 }
 
-.policy-footer-font a{
+/* .policy-footer-font a{
     color: #255C61;
-}
+} */
 
 .policy-footer-menu{
     padding-top: 8px;
@@ -347,15 +397,15 @@ font-family: Helvetica;
     margin-top: 10px;
     margin-bottom: 10px;
     padding-left: 30px;
-    background-color: #c3d3d0;
+    /* background-color: #c3d3d0; */
 }
 
-.slider-color{
+/* .slider-color{
     background-color: rgba(195, 211, 208, 0.6) !important;
-}
+} */
 
 .light-green-style{
-    background-color: #d2e1df;
+    /* background-color: #d2e1df; */
     margin-top: 30px;
     margin-bottom: 30px;
     margin-left: 30px;
@@ -366,7 +416,7 @@ font-family: Helvetica;
 .carousel-multi-item-selector{
     padding: 0px;
     border: 1px solid;
-    border-color: #9FB0A0;
+    /* border-color: #9FB0A0; */
     border-radius: 4px 4px 4px 4px;
 }
 
@@ -377,12 +427,12 @@ font-family: Helvetica;
 
 .content-slider{
     padding-top: 20px;
-    background-color: #c3d3d0;
+    /* background-color: #c3d3d0; */
 }
 
 .slider-top-controler{
     float: right;
-    background-color: #c3d3d0;
+    /* background-color: #c3d3d0; */
 }
 
 .next-icon-slider{
@@ -405,7 +455,7 @@ font-family: Helvetica;
 }
 
 .slider-selector{
-    color: #c3d3d0 !important;
+    /* color: #c3d3d0 !important; */
     background-color: #000 !important;
 }
 
@@ -426,7 +476,7 @@ font-family: Helvetica;
     padding-bottom: 20px;
     border: 1px solid;
     border-radius: 2px 2px 2px 2px;
-    border-color: #9fb0a0;
+    border-color: #ffe05f;
 }
 
 .items-box{
@@ -463,7 +513,7 @@ font-family: Helvetica;
 }
 
 .breadcrumb, a{
-    color: #255C61;
+    color: black;
 }
 
 .breadcrumb-item + .breadcrumb-item::before {
