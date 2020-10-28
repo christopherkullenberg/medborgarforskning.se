@@ -25,35 +25,47 @@ def defaultdict_links_super():
 	return defaultdict(defaultdict_links)
 
 #
-def convert_dict(json_di, value):
 
-	print(value)
+def get_bigest_links(di, alowed_links_per_node = 3):
+
+	anwer = [""] * alowed_links_per_node
+	biggest_links = [0] * alowed_links_per_node
+
+	for k,v in di.items():
+		for index in range(alowed_links_per_node):
+			if v["value"] > biggest_links[index]:
+				biggest_links[index] = v["value"]
+				anwer[index] = k
+				break
+	re = []
+	for index in range(alowed_links_per_node):
+		if anwer[index] != "":
+			re.append([anwer[index], {"value": biggest_links[index]}] )   
+
+	return re
+
+def convert_dict(json_di, value=1):
 
 	r_di = {"nodes" : [ {"id": k, "group": v["group"] , "value": v["value"]} for k, v in json_di["nodes"].items() if v["value"] > value ]}
 	r_di["links"] = []
 
 	for k, v in json_di["links"].items():
 
-		for k2, v2 in v.items():
+		for k2, v2 in get_bigest_links(v,  1):  #get_bigest_links(v, int(json_di["nodes"][k]["value"]//10 ) + 2): #v.items():
 
 
-			if v2["value"] > value:
+			if v2["value"] > value :
 
 				r_di["links"].append({"source": k, "target": k2, "value": v2["value"]})
 
-
-
-
-	with open("media/miserables.json", "w") as f:
-
-		json.dump(r_di, f)
+	return json.dumps(r_di)
 
 
 
 def get_all_related(Article, lang ="en", use="all"):
 
 	#limit for pub, pro and theme. Can change to one for each one
-	limit_things = 20000
+	limit_things = 16
 
 	# these are the tabs that are created
 	dict_key_thing = ["Project", "Theme"]
@@ -134,8 +146,8 @@ def get_all_related(Article, lang ="en", use="all"):
 
 	nav_html = ' <ul class="nav nav-tabs"> '
 	div_html = ' <div class="col-12">  <div class="tab-content"> <br> '
-	nav_html += ' <li class="nav-item"> <a class="nav-link ' + "active" + '" data-toggle="tab" href="#'+"pub"+'">'+"Publications"+ str(amount_pub)+'</a> </li> '
-	div_html += ' <div id="'+"pub"+'" class="tab-pane container '+ "active" +'">  <div class="row" > '
+	nav_html += ' <li class="nav-item"> <a class="nav-link ' + "" + '" data-toggle="tab" href="#'+"pub"+'">'+"Publications"+ str(amount_pub)+'</a> </li> '
+	div_html += ' <div id="'+"pub"+'" class="tab-pane container '+ "" +'">  <div class="row" > '
 	count = 0
 	for x in range(60, -1, -1):
 		if count == limit_things:
@@ -178,13 +190,13 @@ def get_all_related(Article, lang ="en", use="all"):
 					for kw2 in art[1][c:]:
 						json_di["links"][kw.keyword][kw2.keyword]["value"] += 1
 
-				div_html += art[0].get_custom_html(lang, [x2.id for x2 in art[1]] ) #art[1])
+				div_html += art[0].get_custom_html(lang, [x2.id for x2 in use] ) #art[1])
 				count += 1
 
 		div_html += ' </div></div>'
 
-	nav_html += ' <li class="nav-item"> <a class="nav-link " data-toggle="tab" href="#svg_map_pub"> Keyword map </a> </li> '
-	div_html += ''' <div id="svg_map_pub" class="tab-pane " style="background: black" >  <svg id="rel_graph" style="width:100%;height:2000px;"  width="2000" height="2000">
+	nav_html += ' <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#svg_map_pub"> Keyword map </a> </li> '
+	div_html += ''' <div id="svg_map_pub" class="tab-pane active" style="background: black" >  <svg id="rel_graph" style="width:100%;height:1000px;"  width="1000" height="1000">
 	'''  + '''
 
 	 <text x="300" y="70"style="fill:red;font-size:25px;"> Themes </text>  <text x="500" y="70" style="fill:green;font-size:25px;"> Projects </text>  <text x="700" y="70" style="fill:blue;font-size:25px;"> Publications </text>
@@ -206,8 +218,12 @@ def get_all_related(Article, lang ="en", use="all"):
 				json_di["links"][kw.keyword][kw2.keyword]["value"] += 1
 	nav_html += ' </ul> '
 	div_html += ' </div> </div> <br> <br> <br> <br>'
-	convert_dict(json_di, int(amount_pub/50))
 
-	return nav_html + div_html
+
+
+
+
+
+	return [[nav_html + div_html, convert_dict(json_di, 1 )]]
 
 register.filter("get_all_related", get_all_related)
