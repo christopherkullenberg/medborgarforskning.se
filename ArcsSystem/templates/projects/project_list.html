@@ -2,57 +2,42 @@
 {% load static %}
 {% load i18n %}
 {% load projects_extras %}
-
 {% block content %}
 
-
 <script type="text/javascript">
-
-
-
-
-
 </script>
-
-
-
 
 <div class="container-fluid">
     <div class="custom-container">
         <div class="row project-menu-filter d-flex justify-content-center align-items-center">
-            <div class="col-3 h">
+            <div class="col-sm-4 h">
                 <div class="row">
-                    <div class="col d-flex justify-content-start align-items-cente">
-                        <!-- <div class="search-list">
-                            <form action="{% url 'projects:search_results' %}" method="get">
-                              <input name="q" type="text" placeholder="Search...">
-                            </form>
-                        </div> -->
+                    <div class="col-sm-6 d-flex justify-content-start align-items-cente">
                         <h2 class="project-filter-menu-font">Show</h2>
                     </div>
-                    <div class="col">
+                    <div class="col-sm-6">
                         <div class="dropdown">
                           <button class="btn projects-filter-buttons dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             biology
                         </button>
-                        <div class="dropdown-menu main-menu-buttons background-light-green-color" aria-labelledby="dropdownMenuButton">
+                        <div class="dropdown-menu main-menu-buttons" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item" href="#">Action</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-3 h">
+        <div class="col-sm-4 h">
             <div class="row">
-                <div class="col d-flex justify-content-center align-items-cente">
+                <div class="col-sm-6 d-flex">
                     <h2 class="project-filter-menu-font">project in</h2>
                 </div>
-                <div class="col">
+                <div class="col-sm-6">
                     <div class="dropdown">
                       <button class="btn projects-filter-buttons dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         the North
                     </button>
-                    <div class="dropdown-menu main-menu-buttons background-light-green-color" aria-labelledby="dropdownMenuButton">
+                    <div class="dropdown-menu main-menu-buttons" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="#">Action</a>
                     </div>
                 </div>
@@ -60,17 +45,17 @@
         </div>
     </div>
 
-    <div class="col-6 h">
+    <div class="col-sm-4 h">
         <div class="row">
-            <div class="col d-flex justify-content-center align-items-cente">
+            <div class="col-sm-6 d-flex">
                 <h2 class="project-filter-menu-font">sorted by</h2>
             </div>
-            <div class="col">
+            <div class="col-sm-6">
                 <div class="dropdown">
                   <button class="btn projects-filter-buttons dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     date published
                 </button>
-                <div class="dropdown-menu main-menu-buttons background-light-green-color" aria-labelledby="dropdownMenuButton">
+                <div class="dropdown-menu main-menu-buttons" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item" href="#">Action</a>
                 </div>
             </div>
@@ -85,7 +70,7 @@
     <div style="padding-left: 20px; padding-right: 20px" class="col-lg-3 col-md-4 col-xs-6 mb-5">
         <div class="project-item">
             <div class="row">
-                <div class=" col">  
+                <div class=" col">
                     <div  class="col project-items-justify blackFieldWhiteText">
                         <h4 align="center"><a style="color: white; font-size: 16px" id="project-items-link" href="{% url 'projects:project_detail' ProjectEntry.id %}"> {{ ProjectEntry.get_card_name }}</a></h4>
                     </div>
@@ -126,7 +111,7 @@
                 <hr>
 
                 {% for keyword in ProjectEntry|get_keywords_trans:LANGUAGE_CODE %}
-                <a style="color:blue">{{keyword}}, </a> 
+                <a style="color:blue">{{keyword}}, </a>
                 {% endfor %}
             </div>
         </div>

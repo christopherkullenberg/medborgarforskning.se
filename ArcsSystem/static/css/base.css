@@ -1,4 +1,5 @@
-@font-face {
+/* Font style: */
+container-fluid@font-face {
   font-family: 'Playfair Display';
   src: url(https://fonts.googleapis.com/css?family=Playfair+Display&display=swap);
   font-display: swap;
@@ -10,21 +11,75 @@
   font-display: swap;
 }
 
-body{
-    background-color: #C3D3D0 !important;
-    font-family: Lato !important;
-    font-size: 14 !important;
+/* color style: */
+
+.pink-background-color{
+    background-color: #e2005e;
 }
 
+.pink-hover-background-color{
+    background-color:#c90053!
+}
+
+.pink-hover-color{
+    color:#c90053!
+}
+
+.white-background-color {
+    background-color: #fff;
+}
+
+.pink-color{
+    color: #e2005e;
+}
+
+.white-color {
+    color: #fff;
+}
+
+.yellow-background-color{
+    background-color: #ffe05f;
+}
+
+.yellow-color{
+    background-color: #ffe05f;
+}
+
+.light-gray-background-color{
+    background-color: #f8f8f8;
+}
+
+.light-gray-color{
+    background-color: #f8f8f8;
+}
+
+.dark-gray-background-color {
+    background-color: #24273a;
+}
+
+.dark-gray-color {
+    color: #24273a;
+}
+
+.mid-gray-background-color{
+    background-color: #515151;
+}
+
+.mid-gray-color{
+    color: #515151;
+}
+
+/* Headers style */
+
 h1 {
-  font-family: 'Playfair Display';
+  font-family: 'acumin-pro-extra-condensed','HelveticaNeue-CondensedBold','sans-serif';
   color: #000000;
   font-size: 26px;
   font-weight:bold;
 }
 
 h2 {
-  font-family: 'Playfair Display';
+  font-family: 'acumin-pro-extra-condensed','HelveticaNeue-CondensedBold','sans-serif';
   font-size: 24px;
   font-weight: bold;
   color: #000000;
@@ -35,13 +90,39 @@ h3 {
   color: #000000;
 }
 
+/* Menu style: */
+
+
+/* Body style: */
+body{
+    background-color: #fff;
+    font-family: "acumin-pro", Helvetica, sans-serif ;
+    font-size: 14 !important;
+}
+
 p{
-    font-family: Lato !important;
+    font-family: "acumin-pro", Helvetica, sans-serif ;
     font-size: 14px !important;
+}
+/* Color informations */
+.pink-background-color{
+    background-color: #e2005e;
+}
+
+.pink-hover-background-color{
+    background-color:#c90053!
+}
+
+.pink-hover-color{
+    color:#c90053!
 }
 
 .background-blue-color{
-    background-color: #174255;
+    background-color: #07c;
+}
+
+.background-dark-blue-color{
+    background-color: rgb(36, 39, 58);
 }
 
 .background-dark-green-color{
@@ -86,6 +167,12 @@ font-family: Helvetica;
     padding: 0;
 }
 
+/*start for style header */
+
+#header-logo{
+    max-width: 100%;
+    height: auto;
+}
 
 #main-header{
     margin-top: 20px;
@@ -122,9 +209,9 @@ font-family: Helvetica;
 
 
 #login, a:hover, a::after{
-    color: #255C61;
     text-decoration: none;
     white-space: nowrap;
+    color: #e2005e;
 }
 
 .hide-extend-language-icon::after{
@@ -138,7 +225,6 @@ font-family: Helvetica;
 }
 
 .language-selected-color{
-    background-color: #174255;
     font-family: Lato;
     color: #FFFFFF;
 }
@@ -148,9 +234,14 @@ font-family: Helvetica;
 }
 
 .language-selected-color:hover{
-    background-color: #174255 !important;
-    color: #fff;
+    color: #ddd;
 }
+
+/*end for style header */
+
+.navbar-nav .dropdown-menu {
+    position: absolute; !important
+    }
 
 .main-menu-buttons-font{
     font-size: 16;
@@ -161,9 +252,38 @@ font-family: Helvetica;
     text-align:center
 }
 
+
 .main-menu-buttons a:hover{
-    background-color: #C3D3D0;
+    color: #e2005e;
 }
+
+/* change navbar background */
+.navbar-toggler{
+  background-color: white !important;
+}
+
+#hamburger .icon-bar {
+     background: white;
+   }
+
+   #hamburger:hover,
+   #hamburger.is-active {
+     background: white !important;
+   }
+
+   #hamburger:hover .icon-bar,
+   #hamburger.is-active .icon-bar {
+     background: #F4511e !important;
+   }
+
+   #hamburger:focus {
+     background: #F4511e;
+   }
+
+   #hamburger:focus .icon-bar {
+     background: #FFF;
+   }
+
 
 .header-main-menu{
     display: block;
@@ -253,9 +373,9 @@ font-family: Helvetica;
     font-size: 12px;
 }
 
-.policy-footer-font a{
+/* .policy-footer-font a{
     color: #255C61;
-}
+} */
 
 .policy-footer-menu{
     padding-top: 8px;
@@ -280,15 +400,15 @@ font-family: Helvetica;
     margin-top: 10px;
     margin-bottom: 10px;
     padding-left: 30px;
-    background-color: #c3d3d0;
+    /* background-color: #c3d3d0; */
 }
 
-.slider-color{
+/* .slider-color{
     background-color: rgba(195, 211, 208, 0.6) !important;
-}
+} */
 
 .light-green-style{
-    background-color: #d2e1df;
+    /* background-color: #d2e1df; */
     margin-top: 30px;
     margin-bottom: 30px;
     margin-left: 30px;
@@ -299,7 +419,7 @@ font-family: Helvetica;
 .carousel-multi-item-selector{
     padding: 0px;
     border: 1px solid;
-    border-color: #9FB0A0;
+    /* border-color: #9FB0A0; */
     border-radius: 4px 4px 4px 4px;
 }
 
@@ -310,12 +430,12 @@ font-family: Helvetica;
 
 .content-slider{
     padding-top: 20px;
-    background-color: #c3d3d0;
+    /* background-color: #c3d3d0; */
 }
 
 .slider-top-controler{
     float: right;
-    background-color: #c3d3d0;
+    /* background-color: #c3d3d0; */
 }
 
 .next-icon-slider{
@@ -338,7 +458,7 @@ font-family: Helvetica;
 }
 
 .slider-selector{
-    color: #c3d3d0 !important;
+    /* color: #c3d3d0 !important; */
     background-color: #000 !important;
 }
 
@@ -359,7 +479,7 @@ font-family: Helvetica;
     padding-bottom: 20px;
     border: 1px solid;
     border-radius: 2px 2px 2px 2px;
-    border-color: #9fb0a0;
+    border-color: #ffe05f;
 }
 
 .items-box{
@@ -378,9 +498,13 @@ font-family: Helvetica;
     color: #000;
     font-size: 14px;
     border-radius: 3px 3px 3px 3px;
+
 }
 
 .visual-Mindmap-style{
+    border: 1px solid;
+    border-color: #9FB0A0;
+    border-radius: 3px 3px 3px 3px;
     margin-top: 30px;
     margin-bottom: 30px;
     margin-left: 15px;
@@ -388,21 +512,26 @@ font-family: Helvetica;
     padding: 15px;
 }
 
+#related-publication-blog{
+    word-break: break-all;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .breadcrumb{
-    background-color: #C3D3D0;
+    background-color: #fff;
     color: #255C61;
     font-family: Lato;
     font-size: 14px;
 }
 
 .breadcrumb, a{
-    color: #255C61;
+    color: black;
 }
 
 .breadcrumb-item + .breadcrumb-item::before {
     content: ">>";
 }
-
 
 .text-header-visual-mindmap{
     font-family: Playfair;
@@ -410,7 +539,7 @@ font-family: Helvetica;
 }
 
 .projects-filter-buttons, .projects-filter-buttons:hover{
-    background-color: #255C61;
+    background-color: #07c;
     color: #ffffff ;
     font-family: Lato;
 }
@@ -434,7 +563,7 @@ font-family: Helvetica;
 
 }
 
-/*isak add here 
+/*isak add here
 */
 .blackFieldWhiteText{
     background: black;
@@ -492,7 +621,7 @@ font-family: Helvetica;
 }
 
 .projects-filter-buttons{
-    background-color: #255C61;
+    background-color: #07c;
     color: #ffffff ;
     font-family: Lato;
 }
@@ -508,14 +637,18 @@ font-family: Helvetica;
 }
 
 .project-pageination{
-    background-color: #9FB0A0 !important;
-    color: #255C61 !important;
+    background-color: #07c; !important;
+    color: #fff !important;
     font-family: Lato;
+}
+
+.page-item.disabled .page-link{
+    background-color: #07c; !important;
 }
 
 .page-item.active .page-link{
     color: #ffffff !important;
-    background-color: #255C61 !important;
+    background-color: rgb(36, 39, 58); !important;
 }
 
 .project-keywords-btn{

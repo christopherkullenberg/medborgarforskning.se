@@ -6,13 +6,10 @@
 {% block title %}Home{% endblock title %}
 {% block content %}
 {{ var1 }}
-
-
-
 <div class="container-fluid">
     <div class="custom-container">
-        <div class="row">
-            <div class="col-6 h" style="padding-right:25px;">
+        <div class="row ">
+            <div class="col-md-6 h" style="padding-right:25px;">
                 <div class="row">
                     <div class="col">
                         <img class="img-fluid" src="{% static "devplaceholder/sami-takarautio-UZOpP-YHe9Q-unsplash.jpg"%}" alt="{% trans '' %}"/>
@@ -26,7 +23,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-6 h" style="padding-left:25px;">
+            <div class="col-md-6 h" style="padding-left:25px;">
                 <div class="row">
                     <div class="col">
 
@@ -37,14 +34,14 @@
                     <div class="row">
                         <div id="main-page-slider" class="col">
                             <!--Carousel Wrapper-->
-                            <div id="multi-item-example" class="carousel slide carousel-multi-item carousel-multi-item-selector slider-color" data-ride="carousel">
+                            <div id="multi-item-example" class="carousel slide carousel-multi-item carousel-multi-item-selector" data-ride="carousel">
                                 <div class="row slider-header d-flex justify-content-center align-items-center">
                                     <div class="col">
                                         <p class="font-weight-bold mb-0">{% trans "Project: Faunaväkteri" %}</p>
                                     </div>
                                     <div class="col">
                                         <!--Controls-->
-                                        <div class="controls-top slider-top-controler slider-color">
+                                        <div class="controls-top slider-top-controler ">
                                           <a class="btn-floating" href="#multi-item-example" data-slide="prev"><img id="icon-preview-rotate" class="next-icon-slider" src="{% static 'icons/Arrow_Right_Drop_Circle_Outline_Icon_3.png'%}" alt="next-icon"/></a>
                                           <a class="btn-floating" href="#multi-item-example" data-slide="next"><img class="next-icon-slider" src="{% static 'icons/Arrow_Right_Drop_Circle_Outline_Icon_3.png'%}" alt="next-icon"/></a>
                                         </div>
@@ -118,13 +115,11 @@
         </div>
     </div>
     <div class="custom-container ">
-        <div class="row ml-0 main-page-box background-greenish-color">
-            <div class="col-4 d-flex justify-content-center align-items-center">
-
-                    <h1>{% trans "Get involved with CitSciSE" %}</h1>
+        <div class="row ml-0 main-page-box yellow-background-color">
+            <div class="col-md-4 d-flex justify-content-center align-items-center">
+                <h1>{% trans "Get involved with CitSciSE" %}</h1>
             </div>
-
-            <div class="col-8 d-flex justify-content-center align-items-center">
+            <div class="col-md-8 d-flex justify-content-center align-items-center">
 
                 <p class="mb-0">{% trans "If you would like to improve the content on CitSciSE or would like to learn more about how to integrate with CitSciSE. Please see our contact information below and the API for accessing the site's content." %}</p>
 
@@ -133,48 +128,30 @@
     </div>
     <div class="custom-container">
         <div class="row ml-0">
-            <div class="col h slider-color items-box">
-
+            <div class="col-sm h slider-color items-box">
                 <h1> {% trans "Data Quality" %} </h1>
-
-
                     <p class="font-weight-bold" >{% trans "Getting Started" %}</p>
-
                     <p class="text-justify ">{% trans "Some of the first questions in citizen science is can we trust the data and is the data of sufficient quality. Fundamental readings and resources on Data Quality, Data Standards and Technologies have been compiled in the resources to help address your question." %}</p>
-
-                <div class="row">
-                    <div class="col ">
-
-                    </div>
-                </div>
                 <br>
                 <div class="row ">
-
                     <div class="col">
-                        <button type="button" class="btn btn-block home-page-buttons white-font-color background-dark-green-color font-white-color" style="margin-bottom:15px;">{% trans "Data Quality Standards" %}</button>
+                        <button type="button" class="btn btn-block home-page-buttons white-font-color background-blue-color font-white-color" style="margin-bottom:15px;">{% trans "Data Quality Standards" %}</button>
                     </div>
                 </div>
-
             </div>
-            <div class="col h slider-color items-box">
-
+            <div class="col-sm h slider-color items-box">
                 <h1>{% trans "Papers" %}</h1>
-
                     <p class="font-weight-bold">{% trans "Recent papers" %}</p>
-
                 {% for q in 5|recent_publications %}
                     <p><a href="{% url 'publications:article_publications_detail' q.id %}">{{ q|break_text:45|safe  }} </a></p>
                 {% endfor %}
             </div>
-            <div class="col h slider-color items-box mr-0">
-
+            <div class="col-sm h slider-color items-box mr-0">
                 <h1>{% trans "CitSciSE Community" %}</h1>
-
                 <p class="font-weight-bold">{% trans "Recent Blog Posts" %}<p>
                 {% for blog in 5|latest_blogs %}
                     <p>{{ blog.publishedDate }}: <a href="{{ blog.get_absolute_url }}">{{ blog }}</a></p>
                 {% endfor %}
-
             </div>
         </div>
     </div>
