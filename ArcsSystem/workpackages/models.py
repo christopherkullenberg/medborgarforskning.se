@@ -62,9 +62,69 @@ class Theme(models.Model):
                        kwargs={'category' : self.id}
                        )
 
-    def get_custom_html(self, lang="en", use="all"):
+    def get_custom_html(self, lang="en", use ="all"):
 
-        return "<a href='" + self.get_absolute_url() +   "' >" + self.title +  "</a> <br>" 
+        limit = 60
+
+        di = {}
+        di["en"] = []
+        di["sv"] = []
+
+        #return "<div class='col-4' > <a href='" + self.get_absolute_url_details() +   "'>" + self.name +  "</a> </div>" 
+        html =   '''
+            <div style="padding-left: 20px; padding-right: 20px; font-size:10px" class="col-lg-3 col-md-4 col-xs-6 mb-5">
+                <div class="project-item">
+                    <div class="row">
+                        <div class=" col">  
+                            ''' + '''  <button style="height:100px; color :white; font-size: 10px" class=" col project-items-justify form-control blackFieldWhiteText" type="button" onclick="location.href=' '''+ self.get_absolute_url() + '''  ';"  />
+                            ''' + limit_string(self.wp_parent.name,limit) + ": <br> " +  self.title +   ''' </button>  ''' +  '''
+                        </div>
+                    </div>
+
+                    <div class="col" style="padding-right: 5px; padding-left: 5px; margin-top: 3px">
+
+                        <div class="row Lato-font ">
+                            <div class="col" >
+                                <span  >  
+                                ''' + limit_string(self.body, limit) +  ''' 
+                                </span>
+                            </div>
+                        </div>
+                        <hr>
+
+                        '''
+
+        kw_limit = 9
+
+        if use == "all":
+
+            for line in self.keyword_lines.all()[:kw_limit]:
+                html += ''' <span style="color:black;"> '''+ line.eng.keyword + '''</span> <br> '''
+        else:
+
+            kl = self.keyword_lines.filter(eng__id__in=use)[:kw_limit]
+
+            print(use)
+
+            print(kl)
+            print([test_x.eng.id for test_x in kl])
+
+            count = 0
+
+            for line in kl:
+                html += ''' <span style="color:red;"> '''+ line.eng.keyword + '''</span> <br> '''
+                count +=1
+
+            if count < kw_limit:
+
+                for line in self.keyword_lines.all().exclude(eng__id__in=kl)[:kw_limit- count]:
+                    html += ''' <span style="color:black;"> '''+line.eng.keyword + '''</span> <br> '''
+        html += '''</div>
+            </div>
+        </div>'''
+
+        return html
+
 
 
 
@@ -72,3 +132,13 @@ class Theme(models.Model):
 
     def __str__(self):
         return f'{self.title}'
+
+
+def limit_string(string, limit):
+
+    if len(string) <= limit:
+        return string
+    else:
+        return string[:limit-3] + "..." 
+
+

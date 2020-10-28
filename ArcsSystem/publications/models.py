@@ -100,17 +100,11 @@ class Article(models.Model):
 
         #return "<div class='col-4' > <a href='" + self.get_absolute_url_details() +   "'>" + self.name +  "</a> </div>" 
         html =   '''
-
-
             <div style="padding-left: 20px; padding-right: 20px; font-size:10px" class="col-lg-3 col-md-4 col-xs-6 mb-5">
                 <div class="project-item">
                     <div class="row">
                         <div class=" col">  
-
-
                             ''' + '''  <button style="height:100px; color :white; font-size: 10px" class=" col project-items-justify form-control blackFieldWhiteText" type="button" onclick="location.href=' '''+ self.get_absolute_url() + '''  ';"  /> ''' +  self.title +  ''' </button>  ''' +  '''
-
-
                         </div>
                     </div>
 
@@ -157,22 +151,11 @@ class Article(models.Model):
 
                 for key in self.keywords.all().exclude(id__in=kl)[:kw_limit- count]:
                     html += ''' <span style="color:black;"> '''+ key.keyword + '''</span> <br> '''
-
-
-
-
-
         html += '''</div>
             </div>
         </div>'''
 
         return html
-
-        return '''  <button style="height:200px" class="form-control col-4" type="button" onclick="location.href=' '''+ self.get_absolute_url() + '''  ';"  /> ''' +  self.title +  ''' </button>  '''
-
-        return ''' <div class="col-4"> <input class="" type="button" onclick="location.href=' '''+ self.get_absolute_url() + '''  ';" value=" ''' +  self.title +  ''' " />   </div>'''
-
-        return '<div class="col-4">  <a class="buton" href="' + self.get_absolute_url() +   '">' + self.title +  '"</a> </div>' 
 
 
 #class Arcsreport(Publication):
