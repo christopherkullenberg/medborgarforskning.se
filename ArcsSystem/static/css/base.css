@@ -234,12 +234,14 @@ font-family: Helvetica;
 }
 
 .language-selected-color:hover{
-    color: #fff;
+    color: #ddd;
 }
 
 /*end for style header */
 
-
+.navbar-nav .dropdown-menu {
+    position: absolute; !important
+    }
 
 .main-menu-buttons-font{
     font-size: 16;
@@ -249,6 +251,7 @@ font-family: Helvetica;
     word-break: break-word;
     text-align:center
 }
+
 
 .main-menu-buttons a:hover{
     color: #e2005e;
@@ -495,9 +498,13 @@ font-family: Helvetica;
     color: #000;
     font-size: 14px;
     border-radius: 3px 3px 3px 3px;
+
 }
 
 .visual-Mindmap-style{
+    border: 1px solid;
+    border-color: #9FB0A0;
+    border-radius: 3px 3px 3px 3px;
     margin-top: 30px;
     margin-bottom: 30px;
     margin-left: 15px;
@@ -505,8 +512,14 @@ font-family: Helvetica;
     padding: 15px;
 }
 
+#related-publication-blog{
+    word-break: break-all;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .breadcrumb{
-    background-color: #C3D3D0;
+    background-color: #fff;
     color: #255C61;
     font-family: Lato;
     font-size: 14px;
@@ -520,14 +533,13 @@ font-family: Helvetica;
     content: ">>";
 }
 
-
 .text-header-visual-mindmap{
     font-family: Playfair;
     font-size: 18px;
 }
 
 .projects-filter-buttons, .projects-filter-buttons:hover{
-    background-color: #255C61;
+    background-color: #07c;
     color: #ffffff ;
     font-family: Lato;
 }
@@ -609,7 +621,7 @@ font-family: Helvetica;
 }
 
 .projects-filter-buttons{
-    background-color: #255C61;
+    background-color: #07c;
     color: #ffffff ;
     font-family: Lato;
 }
@@ -625,14 +637,18 @@ font-family: Helvetica;
 }
 
 .project-pageination{
-    background-color: #9FB0A0 !important;
-    color: #255C61 !important;
+    background-color: #07c; !important;
+    color: #fff !important;
     font-family: Lato;
+}
+
+.page-item.disabled .page-link{
+    background-color: #07c; !important;
 }
 
 .page-item.active .page-link{
     color: #ffffff !important;
-    background-color: #255C61 !important;
+    background-color: rgb(36, 39, 58); !important;
 }
 
 .project-keywords-btn{

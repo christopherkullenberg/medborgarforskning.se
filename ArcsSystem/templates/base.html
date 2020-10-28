@@ -17,7 +17,6 @@
 		<!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
 		<link href="{% static 'css/base.css' %}" rel="stylesheet"/>
-		<link href="{% static 'css/style.css' %}" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Lato|Playfair+Display&display=swap" rel="stylesheet" /> <!--TODO change to serve locally as it does not support integrity hash-->
 		<title>{% block head_title %}Medborgarforskning.se{% endblock head_title %}</title> <!-- TODO replace "Medborgarforskning.se" with django template for the page title -->
     {% block extra_head %}
@@ -111,7 +110,7 @@
 								  	<a href="{% url 'userprofile_private_view' %}">
 										<img class="main-media-btns" src="{% static 'icons/Account_Circle_Icon_5.png' %}" alt="{% trans 'Profile icon for login and account details' %}"/>
 								  		<br>
-										<strong>{{user.get_first_name}}</strong>
+										<strong>{{user.username}}</strong>
 									</a>
 								</button>
 							</div>
@@ -265,7 +264,7 @@
 				<div class="col-auto">
 					<div class="row">
 						<div class="col-auto">
-							<a href="about/terms/">
+							<a href="{% url 'staticpages:terms_detail' %}">
 							<p class="mb-0">{% trans "Terms of service" %}</p>
 							</a>
 						</div>

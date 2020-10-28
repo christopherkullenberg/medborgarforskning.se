@@ -10,8 +10,8 @@
         <span class="icon-bar"></span>
     </button>
     <div class="collapse navbar-collapse pink-background-color" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto d-flex justify-content-center align-items-center row m-0" style="width: 100%;">
-            <li class="nav-item dropdown header-menu-li-style active col-3 p-0">
+        <ul class="navbar-nav mr-auto row m-0" style="width: 100%;">
+            <li class="nav-item dropdown header-menu-li-style active col-sm-3 p-0">
                 <a class="nav-link dropdown-toggle main-menu-buttons-font text-wrap" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 13rem;">
                     {% trans "Getting Started With Citizen Science" %}
                 </a>
@@ -34,9 +34,9 @@
                 </div>
             </li>
 
-             <li class="nav-item header-menu-li-style col-3">
+             <li class="nav-item header-menu-li-style col-sm-3">
                <a class="nav-link dropdown-toggle main-menu-buttons-font text-wrap" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 13rem;">
-                     {% trans "Knowledge base" %}
+                     {% trans "Citizen Science in Practice" %}
                 </a>
                 <div class="dropdown-menu main-menu-buttons " aria-labelledby="navbarDropdown">
                     <a class="dropdown-item font-weight-bold" href="{% url 'workpackages:category_view' %}">{%trans "ARCS knowledge base" %}</a>
@@ -45,7 +45,7 @@
                   <a class="dropdown-item font-weight-bold" href="{% url 'publications:article_publications_list' %}">{%trans "Publications Database" %}</a>
                   </ul>
                   </div>
-            <li class="nav-item dropdown header-menu-li-style col-3">
+            <li class="nav-item dropdown header-menu-li-style col-sm-3">
                 <a class="nav-link dropdown-toggle main-menu-buttons-font text-wrap"  href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 10rem;">
                     {% trans "Citizen Science in Sweden" %}
                 </a>
@@ -61,7 +61,7 @@
                 <div class="dropdown-divider"></div>
                 </div>
             </li>
-            <li class="nav-item col-3" style="padding: 0;">
+            <li class="nav-item col-sm-3 d-flex align-self-center" style="padding: 0;">
                 <form id="form-search-nev" >
                     <!-- Actual search box -->
                     <div class="form-group has-search">
