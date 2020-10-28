@@ -24,15 +24,10 @@ WORKDIR /opt/arcs_project_code
 
 COPY entrypoint.sh .
 
-# install dependencies. Note: using pip install instead of pipenv for systemwide container install.
+# install dependencies
 RUN pip install pipenv
-RUN pip install wikidata
-RUN pip install pillow
-COPY Pipfile*  /opt/arcs_project_code/
-
-# Note: the requirements.txt must be up to date
-RUN cd /opt/arcs_project_code/ && pipenv lock --requirements > requirements.txt
-RUN pip install -r /opt/arcs_project_code/requirements.txt
+COPY Pipfile Pipfile.lock /opt/arcs_project_code/
+RUN pipenv install --system
 
 # make directory for collected static files shared with nginx
 RUN mkdir -p /var/www/arcs_collected_static/static/
