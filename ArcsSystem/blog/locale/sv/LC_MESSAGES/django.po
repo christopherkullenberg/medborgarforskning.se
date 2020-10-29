@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-16 11:21+0000\n"
+"POT-Creation-Date: 2020-10-29 13:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,22 +18,22 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: blog/models.py:25
+#: blog/models.py:28
 msgid "Post"
 msgstr ""
 
-#: blog/models.py:26
+#: blog/models.py:29
 msgid "Posts"
 msgstr ""
 
-#: blog/models.py:32
+#: blog/models.py:35
 msgid "title"
 msgstr ""
 
-#: blog/models.py:62
+#: blog/models.py:69
 msgid "Author"
 msgstr ""
 
-#: blog/models.py:63
+#: blog/models.py:70
 msgid "Authors"
 msgstr ""
