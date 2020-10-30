@@ -44,7 +44,7 @@ services:
     volumes:
       #- .:/opt/arcs_project_code #allow  editing code on host to reflect copy on server
       - static_volume:/var/www/arcs_collected_static/static:z # Docker controlled volume persistant after container being removed and shared with nginx
-      - media_volume:/opt/arcs_project_code/arcs_project/media:z # Docker controlled volume persistant after container being removed and shared with nginx
+      - media_volume:/opt/arcs_project_code/media:z # Docker controlled volume persistant after container being removed and shared with nginx
     ports:
       - 8000:8000
     entrypoint: ["gunicorn", "-c", "gunicorn.conf.py", "--bind", ":8000", "--chdir", "/opt/arcs_project_code", "arcs_project.wsgi:application"]
