@@ -160,6 +160,19 @@ class KeywordLine(models.Model):
             eng = self.eng.keyword
         return [swe, eng]
 
+    def get_singel_kw(self, lang):
+
+
+        if lang == "sv":
+            if self.swe != None:
+                return self.swe.keyword
+            return self.eng.keyword
+        if lang == "en":
+            if self.eng != None:
+                return self.eng.keyword 
+            return self.swe.keyword 
+
+
 
     def __str__(self):
 

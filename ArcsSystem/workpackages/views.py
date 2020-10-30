@@ -8,11 +8,43 @@ from publications.models import Article
 
 from keywords.views import keywords_to_context, update_object_KWL
 
-
+from projects.models import KeywordEng, KeywordSwe, KeywordLine
+from django.http import JsonResponse
 # Create your views here.
 
 
 # this is the view for the workpack home_page
+
+def get_eng(string):
+
+    return {
+    "trans" : [line.eng.keyword for line in KeywordSwe.objects.get(keyword=string).line.all().exclude(eng=None)],
+    "lang": "engelsk översättning" 
+    }
+
+
+def get_swe(string):
+    return {
+    "trans" : [line.swe.keyword for line in KeywordEng.objects.get(keyword=string).line.all().exclude(swe=None)],
+    "lang": "svensk översättning" 
+    }
+
+
+def ajax_function(request):
+
+    if request.is_ajax and request.method == "GET":
+        kw_name = request.GET.get("kw", None)
+        lang = request.GET.get("lang", None)
+        if lang == "swe":
+            trans_func = get_eng
+        elif lang == "eng":
+            trans_func = get_swe
+        else:
+            return JsonResponse({}, status = 400)
+        return JsonResponse(trans_func(kw_name))
+
+
+    return JsonResponse({}, status = 400)
 class WorkpackagesListView(View):
 
     template_name = 'workpackages/workpackages_list.html'

@@ -34,6 +34,7 @@ class Theme(models.Model):
         verbose_name_plural = _('Themes')
     title = models.CharField(max_length=300, null=False)
     body = models.TextField()
+    #plain_body = models.TextField()
     related_papers_tags = TaggableManager()
     related_publications = models.CharField(max_length=1000, blank=True, null=False)
     wp_parent = models.ForeignKey(WorkPackage,
@@ -71,35 +72,32 @@ class Theme(models.Model):
         di["sv"] = []
 
         #return "<div class='col-4' > <a href='" + self.get_absolute_url_details() +   "'>" + self.name +  "</a> </div>" 
-        html =   '''
-            <div style="padding-left: 20px; padding-right: 20px; font-size:10px" class="col-lg-3 col-md-4 col-xs-6 mb-5">
+
+        html =   ''' <div style="padding-left: 20px; padding-right: 20px; font-size:10px" class="col-lg-6 col-md-6 col-xs-12 mb-5">
                 <div class="project-item">
                     <div class="row">
-                        <div class=" col">  
-                            ''' + '''  <button style="height:100px; color :white; font-size: 10px" class=" col project-items-justify form-control blackFieldWhiteText" type="button" onclick="location.href=' '''+ self.get_absolute_url() + '''  ';"  />
-                            ''' + limit_string(self.wp_parent.name,limit) + ": <br> " +  self.title +   ''' </button>  ''' +  '''
+                        <div class="col">  
+                        ''' + '''  <button style="height:100px; color :white; font-size: 10px" class="col project-items-justify form-control blackFieldWhiteText" type="button" onclick="location.href=' '''+ self.get_absolute_url() + '''  ';"  />''' + limit_string(self.wp_parent.name,limit) + ": <br> " +  self.title +   ''' </button>  ''' +  '''
                         </div>
                     </div>
-
                     <div class="col" style="padding-right: 5px; padding-left: 5px; margin-top: 3px">
 
                         <div class="row Lato-font ">
                             <div class="col" >
-                                <span  >  
-                                ''' + limit_string(self.body, limit) +  ''' 
+                                <span>  
+                                ''' + "" +  ''' 
                                 </span>
                             </div>
                         </div>
                         <hr>
 
                         '''
-
         kw_limit = 9
 
         if use == "all":
 
             for line in self.keyword_lines.all()[:kw_limit]:
-                html += ''' <span style="color:black;"> '''+ line.eng.keyword + '''</span> <br> '''
+                html += ''' <span style="color:black;"> '''+ line.get_singel_kw(lang) + '''</span> <br> '''
         else:
 
             kl = self.keyword_lines.filter(eng__id__in=use)[:kw_limit]
@@ -112,13 +110,13 @@ class Theme(models.Model):
             count = 0
 
             for line in kl:
-                html += ''' <span style="color:red;"> '''+ line.eng.keyword + '''</span> <br> '''
+                html += ''' <span style="color:red;"> '''+ line.get_singel_kw(lang) + '''</span> <br> '''
                 count +=1
 
             if count < kw_limit:
 
                 for line in self.keyword_lines.all().exclude(eng__id__in=kl)[:kw_limit- count]:
-                    html += ''' <span style="color:black;"> '''+line.eng.keyword + '''</span> <br> '''
+                    html += ''' <span style="color:black;"> '''+line.get_singel_kw(lang) + '''</span> <br> '''
         html += '''</div>
             </div>
         </div>'''

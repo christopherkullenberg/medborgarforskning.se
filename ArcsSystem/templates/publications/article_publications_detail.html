@@ -37,17 +37,33 @@
 <hr>
 <h4>start of related things</h4>
 
+<script type="text/javascript">
+  console.log("dsfd")
+</script>
+
 
 
 
 
 {% for one_list in  article|get_all_related:LANGUAGE_CODE %}
 
+<script>
+  console.log("dsfsd")
+
+    var data = JSON.parse('{{ one_list.1| escapejs }}');
+    console.log(data.links)
+    console.log(data.links)
+    console.log(data.links)
+</script>
+
 {{one_list.0|safe}}
 
 <script>
+  console.log("dsfsd")
 
     var data = JSON.parse('{{ one_list.1| escapejs }}');
+    console.log(data.links)
+    console.log(data.links)
     console.log(data.links)
 </script>
 

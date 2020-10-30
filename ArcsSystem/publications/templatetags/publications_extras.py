@@ -266,9 +266,10 @@ def get_all_related(Article, lang ="en", use="all"):
 			#all thems
 			for theme in line.Theme.all().exclude(id__in=di["Theme"]["not"][kw.id] ):
 				result = [l for l in theme.keyword_lines.all().exclude(eng__keyword__in=uni_exclude_keys) ]
-				di["Theme"][len(result)].append([theme,[l.eng for l in result]])
+				di["Theme"][len(result)].append([theme,[l.eng for l in result if l.eng != None]])
 				for l in result:
-					di["Theme"]["not"][l.eng.id].append(theme.id)
+					if l.eng != None:
+						di["Theme"]["not"][l.eng.id].append(theme.id)
 					if l.swe != None:
 						di["Theme"]["sv"]["not"][l.swe.id].append(theme.id)
 
