@@ -4,111 +4,61 @@
 {% load workpackages_extras %}
 {% block content %}
 
-
-
-<div style="margin-right: 100px; margin-left: 100px; margin-top: 40px">
-
-
-
-    <ul id="nav_tab" class="nav nav-tabs col-12">
-        {% for st in list_theme %}
-
-        <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#{{st.0.name|slugify}}">{{st.0.name}}</a> </li>
-
-        {% endfor %}
-
-    </ul>
-
-
-
-<div id="tab-content" class="tab-content" style="margin-bottom: 20px; margin-top: 20px"> 
-
-  	{% for st in list_theme %}
-
-    <div id="{{st.0.name|slugify}}" class="tab-pane container row">
-    <div class="col-12" style="padding-top: 20px">
-
-    	{{st.0.introduction|safe}}
-        <br> <br>
-
-        {{st.0.detailed_content|safe}}
-    	<hr>
-    	<h5>Selected theme:</h5>
-
-        <ul id="theme_nav_tab" class="nav nav-tabs col-12">
-
-    	{% for theme in st.1 %}
-        <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#theme_{{theme.title|slugify}}">{{theme.title}} {{theme.id}}</a> </li>
-
-    	{% endfor %}
-
-        </ul>
-
-
-        <div id="theme_tab-content" class="tab-content" style="margin-bottom: 20px; margin-top: 20px"> 
-
-        {% for theme in st.1 %}
-        <div id="theme_{{theme.title|slugify}}" class="tab-pane container row">
-
-        {{theme.body|safe}}
-
-        <hr>
-        {% trans "Theme" %}  {% trans "keywords" %} :
-
-        {% for line in theme.keyword_lines.all %}
-
-
-
-
-        {{ line.get_custom_html|safe }} ,
-
-
-        {% endfor %}
-
-
-
-        <hr>
-        <h5>{% trans "Publications referencing this theme:" %}</h5>
-
+    <div class="container">
         <div class="row">
+            <ul id="nav_tab" class="nav nav-tabs col-12">
+                {% for st in list_theme %}
+                    <li class="nav-item"><a class="nav-link" data-toggle="tab"
+                                            href="#{{ st.0.name|slugify }}">{{ st.0.name }}</a></li>
+                {% endfor %}
+            </ul>
+            <div id="tab-content" class="tab-content" style="margin-bottom: 20px; margin-top: 20px">
+                {% for st in list_theme %}
+                    <div id="{{ st.0.name|slugify }}" class="tab-pane container row">
+                        <div class="col-12" style="padding-top: 20px; margin-left: 0;">
+                            {{ st.0.introduction|safe }}
+                            <br> <br>
+                            {{ st.0.detailed_content|safe }}
+                            <hr>
+                            <h5>Selected theme:</h5>
+                            <ul id="theme_nav_tab" class="nav nav-tabs col-12">
+                                {% for theme in st.1 %}
+                                    <li class="nav-item"><a class="nav-link" data-toggle="tab"
+                                                            href="#theme_{{ theme.title|slugify }}">{{ theme.title }} {{ theme.id }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                            <div id="theme_tab-content" class="tab-content" style="margin-bottom: 20px; margin-top: 20px">
+                                {% for theme in st.1 %}
+                                    <div id="theme_{{ theme.title|slugify }}" class="tab-pane container row">
+                                        {{ theme.body|safe }}
+                                        <hr>
+                                        {% trans "Theme" %} {% trans "keywords" %} :
+                                        {% for line in theme.keyword_lines.all %}
+                                            {{ line.get_custom_html|safe }} ,
+                                        {% endfor %}
+                                        <hr>
+                                        <h5>{% trans "Publications referencing this theme:" %}</h5>
+                                        <div class="row">
 
-        {% for rel_art in theme|get_rel_pubs %}
+                                            {% for rel_art in theme|get_rel_pubs %}
 
-        {{rel_art|safe}}
+                                                {{ rel_art|safe }}
 
-        {% endfor %}
-
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
         </div>
-
-        </div>
-
-        {% endfor %}
     </div>
-        
-
-
-
-
-    </div>
-</div>
-
-    {% endfor %}
-
-
-  </div>
-</div>
-
-
-
-<script type="text/javascript">
-
-    // activate first nav opt
-    
-    $("#nav_tab").children().first().children().first().addClass("active");
-    $("#tab-content").children().first().addClass("active");
-
-</script>
-
-
-
+    <script type="text/javascript">
+        // activate first nav opt
+        $("#nav_tab").children().first().children().first().addClass("active");
+        $("#tab-content").children().first().addClass("active");
+    </script>
 {% endblock content %}
