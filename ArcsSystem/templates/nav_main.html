@@ -4,10 +4,10 @@
 {% block main_menu %}
 
 <nav class="navbar navbar-expand-lg header-main-menu p-0">
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" id='hamburger'>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-list" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+</svg>
     </button>
     <div class="collapse navbar-collapse pink-background-color" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto row m-0" style="width: 100%;">
@@ -49,7 +49,6 @@
                 <a class="nav-link dropdown-toggle main-menu-buttons-font text-wrap"  href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 10rem;">
                     {% trans "Citizen Science in Sweden" %}
                 </a>
-
                 <div class="dropdown-menu main-menu-buttons " aria-labelledby="navbarDropdown">
                     <a class="dropdown-item font-weight-bold" href="{% url 'projects:project_list' %}">{%trans "Citizen Science Projects" %}</a>
                     <ul>
@@ -61,6 +60,38 @@
                 <div class="dropdown-divider"></div>
                 </div>
             </li>
+            <li class="nav-item dropdown col-sm-3 d-flex d-none d-md-none">
+                <a class="nav-link dropdown-toggle main-menu-buttons-font"  href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="width: 10rem;">
+                    {% trans "Language" %}
+                </a>
+                <div class="dropdown-menu main-menu-buttons " aria-labelledby="navbarDropdown">
+                    {% get_current_language as LANGUAGE_CODE %}
+                    {% get_available_languages as LANGUAGES %}
+                    {% get_language_info_list for LANGUAGES as languages %}
+                    {% for language in languages %}
+                        <a class="dropdown-item change-language-item {% if language.code == LANGUAGE_CODE %}language-selected-color{% endif %}" value="{{ language.code }}" href="#">
+                            {% if language.code == "en" %}
+                                <svg class="flag-svg-align" xmlns="http://www.w3.org/2000/svg" width="25px" height="25px" viewBox="0 0 1802 1802">
+                                    <path fill="#000" d="M901 0.45c497.37,0 900.55,403.18 900.55,900.55 0,497.37 -403.18,900.55 -900.55,900.55 -497.37,0 -900.55,-403.18 -900.55,-900.55 0,-497.37 403.18,-900.55 900.55,-900.55zm238.05 228.26c53.15,83.37 96.34,185.66 126.02,300.81l244.61 0c-84.69,-138.47 -215.31,-245.82 -370.63,-300.81zm159.49 478.17c7.66,61.64 11.68,125.59 11.68,191.2 0,60.49 -3.46,119.58 -9.97,176.72l292.37 0c13.93,-55.65 21.38,-113.84 21.38,-173.8 0,-67.28 -9.33,-132.4 -26.75,-194.12l-288.71 0zm-28.4 539.44c-30.6,126.97 -77.43,239.11 -135.96,328.64 167.16,-57.83 306.15,-176.06 390.74,-328.64l-254.78 0zm-602.32 328.64c-58.53,-89.53 -105.36,-201.67 -135.96,-328.64l-254.78 0c84.59,152.58 223.58,270.81 390.74,328.64zm-166.07 -500.16c-6.51,-57.14 -9.97,-116.23 -9.97,-176.72 0,-65.61 4.02,-129.56 11.68,-191.2l-288.71 0c-17.42,61.72 -26.75,126.84 -26.75,194.12 0,59.96 7.45,118.15 21.38,173.8l292.37 0zm35.18 -545.28c29.68,-115.15 72.87,-217.44 126.02,-300.81 -155.32,54.99 -285.94,162.34 -370.63,300.81l244.61 0zm364.07 -331.89c-72.97,84.03 -132.21,198.32 -171.01,331.89l342.02 0c-38.8,-133.57 -98.04,-247.86 -171.01,-331.89zm-208.56 509.25c-8.53,61.45 -13.03,125.46 -13.03,191.2 0,60.6 3.86,119.71 11.12,176.72l420.94 0c7.26,-57.01 11.12,-116.12 11.12,-176.72 0,-65.74 -4.5,-129.75 -13.03,-191.2l-417.12 0zm31.83 539.44c38.56,142.29 100.07,263.95 176.73,352.2 76.66,-88.25 138.17,-209.91 176.73,-352.2l-353.46 0z"/>
+                                </svg>
+                            {% elif language.code == "sv" %}
+                                <svg class="flag-svg-align" xmlns="http://www.w3.org/2000/svg" width="25px" height="16px" viewBox="0 0 130.1 81.31">
+                                    <path fill="#000" d="M3.83 81.31l36.83 0 0 -32.52 -40.66 0 0 28.7c0,2.1 1.72,3.82 3.83,3.82l0 0zm122.45 -81.31c2.1,0 3.82,1.72 3.82,3.83l0 28.7 -73.18 0 0 -32.53 69.36 0zm3.82 77.49c0,2.1 -1.72,3.82 -3.82,3.82l-69.36 0 0 -32.52 73.18 0 0 28.7zm-130.1 -73.66c0,-2.11 1.72,-3.83 3.83,-3.83l36.83 0 0 32.53 -40.66 0 0 -28.7 0 0z"/>
+                                </svg>
+                            {% endif %}
+                            {{ language.name_local }}
+                        </a>
+                        <div class="dropdown-divider"></div>
+                    {% endfor %}
+                    <form id="form-languages-submit" action="{% url 'set_language' %}" method="post">
+                        {% csrf_token %}
+                        <input name="next" type="hidden" value="{{ redirect_to }}"/>
+                        <input id="language-input-value" name="language" type="hidden" value=""/>
+                    </form>
+
+                </div>
+            </li>
+
             <li class="nav-item col-sm-3 d-flex align-self-center" style="padding: 0;">
                 <form id="form-search-nev" >
                     <!-- Actual search box -->
@@ -78,12 +109,3 @@
 </nav>
 
 {% endblock main_menu %}
-
-<script type="text/javascript">
-    $(function() {
-        var hamburger = document.getElementById('hamburger');
-        $(hamburger).click(function() {
-            $(this).toggleClass('is-active');
-        })
-    })
-</script>
