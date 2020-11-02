@@ -25,21 +25,21 @@ def template_view(request):
     return render(request, 'exampletemplate.html', context)
 '''
 
-def bad_code_update_bw_slach():
+# def bad_code_update_bw_slach():
 
-    print("start")
+#     print("start")
 
-    for kw in KeywordEng.objects.filter(keyword__contains="/"):
-        kw.keyword = kw.keyword.replace("/", "&")
-        kw.save()
+#     for kw in KeywordEng.objects.filter(keyword__contains="/"):
+#         kw.keyword = kw.keyword.replace("/", "&")
+#         kw.save()
 
-    for kw in KeywordSwe.objects.filter(keyword__contains="/"):
-        kw.keyword = kw.keyword.objects.replace("/", "&")
-        kw.save()
+#     for kw in KeywordSwe.objects.filter(keyword__contains="/"):
+#         kw.keyword = kw.keyword.objects.replace("/", "&")
+#         kw.save()
 
 
 
-bad_code_update_bw_slach()
+# bad_code_update_bw_slach()
 
 class KeywordList(ListView):
     model = KeywordEng
@@ -97,6 +97,9 @@ def keywords_to_context(obj, context):
 
 # make kw and kwl and update obj
 def update_object_KWL(obj, request,  stop):
+
+
+    obj.keyword_lines.clear()
 
 
     sve_string = []

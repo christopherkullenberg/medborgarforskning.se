@@ -4,32 +4,93 @@
 {% load workpackages_extras %}
 {% block content %}
 
-<h5 align="center"> <div style="width: 60% ;margin-bottom: 100px;">Categories <br> <hr></div></h5>
 
 
 <div style="margin-right: 100px; margin-left: 100px; margin-top: 40px">
-  <div class="row">
+
+
+
+    <ul id="nav_tab" class="nav nav-tabs col-12">
+        {% for st in list_theme %}
+
+        <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#{{st.0.name|slugify}}">{{st.0.name}}</a> </li>
+
+        {% endfor %}
+
+    </ul>
+
+
+
+<div id="tab-content" class="tab-content" style="margin-bottom: 20px; margin-top: 20px"> 
 
   	{% for st in list_theme %}
 
-    <div class="col-3">
+    <div id="{{st.0.name|slugify}}" class="tab-pane container row">
+    <div class="col-12" style="padding-top: 20px">
 
-    	<h6 align="center">{{st.0.name}}</h6>
-    	<hr>
-    	<h5> Short about {{st.0.name}} :</h5>
-    	<div style="height: 130px">
     	{{st.0.introduction|safe}}
-    	</div>
-    	<hr>
-    	<h5>Themes</h5>
-    	{% for theme in st.1 %}
+        <br> <br>
 
-    	<a href="{{theme.id}}/">{{theme.title|break_slug}}</a>
-    	<br>
+        {{st.0.detailed_content|safe}}
+    	<hr>
+    	<h5>Selected theme:</h5>
+
+        <ul id="theme_nav_tab" class="nav nav-tabs col-12">
+
+    	{% for theme in st.1 %}
+        <li class="nav-item"> <a class="nav-link" data-toggle="tab" href="#theme_{{theme.title|slugify}}">{{theme.title}} {{theme.id}}</a> </li>
 
     	{% endfor %}
 
+        </ul>
+
+
+        <div id="theme_tab-content" class="tab-content" style="margin-bottom: 20px; margin-top: 20px"> 
+
+        {% for theme in st.1 %}
+        <div id="theme_{{theme.title|slugify}}" class="tab-pane container row">
+
+        {{theme.body|safe}}
+
+        <hr>
+        {% trans "Theme" %}  {% trans "keywords" %} :
+
+        {% for line in theme.keyword_lines.all %}
+
+
+
+
+        {{ line.get_custom_html|safe }} ,
+
+
+        {% endfor %}
+
+
+
+        <hr>
+        <h5>{% trans "Publications referencing this theme:" %}</h5>
+
+        <div class="row">
+
+        {% for rel_art in theme|get_rel_pubs %}
+
+        {{rel_art|safe}}
+
+        {% endfor %}
+
+        </div>
+
+        </div>
+
+        {% endfor %}
     </div>
+        
+
+
+
+
+    </div>
+</div>
 
     {% endfor %}
 
@@ -37,36 +98,16 @@
   </div>
 </div>
 
-<br>
-<br>
-<br>
-<br>
-<br>
 
 
-                <h5 align="center">More info</h5>
+<script type="text/javascript">
 
+    // activate first nav opt
+    
+    $("#nav_tab").children().first().children().first().addClass("active");
+    $("#tab-content").children().first().addClass("active");
 
-
-<hr>
-
-
-{% for st in list_theme %}
-
-<br>
-
-    <div class="col-12" style="padding-right: 200px; padding-left: 200px; padding-bottom: 100px">
-
-        <h5> About {{st.0.name}} </h5>
-
-        <hr>
-
-        {{st.0.detailed_content|safe}}
-
-
-    </div>
-
-    {% endfor %}
+</script>
 
 
 

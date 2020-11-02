@@ -34,7 +34,7 @@ class Theme(models.Model):
         verbose_name_plural = _('Themes')
     title = models.CharField(max_length=300, null=False)
     body = models.TextField()
-    #plain_body = models.TextField()
+    description = models.TextField(blank=True)
     related_papers_tags = TaggableManager()
     related_publications = models.CharField(max_length=1000, blank=True, null=False)
     wp_parent = models.ForeignKey(WorkPackage,
@@ -73,7 +73,7 @@ class Theme(models.Model):
 
         #return "<div class='col-4' > <a href='" + self.get_absolute_url_details() +   "'>" + self.name +  "</a> </div>" 
 
-        html =   ''' <div style="padding-left: 20px; padding-right: 20px; font-size:10px" class="col-lg-6 col-md-6 col-xs-12 mb-5">
+        html =   ''' <div style="padding-left: 20px; padding-right: 20px; font-size:10px" class="col-lg-3 col-md-6 col-xs-12 mb-5">
                 <div class="project-item">
                     <div class="row">
                         <div class="col">  
@@ -85,7 +85,7 @@ class Theme(models.Model):
                         <div class="row Lato-font ">
                             <div class="col" >
                                 <span>  
-                                ''' + "" +  ''' 
+                                ''' + self.description +  ''' 
                                 </span>
                             </div>
                         </div>

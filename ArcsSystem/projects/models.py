@@ -86,6 +86,9 @@ class KeywordEng(models.Model):
     def get_absolute_url(self):
         return reverse('keywords:keyword_detail', args=[str(self.keyword)])
 
+    def get_custom_html(self):
+        return ''' <a href="'''+ self.get_absolute_url()+'''">'''+ self.keyword + ''' </a> '''
+
     def get_wikidataQ(self):
 
         if self.wikidataQ != None:
@@ -160,17 +163,30 @@ class KeywordLine(models.Model):
             eng = self.eng.keyword
         return [swe, eng]
 
-    def get_singel_kw(self, lang):
+    def get_singel_kw_obj(self, lang):
 
 
         if lang == "sv":
             if self.swe != None:
-                return self.swe.keyword
-            return self.eng.keyword
+                return self.swe
+            return self.eng
         if lang == "en":
             if self.eng != None:
-                return self.eng.keyword 
-            return self.swe.keyword 
+                return self.eng
+            return self.swe
+
+    def get_singel_kw(self, lang):
+        return self.get_singel_kw_obj(lang).keyword
+
+
+
+    def get_custom_html(self):
+
+        if self.eng != None:
+            return self.eng.get_custom_html()
+        return ""
+
+
 
 
 

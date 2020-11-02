@@ -158,9 +158,6 @@
 <script type="text/javascript">
 
 
-
-
-
   function add_keyword_input_line(sv, en) {
 
     if( count < 10){
@@ -180,7 +177,7 @@
   }
 
   function remove_keyword_input_line(){
-    if(count > 1){
+    if(count > 0){
       $("#keyword_div_" + count ).remove();
       count -= 1
     } 
@@ -244,17 +241,14 @@ function trans_resiver(string) {
 $(document).ready(function () {
     var id_count = 0;
     var sender_input;
+    //var sender_lang;
 
     $(document).on("change",'.trans-option', function(){
 
       $(this).val($(this).val().trim().replace(/[^a-zA-Z0-9ä-öÄ-Ö().&: -]/g, ""));
 
-
-
-
-
       if($(this).val().length == 0){
-         $(this).parent().parent().find(":input:not([id="+$(this).attr("id")+"])").attr("list", trans_resiver($(this).attr("list")));
+         $(this).parent().parent().find(":input:not([id="+$(this).attr("id")+"])").attr("list", trans_resiver($(this).attr("id")));
          console.log("stop at input");
          return;
 
@@ -273,6 +267,8 @@ $(document).ready(function () {
         var input_string = "#hidden_input_swe";
       };
 
+
+
       sender_input = $(this).parent().parent().find(":input:not([id="+$(this).attr("id")+"])");
 
       if ( $('#'+$(this).attr("list")+' option[value="'+ $(this).val() + '"]').length == 0){
@@ -280,7 +276,29 @@ $(document).ready(function () {
 
         return;
 
-      };  
+      };
+
+      console.log($("#opt-trans " + "#"+$(this).attr("id").slice(-3,)  + "_" + $(this).val()));
+
+      var value_lang_string = "#"+$(this).attr("id").slice(-3,)  + "_" + $(this).val().replace(/ /g, "_");
+
+      console.log(value_lang_string)
+
+      if($("#opt-trans " + value_lang_string).length>0){
+        var this_dtl = $("#opt-trans " + value_lang_string).children();
+
+        if(this_dtl.length == 1){
+          sender_input.val(this_dtl.first().val());
+
+        }
+        else{sender_input.attr("list", $(this).attr("id").slice(-3,)  + "_" + $(this).val());};
+
+        console.log("stop at rev");
+        return;
+
+      };
+
+      var this_value = $(this).val();
 
       console.log("ajax")
       $.ajax({
@@ -291,7 +309,7 @@ $(document).ready(function () {
           success: function(data){
 
               var dtl = document.getElementById("opt-trans").appendChild(document.createElement('datalist'));
-              var id_string ="trl_" + id_count;
+              var id_string = trans_resiver(sender_input.attr("id")) + "_" + this_value.replace(/ /g, "_");
               id_count += 1;
               dtl.id = id_string;
               $(sender_input).attr('list', id_string);
@@ -299,6 +317,10 @@ $(document).ready(function () {
               for (var i = 0; i < data.trans.length; i++) {
                 opt += "<option value='" + data.trans[i] + "' />";
               };
+              if( data.trans.length == 1){
+
+                sender_input.val(data.trans[0]);
+              }
               dtl.innerHTML = opt;
               sender_input.select();
           }

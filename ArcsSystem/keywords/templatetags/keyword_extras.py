@@ -94,7 +94,10 @@ def get_all_related(Article, lang ="en", use="all"):
 		di[dict_key]["sv"]["not"] = defaultdict(list)
 
 	# use it art.kw, this is for prio and use in get_custom_html
-	use = [Article]
+	if type(Article) != list:
+		use = [Article]
+	else:
+		use = Article
 
 
 	# every kw
@@ -117,17 +120,19 @@ def get_all_related(Article, lang ="en", use="all"):
 			#all thems
 			for theme in line.Theme.all().exclude(id__in=di["Theme"]["not"][kw.id] ):
 				result = [l for l in theme.keyword_lines.all().exclude(eng__keyword__in=uni_exclude_keys) ]
-				di["Theme"][len(result)].append([theme,[l.eng for l in result]])
+				di["Theme"][len(result)].append([theme,[l.eng for l in result if l.eng != None]])
 				for l in result:
-					di["Theme"]["not"][l.eng.id].append(theme.id)
+					if l.eng != None:
+						di["Theme"]["not"][l.eng.id].append(theme.id)
 					if l.swe != None:
 						di["Theme"]["sv"]["not"][l.swe.id].append(theme.id)
 
 			for project in line.Project.all().exclude(id__in=di["Project"]["not"][kw.id] ):
 				result = [l for l in project.keyword_lines.filter(~Q(eng = None)).exclude(eng__keyword__in=uni_exclude_keys) ]
-				di["Project"][len(result)].append([project, [l.eng for l in result]])
+				di["Project"][len(result)].append([project, [l.eng for l in result if l.eng != None]])
 				for l in result:
-					di["Project"]["not"][l.eng.id].append(project.id)
+					if l.eng != None:
+						di["Project"]["not"][l.eng.id].append(project.id)
 					if l.swe != None:
 						di["Project"]["sv"]["not"][l.swe.id].append(project.id)
 			if line.swe != None:
