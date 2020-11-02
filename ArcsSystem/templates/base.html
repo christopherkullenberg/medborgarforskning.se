@@ -27,7 +27,7 @@
 		<div class="container-fluid custom-container">
 			<!-- header -->
 			<div id="main-header" class="row">
-				<div class=" align-self-center d-none d-md-block col-3 hr">
+				<div class=" align-self-center d-none d-md-block col-3 h">
 					<div class="row">
 						<div class="col-8 social-medias-link">
 							<div class="row">
@@ -62,14 +62,14 @@
 				</div>
 				<div id="main-header-buttons" class="d-flex align-items-center col-4 col-md-3 h p-0">
 					<div id="header-btn" class="row ">
-						<div class="justify-content-end align-items-center d-none d-md-block col-md-3 h p-0">
+						<div class="justify-content-end align-items-center d-none d-md-block col-md-4 h p-0">
 							<div class="dropdown p-0">
-								<button class="btn p-0 dropdown-toggle hide-extend-language-icon" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+								<button class="btn p-0 hide-extend-language-icon" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
 								  <img class="main-media-btns" src="{% static 'icons/Language_Icon_4.png' %}" alt="{% trans 'Globe icon for switching languages' %}"/>
 								  <br>
 								  <strong>Language</strong>
 								</button>
-								<div class="dropdown-menu background-light-green-color" aria-labelledby="dropdownMenuButton">
+								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 									{% get_current_language as LANGUAGE_CODE %}
 									{% get_available_languages as LANGUAGES %}
 									{% get_language_info_list for LANGUAGES as languages %}
@@ -95,7 +95,7 @@
 								</form>
 							</div>
 						</div>
-						<div class="justify-content-end align-items-center d-none d-md-block col-md-3 h">
+						<div class="justify-content-end align-items-center d-none d-md-block col-md-4 h">
 							<button class="btn p-0">
 								<img class="main-media-btns" src="{% static 'icons/Hearing_Icon_3.png' %}" alt="{% trans 'Ear icon to launch text to speech of the current page' %}"/>
 								<br>
@@ -105,44 +105,44 @@
 						<!-- user login starts here -->
 						<!-- user is loged in: show my_page and logout -->
 						{% if user.is_authenticated %}
-							<div id="my_page" class="justify-content-end align-items-center d-none d-md-block col-md-3 h p-0">
-								<button class="btn p-0" style="float:right; color:black !important;">
-								  	<a href="{% url 'userprofile_private_view' %}">
+							<div id="my_page" class="justify-content-end align-items-center col-sm-12 col-md-4 h">
+								<div class="dropdown">
+									<button class="btn p-0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="float:right; color:black !important;">
 										<img class="main-media-btns" src="{% static 'icons/Account_Circle_Icon_5.png' %}" alt="{% trans 'Profile icon for login and account details' %}"/>
-								  		<br>
 										<strong>{{user.username}}</strong>
-									</a>
-								</button>
-							</div>
-
-							<div id="login" class="d-flex justify-content-end align-items-center col-sm-12 col-md-3 p-0">
-								<button class="btn p-0  " style="float:right; color:black !important;">
-									  	<a href="{% url 'account_logout' %}" >
-											<img class="main-media-btns" src="{% static 'icons/Account_Circle_Icon_5.png' %}" alt="{% trans 'Profile icon for login and account details' %}"/>
-									  		<br>
+										<br>
+									</button>
+									<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+										<a class="head-btn-margin" href="{% url 'userprofile_private_view' %}">
+											<strong>{{user.username}}</strong>
+										</a>
+										<div class="dropdown-divider"></div>
+										<a class="head-btn-margin" href="{% url 'users_list' %}" >
+											<strong>{% trans "Users" %}</strong>
+										</a>
+										<div class="dropdown-divider"></div>
+										<a class="head-btn-margin" href="{% url 'account_logout' %}" >
 											<strong>{% trans "Logout" %}</strong>
 										</a>
-								</button>
+									</div>
+								</div>
 							</div>
 
 						<!-- user is NOT loged in: show Signup, login -->
 						{% else %}
-							<div id="signup" class="justify-content-end align-items-center d-none d-md-block col-md-3 p-0">
-								<button class="btn p-0 " style="float:right; color:black !important;">
-									<a href="{% url 'account_signup' %}">
-										<img class="main-media-btns" src="{% static 'icons/Account_Circle_Icon_5.png' %}" alt="{% trans 'Profile icon for login and account details' %}"/>
-										<br>
-										<strong>{% trans "Signup" %}</strong>
-									</a>
+							<div id="signup" class="justify-content-end align-items-center col-sm-12 col-md-4 h">
+								<button class="btn p-0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="float:right; color:black !important;">
+									<img class="main-media-btns" src="{% static 'icons/Account_Circle_Icon_5.png' %}" alt="{% trans 'Profile icon for login and account details' %}"/>
+									<strong>Account</strong>
+									<br>
 								</button>
-							</div>
-
-							<div id="logout" class="d-flex justify-content-end align-items-center col-sm-12 col-md-3 p-0">
-								<button class="btn p-0 " style="float:right; color:black !important;">
-								  	<a href="{% url 'account_login' %}">
-										<img class="main-media-btns" src="{% static 'icons/Account_Circle_Icon_5.png' %}" alt="{% trans 'Profile icon for login and account details' %}"/>
-		  								<br>
-		  								<strong>{% trans "Login" %}</strong>
+								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+									<a class="head-btn-margin" href="{% url 'account_login' %}">
+										<strong>{% trans "Login" %}</strong>
+									</a>
+									<div class="dropdown-divider"></div>
+									<a class="head-btn-margin" href="{% url 'account_signup' %}">
+										<strong>{% trans "Signup" %}</strong>
 									</a>
 								</button>
 							</div>
@@ -152,6 +152,7 @@
 				</div>
 			</div>
 		</div>
+	</div>
 	<!--End of header-->
 		<div class="container-fluid pink-background-color" style="padding: 0;">
 			<div class="custom-container">
