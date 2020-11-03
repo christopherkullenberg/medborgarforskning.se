@@ -1,27 +1,18 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load i18n %}
-
-
-
-
 {% block content %}
+<div class="container">
+    <h1>{% trans "Search results:" %}</h1>
+    <p>{% trans "Your search generated" %}{{ pub_len }} {% trans "hits in" %} {{ search_time }} {% trans "Milliseconds" %}</p>
+    {% for article in object_list %}
+        <div class="search-list">
+            <p><a href="{{ article.get_absolute_url }}">{{ article.title }}</a> {{ article.py }} {{ article.authors }}
+            </p>
+            <p>{{ article.source }} {% trans "Volume:" %} {{ article.volume }} {% trans "Issue:" %} {{ article.issue }} <a
+                    href="https://doi.org/{{ article.doi }}">{% trans "Fulltext" %}</a></p>
+        </div>
 
-<h1>Search results:<h1>
-
-<p>Your search generated {{pub_len}} hits in {{search_time}} Milliseconds</p>
-
-{% for article in object_list %}
-<div class="search-list">
-  <p><a href="{{ article.get_absolute_url }}">{{ article.title }}</a> {{ article.py }} {{ article.authors }} </p>
-  <p>{{ article.source }} Volume: {{ article.volume }} Issue: {{ article.issue }} <a href="https://doi.org/{{ article.doi }}">Fulltext</a></p>
+    {% endfor %}
 </div>
-{% endfor %}
-
-
-
-
-
-
-
 {% endblock content %}

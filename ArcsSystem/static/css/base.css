@@ -100,6 +100,13 @@ body{
     font-size: 14 !important;
 }
 
+a{
+    color: #0c5696 !important;
+}
+
+a:hover:not(.nav-link) {
+    color:#e2005e !important;
+}
 p{
     font-family: "acumin-pro", Helvetica, sans-serif ;
     font-size: 14px !important;
@@ -207,7 +214,6 @@ font-family: Helvetica;
 #login, a:hover, a::after{
     text-decoration: none;
     white-space: nowrap;
-    color: #e2005e;
 }
 
 .hide-extend-language-icon::after{

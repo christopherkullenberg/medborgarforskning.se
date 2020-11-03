@@ -25,9 +25,7 @@ class Asing_theme_form(forms.Form):
         cat_id = kwargs.pop('cat_id')
         pub_id = kwargs.pop('pub_id')
         super(Asing_theme_form, self).__init__(*args, **kwargs)
-
         for th in Theme.objects.filter(wp_parent=cat_id):
-
             if str(pub_id) in th.get_pub_ids():
                 field = forms.BooleanField(label=th.title, required=False, initial=True)
             else:
@@ -35,9 +33,6 @@ class Asing_theme_form(forms.Form):
             field.widget.attrs['class'] = "form-control col-md-4"
 
             self.fields[str(th.id)] = field
-
-
-
 # forms end here
 
 def ChangeThemePub(request):
@@ -64,9 +59,6 @@ def ChangeThemePub(request):
 
     return HttpResponseRedirect(reverse('publications:article_publications_list'))
 
-
-
-
 class ArticleListView(ListView):
     '''
     '''
@@ -74,16 +66,11 @@ class ArticleListView(ListView):
     template_name = 'publications/article_publications_list.html'
     queryset = Article.objects.order_by('-py')[:20]
 
-
 class ArticleDetailView(DetailView):
     '''
     '''
-
-
     model = Article
     template_name = 'publications/article_publications_detail.html'
-
-
 
     def get_context_data(self, **kwargs):
         context = super(ArticleDetailView, self).get_context_data(**kwargs)
@@ -124,7 +111,6 @@ class SearchPublicationsView(ListView):
             object_list = Article.objects.filter(
                 Q(keywords__keyword__icontains=query)
                 ).distinct().order_by(orderquery)
-
 
         else:
             searchmode == "general"
