@@ -3,7 +3,6 @@
 {% load i18n %}
 {% load workpackages_extras %}
 {% block content %}
-
     <div class="container">
         <div class="row">
             <ul id="nav_tab" class="nav nav-tabs col-12">
@@ -20,7 +19,7 @@
                             <br> <br>
                             {{ st.0.detailed_content|safe }}
                             <hr>
-                            <h5>Selected theme:</h5>
+                            <h5>{% trans "Selected theme:" %}</h5>
                             <ul id="theme_nav_tab" class="nav nav-tabs col-12">
                                 {% for theme in st.1 %}
                                     <li class="nav-item"><a class="nav-link" data-toggle="tab"
@@ -40,11 +39,8 @@
                                         <hr>
                                         <h5>{% trans "Publications referencing this theme:" %}</h5>
                                         <div class="row">
-
                                             {% for rel_art in theme|get_rel_pubs %}
-
                                                 {{ rel_art|safe }}
-
                                             {% endfor %}
                                         </div>
                                     </div>

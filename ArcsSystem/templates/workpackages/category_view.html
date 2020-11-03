@@ -1,25 +1,17 @@
-
 {% extends 'base.html' %}
 {% load static %}
 {% load i18n %}
 {% load workpackages_extras %}
-
-
 {% block content %}
-
-<h1>{% trans "Arcs Resources" %}</h1>
-
-<ul>
-{% for theme in object_list %}
-  <li><a href="{{ theme.title }}">{{ theme.wp_parent }}: {{ theme.title }}</a></li>
-{% endfor %}
-</ul>
-
-<h3>{{ view.category|get_wp_name }}</h3>
-
-{% for theme in view.category|get_wp_themes %}
-  <p>{{ theme.title}}</p>
-  <p>{{ theme.body|safe }}</p>
-{% endfor %}
-
+    <h1>{% trans "Arcs Resources" %}</h1>
+    <ul>
+        {% for theme in object_list %}
+            <li><a href="{{ theme.title }}">{{ theme.wp_parent }}: {{ theme.title }}</a></li>
+        {% endfor %}
+    </ul>
+    <h3>{{ view.category|get_wp_name }}</h3>
+    {% for theme in view.category|get_wp_themes %}
+        <p>{{ theme.title }}</p>
+        <p>{{ theme.body|safe }}</p>
+    {% endfor %}
 {% endblock content %}

@@ -1,366 +1,214 @@
-
 {% extends 'base.html' %}
 {% load static %}
 {% load i18n %}
-
 {% load workpackages_extras %}
 {% load keyword_for_all_extras %}
-
 {% block content %}
-
-<style type="text/css">
-
-
-  
-
-
-</style>
-
-<div style="margin-right: 30px; margin-left: 30px">
-
-
-
-
-
-
-<h5 align="center"> Category : {{ theme.wp_parent}}</h5>
-<h5 align="center"> Theme :  {{ theme.title|break_slug }}</h5>
-
-
-
-
-<br>
-<br>
-<br>
-<div class="col-12" style="padding-right: 200px; padding-left: 200px; padding-bottom: 100px">
-
-	<h5> About  {{ theme.title|break_slug }}</h5>
-
-	<hr>
-
-<!-- 	<span style = "font-family: Arial; font-size: px"> -->
-
-
-	{{ theme.body|safe}}
-
-</div>
-
-
-<div class="col-12" style="padding-right: 200px; padding-left: 200px; padding-bottom: 100px">
-
-	<h5> Related publications</h5>
-	<hr>
-    {% for article in pubs %}
-	    <div class="search-list">
-	        <h2 class="search-list"> <a href="{{ article.get_absolute_url }}">{{ article.py }}. {{ article.title }}</a></h2>
-	    </div>
-	{% endfor %}
-</div>
-
-
-
-
-{% if request.user.is_superuser %}
-<br><br><hr><br><br>
-
-<datalist id="eng">
-  {% for kw in "eng"|get_keywords %}
-    <option value="{{kw}}"> </option> 
-  {% endfor %}
-  </datalist> 
-
-<datalist id="swe">
-  {% for kw in "swe"|get_keywords %}
-    <option value="{{kw}}"> </option> 
-  {% endfor %}
-
-
-   </datalist>
-
-
-
-<form method="POST">
-
-	{% csrf_token %}
-
-
-	  <div class="col-xxl-5   col-xl-9   col-lg-12 col-md-12 col-sm-12 col-12">
-
-        <h4 align="center" class=""> Nyckelord: </h4>
+    <style type="text/css">
+    </style>
+    <div style="margin-right: 30px; margin-left: 30px">
+        <h5 align="center"> Category : {{ theme.wp_parent }}</h5>
+        <h5 align="center"> Theme : {{ theme.title|break_slug }}</h5>
         <br>
-        <div class="row">
-          <div class="col-4 col-lg-4 col-md-0 "></div>
-          <div class="col-4 col-sm-12 col-md-12 col-lg-5 ">
-            <h5 align="center">Lägg till nyckelord, gärna med översättnig i motsvarande fält på samma rad</h5>
-            <div class="row">
-              <button type="button" onclick="add_keyword_input_line()" class="col-6 form-control" style="height: 60px; background: MediumSeaGreen; color: white;"> <h4>Add </h4> </button>
-              <button type="button" onclick="remove_keyword_input_line()" class="col-6 form-control" style="height: 60px; background: IndianRed; color: white;"> <h4>Remove</h4></button>
+        <br>
+        <br>
+        <div class="col-12" style="padding-right: 200px; padding-left: 200px; padding-bottom: 100px">
+            <h5> About {{ theme.title|break_slug }}</h5>
+            <hr>
+            <!-- 	<span style = "font-family: Arial; font-size: px"> -->
+            {{ theme.body|safe }}
+        </div>
+        <div class="col-12" style="padding-right: 200px; padding-left: 200px; padding-bottom: 100px">
+            <h5> Related publications</h5>
+            <hr>
+            {% for article in pubs %}
+                <div class="search-list">
+                    <h2 class="search-list"><a
+                            href="{{ article.get_absolute_url }}">{{ article.py }}. {{ article.title }}</a></h2>
+                </div>
+            {% endfor %}
+        </div>
+        {% if request.user.is_superuser %}
+            <br><br>
+            <hr><br><br>
+            <datalist id="eng">
+                {% for kw in "eng"|get_keywords %}
+                    <option value="{{ kw }}"></option>
+                {% endfor %}
+            </datalist>
+
+            <datalist id="swe">
+                {% for kw in "swe"|get_keywords %}
+                    <option value="{{ kw }}"></option>
+                {% endfor %}
+            </datalist>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="col-xxl-5   col-xl-9   col-lg-12 col-md-12 col-sm-12 col-12">
+                    <h4 align="center" class=""> {% trans "Nyckelord:" %} </h4>
+                    <br>
+                    <div class="row">
+                        <div class="col-4 col-lg-4 col-md-0 "></div>
+                        <div class="col-4 col-sm-12 col-md-12 col-lg-5 ">
+                            <h5 align="center">{% trans "Lägg till nyckelord, gärna med översättnig i motsvarande fält på samma
+                                rad" %}</h5>
+                            <div class="row">
+                                <button type="button" onclick="add_keyword_input_line()" class="col-6 form-control"
+                                        style="height: 60px; background: MediumSeaGreen; color: white;"><h4>Add </h4>
+                                </button>
+                                <button type="button" onclick="remove_keyword_input_line()" class="col-6 form-control"
+                                        style="height: 60px; background: IndianRed; color: white;"><h4>Remove</h4>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-4"></div>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="row">
+                        <div class="col-1"></div>
+                        <div class="col-5"><h5 align="center">{% trans "Svenska" %}</h5></div>
+                        <div class="col-1"></div>
+                        <div class="col-5"><h5 align="center">{% trans "Engelska" %}</h5></div>
+                    </div>
+                    <hr>
+                    <div id="keyword_div">
+                    </div>
+                </div>
+                <br><br><br>
+                <div>
+                    <button class="form-control col-4 btn-success" style="font-size: 25px"> Update theme keywords
+                    </button>
+                </div>
+                <div style="display: none;">
+                    <div id="hidden_keyword_div" class="row" style="border-bottom: 1px solid black">
+
+                        <div class="col-1"><span id="hidden_row_number"></span></div>
+
+                        <div class="col-5">
+                            <input id="hidden_input_swe" autocomplete="off" list="swe"
+                                   class="form-control trans-option">
+                        </div>
+                        <div class="col-1"><h1 align="center">=</h1></div>
+                        <div class="col-5">
+                            <input id="hidden_input_eng" autocomplete="off" list="eng"
+                                   class="form-control trans-option">
+
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <script type="text/javascript">{% trans "Selected theme:" %}
+                function add_keyword_input_line(sv, en) {
+                    if (count < 10) {
+                        count += 1
+                        var new_keyword_line = $("#hidden_keyword_div").clone();
+                        new_keyword_line.attr("id", "keyword_div_" + count)
+                        new_keyword_line.find("#hidden_input_eng").attr({"name": "Keyword_eng_" + count, "value": en})
+                        new_keyword_line.find("#hidden_input_swe").attr({"name": "Keyword_sve_" + count, "value": sv})
+                        new_keyword_line.find("#hidden_row_number").html(count)
+                        new_keyword_line.appendTo("#keyword_div");
+                    }
+                }
+                function remove_keyword_input_line() {
+                    if (count > 0) {
+                        $("#keyword_div_" + count).remove();
+                        count -= 1
+                    }
+                }
+            </script>
+            {% if keyword_len %}
+                <script type="text/javascript">
+                    var count = 0
+                </script>
+                {% for line in keyword_line %}
+                    <script type="text/javascript">
+                        add_keyword_input_line("{{line.0}}", "{{line.1}}")
+                    </script>
+                {% endfor %}
+            {% else %}
+                <script type="text/javascript">
+                    var count = 0
+                    add_keyword_input_line()
+                </script>
+            {% endif %}
+            <script type="text/javascript">
+                function trans_resiver(string) {
+                    if (string.slice(-3,) == "swe") {
+                        return "eng";
+                    };
+                    if (string.slice(-3,) == "eng") {
+                        return "swe";
+                    };
+                    return "";
+                }
+                $(document).ready(function () {
+                    var id_count = 0;
+                    var sender_input;
+                    //var sender_lang;
+                    $(document).on("change", '.trans-option', function () {
+                        $(this).val($(this).val().trim().replace(/[^a-zA-Z0-9ä-öÄ-Ö().&: -]/g, ""));
+                        if ($(this).val().length == 0) {
+                            $(this).parent().parent().find(":input:not([id=" + $(this).attr("id") + "])").attr("list", trans_resiver($(this).attr("id")));
+                            console.log("stop at input");
+                            return;
+                        }
+                        if ($(this).attr("list").length != 3) {
+                            console.log("stop at list")
+                            return;
+                        };
+                        if ($(this).attr("list") == "swe") {
+                            var input_string = "#hidden_input_eng";
+                        } else if ($(this).attr("list") == "eng") {
+                            var input_string = "#hidden_input_swe";
+                        };
+                        sender_input = $(this).parent().parent().find(":input:not([id=" + $(this).attr("id") + "])");
+                        if ($('#' + $(this).attr("list") + ' option[value="' + $(this).val() + '"]').length == 0) {
+                            console.log("stop at option")
+                            return;
+                        };
+                        console.log($("#opt-trans " + "#" + $(this).attr("id").slice(-3,) + "_" + $(this).val()));
+
+                        var value_lang_string = "#" + $(this).attr("id").slice(-3,) + "_" + $(this).val().replace(/ /g, "_");
+                        console.log(value_lang_string)
+                        if ($("#opt-trans " + value_lang_string).length > 0) {
+                            var this_dtl = $("#opt-trans " + value_lang_string).children();
+                            if (this_dtl.length == 1) {
+                                sender_input.val(this_dtl.first().val());
+                            } else {
+                                sender_input.attr("list", $(this).attr("id").slice(-3,) + "_" + $(this).val());
+                            };
+                            console.log("stop at rev");
+                            return;
+                        };
+                        var this_value = $(this).val();
+                        console.log("ajax")
+                        $.ajax({
+                            type: "GET",
+                            url: "{% url 'workpackages:ajax_get_trans' %}",
+                            data: {"lang": $(this).attr("list"), "kw": $(this).val()},
+                            success: function (data) {
+                                var dtl = document.getElementById("opt-trans").appendChild(document.createElement('datalist'));
+                                var id_string = trans_resiver(sender_input.attr("id")) + "_" + this_value.replace(/ /g, "_");
+                                id_count += 1;
+                                dtl.id = id_string;
+                                $(sender_input).attr('list', id_string);
+                                var opt = "";
+                                for (var i = 0; i < data.trans.length; i++) {
+                                    opt += "<option value='" + data.trans[i] + "' />";
+                                };
+                                if (data.trans.length == 1) {
+                                    sender_input.val(data.trans[0]);
+                                }
+                                dtl.innerHTML = opt;
+                                sender_input.select();
+                            }
+                        });
+                    });
+                });
+            </script>
+            <div id="opt-trans">
             </div>
-          </div>
-          <div class="col-4"></div>
-        </div>
-
-        <br> 
-        <br>
-
-        <div class="row">
-          <div class="col-1"></div>
-          <div class="col-5"><h5 align="center">Svenska</h5></div>
-          <div class="col-1">  </div>
-          <div class="col-5"><h5 align="center">Engelska</h5></div>
-        </div>
-
-        <hr>
-
-        <div id="keyword_div">
-
-
-        </div>
-
-      </div>
-
-
-      <br><br><br>
-
-      <div>
-
-      <button class="form-control col-4 btn-success" style="font-size: 25px"> Update theme keywords</button>
-
-      </div>
-	
-
-
-
-
-
-
-    <div style="display: none;">
-
-
-
-      <div id="hidden_keyword_div" class="row" style="border-bottom: 1px solid black">
-
-        <div class="col-1"><span id="hidden_row_number"></span></div>
-
-        <div class="col-5">
-          <input id="hidden_input_swe" autocomplete="off"  list="swe" class="form-control trans-option">
-        </div>
-        <div class="col-1"> <h1 align="center">=</h1></div>
-        <div class="col-5">
-          <input id="hidden_input_eng" autocomplete="off"  list="eng" class="form-control trans-option">
-
-        </div>
-      </div>
-
-      </div>
-
-</form>
-<script type="text/javascript">
-
-
-  function add_keyword_input_line(sv, en) {
-
-    if( count < 10){
-
-      count += 1
-      var new_keyword_line =  $("#hidden_keyword_div" ).clone();
-      new_keyword_line.attr("id", "keyword_div_" + count)
-      new_keyword_line.find("#hidden_input_eng").attr({"name": "Keyword_eng_" + count, "value" : en })
-      new_keyword_line.find("#hidden_input_swe").attr({"name": "Keyword_sve_" + count, "value" : sv })
-      new_keyword_line.find("#hidden_row_number").html( count)
-      new_keyword_line.appendTo( "#keyword_div" );
-
-    }
-
-    
-
-  }
-
-  function remove_keyword_input_line(){
-    if(count > 0){
-      $("#keyword_div_" + count ).remove();
-      count -= 1
-    } 
-  }
-
-</script>
-
-
-{% if keyword_len  %}
-
-<script type="text/javascript">
-
-  var count = 0
-
-
-
-</script>
-
-
-{% for line in keyword_line %}
-
-<script type="text/javascript">
-  add_keyword_input_line("{{line.0}}", "{{line.1}}")
-</script>
-
-{% endfor %}
-
-
-
-
-{% else %}
-
-<script type="text/javascript">
-
-  var count = 0 
-
-  add_keyword_input_line()
-
-
-
-</script>
-
-{% endif %}
-
-
-
-<script type="text/javascript">
-
-function trans_resiver(string) {
-  if(string.slice(-3,) == "swe"){
-    return "eng";
-  };
-  if(string.slice(-3,) == "eng"){
-    return "swe";
-  };
-  return "";
-}
-
-  
-
-$(document).ready(function () {
-    var id_count = 0;
-    var sender_input;
-    //var sender_lang;
-
-    $(document).on("change",'.trans-option', function(){
-
-      $(this).val($(this).val().trim().replace(/[^a-zA-Z0-9ä-öÄ-Ö().&: -]/g, ""));
-
-      if($(this).val().length == 0){
-         $(this).parent().parent().find(":input:not([id="+$(this).attr("id")+"])").attr("list", trans_resiver($(this).attr("id")));
-         console.log("stop at input");
-         return;
-
-      }
-
-
-      if($(this).attr("list").length != 3){
-        console.log("stop at list")
-        return;
-      };
-
-      if($(this).attr("list") == "swe"){
-        var input_string = "#hidden_input_eng";
-      }
-      else if($(this).attr("list") == "eng"){
-        var input_string = "#hidden_input_swe";
-      };
-
-
-
-      sender_input = $(this).parent().parent().find(":input:not([id="+$(this).attr("id")+"])");
-
-      if ( $('#'+$(this).attr("list")+' option[value="'+ $(this).val() + '"]').length == 0){
-        console.log("stop at option")
-
-        return;
-
-      };
-
-      console.log($("#opt-trans " + "#"+$(this).attr("id").slice(-3,)  + "_" + $(this).val()));
-
-      var value_lang_string = "#"+$(this).attr("id").slice(-3,)  + "_" + $(this).val().replace(/ /g, "_");
-
-      console.log(value_lang_string)
-
-      if($("#opt-trans " + value_lang_string).length>0){
-        var this_dtl = $("#opt-trans " + value_lang_string).children();
-
-        if(this_dtl.length == 1){
-          sender_input.val(this_dtl.first().val());
-
-        }
-        else{sender_input.attr("list", $(this).attr("id").slice(-3,)  + "_" + $(this).val());};
-
-        console.log("stop at rev");
-        return;
-
-      };
-
-      var this_value = $(this).val();
-
-      console.log("ajax")
-      $.ajax({
-          type: "GET",
-          url: "{% url 'workpackages:ajax_get_trans' %}",
-          data: { "lang": $(this).attr("list"), "kw": $(this).val() },
-
-          success: function(data){
-
-              var dtl = document.getElementById("opt-trans").appendChild(document.createElement('datalist'));
-              var id_string = trans_resiver(sender_input.attr("id")) + "_" + this_value.replace(/ /g, "_");
-              id_count += 1;
-              dtl.id = id_string;
-              $(sender_input).attr('list', id_string);
-              var opt = "";
-              for (var i = 0; i < data.trans.length; i++) {
-                opt += "<option value='" + data.trans[i] + "' />";
-              };
-              if( data.trans.length == 1){
-
-                sender_input.val(data.trans[0]);
-              }
-              dtl.innerHTML = opt;
-              sender_input.select();
-          }
-        });
-    });
-
-});
-
-
-</script>
-
-
-
-
-<div id="opt-trans">
-
-
-  
-
-</div>
-
-
-
-
-
-
-
-
-
-
-{% endif %}
-
-
-
-
-
-</div>
-
-
-
-
-
+        {% endif %}
+    </div>
 {% endblock content %}
