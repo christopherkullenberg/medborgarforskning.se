@@ -104,7 +104,7 @@ a{
     color: #0c5696 !important;
 }
 
-a:hover:not(.nav-link) {
+a:hover:not(.main-menu-buttons-font) {
     color:#e2005e !important;
 }
 p{
