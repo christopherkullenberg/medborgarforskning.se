@@ -2,9 +2,9 @@
 echo Loading fixtures, this may take a moment...
 
 
-#echo Loading keyword lines... this one is big....
-#python manage.py loaddata projects/fixtures/projects.xml
-#echo Keyword lines fixtures loaded
+echo Loading Projects and keyword lines... this one is big....
+python manage.py loaddata projects/fixtures/projects.xml
+echo Projects and Keyword lines fixtures loaded
 
 
 
@@ -13,7 +13,7 @@ echo Loading keywords and publications... this one is big....
 python manage.py loaddata publications/fixtures/publications.xml
 echo Publications fixtures loaded
 
-echo Loading workpackages... 
+echo Loading workpackages...
 python manage.py loaddata workpackages/fixtures/workpackages.xml
 echo Workpackages fixtures loaded!
 

@@ -12,16 +12,20 @@
         <div class="row project-menu-filter d-flex justify-content-center align-items-center">
             <div class="col-sm-4 h">
                 <div class="row">
-                    <div class="col-sm-6 d-flex justify-content-start align-items-cente">
-                        <h2 class="project-filter-menu-font">Show</h2>
+                    <div class="col-sm-6 d-flex justify-content-start align-items-center">
+                        <h2 class="project-filter-menu-font">{%trans "Science type" %}</h2>
                     </div>
                     <div class="col-sm-6">
                         <div class="dropdown">
                           <button class="btn projects-filter-buttons dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            biology
+                            select
+
                         </button>
                         <div class="dropdown-menu main-menu-buttons" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">Action</a>
+                          <a class="dropdown-item" href="#">All</a>
+                          {% for sci_typ in None|get_science_types %}
+                          <a class="dropdown-item" href="#">{{sci_typ}}</a>
+                          {% endfor %}
                         </div>
                     </div>
                 </div>
@@ -30,15 +34,18 @@
         <div class="col-sm-4 h">
             <div class="row">
                 <div class="col-sm-6 d-flex">
-                    <h2 class="project-filter-menu-font">project in</h2>
+                    <h2 class="project-filter-menu-font">{%trans "status" %}</h2>
                 </div>
                 <div class="col-sm-6">
                     <div class="dropdown">
                       <button class="btn projects-filter-buttons dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        the North
+                        select
                     </button>
                     <div class="dropdown-menu main-menu-buttons" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Action</a>
+                      <a class="dropdown-item" href="#">All</a>
+                      {% for status in None|get_all_status %}
+                      <a class="dropdown-item" href="#">{{status}}</a>
+                      {% endfor %}
                     </div>
                 </div>
             </div>
@@ -48,7 +55,7 @@
     <div class="col-sm-4 h">
         <div class="row">
             <div class="col-sm-6 d-flex">
-                <h2 class="project-filter-menu-font">sorted by</h2>
+                <h2 class="project-filter-menu-font">{%trans "sorted by" %}</h2>
             </div>
             <div class="col-sm-6">
                 <div class="dropdown">

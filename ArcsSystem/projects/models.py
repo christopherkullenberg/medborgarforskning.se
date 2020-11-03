@@ -21,7 +21,8 @@ STATUS_CHOICES = [
     ('2', 'Active'),
     ('3', 'Periodically active'),
     ('4', 'On hold'),
-    ('5', 'Abandonded')
+    ('5', 'Completed'),
+    ('6', 'Abandonded')
 ]
 
 # Define the options if a project is public
@@ -101,11 +102,11 @@ class KeywordEng(models.Model):
             ent = cl.get("Q" + str(self.wikidataQ), load=True)
 
             # first col
-            html += ''' <div class"col-6">    <h5>  '''+ str(ent.description) +''' </h5>  ''' 
+            html += ''' <div class"col-6">    <h5>  '''+ str(ent.description) +''' </h5>  '''
 
 
 
-            # image 
+            # image
             if "P18" in ent.data["claims"]:
                 prop = cl.get("P18")
                 thing = ent[prop]
@@ -279,7 +280,8 @@ class Project(models.Model):
     start_date = models.DateTimeField(help_text=_('Date the project started.'), db_index=True, null=True,) ## maps to PPSR PMM  projectStartDate
     #duration = models.CharField(max_length=30, default='0',) ## maps to PPSR PMM projectDuration - value should be calculated as diff from start to end or if started and no end - infinit
     science_type = models.ManyToManyField(ScienceType) ## maps to PPSR PMM projectScienceType
-
+    print("----------------")
+    print(ScienceType.objects.all())
     '''PPSR PMM Optional Fields'''
     # has_tag = ## maps to PPSR PMM hasTag
     #difficulty_level = ## maps to PPSR PMM difficultyLevel
