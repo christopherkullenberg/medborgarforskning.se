@@ -6,6 +6,14 @@ from django import template
 
 import json
 
+
+# import db_classes
+
+from projects.models import ProjectEntry
+from workpackages.models import Theme
+from publications.models import Article 
+
+
 register = template.Library()
 
 
@@ -61,8 +69,92 @@ def convert_dict(json_di, value=1):
 	return json.dumps(r_di)
 
 
+# get theme, projects, 
+# def get_related_db_class(db_class, di, exclude=[]):
+# 	pass
 
-def get_all_related(Article, lang ="en", use="all"):
+
+# def get_all_related(this_db_class, lang ="en", use="all"):
+
+
+# 	#limit for pub, pro and theme. Can change to one for each one
+# 	limit_things = 16
+
+# 	# these are the tabs that are created
+# 	dict_key_thing = ["Project", "Theme"]
+
+# 	# find these
+# 	#db_classes = {"Project":ProjectEntry,"Theme" :Theme,"publication":, Article}
+# 	db_classes = {"Project":[],"Theme" :[],"publication":[]}
+
+# 	#allway exlude
+# 	uni_exclude_keys = ["citizen science", "newtech"]
+
+
+# 	# If true: include keywords from article
+# 	test = True
+
+# 	# di is where all the Q data is stored.
+# 	# di, sorts pub, pro and theme after kw-simularaties with article.
+# 	di = {}
+
+# 	# this is
+# 	json_di = {"nodes": defaultdict(defaultdict_nodes), "links": defaultdict(defaultdict_links_super)}
+
+#  	# init dict part
+# 	di["pub"] = defaultdict(list)
+# 	di["pub"]["not"] = defaultdict(list)
+
+# 	for dict_key in dict_key_thing:
+# 		di[dict_key] = defaultdict(list)
+# 		di[dict_key]["not"] = defaultdict(list)
+# 		di[dict_key]["sv"] = {}
+# 		di[dict_key]["sv"]["not"] = defaultdict(list)
+
+# 	# use it art.kw, this is for prio and use in get_custom_html
+
+# 	if type(this_db_class) == KeywordEng:
+# 		use = [KeywordEng]
+# 		if this_db_class.keyword in uni_exclude_keys:
+# 			uni_exclude_keys.remove(this_db_class.keyword)
+
+
+# 	elif type(this_db_class) == Article:
+# 		use = this_db_class.keywords.all().exclude(keyword__in=uni_exclude_keys)
+
+# 	else:
+# 		use = [line.eng for line in this_db_class.keyword_lines.all().exclude(eng__keyword__in=uni_exclude_keys, eng=None)]
+
+# 		if type(this_db_class) == Theme:
+# 			db_classes["Theme"].append(this_db_class.id)
+
+# 		if type(this_db_class) == ProjectEntry:
+# 			db_classes["Project"].append(this_db_class.id)
+
+
+
+
+# 	# every kw
+# 	amount_pub = 0
+
+
+
+
+
+
+	# for db_class in db_classes:
+
+	# 	if type(this_db_class) == db_class:
+	# 		get_related_db_class(db_class, di, [this_db_class.id] )
+	# 	else:
+	# 		get_related_db_class(db_class, di, [])
+
+
+
+
+
+
+def get_all_related(this_db_class, lang ="en", use="all"):
 
 	#limit for pub, pro and theme. Can change to one for each one
 	limit_things = 16
@@ -70,14 +162,19 @@ def get_all_related(Article, lang ="en", use="all"):
 	# these are the tabs that are created
 	dict_key_thing = ["Project", "Theme"]
 
+	# find these
+	#db_classes = {"Project":ProjectEntry,"Theme" :Theme,"publication":, this_db_class}
+	db_classes = {"project":[],"theme" :[],"publication":[]}
+
 	#allway exlude
 	uni_exclude_keys = ["citizen science", "newtech"]
 
-	# If true: include keywords from article
+
+	# If true: include keywords from this_db_class
 	test = True
 
 	# di is where all the Q data is stored.
-	# di, sorts pub, pro and theme after kw-simularaties with article.
+	# di, sorts pub, pro and theme after kw-simularaties with this_db_class.
 	di = {}
 
 	# this is
@@ -94,18 +191,42 @@ def get_all_related(Article, lang ="en", use="all"):
 		di[dict_key]["sv"]["not"] = defaultdict(list)
 
 	# use it art.kw, this is for prio and use in get_custom_html
-	if type(Article) != list:
-		use = [Article]
+
+	if type(this_db_class) == KeywordEng:
+		use = [this_db_class]
+		if this_db_class.keyword in uni_exclude_keys:
+			uni_exclude_keys.remove(this_db_class.keyword)
+
+
+	elif type(this_db_class) == Article:
+		use = this_db_class.keywords.all().exclude(keyword__in=uni_exclude_keys)
+
 	else:
-		use = Article
+		use = [line.eng for line in this_db_class.keyword_lines.all().exclude(eng__keyword__in=uni_exclude_keys).exclude(eng__isnull=True)]
+
+		if type(this_db_class) == Theme:
+			db_classes["theme"].append(this_db_class.id)
+
+		elif type(this_db_class) == ProjectEntry:
+			db_classes["project"].append(this_db_class.id)
+
+
 
 
 	# every kw
 	amount_pub = 0
+	amount_pro = 0
+	amount_the = 0
+
+	if len(use) == 1:
+		q_set = limit_things
+	else:
+		q_set = None  
+
 	for kw in use:
 
-		# checks all articles
-		for art in kw.Article.all().exclude(id__in=di["pub"]["not"][kw.id] + [Article.id]):
+		# checks all this_db_classs
+		for art in kw.Article.all().exclude(id__in=di["pub"]["not"][kw.id] + db_classes["publication"])[:q_set]:
 			amount_pub += 1
 			result = art.keywords.all().exclude(keyword__in=uni_exclude_keys)
 			#prio
@@ -118,42 +239,31 @@ def get_all_related(Article, lang ="en", use="all"):
 		#all lines
 		for line in kw.line.all():
 			#all thems
-			for theme in line.Theme.all().exclude(id__in=di["Theme"]["not"][kw.id] ):
-				result = [l for l in theme.keyword_lines.all().exclude(eng__keyword__in=uni_exclude_keys) ]
-				di["Theme"][len(result)].append([theme,[l.eng for l in result if l.eng != None]])
+			for theme in line.Theme.all().exclude(id__in=di["Theme"]["not"][kw.id] + db_classes["theme"])[:q_set]:
+				amount_the += 1
+				result = theme.keyword_lines.all().exclude(eng__keyword__in=uni_exclude_keys).exclude(eng__isnull=True)
+				di["Theme"][len(result)].append([theme,[l.eng for l in result]])
 				for l in result:
-					if l.eng != None:
-						di["Theme"]["not"][l.eng.id].append(theme.id)
-					if l.swe != None:
-						di["Theme"]["sv"]["not"][l.swe.id].append(theme.id)
+					di["Theme"]["not"][l.eng.id].append(theme.id)
+	
+			for project in line.Project.all().exclude(id__in=di["Project"]["not"][kw.id] + db_classes["project"])[:q_set]:
+				amount_pro += 1
+				result = project.keyword_lines.all().exclude(eng__keyword__in=uni_exclude_keys).exclude(eng__isnull=True)
+				di["Project"][len(result)].append([project, [l.eng for l in result]])
+				for l in result:
+					di["Project"]["not"][l.eng.id].append(project.id)
 
-			for project in line.Project.all().exclude(id__in=di["Project"]["not"][kw.id] ):
-				result = [l for l in project.keyword_lines.filter(~Q(eng = None)).exclude(eng__keyword__in=uni_exclude_keys) ]
-				di["Project"][len(result)].append([project, [l.eng for l in result if l.eng != None]])
-				for l in result:
-					if l.eng != None:
-						di["Project"]["not"][l.eng.id].append(project.id)
-					if l.swe != None:
-						di["Project"]["sv"]["not"][l.swe.id].append(project.id)
-			if line.swe != None:
-				line_sv = line.swe.line.filter(eng=None).first()
-				if line_sv != None:
-					for theme2 in line_sv.Theme.all().exclude(id__in=di["Theme"]["sv"]["not"][line_sv.swe.id]):
-						result = [l.swe for l in theme2.keyword_lines.all().exclude(eng__keyword__in=uni_exclude_keys)]
-						di["Theme"][len(result)].append([theme2, result])
-						for x in result:
-							di["Theme"]["sv"]["not"][x.id].append(theme2.id)
-					for project2 in line_sv.Project.all().exclude(id__in=di["Project"]["sv"]["not"][line_sv.swe.id] ):
-						result = [l.swe for l in project2.keyword_lines.filter(~Q(swe = None)).exclude(eng__keyword__in=uni_exclude_keys) ]
-						di["Project"][len(result)].append([project2, result])
-						for x in result:
-							di["Project"]["sv"]["not"][x.id].append(project2.id)
 
 	nav_html = ' <ul class="nav nav-tabs"> '
 	div_html = ' <div class="col-12">  <div class="tab-content"> <br> '
-	nav_html += ' <li class="nav-item"> <a class="nav-link ' + "" + '" data-toggle="tab" href="#'+"pub"+'">'+"Publications"+ str(amount_pub)+'</a> </li> '
+	nav_html += ' <li class="nav-item"> <a class="nav-link ' + "" + '" data-toggle="tab" href="#'+"pub"+'">'+"Publications "+ str(amount_pub)+'</a> </li> '
 	div_html += ' <div id="'+"pub"+'" class="tab-pane container '+ "" +'">  <div class="row" > '
 	count = 0
+
+	if len(use) == 1:
+		amount_pub = kw.Article.all().exclude(id__in=di["pub"]["not"][kw.id] + db_classes["publication"])[:q_set].count()
+
+
 	for x in range(60, -1, -1):
 		if count == limit_things:
 			break
@@ -163,8 +273,6 @@ def get_all_related(Article, lang ="en", use="all"):
 				break
 
 			for c, kw in enumerate(art[1],1):
-				if count == limit_things:
-					break
 
 				json_di["nodes"][kw.keyword]["value"] += 1
 				for kw2 in art[1][c:]:
@@ -173,9 +281,13 @@ def get_all_related(Article, lang ="en", use="all"):
 			div_html += art[0].get_custom_html(lang, [x2.id for x2 in art[2]] ) #art[1])
 			count += 1
 
+	count_list = [amount_pro, amount_the]
+
+
 	div_html += ' </div></div>'
+
 	for grup_num, thing in enumerate(dict_key_thing):
-		nav_html += ' <li class="nav-item"> <a class="nav-link ' + thing + '" data-toggle="tab" href="#'+thing+'">'+thing+'</a> </li> '
+		nav_html += ' <li class="nav-item"> <a class="nav-link ' + thing + '" data-toggle="tab" href="#'+thing+'">'+thing+' ' + str(count_list[grup_num])+ '</a> </li> '
 		div_html += ' <div id="'+thing+'" class="tab-pane container '+ thing +'">  <div class="row" > '
 		count = 0
 		for x in range(60, -1, -1):
@@ -183,12 +295,12 @@ def get_all_related(Article, lang ="en", use="all"):
 				break
 
 			for art in di[thing].get(x, []):
+
 				if count == limit_things:
 					break
 
 				for c, kw in enumerate(art[1],1):
-					if count == limit_things:
-						break
+
 
 					json_di["nodes"][kw.keyword]["value"] += 1
 					json_di["nodes"][kw.keyword]["group"] = grup_num
