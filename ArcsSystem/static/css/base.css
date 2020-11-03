@@ -129,10 +129,6 @@ p{
     background-color: #255C61 !important;
 }
 
-.background-light-green-color, .change-language-item:hover{
-    background-color: #C3D3D0 !important;
-}
-
 .background-greenish-color{
     background-color: #9FB0A0;
 }
@@ -226,15 +222,19 @@ font-family: Helvetica;
 
 .language-selected-color{
     font-family: Lato;
-    color: #FFFFFF;
+    color: #000;
 }
 
 .language-selected-color svg path{
-    fill: #fff;
+    fill: #000;
 }
 
 .language-selected-color:hover{
-    color: #ddd;
+    color: #e2005e;
+}
+
+.head-btn-margin{
+    margin-left: 20px;
 }
 
 /*end for style header */
@@ -259,31 +259,10 @@ font-family: Helvetica;
 
 /* change navbar background */
 .navbar-toggler{
-  background-color: white !important;
+  background-color: rgb(239, 239, 239) !important;
+  cursor: pointer;
+
 }
-
-#hamburger .icon-bar {
-     background: white;
-   }
-
-   #hamburger:hover,
-   #hamburger.is-active {
-     background: white !important;
-   }
-
-   #hamburger:hover .icon-bar,
-   #hamburger.is-active .icon-bar {
-     background: #F4511e !important;
-   }
-
-   #hamburger:focus {
-     background: #F4511e;
-   }
-
-   #hamburger:focus .icon-bar {
-     background: #FFF;
-   }
-
 
 .header-main-menu{
     display: block;
