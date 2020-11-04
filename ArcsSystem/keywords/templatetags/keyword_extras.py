@@ -11,10 +11,14 @@ import json
 
 from projects.models import ProjectEntry
 from workpackages.models import Theme
-from publications.models import Article 
+from publications.models import Article
 
 
 register = template.Library()
+
+
+
+
 
 #
 def defaultdict_nodes():
@@ -65,8 +69,7 @@ def convert_dict(json_di, value=1):
 	return json.dumps(r_di)
 
 
-<<<<<<< HEAD
-# get theme, projects, 
+# get theme, projects,
 # def get_related_db_class(db_class, di, exclude=[]):
 # 	pass
 
@@ -154,9 +157,6 @@ def convert_dict(json_di, value=1):
 def get_all_related(this_db_class, lang ="en", use="all"):
 	print("--------------------------------")
 	print(this_db_class)
-=======
-def get_all_related(Article, lang ="en", use="all"):
->>>>>>> design
 
 	#limit for pub, pro and theme. Can change to one for each one
 	limit_things = 16
@@ -225,7 +225,7 @@ def get_all_related(Article, lang ="en", use="all"):
 	if len(use) == 1:
 		q_set = limit_things
 	else:
-		q_set = None  
+		q_set = None
 
 	for kw in use:
 
@@ -249,7 +249,7 @@ def get_all_related(Article, lang ="en", use="all"):
 				di["Theme"][len(result)].append([theme,[l.eng for l in result]])
 				for l in result:
 					di["Theme"]["not"][l.eng.id].append(theme.id)
-	
+
 			for project in line.Project.all().exclude(id__in=di["Project"]["not"][kw.id] + db_classes["project"])[:q_set]:
 				amount_pro += 1
 				result = project.keyword_lines.all().exclude(eng__keyword__in=uni_exclude_keys).exclude(eng__isnull=True)
