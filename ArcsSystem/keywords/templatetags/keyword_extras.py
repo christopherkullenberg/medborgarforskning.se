@@ -16,10 +16,6 @@ from publications.models import Article
 
 register = template.Library()
 
-
-
-
-
 #
 def defaultdict_nodes():
 	return {"value": 0, "group": 2}
@@ -48,7 +44,7 @@ def get_bigest_links(di, alowed_links_per_node = 3):
 	re = []
 	for index in range(alowed_links_per_node):
 		if anwer[index] != "":
-			re.append([anwer[index], {"value": biggest_links[index]}] )   
+			re.append([anwer[index], {"value": biggest_links[index]}] )
 
 	return re
 
@@ -69,6 +65,7 @@ def convert_dict(json_di, value=1):
 	return json.dumps(r_di)
 
 
+<<<<<<< HEAD
 # get theme, projects, 
 # def get_related_db_class(db_class, di, exclude=[]):
 # 	pass
@@ -157,6 +154,9 @@ def convert_dict(json_di, value=1):
 def get_all_related(this_db_class, lang ="en", use="all"):
 	print("--------------------------------")
 	print(this_db_class)
+=======
+def get_all_related(Article, lang ="en", use="all"):
+>>>>>>> design
 
 	#limit for pub, pro and theme. Can change to one for each one
 	limit_things = 16

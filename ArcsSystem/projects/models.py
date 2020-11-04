@@ -52,11 +52,6 @@ UN_REGIONS_CHOICES = [
     ('OC', 'Oceana')
 ]
 
-
-
-
-
-
 class KeywordSwe(models.Model):
     '''Keywords for the projects'''
     class Meta:
@@ -78,7 +73,6 @@ class KeywordEng(models.Model):
     summary_en = models.CharField(blank=True, null=True, max_length = 20000,)
     summary_sv = models.CharField(blank=True, null=True, max_length = 20000,)
     wikidataQ = models.IntegerField(blank=True, null=True)
-
     keyword = models.TextField(unique=True, db_index=True)
 
     def __str__(self):
@@ -93,19 +87,18 @@ class KeywordEng(models.Model):
     def get_wikidataQ(self):
 
         if self.wikidataQ != None:
-
             html = '''<hr> <br> <br>  Source:  <a href="https://wikidata.org/wiki/Q''' +str(self.wikidataQ) +'''" >Wikidata entry</a>  <br> <br> '''
             html += ''' <div class="row" >'''
-
             cl = Client()
-
             ent = cl.get("Q" + str(self.wikidataQ), load=True)
-
             # first col
             html += ''' <div class"col-6">    <h5>  '''+ str(ent.description) +''' </h5>  '''
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> design
             # image
             if "P18" in ent.data["claims"]:
                 prop = cl.get("P18")
@@ -123,8 +116,6 @@ class KeywordEng(models.Model):
             return html
         return ""
 
-
-
     def get_summary(self, lang="en"):
         if lang == "en":
             use = self.summary_en
@@ -135,16 +126,7 @@ class KeywordEng(models.Model):
             return use + '''<br> <br> <p style="font-size:20px;">Source: <a href="https://en.wikipedia.org/wiki/''' + self.keyword +'''" >Wikipedia</a></p>'''
         return "<p> No short description found </p>"
 
-
-
-
-
-
     # def get_custom_html(self):
-
-
-
-
 
 class KeywordLine(models.Model):
 
@@ -157,7 +139,6 @@ class KeywordLine(models.Model):
             swe = ""
         else:
             swe = self.swe.keyword
-
         if self.eng == None:
             eng = ""
         else:
@@ -165,8 +146,6 @@ class KeywordLine(models.Model):
         return [swe, eng]
 
     def get_singel_kw_obj(self, lang):
-
-
         if lang == "sv":
             if self.swe != None:
                 return self.swe
@@ -179,17 +158,11 @@ class KeywordLine(models.Model):
     def get_singel_kw(self, lang):
         return self.get_singel_kw_obj(lang).keyword
 
-
-
     def get_custom_html(self):
 
         if self.eng != None:
             return self.eng.get_custom_html()
         return ""
-
-
-
-
 
     def __str__(self):
 
@@ -206,11 +179,6 @@ class KeywordLine(models.Model):
     #         return [KeywordLine.objects.get(id=int(pk)).swe.keyword if KeywordLine.objects.get(id=int(pk)).swe is not None else KeywordLine.objects.get(id=int(pk)).eng.keyword for pk in  self.keywords.split("&")[:-1] ]
     #     if lang == "en":
     #         return [KeywordLine.objects.get(id=int(pk)).eng.keyword if KeywordLine.objects.get(id=int(pk)).eng is not None else KeywordLine.objects.get(id=int(pk)).swe.keyword for pk in  self.keywords.split("&")[:-1] ]
-
-
-
-
-
 
 
 class ScienceType(models.Model):
@@ -537,22 +505,14 @@ class ProjectEntry(Project):
     def get_absolute_url_details(self):
         return reverse('projects:project_detail', args=[str(self.id)])
 
-
-
     def __str__(self):
         return self.name
-
 
     def add_keyword(self, line):
 
         self.keywords += str(line.id) + "&"
 
     def get_keywords(self, lang="en"):
-
-
-
-
-
 
         if lang == "sv":
             return [KeywordLine.objects.get(id=int(pk)).swe.keyword if KeywordLine.objects.get(id=int(pk)).swe is not None else KeywordLine.objects.get(id=int(pk)).eng.keyword for pk in  self.keywords.split("&")[:-1] ]
@@ -578,17 +538,7 @@ class ProjectEntry(Project):
             else:
                 en.append(line.eng.keyword)
 
-
         return sv, en
-
-
-
-
-
-
-
-
-
 
 class ProjectSubmission(Project):
     ''' Extends the Project model for an lead submissions about a potential project that needs review and extending to be added to the database

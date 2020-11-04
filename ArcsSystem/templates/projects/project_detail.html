@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load i18n %}
+<<<<<<< HEAD
 {% load keyword_extras %}
 
 
@@ -24,8 +25,22 @@
   <hgroup class="detail-view">
     <h1>{{ object.name }}</h1>
   </hgroup>
+=======
+{% block content %}
 
-<!--   <picture class="detail-view">
+    {% if edit %}
+        <div class="col-md-2">
+            <a class="form-control" href="edit/">edit</a>
+        </div>
+    {% endif %}
+
+    <article>
+        <hgroup class="detail-view">
+            <h1>{{ object.name }}</h1>
+        </hgroup>
+>>>>>>> design
+
+        <!--   <picture class="detail-view">
 
     {# TODO implement additional web image format handling #}
     <source srcset="name.webp" type="image/webp" alt="{#TODO alt text#}">{#Webp image support first#}
@@ -33,78 +48,73 @@
     <img src="{{ object.image_dir }}"  alt="{% blocktrans %}Bild för projektet {{ object.name }}{% endblocktrans %}" width="300" height="300"/>
   </picture> -->
 
-{% if object.image %}
+        {% if object.image %}
 
-<picture class="detail-view">
+            <picture class="detail-view">
 
-<img  src="{{object.image.url}}" alt="{% trans 'Responsive image' %}" style="width: 200px; height: 200px;" />
+                <img src="{{ object.image.url }}" alt="{% trans 'Responsive image' %}"
+                     style="width: 200px; height: 200px;"/>
 
-  </picture>
-
-{% else %}
-
-
-{{object.image}}
+            </picture>
+        {% else %}
+            {{ object.image }}
 
 
-  <div style="height: 100px; background: coral">
+            <div style="height: 100px; background: coral">
+                <h5 align="center"> No image</h5>
+            </div>
 
 
-  <h5 align="center"  > No image</h5>
-  </div>
+        {% endif %}
 
 
-{% endif %}
+        <div class="detail-view">
+            <h2>{% trans "Project information" %}</h2>
+        </div>
+
+        <div class="detail-view " style="border: solid black 1px ">
+            <h3>{% trans "PROJECT AIM:" %}</h3>
+            <p>{{ object.aim|safe }}</p>
+        </div>
 
 
-  <div class="detail-view">
-    <h2>{% trans "Project information" %}</h2>
-  </div>
+        <div class="detail-view">
+            <h3>{% trans "PROJECT DESCRIPTION:" %}</h3>
+            <p>{{ object.description|safe }}</p>
+        </div>
 
-    <div class="detail-view " style="border: solid black 1px ">
-    <h3>{% trans "PROJECT AIM:" %}</h3>
-    <p>{{ object.aim|safe }}</p>
-  </div>
-
-  
-
-
-  <div class="detail-view">
-    <h3>{% trans "PROJECT DESCRIPTION:" %}</h3>
-    <p>{{ object.description|safe  }}</p>
-  </div>
-
-  <div class="detail-view">
-    <h3>{% trans "PROJECT STATUS:" %}</h3>
-    <p>{{ object.get_status_name }}</p>
-  </div>
+        <div class="detail-view">
+            <h3>{% trans "PROJECT STATUS:" %}</h3>
+            <p>{{ object.get_status_name }}</p>
+        </div>
 
 
-  <div class="detail-view">
-    <h3>{% trans "PROJECT TARGET AUDIENCE:" %}</h3>
-    <p>{{ object.target_audience}}</p>
-  </div>
+        <div class="detail-view">
+            <h3>{% trans "PROJECT TARGET AUDIENCE:" %}</h3>
+            <p>{{ object.target_audience }}</p>
+        </div>
 
-  <div class="detail-view">
-      <h3>{% trans "PROJECT RECORD LAST UPDATED:" %}</h3>
-      <p>{# TODO Insert last updated field when created in the model #}</p>
-  </div>
+        <div class="detail-view">
+            <h3>{% trans "PROJECT RECORD LAST UPDATED:" %}</h3>
+            <p>{# TODO Insert last updated field when created in the model #}</p>
+        </div>
 
-  <div class="detail-view">
-      <h3>{% trans "MEDIA LINKS:" %}</h3>
-      <ul>
-      </ul>
-  </div>
+        <div class="detail-view">
+            <h3>{% trans "MEDIA LINKS:" %}</h3>
+            <ul>
+            </ul>
+        </div>
 
-  <div class="detail-view">
-    <h2>{% trans "Contact information" %}</h2>
-    <h3>{% trans  "NAME:" %} {{ object.contact_name }}</h3>
-    <h3>{% trans "CONTACT'S ROLE:" %} {{ object.contact_role }}</h3>
-    <h3>{% trans "AFFILIATION:" %} {{ object.contact_affiliation }}</h3>
-    <h3>{% trans "CONTACT EMAIL:" %} {{ object.contact_email }}</h3>
-    <h3>{% trans "CONTACT PHONE:" %} {{ object.contact_phone }}</h3>
-  </div>
+        <div class="detail-view">
+            <h2>{% trans "Contact information" %}</h2>
+            <h3>{% trans "NAME:" %} {{ object.contact_name }}</h3>
+            <h3>{% trans "CONTACT'S ROLE:" %} {{ object.contact_role }}</h3>
+            <h3>{% trans "AFFILIATION:" %} {{ object.contact_affiliation }}</h3>
+            <h3>{% trans "CONTACT EMAIL:" %} {{ object.contact_email }}</h3>
+            <h3>{% trans "CONTACT PHONE:" %} {{ object.contact_phone }}</h3>
+        </div>
 
+<<<<<<< HEAD
 
 
 
@@ -119,6 +129,12 @@
 
 </article>
 
+=======
+    </article>
+
+    <br><br><br><br>
+    <hr><br><br><br><br>
+>>>>>>> design
 
 
 
