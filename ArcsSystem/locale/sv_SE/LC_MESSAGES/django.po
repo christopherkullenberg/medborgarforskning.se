@@ -884,7 +884,7 @@ msgstr "Publikationsdatabas"
 
 #: templates/nav_main.html:50
 msgid "Citizen Science in Sweden"
-msgstr "Medborgarforskning i Sverige"
+msgstr "Medborgar-\nforskning i Sverige"
 
 #: templates/nav_main.html:53
 msgid "Citizen Science Projects"
