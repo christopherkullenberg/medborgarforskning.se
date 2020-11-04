@@ -14,6 +14,10 @@
 {% endif %}
 
 <article>
+  <script type="text/javascript">
+    console.log("{{ get_object }}")
+  </script>
+  
   <hgroup class="detail-view">
     <h1>{{ object.name }}</h1>
   </hgroup>
@@ -98,16 +102,25 @@
     <h3>{% trans "CONTACT PHONE:" %} {{ object.contact_phone }}</h3>
   </div>
 
-</article>
+  {{object}}
+
+  {% if False %}
 
 
-
-        {% for one_list in  object|get_all_related:LANGUAGE_CODE %}
+          {% for one_list in object|get_all_related:LANGUAGE_CODE %}
             {{ one_list.0|safe }}
             <script>
                 var data = JSON.parse('{{ one_list.1| escapejs }}');
             </script>
         {% endfor %}
+
+  {% endif %}
+
+</article>
+
+
+
+
     <style>
         svg text {
             -webkit-user-select: none;

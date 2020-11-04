@@ -155,6 +155,8 @@ def convert_dict(json_di, value=1):
 
 
 def get_all_related(this_db_class, lang ="en", use="all"):
+	print("--------------------------------")
+	print(this_db_class)
 
 	#limit for pub, pro and theme. Can change to one for each one
 	limit_things = 16
@@ -202,6 +204,8 @@ def get_all_related(this_db_class, lang ="en", use="all"):
 		use = this_db_class.keywords.all().exclude(keyword__in=uni_exclude_keys)
 
 	else:
+		print(this_db_class)
+		print(this_db_class.keyword_lines.all())
 		use = [line.eng for line in this_db_class.keyword_lines.all().exclude(eng__keyword__in=uni_exclude_keys).exclude(eng__isnull=True)]
 
 		if type(this_db_class) == Theme:
