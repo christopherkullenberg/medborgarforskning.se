@@ -98,6 +98,7 @@ class SearchView(TemplateView):
 
         context['projects'] = ProjectEntry.objects.filter(
         Q(keywords__icontains=query) |
+        Q(aim__icontains=query) |
         Q(description__icontains=query)).distinct()
 
         context['publications'] = Article.objects.filter(
