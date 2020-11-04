@@ -1,6 +1,9 @@
 #!/bin/bash
 echo Loading fixtures, this may take a moment...
 
+echo Loading organizations...
+python manage.py loaddata organizations/fixtures/organizations.xml
+echo Organizations loaded
 
 echo Loading Projects and keyword lines... this one is big....
 python manage.py loaddata projects/fixtures/projects.xml
