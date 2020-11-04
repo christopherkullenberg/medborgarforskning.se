@@ -93,19 +93,31 @@
             </li>
 
             <li class="nav-item col-sm-3 d-flex align-self-center" style="padding: 0;">
-                <form id="form-search-nev" >
+                <form id="form-search-nev" action="{% url 'staticpages:super_search_results' query='SEARCH_QUERY' %}" >
                     <!-- Actual search box -->
                     <div class="form-group has-search">
                         <svg class="form-control-feedback" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                           <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 011.415 0l3.85 3.85a1 1 0 01-1.414 1.415l-3.85-3.85a1 1 0 010-1.415z" clip-rule="evenodd"/>
                           <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 100-11 5.5 5.5 0 000 11zM13 6.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" clip-rule="evenodd"/>
                         </svg>
-                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <input id="search_query" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                     </div>
                 </form>
             </li>
         </ul>
     </div>
 </nav>
+<script>
+    $( "#form-search-nev" ).submit(function( event ) {
+      var form_value = $('#search_query').val();
+      if (form_value == ""){
+          event.preventDefault();
+          return;
+      }
+      var action = $('#form-search-nev').attr('action');
+      action = action.replace('SEARCH_QUERY', form_value);
+      $('#form-search-nev').attr('action', action);
+    });
+</script>
 
 {% endblock main_menu %}

@@ -2,6 +2,7 @@ import datetime
 from django import template
 from staticpages.models import Page
 from staticpages.views import StaticPages
+from staticpages.views import SearchView
 
 register = template.Library()
 

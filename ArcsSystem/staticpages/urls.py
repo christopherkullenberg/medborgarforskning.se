@@ -9,6 +9,7 @@ from .views import PressPostIndexView
 from .views import PressPostDateDetailView
 from .views import PressPostYearArchiveView
 from .views import PressPostMonthArchiveView
+from .views import SearchView
 from staticpages.models import PressPage
 
 from django.views.generic.dates import DateDetailView
@@ -30,6 +31,6 @@ urlpatterns = [
         PressPostMonthArchiveView.as_view(month_format='%m'),
         name="archive_month_numeric"),
     path('press/<int:year>/<str:month>/<int:day>/<slug:slug>/', PressPostDateDetailView.as_view(model=PressPage, date_field="pressPublishedDate", month_format='%m'), name="archive_date_detail"), # the press/ view will be static parent to press related subpages
-
     #path('contact/', .as_view(), name='contact_form'), # this is a contact form - standard for the site
+    path('search/<str:query>', SearchView.as_view(), name='super_search_results')
     ]

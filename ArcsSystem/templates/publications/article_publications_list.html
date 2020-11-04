@@ -6,15 +6,15 @@
     <center>
         <div class="search-list">
             <h1 class="search-list"> {% trans "Search publications on citizen science" %}</h1>
-            <p><i>For example: bird</i></p>
+            <p><i>{% trans "For example: bird" %}</i></p>
             <form action="search" method="get">
                 <!-- SEARCH MODES -->
                 <input type="radio" id="general" name="searchmode" value="general" checked="checked">
-                <label for="searchmode">General search</label>
+                <label for="searchmode">{% trans "General search" %}</label>
                 <input type="radio" id="author" name="searchmode" value="author">
-                <label for="searchmode">Author search</label>
+                <label for="searchmode">{% trans "Author search" %}</label>
                 <input type="radio" id="keyword" name="searchmode" value="keyword">
-                <label for="searchmode">Keyword search</label>
+                <label for="searchmode">{% trans "Keyword search" %}</label>
                 <br>
                 <!-- SEARCH BOX -->
                 <input name="q" type="text" placeholder="Search publications...">
@@ -22,11 +22,11 @@
                 <!-- SORT MODES -->
                 <br>
                 <input type="radio" id="year" name="sortmethod" value="year" checked="checked">
-                <label for="sortmethod">Sort by year</label>
+                <label for="sortmethod">{% trans "Sort by year" %}</label>
                 <input type="radio" id="title" name="sortmethod" value="title">
-                <label for="title">Sort by title</label>
+                <label for="title">{% trans "Sort by title" %}</label>
                 <input type="radio" id="author" name="sortmethod" value="author">
-                <label for="author">Sort by author</label>
+                <label for="author">{% trans "Sort by author" %}</label>
 
             </form>
         </div>

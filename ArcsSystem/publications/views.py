@@ -130,7 +130,7 @@ class SearchPublicationsView(ListView):
 
     def get_queryset_template(query):
         object_list = Article.objects.filter(
-            Q(title_en__icontains=query) |
+            Q(title__icontains=query) |
             Q(keywords__keyword__icontains=query) |
             Q(authors__icontains=query) |
             Q(abstract_en__icontains=query)

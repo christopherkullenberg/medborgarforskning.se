@@ -8,10 +8,6 @@ import json
 
 register = template.Library()
 
-
-
-
-
 #
 def defaultdict_nodes():
 	return {"value": 0, "group": 2}
@@ -40,7 +36,7 @@ def get_bigest_links(di, alowed_links_per_node = 3):
 	re = []
 	for index in range(alowed_links_per_node):
 		if anwer[index] != "":
-			re.append([anwer[index], {"value": biggest_links[index]}] )   
+			re.append([anwer[index], {"value": biggest_links[index]}] )
 
 	return re
 
@@ -59,7 +55,6 @@ def convert_dict(json_di, value=1):
 				r_di["links"].append({"source": k, "target": k2, "value": v2["value"]})
 
 	return json.dumps(r_di)
-
 
 
 def get_all_related(Article, lang ="en", use="all"):
