@@ -8,7 +8,7 @@
 {% block content %}
 
 
-
+<div class="custom-container">
 
 {% if edit %}
 <div class="col-md-2">
@@ -16,14 +16,9 @@
 </div>
 {% endif %}
 
-<article>
-  <script type="text/javascript">
-    console.log("{{ get_object }}")
-  </script>
-  
-  <hgroup class="detail-view">
-    <h1>{{ object.name }}</h1>
-  </hgroup>
+
+  <h1 align="center">{{ object.name }}</h1>
+
 
 <!--   <picture class="detail-view">
 
@@ -35,49 +30,42 @@
 
 {% if object.image %}
 
-<picture class="detail-view">
-
-<img  src="{{object.image.url}}" alt="{% trans 'Responsive image' %}" style="width: 200px; height: 200px;" />
-
-  </picture>
+<picture  class="detail-view">
+<img align="center" src="{{object.image.url}}" alt="{% trans 'Responsive image' %}" style="width: 200px; height: 200px;" />
+</picture>
 
 {% else %}
 
 
 {{object.image}}
 
-
-  <div style="height: 100px; background: coral">
-
-
-  <h5 align="center"  > No image</h5>
-  </div>
-
+<div align="center" style="height: 30px; width: calc(50%);  background: coral">
+<h5 align="center"  > No image</h5>
+</div>
 
 {% endif %}
 
+<br><br>
 
-  <div class="detail-view">
-    <h2>{% trans "Project information" %}</h2>
-  </div>
-
-    <div class="detail-view " style="border: solid black 1px ">
+    <h2 align="center">{% trans "Project information" %}</h2>
+    <hr>
     <h3>{% trans "PROJECT AIM:" %}</h3>
     <p>{{ object.aim|safe }}</p>
-  </div>
 
-  
+<br>
 
 
-  <div class="detail-view">
+
     <h3>{% trans "PROJECT DESCRIPTION:" %}</h3>
     <p>{{ object.description|safe  }}</p>
-  </div>
 
-  <div class="detail-view">
+<br>
+
     <h3>{% trans "PROJECT STATUS:" %}</h3>
     <p>{{ object.get_status_name }}</p>
-  </div>
+
+
+<br>
 
 
   <div class="detail-view">
