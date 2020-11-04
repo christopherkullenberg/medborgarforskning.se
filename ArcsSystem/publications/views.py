@@ -76,6 +76,7 @@ class ArticleDetailView(DetailView):
         context = super(ArticleDetailView, self).get_context_data(**kwargs)
         if self.request.user.is_superuser:
             context['forms'] = [Asing_theme_form( cat_id = cat.id, cat= cat, pub_id = self.kwargs['pk']) for cat  in WorkPackage.objects.all() ]
+            
         return context
 
 class SearchPublicationsView(ListView):

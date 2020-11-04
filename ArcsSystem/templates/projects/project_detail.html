@@ -7,6 +7,9 @@
 
 {% block content %}
 
+
+
+
 {% if edit %}
 <div class="col-md-2">
 <a class="form-control" href="edit/">edit</a>
@@ -102,9 +105,8 @@
     <h3>{% trans "CONTACT PHONE:" %} {{ object.contact_phone }}</h3>
   </div>
 
-  {{object}}
 
-  {% if False %}
+
 
 
           {% for one_list in object|get_all_related:LANGUAGE_CODE %}
@@ -114,7 +116,6 @@
             </script>
         {% endfor %}
 
-  {% endif %}
 
 </article>
 
