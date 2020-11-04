@@ -280,8 +280,6 @@ class Project(models.Model):
     start_date = models.DateTimeField(help_text=_('Date the project started.'), db_index=True, null=True,) ## maps to PPSR PMM  projectStartDate
     #duration = models.CharField(max_length=30, default='0',) ## maps to PPSR PMM projectDuration - value should be calculated as diff from start to end or if started and no end - infinit
     science_type = models.ManyToManyField(ScienceType) ## maps to PPSR PMM projectScienceType
-    print("----------------")
-    print(ScienceType.objects.all())
     '''PPSR PMM Optional Fields'''
     # has_tag = ## maps to PPSR PMM hasTag
     #difficulty_level = ## maps to PPSR PMM difficultyLevel
