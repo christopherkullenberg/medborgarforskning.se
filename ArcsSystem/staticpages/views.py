@@ -111,5 +111,4 @@ class SearchView(TemplateView):
         context['keywords'] = KeywordEng.objects.filter(
         Q(keyword__icontains=query)).distinct()
 
-        print(context['keywords'])
         return context
