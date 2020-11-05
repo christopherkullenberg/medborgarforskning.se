@@ -97,16 +97,26 @@ class SearchView(TemplateView):
         query = self.kwargs['query']
 
         context['projects'] = ProjectEntry.objects.filter(
+        Q(name__icontains=query) |
+        Q(science_type__ScienceType__icontains=query) |
+        Q(keyword_lines__eng__keyword__icontains=query) |
+        Q(keyword_lines__swe__keyword__icontains=query) |
         Q(keywords__icontains=query) |
         Q(aim__icontains=query) |
+        Q(contact_name__icontains=query) |
         Q(description__icontains=query)).distinct()
 
         context['publications'] = Article.objects.filter(
         Q(keywords__keyword__icontains=query) |
         Q(title__icontains=query)|
+        Q(authors__icontains=query)|
+        Q(source__icontains=query)|
         Q(abstract__icontains=query)).distinct()
 
         context['theme'] = Theme.objects.filter(
+        Q(description__icontains=query) |
+        Q(keyword_lines__eng__keyword__icontains=query) |
+        Q(keyword_lines__swe__keyword__icontains=query) |
         Q(body__icontains=query)).distinct()
 
         context['keywords'] = KeywordEng.objects.filter(

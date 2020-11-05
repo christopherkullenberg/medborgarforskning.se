@@ -9,25 +9,26 @@
         <!-- Nav tabs -->
     <ul class="nav nav-tabs" id="myTab" role="tablist">
       <li class="nav-item">
-        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">{% trans "Projects" %}</a>
+        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">{% trans "Projects" %} ({{ projects.count }})</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">{% trans "Publications" %}</a>
+        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">{% trans "Publications" %} ({{ publications.count }})</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="messages-tab" data-toggle="tab" href="#messages" role="tab" aria-controls="messages" aria-selected="false">{% trans "Theme" %}</a>
+        <a class="nav-link" id="messages-tab" data-toggle="tab" href="#messages" role="tab" aria-controls="messages" aria-selected="false">{% trans "Themes" %} ({{ theme.count }})</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" id="settings-tab" data-toggle="tab" href="#settings" role="tab" aria-controls="settings" aria-selected="false">{% trans "Keywords" %}</a>
+        <a class="nav-link" id="settings-tab" data-toggle="tab" href="#settings" role="tab" aria-controls="settings" aria-selected="false">{% trans "Keywords" %} ({{ keywords.count }})</a>
       </li>
     </ul>
 
     <!-- Tab panes -->
     <div class="tab-content">
       <div class="tab-pane active" id="home" role="tabpanel" aria-labelledby="home-tab">
-          <h1 style="margin-top:20px;">{% trans "Related Projects:" %}</h1>
+          <!-- <h1 style="margin-top:20px;">{% trans "Related Projects:" %}</h1> -->
           <div class="col-12" style="height: 100px" ></div>
           <div class="row">
+
               {% for ProjectEntry in projects %}
               <div style="padding-left: 20px; padding-right: 20px" class="col-lg-3 col-md-4 col-xs-6 mb-5">
                   <div class="project-item">
@@ -82,7 +83,7 @@
           </div>
       </div>
       <div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-          <h1>{% trans "Related Publications:" %}</h1>
+          <!-- <h1>{% trans "Related Publications:" %}</h1> -->
           {% for article in publications %}
               <div class="search-list">
                   <p><a href="{{ article.get_absolute_url }}">{{ article.title }}</a> {{ article.py }} {{ article.authors }}
@@ -93,13 +94,16 @@
           {% endfor %}
       </div>
       <div class="tab-pane" id="messages" role="tabpanel" aria-labelledby="messages-tab">
-          <h1>{% trans "Related Theme:" %}</h1>
+          <!-- <h1>{% trans "Related Theme:" %}</h1> -->
+          <div class="row">
           {% for resource in theme %}
-                <p><a href="{{ resource.get_absolute_url }}">{{ resource.title }}</a></p>
+                <!-- <p><a href="{{ resource.get_absolute_url }}">{{ resource.title }}</a></p> -->
+                {{ resource.get_custom_html|safe }}
           {% endfor %}
+          </div>
       </div>
       <div class="tab-pane" id="settings" role="tabpanel" aria-labelledby="settings-tab">
-          <h1>{% trans "Related Keywords:" %}</h1>
+        <!--   <h1>{% trans "Related Keywords:" %}</h1> -->
           {% for keyword in keywords %}
             <p><a href="{{ keyword.get_absolute_url }}">{{ keyword }}</a></p>
           {% endfor %}
