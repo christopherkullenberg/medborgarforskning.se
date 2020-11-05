@@ -20,7 +20,6 @@ urlpatterns = [
     #        name='arcsreport_detail'),
     path('search/', SearchPublicationsView.as_view(),
          name ='search_publications_results'),
-
     path('admin_change', ChangeThemePub,
          name ='admin_change'),
 

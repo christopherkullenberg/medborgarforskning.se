@@ -11,7 +11,7 @@
 {% if edit %}
 <h5 style="font-weight: 100" >This is your project </h5>
 
-    
+
 <a style="font-size: 24px" class="form-control btn-success col-2 " href="edit/" >edit</a>
 {% endif %}
 
@@ -20,7 +20,6 @@
 
 
 <!--   <picture class="detail-view">
-
     {# TODO implement additional web image format handling #}
     <source srcset="name.webp" type="image/webp" alt="{#TODO alt text#}">{#Webp image support first#}
         <source srcset="name.jpg" type="image/jpg" alt="{#TODO alt text#}">{#jpg support next#}
@@ -85,14 +84,14 @@
 
 
             <h5>{% trans "Project status" %}: {{ object.get_status_name}}</h5>
-    
+
 
             <br>
 
             <h5>{% trans "Science type" %}:  {{ object.science_type}}</</h5>
 
         </div>
-  
+
       <div class="tab-pane container fade" id="step_aim">
         <p>{{ object.aim|safe }}</p>
      </div>
@@ -129,7 +128,7 @@
 
 {% else %}
 
-{% trans "This project has no keywords. Relations are created through keywords. Therefore no relations can be created" %} 
+{% trans "This project has no keywords. Relations are created through keywords. Therefore no relations can be created" %}
 
 {% endif %}
 

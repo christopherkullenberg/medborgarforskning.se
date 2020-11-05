@@ -11,7 +11,7 @@ import json
 
 from projects.models import ProjectEntry
 from workpackages.models import Theme
-from publications.models import Article 
+from publications.models import Article
 
 
 register = template.Library()
@@ -48,7 +48,7 @@ def get_bigest_links(di, alowed_links_per_node = 3):
 	re = []
 	for index in range(alowed_links_per_node):
 		if anwer[index] != "":
-			re.append([anwer[index], {"value": biggest_links[index]}] )   
+			re.append([anwer[index], {"value": biggest_links[index]}] )
 
 	return re
 
@@ -69,7 +69,7 @@ def convert_dict(json_di, value=1):
 	return json.dumps(r_di)
 
 
-# get theme, projects, 
+# get theme, projects,
 # def get_related_db_class(db_class, di, exclude=[]):
 # 	pass
 
@@ -225,7 +225,7 @@ def get_all_related(this_db_class, lang ="en", use="all"):
 	if len(use) == 1:
 		q_set = limit_things
 	else:
-		q_set = None  
+		q_set = None
 
 	for kw in use:
 
@@ -250,7 +250,7 @@ def get_all_related(this_db_class, lang ="en", use="all"):
 				di["Theme"][len(result_prio)].append([theme,[l.eng for l in result]])
 				for l in result:
 					di["Theme"]["not"][l.eng.id].append(theme.id)
-	
+
 			for project in line.Project.all().exclude(id__in=di["Project"]["not"][kw.id] + db_classes["project"])[:q_set]:
 				amount_pro += 1
 				result = project.keyword_lines.all().exclude(eng__keyword__in=uni_exclude_keys).exclude(eng__isnull=True)

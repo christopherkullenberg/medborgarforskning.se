@@ -458,8 +458,6 @@ class Project(models.Model):
 
         #return "<div class='col-4' > <a href='" + self.get_absolute_url_details() +   "'>" + self.name +  "</a> </div>"
         html =   '''
-
-
             <div style="padding-left: 20px; padding-right: 20px" class="col-lg-3 col-md-4 col-xs-6 mb-5">
                 <div class="project-item">
                     <div class="row">
@@ -470,11 +468,9 @@ class Project(models.Model):
                         </div>
                     </div>
                     <div class="row">
-
                         <div class="col">
                             <img class="mg-fluid w-100" src=" ''' + self.get_card_image_url() + ''' " alt=""/>
                         </div>
-
                     </div>
                     <div class="col" style="padding-right: 5px; padding-left: 5px; margin-top: 3px">
                         <div class="row Lato-font ">
@@ -484,7 +480,6 @@ class Project(models.Model):
                         </div>
                         <hr>
                         <div class="row Lato-font">
-
                             <div class="col">
                                 <span >DESCRIPTION: </span> <span > ''' +self.get_card_description() + ''' </span>
                             </div>
@@ -496,7 +491,6 @@ class Project(models.Model):
                             </div>
                         </div>
                         <hr>
-
                         '''
 
         for key in self.get_keywords(lang=lang):

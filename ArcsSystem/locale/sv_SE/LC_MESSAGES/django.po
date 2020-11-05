@@ -3,13 +3,10 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#: arcs_project/urls.py:66 projects/models.py:247 projects/models.py:371
-#: templates/base.html:244 templates/base.html:247 templates/base.html:250
-#: templates/base.html:253 templates/base.html:296
+#: arcs_project/urls.py:66 projects/models.py:277 projects/models.py:400
+#: templates/base.html:276 templates/base.html:281 templates/base.html:286
+#: templates/base.html:291 templates/base.html:334
 #: templates/blog/blog_detail.html:33 templates/home.html:15
-#: templates/search_results.html:252 templates/search_results.html:255
-#: templates/search_results.html:258 templates/search_results.html:261
-#: templates/search_results.html:316
 #: templates/staticpages/static_variant1.html:31
 #: templates/staticpages/static_variant1.html:42
 #: templates/staticpages/static_variant2.html:30
@@ -19,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2020-10-29 13:32+0000\n"
+"POT-Creation-Date: 2020-11-04 19:58+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -92,116 +89,118 @@ msgstr ""
 msgid "Organizations"
 msgstr ""
 
-#: projects/models.py:62
+#: projects/models.py:63
 msgid "Keyword_sv"
 msgstr ""
 
-#: projects/models.py:63
+#: projects/models.py:64
 msgid "Keywords_sv"
 msgstr ""
 
-#: projects/models.py:73 publications/models.py:11
+#: projects/models.py:74 publications/models.py:11
 msgid "Keyword"
 msgstr ""
 
-#: projects/models.py:74 publications/models.py:12
-#: templates/publications/article_publications_detail.html:21
+#: projects/models.py:75 publications/models.py:12
+#: templates/publications/article_publications_detail.html:16
+#: templates/search_results.html:21
 msgid "Keywords"
 msgstr ""
 
-#: projects/models.py:189
+#: projects/models.py:219
 msgid "Science Type"
 msgstr ""
 
-#: projects/models.py:190
+#: projects/models.py:220
 msgid "Science Types"
 msgstr ""
 
-#: projects/models.py:199
+#: projects/models.py:229
 msgid "Origin Database"
 msgstr ""
 
-#: projects/models.py:200
+#: projects/models.py:230
 msgid "Origin Databases"
 msgstr ""
 
-#: projects/models.py:209
+#: projects/models.py:239
 msgid "Funding Body"
 msgstr ""
 
-#: projects/models.py:210
+#: projects/models.py:240
 msgid "Funding Bodies"
 msgstr ""
 
-#: projects/models.py:219
+#: projects/models.py:249
 msgid "Topic"
 msgstr ""
 
-#: projects/models.py:220
+#: projects/models.py:250
 msgid "Topics"
 msgstr ""
 
-#: projects/models.py:235
+#: projects/models.py:265
 msgid "Project"
 msgstr ""
 
-#: projects/models.py:236 templates/home.html:30
+#: projects/models.py:266 templates/home.html:30
+#: templates/search_results.html:12
 msgid "Projects"
 msgstr ""
 
-#: projects/models.py:242
+#: projects/models.py:272
 msgid "The date the Project created"
 msgstr ""
 
-#: projects/models.py:243
+#: projects/models.py:273
 msgid "Last date the Project was updated"
 msgstr ""
 
-#: projects/models.py:244 projects/models.py:369
+#: projects/models.py:274 projects/models.py:398
 msgid "Common name for the project."
 msgstr ""
 
-#: projects/models.py:246 projects/models.py:370
+#: projects/models.py:276 projects/models.py:399
 msgid "Primary focus of the project."
 msgstr ""
 
-#: projects/models.py:250
+#: projects/models.py:280
 msgid "Date the project started."
 msgstr ""
 
-#: projects/models.py:258
+#: projects/models.py:287
 msgid "Date the project ended."
 msgstr ""
 
-#: projects/models.py:270
+#: projects/models.py:299
 msgid "Name of the person maintaining this entry."
 msgstr ""
 
-#: projects/models.py:273
+#: projects/models.py:302
 msgid "Maintainer’s role or position with this project."
 msgstr ""
 
-#: projects/models.py:280
+#: projects/models.py:309
 msgid "Project primary audience."
 msgstr ""
 
-#: projects/models.py:497
+#: projects/models.py:520
 msgid "Project Entry"
 msgstr ""
 
-#: projects/models.py:498
+#: projects/models.py:521
 msgid "Project Entries"
 msgstr ""
 
-#: projects/models.py:575
+#: projects/models.py:598
 msgid "Project Submission"
 msgstr ""
 
-#: projects/models.py:576
+#: projects/models.py:599
 msgid "Project Submissions"
 msgstr ""
 
-#: projects/models.py:602 projects/models.py:603
+#: projects/models.py:625 projects/models.py:626
 msgid "Project External"
 msgstr ""
 
@@ -254,7 +253,7 @@ msgid "Pages"
 msgstr ""
 
 #: staticpages/models.py:42
-#: templates/publications/article_publications_detail.html:15
+#: templates/publications/article_publications_detail.html:12
 msgid "Authors"
 msgstr "Författare"
 
@@ -304,8 +303,12 @@ msgid "Warning:"
 msgstr "Varning:"
 
 #: templates/account/email.html:43
-msgid "You currently do not have any e-mail address set up. You should really add an e-mail address so you can receive notifications, reset your password, etc."
-msgstr "För närvarande har du ingen e-post. Lägg till så att du kan få notifikationer och återställa lösenord m.m."
+msgid ""
+"You currently do not have any e-mail address set up. You should really add "
+"an e-mail address so you can receive notifications, reset your password, etc."
+msgstr ""
+"För närvarande har du ingen e-post. Lägg till så att du kan få "
+"notifikationer och återställa lösenord m.m."
 
 #: templates/account/email.html:48
 msgid "Add E-mail Address"
@@ -407,8 +410,7 @@ msgstr "eller"
 msgid "Forgot Password?"
 msgstr "Glömt lösenord?"
 
-#: templates/account/login.html:41 templates/base.html:145
-#: templates/search_results.html:147
+#: templates/account/login.html:41 templates/base.html:162
 msgid "Login"
 msgstr ""
 
@@ -424,12 +426,12 @@ msgstr ""
 #: templates/account/messages/cannot_delete_primary_email.txt:2
 #, python-format
 msgid "You cannot remove your primary e-mail address (%(email)s)."
-msgstr "Du kan inte ta bort din primära e-post"
+msgstr "Du kan inte ta bort din primära e-post  (%(email)s)"
 
 #: templates/account/messages/email_confirmation_sent.txt:2
 #, python-format
 msgid "Confirmation e-mail sent to %(email)s."
-msgstr "Konfirmationsmail skickat"
+msgstr "Konfirmationsmail skickat till %(email)s."
 
 #: templates/account/messages/email_confirmed.txt:2
 #, python-format
@@ -529,8 +531,8 @@ msgstr ""
 msgid "Set Password"
 msgstr ""
 
-#: templates/account/signup.html:5 templates/base.html:135
-#: templates/search_results.html:137 templates/socialaccount/signup.html:5
+#: templates/account/signup.html:5 templates/base.html:166
+#: templates/socialaccount/signup.html:5
 msgid "Signup"
 msgstr ""
 
@@ -598,99 +600,122 @@ msgid ""
 "mail address</a>."
 msgstr ""
 
-#: templates/base.html:11 templates/search_results.html:11
+#: templates/base.html:11
 msgid "Medborgarforskning.se - The Swedish portal for citizen science."
 msgstr ""
 
-#: templates/base.html:36 templates/base.html:208
-#: templates/search_results.html:37 templates/search_results.html:216
+#: templates/base.html:40 templates/base.html:234
 msgid ""
 "Facebook icon in the header linking to Medborgarforskning.se on Facebook"
 msgstr ""
 
-#: templates/base.html:41 templates/base.html:213
-#: templates/search_results.html:42 templates/search_results.html:221
+#: templates/base.html:46 templates/base.html:240
 msgid ""
 "LinkedIn icon in the header linking to Medborgarforskning.se on LinkedIn"
 msgstr ""
 
-#: templates/base.html:46 templates/base.html:218
-#: templates/search_results.html:47 templates/search_results.html:226
+#: templates/base.html:52 templates/base.html:246
 msgid ""
 "Instagram icon in the header linking to Medborgarforskning.se on Instagram"
 msgstr ""
 
-#: templates/base.html:51 templates/base.html:223
-#: templates/search_results.html:52 templates/search_results.html:231
+#: templates/base.html:59 templates/base.html:253
 msgid "Twitter icon in the header linking to Medborgarforskning.se on Twitter"
 msgstr ""
 
-#: templates/base.html:60 templates/search_results.html:61
+#: templates/base.html:69
 msgid "Medborgarforskning.se Logo linking to the site homepage"
 msgstr ""
 
-#: templates/base.html:68 templates/search_results.html:69
+#: templates/base.html:79
 msgid "Globe icon for switching languages"
 msgstr ""
 
-#: templates/base.html:100 templates/search_results.html:101
+#: templates/base.html:117
 msgid "Ear icon to launch text to speech of the current page"
 msgstr ""
 
-#: templates/base.html:111 templates/base.html:121 templates/base.html:133
-#: templates/base.html:143 templates/search_results.html:113
-#: templates/search_results.html:123 templates/search_results.html:135
-#: templates/search_results.html:145
+#: templates/base.html:130 templates/base.html:156
 msgid "Profile icon for login and account details"
 msgstr ""
 
-#: templates/base.html:123 templates/search_results.html:125
+#: templates/base.html:140
+msgid "Users"
+msgstr "Användare"
+
+#: templates/base.html:144
 msgid "Logout"
 msgstr "Logga ut"
 
-#: templates/base.html:176 templates/search_results.html:181
+#: templates/base.html:157
+#, fuzzy
+#| msgid "Account Inactive"
+msgid "Account"
+msgstr "Inaktivt konto"
+
+#: templates/base.html:188
+msgid "Messages"
+msgstr "Meddelanden"
+
+#: templates/base.html:198
 msgid "Medborgarforskning.se!"
 msgstr ""
 
-#: templates/base.html:177 templates/search_results.html:182
+#: templates/base.html:199
 msgid "This base.html block should be replaced by a template defined block."
 msgstr ""
 
-#: templates/base.html:189 templates/search_results.html:199
+#: templates/base.html:212
 msgid "ABOUT US"
 msgstr "OM OSS"
 
-#: templates/base.html:192 templates/search_results.html:200
+#: templates/base.html:216
 msgid "PRESS"
 msgstr "PRESS"
 
-#: templates/base.html:195 templates/search_results.html:201
+#: templates/base.html:220
 msgid "CONTACT"
 msgstr "KONTAKT"
 
-#: templates/base.html:202 templates/search_results.html:210
+#: templates/base.html:227
 msgid "Follow medborgarforskning.se"
 msgstr "Följ medborgarforskning.se"
 
-#: templates/base.html:268 templates/search_results.html:276
+#: templates/base.html:306
 msgid "Terms of service"
 msgstr "Användarvillkor"
 
-#: templates/base.html:273 templates/search_results.html:285
+#: templates/base.html:311
 msgid "Privacy policy"
 msgstr "Integritetspolicy"
 
-#: templates/base.html:278 templates/search_results.html:293
+#: templates/base.html:316
 msgid "Cookies policy"
 msgstr "Kakpolicy"
 
-#: templates/base.html:283 templates/search_results.html:302
+#: templates/base.html:321
 msgid "License"
 msgstr "Licens"
 
-#: templates/base.html:290 templates/search_results.html:310
+#: templates/base.html:328
 msgid "Powered by: The ARCS open source platform"
 msgstr "Powered by: The ARCS open source platform"
+
+#: templates/base.html:337
+msgid "Except where otherwise"
+msgstr ""
+
+#: templates/base.html:337
+msgid "noted,"
+msgstr ""
+
+#: templates/base.html:337
+msgid "content on this site is licensed under a"
+msgstr ""
+
+#: templates/base.html:337
+msgid "Creative Commons Attribution 4.0 International License."
+msgstr ""
 
 #: templates/blog/blog_detail.html:41
 msgid "Related publications"
@@ -733,6 +758,18 @@ msgid ""
 "not a researcher, you can do exactly the same things as the researchers. "
 "Citizen science is for everyone."
 msgstr ""
+"Välkommen till medborgarforskning.se - den svenska portalen för dig som är "
+"intresserad av att lära dig mer om medborgarforskning, för dig som redan "
+"medborgarforskar och för dig som vill börja. Medborgarforskning betyder att "
+"forskare och medborgare samarbetar på olika sätt för att skapa kunskap. På "
+"medborgarforskning.se kan vem som helst lära sig mer om detta och hitta "
+"projekt och samarbeten för att bidra med sina kunskaper och erfarenheter. "
+"Som forskare kan du hitta information om medborgarforskningens metoder och "
+"få tips och inspiration till att starta ett eget projekt, utbyta "
+"erfarenheter och nätverka med andra forskare och volonärer. Om du redan har "
+"ett befintligt projekt kan du även använda portalen för att nå nya "
+"målgrupper. Även om du inte är forskare på ett lärosäte kan du använda "
+"portalen på samma sätt. Medborgarforskning är för alla!"
 
 #: templates/home.html:32
 msgid ""
@@ -745,6 +782,14 @@ msgid ""
 "children or adults). On the project pages you will find more information "
 "about what is involved as well as contact information for the organizer."
 msgstr ""
+"Vår databas på medborgarforskning.se innehåller projekt som är på gång i "
+"Sverige. Du kan låta dig bli inspirerad eller börja bidra till något av "
+"projekten idag! Men databasen innehåller även internationella projekt från "
+"runt om i världen. Genom att använda våra sökfilter kan du du enkelt hitta "
+"medborgarforskningsprojekt efter ämne, plats eller efter specifika "
+"målgrupper. Du kan även hitta kontaktinformation till varje projekt så att "
+"du enkelt kan hitta det som passar dig. "
+
 
 #: templates/home.html:40
 msgid "Project: Faunaväkteri"
@@ -752,78 +797,78 @@ msgstr "Projekt: Faunaväkteri"
 
 #: templates/home.html:66
 msgid "First slide"
-msgstr ""
+msgstr "Första"
 
-#: templates/home.html:68
+#: templates/home.html:68 templates/home.html:83 templates/home.html:98
 msgid "PROJECT FOCUS: Fauna and insects"
 msgstr ""
 
-#: templates/home.html:69
+#: templates/home.html:69 templates/home.html:84 templates/home.html:99
 msgid "DESCRIPTION: Monitoring of fauna for insect activity."
 msgstr ""
 
-#: templates/home.html:70
+#: templates/home.html:70 templates/home.html:85 templates/home.html:100
 msgid "ONTACT POINT: Pavel Bina at SLU - [email or button]"
 msgstr ""
 
 #: templates/home.html:81
 msgid "Second slide"
-msgstr ""
+msgstr "Andra"
 
 #: templates/home.html:96
 msgid "Third slide"
-msgstr ""
+msgstr "Tredje"
 
 #: templates/home.html:120
 msgid "Get involved with CitSciSE"
-msgstr ""
+msgstr "Bli involverad"
 
-#: templates/home.html:124
+#: templates/home.html:123
 msgid ""
 "If you would like to improve the content on CitSciSE or would like to learn "
 "more about how to integrate with CitSciSE. Please see our contact "
 "information below and the API for accessing the site's content."
 msgstr ""
 
-#: templates/home.html:132
+#: templates/home.html:130
 msgid "Data Quality"
-msgstr ""
+msgstr "Datakvalitet"
 
-#: templates/home.html:133
+#: templates/home.html:131
 msgid "Getting Started"
-msgstr ""
+msgstr "Kom igång"
 
-#: templates/home.html:134
+#: templates/home.html:132
 msgid ""
 "Some of the first questions in citizen science is can we trust the data and "
 "is the data of sufficient quality. Fundamental readings and resources on "
 "Data Quality, Data Standards and Technologies have been compiled in the "
 "resources to help address your question."
-msgstr ""
+msgstr "Den första frågan som dyker upp när det kommer till medborgarforskning brukar vara datakvalitet."
 
-#: templates/home.html:138
+#: templates/home.html:136
 msgid "Data Quality Standards"
-msgstr ""
+msgstr "Datakvalitet"
 
-#: templates/home.html:143
+#: templates/home.html:141
 msgid "Papers"
-msgstr ""
+msgstr "Artiklar"
 
-#: templates/home.html:144
+#: templates/home.html:142
 msgid "Recent papers"
-msgstr ""
+msgstr "Nyligen publicerade artiklar"
 
-#: templates/home.html:150
+#: templates/home.html:148
 msgid "CitSciSE Community"
-msgstr ""
+msgstr "CitSciSE gemenskap"
 
-#: templates/home.html:151
+#: templates/home.html:149
 msgid "Recent Blog Posts"
-msgstr ""
+msgstr "Nya bloggposter"
 
 #: templates/nav_main.html:16
 msgid "Getting Started With Citizen Science"
-msgstr ""
+msgstr "Kom igång med medborgarforskning"
 
 #: templates/nav_main.html:39
 msgid "Knowledge base"
@@ -839,158 +884,278 @@ msgstr "Publikationsdatabas"
 
 #: templates/nav_main.html:50
 msgid "Citizen Science in Sweden"
-msgstr "Medborgarforskning i Sverige"
+msgstr "Medborgar-\nforskning i Sverige"
 
-#: templates/nav_main.html:54
+#: templates/nav_main.html:53
 msgid "Citizen Science Projects"
 msgstr "Medborgarforskningsprojekt"
 
-#: templates/nav_main.html:58
+#: templates/nav_main.html:57
 msgid "Add your Project"
 msgstr "Lägg till ditt projekt"
+
+#: templates/nav_main.html:63
+msgid "List of contributors"
+msgstr "Lista över användare"
+
+#: templates/nav_main.html:71
+msgid "Language"
+msgstr "Språk"
 
 #: templates/openid/login.html:9
 msgid "OpenID Sign In"
 msgstr "OpenID logga in"
 
 #: templates/projects/copy card.html:15
-#: templates/projects/project_detail.html:32
-#: templates/projects/project_list.html:82
+#: templates/projects/project_detail.html:39
+#: templates/projects/project_list.html:89 templates/search_results.html:44
 #: templates/users/private_profile_view.html:37
 #: templates/users/private_profile_view.html:98
 #: templates/users/private_profile_view.html:154
 msgid "Responsive image"
-msgstr ""
+msgstr "Responsiv bild"
 
-#: templates/projects/project_detail.html:25
+#: templates/projects/project_detail.html:32
 #, python-format
 msgid "Bild för projektet %(object.name)s"
 msgstr ""
 
-#: templates/projects/project_detail.html:53
+#: templates/projects/project_detail.html:60
 msgid "Project information"
 msgstr "Projektinformation"
 
-#: templates/projects/project_detail.html:57
+#: templates/projects/project_detail.html:64
 msgid "PROJECT AIM:"
 msgstr ""
 
-#: templates/projects/project_detail.html:65
+#: templates/projects/project_detail.html:72
 msgid "PROJECT DESCRIPTION:"
 msgstr ""
 
-#: templates/projects/project_detail.html:70
+#: templates/projects/project_detail.html:77
 msgid "PROJECT STATUS:"
 msgstr ""
 
-#: templates/projects/project_detail.html:76
+#: templates/projects/project_detail.html:83
 msgid "PROJECT TARGET AUDIENCE:"
 msgstr ""
 
-#: templates/projects/project_detail.html:81
+#: templates/projects/project_detail.html:88
 msgid "PROJECT RECORD LAST UPDATED:"
 msgstr ""
 
-#: templates/projects/project_detail.html:86
+#: templates/projects/project_detail.html:93
 msgid "MEDIA LINKS:"
 msgstr ""
 
-#: templates/projects/project_detail.html:92
+#: templates/projects/project_detail.html:99
 msgid "Contact information"
-msgstr ""
+msgstr "Information"
 
-#: templates/projects/project_detail.html:93
+#: templates/projects/project_detail.html:100
 msgid "NAME:"
-msgstr ""
+msgstr "Namn"
 
-#: templates/projects/project_detail.html:94
+#: templates/projects/project_detail.html:101
 msgid "CONTACT'S ROLE:"
 msgstr ""
 
-#: templates/projects/project_detail.html:95
+#: templates/projects/project_detail.html:102
 msgid "AFFILIATION:"
-msgstr ""
+msgstr "Affiliering"
 
-#: templates/projects/project_detail.html:96
+#: templates/projects/project_detail.html:103
 msgid "CONTACT EMAIL:"
-msgstr ""
+msgstr "Mejl"
 
-#: templates/projects/project_detail.html:97
+#: templates/projects/project_detail.html:104
 msgid "CONTACT PHONE:"
-msgstr ""
+msgstr "Telefonnummer"
+
+#: templates/projects/project_list.html:16
+msgid "Science type"
+msgstr "Vetenskapligt fält"
+
+#: templates/projects/project_list.html:37
+msgid "status"
+msgstr "status"
+
+#: templates/projects/project_list.html:58
+msgid "sorted by"
+msgstr "sorterad efter"
 
 #: templates/projects/project_submissionform.html:107
 msgid ""
 "Your account and email will be associated with this submission for follow-up."
 msgstr ""
+"Ditt konto och e-post kommer att sparas så att vi kan göra uppföljningar."
 
 #: templates/projects/project_submissionform.html:468
 msgid "Plese sign in or create an account to add a project."
-msgstr ""
+msgstr "Vänligen logga in eller skapa ett konto för att lägga till ett projekt"
 
 #: templates/projects/project_submissionform.html:469
 msgid ""
 "To submit a project you'll be asked to provide the following information."
 msgstr ""
+"För att lägga till ett projekt kommer du att ange följande information."
 
 #: templates/projects/project_submissionform.html:471
 msgid "A common name for identifying the project."
-msgstr ""
+msgstr "Projektets namn"
 
 #: templates/projects/project_submissionform.html:472
 msgid "A brief description of the project."
-msgstr ""
+msgstr "En kort beskrivning av projektet"
 
 #: templates/projects/project_submissionform.html:473
 msgid "The aim of the project."
-msgstr ""
+msgstr "Projektets mål"
 
 #: templates/projects/project_submissionform.html:474
 msgid "The status of the projet ie if it is active or historical."
-msgstr ""
+msgstr "Status på projektet"
 
 #: templates/projects/project_submissionform.html:475
 msgid "The target audience of the project."
-msgstr ""
+msgstr "Projektets primära målgrupp"
 
 #: templates/projects/project_submissionform.html:476
 msgid "Your affiliation to the project as the person submitting the project."
-msgstr ""
+msgstr "Till vilken organisation är du anknuten"
 
 #: templates/projects/project_submissionform.html:477
 msgid "Keywords for the project."
-msgstr ""
+msgstr "Nyckelord för projektet"
 
 #: templates/projects/project_submissionform.html:479
 msgid ""
 "Following submission your project will be reviewed before becoming visibile "
 "on the site and included in the metadata exchange. Review the citizen "
 "science assessment criteria for visiblity and exchange."
-msgstr ""
+msgstr "Efter projektet lagtstill kommer det att granskas innan det publiceras"
 
-#: templates/publications/article_publications_detail.html:17
+#: templates/publications/article_publications_detail.html:13
 msgid "Publication Year"
-msgstr ""
+msgstr "Publikationsår"
 
-#: templates/publications/article_publications_detail.html:18
+#: templates/publications/article_publications_detail.html:14
 msgid "Journal"
-msgstr ""
+msgstr "Tidskrift"
 
-#: templates/publications/article_publications_detail.html:19
+#: templates/publications/article_publications_detail.html:15
 msgid "Volume/Issue"
-msgstr ""
+msgstr "Volym/utgåva"
 
-#: templates/publications/article_publications_detail.html:30
+#: templates/publications/article_publications_detail.html:22
 msgid "Abstract"
-msgstr ""
+msgstr "Abstract"
 
-#: templates/publications/article_publications_list.html:11
+#: templates/publications/article_publications_detail.html:36
+msgid "Article id is"
+msgstr "Artikelns id är"
+
+#: templates/publications/article_publications_detail.html:37
+msgid "This part is only for admin. No other user will be able to access it"
+msgstr "Detta är admin only."
+
+#: templates/publications/article_publications_list.html:8
 msgid "Search publications on citizen science"
-msgstr ""
+msgstr "Sök vetenskapliga artiklar om medborgarforskning"
 
-#: templates/search_results.html:202
-msgid "For Developers-API"
-msgstr ""
+#: templates/publications/article_publications_list.html:9
+msgid "For example: bird"
+msgstr "Till exempel: bird"
+
+#: templates/publications/article_publications_list.html:13
+msgid "General search"
+msgstr "Supersök"
+
+#: templates/publications/article_publications_list.html:15
+#, fuzzy
+#| msgid "Authors"
+msgid "Author search"
+msgstr "Författare"
+
+#: templates/publications/article_publications_list.html:17
+#, fuzzy
+#| msgid "keywords"
+msgid "Keyword search"
+msgstr "nyckelord"
+
+#: templates/publications/article_publications_list.html:25
+msgid "Sort by year"
+msgstr "Sortera efter år"
+
+#: templates/publications/article_publications_list.html:27
+msgid "Sort by title"
+msgstr "Sortera efter titel"
+
+#: templates/publications/article_publications_list.html:29
+msgid "Sort by author"
+msgstr "Sortera efter författare"
+
+#: templates/publications/search_publications_results.html:6
+msgid "Search results:"
+msgstr "Sökresultat:"
+
+#: templates/publications/search_publications_results.html:7
+msgid "Your search generated"
+msgstr "Din sökning genererade"
+
+#: templates/publications/search_publications_results.html:7
+msgid "hits in"
+msgstr "träffar inom"
+
+#: templates/publications/search_publications_results.html:7
+msgid "Milliseconds"
+msgstr "Millisekunder"
+
+#: templates/publications/search_publications_results.html:12
+#: templates/search_results.html:90
+msgid "Volume:"
+msgstr "Volym"
+
+#: templates/publications/search_publications_results.html:12
+#: templates/search_results.html:90
+msgid "Issue:"
+msgstr "Utgåva"
+
+#: templates/publications/search_publications_results.html:13
+#: templates/search_results.html:91
+msgid "Fulltext"
+msgstr "Fulltext"
+
+#: templates/search_results.html:15
+#, fuzzy
+#| msgid "Publication Year"
+msgid "Publications"
+msgstr "Publikationsår"
+
+#: templates/search_results.html:18
+#: templates/workpackages/workpackages_list.html:35 workpackages/models.py:33
+msgid "Theme"
+msgstr "Tema"
+
+#: templates/search_results.html:28
+msgid "Related Projects:"
+msgstr "Relaterace projekt:"
+
+#: templates/search_results.html:85
+#, fuzzy
+#| msgid "Related publications"
+msgid "Related Publications:"
+msgstr "Relaterade publikationer"
+
+#: templates/search_results.html:96
+#, fuzzy
+#| msgid "Selected theme:"
+msgid "Related Theme:"
+msgstr "Valt tema"
+
+#: templates/search_results.html:102
+msgid "Related Keywords:"
+msgstr "Relaterade nyckelord:"
 
 #: templates/socialaccount/authentication_error.html:5
 #: templates/socialaccount/authentication_error.html:8
@@ -1025,7 +1190,7 @@ msgstr ""
 #: templates/socialaccount/login_cancelled.html:5
 #: templates/socialaccount/login_cancelled.html:9
 msgid "Login Cancelled"
-msgstr ""
+msgstr "Inloggning misslyckades"
 
 #: templates/socialaccount/login_cancelled.html:13
 #, python-format
@@ -1056,9 +1221,9 @@ msgstr ""
 
 #: templates/staticpages/category_list.html:10
 #: templates/staticpages/staticpage_list.html:8
-#: templates/workpackages/category_view.html:10
+#: templates/workpackages/category_view.html:6
 msgid "Arcs Resources"
-msgstr ""
+msgstr "ARCS kunskapsbas"
 
 #: templates/staticpages/press_list.html:11
 msgid "Trans page (list view)"
@@ -1066,25 +1231,54 @@ msgstr ""
 
 #: templates/staticpages/press_list.html:16
 msgid "Press detail view"
-msgstr ""
+msgstr "Press"
 
 #: templates/staticpages/static_variant1.html:47
 #: templates/staticpages/static_variant2.html:80
 msgid "Related literature"
+msgstr "Relaterad litteratur"
+
+#: templates/workpackages/theme_view.html:48
+msgid "Nyckelord:"
+msgstr "Nyckelord:"
+
+#: templates/workpackages/theme_view.html:53
+msgid ""
+"Lägg till nyckelord, gärna med översättnig i motsvarande fält på samma rad"
 msgstr ""
+"Lägg till nyckelord, gärna med översättnig i motsvarande fält på samma rad"
+
+#: templates/workpackages/theme_view.html:69
+msgid "Svenska"
+msgstr ""
+
+#: templates/workpackages/theme_view.html:71
+msgid "Engelska"
+msgstr "Engelska"
+
+#: templates/workpackages/workpackages_list.html:22
+msgid "Selected theme:"
+msgstr "Valt tema"
+
+#: templates/workpackages/workpackages_list.html:35
+msgid "keywords"
+msgstr "nyckelord"
+
+#: templates/workpackages/workpackages_list.html:40
+msgid "Publications referencing this theme:"
+msgstr "Publikationer som hänvisas till i detta tema"
 
 #: workpackages/models.py:12
 msgid "Work package"
-msgstr ""
+msgstr "Arbetspaket"
 
 #: workpackages/models.py:13
 msgid "Work packages"
-msgstr ""
-
-#: workpackages/models.py:33
-msgid "Theme"
-msgstr ""
+msgstr "Arbetspaket"
 
 #: workpackages/models.py:34
 msgid "Themes"
-msgstr ""
+msgstr "Teman"
+
+#~ msgid "Swedish "
+#~ msgstr "Svenska"

@@ -16,6 +16,10 @@ from staticpages.models import (
                                 TermsPage,
                                 PressPage,)
 from django.db.models import Q
+from projects.models import ProjectEntry
+from publications.models import Article
+from workpackages.models import Theme
+from projects.models import KeywordEng, KeywordSwe, KeywordLine
 
 class StaticDetailView(DetailView):
     model = Page
@@ -83,3 +87,39 @@ class PressPostMonthArchiveView(MonthArchiveView):
     allow_future = False
     # Pagination documentation https://docs.djangoproject.com/en/2.2/topics/pagination/
     paginate_by = 5    # Change this to include more posts
+
+
+class SearchView(TemplateView):
+    template_name = 'search_results.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        query = self.kwargs['query']
+
+        context['projects'] = ProjectEntry.objects.filter(
+        Q(name__icontains=query) |
+        Q(science_type__ScienceType__icontains=query) |
+        Q(keyword_lines__eng__keyword__icontains=query) |
+        Q(keyword_lines__swe__keyword__icontains=query) |
+        Q(keywords__icontains=query) |
+        Q(aim__icontains=query) |
+        Q(contact_name__icontains=query) |
+        Q(description__icontains=query)).distinct()
+
+        context['publications'] = Article.objects.filter(
+        Q(keywords__keyword__icontains=query) |
+        Q(title__icontains=query)|
+        Q(authors__icontains=query)|
+        Q(source__icontains=query)|
+        Q(abstract__icontains=query)).distinct()
+
+        context['theme'] = Theme.objects.filter(
+        Q(description__icontains=query) |
+        Q(keyword_lines__eng__keyword__icontains=query) |
+        Q(keyword_lines__swe__keyword__icontains=query) |
+        Q(body__icontains=query)).distinct()
+
+        context['keywords'] = KeywordEng.objects.filter(
+        Q(keyword__icontains=query)).distinct()
+
+        return context

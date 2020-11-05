@@ -1,9 +1,6 @@
 from django.contrib import admin
 from .models import ProjectEntry, KeywordSwe, KeywordEng, KeywordLine ,ScienceType, ProjectSubmission
 
-
-
-
 admin.site.register(ProjectEntry)
 admin.site.register(KeywordSwe)
 admin.site.register(KeywordEng)
