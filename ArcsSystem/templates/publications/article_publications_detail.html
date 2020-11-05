@@ -7,7 +7,7 @@
 
 {% block content %}
 <div class="container">
-    <div class="row detail-view p-0">
+    <div class="detail-view p-0">
             <h1>{{ article.title }}</h1>
             <p><b>{% trans "Authors" %}:</b> {{ article.authors }}</p>
             <p><b>{% trans "Publication Year" %}:</b> {{ article.py }}</p>
@@ -23,7 +23,7 @@
         </div>
         <div class="custom-container">
             <hr>
-            <h4>start of related things</h4>
+            <h4>Related things</h4>
             {% for one_list in  article|get_all_related:LANGUAGE_CODE %}
                 {{ one_list.0|safe }}
                 <script>
