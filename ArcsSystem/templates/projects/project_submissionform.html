@@ -1,9 +1,11 @@
-{% extends 'base.html' %}{% load static %}{% load i18n %}{% load projects_extras %}{% block content %}
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% load projects_extras %}
+{% block content %}
+{% load keyword_for_all_extras %}
 
-
-
-
-
+{% if user.is_authenticated %}
 
 <script type="text/javascript">
 
@@ -22,16 +24,12 @@
       new_keyword_line.find("#hidden_input_sve").attr({"name": "Keyword_sve_" + count, "value" : sv })
       new_keyword_line.find("#hidden_row_number").html( count)
       new_keyword_line.appendTo( "#keyword_div" );
-
     }
 
-    
-
+  
   }
-
   function remove_keyword_input_line(){
-    if(count > 1){
-      console.log(  $("#keyword_div_" + count ))
+    if(count > 0){
       $("#keyword_div_" + count ).remove();
       count -= 1
     } 
@@ -41,50 +39,43 @@
 
 <form  method='post' enctype="multipart/form-data">
   {% csrf_token %}
-
-
-
   <div class="custom-container">
 
     <ul class="nav nav-tabs">
 
-
-
-
       <li class="nav-item">
-        <a class="nav-link active disabled" data-toggle="tab" href="#step1">Details</a>
+        <a class="nav-link active disabled" data-toggle="tab" href="#step1">{% trans "Details" %}</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" data-toggle="tab" href="#step_aim">Aim <span class="glyphicon glyphicon-align-left" ></span></a>
+        <a class="nav-link disabled" data-toggle="tab" href="#step_aim">{% trans "Aim" %} <span class="glyphicon glyphicon-align-left" ></span></a>
       </li>
       <li class="nav-item ">
-        <a class="nav-link disabled" data-toggle="tab" href="#step_description">Description</a>
+        <a class="nav-link disabled" data-toggle="tab" href="#step_description">{% trans "Description" %}</a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link disabled" data-toggle="tab" href="#step3">Keywords</a>
+        <a class="nav-link disabled" data-toggle="tab" href="#step3">{% trans "Keywords" %}</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" data-toggle="tab" href="#step4">Card view</a>
+        <a class="nav-link disabled" data-toggle="tab" href="#step4">{% trans "Card view" %}</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" data-toggle="tab" href="#step5">Contact info</a>
+        <a class="nav-link disabled" data-toggle="tab" href="#step5">{% trans "Contact info" %}</a>
 
 
       </li>
 
-      <div  style="margin-left: 10px" class="row">
+   
 
 
 
-        <button class="nav-item  btn-danger" type="button" onclick="prevnav()" style="margin: 10px; padding: 5px;">< Previous </button>
+        <button class="nav-item  btn-danger form-control col-6 col-sm-4 col-md-2" type="button" onclick="prevnav()" style="margin: 10px; padding: 5px;">< {% trans "Previous" %} </button>
 
 
 
 
-        <button class="nav-item  btn-success" type="button" onclick="nextnav()" style="margin: 10px; padding: 5px;">Next > </button>
+        <button class="nav-item  btn-success form-control col-6 col-sm-4 col-md-2" type="button" onclick="nextnav()" style="margin: 10px; padding: 5px;"> {% trans "Next" %} > </button>
 
-      </div>
 
 
     </ul>
@@ -95,33 +86,26 @@
 
       <br>
 
-      {% if user.is_authenticated %}
+      
 
       <div id="step1" class="tab-pane container active">
 
 
-        <h3> Project details  </h3>
+        <h3 align="center"> {% trans "Project details" %}  </h3>
+        <br>
         <br>
 
 
         <p>{% trans "Your account and email will be associated with this submission for follow-up." %}</p>
 
-
-
         <div align="center" class="row">
-
-
 
           <div class="col-3">
             <h4>
-              {{Submission.name.label}}
+              {% trans "Title" %}
             </h4>
 
             {{ Submission.name }}
-            <br>
-
-            <h6> This will be the label/titel of your project</h6>
-
           </div>
 
 
@@ -129,46 +113,48 @@
           <div class="col-3">
 
             <h4>
-              {{Submission.image.label}}
+              {% trans "Image" %}
+
 
             </h4>
             {{ Submission.image }}
-            <br>
-
-            <h6> This will be the main image, the first image everyone will see, it should show what your project is about</h6>
+            
           </div>
 
           <div class="col-3">
 
             <h4>
+              {% trans "Status" %}
 
-              {{Submission.status.label}}
             </h4>
 
             {{ Submission.status }}
             <br>
 
-            <h6>
-              the state of your project
-            </h6>
+
 
           </div>
 
 
           <div class="col-3">
             <h4>
-              {{Submission.target_audience.label}}
+              {% trans "Target audience" %}
             </h4>
+
             {{ Submission.target_audience }}
 
-            <br>
-            <h6>
-
-              alternativ kanske hade varit bra ?
-
-
-            </h6>
           </div>
+
+          <div class="col-3">
+            <h4>
+              {% trans "Science type" %}
+            </h4>
+
+            {{ Submission.science_type }}
+
+          </div>
+
+
 
         </div>
 
@@ -179,22 +165,10 @@
       <div class="tab-pane container fade" id="step_aim">
         <div class="col-12">
 
-          <h4 align="center"> Enter project aim</h4>
-
-          <h5> 
-           Älgjägare spanar efter döda vildsvin  
-
-           Älgjägarna har fått en extra uppgift i
-           år. De ska spana efter döda vildsvin. 
-           Syftet är att stoppa den smittosamma  
-           sjukdomen afrikansk svinpest.         
-
-           Om jägare hittar ett självdött        
-           vildsvin ska de ta prover från        
-           kadavret, rappo..
-
-         </h5>
-
+          <h3 align="center"> {% trans "Enter project aim" %}</h3>
+          <br>
+          <br>
+          <h6 align="center"> {% trans "What is the purpose of this project?" %}</h6>
 
        </div>
 
@@ -203,10 +177,13 @@
      <div class="tab-pane container fade" id="step_description">
       <div class="col-12">
 
-        <h4 align="center"> Enter project description </h4>
+        <h3 align="center"> {% trans "Enter project description" %} </h3>
+
 
 
       </div>
+
+      <br><br>
 
       {{ Submission.description }}
 
@@ -219,23 +196,39 @@
 
 
 
+                <datalist id="eng">
+                {% for kw in "eng"|get_keywords %}
+                    <option value="{{ kw }}"></option>
+                {% endfor %}
+            </datalist>
+
+            <datalist id="swe">
+                {% for kw in "swe"|get_keywords %}
+                    <option value="{{ kw }}"></option>
+                {% endfor %}
+            </datalist>
 
       <div class="col-xxl-5   col-xl-9   col-lg-12 col-md-12 col-sm-12 col-12">
 
-        <h4 align="center" class=""> Nyckelord: </h4>
+        <h3 align="center" class=""> 
+        {% trans "Keywords" %}  
+      </h3>
+      <br>
+      <br>
 
-
+          <h5 align="center">
+             {% trans "Add keywords, preferably with a translation in the corresponding field on the same line" %} 
+       <h5>
         <br>
 
         <div class="row">
 
-          <div class="col-4 col-lg-4 col-md-0 "></div>
-          <div class="col-4 col-sm-12 col-md-12 col-lg-5 ">
-            <h5 align="center">Lägg till nyckelord, gärna med översättnig i motsvarande fält på samma rad</h5>
+          <div class="col-0 col-sm-2 col-lg-4 col-md-4 "></div>
+          <div class="col-12 col-sm-8 col-md-6 col-lg-5 ">
 
             <div class="row">
-              <button type="button" onclick="add_keyword_input_line()" class="col-6 form-control" style="height: 60px; background: MediumSeaGreen; color: white;"> <h4>Add </h4> </button>
-              <button type="button" onclick="remove_keyword_input_line()" class="col-6 form-control" style="height: 60px; background: IndianRed; color: white;"> <h4>Remove</h4></button>
+              <button type="button" onclick="add_keyword_input_line()" class="col-6 form-control" style="height: 60px; background: MediumSeaGreen; color: white;"> <h4>{% trans "Add" %} </h4> </button>
+              <button type="button" onclick="remove_keyword_input_line()" class="col-6 form-control" style="height: 60px; background: IndianRed; color: white;"> <h4>{% trans "Remove" %}</h4></button>
             </div>
 
 
@@ -256,9 +249,9 @@
 
         <div class="row">
           <div class="col-1"></div>
-          <div class="col-5"><h5 align="center">Svenska</h5></div>
+          <div class="col-5"><h3 align="center"> {% trans "Swedish" %}</h3></div>
           <div class="col-1">  </div>
-          <div class="col-5"><h5 align="center">Engelska</h5></div>
+          <div class="col-5"><h3 align="center"> {% trans "English" %}</h3></div>
         </div>
 
         <hr>
@@ -280,19 +273,20 @@
 
 
 
-      <h3>Card view</h3>
-
+      <h3 align="center"> {% trans "Card view" %}</h3>
+<br>
+<br>
 
       <div class="row">
 
 
-        <div class="col-6"> 
+        <div class="col-6 col-lg-3 col-md-4 col-xs-6 mb-5"> 
 
           <div class="col">
 
-            <h4>{{ Submission.name_card.label}}</h4>
+            <h4> {% trans "Short Name" %} </h4>
 
-            <div class="col-4">
+            <div class="col-12">
               {{ Submission.name_card}}
             </div>
 
@@ -303,8 +297,8 @@
 
           <div class="col">
 
-            <h4>{{ Submission.aim_card.label}}</h4>
-            <div class="col-4">
+            <h4> {% trans "Short aim" %} </h4>
+            <div class="col-12">
               {{ Submission.aim_card}}
             </div>
 
@@ -316,12 +310,13 @@
 
           <div class="col">
 
-            <h4>{{ Submission.description_card.label}}</h4>
-            <div class="col-4">
+            <h4>{% trans "Short description" %}</h4>
+            <div class="col-12">
               {{ Submission.description_card}}
             </div>
 
           </div>
+
 
 
         </div>
@@ -347,47 +342,32 @@
             <div class="col" style="padding-right: 5px; padding-left: 5px; margin-top: 3px">
               <div class="row Lato-font ">
                 <div class="col" >
-                  <span class="font-weight-bold">PROJECT AIM: </span> <span id="rep_card_aim" ></span>
+                  <span >{% trans "Aim" %}: </span> <span id="rep_card_aim" ></span>
                 </div>
               </div>
               <hr>
               <div class="row Lato-font">
 
                 <div class="col">
-                  <span >DESCRIPTION: </span> <span id="rep_card_description"></span>
+                  <span > {% trans "Description" %}: </span> <span id="rep_card_description"></span>
                 </div>
               </div>
-              <hr>
-              <div class="row Lato-font">
-                <div class="col ">
-                  STATUS: ..........
-                </div>
-              </div>
-              <hr>
-              keywords: .........
-              {% for keyword in ProjectEntry.keywords.all %}
-              <span style="background: black; color: white; margin: 3px; padding: 3px; border-radius: 5px">{{keyword}} </span> 
-              {% endfor %}
             </div>
           </div>
         </div>
 
       </div>
 
-
-
-
     </div>
 
     <div id="step5" class="tab-pane fade">
 
 
-      <h3> Contact info </h3>
+      <h3 align="center"> {% trans "Contact info" %} </h3>
+      <br><br>
 
       <h5>
-        your email will not be publicly accessible, your contact name.....?
-        <br>
-        you can get mail from peaple that wants to get in contact .....
+        {% trans "your email will not be publicly visible" %}
       </h5>
 
       <br><br>
@@ -395,45 +375,40 @@
       <div class="row">
 
         <div class="col-3">
-          <h4>{{ Submission.contact_name.label }}</h4>
+          <h4>{% trans Submission.contact_name.label %}</h4>
           {{ Submission.contact_name }}
         </div>
         
 
         <div class="col-3">
-          <h4>{{ Submission.contact_email.label }}</h4>
+          <h4>{% trans Submission.contact_email.label %}</h4>
           {{ Submission.contact_email }}
         </div>
         
 
         <div class="col-3">
-          <h4>{{ Submission.contact_role.label }}</h4>
+          <h4>{% trans Submission.contact_role.label %}</h4>
           {{ Submission.contact_role }}
         </div>
         
 
         <div class="col-3">
-          <h4>{{ Submission.contact_affiliation.label }}</h4>
+          <h4>{% trans Submission.contact_affiliation.label %}</h4>
           {{ Submission.contact_affiliation }}
         </div>
 
         <div class="col-3">
-          <h4>{{ Submission.url.label }}</h4>
+          <h4>{% trans Submission.url.label %}</h4>
           {{ Submission.url }}
         </div>
 
       </div>
       <br>
-      <br>
-
-      <h4> I agre to ....</h4>
-
-      <input type="checkbox" class="form-control col-2" name="agre">
-
-      <br><br>
 
 
-      <button class="form-control col-4 btn-success" type='submit' value='Save'>Submit Project to ARCS</button> <!-- TODO replace with django template for  -->
+      <button class="form-control col-4 btn-success" type='submit' value='Save'>
+       {% trans "Submit Project to ARCS" %}
+     </button> <!-- TODO replace with django template for  -->
 
 
 
@@ -442,25 +417,107 @@
 
     </div>
 
-    <div style="display: none;">
 
 
 
-      <div id="hidden_keyword_div" class="row" style="border-bottom: 1px solid black">
 
-        <div class="col-1"><span id="hidden_row_number"></span></div>
+      <div style="display: none;">
+          <div id="hidden_keyword_div" class="row" style="border-bottom: 1px solid black">
 
-        <div class="col-5">
-          <input id="hidden_input_sve" list="brow" class="form-control">
-        </div>
-        <div class="col-1"> <h1 align="center">=</h1></div>
-        <div class="col-5">
-          <input id="hidden_input_eng" list="brow2" class="form-control">
+              <div class="col-1"><span id="hidden_row_number"></span></div>
 
-        </div>
+              <div class="col-5">
+                  <input id="hidden_input_sve" autocomplete="off" list="swe"
+                         class="form-control trans-option">
+              </div>
+              <div class="col-1"><h1 align="center">=</h1></div>
+              <div class="col-5">
+                  <input id="hidden_input_eng" autocomplete="off" list="eng"
+                         class="form-control trans-option">
+
+              </div>
+          </div>
       </div>
 
     </form>
+
+              <script type="text/javascript">
+                function trans_resiver(string) {
+                    if (string.slice(-3,) == "swe") {
+                        return "eng";
+                    };
+                    if (string.slice(-3,) == "eng") {
+                        return "swe";
+                    };
+                    return "";
+                }
+                $(document).ready(function () {
+                    var id_count = 0;
+                    var sender_input;
+                    //var sender_lang;
+                    $(document).on("change", '.trans-option', function () {
+                        $(this).val($(this).val().trim().replace(/[^a-zA-Z0-9ä-öÄ-Ö().&: -]/g, ""));
+                        if ($(this).val().length == 0) {
+                            $(this).parent().parent().find(":input:not([id=" + $(this).attr("id") + "])").attr("list", trans_resiver($(this).attr("id")));
+                            console.log("stop at input");
+                            return;
+                        }
+                        if ($(this).attr("list").length != 3) {
+                            console.log("stop at list")
+                            return;
+                        };
+                        if ($(this).attr("list") == "swe") {
+                            var input_string = "#hidden_input_eng";
+                        } else if ($(this).attr("list") == "eng") {
+                            var input_string = "#hidden_input_swe";
+                        };
+                        sender_input = $(this).parent().parent().find(":input:not([id=" + $(this).attr("id") + "])");
+                        if ($('#' + $(this).attr("list") + ' option[value="' + $(this).val() + '"]').length == 0) {
+                            console.log("stop at option")
+                            return;
+                        };
+
+
+                        var value_lang_string = "#" + $(this).attr("id").slice(-3,) + "_" + $(this).val().replace(/ /g, "_");
+
+                        if ($("#opt-trans " + value_lang_string).length > 0) {
+                            var this_dtl = $("#opt-trans " + value_lang_string).children();
+                            if (this_dtl.length == 1) {
+                                sender_input.val(this_dtl.first().val());
+                            } else {
+                                sender_input.attr("list", $(this).attr("id").slice(-3,) + "_" + $(this).val());
+                            };
+                            console.log("stop at rev");
+                            return;
+                        };
+                        var this_value = $(this).val();
+                        console.log("ajax")
+                        $.ajax({
+                            type: "GET",
+                            url: "{% url 'workpackages:ajax_get_trans' %}",
+                            data: {"lang": $(this).attr("list"), "kw": $(this).val()},
+                            success: function (data) {
+                                var dtl = document.getElementById("opt-trans").appendChild(document.createElement('datalist'));
+                                var id_string = trans_resiver(sender_input.attr("id")) + "_" + this_value.replace(/ /g, "_");
+                                id_count += 1;
+                                dtl.id = id_string;
+                                $(sender_input).attr('list', id_string);
+                                var opt = "";
+                                for (var i = 0; i < data.trans.length; i++) {
+                                    opt += "<option value='" + data.trans[i] + "' />";
+                                };
+                                if (data.trans.length == 1) {
+                                    sender_input.val(data.trans[0]);
+                                }
+                                dtl.innerHTML = opt;
+                                sender_input.select();
+                            }
+                        });
+                    });
+                });
+            </script>
+            <div id="opt-trans">
+            </div>
 
 
 
@@ -534,7 +591,6 @@
 
 <script type="text/javascript">
 
- console.log($('#id_aim').val()  );
 
 
 
@@ -598,7 +654,6 @@ function nextnav(){
 
           go_to_next = false;
 
-          console.log(this)
 
           $(this).css("border", "solid red 1px")
         }
@@ -610,7 +665,7 @@ function nextnav(){
     });
 
     if(current_a_tag.attr("href") == "#step_aim"){
-      console.log($('#id_aim').val())
+
       if($('#id_aim').val().length < 30   ){
         var go_to_next = false;
         
@@ -619,7 +674,6 @@ function nextnav(){
     }
 
     if(current_a_tag.attr("href") == "#step_description"){
-      console.log($('#id_description').val());
 
       if($('#id_description').val().length < 30   ){
         var go_to_next = false;
@@ -650,7 +704,7 @@ function nextnav(){
 
     setTimeout(function() {
       secClicked = true;
-    }, 1000);
+    }, 200);
 
   }
 
@@ -674,7 +728,7 @@ function prevnav(){
 
     setTimeout(function() {
       secClicked = true;
-    }, 1000);
+    }, 200);
 
 
 
@@ -700,14 +754,6 @@ function readURL() {
 }
 
 $("#id_image").change(readURL)
-
-
-
-
-
-
-
-
 $("#id_name_card").change()
 $("#id_image").change()
 $("#id_aim_card").change()
@@ -718,24 +764,6 @@ $("#id_description_card").change()
 
 
 
-
-
-
-
-
-<datalist id="brow2">
-  {% for kw in "eng"|get_keywords %}
-  <option value="{{kw}}"> </option> 
-  {% endfor %}
-</datalist> 
-
-<datalist id="brow">
-  {% for kw in "swe"|get_keywords %}
-  <option value="{{kw}}"> </option> 
-  {% endfor %}
-
-
-</datalist>
 
 {% endblock content %}
 

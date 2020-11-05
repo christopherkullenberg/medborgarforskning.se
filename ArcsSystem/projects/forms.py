@@ -58,6 +58,7 @@ class InitialProjectSubmissionModelForm(forms.ModelForm):
     class Meta:
         model = ProjectSubmission
         fields = [
+        'science_type',
         'name',
         'aim',
         "image",
@@ -97,6 +98,9 @@ class InitialProjectSubmissionModelForm(forms.ModelForm):
 
 
 
+
+
+
     #aim =  SummernoteTextFormField()
 class ProjectEntryUpdateManagementForm(forms.ModelForm):
     """Form for maintaining the projects approved and added to the database.
@@ -105,6 +109,7 @@ class ProjectEntryUpdateManagementForm(forms.ModelForm):
     class Meta:
         model = ProjectEntry
         fields = [
+        'science_type',
         'aim',
         'name',
         'description',

@@ -297,9 +297,6 @@ def ProjectSubmissionEditView(request, pk):
 def ProjectSubmissionCreateView(request):
 
 
-
-
-
     template_name = 'projects/project_submissionform.html'
     context = {}
 

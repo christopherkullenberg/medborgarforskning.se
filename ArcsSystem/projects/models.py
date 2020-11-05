@@ -98,13 +98,10 @@ class KeywordEng(models.Model):
             html += ''' <div class="row" >'''
 
             cl = Client()
-
             ent = cl.get("Q" + str(self.wikidataQ), load=True)
 
             # first col
             html += ''' <div class"col-6">    <h5>  '''+ str(ent.description) +''' </h5>  '''
-
-
 
             # image
             if "P18" in ent.data["claims"]:
@@ -123,8 +120,6 @@ class KeywordEng(models.Model):
             return html
         return ""
 
-
-
     def get_summary(self, lang="en"):
         if lang == "en":
             use = self.summary_en
@@ -134,16 +129,6 @@ class KeywordEng(models.Model):
         if use != None:
             return use + '''<br> <br> <p style="font-size:20px;">Source: <a href="https://en.wikipedia.org/wiki/''' + self.keyword +'''" >Wikipedia</a></p>'''
         return "<p> No short description found </p>"
-
-
-
-
-
-
-    # def get_custom_html(self):
-
-
-
 
 
 class KeywordLine(models.Model):
@@ -181,12 +166,29 @@ class KeywordLine(models.Model):
 
 
 
-    def get_custom_html(self):
+    def get_custom_html(self, lang):
 
-        if self.eng != None:
-            return self.eng.get_custom_html()
+        if lang == "sv":
+
+            if self.swe != None:
+
+                if self.eng != None:
+                    return ''' <a href="'''+ self.eng.get_absolute_url()+'''">'''+ self.swe.keyword + ''' </a> '''
+
+                else:
+                    return self.swe.keyword
+
+            return ''' <a href="'''+ self.eng.get_absolute_url()+'''">'''+ self.eng.keyword + " (endast på engelska)" + ''' </a> '''
+
+        if lang == "en":
+
+            if self.eng != None:
+
+                return ''' <a href="'''+ self.eng.get_absolute_url()+'''">'''+ self.eng.keyword + ''' </a> '''
+
+            return self.swe.keyword + " (only in Swedish)"
+
         return ""
-
 
 
 
@@ -279,7 +281,8 @@ class Project(models.Model):
     status = models.CharField(db_index=True, max_length=30, default='0', choices=STATUS_CHOICES,) ## maps to PPSR PMM  projectStatus
     start_date = models.DateTimeField(help_text=_('Date the project started.'), db_index=True, null=True,) ## maps to PPSR PMM  projectStartDate
     #duration = models.CharField(max_length=30, default='0',) ## maps to PPSR PMM projectDuration - value should be calculated as diff from start to end or if started and no end - infinit
-    science_type = models.ManyToManyField(ScienceType) ## maps to PPSR PMM projectScienceType
+    
+    science_type = models.ForeignKey(ScienceType, on_delete=models.SET_NULL, blank=True, null=True )
     '''PPSR PMM Optional Fields'''
     # has_tag = ## maps to PPSR PMM hasTag
     #difficulty_level = ## maps to PPSR PMM difficultyLevel

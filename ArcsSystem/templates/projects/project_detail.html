@@ -8,12 +8,11 @@
 {% block content %}
 
 
-<div class="custom-container">
-
 {% if edit %}
-<div class="col-md-2">
-<a class="form-control" href="edit/">edit</a>
-</div>
+<h5 style="font-weight: 100" >This is your project </h5>
+
+    
+<a style="font-size: 24px" class="form-control btn-success col-2 " href="edit/" >edit</a>
 {% endif %}
 
 
@@ -24,246 +23,331 @@
 
     {# TODO implement additional web image format handling #}
     <source srcset="name.webp" type="image/webp" alt="{#TODO alt text#}">{#Webp image support first#}
-		<source srcset="name.jpg" type="image/jpg" alt="{#TODO alt text#}">{#jpg support next#}
+        <source srcset="name.jpg" type="image/jpg" alt="{#TODO alt text#}">{#jpg support next#}
     <img src="{{ object.image_dir }}"  alt="{% blocktrans %}Bild för projektet {{ object.name }}{% endblocktrans %}" width="300" height="300"/>
   </picture> -->
 
 {% if object.image %}
 
-<picture  class="detail-view">
-<img align="center" src="{{object.image.url}}" alt="{% trans 'Responsive image' %}" style="width: 200px; height: 200px;" />
-</picture>
+
+<img align="center" class="center"  src="{{object.image.url}}" alt="{% trans 'Responsive image' %}" style="width: 200px; height: 200px;" />
+
 
 {% else %}
 
 
 {{object.image}}
 
-<div align="center" style="height: 30px; width: calc(50%);  background: coral">
+<div class="center" align="center" style="height: 30px; width: calc(50%);  background: coral">
 <h5 align="center"  > No image</h5>
 </div>
 
 {% endif %}
 
-<br><br>
 
-    <h2 align="center">{% trans "Project information" %}</h2>
-    <hr>
-    <h3>{% trans "PROJECT AIM:" %}</h3>
-    <p>{{ object.aim|safe }}</p>
+  <div class="custom-container">
 
-<br>
+    <ul class="nav nav-tabs">
 
+      <li class="nav-item">
+        <a class="nav-link active " data-toggle="tab" href="#step1">{% trans "Details" %}</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link " data-toggle="tab" href="#step_aim">{% trans "Aim" %} <span class="glyphicon glyphicon-align-left" ></span></a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link " data-toggle="tab" href="#step_description">{% trans "Description" %}</a>
+      </li>
 
+      <li class="nav-item">
+        <a class="nav-link " data-toggle="tab" href="#step3">{% trans "Keywords" %}</a>
+      </li>
 
-    <h3>{% trans "PROJECT DESCRIPTION:" %}</h3>
-    <p>{{ object.description|safe  }}</p>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#step5">{% trans "Contact info" %} </a>
+      </li>
 
-<br>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#step_map">{% trans "Location" %}</a>
+      </li>
 
-    <h3>{% trans "PROJECT STATUS:" %}</h3>
-    <p>{{ object.get_status_name }}</p>
-
-
-<br>
-
-
-  <div class="detail-view">
-    <h3>{% trans "PROJECT TARGET AUDIENCE:" %}</h3>
-    <p>{{ object.target_audience}}</p>
-  </div>
-
-  <div class="detail-view">
-      <h3>{% trans "PROJECT RECORD LAST UPDATED:" %}</h3>
-      <p>{# TODO Insert last updated field when created in the model #}</p>
-  </div>
-
-  <div class="detail-view">
-      <h3>{% trans "MEDIA LINKS:" %}</h3>
-      <ul>
-      </ul>
-  </div>
-
-  <div class="detail-view">
-    <h2>{% trans "Contact information" %}</h2>
-    <h3>{% trans  "NAME:" %} {{ object.contact_name }}</h3>
-    <h3>{% trans "CONTACT'S ROLE:" %} {{ object.contact_role }}</h3>
-    <h3>{% trans "AFFILIATION:" %} {{ object.contact_affiliation }}</h3>
-    <h3>{% trans "CONTACT EMAIL:" %} {{ object.contact_email }}</h3>
-    <h3>{% trans "CONTACT PHONE:" %} {{ object.contact_phone }}</h3>
-  </div>
+    </ul>
 
 
+    <div class="tab-content">
+      <br>
+      <div id="step1" class="tab-pane container active">
+        <br>
+
+            <h5>{% trans "Target audience" %}:  {{ object.target_audience}}</h5>
+
+            <br>
 
 
+            <h5>{% trans "Project status" %}: {{ object.get_status_name}}</h5>
+    
 
-          {% for one_list in object|get_all_related:LANGUAGE_CODE %}
-            {{ one_list.0|safe }}
-            <script>
-                var data = JSON.parse('{{ one_list.1| escapejs }}');
-            </script>
+            <br>
+
+            <h5>{% trans "Science type" %}:  {{ object.science_type}}</</h5>
+
+        </div>
+  
+      <div class="tab-pane container fade" id="step_aim">
+        <p>{{ object.aim|safe }}</p>
+     </div>
+
+     <div class="tab-pane container fade" id="step_description">
+      {{ object.description|safe }}
+    </div>
+
+    <div id="step3" class="tab-pane fade">
+
+        <h3>{% trans "Project keywords" %} </h3>
+
+
+        {% for line in object.keyword_lines.all %}
+
+        {{line|get_keyword:LANGUAGE_CODE |safe }}
+        <br>
+
         {% endfor %}
+        <br>
+        <br>
 
 
-</article>
+    {% if object.keyword_lines.all %}
 
+    <h3> {% trans "Keyword connections" %} </h3>
 
-
-
-    <style>
-        svg text {
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
-        .links line {
-            stroke: white;
-        }
-        .nodes circle {
-            stroke: #fff;
-            stroke-width: 1.5px;
-        }
-        text {
-            font-family: sans-serif;
-            font-weight: lighter;
-            fill: white;
-        }
-    </style>
-    <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
-    <script type="text/javascript">
-        // Isaks add functions
-        // calc font size
-        function calc_font_size(d) {
-            return Math.sqrt(d.value) + 16
-        };
-    </script>
+  {% for one_list in object|get_all_related:LANGUAGE_CODE %}
+    {{ one_list.0|safe }}
     <script>
-        function strength(link) {
-            return 0.1 / Math.min(count(link.source), count(link.target));
-        }
-        var svg = d3.select("#rel_graph"),
-            width = +svg.attr("width"),
-            height = +svg.attr("height");
-        var color = d3.scaleOrdinal(d3.schemeCategory20);
-        //.distance(function(d) { return Math.sqrt(d.value) * 2 + 300; })
-        var simulation = d3.forceSimulation()
-            .force("link", d3.forceLink().id(function (d) {
-                return d.id;
-            }).distance(function (d) {
-                return 60;
-            }))
-            //Math.sqrt(d.value) * 2 + 200;
-            .force("charge", d3.forceManyBody().strength(function (d) {
-                return -80;
-            }))
-            // -(d.value**2  + 400)
-            .force("center", d3.forceCenter(width / 2, height / 2));
-        var link = svg.append("g")
-            .attr("class", "links")
-            .selectAll("line")
-            .data(data.links)
-            .enter().append("line")
-            .attr("stroke-width", function (d) {
-                return Math.sqrt(d.value / 5);
-            });
-        link.attr('opacity', function (d) {
-            return d.value / 30 + 0.4;
+        var data = JSON.parse('{{ one_list.1| escapejs }}');
+    </script>
+{% endfor %}
+
+{% else %}
+
+{% trans "This project has no keywords. Relations are created through keywords. Therefore no relations can be created" %} 
+
+{% endif %}
+
+    </div>
+
+
+
+    <div id="step5" class="tab-pane fade">
+
+<h4>{% trans "Name" %}: {{ object.contact_name }}</h4>
+<h4>{% trans "Contact's role" %}: {{ object.contact_role }}</h4>
+<h4>{% trans "Affiliation" %}: {{ object.contact_affiliation }}</h4>
+<br>
+
+{% if  object.url %}
+<h4><a href=" {{ object.url }}"> {% trans "External link to project"%}</a> </h4>
+(link addres:  {{ object.url }})
+<br>
+
+{% endif %}
+
+
+<br>
+send email to user
+<textarea class="form-control"> </textarea>
+
+
+</div>
+
+
+<div id="step_map" class="tab-pane fade">
+
+    sweden
+
+    lägg till detta i framtiden
+
+
+</div>
+
+</div>
+</div>
+
+
+<br><br><br>
+
+
+<style type="text/css">
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+</style>
+
+
+
+
+{% if object.keyword_lines.all %}
+
+
+<style>
+    svg text {
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+    .links line {
+        stroke: white;
+    }
+    .nodes circle {
+        stroke: #fff;
+        stroke-width: 1.5px;
+    }
+    text {
+        font-family: sans-serif;
+        font-weight: lighter;
+        fill: white;
+    }
+</style>
+<script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
+<script type="text/javascript">
+    // Isaks add functions
+    // calc font size
+    function calc_font_size(d) {
+        return Math.sqrt(d.value) + 16
+    };
+</script>
+<script>
+    function strength(link) {
+        return 0.1 / Math.min(count(link.source), count(link.target));
+    }
+    var svg = d3.select("#rel_graph"),
+        width = +svg.attr("width"),
+        height = +svg.attr("height");
+    var color = d3.scaleOrdinal(d3.schemeCategory20);
+    //.distance(function(d) { return Math.sqrt(d.value) * 2 + 300; })
+    var simulation = d3.forceSimulation()
+        .force("link", d3.forceLink().id(function (d) {
+            return d.id;
+        }).distance(function (d) {
+            return 60;
+        }))
+        //Math.sqrt(d.value) * 2 + 200;
+        .force("charge", d3.forceManyBody().strength(function (d) {
+            return -80;
+        }))
+        // -(d.value**2  + 400)
+        .force("center", d3.forceCenter(width / 2, height / 2));
+    var link = svg.append("g")
+        .attr("class", "links")
+        .selectAll("line")
+        .data(data.links)
+        .enter().append("line")
+        .attr("stroke-width", function (d) {
+            return Math.sqrt(d.value / 5);
+        });
+    link.attr('opacity', function (d) {
+        return d.value / 30 + 0.4;
+    });
+
+    var node = svg.append("g")
+        .attr("class", "nodes")
+        .selectAll("g")
+        .data(data.nodes)
+        .enter().append("g")
+    var circles = node.append("circle")
+        .attr("r", function (d) {
+            if (d.value) {
+                return d.value
+            }
+            ;
+            return 5;
+        })
+
+        .attr("id", function (d) {
+            return d.id;
+        })
+        .attr("fill", function (d) {
+            if (d.group == 0) return "green";
+            if (d.group == 1) return "red";
+            return "blue";
+        })
+        .call(d3.drag()
+            .on("start", dragstarted)
+            .on("drag", dragged)
+            .on("end", dragended));
+
+    var lables = node.append("text")
+        .text(function (d) {
+            return d.id;
+        })
+
+        .attr('x', function (d) {
+            return -d.id.length * calc_font_size(d) / 4;
+        })
+        .attr('y', function (d) {
+            return -d.value - calc_font_size(d) / 2;
+        })
+        .attr('font-size', function (d) {
+            return calc_font_size(d);
         });
 
-        var node = svg.append("g")
-            .attr("class", "nodes")
-            .selectAll("g")
-            .data(data.nodes)
-            .enter().append("g")
-        var circles = node.append("circle")
-            .attr("r", function (d) {
-                if (d.value) {
-                    return d.value
-                }
-                ;
-                return 5;
-            })
+    node.append("title")
+        .text(function (d) {
+            return d.id;
+        });
 
-            .attr("id", function (d) {
-                return d.id;
-            })
-            .attr("fill", function (d) {
-                if (d.group == 0) return "green";
-                if (d.group == 1) return "red";
-                return "blue";
-            })
-            .call(d3.drag()
-                .on("start", dragstarted)
-                .on("drag", dragged)
-                .on("end", dragended));
+    simulation
+        .nodes(data.nodes)
+        .on("tick", ticked);
 
-        var lables = node.append("text")
-            .text(function (d) {
-                return d.id;
-            })
+    simulation.force("link")
+        .links(data.links);
 
-            .attr('x', function (d) {
-                return -d.id.length * calc_font_size(d) / 4;
+    function ticked() {
+        link
+            .attr("x1", function (d) {
+                return d.source.x;
             })
-            .attr('y', function (d) {
-                return -d.value - calc_font_size(d) / 2;
+            .attr("y1", function (d) {
+                return d.source.y;
             })
-            .attr('font-size', function (d) {
-                return calc_font_size(d);
+            .attr("x2", function (d) {
+                return d.target.x;
+            })
+            .attr("y2", function (d) {
+                return d.target.y;
             });
 
-        node.append("title")
-            .text(function (d) {
-                return d.id;
-            });
 
-        simulation
-            .nodes(data.nodes)
-            .on("tick", ticked);
+        node
+            .attr("transform", function (d) {
+                return "translate(" + d.x + "," + d.y + ")";
+            })
+    }
+    function dragstarted(d) {
+        if (!d3.event.active) simulation.alphaTarget(0.3).restart();
+        d.fx = d.x;
+        d.fy = d.y;
+        var info_box = $("#rel_graph").find("text#info_text_svg");
+        info_box.find("#name").text(d.id);
+        info_box.find("#value").text(d.value);
+        info_box.find("#link").attr("href", "/keywords/" + d.id)
+    }
+    function dragged(d) {
+        d.fx = d3.event.x;
+        d.fy = d3.event.y;
+    }
+    function dragended(d) {
+        if (!d3.event.active) simulation.alphaTarget(0);
+        d.fx = null;
+        d.fy = null;
+    }
+</script>
 
-        simulation.force("link")
-            .links(data.links);
-
-        function ticked() {
-            link
-                .attr("x1", function (d) {
-                    return d.source.x;
-                })
-                .attr("y1", function (d) {
-                    return d.source.y;
-                })
-                .attr("x2", function (d) {
-                    return d.target.x;
-                })
-                .attr("y2", function (d) {
-                    return d.target.y;
-                });
-
-
-            node
-                .attr("transform", function (d) {
-                    return "translate(" + d.x + "," + d.y + ")";
-                })
-        }
-        function dragstarted(d) {
-            if (!d3.event.active) simulation.alphaTarget(0.3).restart();
-            d.fx = d.x;
-            d.fy = d.y;
-            var info_box = $("#rel_graph").find("text#info_text_svg");
-            info_box.find("#name").text(d.id);
-            info_box.find("#value").text(d.value);
-            info_box.find("#link").attr("href", "/keywords/" + d.id)
-        }
-        function dragged(d) {
-            d.fx = d3.event.x;
-            d.fy = d3.event.y;
-        }
-        function dragended(d) {
-            if (!d3.event.active) simulation.alphaTarget(0);
-            d.fx = null;
-            d.fy = null;
-        }
-    </script>
+{% endif %}
 
 {% endblock content %}

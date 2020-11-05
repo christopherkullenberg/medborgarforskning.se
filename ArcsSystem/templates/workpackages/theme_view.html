@@ -102,10 +102,10 @@
                     if (count < 10) {
                         count += 1
                         var new_keyword_line = $("#hidden_keyword_div").clone();
-                        new_keyword_line.attr("id", "keyword_div_" + count)
-                        new_keyword_line.find("#hidden_input_eng").attr({"name": "Keyword_eng_" + count, "value": en})
-                        new_keyword_line.find("#hidden_input_swe").attr({"name": "Keyword_sve_" + count, "value": sv})
-                        new_keyword_line.find("#hidden_row_number").html(count)
+                        new_keyword_line.attr("id", "keyword_div_" + count);
+                        new_keyword_line.find("#hidden_input_eng").attr({"name": "Keyword_eng_" + count, "value": en});
+                        new_keyword_line.find("#hidden_input_swe").attr({"name": "Keyword_sve_" + count, "value": sv});
+                        new_keyword_line.find("#hidden_row_number").html(count);
                         new_keyword_line.appendTo("#keyword_div");
                     }
                 }

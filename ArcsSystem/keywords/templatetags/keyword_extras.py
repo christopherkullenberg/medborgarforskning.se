@@ -152,11 +152,10 @@ def convert_dict(json_di, value=1):
 
 
 
-
-
 def get_all_related(this_db_class, lang ="en", use="all"):
-	print("--------------------------------")
-	print(this_db_class)
+
+
+
 
 	#limit for pub, pro and theme. Can change to one for each one
 	limit_things = 16
@@ -204,15 +203,16 @@ def get_all_related(this_db_class, lang ="en", use="all"):
 		use = this_db_class.keywords.all().exclude(keyword__in=uni_exclude_keys)
 
 	else:
-		print(this_db_class)
-		print(this_db_class.keyword_lines.all())
 		use = [line.eng for line in this_db_class.keyword_lines.all().exclude(eng__keyword__in=uni_exclude_keys).exclude(eng__isnull=True)]
-
 		if type(this_db_class) == Theme:
 			db_classes["theme"].append(this_db_class.id)
 
 		elif type(this_db_class) == ProjectEntry:
 			db_classes["project"].append(this_db_class.id)
+
+
+	if len(use) == 0:
+		return["", {}]
 
 
 
@@ -246,21 +246,23 @@ def get_all_related(this_db_class, lang ="en", use="all"):
 			for theme in line.Theme.all().exclude(id__in=di["Theme"]["not"][kw.id] + db_classes["theme"])[:q_set]:
 				amount_the += 1
 				result = theme.keyword_lines.all().exclude(eng__keyword__in=uni_exclude_keys).exclude(eng__isnull=True)
-				di["Theme"][len(result)].append([theme,[l.eng for l in result]])
+				result_prio =[x for x in result if x in use]
+				di["Theme"][len(result_prio)].append([theme,[l.eng for l in result]])
 				for l in result:
 					di["Theme"]["not"][l.eng.id].append(theme.id)
 	
 			for project in line.Project.all().exclude(id__in=di["Project"]["not"][kw.id] + db_classes["project"])[:q_set]:
 				amount_pro += 1
 				result = project.keyword_lines.all().exclude(eng__keyword__in=uni_exclude_keys).exclude(eng__isnull=True)
-				di["Project"][len(result)].append([project, [l.eng for l in result]])
+				result_prio =[x for x in result if x in use]
+				di["Project"][len(result_prio)].append([project, [l.eng for l in result]])
 				for l in result:
 					di["Project"]["not"][l.eng.id].append(project.id)
 
 
 	nav_html = ' <ul class="nav nav-tabs"> '
 	div_html = ' <div class="col-12">  <div class="tab-content"> <br> '
-	nav_html += ' <li class="nav-item"> <a class="nav-link ' + "" + '" data-toggle="tab" href="#'+"pub"+'">'+"Publications "+ str(amount_pub)+'</a> </li> '
+	nav_html += ' <li class="nav-item"> <a class="nav-link ' + "" + '" data-toggle="tab" href="#'+"pub"+'">'+"Publications ("+ str(amount_pub)+')</a> </li> '
 	div_html += ' <div id="'+"pub"+'" class="tab-pane container '+ "" +'">  <div class="row" > '
 	count = 0
 
@@ -291,7 +293,7 @@ def get_all_related(this_db_class, lang ="en", use="all"):
 	div_html += ' </div></div>'
 
 	for grup_num, thing in enumerate(dict_key_thing):
-		nav_html += ' <li class="nav-item"> <a class="nav-link ' + thing + '" data-toggle="tab" href="#'+thing+'">'+thing+' ' + str(count_list[grup_num])+ '</a> </li> '
+		nav_html += ' <li class="nav-item"> <a class="nav-link ' + thing + '" data-toggle="tab" href="#'+thing+'">'+thing+' (' + str(count_list[grup_num])+ ')</a> </li> '
 		div_html += ' <div id="'+thing+'" class="tab-pane container '+ thing +'">  <div class="row" > '
 		count = 0
 		for x in range(60, -1, -1):
@@ -341,10 +343,12 @@ def get_all_related(this_db_class, lang ="en", use="all"):
 	div_html += ' </div> </div> <br> <br> <br> <br>'
 
 
-
-
-
-
 	return [[nav_html + div_html, convert_dict(json_di, 1 )]]
 
+
+def get_keyword(line, lang):
+
+	return line.get_custom_html(lang)
+
+register.filter("get_keyword", get_keyword)
 register.filter("get_all_related", get_all_related)

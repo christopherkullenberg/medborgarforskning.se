@@ -2,6 +2,7 @@
 {% load static %}
 {% load i18n %}
 {% load workpackages_extras %}
+{% load keyword_extras %}
 {% block content %}
     <div class="container">
         <div class="row">
@@ -23,7 +24,11 @@
                             <ul id="theme_nav_tab" class="nav nav-tabs col-12">
                                 {% for theme in st.1 %}
                                     <li class="nav-item"><a class="nav-link" data-toggle="tab"
-                                                            href="#theme_{{ theme.title|slugify }}">{{ theme.title }} {{ theme.id }}</a>
+                                                            href="#theme_{{ theme.title|slugify }}">{{ theme.title }}
+                                                            {% if user.is_superuser %}
+                                                             {{ theme.id }}
+                                                            {% endif %}
+                                                         </a>
                                     </li>
                                 {% endfor %}
                             </ul>
@@ -32,12 +37,12 @@
                                     <div id="theme_{{ theme.title|slugify }}" class="tab-pane container row">
                                         {{ theme.body|safe }}
                                         <hr>
-                                        {% trans "Theme" %} {% trans "keywords" %} :
+                                        {% trans "Keywords for this theme" %} :
                                         {% for line in theme.keyword_lines.all %}
-                                            {{ line.get_custom_html|safe }} ,
+                                            {{ line|get_keyword:LANGUAGE_CODE|safe }}, <span> </span>
                                         {% endfor %}
                                         <hr>
-                                        <h5>{% trans "Publications referencing this theme:" %}</h5>
+                                        <h5>{% trans "References:" %}</h5>
                                         <div class="row">
                                             {% for rel_art in theme|get_rel_pubs %}
                                                 {{ rel_art|safe }}
