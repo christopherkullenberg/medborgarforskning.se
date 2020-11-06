@@ -1,36 +1,32 @@
 #!/bin/bash
 echo Loading fixtures, this may take a moment...
 
-echo Loading organizations...
+python manage.py loaddata db.xml
+
+
+: <<'END'
+
+echo 1. Loading organizations...
 python manage.py loaddata organizations/fixtures/organizations.xml
 echo Organizations loaded
 
-echo Loading Projects and keyword lines... this one is big....
+echo 2. Loading Projects and keyword lines... this one is big....
 python manage.py loaddata projects/fixtures/projects.xml
 echo Projects and Keyword lines fixtures loaded
 
-
-
-
-echo Loading keywords and publications... this one is big....
+echo 3. Loading keywords and publications... this one is big....
 python manage.py loaddata publications/fixtures/publications.xml
 echo Publications fixtures loaded
 
-echo Loading workpackages...
+echo 4. Loading workpackages...
 python manage.py loaddata workpackages/fixtures/workpackages.xml
 echo Workpackages fixtures loaded!
 
-
-
-
-echo Loading organizations...
-python manage.py loaddata organizations/fixtures/organizations.xml
-echo Organizations fixtures loaded
-
-echo Loading staticpages...
+echo 5. Loading staticpages...
 python manage.py loaddata staticpages/fixtures/staticpages.xml
 echo Staticpages fixtures loaded
 
+END
 
 
 echo Done. Fixtures loaded [unless you saw errors].
