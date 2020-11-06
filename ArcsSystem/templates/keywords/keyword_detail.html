@@ -19,7 +19,6 @@
         {{ one_list.0|safe }}
         <script>
             var data = JSON.parse('{{ one_list.1| escapejs }}');
-            console.log(data.links)
         </script>
     {% endfor %}
     <style>

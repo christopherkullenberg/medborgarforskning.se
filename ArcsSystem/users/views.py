@@ -48,9 +48,7 @@ class UserPublicProfilePageView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         obj = CustomUser.objects.get(username=self.kwargs['username'])
-        print(obj)
         context["list_of_projects"] = ProjectEntry.objects.filter(created_by = obj)
-        print(context)
         return context
 
 def UserPrivateProfilePageView(request):
