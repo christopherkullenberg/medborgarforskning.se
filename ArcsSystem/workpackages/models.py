@@ -102,11 +102,6 @@ class Theme(models.Model):
 
             kl = self.keyword_lines.filter(eng__id__in=use)[:kw_limit]
 
-            print(use)
-
-            print(kl)
-            print([test_x.eng.id for test_x in kl])
-
             count = 0
 
             for line in kl:

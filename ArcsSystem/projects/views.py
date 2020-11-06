@@ -116,14 +116,12 @@ def ProjectEditView(request, pk):
 
 
     template_name = 'projects/project_submissionform.html'
-
     # new page : get page
     if request.method == "GET":
         if request.user.is_authenticated:
             project = ProjectEntry.objects.get(id=pk)
             if int(request.user.id) == project.created_by.id or request.user.is_superuser:
                 context = {"Submission": InitialProjectSubmissionModelForm(initial = model_to_dict(project))}
-
 
                 sv_list, en_list = project.get_sv_en_keywords()
                 context["keyword_line"] = []
@@ -132,7 +130,6 @@ def ProjectEditView(request, pk):
                     context["keyword_line"].append([sv_list[i], en_list[i]])
 
                 if project.image:
-
                     context["inital_image"] = project.image.url
 
                 return render(request, template_name, context)
@@ -142,7 +139,7 @@ def ProjectEditView(request, pk):
 
     #this is the save sub-form part
     if request.method == "POST":
-        print("post")
+
         #check if user
         if request.user.is_authenticated:
             project = get_object_or_404(ProjectEntry, id=pk)
@@ -152,20 +149,11 @@ def ProjectEditView(request, pk):
             if not form.is_valid():
                 return render(request, template_name, {"Submission": form})
 
-            print("valid")
-
-
             # if user it the owner or admin
             if int(request.user.id) == project.created_by.id or request.user.is_superuser:
-
                 form.instance.created_by = request.user
-
                 update_project_entry_keyword_lines(project, * load_keywords_list(request))
-
-                print(project.keywords)
-
                 form.save()
-
                 return HttpResponseRedirect(reverse('userprofile_private_view'))
             # else stop
             else:
@@ -179,19 +167,14 @@ def load_keywords(request):
 
     for nr in range(1, 11):
         if "Keyword_sve_" + str(nr) in request.POST or "Keyword_eng_" + str(nr) in request.POST:
-
-
             if "Keyword_sve_" + str(nr) in request.POST:
                 sve_string += request.POST["Keyword_sve_" + str(nr)].replace("&", "") + "&"
             else:
                 sve_string += "&"
-
-
             if "Keyword_eng_" + str(nr) in request.POST:
                 eng_string += request.POST["Keyword_eng_" + str(nr)].replace("&", "") + "&"
             else:
                 eng_string += "&"
-
         else:
 
             break
@@ -226,22 +209,18 @@ def load_keywords_list(request):
 
     sve_string = []
     eng_string = []
-
     for nr in range(1, 11):
         if "Keyword_sve_" + str(nr) in request.POST or "Keyword_eng_" + str(nr) in request.POST:
-
 
             if "Keyword_sve_" + str(nr) in request.POST:
                 sve_string += [request.POST["Keyword_sve_" + str(nr)].replace("&", "")]
             else:
                 sve_string += [""]
 
-
             if "Keyword_eng_" + str(nr) in request.POST:
                 eng_string += [request.POST["Keyword_eng_" + str(nr)].replace("&", "")]
             else:
                 eng_string += [""]
-
 
     return sve_string, eng_string
 
@@ -256,10 +235,7 @@ def ProjectSubmissionEditView(request, pk):
             project = ProjectSubmission.objects.get(id=pk)
             if int(request.user.id) == project.created_by.id or request.user.is_superuser:
                 context = {"Submission": InitialProjectSubmissionModelForm(initial = model_to_dict(project))}
-                
                 sv_list, en_list = project.get_keywords()
-
-
                 context["keyword_line"] = []
                 context["keyword_len"] = len(sv_list)
                 for i in range(context["keyword_len"]):
@@ -281,7 +257,6 @@ def ProjectSubmissionEditView(request, pk):
             # for not valid then stop
             if not form.is_valid():
                 return render(request, template_name, {"Submission": form})
-
             # if user it the owner or admin
             if int(request.user.id) == project.created_by.id or request.user.is_superuser:
                 form.instance.created_by = request.user
@@ -369,10 +344,7 @@ def update_project_entry_keyword_lines(model, key_sv, key_en ):
     model.keyword_lines.clear()
 
 
-
-
     for key_sv, key_en in zip(key_sv, key_en):
-
 
         # if both are empty continue 
         if key_sv == "" and key_en == "":
