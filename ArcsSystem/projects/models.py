@@ -276,12 +276,12 @@ class Project(models.Model):
     name = models.CharField(help_text=_('Common name for the project.'), db_index=True, max_length=200, blank=False,) ## maps to PPSR PMM  PMM projectName
 
     aim = models.CharField(help_text=_('Primary focus of the project.'), db_index=True, max_length=600, default='', blank=False,) ## maps to PPSR PMM  projectAim
-    description = models.CharField(max_length=5000, default=_(''), blank=False,) ## maps to PPSR PMM  projectDescription
+    description = models.CharField(max_length=50000, default=_(''), blank=False,) ## maps to PPSR PMM  projectDescription
     #status = models.ForeignKey(Status, on_delete=models.CASCADE)
     status = models.CharField(db_index=True, max_length=30, default='0', choices=STATUS_CHOICES,) ## maps to PPSR PMM  projectStatus
     start_date = models.DateTimeField(help_text=_('Date the project started.'), db_index=True, null=True,) ## maps to PPSR PMM  projectStartDate
     #duration = models.CharField(max_length=30, default='0',) ## maps to PPSR PMM projectDuration - value should be calculated as diff from start to end or if started and no end - infinit
-    
+
     science_type = models.ForeignKey(ScienceType, on_delete=models.SET_NULL, blank=True, null=True )
     '''PPSR PMM Optional Fields'''
     # has_tag = ## maps to PPSR PMM hasTag

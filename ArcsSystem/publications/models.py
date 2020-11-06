@@ -39,17 +39,17 @@ class Article(models.Model):
         verbose_name_plural = _('Articles')
 
     title = models.CharField(
-        max_length=200,
+        max_length=20000,
         default="title",
         )
     keywords = models.ManyToManyField(KeywordEng, related_name="Article")
     abstract = models.CharField(
-        max_length=5000,
+        max_length=50000,
         default=_('Empty'),
         )
     doi = models.CharField(
         help_text=_("DOI without http"),
-        max_length=200,
+        max_length=20000,
         blank=True,
         ) # format like 10.1016/J.BIOCON.2016.05.015
     py = models.IntegerField(
@@ -58,23 +58,23 @@ class Article(models.Model):
         ) #Todo make variable semantic - move to PubYear
     authors = models.CharField(
         help_text=_("Author String"),
-        max_length=500,
+        max_length=50000,
         default=_("Author"),
         ) # ['author1','author2','author3...etc']
     # authors_sementic = # TODO add field to resolved authors to ORCID ['authorWikidataID1','','authorWikidataID3']
     source = models.CharField(
         help_text=_("Source Name"),
-        max_length=200,
+        max_length=20000,
         blank=True,
         )
     volume = models.CharField(
         help_text=_("Volume"),
-        max_length=200,
+        max_length=20000,
         blank=True,
         )
     issue = models.CharField(
         help_text=_("Issue Number"),
-        max_length=200,
+        max_length=20000,
         blank=True,
         )
     # wikidataID = models.CharField(
@@ -98,12 +98,12 @@ class Article(models.Model):
         di["en"] = []
         di["sv"] = []
 
-        #return "<div class='col-4' > <a href='" + self.get_absolute_url_details() +   "'>" + self.name +  "</a> </div>" 
+        #return "<div class='col-4' > <a href='" + self.get_absolute_url_details() +   "'>" + self.name +  "</a> </div>"
         html =   '''
             <div style="padding-left: 20px; padding-right: 20px; font-size:10px" class="col-lg-3 col-md-4 col-xs-6 mb-5">
                 <div class="project-item">
                     <div class="row">
-                        <div class=" col">  
+                        <div class=" col">
                             ''' + '''  <button style="height:100px; color :white; font-size: 10px" class=" col project-items-justify form-control blackFieldWhiteText" type="button" onclick="location.href=' '''+ self.get_absolute_url() + '''  ';"  /> ''' +  self.title +  ''' </button>  ''' +  '''
                         </div>
                     </div>
@@ -112,9 +112,9 @@ class Article(models.Model):
 
                         <div class="row Lato-font ">
                             <div class="col" >
-                                <span  >  
+                                <span  >
 
-                                ''' + limit_string(self.authors,limit) + " "  + str( self.py) + " " + limit_string(self.source, limit) + " " + self.volume + "("+ self.issue +")"+  ''' 
+                                ''' + limit_string(self.authors,limit) + " "  + str( self.py) + " " + limit_string(self.source, limit) + " " + self.volume + "("+ self.issue +")"+  '''
 
                                 </span>
                             </div>
@@ -124,7 +124,7 @@ class Article(models.Model):
 
                         <div class="row Lato-font ">
                             <div class="col" >
-                                <a href="https://doi.org/''' + self.doi +  '''" > Get full article </a> 
+                                <a href="https://doi.org/''' + self.doi +  '''" > Get full article </a>
                             </div>
                         </div>
                         <hr>
@@ -174,4 +174,4 @@ def limit_string(string, limit):
     if len(string) <= limit:
         return string
     else:
-        return string[:limit-3] + "..." 
+        return string[:limit-3] + "..."
