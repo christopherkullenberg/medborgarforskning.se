@@ -4,74 +4,113 @@
 {% load projects_extras %}
 {% block content %}
 
-<script type="text/javascript">
-</script>
+
+
+
+
+
 
 <div class="container-fluid">
     <div class="custom-container">
-        <div class="row project-menu-filter d-flex justify-content-center align-items-center">
-            <div class="col-sm-4 h">
-                <div class="row">
-                    <div class="col-sm-6 d-flex justify-content-start align-items-center">
-                        <h2 class="project-filter-menu-font">{%trans "Science type" %}</h2>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="dropdown">
-                          <button class="btn projects-filter-buttons dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            select
 
-                        </button>
-                        <div class="dropdown-menu main-menu-buttons" aria-labelledby="dropdownMenuButton">
-                          <a class="dropdown-item" href="#">All</a>
-                          {% for sci_typ in None|get_science_types %}
-                          <a class="dropdown-item" href="#">{{sci_typ}}</a>
-                          {% endfor %}
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-sm-4 h">
-            <div class="row">
-                <div class="col-sm-6 d-flex">
-                    <h2 class="project-filter-menu-font">{%trans "status" %}</h2>
-                </div>
-                <div class="col-sm-6">
-                    <div class="dropdown">
-                      <button class="btn projects-filter-buttons dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        select
-                    </button>
-                    <div class="dropdown-menu main-menu-buttons" aria-labelledby="dropdownMenuButton">
-                      <a class="dropdown-item" href="#">All</a>
-                      {% for status in None|get_all_status %}
-                      <a class="dropdown-item" href="#">{{status}}</a>
-                      {% endfor %}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+        <form method="GET"  action="{% url 'projects:project_list_filter' %}" >
 
-    <div class="col-sm-4 h">
         <div class="row">
-            <div class="col-sm-6 d-flex">
-                <h2 class="project-filter-menu-font">{%trans "sorted by" %}</h2>
-            </div>
-            <div class="col-sm-6">
-                <div class="dropdown">
-                  <button class="btn projects-filter-buttons dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    date published
-                </button>
-                <div class="dropdown-menu main-menu-buttons" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Action</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-</div>
+                {% for one_item in None|line_is_project %}
+                    <div class="col-lg-2 col-md-3 col-xs-12 mb-5 col-6">
+                        <span style="font-size: 12px" align="center" >{% trans "English Keywords" %}</span>
+                        <select id="kw_eng" name="kw_eng" class="custom-select form-control">
+                            <option value="all" > {% trans "All" %} </option>
+                            {% for line in one_item %}
+                                {% if line.eng %}
+                                    <option  value="{{ line.eng.id }}">
+                                        {{ line.eng.keyword }}
+                                    </option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                    </div>
 
-<div class="col-12" style="height: 100px" ></div>
+                    <div class="col-lg-2 col-md-3 col-xs-12 mb-5 col-6">
+                        <span style="font-size: 12px" >{% trans "Swedish Keywords" %}</span>
+                        <select id="kw_swe" name="kw_swe" class="custom-select form-control">
+                            <option value="all" > {% trans "All" %} </option>
+                            {% for line in one_item %}
+                                {% if line.swe %}
+                                    <option  value="{{ line.swe.id }}">
+                                        {{ line.swe.keyword }}
+                                    </option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                    </div>
+                {% endfor %}
+
+
+            <div class="col-lg-2 col-md-3 col-xs-12 mb-5 col-6">
+                <span style="font-size: 12px" >{%trans "Science type" %}</span>
+
+                <select id="science_type" name="science_type" class="custom-select form-control">
+                    <option value="all" > {% trans "All" %} </option>
+                    {% for sci_typ in None|get_science_types %}
+
+                        <option  value="{{ sci_typ.id }}">
+                            {{ sci_typ }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+
+            <div class="col-lg-2 col-md-3 col-xs-12 mb-5 col-6">
+                <span style="font-size: 12px">{%trans "Status" %}</span>
+                <select id="status" name="status" class="custom-select form-control">
+                    <option value="all" > {% trans "All" %} </option>
+                    {% for status in None|get_all_status %}
+                        <option  value="{{ status.0 }}">
+                            {{ status.1 }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+
+
+
+            <div class="col-lg-2 col-md-3 col-xs-12 mb-5 col-6">
+                <span style="font-size: 12px">{%trans "Sort by" %}</span>
+
+                <select id="sort" name="sort" class="custom-select form-control">
+
+                    <option  value="name"> {% trans "Alphabetical" %}, {% trans  "ascending" %} </option>
+                    <option  value="-name"> {% trans "Alphabetical" %}, {% trans "descending" %} </option>                    
+                    <option  value="date_created"> {% trans "Date added" %}, {% trans "ascending" %} </option>
+                    <option  value="-date_created"> {% trans "Date added" %}, {% trans "descending" %} </option>
+
+                </select>
+            </div>
+
+
+            <div class="col-lg-2 col-md-3 col-xs-12 mb-5 col-6">
+
+                <br>
+
+
+                <button name="update" value="1" class="form-control"> Update</button>
+
+            </div>
+
+
+          </div>
+
+          </form>
+
+
+
+<!--           ---------- -->
+
+
+<div class="col-12" style="height: 20px" ></div>
 <div class="row">
     {% for ProjectEntry in object_list %}
     <div style="padding-left: 20px; padding-right: 20px" class="col-lg-3 col-md-4 col-xs-6 mb-5">
@@ -127,31 +166,15 @@
 </div>
 
 
-
-
-
-<div class="row">
-    <div class="col d-flex justify-content-center align-items-center">
-        <nav aria-label="...">
-          <ul class="pagination">
-            <li class="page-item disabled">
-              <a class="page-link project-pageination" href="#" tabindex="-1">Previous</a>
-          </li>
-          <li class="page-item"><a class="page-link project-pageination" href="#">1</a></li>
-          <li class="page-item active">
-              <a class="page-link project-pageination" href="#">2 <span class="sr-only">(current)</span></a>
-          </li>
-          <li class="page-item"><a class="page-link project-pageination" href="#">3</a></li>
-          <li class="page-item">
-              <a class="page-link project-pageination" href="#">Next</a>
-          </li>
-      </ul>
-  </nav>
-</div>
-
-</div>
 </div>
 </div>
 
+{% for option in selcted %}
+
+<script type="text/javascript">
+    $('#{{option.0}} option[value={{option.1}}]').attr('selected', 'selected');
+</script>
+
+{% endfor %}
 
 {% endblock content %}

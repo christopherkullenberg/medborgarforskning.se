@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, HttpResponseRedirect, reverse
 from django.shortcuts import get_object_or_404
+
 from django.contrib.auth.models import User
 from django.views.generic import (
     CreateView,
@@ -33,6 +34,41 @@ def template_view(request):
 '''
 
 # Create your views here.
+
+
+def ProjectListViewFilter(request):
+
+    if request.method == "GET":
+        template_name = 'projects/project_list.html'
+
+        # create filter
+        selcted = []
+        filter_kw = ["status", "science_type"]
+        di_filter = {}
+        for kw in filter_kw:
+            if request.GET[kw] != "all":
+                di_filter[kw] = request.GET[kw]
+                selcted.append([kw, request.GET[kw]])
+
+        lang_for_kw = ["swe", "eng"]
+        for lang in lang_for_kw:
+            if request.GET["kw_" + lang ] != "all":
+                di_filter["keyword_lines__"+ lang +"__id"] =  int(request.GET["kw_"+ lang])
+                selcted.append(["kw_" + lang, request.GET["kw_"+ lang]])
+
+        # this is for safty. So that none can sortby email !!!
+        allowd_sorts = ["name", "date_created", "-name", "-date_created"]
+        if request.GET["sort"] in allowd_sorts:
+
+            return render(request, template_name, {
+             "object_list": ProjectEntry.objects.filter(**di_filter).order_by(request.GET["sort"]),
+             "selcted" : selcted
+                })
+
+    raise Http404()
+
+
+
 
 class ProjectListView(ListView):
     '''

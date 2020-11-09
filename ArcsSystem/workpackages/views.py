@@ -7,6 +7,7 @@ from publications.models import Article
 from keywords.views import keywords_to_context, update_object_KWL
 from projects.models import KeywordEng, KeywordSwe, KeywordLine
 from django.http import JsonResponse
+from django.http import Http404
 # Create your views here.
 
 # this is the view for the workpack home_page
@@ -78,7 +79,7 @@ class WorkpackagesThemeView(View):
             this_theme = Theme.objects.get(id = category)
             update_object_KWL(this_theme, request, 100)
             return HttpResponseRedirect(reverse('userprofile_private_view'))
-        raise 404
+        raise Http404()
 
 
 # class WorkpackagesListView(ListView):

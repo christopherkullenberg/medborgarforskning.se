@@ -1,8 +1,6 @@
-
-
 from django import template
 from workpackages.models import WorkPackage, Theme
-from projects.models import KeywordEng, KeywordSwe, ScienceType, STATUS_CHOICES
+from projects.models import KeywordEng, KeywordSwe, ScienceType, STATUS_CHOICES, KeywordLine
 
 
 register = template.Library()
@@ -12,15 +10,29 @@ register = template.Library()
 
 def get_keywords(string):
 
-    if string == "swe":
+	if string == "swe":
 
-        return [k.keyword for k in KeywordSwe.objects.all()]
+		return [k.keyword for k in KeywordSwe.objects.all()]
 
-    if string == "eng":
+	if string == "eng":
 
-        return [k.keyword for k in KeywordEng.objects.all()]
+		return [k.keyword for k in KeywordEng.objects.all()]
 
-    return []
+	return []
+
+
+def get_keywords_objects(string):
+
+
+	if string == "swe":
+
+		return KeywordSwe.objects.all()
+
+	if string == "eng":
+
+		return KeywordEng.objects.all()
+	return []
+
 
 
 def get_keywords_trans(model_thing, lang):
@@ -28,11 +40,26 @@ def get_keywords_trans(model_thing, lang):
 
 
 
+
+
 def get_all_status(limit=20):
-    return [x[1] for x in STATUS_CHOICES]
+	return STATUS_CHOICES
 
 def get_science_types(limit=20):
-    return ScienceType.objects.all()[:limit]
+	return ScienceType.objects.all()[:limit]
+
+
+
+
+def line_is_project(not_use):
+
+	return [KeywordLine.objects.exclude(Project=None)]
+
+
+
+
+register.filter("line_is_project", line_is_project)
+register.filter("get_keywords_objects", get_keywords_objects)
 register.filter("get_all_status", get_all_status)
 register.filter("get_keywords", get_keywords)
 register.filter("get_keywords_trans", get_keywords_trans)

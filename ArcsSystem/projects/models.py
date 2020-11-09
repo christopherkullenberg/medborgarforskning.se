@@ -62,17 +62,22 @@ class KeywordSwe(models.Model):
     class Meta:
         verbose_name = _('Keyword_sv')
         verbose_name_plural = _('Keywords_sv')
+        ordering = ('keyword',)
 
     keyword = models.TextField(unique=True, db_index=True)
 
+
     def __str__(self):
         return f'{self.keyword}'
+
+
 
 class KeywordEng(models.Model):
     '''Keywords for the projects'''
     class Meta:
         verbose_name = _('Keyword')
         verbose_name_plural = _('Keywords')
+        ordering = ('keyword',)
 
 
     summary_en = models.CharField(blank=True, null=True, max_length = 20000,)

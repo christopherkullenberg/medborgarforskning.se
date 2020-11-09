@@ -6,6 +6,7 @@ from .views import ProjectSubmissionCreateView
 from .views import ProjectSubmissionView
 from .views import ProjectEditView
 from .views import ProjectSubmissionEditView
+from .views import ProjectListViewFilter
 
 
 #from .views import #insertviewname
@@ -15,6 +16,10 @@ app_name = 'projects'
 urlpatterns = [
     path('', ProjectListView.as_view(),
         name='project_list'),
+
+    path('filter/', ProjectListViewFilter,
+        name='project_list_filter'),
+
     path('add/', ProjectSubmissionCreateView, # CK previous attempt TODO replacing with CreateView
          name='project_submissionform' ),
 
