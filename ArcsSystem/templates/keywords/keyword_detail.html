@@ -15,7 +15,7 @@
     <hr>
     <br>
     <br>
-    {% for one_list in  object|get_all_related:LANGUAGE_CODE %}
+    {% for one_list in object|get_all_related:LANGUAGE_CODE %}
         {{ one_list.0|safe }}
         <script>
             var data = JSON.parse('{{ one_list.1| escapejs }}');

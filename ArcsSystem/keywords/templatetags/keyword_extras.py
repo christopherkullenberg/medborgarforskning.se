@@ -152,6 +152,8 @@ def convert_dict(json_di, value=1):
 
 
 
+
+
 def get_all_related(this_db_class, lang ="en", use="all"):
 
 
@@ -195,12 +197,14 @@ def get_all_related(this_db_class, lang ="en", use="all"):
 
 	if type(this_db_class) == KeywordEng:
 		use = [this_db_class]
+
 		if this_db_class.keyword in uni_exclude_keys:
 			uni_exclude_keys.remove(this_db_class.keyword)
 
 
 	elif type(this_db_class) == Article:
 		use = this_db_class.keywords.all().exclude(keyword__in=uni_exclude_keys)
+		db_classes["publication"].append(this_db_class.id)
 
 	else:
 		use = [line.eng for line in this_db_class.keyword_lines.all().exclude(eng__keyword__in=uni_exclude_keys).exclude(eng__isnull=True)]
@@ -213,8 +217,6 @@ def get_all_related(this_db_class, lang ="en", use="all"):
 
 	if len(use) == 0:
 		return["", {}]
-
-
 
 
 	# every kw
@@ -260,17 +262,25 @@ def get_all_related(this_db_class, lang ="en", use="all"):
 					di["Project"]["not"][l.eng.id].append(project.id)
 
 
+
+	if len(use) == 1:
+		if type(this_db_class) == KeywordEng:
+
+			amount_pub = this_db_class.Article.all().count()
+
+		# add for others
+
+
 	nav_html = ' <ul class="nav nav-tabs"> '
 	div_html = ' <div class="col-12">  <div class="tab-content"> <br> '
 	nav_html += ' <li class="nav-item"> <a class="nav-link ' + "" + '" data-toggle="tab" href="#'+"pub"+'">'+"Publications ("+ str(amount_pub)+')</a> </li> '
 	div_html += ' <div id="'+"pub"+'" class="tab-pane container '+ "" +'">  <div class="row" > '
 	count = 0
 
-	if len(use) == 1:
-		amount_pub = kw.Article.all().exclude(id__in=di["pub"]["not"][kw.id] + db_classes["publication"])[:q_set].count()
 
 
-	for x in range(60, -1, -1):
+
+	for x in range(30, -1, -1): # this is bad can do di.keys.sort()
 		if count == limit_things:
 			break
 

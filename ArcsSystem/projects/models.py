@@ -93,7 +93,7 @@ class KeywordEng(models.Model):
         return reverse('keywords:keyword_detail', args=[str(self.keyword)])
 
     def get_custom_html(self):
-        return ''' <a href="'''+ self.get_absolute_url()+'''">'''+ self.keyword + ''' </a> '''
+        return ''' <a class="badge badge-light pt-1" href="'''+ self.get_absolute_url()+'''">'''+ self.keyword + ''' </a> '''
 
     def get_wikidataQ(self):
 
@@ -178,18 +178,18 @@ class KeywordLine(models.Model):
             if self.swe != None:
 
                 if self.eng != None:
-                    return ''' <a href="'''+ self.eng.get_absolute_url()+'''">'''+ self.swe.keyword + ''' </a> '''
+                    return ''' <a class="badge badge-light pt-1" href="'''+ self.eng.get_absolute_url()+'''">'''+ self.swe.keyword + ''' </a> '''
 
                 else:
                     return self.swe.keyword
 
-            return ''' <a href="'''+ self.eng.get_absolute_url()+'''">'''+ self.eng.keyword + " (endast på engelska)" + ''' </a> '''
+            return ''' <a class="badge badge-light pt-1" href="'''+ self.eng.get_absolute_url()+'''">'''+ self.eng.keyword + " (endast på engelska)" + ''' </a> '''
 
         if lang == "en":
 
             if self.eng != None:
 
-                return ''' <a href="'''+ self.eng.get_absolute_url()+'''">'''+ self.eng.keyword + ''' </a> '''
+                return ''' <a class="badge badge-light pt-1" href="'''+ self.eng.get_absolute_url()+'''">'''+ self.eng.keyword + ''' </a> '''
 
             return self.swe.keyword + " (only in Swedish)"
 

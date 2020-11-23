@@ -3,6 +3,7 @@
 {% load i18n %}
 {% load projects_extras %}
 {% block content %}
+{% load keyword_extras %}
 
 
 
@@ -55,7 +56,7 @@
                     {% for sci_typ in None|get_science_types %}
 
                         <option  value="{{ sci_typ.id }}">
-                            {{ sci_typ }}
+                           {% trans sci_typ.ScienceType %} 
                         </option>
                     {% endfor %}
                 </select>
@@ -68,7 +69,7 @@
                     <option value="all" > {% trans "All" %} </option>
                     {% for status in None|get_all_status %}
                         <option  value="{{ status.0 }}">
-                            {{ status.1 }}
+                            {% trans status.1 %}
                         </option>
                     {% endfor %}
                 </select>
@@ -110,60 +111,69 @@
 <!--           ---------- -->
 
 
+
+
+
+
 <div class="col-12" style="height: 20px" ></div>
 <div class="row">
-    {% for ProjectEntry in object_list %}
-    <div style="padding-left: 20px; padding-right: 20px" class="col-lg-3 col-md-4 col-xs-6 mb-5">
-        <div class="project-item">
-            <div class="row">
-                <div class=" col">
-                    <div  class="col project-items-justify blackFieldWhiteText">
-                        <h4 align="center"><a style="color: white; font-size: 16px" id="project-items-link" href="{% url 'projects:project_detail' ProjectEntry.id %}"> {{ ProjectEntry.get_card_name }}</a></h4>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                {% if ProjectEntry.image %}
-                <div class="col">
-                    <img class="mg-fluid w-100" src="{{ProjectEntry.image.url}}" alt="{% trans 'Responsive image' %}"/>
-                </div>
+
+
+{% for ProjectEntry in object_list %}
+
+
+<div class="col-lg-3 col-sm-6 col-12 mb-5">
+    <div class="card h-100 shadow border-0">
+        <a class="card-img-wrap " href="{% url 'projects:project_detail' ProjectEntry.id %}">
+
+
+
+            {% if ProjectEntry.image %}
+
+                    <img style="height: 160px; " 
+                    class="card-img-top img-fluid img-zoom ls-is-cached lazyloaded" src="{{ProjectEntry.image.url}}">
+
+
                 {% else %}
-                <div class="col" >
-                    <div style="height: 20px; background: coral; margin-bottom: 5px">
-                        <h5 align="center"  > No image</h5>
-                    </div>
+
+                <div class="col">
+                    <img style="height: 160px" class="card-img-top img-fluid img-zoom ls-is-cached lazyloaded" 
+                    src="/media/images/sami-takarautio-UZOpP-YHe9Q-unsplash.width-400.jpg" />
                 </div>
+
                 {% endif %}
-            </div>
-            <div class="col" style="padding-right: 5px; padding-left: 5px; margin-top: 3px">
-                <div class="row Lato-font ">
-                    <div class="col" >
-                        <span class="font-italic">PROJECT AIM: </span> <span class="font-weight-light" style=" font-size: 14px;" >{{ProjectEntry.get_card_aim}}</span>
-                    </div>
-                </div>
-                <hr>
-                <div class="row Lato-font">
-
-                    <div class="col">
-                        <span >DESCRIPTION: </span> <span >{{ProjectEntry.get_card_description}}</span>
-                    </div>
-                </div>
-                <hr>
-                <div class="row Lato-font">
-                    <div class="col ">
-                        STATUS: {{ProjectEntry.get_status_name}}
-                    </div>
-                </div>
-                <hr>
-
-                {% for keyword in ProjectEntry|get_keywords_trans:LANGUAGE_CODE %}
-                <a style="color:blue">{{keyword}}, </a>
-                {% endfor %}
-            </div>
+            
+            </a>
+                
+        <div class="card-body shadow" title='{% trans "Short description" %}'>
+            <h6 class="card-title">
+                <a class="card-link" href="{% url 'projects:project_detail' ProjectEntry.id %}">
+                {{ ProjectEntry.get_card_name }}</a>
+            </h6>
+                <p class="card-text" >{{ProjectEntry.get_card_description}}</p>
         </div>
+
+        <div class="card-body shadow" title='{% trans "Short aim" %}'>
+                <p class="card-text" > {% trans "Aim" %}: {{ProjectEntry.get_card_aim}}</p>
+        
+        <div style="overflow:hidden" >
+
+                {% for line in ProjectEntry.keyword_lines.all  %}
+                {{ line|get_keyword:LANGUAGE_CODE|safe }}
+                {% endfor %}
+        </div>
+            </div><!-- End of card-body -->
+        </div><!-- end of card -->
     </div>
-    {% endfor %}
-</div>
+
+        {% endfor %}
+
+
+
+
+
+
+
 
 
 </div>

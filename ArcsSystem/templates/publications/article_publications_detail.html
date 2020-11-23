@@ -14,8 +14,8 @@
             <p><b>{% trans "Journal" %}:</b> {{ article.source }}</p>
             <p><b>{% trans "Volume/Issue" %}:</b> {{ article.volume }}({{ article.issue }})</p>
             <p><b>{% trans "Keywords" %}:</b>
-                {% for keyword in article..all %}
-                    {{ keyword }},    <!-- looks ugly but here is a comma -->
+                {% for keyword in article.keywords.all %}
+                    {{ keyword.get_custom_html|safe }} <span style="width: 5px"></span>    <!-- looks ugly but here is a comma -->
                 {% endfor %}
             </p>
             <p><b>DOI /URL: </b><a href="https://doi.org/{{ article.doi }}">{{ article.doi }}</a></p>
