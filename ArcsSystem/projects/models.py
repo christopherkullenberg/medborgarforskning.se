@@ -4,7 +4,7 @@ from django.urls import path,reverse
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.conf import settings
-# from django_countries.fields import CountryField
+from django_countries.fields import CountryField
 from django.contrib.auth.models import User
 import uuid
 import os
@@ -324,7 +324,7 @@ class Project(models.Model):
     # ## maps to PPSR PMM projectGeographicCoverage - geoObject
     # coverage_latitude = models.DecimalField(max_digits=9,decimal_places=6) ## maps to PPSR PMM projectGeographicCoverageCentroidLatitude
     # coverage_longitude = models.DecimalField(max_digits=9,decimal_places=6)# ## maps to PPSR PMM projectGeographicCoverageCentroidLongitude
-    # country = CountryField()
+    country = CountryField(blank=True)
 
     #activity =
     #how_to_participate = models.CharField(max_length=2000)
@@ -395,6 +395,12 @@ class Project(models.Model):
     #host = models.CharField(max_length=200)
     #fundingBody = models.ForeignKey(FundingBody, on_delete=models.CASCADE,null=True, blank=True)
     #fundingProgram = models.CharField(max_length=500)
+
+    '''The originDatabase is here only a temporary solution for
+    being able to differentiate imported projects from ARCS original
+    submissions.'''
+    originDatabase = models.CharField(max_length=500, default="ARCS")
+
     #originDatabase = models.ForeignKey(OriginDatabase, on_delete=models.CASCADE,null=True, blank=True)
     #originURL = models.CharField(max_length=200)
     #originUID = models.CharField(max_length=200)

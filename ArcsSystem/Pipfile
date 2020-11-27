@@ -19,6 +19,9 @@ django-taggit = "==1.3.0"
 pyyaml = "==5.3.1"
 django-modeltranslation = "==0.15.1"
 bleach = "==3.2.1"
+django-countries = "*"
+wikidata = "*"
+pillow = "*"
 
 [requires]
 python_version = "3"
