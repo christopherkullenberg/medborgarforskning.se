@@ -1,7 +1,7 @@
-# Database fixture
+# Database fixture and non-ARCS static content
 
 db.xml
-
+ArcsSystem/media/EUimg/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
