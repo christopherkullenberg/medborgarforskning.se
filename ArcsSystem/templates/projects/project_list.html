@@ -56,11 +56,27 @@
                     {% for sci_typ in None|get_science_types %}
 
                         <option  value="{{ sci_typ.id }}">
-                           {% trans sci_typ.ScienceType %} 
+                           {% trans sci_typ.ScienceType %}
                         </option>
                     {% endfor %}
                 </select>
             </div>
+
+            <!-- begin database selector -->
+            <div class="col-lg-2 col-md-3 col-xs-12 mb-5 col-6">
+                <span style="font-size: 12px" >{%trans "Database" %}</span>
+
+                <select id="database" name="database" class="custom-select form-control">
+                    
+                    {% for database in None|get_origin_database %}
+
+                        <option  value="{{ database.0 }}">
+                           {% trans database.1 %}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+            <!-- end database selector -->
 
 
             <div class="col-lg-2 col-md-3 col-xs-12 mb-5 col-6">
@@ -78,13 +94,14 @@
 
 
 
+
             <div class="col-lg-2 col-md-3 col-xs-12 mb-5 col-6">
                 <span style="font-size: 12px">{%trans "Sort by" %}</span>
 
                 <select id="sort" name="sort" class="custom-select form-control">
 
                     <option  value="name"> {% trans "Alphabetical" %}, {% trans  "ascending" %} </option>
-                    <option  value="-name"> {% trans "Alphabetical" %}, {% trans "descending" %} </option>                    
+                    <option  value="-name"> {% trans "Alphabetical" %}, {% trans "descending" %} </option>
                     <option  value="date_created"> {% trans "Date added" %}, {% trans "ascending" %} </option>
                     <option  value="-date_created"> {% trans "Date added" %}, {% trans "descending" %} </option>
 
@@ -130,21 +147,21 @@
 
             {% if ProjectEntry.image %}
 
-                    <img style="height: 160px; " 
+                    <img style="height: 160px; "
                     class="card-img-top img-fluid img-zoom ls-is-cached lazyloaded" src="{{ProjectEntry.image.url}}">
 
 
                 {% else %}
 
                 <div class="col">
-                    <img style="height: 160px" class="card-img-top img-fluid img-zoom ls-is-cached lazyloaded" 
+                    <img style="height: 160px" class="card-img-top img-fluid img-zoom ls-is-cached lazyloaded"
                     src="/media/images/sami-takarautio-UZOpP-YHe9Q-unsplash.width-400.jpg" />
                 </div>
 
                 {% endif %}
-            
+
             </a>
-                
+
         <div class="card-body shadow" title='{% trans "Short description" %}'>
             <h6 class="card-title">
                 <a class="card-link" href="{% url 'projects:project_detail' ProjectEntry.id %}">
@@ -155,7 +172,7 @@
 
         <div class="card-body shadow" title='{% trans "Short aim" %}'>
                 <p class="card-text" > {% trans "Aim" %}: {{ProjectEntry.get_card_aim}}</p>
-        
+
         <div style="overflow:hidden" >
 
                 {% for line in ProjectEntry.keyword_lines.all  %}

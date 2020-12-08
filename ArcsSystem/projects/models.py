@@ -25,6 +25,14 @@ STATUS_CHOICES = [
     ('6', 'Abandonded')
 ]
 
+DATABASE_CHOICES = [
+    ('0', 'ARCS'),
+    ('1', 'EUCitizenScience'),
+
+]
+
+
+
 # Define the options if a project is public
 # Defined here as used in more than one model
 #VISIBILTIY_CHOICES = [
@@ -402,7 +410,7 @@ class Project(models.Model):
     '''The originDatabase is here only a temporary solution for
     being able to differentiate imported projects from ARCS original
     submissions.'''
-    originDatabase = models.CharField(max_length=500, default="ARCS")
+    originDatabase = models.CharField(db_index=True, max_length=30, default='0', choices=DATABASE_CHOICES)
 
     #originDatabase = models.ForeignKey(OriginDatabase, on_delete=models.CASCADE,null=True, blank=True)
     #originURL = models.CharField(max_length=200)
@@ -451,6 +459,10 @@ class Project(models.Model):
             return self.image.url
         return ""
 
+    def get_origin_database(self):
+        if self.originDatabase:
+            return self.originDatabase
+        return ""
 
 
     def get_card_aim(self):
@@ -495,7 +507,7 @@ class Project(models.Model):
                         <hr>
                         <div class="row Lato-font">
                             <div class="col">
-                                <span >DESCRIPTION: </span> <span > ''' +self.get_card_description() + ''' </span>
+                                <span >DESCRIPTION: </span> <span > ''' + self.get_card_description() + ''' </span>
                             </div>
                         </div>
                         <hr>
@@ -504,6 +516,12 @@ class Project(models.Model):
                                 STATUS:  ''' + self.get_status_name() + '''
                             </div>
                         </div>
+                        <hr>
+                            <div class="row Lato-font">
+                                <div class="col ">
+                                    Database:  ''' + self.get_origin_database() + '''
+                                </div>
+                            </div>
                         <hr>
                         '''
 
@@ -559,11 +577,6 @@ class ProjectEntry(Project):
         self.keywords += str(line.id) + "&"
 
     def get_keywords(self, lang="en"):
-
-
-
-
-
 
         if lang == "sv":
             return [KeywordLine.objects.get(id=int(pk)).swe.keyword if KeywordLine.objects.get(id=int(pk)).swe is not None else KeywordLine.objects.get(id=int(pk)).eng.keyword for pk in  self.keywords.split("&")[:-1] ]

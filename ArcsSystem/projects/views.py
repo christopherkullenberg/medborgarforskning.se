@@ -45,6 +45,7 @@ def ProjectListViewFilter(request):
         selcted = []
         filter_kw = ["status", "science_type"]
         di_filter = {}
+        database = "EUCitizenScience"
         for kw in filter_kw:
             if request.GET[kw] != "all":
                 di_filter[kw] = request.GET[kw]
@@ -56,12 +57,12 @@ def ProjectListViewFilter(request):
                 di_filter["keyword_lines__"+ lang +"__id"] =  int(request.GET["kw_"+ lang])
                 selcted.append(["kw_" + lang, request.GET["kw_"+ lang]])
 
-        # this is for safty. So that none can sortby email !!!
+        # this is for safety. So that none can sortby email !!!
         allowd_sorts = ["name", "date_created", "-name", "-date_created"]
         if request.GET["sort"] in allowd_sorts:
 
             return render(request, template_name, {
-             "object_list": ProjectEntry.objects.filter(**di_filter).order_by(request.GET["sort"]),
+             "object_list": ProjectEntry.objects.filter(**di_filter).order_by(request.GET["sort"]).filter(originDatabase=database),
              "selcted" : selcted
                 })
 
@@ -223,7 +224,7 @@ def remove_space(string):
     for char in string:
         if char == " ":
             start_c += 1
-        else: 
+        else:
             break
 
     end_c = 0
@@ -315,8 +316,8 @@ def ProjectSubmissionCreateView(request):
     if request.method == "GET":
         if request.user.is_authenticated:
             keywords = {
-            "contact_email": request.user.email, 
-            "contact_name": request.user.first_name + " " + request.user.last_name, 
+            "contact_email": request.user.email,
+            "contact_name": request.user.first_name + " " + request.user.last_name,
             }
 
             context["Submission"] = InitialProjectSubmissionModelForm(keywords)
@@ -382,7 +383,7 @@ def update_project_entry_keyword_lines(model, key_sv, key_en ):
 
     for key_sv, key_en in zip(key_sv, key_en):
 
-        # if both are empty continue 
+        # if both are empty continue
         if key_sv == "" and key_en == "":
             continue
 
@@ -431,7 +432,7 @@ def update_project_entry_keyword_lines(model, key_sv, key_en ):
                 model.add_keyword(model_keyword_line)
                 model.keyword_lines.add(options.first())
 
-        # both are filed-in        
+        # both are filed-in
         else:
 
             # en key
@@ -465,17 +466,3 @@ def update_project_entry_keyword_lines(model, key_sv, key_en ):
                 model_keyword_line.save()
                 model.add_keyword(model_keyword_line)
                 model.keyword_lines.add(options.first())
-
-
-
-
-
-
-
-
-
-
-
-
-
-

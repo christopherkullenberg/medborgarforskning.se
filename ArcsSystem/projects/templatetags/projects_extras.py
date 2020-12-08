@@ -1,6 +1,6 @@
 from django import template
 from workpackages.models import WorkPackage, Theme
-from projects.models import KeywordEng, KeywordSwe, ScienceType, STATUS_CHOICES, KeywordLine
+from projects.models import KeywordEng, KeywordSwe, ScienceType, STATUS_CHOICES, KeywordLine, DATABASE_CHOICES
 
 
 register = template.Library()
@@ -38,18 +38,14 @@ def get_keywords_objects(string):
 def get_keywords_trans(model_thing, lang):
 	return model_thing.get_keywords(lang)
 
-
-
-
-
 def get_all_status(limit=20):
 	return STATUS_CHOICES
 
 def get_science_types(limit=20):
 	return ScienceType.objects.all()[:limit]
 
-
-
+def get_origin_database(limit=20):
+	return DATABASE_CHOICES
 
 def line_is_project(not_use):
 
@@ -64,3 +60,4 @@ register.filter("get_all_status", get_all_status)
 register.filter("get_keywords", get_keywords)
 register.filter("get_keywords_trans", get_keywords_trans)
 register.filter("get_science_types", get_science_types)
+register.filter("get_origin_database", get_origin_database)
