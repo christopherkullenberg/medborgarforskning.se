@@ -68,6 +68,10 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.orcid',
 ### AllAuth for social authentications end #
 
+### LiveSync for Hot Reload while developing start #
+    'livesync',
+### LiveSync for Hot Reload while developing end #
+
 ]
 
 REST_FRAMEWORK = {
@@ -88,6 +92,13 @@ MIDDLEWARE = [
     'users.LicenceMiddleware.LicenceMiddleware', # Check if user accepted license or not
 ]
 
+# To make LiveSync work
+MIDDLEWARE_CLASSES = (
+    'livesync.core.middleware.DjangoLiveSyncMiddleware',
+)
+DJANGO_LIVESYNC = {
+    'PORT': 8000 # this is optional and is default set to 9001.
+}
 ROOT_URLCONF = 'arcs_project.urls'
 
 # More on Template Configuration https://docs.djangoproject.com/en/2.2/topics/templates/

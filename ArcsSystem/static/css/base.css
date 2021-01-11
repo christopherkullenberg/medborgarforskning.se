@@ -72,14 +72,12 @@ container-fluid@font-face {
 /* Headers style */
 
 h1 {
-  font-family: 'acumin-pro-extra-condensed','HelveticaNeue-CondensedBold','sans-serif';
   color: #000000;
   font-size: 26px;
   font-weight:bold;
 }
 
 h2 {
-  font-family: 'acumin-pro-extra-condensed','HelveticaNeue-CondensedBold','sans-serif';
   font-size: 24px;
   font-weight: bold;
   color: #000000;
@@ -95,21 +93,23 @@ h3 {
 
 /* Body style: */
 body{
-    background-color: #fff;
-    font-family: "acumin-pro", Helvetica, sans-serif ;
+    background-color: #BED4D1;
+    font-family: "Lato", Helvetica, sans-serif ;
     font-size: 14 !important;
 }
 
 a{
-    color: #0c5696 !important;
+    color: #0c5696;
+    transition: 0.4s;
 }
 
 a:hover:not(.main-menu-buttons-font) {
-    color:#e2005e !important;
+    color: #adaaaa;
+    transition:0.4s;
 }
 p{
-    font-family: "acumin-pro", Helvetica, sans-serif ;
-    font-size: 14px !important;
+    font-family: "Lato", Helvetica, sans-serif ;
+    font-size: 14px;
 }
 /* Color informations */
 .pink-background-color{
@@ -662,4 +662,63 @@ font-family: Helvetica;
   margin-right: 0px;
   margin-top: 40px;
   margin-bottom: 40px;
+}
+
+.bg-color-primary {
+    background-color: #BED4D1;
+}
+
+.text-color-primary {
+    background-color: #BED4D1;
+}
+
+.border-color-accent {
+    border-color: #005C61;
+}
+
+.bg-color-accent {
+    background-color: #005C61;
+}
+
+.new-badge {
+    color:white;
+    font-size:10px;
+    padding:5px;
+    background-color:#005C61;
+    margin-right:10px;
+    font-family: "Playfair";
+}
+
+.project-cards {
+    font-family: "Playfair" !important;
+}
+
+.playfair-font {
+    font-family: "Playfair";
+}
+
+.lato-font {
+    font-family: "Lato";
+}
+
+.custom-dropdown {
+    padding:10px;
+    border-radius:5px;
+    background-color: #9DB0A1;
+}
+
+.green-bg-color {
+    background-color: #9EB1A2;
+}
+
+.project-detail-image {
+    width:600px;
+    max-height:300px;
+    object-fit: cover;
+} 
+
+@media screen and (max-width:700px) {
+ .project-detail-image {
+     width:"100%";
+ }   
 }

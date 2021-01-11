@@ -19,6 +19,7 @@
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
     <link href="{% static 'css/base.css' %}" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css?family=Lato|Playfair+Display&display=swap" rel="stylesheet"/>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <!--TODO change to serve locally as it does not support integrity hash-->
     <title>{% block head_title %}Medborgarforskning.se{% endblock head_title %}</title>
     <!-- TODO replace "Medborgarforskning.se" with django template for the page title -->
@@ -27,8 +28,8 @@
 </head>
 <!-- open body of page -->
 <body>
-<div class="container-fluid custom-container">
-    <!-- header -->
+    <!-- header
+        <div class="container-fluid custom-container">
     <div id="main-header" class="row">
         <div class=" align-self-center d-none d-md-block col-3 h">
             <div class="row">
@@ -119,8 +120,8 @@
                         <strong>Listen</strong>
                     </button>
                 </div>
-                <!-- user login starts here -->
-                <!-- user is loged in: show my_page and logout -->
+                <-- user login starts here
+                -- user is loged in: show my_page and logout
                 {% if user.is_authenticated %}
                     <div id="my_page" class="justify-content-end align-items-center col-sm-12 col-md-4 h">
                         <div class="dropdown">
@@ -147,7 +148,7 @@
                         </div>
                     </div>
 
-                    <!-- user is NOT loged in: show Signup, login -->
+                    <-- user is NOT loged in: show Signup, login 
                 {% else %}
                     <div id="signup" class="justify-content-end align-items-center col-sm-12 col-md-4 h">
                     <button class="btn p-0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
@@ -168,17 +169,16 @@
                         </button>
                     </div>
                 {% endif %}
-                <!-- user login ends here -->
+                <-- user login ends here
                 </div>
             </div>
         </div>
     </div>
 </div>
+<-->
 <!--End of header-->
-<div class="container-fluid pink-background-color" style="padding: 0;">
-    <div class="custom-container">
+<div class="w-full" style="padding: 0;">
         {% include "nav_main.html" %}
-    </div>
 </div>
 
 <!--content-->
