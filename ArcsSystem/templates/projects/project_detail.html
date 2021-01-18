@@ -42,12 +42,21 @@
             <p class="text-md playfair-font font-bold pb-2">{{object.name}}</p>
             <p class="">Status: </p>
             <p class="playfair-font font-bold pb-2">{{object.get_status_name}}</p>
-            <p class="">Namn: </p>
-            <p class="playfair-font font-bold pb-2">{{object.name}}</p>
-            <p class="">Namn: </p>
-            <p class="playfair-font font-bold pb-2">{{object.name}}</p>
-            <p class="">Namn: </p>
-            <p class="playfair-font font-bold pb-2">{{object.name}}</p>
+            <p class="">Ämne: </p>
+            <p class="playfair-font font-bold pb-2">{{object.science_type}}</p>
+            <p class="">Startdatum: </p>
+            <p class="playfair-font font-bold pb-2">{{object.start_date}}</p>
+            <p class="">Slutdatum: </p>
+            <p class="playfair-font font-bold pb-2">{{object.end_date}}</p>
+            <p class="">Kontaktperson: </p>
+            <p class="playfair-font font-bold pb-2">{{object.contact_name}}, <a href="mailto:{{object.contact_email}}">{{object.contact_email}}</a></p>
+            <p class="">Målgrupp: </p>
+            <p class="playfair-font font-bold pb-2">{{object.target_audience}}</p>
+            <p class="">Geografisk plats: </p>
+            <p class="playfair-font font-bold pb-2">{{object.latitude}}, {{object.longitude}}</p>
+            <p class="">Slutdatum: </p>
+            <p class="playfair-font font-bold pb-2">{{object.end_date}}</p>
+
          
         </div>
 
@@ -62,7 +71,7 @@
             </picture> -->
             
   
-            
+<!--             
             
             <div class="custom-container">
                 
@@ -152,11 +161,11 @@
 
 {% endif %}
 
-</div>
+</div> -->
 
 
 
-<div id="step5" class="tab-pane fade">
+<!-- <div id="step5" class="tab-pane fade">
     
     <h4>{% trans "Name" %}: {{ object.contact_name }}</h4>
     <h4>{% trans "Contact's role" %}: {{ object.contact_role }}</h4>
@@ -176,23 +185,21 @@
     <textarea class="form-control"> </textarea>
     
     
-</div>
+</div> -->
 
 
-<div id="step_map" class="tab-pane fade">
+<!-- <div id="step_map" class="tab-pane fade">
     
     sweden
     
     lägg till detta i framtiden
     
     
-</div>
+</div> -->
 
 </div>
 </div>
 
-
-<br><br><br>
 
 
 </div>

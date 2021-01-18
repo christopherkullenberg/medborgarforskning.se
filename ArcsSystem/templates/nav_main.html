@@ -4,7 +4,7 @@
 {% block main_menu %}
 
 <nav class="w-full bg-color-primary">
-    <div class="py-4 px-8 justify-center flex flex-row items-center">
+    <div class="hidden md:flex py-4 w-full px-10 justify-center flex-row items-center ">
         <a href="/project" class="pl-8 text-black">
             UTFORSKA
         </a>
@@ -22,6 +22,46 @@
                  alt="{% trans 'Medborgarforskning.se Logo linking to the site homepage' %}"/>
         </a>
     </div>
+    <div id="menuToggle" class="block md:hidden">
+        <!--
+        A fake / hidden checkbox is used as click reciever,
+        so you can use the :checked selector on it.
+        -->
+        <input type="checkbox" />
+        
+        <!--
+        Some spans to act as a hamburger.
+        
+        They are acting like a real hamburger,
+        not that McDonalds stuff.
+        -->
+        <span></span>
+        <span></span>
+        <span></span>
+        
+        <!--
+        Too bad the menu has to be inside of the button
+        but hey, it's pure CSS magic.
+        -->
+        <ul id="menu" class="flex flex-col">
+            <a class=""  href= {% url 'staticpages:homepage_view' %}>
+                <img class="w-32" src="{% static 'icons/medborgarforskning-C-1000px_1.png' %}"
+                     alt="{% trans 'Medborgarforskning.se Logo linking to the site homepage' %}"/>
+            </a>
+            <a href="/project" class="">
+            UTFORSKA
+            </a>
+            <a href="#" class="">
+                STARTA PROJEKT
+            </a>
+            <a href="#" class="">
+                VAD ÄR MEDBORGARFORSKNING?
+            </a>
+            <a href="#" class="">
+                SÖK
+            </a>
+        </ul>
+      </div>
 </nav>  
 <script>
     $( "#form-search-nev" ).submit(function( event ) {
