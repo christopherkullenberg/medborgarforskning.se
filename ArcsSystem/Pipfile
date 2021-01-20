@@ -20,5 +20,8 @@ django-modeltranslation = "==0.15.1"
 bleach = "==3.2.1"
 wikidata = "==0.7.0"
 pillow = "==8.0.1"
+livesync = "*"
+django-livesync = "*"
+
 [requires]
 python_version = "3"
