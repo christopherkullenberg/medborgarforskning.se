@@ -3,42 +3,141 @@
 {% load staticpages_tree %}
 {% block main_menu %}
 
+
+
+
 <nav class="w-full bg-color-primary">
     <div class="hidden md:flex py-4 w-full px-10 justify-center flex-row items-center ">
-        <a href="/project" class="pl-8 text-black">
-            UTFORSKA
+
+
+            <a class="nav-link dropdown-toggle pl-8 text-black bg-color-primary" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ;">
+{% trans "UTFORSKA" %}        </a>
+            <div class="dropdown-menu main-menu-buttons bg-color-primary " aria-labelledby="navbarDropdown">
+
+                  <a class="dropdown-item bg-color-primary" href="{% url 'projects:project_list' %}">{%trans "Citizen Science Projects" %}</a>
+                    <div class="dropdown-divider"></div>
+
+                    <a class="dropdown-item bg-color-primary" href="{% url 'workpackages:category_view' %}">{%trans "ARCS knowledge base" %}</a>
+                    <ul>
+                    <div class="dropdown-divider"></div>
+                  <a class="dropdown-item bg-color-primary" href="{% url 'publications:article_publications_list' %}">{%trans "Publications Database" %}</a>
+                  </ul>
+
+                  <div class="dropdown-divider"></div>
+                    <a class="dropdown-item bg-color-primary" href="/people/users/">{%trans "List of contributors" %}</a>
+
+                  </div>
+
+
+
+
+        <a href="{% url 'projects:project_submissionform' %}" class="pl-8 text-black">
+            {% trans "STARTA PROJEKT" %}
         </a>
-        <a href="#" class="pl-8 text-black">
-            STARTA PROJEKT
-        </a>
-        <a href="#" class="pl-8 text-black">
-            VAD ÄR MEDBORGARFORSKNING?
-        </a>
-        <a href="#" class="pl-8 text-black">
+
+
+<li class="nav-item header-menu-li-style col-sm-3">
+          <a class="nav-link dropdown-toggle pl-8 text-black bg-color-primary" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ;">
+                              {% trans "VAD ÄR MEDBORGARFORSKNING" %}
+                          </a>
+
+
+                          <div class="dropdown-menu main-menu-buttons bg-color-primary" aria-labelledby="navbarDropdown">
+
+
+
+                              {% for page in 'citizen-science'|get_menu %}
+                              {% if page.sub_category %}
+                              <ul>
+                                  <li class="nav-item dropdown">
+                                      <a class="dropdown-item" href="{{ page.get_absolute_url }}">
+                                          <p class="font-weight-bold">{{ page.title }}</p>
+                                      </a>
+                                  </li>
+                              </ul>
+                              <div class="dropdown-divider"></div>
+                              {% else %}
+                              <a class="dropdown-item" href="{{ page.get_absolute_url }}">{{ page.title }}</a>
+                              <div class="dropdown-divider"></div>
+                              {% endif %}
+                              {% endfor %}
+
+
+                          </div>
+
+</li>
+
+        <!--<a href="#" class="pl-8 text-black">
             SÖK
-        </a>
+        </a>-->
+
+
+                        <form id="form-search-nev" action="{% url 'staticpages:super_search_results' query='SEARCH_QUERY' %}" >
+                            <!-- Actual search box -->
+                            <div class="form-group has-search">
+                                <svg class="form-control-feedback" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                  <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 011.415 0l3.85 3.85a1 1 0 01-1.414 1.415l-3.85-3.85a1 1 0 010-1.415z" clip-rule="evenodd"/>
+                                  <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 100-11 5.5 5.5 0 000 11zM13 6.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" clip-rule="evenodd"/>
+                                </svg>
+                                <input id="search_query" class="form-control mr-sm-2" type="search" placeholder="SÖK" aria-label="Search">
+                            </div>
+                        </form>
+
+
+
+
+        <script>
+            $( "#form-search-nev" ).submit(function( event ) {
+              var form_value = $('#search_query').val();
+              if (form_value == ""){
+                  event.preventDefault();
+                  return;
+              }
+              var action = $('#form-search-nev').attr('action');
+              action = action.replace('SEARCH_QUERY', form_value);
+              $('#form-search-nev').attr('action', action);
+            });
+        </script>
+
+
+
+
+
+
+
+
+
+
+
+
         <a class="pl-16"  href= {% url 'staticpages:homepage_view' %}>
             <img class="w-40" src="{% static 'icons/medborgarforskning-C-1000px_1.png' %}"
                  alt="{% trans 'Medborgarforskning.se Logo linking to the site homepage' %}"/>
         </a>
     </div>
+
+
+
+
+
+
     <div id="menuToggle" class="block md:hidden">
         <!--
         A fake / hidden checkbox is used as click reciever,
         so you can use the :checked selector on it.
         -->
         <input type="checkbox" />
-        
+
         <!--
         Some spans to act as a hamburger.
-        
+
         They are acting like a real hamburger,
         not that McDonalds stuff.
         -->
         <span></span>
         <span></span>
         <span></span>
-        
+
         <!--
         Too bad the menu has to be inside of the button
         but hey, it's pure CSS magic.
@@ -48,21 +147,72 @@
                 <img class="w-32" src="{% static 'icons/medborgarforskning-C-1000px_1.png' %}"
                      alt="{% trans 'Medborgarforskning.se Logo linking to the site homepage' %}"/>
             </a>
-            <a href="/project" class="">
-            UTFORSKA
-            </a>
-            <a href="#" class="">
-                STARTA PROJEKT
-            </a>
-            <a href="#" class="">
-                VAD ÄR MEDBORGARFORSKNING?
-            </a>
-            <a href="#" class="">
-                SÖK
-            </a>
-        </ul>
-      </div>
-</nav>  
+            
+            <a class="nav-link dropdown-toggle pl-8 text-black bg-color-primary" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ;">
+{% trans "UTFORSKA" %}        </a>
+            <div class="dropdown-menu main-menu-buttons bg-color-primary " aria-labelledby="navbarDropdown">
+
+                  <a class="dropdown-item bg-color-primary" href="{% url 'projects:project_list' %}">{%trans "Citizen Science Projects" %}</a>
+                    <div class="dropdown-divider"></div>
+
+                    <a class="dropdown-item bg-color-primary" href="{% url 'workpackages:category_view' %}">{%trans "ARCS knowledge base" %}</a>
+                    <ul>
+                    <div class="dropdown-divider"></div>
+                  <a class="dropdown-item bg-color-primary" href="{% url 'publications:article_publications_list' %}">{%trans "Publications Database" %}</a>
+                  </ul>
+
+                  <div class="dropdown-divider"></div>
+                    <a class="dropdown-item bg-color-primary" href="/people/users/">{%trans "List of contributors" %}</a>
+
+                  </div>
+
+
+
+
+        <a href="{% url 'projects:project_submissionform' %}" class="pl-8 text-black">
+            {% trans "STARTA PROJEKT" %}
+        </a>
+
+
+<li class="nav-item header-menu-li-style col-sm-3">
+          <a class="nav-link dropdown-toggle pl-8 text-black bg-color-primary" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ;">
+                              {% trans "VAD ÄR MEDBORGARFORSKNING" %}
+                          </a>
+
+
+                          <div class="dropdown-menu main-menu-buttons bg-color-primary" aria-labelledby="navbarDropdown">
+
+
+
+                              {% for page in 'citizen-science'|get_menu %}
+                              {% if page.sub_category %}
+                              <ul>
+                                  <li class="nav-item dropdown">
+                                      <a class="dropdown-item" href="{{ page.get_absolute_url }}">
+                                          <p class="font-weight-bold">{{ page.title }}</p>
+                                      </a>
+                                  </li>
+                              </ul>
+                              <div class="dropdown-divider"></div>
+                              {% else %}
+                              <a class="dropdown-item" href="{{ page.get_absolute_url }}">{{ page.title }}</a>
+                              <div class="dropdown-divider"></div>
+                              {% endif %}
+                              {% endfor %}
+
+
+                          </div>
+
+</li>
+
+
+
+
+
+
+
+
+</nav>
 <script>
     $( "#form-search-nev" ).submit(function( event ) {
       var form_value = $('#search_query').val();
