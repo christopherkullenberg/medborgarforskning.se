@@ -11,16 +11,16 @@
 
 
 
-<div class="container-fluid">
-    <div class="custom-container">
+<div>
+    <div class="">
 
         <form method="GET"  action="{% url 'projects:project_list_filter' %}" >
 
-        <div class="row">
+        <div class="flex flex-col md:flex-row border-t-2 border-b-2 border-color-accent px-4 py-4 mb-4 w-full md:items-center md:justify-around justify-center">
                 {% for one_item in None|line_is_project %}
-                    <div class="col-lg-2 col-md-3 col-xs-12 mb-5 col-6">
-                        <span style="font-size: 12px" align="center" >{% trans "English Keywords" %}</span>
-                        <select id="kw_eng" name="kw_eng" class="custom-select form-control">
+                    <div class="project-filter">
+                        <span class="text-xl md:text-3xl playfair-font font-extrabold" >Visa</span>
+                        <select id="kw_eng" name="kw_eng" class="custom-dropdown ml-4">
                             <option value="all" > {% trans "All" %} </option>
                             {% for line in one_item %}
                                 {% if line.eng %}
@@ -31,27 +31,13 @@
                             {% endfor %}
                         </select>
                     </div>
-
-                    <div class="col-lg-2 col-md-3 col-xs-12 mb-5 col-6">
-                        <span style="font-size: 12px" >{% trans "Swedish Keywords" %}</span>
-                        <select id="kw_swe" name="kw_swe" class="custom-select form-control">
-                            <option value="all" > {% trans "All" %} </option>
-                            {% for line in one_item %}
-                                {% if line.swe %}
-                                    <option  value="{{ line.swe.id }}">
-                                        {{ line.swe.keyword }}
-                                    </option>
-                                {% endif %}
-                            {% endfor %}
-                        </select>
-                    </div>
                 {% endfor %}
 
 
-            <div class="col-lg-2 col-md-3 col-xs-12 mb-5 col-6">
-                <span style="font-size: 12px" >{%trans "Science type" %}</span>
+            <div class="project-filter">
+                <span class="text-xl md:text-3xl playfair-font font-extrabold" >projekt i</span>
 
-                <select id="science_type" name="science_type" class="custom-select form-control">
+                <select id="science_type" name="science_type" class="custom-dropdown ml-4">
                     <option value="all" > {% trans "All" %} </option>
                     {% for sci_typ in None|get_science_types %}
 
@@ -67,7 +53,7 @@
                 <span style="font-size: 12px" >{%trans "Database" %}</span>
 
                 <select id="database" name="database" class="custom-select form-control">
-                    
+
                     {% for database in None|get_origin_database %}
 
                         <option  value="{{ database.0 }}">
@@ -107,41 +93,19 @@
 
                 </select>
             </div>
-
-
-            <div class="col-lg-2 col-md-3 col-xs-12 mb-5 col-6">
-
-                <br>
-
-
-                <button name="update" value="1" class="form-control"> Update</button>
-
-            </div>
-
-
           </div>
-
           </form>
-
-
-
 <!--           ---------- -->
 
-
-
-
-
-
-<div class="col-12" style="height: 20px" ></div>
-<div class="row">
+<div class="grid-cols-3 px-8 project-cards">
 
 
 {% for ProjectEntry in object_list %}
 
 
-<div class="col-lg-3 col-sm-6 col-12 mb-5">
-    <div class="card h-100 shadow border-0">
-        <a class="card-img-wrap " href="{% url 'projects:project_detail' ProjectEntry.id %}">
+<div class="col-lg-3 col-sm-6 col-12 mb-5 border-2 border-color-accent">
+    <div class="h-100  border-0 mt-4">
+        <a class="card-img-wrap mt-4" href="{% url 'projects:project_detail' ProjectEntry.id %}">
 
 
 
@@ -167,7 +131,11 @@
                 <a class="card-link" href="{% url 'projects:project_detail' ProjectEntry.id %}">
                 {{ ProjectEntry.get_card_name }}</a>
             </h6>
-                <p class="card-text" >{{ProjectEntry.get_card_description}}</p>
+                <div class="flex items-end">
+
+                    <p class="text-md" >{{ProjectEntry.get_card_description}}</p>
+                    <a class="text-xs lato-font pl-2 font-bold" style="color:#173F53" href="{% url 'projects:project_detail' ProjectEntry.id %}">LÄS MER</a>
+                </div>
         </div>
 
         <div class="card-body shadow" title='{% trans "Short aim" %}'>

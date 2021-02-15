@@ -186,18 +186,18 @@ class KeywordLine(models.Model):
             if self.swe != None:
 
                 if self.eng != None:
-                    return ''' <a class="badge badge-light pt-1" href="'''+ self.eng.get_absolute_url()+'''">'''+ self.swe.keyword + ''' </a> '''
+                    return ''' <a class="new-badge pt-1 pl-2 pr-2" href="'''+ self.eng.get_absolute_url()+'''">'''+ self.swe.keyword + ''' </a> '''
 
                 else:
                     return self.swe.keyword
 
-            return ''' <a class="badge badge-light pt-1" href="'''+ self.eng.get_absolute_url()+'''">'''+ self.eng.keyword + " (endast på engelska)" + ''' </a> '''
+            return ''' <a class="new-badge pt-1 pl-2 pr-2" href="'''+ self.eng.get_absolute_url()+'''">'''+ self.eng.keyword + " (endast på engelska)" + ''' </a> '''
 
         if lang == "en":
 
             if self.eng != None:
 
-                return ''' <a class="badge badge-light pt-1" href="'''+ self.eng.get_absolute_url()+'''">'''+ self.eng.keyword + ''' </a> '''
+                return ''' <a class="new-badge pt-1 pl-2 pr-2" href="'''+ self.eng.get_absolute_url()+'''">'''+ self.eng.keyword + ''' </a> '''
 
             return self.swe.keyword + " (only in Swedish)"
 

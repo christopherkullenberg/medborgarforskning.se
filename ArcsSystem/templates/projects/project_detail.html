@@ -15,115 +15,144 @@
 <a style="font-size: 24px" class="form-control btn-success col-2 " href="edit/" >edit</a>
 {% endif %}
 
+<div class="w-full">
+    <div class="flex flex-col md:flex-row justify-around px-4">
+        <div class="right" >
+            <h1 class="playfair-font text-xl md:text-4xl font-bold">{{ object.name }}</h1>
 
-  <h1 align="center">{{ object.name }}</h1>
+            {% if object.image %}
+            
+            
+            <img class="project-detail-image mt-4" src="{{object.image.url}}" alt="{% trans 'Responsive image' %}" />
+            
+            {% else %}
+                        
+                <div class="center" align="center" style="height: 30px; width: calc(50%);  background: coral">
+                    <h5 align="center"  > No image</h5>
+                </div>        
+            {% endif %}
 
+            <div class="flex flex-col my-4 text-xl">
+                <p class="font-bold text-xl">{{object.get_card_aim}}</p>
+                <p class="text-lg pt-2">{{object.get_card_description}}</p>
+            </div>
+        </div>
+        <div class="left green-bg-color flex flex-col p-4" style="width:300px">
+            <p class="text-md">Namn: </p>
+            <p class="text-md playfair-font font-bold pb-2">{{object.name}}</p>
+            <p class="">Status: </p>
+            <p class="playfair-font font-bold pb-2">{{object.get_status_name}}</p>
+            <p class="">Ämne: </p>
+            <p class="playfair-font font-bold pb-2">{{object.science_type}}</p>
+            <p class="">Startdatum: </p>
+            <p class="playfair-font font-bold pb-2">{{object.start_date}}</p>
+            <p class="">Slutdatum: </p>
+            <p class="playfair-font font-bold pb-2">{{object.end_date}}</p>
+            <p class="">Kontaktperson: </p>
+            <p class="playfair-font font-bold pb-2">{{object.contact_name}}, <a href="mailto:{{object.contact_email}}">{{object.contact_email}}</a></p>
+            <p class="">Målgrupp: </p>
+            <p class="playfair-font font-bold pb-2">{{object.target_audience}}</p>
+            <p class="">Geografisk plats: </p>
+            <p class="playfair-font font-bold pb-2">{{object.latitude}}, {{object.longitude}}</p>
+            <p class="">Slutdatum: </p>
+            <p class="playfair-font font-bold pb-2">{{object.end_date}}</p>
 
-<!--   <picture class="detail-view">
-    {# TODO implement additional web image format handling #}
-    <source srcset="name.webp" type="image/webp" alt="{#TODO alt text#}">{#Webp image support first#}
-        <source srcset="name.jpg" type="image/jpg" alt="{#TODO alt text#}">{#jpg support next#}
-    <img src="{{ object.image_dir }}"  alt="{% blocktrans %}Bild för projektet {{ object.name }}{% endblocktrans %}" width="300" height="300"/>
-  </picture> -->
-
-{% if object.image %}
-
-
-<img align="center" class="center"  src="{{object.image.url}}" alt="{% trans 'Responsive image' %}" style="width: 200px; height: 200px;" />
-
-
-{% else %}
-
-
-{{object.image}}
-
-<div class="center" align="center" style="height: 30px; width: calc(50%);  background: coral">
-<h5 align="center"  > No image</h5>
-</div>
-
-{% endif %}
-
-
-  <div class="custom-container">
-
-    <ul class="nav nav-tabs">
-
-      <li class="nav-item">
-        <a class="nav-link active " data-toggle="tab" href="#step1">{% trans "Details" %}</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link " data-toggle="tab" href="#step_aim">{% trans "Aim" %} <span class="glyphicon glyphicon-align-left" ></span></a>
-      </li>
-      <li class="nav-item ">
-        <a class="nav-link " data-toggle="tab" href="#step_description">{% trans "Description" %}</a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link " data-toggle="tab" href="#step3">{% trans "Keywords" %}</a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#step5">{% trans "Contact info" %} </a>
-      </li>
-
-      <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#step_map">{% trans "Location" %}</a>
-      </li>
-
-    </ul>
-
-
-    <div class="tab-content">
-      <br>
-      <div id="step1" class="tab-pane container active">
-        <br>
-
-            <h5>{% trans "Target audience" %}:  {{ object.target_audience}}</h5>
-
-            <br>
-
-
-            <h5>{% trans "Project status" %}: {{ object.get_status_name}}</h5>
-
-
-            <br>
-
-            <h5>{% trans "Science type" %}:  {{ object.science_type}}</</h5>
-
+         
         </div>
 
-      <div class="tab-pane container fade" id="step_aim">
-        <p>{{ object.aim|safe }}</p>
-     </div>
-
-     <div class="tab-pane container fade" id="step_description">
-      {{ object.description|safe }}
     </div>
-
-    <div id="step3" class="tab-pane fade">
-
-        <h3>{% trans "Project keywords" %} </h3>
-
-
-        {% for line in object.keyword_lines.all %}
-
-        {{line|get_keyword:LANGUAGE_CODE |safe }}
-        <br>
-
-        {% endfor %}
-        <br>
-        <br>
-
-
-    {% if object.keyword_lines.all %}
-
-    <h3> {% trans "Keyword connections" %} </h3>
-
-  {% for one_list in object|get_all_related:LANGUAGE_CODE %}
-    {{ one_list.0|safe }}
-    <script>
-        var data = JSON.parse('{{ one_list.1| escapejs }}');
-    </script>
+    
+    
+    <!--   <picture class="detail-view">
+        {# TODO implement additional web image format handling #}
+        <source srcset="name.webp" type="image/webp" alt="{#TODO alt text#}">{#Webp image support first#}
+            <source srcset="name.jpg" type="image/jpg" alt="{#TODO alt text#}">{#jpg support next#}
+                <img src="{{ object.image_dir }}"  alt="{% blocktrans %}Bild för projektet {{ object.name }}{% endblocktrans %}" width="300" height="300"/>
+            </picture> -->
+            
+  
+<!--             
+            
+            <div class="custom-container">
+                
+                <ul class="nav nav-tabs">
+                    
+                    <li class="nav-item">
+                        <a class="nav-link active " data-toggle="tab" href="#step1">{% trans "Details" %}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " data-toggle="tab" href="#step_aim">{% trans "Aim" %} <span class="glyphicon glyphicon-align-left" ></span></a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link " data-toggle="tab" href="#step_description">{% trans "Description" %}</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link " data-toggle="tab" href="#step3">{% trans "Keywords" %}</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#step5">{% trans "Contact info" %} </a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="tab" href="#step_map">{% trans "Location" %}</a>
+                    </li>
+                    
+                </ul>
+                
+                
+                <div class="tab-content">
+                    <br>
+                    <div id="step1" class="tab-pane container active">
+                        <br>
+                        
+                        <h5>{% trans "Target audience" %}:  {{ object.target_audience}}</h5>
+                        
+                        <br>
+                        
+                        
+                        <h5>{% trans "Project status" %}: {{ object.get_status_name}}</h5>
+                        
+                        
+                        <br>
+                        
+                        <h5>{% trans "Science type" %}:  {{ object.science_type}}</</h5>
+                        
+                    </div>
+                    
+                    <div class="tab-pane container fade" id="step_aim">
+                        <p>{{ object.aim|safe }}</p>
+                    </div>
+                    
+                    <div class="tab-pane container fade" id="step_description">
+                        {{ object.description|safe }}
+                    </div>
+                    
+                    <div id="step3" class="tab-pane fade">
+                        
+                        <h3>{% trans "Project keywords" %} </h3>
+                        
+                        
+                        {% for line in object.keyword_lines.all %}
+                        
+                        {{line|get_keyword:LANGUAGE_CODE |safe }}
+                        <br>
+                        
+                        {% endfor %}
+                        <br>
+                        <br>
+                        
+                        
+                        {% if object.keyword_lines.all %}
+                        
+                        <h3> {% trans "Keyword connections" %} </h3>
+                        
+                        {% for one_list in object|get_all_related:LANGUAGE_CODE %}
+                        {{ one_list.0|safe }}
+                        <script>
+                            var data = JSON.parse('{{ one_list.1| escapejs }}');
+                            </script>
 {% endfor %}
 
 {% else %}
@@ -132,56 +161,55 @@
 
 {% endif %}
 
-    </div>
+</div> -->
 
 
 
-    <div id="step5" class="tab-pane fade">
+<!-- <div id="step5" class="tab-pane fade">
+    
+    <h4>{% trans "Name" %}: {{ object.contact_name }}</h4>
+    <h4>{% trans "Contact's role" %}: {{ object.contact_role }}</h4>
+    <h4>{% trans "Affiliation" %}: {{ object.contact_affiliation }}</h4>
+    <br>
+    
+    {% if  object.url %}
+    <h4><a href=" {{ object.url }}"> {% trans "External link to project"%}</a> </h4>
+    (link addres:  {{ object.url }})
+    <br>
+    
+    {% endif %}
+    
+    
+    <br>
+    send email to user
+    <textarea class="form-control"> </textarea>
+    
+    
+</div> -->
 
-<h4>{% trans "Name" %}: {{ object.contact_name }}</h4>
-<h4>{% trans "Contact's role" %}: {{ object.contact_role }}</h4>
-<h4>{% trans "Affiliation" %}: {{ object.contact_affiliation }}</h4>
-<br>
 
-{% if  object.url %}
-<h4><a href=" {{ object.url }}"> {% trans "External link to project"%}</a> </h4>
-(link addres:  {{ object.url }})
-<br>
-
-{% endif %}
-
-
-<br>
-send email to user
-<textarea class="form-control"> </textarea>
-
-
-</div>
-
-
-<div id="step_map" class="tab-pane fade">
-
+<!-- <div id="step_map" class="tab-pane fade">
+    
     sweden
-
+    
     lägg till detta i framtiden
+    
+    
+</div> -->
+
+</div>
+</div>
+
 
 
 </div>
-
-</div>
-</div>
-
-
-<br><br><br>
-
-
 <style type="text/css">
 
 .center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
 }
 </style>
 
