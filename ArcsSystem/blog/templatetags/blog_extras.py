@@ -5,10 +5,8 @@ from blog.views import SearchBlogView
 
 register = template.Library()
 
-
-
-def latest_blogs(query):
-    result = SearchBlogView.get_queryset_template(query)
+def latest_blogs(number):
+    result = SearchBlogView.get_queryset_template(number)
     return result
 
 

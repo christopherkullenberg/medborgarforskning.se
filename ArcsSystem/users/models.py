@@ -25,6 +25,8 @@ class CustomUser(AbstractUser):
     accepted_eula_version = models.CharField(max_length=25, blank=False, null=True)
     accepted_eula_date = models.DateField(auto_now_add=True, null=True) #TODO compare to date TOS was updated to ensure notice is presented that the terms changed.
 
+    display_name = models.SlugField(max_length=50, unique=True)
+
     # Fields extending the base user model that may be used publicly is a unique ID
     slug = models.UUIDField(default=uuid.uuid4, blank=True, editable=False)
     orcid = models.CharField("ORCID", max_length=50, blank=True, null=True) # TODO add when AllAuth ORCID login is used.

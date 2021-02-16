@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Private Profile view</h1>
+
+<form id="edit-save-private-profile-form" isEditing="false" action="{% url 'userprofile_private_view' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <a id="edit-save-private-profile-submit-button" href="#">Start editing</a>
+</form>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#edit-save-private-profile-submit-button").on('click', function (e) {
+            var isEditing = $("#edit-save-private-profile-form").attr('isEditing');
+            if (isEditing == "false") {
+                $("#edit-save-private-profile-form").attr('isEditing', "true");
+                $("#edit-save-private-profile-submit-button").text("Save");
+                toggleEnabled(true);
+                e.preventDefault();
+            }
+            else {
+                $("#edit-save-private-profile-form").attr('isEditing', "false");
+                $("#edit-save-private-profile-submit-button").text("Start editing");
+                $("#edit-save-private-profile-form").submit();
+            }
+        });
+    });
+
+    function toggleEnabled(state) {
+        $.each($("#edit-save-private-profile-form > p > input"), function () {
+            if (state) {
+                $(this).removeAttr('disabled');
+            }
+            else {
+                $(this).attr('disabled', 'disabled');
+            }
+        });
+        $.each($("#edit-save-private-profile-form > p > select"), function () {
+            if (state) {
+                $(this).removeAttr('disabled');
+            }
+            else {
+                $(this).attr('disabled', 'disabled');
+            }
+        });
+    }
+</script>
+
+{% endblock %}
