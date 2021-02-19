@@ -7,8 +7,11 @@
 
 
 
+{% for project in projects %}
 
+{{ project }}
 
+{% endfor %}
 
 
 <div>
@@ -42,7 +45,7 @@
                     {% for sci_typ in None|get_science_types %}
 
                         <option  value="{{ sci_typ.id }}">
-                           {% trans sci_typ.ScienceType %} 
+                           {% trans sci_typ.ScienceType %}
                         </option>
                     {% endfor %}
                 </select>
@@ -54,7 +57,7 @@
                 <select id="sort" name="sort" class="custom-dropdown ml-4">
 
                     <option  value="name"> {% trans "Alphabetical" %}, {% trans  "ascending" %} </option>
-                    <option  value="-name"> {% trans "Alphabetical" %}, {% trans "descending" %} </option>                    
+                    <option  value="-name"> {% trans "Alphabetical" %}, {% trans "descending" %} </option>
                     <option  value="date_created"> {% trans "Date added" %}, {% trans "ascending" %} </option>
                     <option  value="-date_created"> {% trans "Date added" %}, {% trans "descending" %} </option>
 
@@ -62,7 +65,7 @@
             </div>
           </div>
           </form>
-<!--           ---------- -->
+
 
 <div class="grid-cols-3 px-8 project-cards">
 
@@ -78,27 +81,27 @@
 
             {% if ProjectEntry.image %}
 
-                    <img style="height: 250px; " 
+                    <img style="height: 250px; "
                     class="card-img-top img-fluid img-zoom ls-is-cached lazyloaded object-cover" src="{{ProjectEntry.image.url}}">
 
 
                 {% else %}
 
                 <div class="col">
-                    <img style="height: 250px" class="card-img-top img-fluid img-zoom ls-is-cached lazyloaded" 
+                    <img style="height: 250px" class="card-img-top img-fluid img-zoom ls-is-cached lazyloaded"
                     src="/media/images/sami-takarautio-UZOpP-YHe9Q-unsplash.width-400.jpg" />
                 </div>
 
                 {% endif %}
-            
+
             </a>
-                
+
         <div class="card-body" title='{% trans "Short description" %}'>
             <h6 class="card-title playfair-font text-2xl font-bold ">
                 {{ ProjectEntry.get_card_name }}
             </h6>
                 <div class="flex items-end">
-                
+
                     <p class="text-md" >{{ProjectEntry.get_card_description}}</p>
                     <a class="text-xs lato-font pl-2 font-bold" style="color:#173F53" href="{% url 'projects:project_detail' ProjectEntry.id %}">LÄS MER</a>
                 </div>
@@ -106,15 +109,15 @@
 
         <div class="card-body playfair-font text-uppercase" title='{% trans "Short aim" %}'>
                 <p class=""> {% trans "Aim" %}: {{ProjectEntry.get_card_aim}}</p>
-        
+
         <div style="overflow:hidden" >
 
                 {% for line in ProjectEntry.keyword_lines.all  %}
                 {{ line|get_keyword:LANGUAGE_CODE|safe }}
                 {% endfor %}
         </div>
-            </div><!-- End of card-body -->
-        </div><!-- end of card -->
+            </div>
+        </div><
     </div>
 
         {% endfor %}
@@ -137,5 +140,6 @@
 </script>
 
 {% endfor %}
+
 
 {% endblock content %}

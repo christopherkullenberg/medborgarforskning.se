@@ -1,6 +1,17 @@
 from django import template
 from workpackages.models import WorkPackage, Theme
 from projects.models import KeywordEng, KeywordSwe, ScienceType, STATUS_CHOICES, KeywordLine
+import os
+import requests
+import json
+
+def api_get_projects():
+    data = requests.get('https://eu-citizen.science/api/projects/')
+    jsondata = data.json()
+    text = json.dumps(jsondata, sort_keys=True, indent=4)
+    return text
+
+
 
 
 register = template.Library()
@@ -55,7 +66,8 @@ def line_is_project(not_use):
 
 	return [KeywordLine.objects.exclude(Project=None)]
 
-
+def euapi_projects():
+	return api_get_projects()
 
 
 register.filter("line_is_project", line_is_project)
@@ -64,3 +76,4 @@ register.filter("get_all_status", get_all_status)
 register.filter("get_keywords", get_keywords)
 register.filter("get_keywords_trans", get_keywords_trans)
 register.filter("get_science_types", get_science_types)
+register.filter("euapi_projects", euapi_projects)

@@ -7,6 +7,7 @@ from .views import ProjectSubmissionView
 from .views import ProjectEditView
 from .views import ProjectSubmissionEditView
 from .views import ProjectListViewFilter
+from .views import GetEUAPI
 
 
 #from .views import #insertviewname
@@ -14,7 +15,7 @@ from .views import ProjectListViewFilter
 app_name = 'projects'
 
 urlpatterns = [
-    path('', ProjectListView.as_view(),
+    path('', GetEUAPI.as_view(),
         name='project_list'),
 
     path('filter/', ProjectListViewFilter,
