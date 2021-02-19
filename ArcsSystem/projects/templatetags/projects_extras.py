@@ -1,22 +1,38 @@
 from django import template
+from django.template.defaultfilters import stringfilter
 from workpackages.models import WorkPackage, Theme
 from projects.models import KeywordEng, KeywordSwe, ScienceType, STATUS_CHOICES, KeywordLine
 import os
 import requests
 import json
+import re
 
+'''
 def api_get_projects():
     data = requests.get('https://eu-citizen.science/api/projects/')
     jsondata = data.json()
     text = json.dumps(jsondata, sort_keys=True, indent=4)
-    return text
+    return jsondata
 
-
+'''
 
 
 register = template.Library()
 
+@register.filter
+@stringfilter
+def localimage(value):
+	filename = re.sub('https\:\/\/eu\-citizen.science\/media\/media\/images\/',
+						'', value)
+	localurl = '/media/EUimg/' + filename
+	return localurl
 
+@register.filter
+@stringfilter
+def remoteimage(value):
+	remoteurl = re.sub('\/media\/media\/',
+						'/media/', value)
+	return remoteurl
 
 
 def get_keywords(string):

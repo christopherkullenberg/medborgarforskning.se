@@ -6,10 +6,33 @@
 {% load keyword_extras %}
 
 
-
 {% for project in projects %}
 
-{{ project }}
+    <p><b>{{ project.name }}</b><p>
+
+      <!-- tries first if there is a local image, if not, retrieves from eu-citizen.science -->
+      <object data="{{project.image1|localimage|safe}}" type="image/png">
+        <img src="{{project.image1|remoteimage|safe}}" alt="Remote image">
+      </object>
+
+
+
+    {{ project.aim|safe }}
+    <p><b>Keywords:</b></p>
+      {% for kw in project.keywords %}
+          <p>{{ kw.keyword }}</p>
+      {% endfor %}
+
+      <p><b>Topics:</b></p>
+        {% for t in project.topic %}
+            <p>{{ t.topic }}</p>
+        {% endfor %}
+
+
+
+    <p>{{ project.url }}<p>
+
+      <br>
 
 {% endfor %}
 
