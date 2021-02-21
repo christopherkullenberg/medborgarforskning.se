@@ -8,34 +8,83 @@
 
 {% for project in projects %}
 
-    <p><b>{{ project.name }}</b><p>
 
-      <!-- tries first if there is a local image, if not, retrieves from eu-citizen.science -->
-      <object data="{{project.image1|localimage|safe}}" type="image/png">
-        <img src="{{project.image1|remoteimage|safe}}" alt="Remote image">
-      </object>
+<div class="col-lg-3 col-sm-6 col-12 mb-5 border-2 border-color-accent">
+    <div class="h-100  border-0 mt-4">
+        <a class="card-img-wrap mt-4" href="{{ project.url }}">
 
 
 
-    {{ project.aim|safe }}
-    <p><b>Keywords:</b></p>
-      {% for kw in project.keywords %}
-          <p>{{ kw.keyword }}</p>
-      {% endfor %}
-
-      <p><b>Topics:</b></p>
-        {% for t in project.topic %}
-            <p>{{ t.topic }}</p>
-        {% endfor %}
 
 
 
-    <p>{{ project.url }}<p>
 
-      <br>
+                  {% if project.image1 %}
+
+
+                  <object data="{{project.image1|localimage|safe}}" type="image/png" style="height: 250px" class="card-img-top img-fluid img-zoom ls-is-cached lazyloaded object-cover" >
+                    <img src="{{project.image1|remoteimage|safe}}" alt="Remote image" type="image/png" style="height: 250px" class="card-img-top img-fluid img-zoom ls-is-cached lazyloaded object-cover">
+                    </object>
+
+              </div>
+
+
+
+
+                                {% else %}
+
+                                <div class="col">
+                                    <img style="height: 250px" class="card-img-top img-fluid img-zoom ls-is-cached lazyloaded"
+                                    src="/media/images/sami-takarautio-UZOpP-YHe9Q-unsplash.width-400.jpg" />
+                                </div>
+
+
+                                {% endif %}
+
+
+                                </a>
+
+
+                        <div class="card-body" title='{% trans "Short description" %}'>
+
+                            <h6 class="card-title playfair-font text-2xl font-bold ">
+                                {{ project.name }}
+                            </h6>
+                                <div class="flex items-end">
+
+
+
+                                    <p class="text-md" >  {{ project.aim|safe|truncatechars:200 }}</p>
+                                    <a class="text-xs lato-font pl-2 font-bold" style="color:#173F53" href="{{ project.url }}">LÄS MER</a>
+                                </div>
+
+
+                                                                      {% for line in project.topic %}
+                                                                      {{ line.topic }}   <!-- |get_keyword:LANGUAGE_CODE|safe-->
+                                                                      {% endfor %}
+
+
+                        <!--<div class="card-body playfair-font text-uppercase" title='{% trans "Short aim" %}'>
+                                <p class=""> {% trans "Aim" %}: {{ project.aim|safe }}</p>-->
+
+
+
+                                                                {% for line in project.topic %}
+                                                                  {% for l in line %}
+                                                                    {{ l.topic}}     <!-- |get_keyword:LANGUAGE_CODE|safe-->
+                                                                  {% endfor %}
+                                                                {% endfor %}
+
+                        </div>
+                        </div>
+                        </div>
+
+
+
 
 {% endfor %}
 
+<!--
 
 <div>
     <div class="">
@@ -163,6 +212,6 @@
 </script>
 
 {% endfor %}
-
+-->
 
 {% endblock content %}
