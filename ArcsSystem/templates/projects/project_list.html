@@ -6,31 +6,25 @@
 {% load keyword_extras %}
 
 
+
+
 {% for project in projects %}
 
+{% if project|swedishprojects %}
 
 <div class="col-lg-3 col-sm-6 col-12 mb-5 border-2 border-color-accent">
     <div class="h-100  border-0 mt-4">
         <a class="card-img-wrap mt-4" href="{{ project.url }}">
 
-
-
-
-
-
+                  <p>{{project.country}}</p>
 
                   {% if project.image1 %}
-
 
                   <object data="{{project.image1|localimage|safe}}" type="image/png" style="height: 250px" class="card-img-top img-fluid img-zoom ls-is-cached lazyloaded object-cover" >
                     <img src="{{project.image1|remoteimage|safe}}" alt="Remote image" type="image/png" style="height: 250px" class="card-img-top img-fluid img-zoom ls-is-cached lazyloaded object-cover">
                     </object>
 
               </div>
-
-
-
-
                                 {% else %}
 
                                 <div class="col">
@@ -38,12 +32,9 @@
                                     src="/media/images/sami-takarautio-UZOpP-YHe9Q-unsplash.width-400.jpg" />
                                 </div>
 
-
                                 {% endif %}
 
-
                                 </a>
-
 
                         <div class="card-body" title='{% trans "Short description" %}'>
 
@@ -51,8 +42,6 @@
                                 {{ project.name }}
                             </h6>
                                 <div class="flex items-end">
-
-
 
                                     <p class="text-md" >  {{ project.aim|safe|truncatechars:200 }}</p>
                                     <a class="text-xs lato-font pl-2 font-bold" style="color:#173F53" href="{{ project.url }}">LÄS MER</a>
@@ -68,7 +57,6 @@
                                 <p class=""> {% trans "Aim" %}: {{ project.aim|safe }}</p>-->
 
 
-
                                                                 {% for line in project.topic %}
                                                                   {% for l in line %}
                                                                     {{ l.topic}}     <!-- |get_keyword:LANGUAGE_CODE|safe-->
@@ -79,7 +67,7 @@
                         </div>
                         </div>
 
-
+   {% endif %}
 
 
 {% endfor %}

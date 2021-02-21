@@ -39,6 +39,7 @@ def template_view(request):
 class GetEUAPI(TemplateView):
     template_name = 'projects/project_list.html'
     def get_context_data(self, *args, **kwargs):
+
         context = {
             'projects' : api_get_projects(),
             }

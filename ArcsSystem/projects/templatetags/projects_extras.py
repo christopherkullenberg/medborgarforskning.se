@@ -6,18 +6,20 @@ import os
 import requests
 import json
 import re
-
-'''
-def api_get_projects():
-    data = requests.get('https://eu-citizen.science/api/projects/')
-    jsondata = data.json()
-    text = json.dumps(jsondata, sort_keys=True, indent=4)
-    return jsondata
-
-'''
-
-
 register = template.Library()
+
+
+
+@register.filter
+def swedishprojects(project):
+	if project['country'] == "SE":
+		print(project)
+		return project
+	#for j in jsondata:
+	##	swedishprojects = [x for x in j if x[0] == 184]
+	#swp = json.dumps(swedishprojects)
+	#return jsondata
+
 
 @register.filter
 @stringfilter
