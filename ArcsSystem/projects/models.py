@@ -415,7 +415,8 @@ class Project(models.Model):
 
     created_by = models.ForeignKey(CustomUser, on_delete=models.SET_NULL, blank=True, null=True )
     #lable = 'Upload image',  help_text = 'Choose an image that will in one picure decribe your project'
-    image = models.ImageField(null=True, blank=True, upload_to="project_images")
+    #image = models.ImageField(null=True, blank=True, upload_to="project_images") # local storage
+    image = models.URLField(max_length=500, blank=True, verbose_name="Project url") # remote storage
 
 
 

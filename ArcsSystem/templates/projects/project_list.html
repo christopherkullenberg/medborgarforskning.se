@@ -5,85 +5,16 @@
 {% block content %}
 {% load keyword_extras %}
 
-
-
-
-{% for project in projects %}
-
-{% if project|swedishprojects %}
-
-<div class="col-lg-3 col-sm-6 col-12 mb-5 border-2 border-color-accent">
-    <div class="h-100  border-0 mt-4">
-        <a class="card-img-wrap mt-4" href="{{ project.url }}">
-
-                  <p>{{project.country}}</p>
-
-                  {% if project.image1 %}
-
-                  <object data="{{project.image1|localimage|safe}}" type="image/png" style="height: 250px" class="card-img-top img-fluid img-zoom ls-is-cached lazyloaded object-cover" >
-                    <img src="{{project.image1|remoteimage|safe}}" alt="Remote image" type="image/png" style="height: 250px" class="card-img-top img-fluid img-zoom ls-is-cached lazyloaded object-cover">
-                    </object>
-
-              </div>
-                                {% else %}
-
-                                <div class="col">
-                                    <img style="height: 250px" class="card-img-top img-fluid img-zoom ls-is-cached lazyloaded"
-                                    src="/media/images/sami-takarautio-UZOpP-YHe9Q-unsplash.width-400.jpg" />
-                                </div>
-
-                                {% endif %}
-
-                                </a>
-
-                        <div class="card-body" title='{% trans "Short description" %}'>
-
-                            <h6 class="card-title playfair-font text-2xl font-bold ">
-                                {{ project.name }}
-                            </h6>
-                                <div class="flex items-end">
-
-                                    <p class="text-md" >  {{ project.aim|safe|truncatechars:200 }}</p>
-                                    <a class="text-xs lato-font pl-2 font-bold" style="color:#173F53" href="{{ project.url }}">LÄS MER</a>
-                                </div>
-
-
-                                                                      {% for line in project.topic %}
-                                                                      {{ line.topic }}   <!-- |get_keyword:LANGUAGE_CODE|safe-->
-                                                                      {% endfor %}
-
-
-                        <!--<div class="card-body playfair-font text-uppercase" title='{% trans "Short aim" %}'>
-                                <p class=""> {% trans "Aim" %}: {{ project.aim|safe }}</p>-->
-
-
-                                                                {% for line in project.topic %}
-                                                                  {% for l in line %}
-                                                                    {{ l.topic}}     <!-- |get_keyword:LANGUAGE_CODE|safe-->
-                                                                  {% endfor %}
-                                                                {% endfor %}
-
-                        </div>
-                        </div>
-                        </div>
-
-   {% endif %}
-
-
-{% endfor %}
-
-<!--
-
-<div>
-    <div class="">
+<div class="container-fluid">
+    <div class="custom-container">
 
         <form method="GET"  action="{% url 'projects:project_list_filter' %}" >
 
-        <div class="flex flex-col md:flex-row border-t-2 border-b-2 border-color-accent px-4 py-4 mb-4 w-full md:items-center md:justify-around justify-center">
+        <div class="row">
                 {% for one_item in None|line_is_project %}
-                    <div class="project-filter">
-                        <span class="text-xl md:text-3xl playfair-font font-extrabold" >Visa</span>
-                        <select id="kw_eng" name="kw_eng" class="custom-dropdown ml-4">
+                    <div class="col-lg-2 col-md-3 col-xs-12 mb-5 col-6">
+                        <span style="font-size: 12px" align="center" >{% trans "English Keywords" %}</span>
+                        <select id="kw_eng" name="kw_eng" class="custom-select form-control">
                             <option value="all" > {% trans "All" %} </option>
                             {% for line in one_item %}
                                 {% if line.eng %}
@@ -94,13 +25,27 @@
                             {% endfor %}
                         </select>
                     </div>
+
+                    <div class="col-lg-2 col-md-3 col-xs-12 mb-5 col-6">
+                        <span style="font-size: 12px" >{% trans "Swedish Keywords" %}</span>
+                        <select id="kw_swe" name="kw_swe" class="custom-select form-control">
+                            <option value="all" > {% trans "All" %} </option>
+                            {% for line in one_item %}
+                                {% if line.swe %}
+                                    <option  value="{{ line.swe.id }}">
+                                        {{ line.swe.keyword }}
+                                    </option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                    </div>
                 {% endfor %}
 
 
-            <div class="project-filter">
-                <span class="text-xl md:text-3xl playfair-font font-extrabold" >projekt i</span>
+            <div class="col-lg-2 col-md-3 col-xs-12 mb-5 col-6">
+                <span style="font-size: 12px" >{%trans "Science type" %}</span>
 
-                <select id="science_type" name="science_type" class="custom-dropdown ml-4">
+                <select id="science_type" name="science_type" class="custom-select form-control">
                     <option value="all" > {% trans "All" %} </option>
                     {% for sci_typ in None|get_science_types %}
 
@@ -111,10 +56,26 @@
                 </select>
             </div>
 
-            <div class="project-filter">
-                <p class="text-xl md:text-3xl playfair-font font-extrabold">sorterat efter</p>
 
-                <select id="sort" name="sort" class="custom-dropdown ml-4">
+            <div class="col-lg-2 col-md-3 col-xs-12 mb-5 col-6">
+                <span style="font-size: 12px">{%trans "Status" %}</span>
+                <select id="status" name="status" class="custom-select form-control">
+                    <option value="all" > {% trans "All" %} </option>
+                    {% for status in None|get_all_status %}
+                        <option  value="{{ status.0 }}">
+                            {% trans status.1 %}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+
+
+
+
+            <div class="col-lg-2 col-md-3 col-xs-12 mb-5 col-6">
+                <span style="font-size: 12px">{%trans "Sort by" %}</span>
+
+                <select id="sort" name="sort" class="custom-select form-control">
 
                     <option  value="name"> {% trans "Alphabetical" %}, {% trans  "ascending" %} </option>
                     <option  value="-name"> {% trans "Alphabetical" %}, {% trans "descending" %} </option>
@@ -123,32 +84,54 @@
 
                 </select>
             </div>
+
+
+            <div class="col-lg-2 col-md-3 col-xs-12 mb-5 col-6">
+
+                <br>
+
+
+                <button name="update" value="1" class="form-control"> Update</button>
+
+            </div>
+
+
           </div>
+
           </form>
 
 
-<div class="grid-cols-3 px-8 project-cards">
+
+<!--           ---------- -->
+
+
+
+
+
+
+<div class="col-12" style="height: 20px" ></div>
+<div class="row">
 
 
 {% for ProjectEntry in object_list %}
 
 
-<div class="col-lg-3 col-sm-6 col-12 mb-5 border-2 border-color-accent">
-    <div class="h-100  border-0 mt-4">
-        <a class="card-img-wrap mt-4" href="{% url 'projects:project_detail' ProjectEntry.id %}">
+<div class="col-lg-3 col-sm-6 col-12 mb-5">
+    <div class="card h-100 shadow border-0">
+        <a class="card-img-wrap " href="{% url 'projects:project_detail' ProjectEntry.id %}">
 
 
 
             {% if ProjectEntry.image %}
 
-                    <img style="height: 250px; "
-                    class="card-img-top img-fluid img-zoom ls-is-cached lazyloaded object-cover" src="{{ProjectEntry.image.url}}">
+                    <img style="height: 160px; "
+                    class="card-img-top img-fluid img-zoom ls-is-cached lazyloaded" src="{{ProjectEntry.image}}">
 
 
                 {% else %}
 
                 <div class="col">
-                    <img style="height: 250px" class="card-img-top img-fluid img-zoom ls-is-cached lazyloaded"
+                    <img style="height: 160px" class="card-img-top img-fluid img-zoom ls-is-cached lazyloaded"
                     src="/media/images/sami-takarautio-UZOpP-YHe9Q-unsplash.width-400.jpg" />
                 </div>
 
@@ -156,19 +139,16 @@
 
             </a>
 
-        <div class="card-body" title='{% trans "Short description" %}'>
-            <h6 class="card-title playfair-font text-2xl font-bold ">
-                {{ ProjectEntry.get_card_name }}
+        <div class="card-body shadow" title='{% trans "Short description" %}'>
+            <h6 class="card-title">
+                <a class="card-link" href="{% url 'projects:project_detail' ProjectEntry.id %}">
+                {{ ProjectEntry.get_card_name }}</a>
             </h6>
-                <div class="flex items-end">
-
-                    <p class="text-md" >{{ProjectEntry.get_card_description}}</p>
-                    <a class="text-xs lato-font pl-2 font-bold" style="color:#173F53" href="{% url 'projects:project_detail' ProjectEntry.id %}">LÄS MER</a>
-                </div>
+                <p class="card-text" >{{ProjectEntry.get_card_description}}</p>
         </div>
 
-        <div class="card-body playfair-font text-uppercase" title='{% trans "Short aim" %}'>
-                <p class=""> {% trans "Aim" %}: {{ProjectEntry.get_card_aim}}</p>
+        <div class="card-body shadow" title='{% trans "Short aim" %}'>
+                <p class="card-text" > {% trans "Aim" %}: {{ProjectEntry.get_card_aim}}</p>
 
         <div style="overflow:hidden" >
 
@@ -176,8 +156,8 @@
                 {{ line|get_keyword:LANGUAGE_CODE|safe }}
                 {% endfor %}
         </div>
-            </div>
-        </div><
+            </div><!-- End of card-body -->
+        </div><!-- end of card -->
     </div>
 
         {% endfor %}
@@ -200,6 +180,8 @@
 </script>
 
 {% endfor %}
--->
+
+
+
 
 {% endblock content %}

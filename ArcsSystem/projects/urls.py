@@ -15,7 +15,7 @@ from .views import GetEUAPI
 app_name = 'projects'
 
 urlpatterns = [
-    path('', GetEUAPI.as_view(),
+    path('', ProjectListView.as_view(),
         name='project_list'),
 
     path('filter/', ProjectListViewFilter,

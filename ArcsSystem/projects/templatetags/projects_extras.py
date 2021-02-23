@@ -11,14 +11,39 @@ register = template.Library()
 
 
 @register.filter
-def swedishprojects(project):
-	if project['country'] == "SE":
-		print(project)
+def countrylist(project):
+	countrylist = []
+	for c in project:
+		if c['country'] not in countrylist:
+			countrylist.append(c['country'])
+		else:
+			continue
+	return sorted(countrylist)
+
+
+@register.filter
+def projectbycountry(project, listofcountries):
+	print(listofcountries)
+	if project['country'] in listofcountries:
 		return project
-	#for j in jsondata:
-	##	swedishprojects = [x for x in j if x[0] == 184]
-	#swp = json.dumps(swedishprojects)
-	#return jsondata
+
+
+@register.filter
+def swedishprojects(project):
+	if project['country'] in ["SE"]:
+		return project
+
+@register.filter
+def scandinavianprojects(project):
+	if project['country'] in ["SE", "DK", "NO", "FI", "IS"]:
+		#print(project)
+		return project
+
+@register.filter
+def allprojects(project):
+	return project
+
+
 
 
 @register.filter
