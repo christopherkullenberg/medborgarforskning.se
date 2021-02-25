@@ -6,6 +6,7 @@ admin.site.register(KeywordSwe)
 admin.site.register(KeywordEng)
 admin.site.register(KeywordLine)
 
+
 admin.site.register(ScienceType)
 admin.site.register(ProjectSubmission)
 

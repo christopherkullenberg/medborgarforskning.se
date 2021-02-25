@@ -54,9 +54,6 @@ UN_REGIONS_CHOICES = [
 
 
 
-
-
-
 class KeywordSwe(models.Model):
     '''Keywords for the projects'''
     class Meta:
@@ -299,7 +296,7 @@ class Project(models.Model):
     #un_regions = ## maps to PPSR PMM unRegions
     #language = ## maps to PPSR PMM language - language encoding of the record
 
-    #locality_text = models.CharField(blank=True,) ## maps to PPSR PMM projectLocality
+    #locality_text = models.CharField(blank=True,) ## maps to PPSR PMM keywordlineprojectLocality
     responsible_party_name = models.CharField(blank=True, max_length=50,) ## maps to PPSR PMM projectResponsiblePartyName
     responsible_party_email = models.CharField(blank=True, max_length=50,) ## maps to PPSR PMM projectResponsiblePartyContactEmail
 
@@ -598,8 +595,8 @@ class ProjectSubmission(Project):
     for exchange. Once approved it will be moved to the ProjectEntry model and will be available in the shared database.
     We do not want spam inserted to the main project model stores and can enforce fields differently than a Projectentry.'''
 
-    keywords_sv = models.CharField(max_length=50, blank=True, null=True)
-    keywords_en = models.CharField(max_length=50, blank=True, null=True)
+    keywords_sv = models.CharField(max_length=500, blank=True, null=True)
+    keywords_en = models.CharField(max_length=500, blank=True, null=True)
 
     class Meta:
         # Explicit add of names and plurals instead of relying on model name fallback
