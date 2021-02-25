@@ -156,7 +156,7 @@
 
 
                 {% for line in ProjectEntry.keyword_lines.all  %}
-                  {{ line|get_keyword:"en"|safe }}
+                  {{ line|get_keyword:LANGUAGE_CODE|safe }}
                 {% endfor %}
 
 
