@@ -160,19 +160,7 @@
                 {% endfor %}
 
 
-              {{ProjectEntry.keywords}}
 
-              {% for keyword in ProjectEntry.keyword_lines.all %}
-                   {{ keyword }}
-                  {{ keyword.get_custom_html|safe }} <span style="width: 5px"></span>    <!-- looks ugly but here is a comma -->
-              {% endfor %}
-
-              {% with ProjectEntry.keywords|split:"&" as projects %}
-                  {% for project in projects %}
-                      {{ project }} <br>
-
-                  {% endfor %}
-              {% endwith %}
 
         </div>
             </div><!-- End of card-body -->

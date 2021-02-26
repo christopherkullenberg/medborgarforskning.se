@@ -437,7 +437,7 @@ class Project(models.Model):
     def get_card_image_url(self):
 
         if self.image:
-            return self.image.url
+            return self.image
         return ""
 
 
