@@ -33,7 +33,7 @@
             {% endif %}
 
             <div class="flex flex-col my-4 text-xl">
-                <p class="font-bold text-xl">{{object.get_card_aim}}</p>
+                <p class="font-bold text-xl">{{object.get_card_aim|safe}}</p>
                 <p class="text-lg pt-2">{{object.get_card_description}}</p>
             </div>
         </div>
@@ -42,12 +42,15 @@
             <p class="text-md playfair-font font-bold pb-2">{{object.name}}</p>
             <p class="">Status: </p>
             <p class="playfair-font font-bold pb-2">{{object.get_status_name}}</p>
-            <p class="">Ämne: </p>
-            <p class="playfair-font font-bold pb-2">{{object.keywords}}</p>
-            <p class="">Startdatum: </p>
+            <p class="">Ämnen:
+            {% for line in object.keyword_lines.all  %}
+              {{ line|get_keyword:LANGUAGE_CODE|safe }}
+            {% endfor %}
+            </p>
+            <!--<p class="">Startdatum: </p>
             <p class="playfair-font font-bold pb-2">{{object.start_date}}</p>
             <p class="">Slutdatum: </p>
-            <p class="playfair-font font-bold pb-2">{{object.end_date}}</p>
+            <p class="playfair-font font-bold pb-2">{{object.end_date}}</p>-->
             <p class="">Kontaktperson: </p>
             <p class="playfair-font font-bold pb-2">{{object.contact_name}}, <a href="mailto:{{object.contact_email}}">{{object.contact_email}}</a></p>
             <p class="">Målgrupp: </p>
@@ -143,7 +146,7 @@
                         <br>
                         <br>
 
-
+-->
                         {% if object.keyword_lines.all %}
 
                         <h3> {% trans "Keyword connections" %} </h3>
@@ -153,13 +156,13 @@
                         <script>
                             var data = JSON.parse('{{ one_list.1| escapejs }}');
                             </script>
-{% endfor %}
+                      {% endfor %}
 
-{% else %}
+                      {% else %}
 
-{% trans "This project has no keywords. Relations are created through keywords. Therefore no relations can be created" %}
+                      {% trans "This project has no keywords. Relations are created through keywords. Therefore no relations can be created" %}
 
-{% endif %}
+                      {% endif %}
 
 </div> -->
 

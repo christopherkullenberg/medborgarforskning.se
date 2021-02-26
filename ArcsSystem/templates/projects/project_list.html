@@ -144,11 +144,11 @@
                 <a class="card-link" href="{% url 'projects:project_detail' ProjectEntry.id %}">
                 {{ ProjectEntry.get_card_name }}</a>
             </h6>
-                <p class="card-text" >{{ProjectEntry.get_card_description}}</p>
+                <p class="card-text" >{{ProjectEntry.get_card_aim|striptags|safe|truncatechars:200}}</p>
         </div>
 
         <div class="card-body shadow" title='{% trans "Short aim" %}'>
-                <p class="card-text" > {% trans "Aim" %}: {{ProjectEntry.get_card_aim}}</p>
+                <!--<p class="card-text" > {% trans "Aim" %}: {{ProjectEntry.get_card_aim|safe}}</p>-->
 
         <div style="overflow:hidden" >
 
