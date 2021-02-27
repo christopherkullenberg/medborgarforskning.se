@@ -21,6 +21,7 @@ bleach = "==3.2.1"
 wikidata = "==0.7.0"
 pillow = "==8.0.1"
 django-livesync = "*"
+country-bounding-boxes = "*"
 
 [requires]
 python_version = "3"

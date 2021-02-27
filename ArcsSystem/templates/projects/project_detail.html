@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load i18n %}
+{% load l10n %}
 {% load keyword_extras %}
+{% load projects_extras %}
 
 
 
@@ -18,18 +20,25 @@
 <div class="w-full">
     <div class="flex flex-col md:flex-row justify-around px-4">
         <div class="right" >
-            <h1 class="playfair-font text-xl md:text-4xl font-bold">{{ object.name }}</h1>
+            <h1 class="playfair-font text-xl md:text-4xl font-bold">{{ object.name }} ({{object.country}})</h1>
 
             {% if object.image %}
 
 
             <img class="project-detail-image mt-4" src="{{object.image}}" alt="{% trans 'Responsive image' %}" />
 
+
+
             {% else %}
 
                 <div class="center" align="center" style="height: 30px; width: calc(50%);  background: coral">
                     <h5 align="center"  > No image</h5>
                 </div>
+
+
+
+
+
             {% endif %}
 
             <div class="flex flex-col my-4 text-xl">
@@ -38,6 +47,23 @@
             </div>
         </div>
         <div class="left green-bg-color flex flex-col p-4" style="width:300px">
+
+          <iframe width="250" height="150" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=
+          {% for geovalue in object.country|get_country_bbox %}
+          {{ geovalue.0|unlocalize }}
+          %2C
+          {{ geovalue.1|unlocalize }}
+          %2C
+          {{ geovalue.2|unlocalize }}
+          %2C
+          {{ geovalue.3|unlocalize }}
+          {% endfor %}
+          &amp;layer=mapnik&amp;marker={{object.latitude|unlocalize}}%2C{{object.longitude|unlocalize}}" style="border: 1px solid black"></iframe>
+          <br/><small><a href="https://www.openstreetmap.org/?mlat=52.1572&amp;mlon=4.3997#map=12/52.1572/4.3997">Show bigger map</a></small>
+
+
+
+
             <p class="text-md">Namn: </p>
             <p class="text-md playfair-font font-bold pb-2">{{object.name}}</p>
             <p class="">Status: </p>
@@ -164,12 +190,24 @@
 
                       {% endif %}
 
-</div> -->
+</div>
 
 
 
-<!-- <div id="step5" class="tab-pane fade">
+                  <iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=
+                  {% for geovalue in object.country|get_country_bbox %}
+                  {{ geovalue.0 }}
+                  %2C
+                  {{ geovalue.1 }}
+                  %2C
+                  {{ geovalue.2 }}
+                  %2C
+                  {{ geovalue.3 }}
+                  {% endfor %}
+                  &amp;layer=mapnik&amp;marker={{object.latitude|unlocalize}}%2C{{object.longitude|unlocalize}}" style="border: 1px solid black"></iframe>
+                  <br/><small><a href="https://www.openstreetmap.org/?mlat=52.1572&amp;mlon=4.3997#map=12/52.1572/4.3997">Show bigger map</a></small>
 
+<!--
     <h4>{% trans "Name" %}: {{ object.contact_name }}</h4>
     <h4>{% trans "Contact's role" %}: {{ object.contact_role }}</h4>
     <h4>{% trans "Affiliation" %}: {{ object.contact_affiliation }}</h4>
@@ -239,7 +277,7 @@
     text {
         font-family: sans-serif;
         font-weight: lighter;
-        fill: white;
+        fill: black;
     }
 </style>
 <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>

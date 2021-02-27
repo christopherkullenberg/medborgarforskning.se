@@ -6,7 +6,30 @@ import os
 import requests
 import json
 import re
+from country_bounding_boxes import country_subunits_containing_point, country_subunits_by_iso_code
+
+
 register = template.Library()
+
+@register.filter
+def get_country_fullname(countrycodestring):
+    return [c.name for c in country_subunits_by_iso_code(countrycodestring)]
+
+@register.filter
+def get_country_bbox(string):
+    boxes = [c.bbox for c in country_subunits_by_iso_code(string.code)]
+    if len(boxes) == 1:
+        #print(boxes)
+        #print(type(boxes))
+        return boxes
+    else:
+        #print(boxes)
+        #print(type(boxes))
+        #print(boxes[0])
+        return [boxes[0]]
+
+
+
 
 @register.filter(name='split')
 def split(value, key):

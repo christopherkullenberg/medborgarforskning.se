@@ -6,6 +6,7 @@ from django.dispatch import receiver
 from django.conf import settings
 # from django_countries.fields import CountryField
 from django.contrib.auth.models import User
+from django_countries.fields import CountryField
 import uuid
 import os
 from users.models import CustomUser
@@ -321,7 +322,7 @@ class Project(models.Model):
     # ## maps to PPSR PMM projectGeographicCoverage - geoObject
     # coverage_latitude = models.DecimalField(max_digits=9,decimal_places=6) ## maps to PPSR PMM projectGeographicCoverageCentroidLatitude
     # coverage_longitude = models.DecimalField(max_digits=9,decimal_places=6)# ## maps to PPSR PMM projectGeographicCoverageCentroidLongitude
-    # country = CountryField()
+    country = CountryField(blank=True, null=True)
 
     #activity =
     #how_to_participate = models.CharField(max_length=2000)

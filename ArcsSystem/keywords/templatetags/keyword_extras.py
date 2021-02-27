@@ -19,7 +19,6 @@ register = template.Library()
 
 
 
-
 #
 def defaultdict_nodes():
 	return {"value": 0, "group": 2}
@@ -329,13 +328,13 @@ def get_all_related(this_db_class, lang ="en", use="all"):
 		div_html += ' </div></div>'
 
 	nav_html += ' <li class="nav-item"> <a class="nav-link active" data-toggle="tab" href="#svg_map_pub"> Keyword map </a> </li> '
-	div_html += ''' <div id="svg_map_pub" class="tab-pane active" style="background: black" >  <svg id="rel_graph" style="width:100%;height:1000px;"  width="1000" height="1000">
+	div_html += ''' <div id="svg_map_pub" class="tab-pane active" style="background: #c3d3d0" >  <svg id="rel_graph" style="width:100%;height:1000px;"  width="1000" height="1000">
 	'''  + '''
 
 	 <text x="300" y="70"style="fill:red;font-size:25px;"> Themes </text>  <text x="500" y="70" style="fill:green;font-size:25px;"> Projects </text>  <text x="700" y="70" style="fill:blue;font-size:25px;"> Publications </text>
 
-	 <rect x="40" y="40" width="190" height="300" style="stroke:white;stroke-width:1;" />
-	 <text id="info_text_svg" x="50" y="80" style="fill:white;font-size:15px;">
+	 <rect x="40" y="40" width="190" height="300" style="fill:#9fb0a0;stroke:#9fb0a0;stroke-width:1;" />
+	 <text id="info_text_svg" x="50" y="80" style="fill:black;font-size:15px;">
 	 	<tspan x="50"> Name: </tspan>
 	    <tspan x="50" dy="20" id="name" ></tspan>
 	    <tspan x="50" dy="40"> Number of occurrences: </tspan>
