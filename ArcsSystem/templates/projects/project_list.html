@@ -61,7 +61,8 @@
             <span style="font-size: 12px" >{%trans "Country" %}</span>
 
 
-            <select id="country" name="country" class="custom-select form-control" onchange="changeCountry()"">
+            <select id="country" name="country" class="custom-select form-control" onchange="changeCountry()" >
+            
                 <option value="all" > {% trans "All" %} </option>
 
                        {% for c in None|countrylist %}

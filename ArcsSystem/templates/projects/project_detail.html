@@ -66,9 +66,12 @@
 
             <p class="text-md">Namn: </p>
             <p class="text-md playfair-font font-bold pb-2">{{object.name}}</p>
-            <p class="">Status: </p>
-            <p class="playfair-font font-bold pb-2">{{object.get_status_name}}</p>
-            <p class="">Ämnen:
+            <p class="">Hemsida: </p>
+            <p class="playfair-font font-bold pb-2"><a href="{{object.url}}">{{object.url}}</a></p>
+            <!--<p class="">Status: </p>
+            <p class="playfair-font font-bold pb-2">{{object.get_status_name}}</p>-->
+            <p class="">Ämnen: </p>
+            <p class="">
             {% for line in object.keyword_lines.all  %}
               {{ line|get_keyword:LANGUAGE_CODE|safe }}
             {% endfor %}
@@ -77,14 +80,14 @@
             <p class="playfair-font font-bold pb-2">{{object.start_date}}</p>
             <p class="">Slutdatum: </p>
             <p class="playfair-font font-bold pb-2">{{object.end_date}}</p>-->
-            <p class="">Kontaktperson: </p>
+            <!--<p class="">Kontaktperson: </p>
             <p class="playfair-font font-bold pb-2">{{object.contact_name}}, <a href="mailto:{{object.contact_email}}">{{object.contact_email}}</a></p>
             <p class="">Målgrupp: </p>
-            <p class="playfair-font font-bold pb-2">{{object.target_audience}}</p>
+            <p class="playfair-font font-bold pb-2">{{object.target_audience}}</p>-->
             <p class="">Geografisk plats: </p>
             <p class="playfair-font font-bold pb-2">{{object.latitude}}, {{object.longitude}}</p>
-            <p class="">Slutdatum: </p>
-            <p class="playfair-font font-bold pb-2">{{object.end_date}}</p>
+            <!--<p class="">Slutdatum: </p>
+            <p class="playfair-font font-bold pb-2">{{object.end_date}}</p>-->
 
 
         </div>
@@ -175,7 +178,7 @@
 -->
                         {% if object.keyword_lines.all %}
 
-                        <h3> {% trans "Keyword connections" %} </h3>
+                        <!--<h3> {% trans "Keyword connections" %} </h3>-->
 
                         {% for one_list in object|get_all_related:LANGUAGE_CODE %}
                         {{ one_list.0|safe }}
@@ -192,20 +195,6 @@
 
 </div>
 
-
-
-                  <iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=
-                  {% for geovalue in object.country|get_country_bbox %}
-                  {{ geovalue.0 }}
-                  %2C
-                  {{ geovalue.1 }}
-                  %2C
-                  {{ geovalue.2 }}
-                  %2C
-                  {{ geovalue.3 }}
-                  {% endfor %}
-                  &amp;layer=mapnik&amp;marker={{object.latitude|unlocalize}}%2C{{object.longitude|unlocalize}}" style="border: 1px solid black"></iframe>
-                  <br/><small><a href="https://www.openstreetmap.org/?mlat=52.1572&amp;mlon=4.3997#map=12/52.1572/4.3997">Show bigger map</a></small>
 
 <!--
     <h4>{% trans "Name" %}: {{ object.contact_name }}</h4>

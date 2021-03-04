@@ -71,12 +71,12 @@ class Theme(models.Model):
         di["en"] = []
         di["sv"] = []
 
-        #return "<div class='col-4' > <a href='" + self.get_absolute_url_details() +   "'>" + self.name +  "</a> </div>" 
+        #return "<div class='col-4' > <a href='" + self.get_absolute_url_details() +   "'>" + self.name +  "</a> </div>"
 
         html =   ''' <div style="padding-left: 20px; padding-right: 20px; font-size:10px" class="col-lg-3 col-md-6 col-xs-12 mb-5">
                 <div class="project-item">
                     <div class="row">
-                        <div class="col">  
+                        <div class="col">
                         ''' + '''  <button style="height:100px; color :white; font-size: 10px" class="col project-items-justify form-control blackFieldWhiteText" type="button" onclick="location.href=' '''+ self.get_absolute_url() + '''  ';"  />''' + limit_string(self.wp_parent.name,limit) + ": <br> " +  self.title +   ''' </button>  ''' +  '''
                         </div>
                     </div>
@@ -84,8 +84,8 @@ class Theme(models.Model):
 
                         <div class="row Lato-font ">
                             <div class="col" >
-                                <span>  
-                                ''' + self.description +  ''' 
+                                <span>
+                                ''' + self.description +  '''
                                 </span>
                             </div>
                         </div>
@@ -132,6 +132,4 @@ def limit_string(string, limit):
     if len(string) <= limit:
         return string
     else:
-        return string[:limit-3] + "..." 
-
-
+        return string[:limit-3] + "..."
