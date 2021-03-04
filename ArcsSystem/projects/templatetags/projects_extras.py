@@ -1,7 +1,7 @@
 from django import template
 from django.template.defaultfilters import stringfilter
 from workpackages.models import WorkPackage, Theme
-from projects.models import KeywordEng, KeywordSwe, ScienceType, STATUS_CHOICES, KeywordLine
+from projects.models import KeywordEng, KeywordSwe, ScienceType, STATUS_CHOICES, KeywordLine, ProjectEntry
 import os
 import requests
 import json
@@ -12,12 +12,36 @@ from country_bounding_boxes import country_subunits_containing_point, country_su
 register = template.Library()
 
 @register.filter
-def get_country_fullname(countrycodestring):
-    return [c.name for c in country_subunits_by_iso_code(countrycodestring)]
+def get_country_fullname(string):
+    countrylist = [c.name for c in country_subunits_by_iso_code(string)]
+    print(countrylist)
+    if len(countrylist) == 1:
+        return countrylist[0]
+    elif string == 'BE':
+        return 'Belgium'
+    elif string == 'ES':
+        return 'Spain'
+    elif string == 'PT':
+        return 'Portugal'
+    elif string == 'IT':
+        return 'Italy'
+    elif string == 'GB':
+        return 'Great Britain'
+    elif string == 'US':
+        return 'USA'
+    elif string == 'DK':
+        return 'Denmark'
+    elif string == 'FR':
+        return 'France'
+    elif string == 'NO':
+        return 'Norway'
+    else:
+
+        return countrylist[-1]
 
 @register.filter
-def get_country_bbox(string):
-    boxes = [c.bbox for c in country_subunits_by_iso_code(string.code)]
+def get_country_bbox(countryobject):
+    boxes = [c.bbox for c in country_subunits_by_iso_code(countryobject.code)]
     if len(boxes) == 1:
         #print(boxes)
         #print(type(boxes))
@@ -39,14 +63,17 @@ def split(value, key):
     return value.split(key)
 
 @register.filter
-def countrylist(project):
-	countrylist = []
-	for c in project:
-		if c['country'] not in countrylist:
-			countrylist.append(c['country'])
-		else:
-			continue
-	return sorted(countrylist)
+def countrylist(name='countrylist'):
+    countrylist = []
+    for c in ProjectEntry.objects.all():
+        if c.country not in countrylist:
+            if len(c.country) > 1:
+                print(c.country)
+                countrylist.append(str(c.country))
+    return(countrylist)
+
+
+
 
 
 @register.filter
@@ -148,3 +175,4 @@ register.filter("get_keywords", get_keywords)
 register.filter("get_keywords_trans", get_keywords_trans)
 register.filter("get_science_types", get_science_types)
 register.filter("euapi_projects", euapi_projects)
+register.filter("countrylist", countrylist)

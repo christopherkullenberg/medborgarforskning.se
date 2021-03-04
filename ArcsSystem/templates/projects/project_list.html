@@ -42,7 +42,7 @@
                 {% endfor %}
 
 
-            <div class="col-lg-2 col-md-3 col-xs-12 mb-5 col-6">
+          <!--  <div class="col-lg-2 col-md-3 col-xs-12 mb-5 col-6">
                 <span style="font-size: 12px" >{%trans "Science type" %}</span>
 
                 <select id="science_type" name="science_type" class="custom-select form-control">
@@ -54,6 +54,24 @@
                         </option>
                     {% endfor %}
                 </select>
+            </div>-->
+
+
+            <div class="col-lg-2 col-md-3 col-xs-12 mb-5 col-6">
+            <span style="font-size: 12px" >{%trans "Country" %}</span>
+
+
+            <select id="country" name="country" class="custom-select form-control" onchange="changeCountry()"">
+                <option value="all" > {% trans "All" %} </option>
+
+                       {% for c in None|countrylist %}
+                       <option  value="{{ c }}">
+                         {{ c|get_country_fullname }}
+                       {% endfor %}
+                    </option>
+
+            </select>
+
             </div>
 
 
@@ -100,7 +118,12 @@
 
           </form>
 
-
+          <script>
+          function myFunction() {
+            var x = document.getElementById("mySelect").value;
+            document.getElementById("demo").innerHTML = "You selected: " + x;
+          }
+          </script>
 
 <!--           ---------- -->
 

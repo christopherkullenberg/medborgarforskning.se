@@ -63,7 +63,7 @@ def ProjectListViewFilter(request):
 
         # create filter
         selcted = []
-        filter_kw = ["status", "science_type"]
+        filter_kw = ["status", "country"]
         di_filter = {}
         for kw in filter_kw:
             if request.GET[kw] != "all":
