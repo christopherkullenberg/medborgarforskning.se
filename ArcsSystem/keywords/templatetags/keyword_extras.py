@@ -100,7 +100,7 @@ def convert_dict(json_di, value=1):
 # 	# this is
 # 	json_di = {"nodes": defaultdict(defaultdict_nodes), "links": defaultdict(defaultdict_links_super)}
 
-#  	# init dict part
+#  	# init dict parttheme
 # 	di["pub"] = defaultdict(list)
 # 	di["pub"]["not"] = defaultdict(list)
 
@@ -272,7 +272,7 @@ def get_all_related(this_db_class, lang ="en", use="all"):
 
 	nav_html = ' <ul class="nav nav-tabs"> '
 	div_html = ' <div class="col-12">  <div class="tab-content"> <br> '
-	nav_html += ' <li class="nav-item"> <a class="nav-link ' + "" + '" data-toggle="tab" href="#'+"pub"+'">'+"Publications ("+ str(amount_pub)+')</a> </li> '
+	nav_html += ' <li class="nav-item"> <a class="nav-link ' + "" + '" data-toggle="tab" href="#'+"pub"+'">'+"Related Publications ("+ str(amount_pub)+')</a> </li> '
 	div_html += ' <div id="'+"pub"+'" class="tab-pane container '+ "" +'">  <div class="row" > '
 	count = 0
 
@@ -302,7 +302,7 @@ def get_all_related(this_db_class, lang ="en", use="all"):
 	div_html += ' </div></div>'
 
 	for grup_num, thing in enumerate(dict_key_thing):
-		nav_html += ' <li class="nav-item"> <a class="nav-link ' + thing + '" data-toggle="tab" href="#'+thing+'">'+thing+' (' + str(count_list[grup_num])+ ')</a> </li> '
+		nav_html += ' <li class="nav-item"> <a class="nav-link ' + thing + '" data-toggle="tab" href="#'+thing+'">Related '+thing+'s (' + str(count_list[grup_num])+ ')</a> </li> '
 		div_html += ' <div id="'+thing+'" class="tab-pane container '+ thing +'">  <div class="row" > '
 		count = 0
 		for x in range(60, -1, -1):

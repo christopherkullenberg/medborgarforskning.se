@@ -41,16 +41,19 @@ def get_country_fullname(string):
 
 @register.filter
 def get_country_bbox(countryobject):
-    boxes = [c.bbox for c in country_subunits_by_iso_code(countryobject.code)]
-    if len(boxes) == 1:
-        #print(boxes)
-        #print(type(boxes))
-        return boxes
-    else:
-        #print(boxes)
-        #print(type(boxes))
-        #print(boxes[0])
-        return [boxes[0]]
+    try:
+        boxes = [c.bbox for c in country_subunits_by_iso_code(countryobject.code)]
+        if len(boxes) == 1:
+            #print(boxes)
+            #print(type(boxes))
+            return boxes
+        else:
+            #print(boxes)
+            #print(type(boxes))
+            #print(boxes[0])
+            return [boxes[0]]
+    except IndexError:
+        return None 
 
 
 

@@ -68,17 +68,19 @@
             <p class="text-md playfair-font font-bold pb-2">{{object.name}}</p>
             <p class="">Hemsida: </p>
             <p class="playfair-font font-bold pb-2"><a href="{{object.url}}">{{object.url}}</a></p>
-            <!--<p class="">Status: </p>
-            <p class="playfair-font font-bold pb-2">{{object.get_status_name}}</p>-->
+            <p class="">Status: </p>
+            <p class="playfair-font font-bold pb-2">{{object.get_status_name}}</p>
             <p class="">Ämnen: </p>
             <p class="">
             {% for line in object.keyword_lines.all  %}
               {{ line|get_keyword:LANGUAGE_CODE|safe }}
             {% endfor %}
             </p>
-            <!--<p class="">Startdatum: </p>
-            <p class="playfair-font font-bold pb-2">{{object.start_date}}</p>
-            <p class="">Slutdatum: </p>
+
+
+            <p class="">Projektansvarig: </p>
+            <p class="playfair-font font-bold pb-2">{{object.responsible_party_name}}</p>
+            <!--<p class="">Slutdatum: </p>
             <p class="playfair-font font-bold pb-2">{{object.end_date}}</p>-->
             <!--<p class="">Kontaktperson: </p>
             <p class="playfair-font font-bold pb-2">{{object.contact_name}}, <a href="mailto:{{object.contact_email}}">{{object.contact_email}}</a></p>

@@ -466,8 +466,8 @@ class Project(models.Model):
                 <div class="project-item">
                     <div class="row">
                         <div class=" col">
-                            <div  class="col project-items-justify blackFieldWhiteText">
-                                <h4 align="center"><a style="color: white; font-size: 16px" id="project-items-link" href= " ''' + self.get_absolute_url_details() + ''' ">  ''' + self.get_card_name() + '''</a></h4>
+                            <div class="col project-items-justify">
+                                <h4 align="center"><a style="color: black; font-size: 16px" id="project-items-link" href= " ''' + self.get_absolute_url_details() + ''' ">  ''' + self.get_card_name() + '''</a></h4>
                             </div>
                         </div>
                     </div>
@@ -479,11 +479,11 @@ class Project(models.Model):
                     <div class="col" style="padding-right: 5px; padding-left: 5px; margin-top: 3px">
                         <div class="row Lato-font ">
                             <div class="col" >
-                                <span class="font-italic">PROJECT AIM: </span> <span class="font-weight-light" style=" font-size: 14px;" >  ''' +self.get_card_aim() + ''' </span>
+                                <span class="font-italic"></span> <span class="font-weight-light" style=" font-size: 14px;" >  ''' +self.get_card_aim() + ''' </span>
                             </div>
                         </div>
                         <hr>
-                        <div class="row Lato-font">
+                        <!--<div class="row Lato-font">
                             <div class="col">
                                 <span >DESCRIPTION: </span> <span > ''' +self.get_card_description() + ''' </span>
                             </div>
@@ -494,7 +494,7 @@ class Project(models.Model):
                                 STATUS:  ''' + self.get_status_name() + '''
                             </div>
                         </div>
-                        <hr>
+                        <hr>-->
                         '''
 
         for key in self.get_keywords(lang=lang):

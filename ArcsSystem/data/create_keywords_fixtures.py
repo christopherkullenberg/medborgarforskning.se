@@ -63,6 +63,8 @@ def parseEUprojects():
                              project['end_date'],
                              project['latitude'],
                              project['longitude'],
+                             project['status'],
+                             project['mainOrganisation'],
                             ]
         else:
                 continue
@@ -254,6 +256,14 @@ def projectstofixture():
         xmloutputfile.write('''  <field name="country" type="CountryField">''' + escape(v[5]) + '''</field>\n''')
         xmloutputfile.write('''  <field name="latitude" type="DecimalField">''' + v[9] + '''</field>\n''')
         xmloutputfile.write('''  <field name="longitude" type="DecimalField">''' + v[10] + '''</field>\n''')
+        xmloutputfile.write('''  <field name="status" type="CharField">''' + str(v[11]['id']) + '''</field>\n''')
+
+        try:
+            print(str(v[12]['name']))
+            xmloutputfile.write('''  <field name="responsible_party_name" type="CharField">''' + escape(str(v[12]['name'])) + '''</field>\n''')
+        except TypeError:
+            xmloutputfile.write('''  <field name="responsible_party_name" type="CharField">N/A</field>\n''')
+
         # Images
         try:
             xmloutputfile.write('''  <field name="image" type="URLField">''' + remoteimage(v[4]) + '''</field>\n''')
