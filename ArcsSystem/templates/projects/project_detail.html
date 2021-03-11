@@ -195,7 +195,7 @@
 
                       {% endif %}
 
-</div>
+
 
 
 <!--
@@ -219,18 +219,13 @@
 
 </div> -->
 
+{% if object.keyword_lines.all %}
 
-<!-- <div id="step_map" class="tab-pane fade">
-
-    sweden
-
-    lägg till detta i framtiden
-
-
-</div> -->
 
 </div>
 </div>
+</div>
+
 
 
 
@@ -247,8 +242,6 @@
 
 
 
-
-{% if object.keyword_lines.all %}
 
 
 <style>
@@ -406,6 +399,7 @@
         d.fy = null;
     }
 </script>
+
 
 {% endif %}
 

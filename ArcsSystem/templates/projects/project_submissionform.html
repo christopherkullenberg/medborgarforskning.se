@@ -5,7 +5,35 @@
 {% block content %}
 {% load keyword_for_all_extras %}
 
+
+
+
+
+<h1>Kom igång med medborgarforskning</h1>
+
+
+<p>Lorem ipsum....</p>
+
+
+
+
+
+
+{% endblock content %}
+
+
+
+
+
+
+<!--- The old submission system is below. Just move down  endblock content and it will work -->
+
+<!--
 {% if user.is_authenticated %}
+
+
+
+
 
 <script type="text/javascript">
 
@@ -26,13 +54,13 @@
       new_keyword_line.appendTo( "#keyword_div" );
     }
 
-  
+
   }
   function remove_keyword_input_line(){
     if(count > 0){
       $("#keyword_div_" + count ).remove();
       count -= 1
-    } 
+    }
   }
 
 </script>
@@ -65,7 +93,7 @@
 
       </li>
 
-   
+
 
 
 
@@ -86,7 +114,7 @@
 
       <br>
 
-      
+
 
       <div id="step1" class="tab-pane container active">
 
@@ -118,7 +146,7 @@
 
             </h4>
             {{ Submission.image }}
-            
+
           </div>
 
           <div class="col-3">
@@ -161,7 +189,7 @@
         <br>
         <br>
 
-      </div>       
+      </div>
       <div class="tab-pane container fade" id="step_aim">
         <div class="col-12">
 
@@ -210,14 +238,14 @@
 
       <div class="col-xxl-5   col-xl-9   col-lg-12 col-md-12 col-sm-12 col-12">
 
-        <h3 align="center" class=""> 
-        {% trans "Keywords" %}  
+        <h3 align="center" class="">
+        {% trans "Keywords" %}
       </h3>
       <br>
       <br>
 
           <h5 align="center">
-             {% trans "Add keywords, preferably with a translation in the corresponding field on the same line" %} 
+             {% trans "Add keywords, preferably with a translation in the corresponding field on the same line" %}
        <h5>
         <br>
 
@@ -280,7 +308,7 @@
       <div class="row">
 
 
-        <div class="col-6 col-lg-3 col-md-4 col-xs-6 mb-5"> 
+        <div class="col-6 col-lg-3 col-md-4 col-xs-6 mb-5">
 
           <div class="col">
 
@@ -327,7 +355,7 @@
         <div style="padding-left: 20px; padding-right: 20px" class="col-lg-3 col-md-4 col-xs-6 mb-5">
           <div class="project-item">
             <div class="row">
-              <div class=" col">  
+              <div class=" col">
                 <div  class="col project-items-justify blackFieldWhiteText">
                   <h4 align="center" style="color: white; font-size: 16px" id="rep_card_name"> </h4>
                 </div>
@@ -378,19 +406,19 @@
           <h4>{% trans Submission.contact_name.label %}</h4>
           {{ Submission.contact_name }}
         </div>
-        
+
 
         <div class="col-3">
           <h4>{% trans Submission.contact_email.label %}</h4>
           {{ Submission.contact_email }}
         </div>
-        
+
 
         <div class="col-3">
           <h4>{% trans Submission.contact_role.label %}</h4>
           {{ Submission.contact_role }}
         </div>
-        
+
 
         <div class="col-3">
           <h4>{% trans Submission.contact_affiliation.label %}</h4>
@@ -413,7 +441,7 @@
 
 
 
-      
+
 
     </div>
 
@@ -578,7 +606,7 @@
 
 <script type="text/javascript">
 
-  var count = 0 
+  var count = 0
 
   add_keyword_input_line()
 
@@ -640,7 +668,7 @@ function nextnav(){
 
 
 
-  
+
 
   if (secClicked == true){
 
@@ -660,7 +688,7 @@ function nextnav(){
         else{
           $(this).css("border", "solid MediumSeaGreen 1px");
         };
-      } 
+      }
 
     });
 
@@ -668,7 +696,7 @@ function nextnav(){
 
       if($('#id_aim').val().length < 30   ){
         var go_to_next = false;
-        
+
       }
 
     }
@@ -677,7 +705,7 @@ function nextnav(){
 
       if($('#id_description').val().length < 30   ){
         var go_to_next = false;
-        
+
       }
 
     }
@@ -760,21 +788,4 @@ $("#id_aim_card").change()
 $("#id_description_card").change()
 
 </script>
-
-
-
-
-
-{% endblock content %}
-
-
-
-
-
-
-
-
-
-
-
-
+-->
