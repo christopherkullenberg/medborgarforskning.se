@@ -15,6 +15,7 @@
             <p><b>{% trans "Volume/Issue" %}:</b> {{ article.volume }}({{ article.issue }})</p>
             <p><b>{% trans "Keywords" %}:</b>
                 {% for keyword in article.keywords.all %}
+
                     {{ keyword.get_custom_html|safe }} <span style="width: 5px"></span>    <!-- looks ugly but here is a comma -->
                 {% endfor %}
             </p>
@@ -104,6 +105,8 @@
             }))
             // -(d.value**2  + 400)
             .force("center", d3.forceCenter(width / 2, height / 2));
+            //.force("x",d3.forceX(width/2).strength(0.4))
+            //.force("y",d3.forceY(height/2).strength(0.6))
         var link = svg.append("g")
             .attr("class", "links")
             .selectAll("line")

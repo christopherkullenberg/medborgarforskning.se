@@ -1,668 +1,1932 @@
-en,sv
-citizen science,medborgarforskning
-data collection,datainsamling
-crowdsourcing,crowdsourcing
-volunteered geographic information,volunteered geographic information
-data quality,datakvalitet
-ethics,etik
-facilitation,facilitering
-newtech,newtech
-volunteered geographic information (vgi),volunteered geographic information (vgi)
-key paper,nyckelpapper
-monitoring,övervakning
-accessibility,anpassning
-mapping,kartläggning
-openstreetmap,openstreetmap
-learning,lärande
-participatory gis,participatory gis
-accuracy,träffsäkerhet
-vgi,vgi
-engagement,engagemang
-open data,öppen data
-biodiversity,biodiversitet
-data management,datahantering
-social media,sociala medier
-gis,gis
-key author,nyckelförfattare
-big data,stora data
-conservation,bevarande
-public participation,allmänhetens delaktighet
-governance,styrning
-neogeography,neogeografi
-availability,tillgänglighet
-nottech,nottech
-bias,vinklad
-remote sensing,fjärrövervakning
-openstreetmap (osm),openstreetmap (osm)
-completeness,fullständighet
-classification,klassificering
-participation,delaktighet
-validation,validering
-identification,identifiering
-web 2.0,web 2.0
-gamification,spelifiering
-climate change,klimatförändring
-data presentation,datapresentation
-motivation,motivation
-training,träning
-geoweb,geoweb
-machine learning,maskininlärning
-distribution,distribution
-public awareness,allmänhetens kännedom
-science literacy,vetenskaplig literacitet
-automation,autmatisering
-invasive species,invasiva arter
-usability,användbarhet
-land use,markutnyttjande
-reliability,reliabilitet
-ppgis,ppgis
-complexity,komplexitet
-public participation in scientific research,allmänhetens deltagande i forskning
-phenology,fenologi
-community-based monitoring,allmänhetens övervakning
-assessment measures,utvärderingsåtgärder
-smart cities,smarta städer
-collaboration,samverkan
-coverage,täckning
-air pollution,luftföroreningar
-disaster management,katastrofåtgärder
-data visualization,datavisualisering
-education,utbildning
-environmental action,miljöaktion
-notcs,notcs
-collaborative decision making,kollaborativt beslutsfattande
-twitter,twitter
-techtheme,tekniktema
-public engagement with science and technology,allmänhetens delaktighet i vetenskap och teknik
-spatial data quality,geografisk datakvalitet
-data sharing,datadelning
-data integration,dataintegration
-participatory mapping,allmänhetens kartläggning
-environmental justice,miljörättvisa
-interoperability,interoperabilitet
-participatory sensing,allmänhetens mätningar
-urban planning,stadsplanering
-volunteer monitoring,allmänhetens övervakning
-citizen-science,medborgarforskning
-quality control,kvalitetskontroll
-public engagement,allmänhetens delaktighet
-ecosystem services,ekosystemtjänster
-participatory research,medborgarforskning
-volunteer,volontär
-geographic information systems,geografiska informationssystem
-networking,nätverkande
-digitization,digitalisering
-spatial analysis,rumslig analys
-land cover,landsträckning
-environmental monitoring,miljöövervakning
-pgis,pgis
-water quality,vattenkvalitet
-local knowledge,lokal kunskap
-community engagement,allmänhetens engagemang
-data validation,datavalidiering
-data revitalization,datarevitalisering
-sustainability,hållbarhet
-quality assurance,kvalitetskontroll
-citizen observatories,medborgarobservatorier
-sensors,sensorer
-learning platforms,lärplattformar
-visualization,visualisering
-volunteers,volontärer
-critical gis,kritisk gis
-participatory monitoring,allmänhetens övervakning
-data standards,datastandarder
-smartphone,smarttelefon
-civic science,medborgarforskning
-privacy,integritet
-e-governance,e-demokrati
-internet,internet
-ebird,ebird
-biological recording,biologisk övervakning
-semantic web,semantisk webb
-technology,teknologi
-cultural ecosystem services,kulturella ekosystemtjänster
-surveys,enkäter
-uncertainty,osäkerhet
-agriculture,jordbruk
-taxonomy,taxonomi
-resilience,hållbarhet
-protected areas,skyddade områden
-collaborative mapping,kollaborativ kartläggning
-survey,enkät
-cloud computing,molnberäkning
-species distribution model,artdistributionsmodell
-adaptive management,adaptivt ledarskap
-landscape,landskap
-public participation gis,medborgar gis
-annotation,annotering
-database,databas
-quality,kvalitet
-citizen participation,medborgardelaktighet
-recruitment,rekrytering
-user-generated content,användargenererat innehåll
-species distribution models,artdistributionsmodell
-methods: data analysis,metoder: dataanalys
-biodiversity monitoring,biodiversitetsövervakning
-open science,öppen vetenskap
-key,nyckel
-biogeography,biogeografi
-spatial data infrastructure,spatial datainfrastruktur
-open access,öppen tillgång
-tech literacy,teknikliteracitet
-participatory science,medborgarforskning
-communication,kommunikation
-positional accuracy,positionsträffsäkerhet
-digital earth,digital jord
-bats,fladdermöss
-empowerment,bemäktigande
-giscience,giscience
-science process literacy,vetenskaplig literacitet
-open source,öppen källkod
-environment,miljö
-human computation,mänsklig beräkning
-geospatial data,geospatiell data
-innovation,innovation
-locally-based monitoring,lokal övervakning
-ecological monitoring,ekologisk övervakning
-migration,förflyttning
-cartography,kartografi
-air quality,luftkvalitet
-early detection,tidigt upptäckande
-tech,teknik
-location-based services,platstjänster
-linked data,länkad data
-community,gemenskap
-community participation,samhällets delaktighet
-augmented reality,förstärkt verklighet
-environmental education,miljöundervisning
-dna barcoding,dna märkning
-digital conservation,digitalt bevarande
-modelling,modellering
-public health,folkhälsa
-community-based participatory research,medborgarforskning
-community mapping,medborgarkartläggning
-stakeholders,intressenter
-social networks,sociala nätverk
-climate,klimat
-diversity,mångfald
-metadata,metadata
-participatory,delaktighet
-biodiversity informatics,biodiversitetsinformatik
-china,kina
-natural resource management,naturresurshantering
-receiving data,ta emot data
-low-cost sensors,lågkostnadssensorer
-deep learning,djupinlärning
-planning,planering
-flooding,översvämning
-earth observation,observation av jorden
-digital divide,digital klyfta
-rivers,floder
-data analysis,dataanalys
-emergency management,krishantering
-marine protected areas,marina skyddsområden
-species distribution,artdistributionl
-public participatory gis,public participatory gis
-matching,matchning
-abundance,överflöd
-digital humanities,digital humaniora
-health,hälsa
-participation and science governance,delaktighet och forskningspolitik
-language,språk
-birds,fåglar
-management,ledarskap
-opportunistic data,opportunistisk data
-ict,ikt
-population trends,populationstrender
-traditional ecological knowledge,traditionel miljökunskap
-philippines,filipinerna
-crisis informatics,krisinformatik
-modeling,modellering
-environmental health,miljöhälsa
-gravitational lensing: strong,gravitational lensing: strong
-ontology,ontologi
-mobile,mobil
-research,forskning
-species distribution modeling,modellering av artdistribution
-mobile sensing,mobil övervakning
-disaster risk reduction,naturkatastrofhantering
-mobile phones,mobiltelefoner
-urbanization,urbanisering
-design,design
-public participation in science,allmänhetens delaktighet i forskning
-science communication,vetenskapskommunikation
-spatial data mining,spatiell data mining
-routing,routing
-critical cartography,kritisk kartografi
-change detection,förändringsövervakning
-random forest,slumpmässig skog
-crowdsourced data,crowdsourcead data
-social learning,social inlärning
-policy,politik
-democracy,demokrati
-urban ecology,urban ekologi
-environmental management,miljöledarskap
-brazil,brasilien
-quality assessment,kvalitetskontroll
-osm,open street map
-gps,gps
-internet of things,sakernas internet
-exposure,exponering
-informatics,informatik
-detection,detektion
-relevance,relevans
-fisheries,fiskeri
-e-participation,e-deltagande
-program model,programmodell
-species distribution modelling,modellering av artdistribution
-smartphones,smarttelefoner
-image classification,bildklassificering
-biodiversity indicators,biodiversitetsindikatorer
-research ethics,forskningsetik
-detection probability,detekteringsprobabilitet
-crisis mapping,kriskartläggning
-camera trap,kamerafälla
-science education,forskningsutbildning
-scientific computing,vetenskapliga beräkningar
-astronomy,astronomi
-inclusiveness,inkludering
-web 2,web 2
-zooniverse,zooniverse
-epidemiology,epidemiologi
-epistemology,epistemologi
-species richness,artrikedom
-land use planning,markanvändningsplanering
-observation,observation
-geospatial web,geospatiell webb
-landscape ecology,landskapsekologi
-participatory planning,delaktig planering
-new zealand,nya zeeland
-volunteered geographical information,vgi
-non-native species,invasiva arter
-credibility,trovärdighet
-streams,vattendrag
-fish,fisk
-mobile app,mobilapp
-invasive alien species,invasiva främmande arter
-disaster response,katastrofrespons
-invertebrates,ryggradslösa djur
-population monitoring,populationsövervakning
-camera traps,kamerafällor
-built environment,bebyggd miljö
-automated data screening,automatiserad screening
-air pollution monitoring,luftkvalitetsövervakning
-mobile application,mobilapplikation
-co-production,samproduktion
-social network,socialt nätverk
-fracking,fracking
-stakeholder participation,intressentdeltagande
-australia,australien
-marine protected area,marint skyddsområde
-adaptation,anpassning
-environmental assessment,miljöutvärdering
-algorithms,algoritmer
-transdisciplinary,transdisciplinär
-spatial literacy,rumslig literacitet
-youtube,youtube
-digital cartography,digital kartografi
-mediterranean sea,medelhavet
-spatial bias,spatiell bias
-environmental governance,miljöstyrning
-land administration,landadministration
-germany,tyskland
-chiroptera,fladdermöss
-participatory gis (pgis),participatory gis
-detectability,detekterbarhet
-social-ecological systems,socio-ekologiska system
-expertise,expertis
-uk,storbritannien
-outreach,outreach
-citizen sensors,medborgarsensorer
-participatory spatial planning,deltagande spatial planering
-geo-wiki,geo-wiki
-volunteered geographical information (vgi),vgi
-community-based natural resource management,demokratisk resursstyrning
-biomonitoring,bioövervakning
-road ecology,vägekologi
-roadkill,trafikdödat djur
-web gis,web gis
-transportation,transport
-web-based gis,webbaserad gis
-vulnerability,sårbarhet
-floods,översvämningar
-photogrammetry,fotogrammetri
-sustainable hci,hållbar interaktionsdesign
-disasters,katastrofer
-crowd science,medborgarforskning
-citizen scientist,medborgarforskare
-spatial data,spatiell data
-sensor web,sensorwebb
-serious games,allvarliga spel
-decision-making,beslutsfattande
-atlas,atlas
-long-term monitoring,långtidsövervakning
-pedagogy,pedagogik
-public understanding of science and technology,allmänhetens förståelse av vetenskap och teknik
-diybio,gör det själv biologi
-collective intelligence,kollektiv intelligens
-socio-technical systems,sociotekniska system
-collaborative learning,kollaborativt lärande
-3d city models,3d stadsmodeller
-folksonomy,folkloristik
-mobile devices,mobila apparater
-fukushima,fukushima
-hierarchical model,hierarkis modell
-outcomes,utkomster
-environmental policy,miljöpolicy
-public participatory gis (ppgis),ppgis
-spatial planning,rumslig planering
-modis,modis
-human factors,mänskliga faktorer
-science,vetenskap
-participatory action research,deltagande aktionsforskning
-switzerland,schweiz
-web mapping,webbkartläggning
-natural language processing,naturliga språkanalyser
-reflexivity,reflexivitet
-methods: statistical,metoder: statistiska
-google earth,google earth
-performance,prestanda
-trends,trender
-wildlife,vilt
-data,data
-stars: formation,stjärnformationer
-methodology,metodologi
-evaluation,utvärdering
-wikipedia,wikipedia
-mitigation,åtgärder
-eutrophication,övergödning
-information,information
-trust,förtroende
-physical activity,fysisk aktivitet
-data science,datavetenskap
-flood mapping,översvämningskartläggning
-data storage,datalagring
-knowledge,kunskap
-occupancy,ockupans
-social sensing,sociala sensorer
-ozone,ozon
-risk,risk
-transport,transport
-techniques: image processing,bildanalys
-geographic information systems (gis),gis
-data publishing,datapublicering
-semantics,semantik
-mobile phone,mobiltelefon
-standardisation,standardisering
-agroecology,agroekologi
-mars,mars
-community-based,medborgerlig
-vision,vision
-integration,integration
-cadastre,kataster
-applications,tillämpningar
-amateur,amatör
-hotspots,hotspots
-threatened species,hotade arter
-geovisualization,geovisualisering
-raptors,rovfågel
-roads,vägar
-odonata,trollsländor
-citizen science data,medborgarforskningsdata
-bioacoustics,bioakustik
-genomics,genomik
-amazon,amazonas
-landsat 8,landsat 8
-web processing service,webbtjänst
-conservation planning,bevarandeplanering
-europe,europa
-public,allmänhet
-survey methods,enkätmetoder
-automated acoustic monitoring,autmatiskerad akustikövervakning
-place,plats
-forest management,skogsvård
-sampling effort,urvalsförsök
-spatial decision support system,rumsligt beslutsstödssystem
-points of interest,intressepunkt
-transcription,transkription
-wellbeing,välbefinnande
-social science,samhällsvetenskap
-optimization,optimering
-behavior,beteende
-britain,britannien
-ownership,ägandeskap
-spatial data infrastructure (sdi),sdi
-values,värderingar
-mark-recapture,markåtertagande
-recreation,rekreation
-breeding bird survey,häckningsundersökning
-usa,usa
-cropland,åkerland
-hydrology,hydrologi
-spatial data infrastructures,spatiella datainfrastrukturer
-urban politics,urbaniseringspolitik
-next-generation sequencing,nästa generations sekvensering
-biodiversity crisis,biodiversitetskris
-species identification,artbestämning
-conservation biology,bevarandebiologi
-development,utveckling
-flickr,flickr
-photo-identification,fotoidentifiering
-mrv,mrv
-canis latrans,prärievarg
-social capital,socialt kapital
-citizen observatory,medborgarobservatorie
-water governance,vattenvård
-flood risk management,översvämningsriskhantering
-indicators,indikatorer
-telescopes,teleskop
-wildlife-vehicle collisions,viltolyckor
-meris,meris
-hunting,jakt
-inuit,inuit
-butterflies,fjärilar
-decision support system,beslutsstödssystem
-public lands,allmän mark
-communities,gemenskaper
-early warning,tidig varning
-geomorphology,geomorfologi
-canada,kanada
-geographic information science,gis
-digital volunteers,digitala volontärer
-civil protection,civilskydd
-transdisciplinary research,transdisciplinär forskning
-pollination,pollinering
-sociology of science,vetenskapssociologi
-nature conservation,naturvård
-do-it-yourself,gör-det-själv
-synthetic biology,syntetisk biologi
-gbif,gbif
-interviews,intervjuer
-citizen scientists,medborgarforskare
-theory,teori
-interdisciplinarity,interdisciplinaritet
-informed consent,informerat samtycke
-open consent,öppet samtycke
-population estimation,befolkningsuppskattning
-mobile learning,mobilt lärande
-galaxies: general,galaxer
-local spatial knowledge,lokalkännedom
-ushahidi,ushahidi
-qualitative gis,kvalitativ gis
-provenance,provenans
-tagging,taggning
-global change,global förändring
-amphibians,amfibier
-rural development,landsbygdsutveckling
-participatory geographic information systems,pgis
-edna,edna
-environmental dna (edna),miljö dna
-observations,observationer
-wayfinding,vägvisarsystem
-nature,natur
-insects,insekter
-artificial intelligence,artificiell intelligens
-influenza,influensa
-sustainable development goals,hållbarhetsmål
-food waste,matsvinn
-sustainable consumption,hållbar konsumtion
-local,lokal
-garden,trädgård
-land use land cover monitoring,markanvändning
-sea,hav
-marine,marin
-ocean,ocean
-coastal,kustnära
-low literacy,låg literacitet
-infraestructure,infrastruktur
-online,online
-natural history,naturalhistoria
-biology,biologi
-online games,onlinespel
-game,spel
-pollinators,pollinatörer
-schools,skolor
-id tools,identifieringsverktyg
-plastic,plast
-river,flod
-kayak,kajak
-urban nature,urban natur
-bird song,fågelsång
-platform,plattform
-pollution,förorening
-citizen social science,samhällsmedborgarforskning
-co-researchers,samforskare
-citizens in a vulnerable situation,medborgare I sårbara situationer
-mental health,mental hälsa
-community care,samhällsvård
-youth,ungdom
-coevaluation,samutvärdering
-water,vatten
-awareness raising,medvetandegörande
-aire marine educative,marin luft utbildning
-quantification,kvantifiering
-dementia,demens
-depression,depression
-anxiety,ångest
-ocd,tvångssyndrom
-prevention,prevention
-healthy volunteers,hälsosamma volontärer
-online,online
-remote,fjärr
-psychology,psykologi
-neuroscience,neurovetenskap
-snow,snö
-avalanche,lavin
-physics,fysik
-large research infrastructures,stora forskningsinfrastrukturer
-inclusion,inklusion
-light pollution,ljusföroreningar
-wrecks,vrak
-history,historia
-underwater,undervatten
-maritime,maritim
-diving,dyk
-biosensors,biosensorer
-sample collection,provinsamling
-photography,fotografi
-animal-vehicle-collision,viltolyckor
-vertebrates,ryggradsdjur
-freshwater,sötvatten
-plastics,plast
-invasive mosquitos,invasiva myggor
-invasive plants,invasiva växter
-botany,botanik
-source crisicism,källkritik
-fake news,fake news
-online news,onlinenyheter
-asteroids,asteroider
-virtual observatory,virtuellt observatorium
-covid,covid
-coronavirus,coronavirus
-distributed computing,distribuerad beräkning
-schools,skolor
-nutrition,näring
-social innovation,sociala innovationer
-local communities,lokalsamhällen
-welfare society,välfärdsamhälle
-plants,växter
-handwritten letters,handskrivna brev
-historical archives,historiska arkiv
-earthworm,maskar
-soil,jord
-carbon,kol
-bat,fladdermus
-sound,ljud
-deforestation,avskogning
-post disaster damage assessment,katastrofutvärdering
-in-situ monitoring,På-platsövervakning
-soil moisture,fuktnivå jord
-satellite validation,satellitvalidiering
-regenerative food growing,regenerativ matodling
-notice boards,anslagstavlor
-citizen humanities,medborgarhumaniora
-malaria,malaria
-tuberculosis,tuberkulos
-mosquito,mygg
-global diseases,globala sjukdomar
-acoustics,akustik
-classrooms,klassrum
-food storage,matförvaring
-refrigeration,kylskåp
-temperature,temperatur
-images,bilder
-autumn,höst
-tea bag index,tepåseindex
-decomposition,förmultning
-rain water management,regnvatten
-low cost air quality sensors,lågkostnadssensorer
-collaborative data analytics and kwnoledge extraction,kollaborativ dataanalys
-citizen workshops,medborgarworkshops
-measurement scenarios,mätscenario
-memory,minne
-heritage,kulturarv
-historical research,historisk forskning
-digital platform,digital plattform
-teachers,lärare
-global,global
-black hole,svart hål
-sentinel-2,sentinel-2
-national park,nationalpark
-journalism,journalistik
-cooperative survey,gemensam undersökning
-odour,odör
-noses,näsor
-communities of practice,praktikgemenskaper
-single-use,engångsartikel
-special education,specialundervisning
-maker,mejker
-fablab,fablab
-adaptation genomics,adaptionsgenomik
-evolution,evolution
-emilia-romagna,emilia-romagna
-hoverflies,blomflugor
-bees,bin
-po river delta,poflodsdeltat
-italy,italien
-snails,sniglar
-natural hazards,naturfaror
-animals,djur
-ecology &amp; environment ,ekologi och miljö
-insects &amp; pollinators ,insekter och pollinatörer
-information &amp; computing sciences ,informations och datorvetenskap
-nature &amp; outdoors ,natur och utomhus
-agriculture &amp; veterinary science ,jordbruk och veterinärvetenskap
-health &amp; medicine ,hälsa och medicin
-geology &amp; earth science ,geologi
-"ocean, water, marine &amp; terrestrial",oceanografi
-indigenous culture,ursprungsbefolkningens kultur
-climate &amp; weather ,klimat och väder
-chemical sciences,kemi
-genetics,genetik
-science policy,forskningspolitik
-astronomy &amp; space ,astronomi och rymden
-social sciences,samhällsvetenskap
-archaeology &amp; cultural ,arkeologi
-food science,livsmedelsvetenskap
-geography,geografi
-long-term species monitoring,långtidsartövervakning
+en,sv,,,,
+citizen science,medborgarforskning,,,,
+data collection,datainsamling,,,,
+crowdsourcing,crowdsourcing,,,,
+volunteered geographic information,volunteered geographic information,,,,
+data quality,datakvalitet,,,,
+ethics,etik,,,,
+facilitation,facilitering,,,,
+newtech,newtech,,,,
+volunteered geographic information (vgi),volunteered geographic information (vgi),,,,
+key paper,nyckelpapper,,,,
+monitoring,övervakning,,,,
+accessibility,anpassning,,,,
+mapping,kartläggning,,,,
+openstreetmap,openstreetmap,,,,
+learning,lärande,,,,
+participatory gis,participatory gis,,,,
+accuracy,träffsäkerhet,,,,
+vgi,vgi,,,,
+engagement,engagemang,,,,
+open data,öppen data,,,,
+biodiversity,biodiversitet,,,,
+data management,datahantering,,,,
+social media,sociala medier,,,,
+gis,gis,,,,
+key author,nyckelförfattare,,,,
+big data,stora data,,,,
+conservation,bevarande,,,,
+public participation,allmänhetens delaktighet,,,,
+governance,styrning,,,,
+neogeography,neogeografi,,,,
+availability,tillgänglighet,,,,
+nottech,nottech,,,,
+bias,vinklad,,,,
+remote sensing,fjärrövervakning,,,,
+openstreetmap (osm),openstreetmap (osm),,,,
+completeness,fullständighet,,,,
+classification,klassificering,,,,
+participation,delaktighet,,,,
+validation,validering,,,,
+identification,identifiering,,,,
+web 2.0,web 2.0,,,,
+gamification,spelifiering,,,,
+climate change,klimatförändring,,,,
+data presentation,datapresentation,,,,
+motivation,motivation,,,,
+training,träning,,,,
+geoweb,geoweb,,,,
+machine learning,maskininlärning,,,,
+distribution,distribution,,,,
+public awareness,allmänhetens kännedom,,,,
+science literacy,vetenskaplig literacitet,,,,
+automation,autmatisering,,,,
+invasive species,invasiva arter,,,,
+usability,användbarhet,,,,
+land use,markutnyttjande,,,,
+reliability,reliabilitet,,,,
+ppgis,ppgis,,,,
+complexity,komplexitet,,,,
+public participation in scientific research,allmänhetens deltagande i forskning,,,,
+phenology,fenologi,,,,
+community-based monitoring,allmänhetens övervakning,,,,
+assessment measures,utvärderingsåtgärder,,,,
+smart cities,smarta städer,,,,
+collaboration,samverkan,,,,
+coverage,täckning,,,,
+air pollution,luftföroreningar,,,,
+disaster management,katastrofåtgärder,,,,
+data visualization,datavisualisering,,,,
+education,utbildning,,,,
+environmental action,miljöaktion,,,,
+notcs,notcs,,,,
+collaborative decision making,kollaborativt beslutsfattande,,,,
+twitter,twitter,,,,
+techtheme,tekniktema,,,,
+public engagement with science and technology,allmänhetens delaktighet i vetenskap och teknik,,,,
+spatial data quality,geografisk datakvalitet,,,,
+data sharing,datadelning,,,,
+data integration,dataintegration,,,,
+participatory mapping,allmänhetens kartläggning,,,,
+environmental justice,miljörättvisa,,,,
+interoperability,interoperabilitet,,,,
+participatory sensing,allmänhetens mätningar,,,,
+urban planning,stadsplanering,,,,
+volunteer monitoring,allmänhetens övervakning,,,,
+citizen-science,medborgarforskning,,,,
+quality control,kvalitetskontroll,,,,
+public engagement,allmänhetens delaktighet,,,,
+ecosystem services,ekosystemtjänster,,,,
+participatory research,medborgarforskning,,,,
+volunteer,volontär,,,,
+geographic information systems,geografiska informationssystem,,,,
+networking,nätverkande,,,,
+digitization,digitalisering,,,,
+spatial analysis,rumslig analys,,,,
+land cover,landsträckning,,,,
+environmental monitoring,miljöövervakning,,,,
+pgis,pgis,,,,
+water quality,vattenkvalitet,,,,
+local knowledge,lokal kunskap,,,,
+community engagement,allmänhetens engagemang,,,,
+data validation,datavalidiering,,,,
+data revitalization,datarevitalisering,,,,
+sustainability,hållbarhet,,,,
+quality assurance,kvalitetskontroll,,,,
+citizen observatories,medborgarobservatorier,,,,
+sensors,sensorer,,,,
+learning platforms,lärplattformar,,,,
+visualization,visualisering,,,,
+volunteers,volontärer,,,,
+critical gis,kritisk gis,,,,
+participatory monitoring,allmänhetens övervakning,,,,
+data standards,datastandarder,,,,
+smartphone,smarttelefon,,,,
+civic science,medborgarforskning,,,,
+privacy,integritet,,,,
+e-governance,e-demokrati,,,,
+internet,internet,,,,
+ebird,ebird,,,,
+biological recording,biologisk övervakning,,,,
+semantic web,semantisk webb,,,,
+technology,teknologi,,,,
+cultural ecosystem services,kulturella ekosystemtjänster,,,,
+surveys,enkäter,,,,
+uncertainty,osäkerhet,,,,
+agriculture,jordbruk,,,,
+taxonomy,taxonomi,,,,
+resilience,hållbarhet,,,,
+protected areas,skyddade områden,,,,
+collaborative mapping,kollaborativ kartläggning,,,,
+survey,enkät,,,,
+cloud computing,molnberäkning,,,,
+species distribution model,artdistributionsmodell,,,,
+adaptive management,adaptivt ledarskap,,,,
+landscape,landskap,,,,
+public participation gis,medborgar gis,,,,
+annotation,annotering,,,,
+database,databas,,,,
+quality,kvalitet,,,,
+citizen participation,medborgardelaktighet,,,,
+recruitment,rekrytering,,,,
+user-generated content,användargenererat innehåll,,,,
+species distribution models,artdistributionsmodell,,,,
+methods: data analysis,metoder: dataanalys,,,,
+biodiversity monitoring,biodiversitetsövervakning,,,,
+open science,öppen vetenskap,,,,
+key,nyckel,,,,
+biogeography,biogeografi,,,,
+spatial data infrastructure,spatial datainfrastruktur,,,,
+open access,öppen tillgång,,,,
+tech literacy,teknikliteracitet,,,,
+participatory science,medborgarforskning,,,,
+communication,kommunikation,,,,
+positional accuracy,positionsträffsäkerhet,,,,
+digital earth,digital jord,,,,
+bats,fladdermöss,,,,
+empowerment,bemäktigande,,,,
+giscience,giscience,,,,
+science process literacy,vetenskaplig literacitet,,,,
+open source,öppen källkod,,,,
+environment,miljö,,,,
+human computation,mänsklig beräkning,,,,
+geospatial data,geospatiell data,,,,
+innovation,innovation,,,,
+locally-based monitoring,lokal övervakning,,,,
+ecological monitoring,ekologisk övervakning,,,,
+migration,förflyttning,,,,
+cartography,kartografi,,,,
+air quality,luftkvalitet,,,,
+early detection,tidigt upptäckande,,,,
+tech,teknik,,,,
+location-based services,platstjänster,,,,
+linked data,länkad data,,,,
+community,gemenskap,,,,
+community participation,samhällets delaktighet,,,,
+augmented reality,förstärkt verklighet,,,,
+environmental education,miljöundervisning,,,,
+dna barcoding,dna märkning,,,,
+digital conservation,digitalt bevarande,,,,
+modelling,modellering,,,,
+public health,folkhälsa,,,,
+community-based participatory research,medborgarforskning,,,,
+community mapping,medborgarkartläggning,,,,
+stakeholders,intressenter,,,,
+social networks,sociala nätverk,,,,
+climate,klimat,,,,
+diversity,mångfald,,,,
+metadata,metadata,,,,
+participatory,delaktighet,,,,
+biodiversity informatics,biodiversitetsinformatik,,,,
+china,kina,,,,
+natural resource management,naturresurshantering,,,,
+receiving data,ta emot data,,,,
+low-cost sensors,lågkostnadssensorer,,,,
+deep learning,djupinlärning,,,,
+planning,planering,,,,
+flooding,översvämning,,,,
+earth observation,observation av jorden,,,,
+digital divide,digital klyfta,,,,
+rivers,floder,,,,
+data analysis,dataanalys,,,,
+emergency management,krishantering,,,,
+marine protected areas,marina skyddsområden,,,,
+species distribution,artdistributionl,,,,
+public participatory gis,public participatory gis,,,,
+matching,matchning,,,,
+abundance,överflöd,,,,
+digital humanities,digital humaniora,,,,
+health,hälsa,,,,
+participation and science governance,delaktighet och forskningspolitik,,,,
+language,språk,,,,
+birds,fåglar,,,,
+management,ledarskap,,,,
+opportunistic data,opportunistisk data,,,,
+ict,ikt,,,,
+population trends,populationstrender,,,,
+traditional ecological knowledge,traditionel miljökunskap,,,,
+philippines,filipinerna,,,,
+crisis informatics,krisinformatik,,,,
+modeling,modellering,,,,
+environmental health,miljöhälsa,,,,
+gravitational lensing: strong,gravitational lensing: strong,,,,
+ontology,ontologi,,,,
+mobile,mobil,,,,
+research,forskning,,,,
+species distribution modeling,modellering av artdistribution,,,,
+mobile sensing,mobil övervakning,,,,
+disaster risk reduction,naturkatastrofhantering,,,,
+mobile phones,mobiltelefoner,,,,
+urbanization,urbanisering,,,,
+design,design,,,,
+public participation in science,allmänhetens delaktighet i forskning,,,,
+science communication,vetenskapskommunikation,,,,
+spatial data mining,spatiell data mining,,,,
+routing,routing,,,,
+critical cartography,kritisk kartografi,,,,
+change detection,förändringsövervakning,,,,
+random forest,slumpmässig skog,,,,
+crowdsourced data,crowdsourcead data,,,,
+social learning,social inlärning,,,,
+policy,politik,,,,
+democracy,demokrati,,,,
+urban ecology,urban ekologi,,,,
+environmental management,miljöledarskap,,,,
+brazil,brasilien,,,,
+quality assessment,kvalitetskontroll,,,,
+osm,open street map,,,,
+gps,gps,,,,
+internet of things,sakernas internet,,,,
+exposure,exponering,,,,
+informatics,informatik,,,,
+detection,detektion,,,,
+relevance,relevans,,,,
+fisheries,fiskeri,,,,
+e-participation,e-deltagande,,,,
+program model,programmodell,,,,
+species distribution modelling,modellering av artdistribution,,,,
+smartphones,smarttelefoner,,,,
+image classification,bildklassificering,,,,
+biodiversity indicators,biodiversitetsindikatorer,,,,
+research ethics,forskningsetik,,,,
+detection probability,detekteringsprobabilitet,,,,
+crisis mapping,kriskartläggning,,,,
+camera trap,kamerafälla,,,,
+science education,forskningsutbildning,,,,
+scientific computing,vetenskapliga beräkningar,,,,
+astronomy,astronomi,,,,
+inclusiveness,inkludering,,,,
+web 2,web 2,,,,
+zooniverse,zooniverse,,,,
+epidemiology,epidemiologi,,,,
+epistemology,epistemologi,,,,
+species richness,artrikedom,,,,
+land use planning,markanvändningsplanering,,,,
+observation,observation,,,,
+geospatial web,geospatiell webb,,,,
+landscape ecology,landskapsekologi,,,,
+participatory planning,delaktig planering,,,,
+new zealand,nya zeeland,,,,
+volunteered geographical information,vgi,,,,
+non-native species,invasiva arter,,,,
+credibility,trovärdighet,,,,
+streams,vattendrag,,,,
+fish,fisk,,,,
+mobile app,mobilapp,,,,
+invasive alien species,invasiva främmande arter,,,,
+disaster response,katastrofrespons,,,,
+invertebrates,ryggradslösa djur,,,,
+population monitoring,populationsövervakning,,,,
+camera traps,kamerafällor,,,,
+built environment,bebyggd miljö,,,,
+automated data screening,automatiserad screening,,,,
+air pollution monitoring,luftkvalitetsövervakning,,,,
+mobile application,mobilapplikation,,,,
+co-production,samproduktion,,,,
+social network,socialt nätverk,,,,
+fracking,fracking,,,,
+stakeholder participation,intressentdeltagande,,,,
+australia,australien,,,,
+marine protected area,marint skyddsområde,,,,
+adaptation,anpassning,,,,
+environmental assessment,miljöutvärdering,,,,
+algorithms,algoritmer,,,,
+transdisciplinary,transdisciplinär,,,,
+spatial literacy,rumslig literacitet,,,,
+youtube,youtube,,,,
+digital cartography,digital kartografi,,,,
+mediterranean sea,medelhavet,,,,
+spatial bias,spatiell bias,,,,
+environmental governance,miljöstyrning,,,,
+land administration,landadministration,,,,
+germany,tyskland,,,,
+chiroptera,fladdermöss,,,,
+participatory gis (pgis),participatory gis,,,,
+detectability,detekterbarhet,,,,
+social-ecological systems,socio-ekologiska system,,,,
+expertise,expertis,,,,
+uk,storbritannien,,,,
+outreach,outreach,,,,
+citizen sensors,medborgarsensorer,,,,
+participatory spatial planning,deltagande spatial planering,,,,
+geo-wiki,geo-wiki,,,,
+volunteered geographical information (vgi),vgi,,,,
+community-based natural resource management,demokratisk resursstyrning,,,,
+biomonitoring,bioövervakning,,,,
+road ecology,vägekologi,,,,
+roadkill,trafikdödat djur,,,,
+web gis,web gis,,,,
+transportation,transport,,,,
+web-based gis,webbaserad gis,,,,
+vulnerability,sårbarhet,,,,
+floods,översvämningar,,,,
+photogrammetry,fotogrammetri,,,,
+sustainable hci,hållbar interaktionsdesign,,,,
+disasters,katastrofer,,,,
+crowd science,medborgarforskning,,,,
+citizen scientist,medborgarforskare,,,,
+spatial data,spatiell data,,,,
+sensor web,sensorwebb,,,,
+serious games,allvarliga spel,,,,
+decision-making,beslutsfattande,,,,
+atlas,atlas,,,,
+long-term monitoring,långtidsövervakning,,,,
+pedagogy,pedagogik,,,,
+public understanding of science and technology,allmänhetens förståelse av vetenskap och teknik,,,,
+diybio,gör det själv biologi,,,,
+collective intelligence,kollektiv intelligens,,,,
+socio-technical systems,sociotekniska system,,,,
+collaborative learning,kollaborativt lärande,,,,
+3d city models,3d stadsmodeller,,,,
+folksonomy,folkloristik,,,,
+mobile devices,mobila apparater,,,,
+fukushima,fukushima,,,,
+hierarchical model,hierarkis modell,,,,
+outcomes,utkomster,,,,
+environmental policy,miljöpolicy,,,,
+public participatory gis (ppgis),ppgis,,,,
+spatial planning,rumslig planering,,,,
+modis,modis,,,,
+human factors,mänskliga faktorer,,,,
+science,vetenskap,,,,
+participatory action research,deltagande aktionsforskning,,,,
+switzerland,schweiz,,,,
+web mapping,webbkartläggning,,,,
+natural language processing,naturliga språkanalyser,,,,
+reflexivity,reflexivitet,,,,
+methods: statistical,metoder: statistiska,,,,
+google earth,google earth,,,,
+performance,prestanda,,,,
+trends,trender,,,,
+wildlife,vilt,,,,
+data,data,,,,
+stars: formation,stjärnformationer,,,,
+methodology,metodologi,,,,
+evaluation,utvärdering,,,,
+wikipedia,wikipedia,,,,
+mitigation,åtgärder,,,,
+eutrophication,övergödning,,,,
+information,information,,,,
+trust,förtroende,,,,
+physical activity,fysisk aktivitet,,,,
+data science,datavetenskap,,,,
+flood mapping,översvämningskartläggning,,,,
+data storage,datalagring,,,,
+knowledge,kunskap,,,,
+occupancy,ockupans,,,,
+social sensing,sociala sensorer,,,,
+ozone,ozon,,,,
+risk,risk,,,,
+transport,transport,,,,
+techniques: image processing,bildanalys,,,,
+geographic information systems (gis),gis,,,,
+data publishing,datapublicering,,,,
+semantics,semantik,,,,
+mobile phone,mobiltelefon,,,,
+standardisation,standardisering,,,,
+agroecology,agroekologi,,,,
+mars,mars,,,,
+community-based,medborgerlig,,,,
+vision,vision,,,,
+integration,integration,,,,
+cadastre,kataster,,,,
+applications,tillämpningar,,,,
+amateur,amatör,,,,
+hotspots,hotspots,,,,
+threatened species,hotade arter,,,,
+geovisualization,geovisualisering,,,,
+raptors,rovfågel,,,,
+roads,vägar,,,,
+odonata,trollsländor,,,,
+citizen science data,medborgarforskningsdata,,,,
+bioacoustics,bioakustik,,,,
+genomics,genomik,,,,
+amazon,amazonas,,,,
+landsat 8,landsat 8,,,,
+web processing service,webbtjänst,,,,
+conservation planning,bevarandeplanering,,,,
+europe,europa,,,,
+public,allmänhet,,,,
+survey methods,enkätmetoder,,,,
+automated acoustic monitoring,autmatiskerad akustikövervakning,,,,
+place,plats,,,,
+forest management,skogsvård,,,,
+sampling effort,urvalsförsök,,,,
+spatial decision support system,rumsligt beslutsstödssystem,,,,
+points of interest,intressepunkt,,,,
+transcription,transkription,,,,
+wellbeing,välbefinnande,,,,
+social science,samhällsvetenskap,,,,
+optimization,optimering,,,,
+behavior,beteende,,,,
+britain,britannien,,,,
+ownership,ägandeskap,,,,
+spatial data infrastructure (sdi),sdi,,,,
+values,värderingar,,,,
+mark-recapture,markåtertagande,,,,
+recreation,rekreation,,,,
+breeding bird survey,häckningsundersökning,,,,
+usa,usa,,,,
+cropland,åkerland,,,,
+hydrology,hydrologi,,,,
+spatial data infrastructures,spatiella datainfrastrukturer,,,,
+urban politics,urbaniseringspolitik,,,,
+next-generation sequencing,nästa generations sekvensering,,,,
+biodiversity crisis,biodiversitetskris,,,,
+species identification,artbestämning,,,,
+conservation biology,bevarandebiologi,,,,
+development,utveckling,,,,
+flickr,flickr,,,,
+photo-identification,fotoidentifiering,,,,
+mrv,mrv,,,,
+canis latrans,prärievarg,,,,
+social capital,socialt kapital,,,,
+citizen observatory,medborgarobservatorie,,,,
+water governance,vattenvård,,,,
+flood risk management,översvämningsriskhantering,,,,
+indicators,indikatorer,,,,
+telescopes,teleskop,,,,
+wildlife-vehicle collisions,viltolyckor,,,,
+meris,meris,,,,
+hunting,jakt,,,,
+inuit,inuit,,,,
+butterflies,fjärilar,,,,
+decision support system,beslutsstödssystem,,,,
+public lands,allmän mark,,,,
+communities,gemenskaper,,,,
+early warning,tidig varning,,,,
+geomorphology,geomorfologi,,,,
+canada,kanada,,,,
+geographic information science,gis,,,,
+digital volunteers,digitala volontärer,,,,
+civil protection,civilskydd,,,,
+transdisciplinary research,transdisciplinär forskning,,,,
+pollination,pollinering,,,,
+sociology of science,vetenskapssociologi,,,,
+nature conservation,naturvård,,,,
+do-it-yourself,gör-det-själv,,,,
+synthetic biology,syntetisk biologi,,,,
+gbif,gbif,,,,
+interviews,intervjuer,,,,
+citizen scientists,medborgarforskare,,,,
+theory,teori,,,,
+interdisciplinarity,interdisciplinaritet,,,,
+informed consent,informerat samtycke,,,,
+open consent,öppet samtycke,,,,
+population estimation,befolkningsuppskattning,,,,
+mobile learning,mobilt lärande,,,,
+galaxies: general,galaxer,,,,
+local spatial knowledge,lokalkännedom,,,,
+ushahidi,ushahidi,,,,
+qualitative gis,kvalitativ gis,,,,
+provenance,provenans,,,,
+tagging,taggning,,,,
+global change,global förändring,,,,
+amphibians,amfibier,,,,
+rural development,landsbygdsutveckling,,,,
+participatory geographic information systems,pgis,,,,
+edna,edna,,,,
+environmental dna (edna),miljö dna,,,,
+observations,observationer,,,,
+wayfinding,vägvisarsystem,,,,
+nature,natur,,,,
+insects,insekter,,,,
+artificial intelligence,artificiell intelligens,,,,
+influenza,influensa,,,,
+sustainable development goals,hållbarhetsmål,,,,
+food waste,matsvinn,,,,
+sustainable consumption,hållbar konsumtion,,,,
+local,lokal,,,,
+garden,trädgård,,,,
+land use land cover monitoring,markanvändning,,,,
+sea,hav,,,,
+marine,marin,,,,
+ocean,ocean,,,,
+coastal,kustnära,,,,
+low literacy,låg literacitet,,,,
+infraestructure,infrastruktur,,,,
+online,online,,,,
+natural history,naturalhistoria,,,,
+biology,biologi,,,,
+online games,onlinespel,,,,
+game,spel,,,,
+pollinators,pollinatörer,,,,
+schools,skolor,,,,
+id tools,identifieringsverktyg,,,,
+plastic,plast,,,,
+river,flod,,,,
+kayak,kajak,,,,
+urban nature,urban natur,,,,
+bird song,fågelsång,,,,
+platform,plattform,,,,
+pollution,förorening,,,,
+citizen social science,samhällsmedborgarforskning,,,,
+co-researchers,samforskare,,,,
+citizens in a vulnerable situation,medborgare I sårbara situationer,,,,
+mental health,mental hälsa,,,,
+community care,samhällsvård,,,,
+youth,ungdom,,,,
+coevaluation,samutvärdering,,,,
+water,vatten,,,,
+awareness raising,medvetandegörande,,,,
+aire marine educative,marin luft utbildning,,,,
+quantification,kvantifiering,,,,
+dementia,demens,,,,
+depression,depression,,,,
+anxiety,ångest,,,,
+ocd,tvångssyndrom,,,,
+prevention,prevention,,,,
+healthy volunteers,hälsosamma volontärer,,,,
+online,online,,,,
+remote,fjärr,,,,
+psychology,psykologi,,,,
+neuroscience,neurovetenskap,,,,
+snow,snö,,,,
+avalanche,lavin,,,,
+physics,fysik,,,,en/publications/4460/
+large research infrastructures,stora forskningsinfrastrukturer,,,,
+inclusion,inklusion,,,,
+light pollution,ljusföroreningar,,,,
+wrecks,vrak,,,,
+history,historia,,,,
+underwater,undervatten,,,,
+maritime,maritim,,,,
+diving,dyk,,,,
+biosensors,biosensorer,,,,
+sample collection,provinsamling,,,,
+photography,fotografi,,,,
+animal-vehicle-collision,viltolyckor,,,,
+vertebrates,ryggradsdjur,,,,
+freshwater,sötvatten,,,,
+plastics,plast,,,,
+invasive mosquitos,invasiva myggor,,,,
+invasive plants,invasiva växter,,,,
+botany,botanik,,,,
+source crisicism,källkritik,,,,
+fake news,fake news,,,,
+online news,onlinenyheter,,,,
+asteroids,asteroider,,,,
+virtual observatory,virtuellt observatorium,,,,
+covid,covid,,,,
+coronavirus,coronavirus,,,,
+distributed computing,distribuerad beräkning,,,,
+schools,skolor,,,,
+nutrition,näring,,,,
+social innovation,sociala innovationer,,,,
+local communities,lokalsamhällen,,,,
+welfare society,välfärdsamhälle,,,,
+plants,växter,,,,
+handwritten letters,handskrivna brev,,,,
+historical archives,historiska arkiv,,,,
+earthworm,maskar,,,,
+soil,jord,,,,
+carbon,kol,,,,
+bat,fladdermus,,,,
+sound,ljud,,,,
+deforestation,avskogning,,,,
+post disaster damage assessment,katastrofutvärdering,,,,
+in-situ monitoring,På-platsövervakning,,,,
+soil moisture,fuktnivå jord,,,,
+satellite validation,satellitvalidiering,,,,
+regenerative food growing,regenerativ matodling,,,,
+notice boards,anslagstavlor,,,,
+citizen humanities,medborgarhumaniora,,,,
+malaria,malaria,,,,
+tuberculosis,tuberkulos,,,,
+mosquito,mygg,,,,
+global diseases,globala sjukdomar,,,,
+acoustics,akustik,,,,
+classrooms,klassrum,,,,
+food storage,matförvaring,,,,
+refrigeration,kylskåp,,,,
+temperature,temperatur,,,,
+images,bilder,,,,
+autumn,höst,,,,
+tea bag index,tepåseindex,,,,
+decomposition,förmultning,,,,
+rain water management,regnvatten,,,,
+low cost air quality sensors,lågkostnadssensorer,,,,
+collaborative data analytics and kwnoledge extraction,kollaborativ dataanalys,,,,
+citizen workshops,medborgarworkshops,,,,
+measurement scenarios,mätscenario,,,,
+memory,minne,,,,
+heritage,kulturarv,,,,
+historical research,historisk forskning,,,,
+digital platform,digital plattform,,,,
+teachers,lärare,,,,
+global,global,,,,
+black hole,svart hål,,,,
+sentinel-2,sentinel-2,,,,
+national park,nationalpark,,,,
+journalism,journalistik,,,,
+cooperative survey,gemensam undersökning,,,,
+odour,odör,,,,
+noses,näsor,,,,
+communities of practice,praktikgemenskaper,,,,
+single-use,engångsartikel,,,,
+special education,specialundervisning,,,,
+maker,mejker,,,,
+fablab,fablab,,,,
+adaptation genomics,adaptionsgenomik,,,,
+evolution,evolution,,,,
+emilia-romagna,emilia-romagna,,,,
+hoverflies,blomflugor,,,,
+bees,bin,,,,
+po river delta,poflodsdeltat,,,,
+italy,italien,,,,
+snails,sniglar,,,,
+natural hazards,naturfaror,,,,
+animals,djur,,,,
+ecology &amp; environment ,ekologi och miljö,,,,
+insects &amp; pollinators ,insekter och pollinatörer,,,,
+information &amp; computing sciences ,informations och datorvetenskap,,,,
+nature &amp; outdoors ,natur och utomhus,,,,
+agriculture &amp; veterinary science ,jordbruk och veterinärvetenskap,,,,
+health &amp; medicine ,hälsa och medicin,,,,
+geology &amp; earth science ,geologi,,,,
+"ocean, water, marine &amp; terrestrial",oceanografi,,,,
+indigenous culture,ursprungsbefolkningens kultur,,,,
+climate &amp; weather ,klimat och väder,,,,
+chemical sciences,kemi,,,,
+genetics,genetik,,,,
+science policy,forskningspolitik,,,,
+astronomy &amp; space ,astronomi och rymden,,,,
+social sciences,samhällsvetenskap,,,,
+archaeology &amp; cultural ,arkeologi,,,,
+food science,livsmedelsvetenskap,,,,
+geography,geografi,,,,
+long-term species monitoring,långtidsartövervakning,,,,
+auto,automatiskt,,,,
+metaquality,metakvalitet,,,,
+scientific workflow,vetenskapligt arbetsflöde,,,,
+quality assurance,quality assurancesv,,,,
+quality,qualitysv,,,,
+entanglement,entanglementsv,,,,
+crowdsourcing,crowdsourcingsv,,,,
+human,humansv,,,,
+ebird,ebirdsv,,,,
+citizen science,citizen sciencesv,,,,
+volunteers,volunteerssv,,,,
+observer,observersv,,,,
+mammals,mammalssv,,,,
+united states,united statessv,,,,
+contributors,contributorssv,,,,
+crowd,crowdsv,,,,
+community,communitysv,,,,
+indicator,indicatorsv,,,,
+policy,policysv,,,,
+marine policy,marine policysv,,,,
+consensus,consensussv,,,,
+citizen scientists,citizen scientistssv,,,,
+engagement,engagementsv,,,,
+data-intensive science,data-intensive sciencesv,,,,
+citizen,citizensv,,,,
+spatial,spatialsv,,,,
+systematic,systematicsv,,,,
+killer whales,killer whalessv,,,,
+datasets,datasetssv,,,,
+moon,moonsv,,,,
+citizen inquiry,citizen inquirysv,,,,
+informal learning,informal learningsv,,,,
+case study,case studysv,,,,
+groundwater,groundwatersv,,,,
+participatory science,participatory sciencesv,,,,
+association,associationsv,,,,
+osm,osmsv,,,,
+web 2.0,web 2.0sv,,,,
+hand,handsv,,,,
+human mobility,human mobilitysv,,,,
+environmental monitoring,environmental monitoringsv,,,,
+images,imagessv,,,,
+technology,technologysv,,,,
+do-it-yourself,do-it-yourselfsv,,,,
+enset,ensetsv,,,,
+landraces,landracessv,,,,
+management,managementsv,,,,
+gis,gissv,,,,
+openstreetmap (osm),openstreetmap (osm)sv,,,,
+abu dhabi,abu dhabisv,,,,
+tools,toolssv,,,,
+urban,urbansv,,,,
+erinaceus europaeus,erinaceus europaeussv,,,,
+occupancy models,occupancy modelssv,,,,
+mobile sensing system,mobile sensing systemsv,,,,
+access,accesssv,,,,
+iphone,iphonesv,,,,
+time,timesv,,,,
+no2,no2sv,,,,
+birds,birdssv,,,,
+butterflies,butterfliessv,,,,
+privacy,privacysv,,,,
+zooniverse,zooniversesv,,,,
+modelling,modellingsv,,,,
+stakeholder,stakeholdersv,,,,
+new technologies,new technologiessv,,,,
+river,riversv,,,,
+funding,fundingsv,,,,
+outreach,outreachsv,,,,
+knowledge,knowledgesv,,,,
+civic participation,civic participationsv,,,,
+bird,birdsv,,,,
+bbs,bbssv,,,,
+applications,applicationssv,,,,
+communities,communitiessv,,,,
+vgi,vgisv,,,,
+matching,matchingsv,,,,
+air pollution,air pollutionsv,,,,
+finland,finlandsv,,,,
+boinc,boincsv,,,,
+building,buildingsv,,,,
+great britain,great britainsv,,,,
+australia,australiasv,,,,
+japan,japansv,,,,
+population trends,population trendssv,,,,
+waterfowl,waterfowlsv,,,,
+risk communication,risk communicationsv,,,,
+citizen science data,citizen science datasv,,,,
+information and communication technologies (icts),information and communication technologies (icts)sv,,,,
+costs,costssv,,,,
+participatory,participatorysv,,,,
+benefits,benefitssv,,,,
+barriers,barrierssv,,,,
+wildlife monitoring,wildlife monitoringsv,,,,
+transcription,transcriptionsv,,,,
+farmland,farmlandsv,,,,
+europe,europesv,,,,
+safecast,safecastsv,,,,
+amphibians,amphibianssv,,,,
+reptiles,reptilessv,,,,
+value,valuesv,,,,
+public outreach,public outreachsv,,,,
+water,watersv,,,,
+infrastructure,infrastructuresv,,,,
+surface,surfacesv,,,,
+landfill,landfillsv,,,,
+services,servicessv,,,,
+philosophy,philosophysv,,,,
+participatory gis,participatory gissv,,,,
+community gis,community gissv,,,,
+usa,usasv,,,,
+science and technology studies,science and technology studiessv,,,,
+human health,human healthsv,,,,
+child,childsv,,,,
+polar regions,polar regionssv,,,,
+brazil,brazilsv,,,,
+jellyfish,jellyfishsv,,,,
+caribbean,caribbeansv,,,,
+risk,risksv,,,,
+nanotechnology,nanotechnologysv,,,,
+india,indiasv,,,,
+web based,web basedsv,,,,
+michigan,michigansv,,,,
+arctic,arcticsv,,,,
+inuit,inuitsv,,,,
+hydrology,hydrologysv,,,,
+early detection and distribution mapping system (eddmaps),early detection and distribution mapping system (eddmaps)sv,,,,
+butterfly,butterflysv,,,,
+species richness,species richnesssv,,,,
+framing,framingsv,,,,
+france,francesv,,,,
+canada,canadasv,,,,
+avifauna,avifaunasv,,,,
+philippines,philippinessv,,,,
+context,contextsv,,,,
+dna,dnasv,,,,
+species identification,species identificationsv,,,,
+civic science,civic sciencesv,,,,
+awareness,awarenesssv,,,,
+cancer,cancersv,,,,
+citizen observatories,citizen observatoriessv,,,,
+innovation,innovationsv,,,,
+decision making,decision makingsv,,,,
+conservation outcomes,conservation outcomessv,,,,
+conservation attitudes,conservation attitudessv,,,,
+new zealand,new zealandsv,,,,
+science communication,science communicationsv,,,,
+scientific literacy,scientific literacysv,,,,
+china,chinasv,,,,
+urban areas,urban areassv,,,,
+hudson bay,hudson baysv,,,,
+comparison,comparisonsv,,,,
+science 2.0,science 2.0sv,,,,
+web,websv,,,,
+wolves,wolvessv,,,,
+bumblebees,bumblebeessv,,,,
+hymenoptera,hymenopterasv,,,,
+alpine,alpinesv,,,,
+correlation,correlationsv,,,,
+global climate change,global climate changesv,,,,
+interaction,interactionsv,,,,
+soil,soilsv,,,,
+development,developmentsv,,,,
+geospatial data,geospatial datasv,,,,
+experience,experiencesv,,,,
+species observations,species observationssv,,,,
+visualization,visualizationsv,,,,
+digital technologies,digital technologiessv,,,,
+law,lawsv,,,,
+road traffic,road trafficsv,,,,
+history,historysv,,,,
+ethnography,ethnographysv,,,,
+plant,plantsv,,,,
+south africa,south africasv,,,,
+climate,climatesv,,,,
+southern african bird atlas project,southern african bird atlas projectsv,,,,
+events,eventssv,,,,
+pollution,pollutionsv,,,,
+opal,opalsv,,,,
+social network,social networksv,,,,
+twitter,twittersv,,,,
+preference,preferencesv,,,,
+cyanobacteria,cyanobacteriasv,,,,
+turbidity,turbiditysv,,,,
+adaptive management,adaptive managementsv,,,,
+residents,residentssv,,,,
+ecological restoration,ecological restorationsv,,,,
+volunteering,volunteeringsv,,,,
+profiles,profilessv,,,,
+uk,uksv,,,,
+environmental citizen science,environmental citizen sciencesv,,,,
+tracking,trackingsv,,,,
+temporal,temporalsv,,,,
+biodiversity observations,biodiversity observationssv,,,,
+observation,observationsv,,,,
+mortality,mortalitysv,,,,
+mhealth,mhealthsv,,,,
+argentina,argentinasv,,,,
+ireland,irelandsv,,,,
+learning outcomes,learning outcomessv,,,,
+national,nationalsv,,,,
+productivity,productivitysv,,,,
+ict,ictsv,,,,
+roles,rolessv,,,,
+icts,ictssv,,,,
+long-term data,long-term datasv,,,,
+openstreetmap,openstreetmapsv,,,,
+women,womensv,,,,
+participatory design,participatory designsv,,,,
+environmental sustainability,environmental sustainabilitysv,,,,
+humans,humanssv,,,,
+key,keysv,,,,
+digital platform,digital platformsv,,,,
+genetics,geneticssv,,,,
+adoption,adoptionsv,,,,
+naturalist,naturalistsv,,,,
+one health,one healthsv,,,,
+coastal,coastalsv,,,,
+nature conservation,nature conservationsv,,,,
+africa,africasv,,,,
+mpa,mpasv,,,,
+mediterranean,mediterraneansv,,,,
+urban data,urban datasv,,,,
+gps,gpssv,,,,
+qualitative,qualitativesv,,,,
+spatial data,spatial datasv,,,,
+built-up areas,built-up areassv,,,,
+vgi data,vgi datasv,,,,
+urban land,urban landsv,,,,
+remote sensing,remote sensingsv,,,,
+eutrophication,eutrophicationsv,,,,
+incremental update,incremental updatesv,,,,
+geoscience,geosciencesv,,,,
+semantics,semanticssv,,,,
+disaster response,disaster responsesv,,,,
+urban air quality,urban air qualitysv,,,,
+opportunistic,opportunisticsv,,,,
+participatory mapping,participatory mappingsv,,,,
+maps,mapssv,,,,
+co,cosv,,,,
+rights,rightssv,,,,
+scoring,scoringsv,,,,
+flower,flowersv,,,,
+survey methods,survey methodssv,,,,
+collective behavior,collective behaviorsv,,,,
+land-use,land-usesv,,,,
+computation,computationsv,,,,
+ph,phsv,,,,
+photometer,photometersv,,,,
+seawater,seawatersv,,,,
+led,ledsv,,,,
+uae,uaesv,,,,
+volunteered geographic information (vgi),volunteered geographic information (vgi)sv,,,,
+stage,stagesv,,,,
+functional redundancy,functional redundancysv,,,,
+trophic,trophicsv,,,,
+spatial publish&amp;subscribe,spatial publish&amp;subscribesv,,,,
+tagging,taggingsv,,,,
+great barrier reef,great barrier reefsv,,,,
+land administration,land administrationsv,,,,
+kenya,kenyasv,,,,
+pgis,pgissv,,,,
+visual,visualsv,,,,
+sensor web enablement,sensor web enablementsv,,,,
+debris disk,debris disksv,,,,
+bayesian,bayesiansv,,,,
+giscience,gisciencesv,,,,
+citizen scientist,citizen scientistsv,,,,
+geography,geographysv,,,,
+release mortality,release mortalitysv,,,,
+warsaw grouper,warsaw groupersv,,,,
+impact assessment,impact assessmentsv,,,,
+litoria,litoriasv,,,,
+environmental stewardship,environmental stewardshipsv,,,,
+diybio,diybiosv,,,,
+biology,biologysv,,,,
+south australia,south australiasv,,,,
+koala,koalasv,,,,
+benefit,benefitsv,,,,
+geo-wiki,geo-wikisv,,,,
+google earth,google earthsv,,,,
+cryptogenic species,cryptogenic speciessv,,,,
+mediterranean sea,mediterranean seasv,,,,
+sea hare,sea haresv,,,,
+landscape heterogeneity,landscape heterogeneitysv,,,,
+geosparql,geosparqlsv,,,,
+spatial reasoning,spatial reasoningsv,,,,
+macroinvertebrate,macroinvertebratesv,,,,
+aquarium,aquariumsv,,,,
+inventory,inventorysv,,,,
+xenostrobus securis,xenostrobus securissv,,,,
+edna,ednasv,,,,
+stem,stemsv,,,,
+mobile crowd sensing,mobile crowd sensingsv,,,,
+retrofit,retrofitsv,,,,
+visual census,visual censussv,,,,
+scuba,scubasv,,,,
+traffic accident,traffic accidentsv,,,,
+mammal,mammalsv,,,,
+oxpeckers,oxpeckerssv,,,,
+measurement,measurementsv,,,,
+calibration,calibrationsv,,,,
+crisis mapping,crisis mappingsv,,,,
+california,californiasv,,,,
+willingness to pay,willingness to paysv,,,,
+feral science,feral sciencesv,,,,
+geospatial data quality,geospatial data qualitysv,,,,
+geospatial information,geospatial informationsv,,,,
+forestry,forestrysv,,,,
+spatial data mining,spatial data miningsv,,,,
+oklahoma,oklahomasv,,,,
+mutillidae,mutillidaesv,,,,
+digital photography,digital photographysv,,,,
+public participation gis,public participation gissv,,,,
+pedestrian,pedestriansv,,,,
+cartography,cartographysv,,,,
+mobile application,mobile applicationsv,,,,
+biological invasions,biological invasionssv,,,,
+occurrence,occurrencesv,,,,
+structure sensor,structure sensorsv,,,,
+3d,3dsv,,,,
+ecosystem service,ecosystem servicesv,,,,
+invertebrate,invertebratesv,,,,
+image-based,image-basedsv,,,,
+space,spacesv,,,,
+street networks,street networkssv,,,,
+environmental health,environmental healthsv,,,,
+marine debris,marine debrissv,,,,
+vancouver island,vancouver islandsv,,,,
+earthworms,earthwormssv,,,,
+flood,floodsv,,,,
+pokemon go,pokemon gosv,,,,
+land use&amp;land cover classification,land use&amp;land cover classificationsv,,,,
+landsat 8,landsat 8sv,,,,
+snow cover,snow coversv,,,,
+citizenship,citizenshipsv,,,,
+dengue,denguesv,,,,
+carpodacus mexicanus,carpodacus mexicanussv,,,,
+mycoplasma gallisepticum,mycoplasma gallisepticumsv,,,,
+construction,constructionsv,,,,
+biogeography,biogeographysv,,,,
+volunteered geographic information system,volunteered geographic information systemsv,,,,
+cetacean,cetaceansv,,,,
+algorithms,algorithmssv,,,,
+mark-recapture,mark-recapturesv,,,,
+pennsylvania,pennsylvaniasv,,,,
+golden eagle,golden eaglesv,,,,
+decision-making,decision-makingsv,,,,
+targeted,targetedsv,,,,
+copernicus,copernicussv,,,,
+inspire,inspiresv,,,,
+vision,visionsv,,,,
+public health,public healthsv,,,,
+green-up,green-upsv,,,,
+variability,variabilitysv,,,,
+personal exposure,personal exposuresv,,,,
+drought,droughtsv,,,,
+environmental dna,environmental dnasv,,,,
+pollen,pollensv,,,,
+isomorphism,isomorphismsv,,,,
+site selection,site selectionsv,,,,
+rosalia alpina,rosalia alpinasv,,,,
+plan,plansv,,,,
+landslide,landslidesv,,,,
+bamenda,bamendasv,,,,
+informative value,informative valuesv,,,,
+iucn red list,iucn red listsv,,,,
+measures,measuressv,,,,
+iucn,iucnsv,,,,
+geospatial footprints,geospatial footprintssv,,,,
+early warning system,early warning systemsv,,,,
+bicol river basin,bicol river basinsv,,,,
+srtm,srtmsv,,,,
+colorado,coloradosv,,,,
+geobia,geobiasv,,,,
+node,nodesv,,,,
+morphotypes,morphotypessv,,,,
+parataxonomy,parataxonomysv,,,,
+gazetteers,gazetteerssv,,,,
+neighborhoods,neighborhoodssv,,,,
+ethics,ethicssv,,,,
+no,nosv,,,,
+science education,science educationsv,,,,
+open access,open accesssv,,,,
+theory,theorysv,,,,
+self-tracking,self-trackingsv,,,,
+earthquakes,earthquakessv,,,,
+alaska,alaskasv,,,,
+crowdsourced data,crowdsourced datasv,,,,
+truth,truthsv,,,,
+research agenda,research agendasv,,,,
+landmarks,landmarkssv,,,,
+ontology,ontologysv,,,,
+biodiversity observation&amp;recording,biodiversity observation&amp;recordingsv,,,,
+geographic information,geographic informationsv,,,,
+urban development,urban developmentsv,,,,
+detailed 3d geographic information,detailed 3d geographic informationsv,,,,
+computers,computerssv,,,,
+mapillary,mapillarysv,,,,
+cross-linkage,cross-linkagesv,,,,
+satellite imagery,satellite imagerysv,,,,
+frames,framessv,,,,
+nepal,nepalsv,,,,
+forel-ule scale,forel-ule scalesv,,,,
+citizens' observatory,citizens' observatorysv,,,,
+american pika,american pikasv,,,,
+streamflow,streamflowsv,,,,
+public perceptions,public perceptionssv,,,,
+appraisal,appraisalsv,,,,
+precipitation,precipitationsv,,,,
+narrative,narrativesv,,,,
+statistical solutions,statistical solutionssv,,,,
+family,familysv,,,,
+rainfall,rainfallsv,,,,
+beach litter,beach littersv,,,,
+indigenous mapping,indigenous mappingsv,,,,
+georgia,georgiasv,,,,
+plastics,plasticssv,,,,
+children,childrensv,,,,
+interviews,interviewssv,,,,
+hotspot,hotspotsv,,,,
+west africa,west africasv,,,,
+storage,storagesv,,,,
+adult,adultsv,,,,
+britain,britainsv,,,,
+landscape change,landscape changesv,,,,
+route,routesv,,,,
+perception,perceptionsv,,,,
+data models,data modelssv,,,,
+scientific competence,scientific competencesv,,,,
+delphi,delphisv,,,,
+predator control,predator controlsv,,,,
+cbpr,cbprsv,,,,
+kinect,kinectsv,,,,
+rgb-d,rgb-dsv,,,,
+fusion,fusionsv,,,,
+hazards,hazardssv,,,,
+foursquare,foursquaresv,,,,
+the information age,the information agesv,,,,
+spring migration,spring migrationsv,,,,
+lepidoptera,lepidopterasv,,,,
+interdisciplinary,interdisciplinarysv,,,,
+south carolina,south carolinasv,,,,
+conservation management,conservation managementsv,,,,
+credibility,credibilitysv,,,,
+community monitoring,community monitoringsv,,,,
+best practice,best practicesv,,,,
+policymaking,policymakingsv,,,,
+boreal,borealsv,,,,
+virtual globes,virtual globessv,,,,
+virtual globe,virtual globesv,,,,
+green infrastructure,green infrastructuresv,,,,
+sustainable development,sustainable developmentsv,,,,
+moon zoo,moon zoosv,,,,
+portal,portalsv,,,,
+time series,time seriessv,,,,
+citizen sensing,citizen sensingsv,,,,
+gaming,gamingsv,,,,
+ndvi,ndvisv,,,,
+geomedia,geomediasv,,,,
+biodiversity information,biodiversity informationsv,,,,
+germany,germanysv,,,,
+aids,aidssv,,,,
+uganda,ugandasv,,,,
+delay,delaysv,,,,
+sdi,sdisv,,,,
+play,playsv,,,,
+stakeholder participation,stakeholder participationsv,,,,
+arizona,arizonasv,,,,
+monitoring methods,monitoring methodssv,,,,
+fisheries,fisheriessv,,,,
+land use planning,land use planningsv,,,,
+thailand,thailandsv,,,,
+female,femalesv,,,,
+medicine,medicinesv,,,,
+action research,action researchsv,,,,
+pain,painsv,,,,
+experience-based knowledge,experience-based knowledgesv,,,,
+mobile crowdsourcing,mobile crowdsourcingsv,,,,
+cosmic rays,cosmic rayssv,,,,
+geo-annotation,geo-annotationsv,,,,
+description,descriptionsv,,,,
+redd,reddsv,,,,
+air pollution monitoring,air pollution monitoringsv,,,,
+seagrass,seagrasssv,,,,
+similarity,similaritysv,,,,
+bird phenology,bird phenologysv,,,,
+implementation,implementationsv,,,,
+green space,green spacesv,,,,
+community participation,community participationsv,,,,
+walter benjamin,walter benjaminsv,,,,
+lichens,lichenssv,,,,
+tarpon,tarponsv,,,,
+ghana,ghanasv,,,,
+sharks,sharkssv,,,,
+xquery,xquerysv,,,,
+open street map,open street mapsv,,,,
+xml,xmlsv,,,,
+three-dimensional,three-dimensionalsv,,,,
+wayfinding,wayfindingsv,,,,
+photographs,photographssv,,,,
+environmental assessment,environmental assessmentsv,,,,
+reflexivity,reflexivitysv,,,,
+domains,domainssv,,,,
+beaufort sea,beaufort seasv,,,,
+amazon,amazonsv,,,,
+street science,street sciencesv,,,,
+points of interest,points of interestsv,,,,
+oceans,oceanssv,,,,
+wider countryside,wider countrysidesv,,,,
+bibliometrics,bibliometricssv,,,,
+environmental governance,environmental governancesv,,,,
+prevention,preventionsv,,,,
+malaria,malariasv,,,,
+spatial turn,spatial turnsv,,,,
+ecotourism,ecotourismsv,,,,
+pesticides,pesticidessv,,,,
+synthetic biology,synthetic biologysv,,,,
+anthropocene,anthropocenesv,,,,
+conceptual framework,conceptual frameworksv,,,,
+environment canada,environment canadasv,,,,
+mrv,mrvsv,,,,
+community-based research,community-based researchsv,,,,
+epidemiology,epidemiologysv,,,,
+conservation science,conservation sciencesv,,,,
+texas,texassv,,,,
+vectors,vectorssv,,,,
+portugal,portugalsv,,,,
+long-term ecological monitoring,long-term ecological monitoringsv,,,,
+public participation in science,public participation in sciencesv,,,,
+co-creation of knowledge,co-creation of knowledgesv,,,,
+dog,dogsv,,,,
+science learning,science learningsv,,,,
+sampling bias,sampling biassv,,,,
+bats,batssv,,,,
+environmental education,environmental educationsv,,,,
+fruit,fruitsv,,,,
+scenario planning,scenario planningsv,,,,
+pasture,pasturesv,,,,
+blog,blogsv,,,,
+waste management,waste managementsv,,,,
+hong kong,hong kongsv,,,,
+transects,transectssv,,,,
+marine protected areas,marine protected areassv,,,,
+schools,schoolssv,,,,
+earth science,earth sciencesv,,,,
+stories,storiessv,,,,
+responsibilities,responsibilitiessv,,,,
+plastic debris,plastic debrissv,,,,
+diy,diysv,,,,
+environmental sensing,environmental sensingsv,,,,
+mexico,mexicosv,,,,
+danaus plexippus,danaus plexippussv,,,,
+responsible innovation,responsible innovationsv,,,,
+information technology,information technologysv,,,,
+nitrate,nitratesv,,,,
+spatial distribution,spatial distributionsv,,,,
+extrapolation,extrapolationsv,,,,
+saudi arabia,saudi arabiasv,,,,
+robotic telescope,robotic telescopesv,,,,
+website,websitesv,,,,
+human factors,human factorssv,,,,
+user generated content,user generated contentsv,,,,
+scenarios,scenariossv,,,,
+scientific practices,scientific practicessv,,,,
+spearfishing,spearfishingsv,,,,
+global participatory science,global participatory sciencesv,,,,
+italy,italysv,,,,
+personalized medicine,personalized medicinesv,,,,
+wildlife conservation,wildlife conservationsv,,,,
+equity,equitysv,,,,
+village women,village womensv,,,,
+labour,laboursv,,,,
+soil erosion,soil erosionsv,,,,
+satellite images,satellite imagessv,,,,
+science-policy interface,science-policy interfacesv,,,,
+spatial autocorrelation,spatial autocorrelationsv,,,,
+wikipedia,wikipediasv,,,,
+user-generated content (ugc),user-generated content (ugc)sv,,,,
+north carolina,north carolinasv,,,,
+risk perceptions,risk perceptionssv,,,,
+hypertension,hypertensionsv,,,,
+urban forest,urban forestsv,,,,
+monarch butterfly,monarch butterflysv,,,,
+mobile phone,mobile phonesv,,,,
+spectacle,spectaclesv,,,,
+asthma,asthmasv,,,,
+augmented reality,augmented realitysv,,,,
+aged,agedsv,,,,
+united kingdom,united kingdomsv,,,,
+fear,fearsv,,,,
+recovery,recoverysv,,,,
+adolescent,adolescentsv,,,,
+regional variation,regional variationsv,,,,
+qualitative research,qualitative researchsv,,,,
+public engagement with science and technology,public engagement with science and technologysv,,,,
+pus,pussv,,,,
+bibliometric,bibliometricsv,,,,
+experimentation,experimentationsv,,,,
+capabilities,capabilitiessv,,,,
+mars,marssv,,,,
+operations,operationssv,,,,
+cbc,cbcsv,,,,
+plastic,plasticsv,,,,
+risk management,risk managementsv,,,,
+ownership,ownershipsv,,,,
+thresholds,thresholdssv,,,,
+farmer,farmersv,,,,
+scientific data,scientific datasv,,,,
+asbestos,asbestossv,,,,
+diameter at breast height,diameter at breast heightsv,,,,
+emotions,emotionssv,,,,
+pan-starrs1,pan-starrs1sv,,,,
+nestwatch,nestwatchsv,,,,
+h ii regions,h ii regionssv,,,,
+geomatics,geomaticssv,,,,
+predation,predationsv,,,,
+cyberinfrastructure,cyberinfrastructuresv,,,,
+typology,typologysv,,,,
+ontological turn,ontological turnsv,,,,
+personal genomics,personal genomicssv,,,,
+user-generated content,user-generated contentsv,,,,
+volunteer-based monitoring,volunteer-based monitoringsv,,,,
+contamination,contaminationsv,,,,
+storytelling,storytellingsv,,,,
+cmes,cmessv,,,,
+land cover map validation,land cover map validationsv,,,,
+tropical forests,tropical forestssv,,,,
+viewshed analysis,viewshed analysissv,,,,
+madagascar,madagascarsv,,,,
+non-native,non-nativesv,,,,
+user's,user'ssv,,,,
+biomonitoring,biomonitoringsv,,,,
+open innovation,open innovationsv,,,,
+marine conservation,marine conservationsv,,,,
+tweets,tweetssv,,,,
+situational awareness,situational awarenesssv,,,,
+adolescents,adolescentssv,,,,
+probes,probessv,,,,
+subarctic,subarcticsv,,,,
+odonata,odonatasv,,,,
+wise,wisesv,,,,
+co-management,co-managementsv,,,,
+mass collaboration,mass collaborationsv,,,,
+fukushima,fukushimasv,,,,
+disasters,disasterssv,,,,
+built environment,built environmentsv,,,,
+volunteered geographical information,volunteered geographical informationsv,,,,
+workflows,workflowssv,,,,
+geographic information systems (gis),geographic information systems (gis)sv,,,,
+webgis,webgissv,,,,
+lucc,luccsv,,,,
+luc,lucsv,,,,
+next generation science standards,next generation science standardssv,,,,
+microbiome,microbiomesv,,,,
+lyme disease,lyme diseasesv,,,,
+ethnobotany,ethnobotanysv,,,,
+vietnam,vietnamsv,,,,
+concept mapping,concept mappingsv,,,,
+linked data,linked datasv,,,,
+multimedia,multimediasv,,,,
+clinical trials,clinical trialssv,,,,
+norway,norwaysv,,,,
+data use,data usesv,,,,
+water resources management,water resources managementsv,,,,
+environmental communication,environmental communicationsv,,,,
+place attachment,place attachmentsv,,,,
+landscape values,landscape valuessv,,,,
+urban forests,urban forestssv,,,,
+singapore,singaporesv,,,,
+agroecology,agroecologysv,,,,
+greenspace,greenspacesv,,,,
+meta-analysis,meta-analysissv,,,,
+problem solving,problem solvingsv,,,,
+tanzania,tanzaniasv,,,,
+collision,collisionsv,,,,
+nunavik,nunaviksv,,,,
+ppgis,ppgissv,,,,
+geographic information systems,geographic information systemssv,,,,
+semantic enrichment,semantic enrichmentsv,,,,
+social participation,social participationsv,,,,
+hybrid data,hybrid datasv,,,,
+scientific app,scientific appsv,,,,
+cscl,csclsv,,,,
+switzerland,switzerlandsv,,,,
+crustacea,crustaceasv,,,,
+ecologically&amp;biologically significant areas,ecologically&amp;biologically significant areassv,,,,
+spatially-explicit ecosystem models,spatially-explicit ecosystem modelssv,,,,
+genomic data,genomic datasv,,,,
+citizen sociolinguistics,citizen sociolinguisticssv,,,,
+citizen science (cs),citizen science (cs)sv,,,,
+oecd principles on water governance,oecd principles on water governancesv,,,,
+scientific integrity,scientific integritysv,,,,
+research network,research networksv,,,,
+web applications,web applicationssv,,,,
+ranking,rankingsv,,,,
+subsampling,subsamplingsv,,,,
+west european hedgehog,west european hedgehogsv,,,,
+geonetwork,geonetworksv,,,,
+location-based game,location-based gamesv,,,,
+updating,updatingsv,,,,
+materials knowledge systems,materials knowledge systemssv,,,,
+python,pythonsv,,,,
+ligo,ligosv,,,,
+campylobacter,campylobactersv,,,,
+conservation hotspots,conservation hotspotssv,,,,
+multiuse trail,multiuse trailsv,,,,
+16s rrna,16s rrnasv,,,,
+geodesign,geodesignsv,,,,
+zambezi,zambezisv,,,,
+solar stormwatch,solar stormwatchsv,,,,
+support vector machine,support vector machinesv,,,,
+sub-saharan africa,sub-saharan africasv,,,,
+ozone,ozonesv,,,,
+stormwater,stormwatersv,,,,
+participatory action research,participatory action researchsv,,,,
+cyprus,cyprussv,,,,
+dna barcoding,dna barcodingsv,,,,
+herbig ae&amp;be,herbig ae&amp;besv,,,,
+stem education,stem educationsv,,,,
+amateur public observatory,amateur public observatorysv,,,,
+astronomy education,astronomy educationsv,,,,
+environmental noise,environmental noisesv,,,,
+neanderthal,neanderthalsv,,,,
+scandinavia,scandinaviasv,,,,
+trapping,trappingsv,,,,
+large carnivores,large carnivoressv,,,,
+inaturalist,inaturalistsv,,,,
+exposure assessment,exposure assessmentsv,,,,
+israel,israelsv,,,,
+skagerrak,skagerraksv,,,,
+angling records,angling recordssv,,,,
+personal genome project,personal genome projectsv,,,,
+minnesota,minnesotasv,,,,
+photo-id,photo-idsv,,,,
+biodiversity informatics,biodiversity informaticssv,,,,
+radiation,radiationsv,,,,
+open source software,open source softwaresv,,,,
+roosts,roostssv,,,,
+soil salinity monitoring,soil salinity monitoringsv,,,,
+catchment areas,catchment areassv,,,,
+total phosphorus,total phosphorussv,,,,
+case studies comparison,case studies comparisonsv,,,,
+araneae,araneaesv,,,,
+road density,road densitysv,,,,
+coralligenous assemblages,coralligenous assemblagessv,,,,
+biological monitoring,biological monitoringsv,,,,
+responsible research &amp; innovation (rri),responsible research &amp; innovation (rri)sv,,,,
+fitness,fitnesssv,,,,
+kduino,kduinosv,,,,
+tsitsa river,tsitsa riversv,,,,
+semantic similarity,semantic similaritysv,,,,
+co-citation,co-citationsv,,,,
+semantic interoperability,semantic interoperabilitysv,,,,
+wilderness,wildernesssv,,,,
+cultural ecosystem services,cultural ecosystem servicessv,,,,
+national forests,national forestssv,,,,
+bangladesh,bangladeshsv,,,,
+flood hazard,flood hazardsv,,,,
+gmesua,gmesuasv,,,,
+semantic web,semantic websv,,,,
+mya arenaria,mya arenariasv,,,,
+early detection,early detectionsv,,,,
+site-specific,site-specificsv,,,,
+smallholders,smallholderssv,,,,
+low technology,low technologysv,,,,
+rna secondary structure,rna secondary structuresv,,,,
+rna design,rna designsv,,,,
+ambient noise,ambient noisesv,,,,
+university of alaska museum,university of alaska museumsv,,,,
+multi-user,multi-usersv,,,,
+retrieval,retrievalsv,,,,
+hybridity,hybriditysv,,,,
+electro-sensitivity,electro-sensitivitysv,,,,
+spain,spainsv,,,,
+linked open data,linked open datasv,,,,
+scenic route,scenic routesv,,,,
+cost-effective,cost-effectivesv,,,,
+cadastral mapping,cadastral mappingsv,,,,
+libya,libyasv,,,,
+livelihoods,livelihoodssv,,,,
+mangrove restoration,mangrove restorationsv,,,,
+northern ghana,northern ghanasv,,,,
+wikimapia,wikimapiasv,,,,
+palestine,palestinesv,,,,
+spatial analysis,spatial analysissv,,,,
+animal-vehicle collisions,animal-vehicle collisionssv,,,,
+newts,newtssv,,,,
+smallholder farmers,smallholder farmerssv,,,,
+computer vision,computer visionsv,,,,
+open standards,open standardssv,,,,
+detection probability,detection probabilitysv,,,,
+belize,belizesv,,,,
+lucas,lucassv,,,,
+workforce,workforcesv,,,,
+cultures of participation,cultures of participationsv,,,,
+stereo,stereosv,,,,
+co-ppgis,co-ppgissv,,,,
+meris,merissv,,,,
+fish assemblages,fish assemblagessv,,,,
+stem disciplines,stem disciplinessv,,,,
+nepa,nepasv,,,,
+volunteered geographical information (vgi),volunteered geographical information (vgi)sv,,,,
+cryo-em,cryo-emsv,,,,
+phenocam,phenocamsv,,,,
+mixed methods,mixed methodssv,,,,
+landscape character,landscape charactersv,,,,
+forest values,forest valuessv,,,,
+ltser,ltsersv,,,,
+landscape classification,landscape classificationsv,,,,
+moose,moosesv,,,,
+sensor web,sensor websv,,,,
+i-tree streets,i-tree streetssv,,,,
+microplastics,microplasticssv,,,,
+andes,andessv,,,,
+craigslist,craigslistsv,,,,
+asia-pacific,asia-pacificsv,,,,
+forest fires,forest firessv,,,,
+portals,portalssv,,,,
+hemiptera,hemipterasv,,,,
+polydictya,polydictyasv,,,,
+lanternfly,lanternflysv,,,,
+fulgoridae,fulgoridaesv,,,,
+blue shark,blue sharksv,,,,
+safecast data,safecast datasv,,,,
+markings,markingssv,,,,
+visual comparison,visual comparisonsv,,,,
+geoweb 2.0,geoweb 2.0sv,,,,
+environmental toxicity,environmental toxicitysv,,,,
+globeland30,globeland30sv,,,,
+chadereka,chaderekasv,,,,
+muzarabani,muzarabanisv,,,,
+geo-tagged tweets,geo-tagged tweetssv,,,,
+isprs,isprssv,,,,
+knowledge gaps,knowledge gapssv,,,,
+pterois volitans,pterois volitanssv,,,,
+invasive lionfish,invasive lionfishsv,,,,
+inspire hackathon,inspire hackathonsv,,,,
+web application,web applicationsv,,,,
+human computation,human computationsv,,,,
+serious game,serious gamesv,,,,
+spatio-temporal data,spatio-temporal datasv,,,,
+icesat-2,icesat-2sv,,,,
+lasers,laserssv,,,,
+jerusalem,jerusalemsv,,,,
+habitats directive,habitats directivesv,,,,
+cetaceans,cetaceanssv,,,,
+gazetteer,gazetteersv,,,,
+(is)-s-3,(is)-s-3sv,,,,
+sea turtles,sea turtlessv,,,,
+knowledge-stream model,knowledge-stream modelsv,,,,
+citizen hydrology,citizen hydrologysv,,,,
+intermittent rivers,intermittent riverssv,,,,
+intermittent,intermittentsv,,,,
+diseases,diseasessv,,,,
+medical robotics,medical roboticssv,,,,
+child well-being,child well-beingsv,,,,
+google maps,google mapssv,,,,
+noise mapping,noise mappingsv,,,,
+timor-leste,timor-lestesv,,,,
+haiti,haitisv,,,,
+risk factors,risk factorssv,,,,
+livestock,livestocksv,,,,
+puerto rico,puerto ricosv,,,,
+digital participatory platforms,digital participatory platformssv,,,,
+sun exposure,sun exposuresv,,,,
+spatial variation,spatial variationsv,,,,
+geographic information system (gis),geographic information system (gis)sv,,,,
+particulate matter,particulate mattersv,,,,
+neon,neonsv,,,,
+ecological status,ecological statussv,,,,
+sediment,sedimentsv,,,,
+rufiji river,rufiji riversv,,,,
+cape parrot,cape parrotsv,,,,
+parrots,parrotssv,,,,
+poicephalus robustus,poicephalus robustussv,,,,
+storm damage,storm damagesv,,,,
+tornado,tornadosv,,,,
+demographics,demographicssv,,,,
+multiple criteria decision analysis,multiple criteria decision analysissv,,,,
+slum upgrading,slum upgradingsv,,,,
+informal settlements,informal settlementssv,,,,
+reputation evaluation,reputation evaluationsv,,,,
+geo-social media,geo-social mediasv,,,,
+future internet,future internetsv,,,,
+enablers,enablerssv,,,,
+environmental observation web,environmental observation websv,,,,
+tick dynamics,tick dynamicssv,,,,
+mobile computing,mobile computingsv,,,,
+tar spot,tar spotsv,,,,
+rhytisma acerinum,rhytisma acerinumsv,,,,
+acer pseudoplatanus,acer pseudoplatanussv,,,,
+british columbia,british columbiasv,,,,
+canada lynx,canada lynxsv,,,,
+matsim,matsimsv,,,,
+citygml,citygmlsv,,,,
+tetropium,tetropiumsv,,,,
+aichi targets,aichi targetssv,,,,
+minimum divergence,minimum divergencesv,,,,
+bayesian data fusion,bayesian data fusionsv,,,,
+snakes,snakessv,,,,
+wyred,wyredsv,,,,
+hadoop,hadoopsv,,,,
+big geo-data,big geo-datasv,,,,
+reconciliation ecology,reconciliation ecologysv,,,,
+private wells,private wellssv,,,,
+web gis,web gissv,,,,
+land use&amp;land cover mapping,land use&amp;land cover mappingsv,,,,
+habitat loss,habitat losssv,,,,
+chaetura pelagica,chaetura pelagicasv,,,,
+beach profiling,beach profilingsv,,,,
+natural hazards,natural hazardssv,,,,
+wildfire,wildfiresv,,,,
+crowdmap,crowdmapsv,,,,
+geo-recaptcha,geo-recaptchasv,,,,
+recaptcha,recaptchasv,,,,
+monitoring&amp;mapping,monitoring&amp;mappingsv,,,,
+manatee,manateesv,,,,
+gulf of mexico,gulf of mexicosv,,,,
+geodatabase,geodatabasesv,,,,
+friedrich nietzsche,friedrich nietzschesv,,,,
+foldit,folditsv,,,,
+traffic congestion,traffic congestionsv,,,,
+complicated crossings,complicated crossingssv,,,,
+language proficiency,language proficiencysv,,,,
+lucanus cervus,lucanus cervussv,,,,
+saproxylic beetles,saproxylic beetlessv,,,,
+pagerank,pageranksv,,,,
+greenway network,greenway networksv,,,,
+citizens' observatories,citizens' observatoriessv,,,,
+habitats directive 92&amp;43&amp;eec,habitats directive 92&amp;43&amp;eecsv,,,,
+sound maps,sound mapssv,,,,
+critical gis,critical gissv,,,,
+habitsourcing,habitsourcingsv,,,,
+disaster information,disaster informationsv,,,,
+psp,pspsv,,,,
+china-vo,china-vosv,,,,
+cultural landscape,cultural landscapesv,,,,
+wikidata,wikidatasv,,,,
+spatial media,spatial mediasv,,,,
+google images,google imagessv,,,,
+naturalistic knowledge,naturalistic knowledgesv,,,,
+neotropical,neotropicalsv,,,,
+health surveillance,health surveillancesv,,,,
+volunteer gis,volunteer gissv,,,,
+urban murals,urban muralssv,,,,
+hawaii,hawaiisv,,,,
+hurricane,hurricanesv,,,,
+wood transport,wood transportsv,,,,
+christchurch,christchurchsv,,,,
+second life,second lifesv,,,,
+halyomorpha halys,halyomorpha halyssv,,,,
+non indigenous species,non indigenous speciessv,,,,
+adriatic sea,adriatic seasv,,,,
+convolutional neural network,convolutional neural networksv,,,,
+ethiopia,ethiopiasv,,,,
+information cascades,information cascadessv,,,,
+soa,soasv,,,,
+medicine 2.0,medicine 2.0sv,,,,
+web science,web sciencesv,,,,
+bioindicator,bioindicatorsv,,,,
+bioindicators,bioindicatorssv,,,,
+human ecology mapping,human ecology mappingsv,,,,
+geo-information tools,geo-information toolssv,,,,
+yelp,yelpsv,,,,
+community-based natural resource management,community-based natural resource managementsv,,,,
+participatory-gis,participatory-gissv,,,,
+invasive alien species,invasive alien speciessv,,,,
+mashup,mashupsv,,,,
+word,wordsv,,,,
+leaf,leafsv,,,,
+cyber-infrastructure,cyber-infrastructuresv,,,,
+bird census,bird censussv,,,,
+ctx,ctxsv,,,,
+marine mammals,marine mammalssv,,,,
+mapping party,mapping partysv,,,,
+pervasive health computing,pervasive health computingsv,,,,
+alberta,albertasv,,,,
+decision support system,decision support systemsv,,,,
+czech republic,czech republicsv,,,,
+ushahidi,ushahidisv,,,,
+spatial memory training,spatial memory trainingsv,,,,
+3d city models,3d city modelssv,,,,
+web services,web servicessv,,,,
+mars webcam,mars webcamsv,,,,
+mars express,mars expresssv,,,,
+webcam,webcamsv,,,,
+coral health,coral healthsv,,,,
+acropora,acroporasv,,,,
+e-planning,e-planningsv,,,,
+task replication,task replicationsv,,,,
+zooplankton,zooplanktonsv,,,,
+art &amp; environment,art &amp; environmentsv,,,,
+art &amp; technology,art &amp; technologysv,,,,
+orthoptera,orthopterasv,,,,
+birdsong,birdsongsv,,,,
+multidisciplinary teams,multidisciplinary teamssv,,,,
+middle east,middle eastsv,,,,
+threat status,threat statussv,,,,
+small cities,small citiessv,,,,
+collaborative work,collaborative worksv,,,,
+assistive geotechnology,assistive geotechnologysv,,,,
+transitory obstacles,transitory obstaclessv,,,,
+disaster information management system,disaster information management systemsv,,,,
+tencent&amp;baidu street views,tencent&amp;baidu street viewssv,,,,
+exposure and seismic vulnerability of buildings,exposure and seismic vulnerability of buildingssv,,,,
+ebutterfly,ebutterflysv,,,,
+diegesis,diegesissv,,,,
+participatory geographic information,participatory geographic informationsv,,,,
+geoexposures,geoexposuressv,,,,
+bechdel wallace test,bechdel wallace testsv,,,,
+food allergen,food allergensv,,,,
+y chromosome,y chromosomesv,,,,
+soundscape ecology,soundscape ecologysv,,,,
+cybergis,cybergissv,,,,
+barbados,barbadossv,,,,
+environmental movements,environmental movementssv,,,,
+nature-based tourism,nature-based tourismsv,,,,
+high resolution,high resolutionsv,,,,
+disaster recovery,disaster recoverysv,,,,
+american kestrel,american kestrelsv,,,,
+missing maps,missing mapssv,,,,
+red cross and red crescent movement,red cross and red crescent movementsv,,,,
+bloom,bloomsv,,,,
+microcystin,microcystinsv,,,,
+model forest,model forestsv,,,,
+eco-heart index,eco-heart indexsv,,,,
+susceptibility&amp;hazard and risk maps,susceptibility&amp;hazard and risk mapssv,,,,
+spatial data infrastructure,spatial data infrastructuresv,,,,
+bark,barksv,,,,
+east africa,east africasv,,,,
+dna sequencing,dna sequencingsv,,,,
+open air laboratories,open air laboratoriessv,,,,
+geographic context analysis,geographic context analysissv,,,,
+sustainable development goals,sustainable development goalssv,,,,
+male,malesv,,,,
+hemispherical photography,hemispherical photographysv,,,,
+image analysis,image analysissv,,,,
+mycoportal,mycoportalsv,,,,
+spatial big data,spatial big datasv,,,,
+weak,weaksv,,,,
+linear poisson models,linear poisson modelssv,,,,
+service design,service designsv,,,,
+gbif,gbifsv,,,,
+strava metro,strava metrosv,,,,
+conservation action,conservation actionsv,,,,
+indonesia,indonesiasv,,,,
+drones,dronessv,,,,
+cognition,cognitionsv,,,,
+seawifs,seawifssv,,,,
+metals,metalssv,,,,
+perennial,perennialsv,,,,
+new orleans,new orleanssv,,,,
+canyon wren,canyon wrensv,,,,
+mueckenatlas,mueckenatlassv,,,,
+modis,modissv,,,,
+precision agriculture,precision agriculturesv,,,,
+online tool,online toolsv,,,,
+pm2.5,pm2.5sv,,,,
+spectral energy distribution,spectral energy distributionsv,,,,
+hanse sail,hanse sailsv,,,,
+toronto,torontosv,,,,
+scuba divers,scuba diverssv,,,,
+pva,pvasv,,,,
+rediscovery,rediscoverysv,,,,
+geoprocessing,geoprocessingsv,,,,
+bergamasque alps,bergamasque alpssv,,,,
+information system,information systemsv,,,,
+crisis management,crisis managementsv,,,,
+design science research,design science researchsv,,,,
+cloud experimentation,cloud experimentationsv,,,,
+phenotyping,phenotypingsv,,,,
+southern california,southern californiasv,,,,
+seasonality,seasonalitysv,,,,
+pollinators,pollinatorssv,,,,
+flowering time,flowering timesv,,,,
+internet-based testing,internet-based testingsv,,,,
+reinforcement,reinforcementsv,,,,
+web mapping,web mappingsv,,,,
+rov,rovsv,,,,
+low-cost sensors,low-cost sensorssv,,,,
+water data,water datasv,,,,
+points of interest (poi),points of interest (poi)sv,,,,
+health literacy,health literacysv,,,,
+16s rdna,16s rdnasv,,,,
+mci,mcisv,,,,
+biometrics,biometricssv,,,,
+steam,steamsv,,,,
+gulo gulo,gulo gulosv,,,,
+contingent valuation,contingent valuationsv,,,,
+conversion,conversionsv,,,,
+iso&amp;iec standard,iso&amp;iec standardsv,,,,
+sweden,swedensv,,,,
+browsing damage,browsing damagesv,,,,
+wildlife management,wildlife managementsv,,,,
+approval of wolves,approval of wolvessv,,,,
+day length,day lengthsv,,,,
+philadelphia,philadelphiasv,,,,
+anurans,anuranssv,,,,
+red sea,red seasv,,,,
+quality improvement,quality improvementsv,,,,
+primary health care,primary health caresv,,,,
+randomized controlled trials,randomized controlled trialssv,,,,
+global biodiversity information facility (gbif),global biodiversity information facility (gbif)sv,,,,
+cholesterol,cholesterolsv,,,,
+ica,icasv,,,,
+participatory approach,participatory approachsv,,,,
+paraecologists,paraecologistssv,,,,
+public participation in research,public participation in researchsv,,,,
+bioblitz,bioblitzsv,,,,
+code of ethics,code of ethicssv,,,,
+transatlantic,transatlanticsv,,,,
+snapshot serengeti,snapshot serengetisv,,,,
+ntu turbidity,ntu turbiditysv,,,,
+volunteer motivations,volunteer motivationssv,,,,
+intermediate layer,intermediate layersv,,,,
+heracleum sosnowskyi,heracleum sosnowskyisv,,,,
+komi republic,komi republicsv,,,,
+panoramio,panoramiosv,,,,
+impact evaluation,impact evaluationsv,,,,
+socio-scientific issues,socio-scientific issuessv,,,,
+collaborative gis,collaborative gissv,,,,
+natural language,natural languagesv,,,,
+ssa,ssasv,,,,
+urbanisation,urbanisationsv,,,,
+participatory gis (pgis),participatory gis (pgis)sv,,,,
+urban waterlogging,urban waterloggingsv,,,,
+flood hazard mapping,flood hazard mappingsv,,,,
+web-based gis,web-based gissv,,,,
+epidalea calamita,epidalea calamitasv,,,,
+consumer participation,consumer participationsv,,,,
+participatory gis.,participatory gis.sv,,,,
+karnataka,karnatakasv,,,,
+resource conservation,resource conservationsv,,,,
+web 2,web 2sv,,,,
+islands,islandssv,,,,
+mapmaking,mapmakingsv,,,,
+land use mapping,land use mappingsv,,,,
+bushfire,bushfiresv,,,,
+land use&amp;cover map,land use&amp;cover mapsv,,,,
+inconsistencies,inconsistenciessv,,,,
+citizen-sensor-networks,citizen-sensor-networkssv,,,,
+face-to-face interaction,face-to-face interactionsv,,,,
+cross-calibration,cross-calibrationsv,,,,
+outlier detection,outlier detectionsv,,,,
+emergent properties,emergent propertiessv,,,,
+volunteer geographic information,volunteer geographic informationsv,,,,
+competencies,competenciessv,,,,
+imprecision,imprecisionsv,,,,
+spatial olap,spatial olapsv,,,,
+cyprinus carpio,cyprinus carpiosv,,,,
+yoga,yogasv,,,,
+pranayama,pranayamasv,,,,
+survivors,survivorssv,,,,
+breathing exercises,breathing exercisessv,,,,
+anxiety,anxietysv,,,,
+depression,depressionsv,,,,
+sudarshan kriya yoga,sudarshan kriya yogasv,,,,
+autonomic nervous system,autonomic nervous systemsv,,,,
+public participatory gis,public participatory gissv,,,,
+open air laboratories (opal),open air laboratories (opal)sv,,,,
+thresholds of potential concern,thresholds of potential concernsv,,,,
+citizen-generated data,citizen-generated datasv,,,,
+zombwe extension planning area,zombwe extension planning areasv,,,,
+statistics &amp; research methods,statistics &amp; research methodssv,,,,
+publications,publicationssv,,,,
+social sensors,social sensorssv,,,,
+vector-borne disease,vector-borne diseasesv,,,,
+public housing,public housingsv,,,,
+positive mental health,positive mental healthsv,,,,
+linus' law,linus' lawsv,,,,
+participatory modelling,participatory modellingsv,,,,
+downscaling,downscalingsv,,,,
+quantified self,quantified selfsv,,,,
+online amateur weather networks,online amateur weather networkssv,,,,
+triage,triagesv,,,,
+obstetric,obstetricsv,,,,
+wui,wuisv,,,,
+shape,shapesv,,,,
+participatory rural appraisal (pra),participatory rural appraisal (pra)sv,,,,
+electronic routine outcome monitoring,electronic routine outcome monitoringsv,,,,
+lake taupo,lake tauposv,,,,
+shrikes,shrikessv,,,,
+youtube,youtubesv,,,,
+artl@s,artl@ssv,,,,
+swaziland,swazilandsv,,,,
+ukbms,ukbmssv,,,,
+intra-urban inequalities,intra-urban inequalitiessv,,,,
+early warning systems,early warning systemssv,,,,
+risk governance,risk governancesv,,,,
+socio-technical systems,socio-technical systemssv,,,,
+articulation work,articulation worksv,,,,
+spatial bias,spatial biassv,,,,
+smartphone icon user interface,smartphone icon user interfacesv,,,,
+oulanka national park,oulanka national parksv,,,,
+koffiekraal,koffiekraalsv,,,,
+infiltration,infiltrationsv,,,,
+ahp,ahpsv,,,,
+topsis,topsissv,,,,
+water color,water colorsv,,,,
+character,charactersv,,,,
+substance abuse treatment,substance abuse treatmentsv,,,,
+performance measurement,performance measurementsv,,,,
+service quality,service qualitysv,,,,
+decommissioning,decommissioningsv,,,,
+citizen design science,citizen design sciencesv,,,,
+diagnosis,diagnosissv,,,,
+water level,water levelsv,,,,
+farmers' perceptions,farmers' perceptionssv,,,,
+kriging,krigingsv,,,,
+berlin,berlinsv,,,,
+hospitals,hospitalssv,,,,
+work-based,work-basedsv,,,,
+co-design,co-designsv,,,,
+risk reduction,risk reductionsv,,,,
+ecological assessment,ecological assessmentsv,,,,
+human development,human developmentsv,,,,
+sciurus vulgaris,sciurus vulgarissv,,,,
+state of the environment,state of the environmentsv,,,,
+research translation,research translationsv,,,,
+end 49&amp;2002,end 49&amp;2002sv,,,,
+biological records centre,biological records centresv,,,,
+visualisation,visualisationsv,,,,
+chestnut,chestnutsv,,,,
+urban stormwater ponds,urban stormwater pondssv,,,,
+geographic information technologies,geographic information technologiessv,,,,
+geoprocessing web,geoprocessing websv,,,,
+non-indigenous species,non-indigenous speciessv,,,,
+species distribution,species distributionsv,,,,
+open geospatial consortium (ogc),open geospatial consortium (ogc)sv,,,,
+christmas bird count,christmas bird countsv,,,,
+conceptual modeling,conceptual modelingsv,,,,
+soundscape,soundscapesv,,,,
+mi-mast,mi-mastsv,,,,
+information systems research,information systems researchsv,,,,
+diabetes,diabetessv,,,,
+deepwater horizon,deepwater horizonsv,,,,
+probability sampling,probability samplingsv,,,,
+wildlife observation,wildlife observationsv,,,,
+annosys,annosyssv,,,,
+health literacy responsiveness,health literacy responsivenesssv,,,,
+report-back,report-backsv,,,,
+telehealth,telehealthsv,,,,
+list length analysis,list length analysissv,,,,
+bali,balisv,,,,
+heart failure,heart failuresv,,,,
+expert systems,expert systemssv,,,,
+qgis,qgissv,,,,
+sepsis,sepsissv,,,,
+responsible research and innovation,responsible research and innovationsv,,,,
+boreholes,boreholessv,,,,
+sense-it,sense-itsv,,,,
+topology,topologysv,,,,
+ecology &amp; environment,ecology &amp; environmentsv,,,,
+insects &amp; pollinators,insects &amp; pollinatorssv,,,,
+information &amp; computing sciences,information &amp; computing sciencessv,,,,
+nature &amp; outdoors,nature &amp; outdoorssv,,,,
+agriculture &amp; veterinary science,agriculture &amp; veterinary sciencesv,,,,
+health &amp; medicine,health &amp; medicinesv,,,,
+geology &amp; earth science,geology &amp; earth sciencesv,,,,
+"ocean, water, marine &amp; terrestrial","ocean, water, marine &amp; terrestrialsv",,,,
+climate &amp; weather,climate &amp; weathersv,,,,
+astronomy &amp; space,astronomy &amp; spacesv,,,,
+archaeology &amp; cultural,archaeology &amp; culturalsv,,,,

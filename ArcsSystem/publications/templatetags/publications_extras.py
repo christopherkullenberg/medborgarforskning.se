@@ -176,7 +176,7 @@ def get_bigest_links(di, alowed_links_per_node = 3):
 	re = []
 	for index in range(alowed_links_per_node):
 		if anwer[index] != "":
-			re.append([anwer[index], {"value": biggest_links[index]}] )   
+			re.append([anwer[index], {"value": biggest_links[index]}] )
 
 	return re
 

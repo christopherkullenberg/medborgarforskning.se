@@ -22,6 +22,8 @@ wikidata = "==0.7.0"
 pillow = "==8.0.1"
 django-livesync = "*"
 country-bounding-boxes = "*"
+flashtext = "*"
+pandas = "*"
 
 [requires]
 python_version = "3"

@@ -351,7 +351,7 @@ def get_all_related(this_db_class, lang ="en", use="all"):
 	nav_html += ' </ul> '
 	div_html += ' </div> </div> <br> <br> <br> <br>'
 
-
+	print(convert_dict(json_di, 1 ))
 	return [[nav_html + div_html, convert_dict(json_di, 1 )]]
 
 
