@@ -28,6 +28,8 @@ COPY entrypoint.sh .
 RUN pip install pipenv
 RUN pip install wikidata
 RUN pip install pillow
+RUN pip install psycopg2
+RUN pip install django_countries
 COPY Pipfile*  /opt/arcs_project_code/
 
 # Note: the requirements.txt must be up to date
