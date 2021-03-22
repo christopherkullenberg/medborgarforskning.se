@@ -169,7 +169,7 @@ def get_all_related(this_db_class, lang ="en", use="all"):
 	db_classes = {"project":[],"theme" :[],"publication":[]}
 
 	#allway exlude
-	uni_exclude_keys = ["citizen science", "newtech"]
+	uni_exclude_keys = ["citizen science", "newtech", "key paper", "auto", "nottech"]
 
 
 	# If true: include keywords from this_db_class
