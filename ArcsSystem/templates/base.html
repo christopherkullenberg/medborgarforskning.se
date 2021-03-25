@@ -79,7 +79,7 @@
                             <img class="main-media-btns" src="{% static 'icons/Language_Icon_4.png' %}"
                                  alt="{% trans 'Globe icon for switching languages' %}"/>
                             <br>
-                            <strong>Language</strong>
+                            <strong>{% trans 'Language' %}</strong>
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             {% get_current_language as LANGUAGE_CODE %}

@@ -2,7 +2,7 @@ from django.db.models import Q
 from collections import defaultdict
 from projects.models import KeywordEng
 from django import template
-
+from django.utils.translation import gettext_lazy as _
 
 import json
 
@@ -272,7 +272,7 @@ def get_all_related(this_db_class, lang ="en", use="all"):
 
 	nav_html = ' <ul class="nav nav-tabs"> '
 	div_html = ' <div class="col-12">  <div class="tab-content"> <br> '
-	nav_html += ' <li class="nav-item"> <a class="nav-link ' + "" + '" data-toggle="tab" href="#'+"pub"+'">'+"Related Publications ("+ str(amount_pub)+')</a> </li> '
+	nav_html += ' <li class="nav-item"> <a class="nav-link ' + "" + '" data-toggle="tab" href="#'+"pub"+'">'+ 'Related Publications' + ' (' + str(amount_pub) + ')</a> </li> '
 	div_html += ' <div id="'+"pub"+'" class="tab-pane container '+ "" +'">  <div class="row" > '
 	count = 0
 
