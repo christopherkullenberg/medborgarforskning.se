@@ -229,14 +229,14 @@ def get_recent_eu_projects(no_use):
     html = ""
     active = "active" # resets after first iteration below, only first shall be active
     for k, v in resultdict.items():
-        print(k)
+        #print(k)
 
         html += '''
         <div class="carousel-item ''' + active + ''' carousel-item-margin slider-color">
 
         <div class="col-md">
         <div class="card mb-2 border-slider-content">
-        <a href="https://eu-citizen.science/project/''' + str(v[13]) + '''"><img class="d-block w-100" src="''' + remoteimage(v[4]) + '''" alt="''' + k + '''">
+        <a href="https://eu-citizen.science/project/''' + str(v[13]) + '''"><img class="d-block w-100" src="''' + remoteimage(v[4]) + '''" alt="''' + k + '''" /></a>
         <div class="card-body content-slider">
         <p class="font-weight-bold m-0">PROJEKT: ''' + k + ''' (''' + get_country_fullname(v[5]) + ''')</p>
         <!--<p class="font-weight-bold m-0">DESCRIPTION: Monitoring of fauna for insect activity."</p>
