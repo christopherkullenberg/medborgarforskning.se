@@ -1,5 +1,6 @@
 from django import template
 from django.template.defaultfilters import stringfilter
+from django.conf import settings
 from workpackages.models import WorkPackage, Theme
 from projects.models import KeywordEng, KeywordSwe, ScienceType, STATUS_CHOICES, KeywordLine, ProjectEntry
 import os
@@ -173,7 +174,7 @@ def get_recent_eu_projects(no_use):
         source = "!"  # indicates that projects were loaded directly from remote api
     except:
         print("Using local cache")
-        with open("/home/anon/Desktop/medborgarforskning.se/ArcsSystem/projects/templatetags/eu-citizen.science.json") as localcache:
+        with open(os.path.join(settings.BASE_DIR, "projects/eu-citizen.science.json")) as localcache:
             jsondata = json.load(localcache)
             source = ":"  # indicates projects were loaded from local cache
     for project in jsondata:
