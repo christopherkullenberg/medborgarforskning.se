@@ -166,9 +166,16 @@ def euapi_projects(not_use):
 @stringfilter
 def get_recent_eu_projects(no_use):
     datedict = {}
-    data = requests.get('https://eu-citizen.science/api/projects/')
-    print("EUAPI Response code: " + str(data.status_code))
-    jsondata = data.json()
+    try:
+        data = requests.get('https://eu-citizen.science/api/projects/')
+        print("EUAPI Response code: " + str(data.status_code))
+        jsondata = data.json()
+        source = "!"  # indicates that projects were loaded directly from remote api
+    except:
+        print("Using local cache")
+        with open("/home/anon/Desktop/medborgarforskning.se/ArcsSystem/projects/templatetags/eu-citizen.science.json") as localcache:
+            jsondata = json.load(localcache)
+            source = ":"  # indicates projects were loaded from local cache
     for project in jsondata:
         # 2020-12-18T17:22:29.027278Z'
         datedict[project['name']] = datetime.datetime.strptime(project['dateCreated'], '%Y-%m-%dT%H:%M:%S.%fZ')
@@ -202,7 +209,7 @@ def get_recent_eu_projects(no_use):
                     <div id="multi-item-example" class="carousel slide carousel-multi-item carousel-multi-item-selector" data-ride="carousel">
                         <div class="row slider-header d-flex justify-content-center align-items-center">
                             <div class="col">
-                                <p class="font-weight-bold mb-0">Nya projekt!</p>
+                                <p class="font-weight-bold mb-0">Nya projekt''' + source + '''</p>
                             </div>
                             <div class="col">
                                 <!--Controls-->
