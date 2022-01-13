@@ -12,7 +12,7 @@
 Django~=2.2.9
 uwsgi ==2.0.18
 psycopg2==2.7
-django-cms ==3.7.1
+django-cms ==3.7.4
 djangocms-installer
 #uwsgi-plugin-python
 #uwsgi-emperor
